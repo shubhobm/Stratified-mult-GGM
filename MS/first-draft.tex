@@ -1,0 +1,157 @@
+\documentclass[fleqn,11pt]{article}
+%\documentclass[aoas,preprint]{imsart}
+
+\usepackage{mycommands1,amssymb,amsmath,amsthm,color,pagesize,outlines,cite,subfigure}
+\usepackage[small]{caption}
+\usepackage[pdftex]{epsfig}
+\usepackage{hyperref} % for linking references 
+\usepackage{stackrel}
+
+\usepackage[round]{natbib}
+
+% for algorithm
+\usepackage[noend]{algpseudocode}
+\usepackage{algorithm}
+
+%\addtolength{\evensidemargin}{-.5in}
+%\addtolength{\oddsidemargin}{-.5in}
+%\addtolength{\textwidth}{0.9in}
+%\addtolength{\textheight}{0.9in}
+%\addtolength{\topmargin}{-.4in}
+
+%% measurements for 1 inch margin
+\addtolength{\oddsidemargin}{-.875in}
+\addtolength{\evensidemargin}{-.875in}
+\addtolength{\textwidth}{1.75in}
+\addtolength{\topmargin}{-.875in}
+\addtolength{\textheight}{1.75in}
+
+\usepackage{setspace}
+%\doublespacing
+
+%\pagestyle{myheadings}
+%\markboth{}{\underline{{\bf Notes: (do not circulate)} \hspace{4.5cm} {\sc  Ansu Chatterjee} \hspace{0.25cm}}}
+
+\DeclareMathOperator*{\ve}{vec}
+\DeclareMathOperator*{\diag}{diag }
+\DeclareMathOperator*{\Tr}{Tr}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+%% Appendix theorem counter
+\usepackage{chngcntr}
+\usepackage{apptools}
+\AtAppendix{\counterwithin{Theorem}{section}}
+\numberwithin{equation}{section}
+
+\begin{document}
+
+\newtheorem{Theorem}{Theorem}[section]
+\newtheorem{Lemma}[Theorem]{Lemma}
+\newtheorem{Corollary}[Theorem]{Corollary}
+\newtheorem{Proposition}[Theorem]{Proposition}
+\newtheorem{Conjecture}[Theorem]{Conjecture}
+\theoremstyle{definition} \newtheorem{Definition}[Theorem]{Definition}
+
+\title{Simultaneous Selection of Multiple Important Single Nucleotide Polymorphisms in Familial Genome Wide Association Studies data}
+\date{}
+\author{Subhabrata Majumdar}
+\maketitle
+
+\noindent\textbf{Abstract}: Genome Wide Association Studies (GWAS) on samples obtained from families instead of unrelated individuals are an established way of assessing gene-environment interactions and effects of Single Nucleotide Polymorphisms (SNP) on the development of behavioral disorders. Due to multiple reasons like weak signals of causal SNPs or multiple correlated SNPs, traditional methods of SNP detection based on single-marker analysis suffer from loss of power in such studies. Although statistical model selection methods are able to remedy this, owing to the dependent structure of the familial data they are computationally demanding. Here we propose a fast variable selection algorithm to address this problem. Working on a linear mixed model with three variance components and fixed effects for multiple SNPs, we obtain a quantity called the $e$-value for each SNP by only training the model with all covariates, and select SNPs having $e$-values below a threshold. To compute the $e$-values, we utilize a fast and scalable bootstrap procedure that relies on Monte-Carlo sampling to obtain bootstrapped copies of estimated fixed effect vectors. Numerical studies reveal our method to be more effective in detecting causal SNPs than either single-marker analysis on mixed models or model selection methods that ignore the familial dependency structure. We also use the $e$-values to perform gene-level analysis in a familial GWAS dataset and detect several SNPs that have potential effect on alcohol consumption in individuals.
+\vspace{.5cm}
+
+\noindent\textbf{Keywords}: Model selection, bootstrap, data depth, family data, twin studies, ACE model, alcoholism
+
+\newpage
+
+\section{Model}
+We have data $\cZ = \{ \cZ^1, \ldots, \cZ^K \}; \cZ^k = (\bfY^k, \bfX^k)$ where $\bfY^k \in \BR^{n \times q}, \bfX^k \in \BR^{n \times p}$ for $1 \leq k \leq K$.
+
+\begin{eqnarray}
+\bfX^k = (\bfX^k_1, \ldots, \bfX^k_p)^T \sim \cN (0, \Sigma^k_x)\\
+\bfY^k = \bfX^k \bfB^k + \bfE^k; \quad \bfE^k = (\bfE^k_1, \ldots, \bfE^k_p)^T \sim \cN (0, \Sigma^k_y)\\
+\Omega^k_x = (\Sigma^k_x)^{-1}; \quad \Omega^k_y = (\Sigma^k_y)^{-1}
+\end{eqnarray}
+
+Want to estimate $\{ (\Omega^k_x, \Omega^k_y, \bfB^k); 1 \leq k \leq K \}$ in presence of known grouping structures $\cG_x, \cG_y, \cH$ respectively. Estimation of $\{ \Omega_x^k \}$ done using JSEM. For the other part, we use the following two-step procedure:
+
+\begin{enumerate}
+\item Run neighborhood selection on $y$-network incorporating effects of $x$-data:
+%
+\begin{align}
+& \min \left\{ \sum_{i=1}^p  \frac{1}{n_k} \left[ \sum_{k=1}^K \| \bfY^k_i - \bfY_{-i}^k \bftheta_i^k - \bfX^k \bfB_i^k \|^2 + 2 \sum_{j \neq i} \sum_{g \in \cG_y^{ij}} \lambda_{ij}^g \| \bftheta_{ij}^{[g]} \| \right] + 2 \sum_{h \in \cH} \eta^h \| \bfB^{[h]} \| \right\}\\
+&= \min \left\{ f ( \cY, \cX, \cB, \Theta) + P (\Theta) + Q (\cB) \right\} 
+\end{align}
+%
+where $\Theta = \{ \Theta_i \}, \cB = \{ \bfB^k \}, \cY = \{ \bfY^k \}, \cX = \{ \bfX^k \}, \cE = \{ \bfE^k \}$.
+
+This estimates $\cB$ { \colrbf (maybe refit and/or within-group threshold?) }.
+
+\item Step I part 2 and step II of JSEM (see 15-656 pg 6) follows to estimate $\{ \Omega_y^k \}$.
+\end{enumerate}
+
+The objective function is bi-convex, so we are going to do the following in step 1-
+
+\begin{itemize}
+\item Start with initial estimates of $\cB$ and $\Theta$, say $\cB^{(0)}, \Theta^{(0)}$.
+\item Iterate:
+%
+\begin{align}
+\Theta^{(k+1)} &= \argmin \left\{ f ( \cY, \cX, \cB^{(k)}, \Theta^{(k)}) + P (\Theta^{(k)}) \right\}\\
+\cB^{(k+1)} &= \argmin \left\{ f ( \cY, \cX, \cB^{(k)}, \Theta^{(k+1)}) + Q (\cB^{(k)}) \right\}
+\end{align}
+\item Continue till convergence.
+\end{itemize}
+%
+
+\section{Conditions}
+Conditions A1, A2, A3 from JSEM paper.
+
+\section{Results}
+Define
+%
+\begin{align}
+\hat \bfbeta^k &= \\
+\hat \Theta^i &= \argmin \left\{ \frac{1}{n_k} \sum_{k=1}^K \| \bfY^k_i - \bfY_{-i}^k \bftheta_i^k - \bfX^k \hat \bfB_i^k \|^2 + 2 \sum_{j \neq i} \sum_{g \in \cG_y^{ij}} \lambda_{ij}^g \| \bftheta_{ij}^{[g]} \| \right\}
+\end{align}
+
+\begin{Theorem}\label{thm:ThetaThm}
+Assume fixed $\cX, \cE$ and deterministic $\hat \cB = \{ \bfB^k \}$. Also
+
+\noindent{\bf(T1)} $\| \hat \bfB_i^k - \bfB_i^k \| \leq v_\beta$;
+
+\noindent{\bf(T2)} $\| \bfX^k (\hat \bfB_i^k - \bfB_i^k ) \| \leq c(v_\beta)$ for some non-negative function $c(.)$;
+
+Group uniform IC.
+
+Then
+
+\noindent (I) Estimation consistency
+
+\noindent (II) Direction consistency 
+\end{Theorem}
+
+\begin{proof}[Proof of Theorem~\ref{thm:ThetaThm}]
+
+
+\textit{Part I.}
+
+\textit{Part II.} Proof of Thm 2 in 15-656 follows. We only need a new bound for $Var (\bfY_i^k | \bfY_{-i}^k, \bfX^k, \hat \bfB_i^k)$. For this we have
+%
+$$
+Var (\bfY_i^k | \bfY_{-i}^k, \bfX^k, \hat \bfB_i^k) \leq \frac{1}{\omega_{0,ii}^k} + \frac{1}{n_k} \| \bfX^k (\hat \bfB_i^k - \bfB_i^k) \|^2 \leq \frac{1}{d_0} + \frac{c(v_\beta)}{n}
+$$
+%
+Replace $1/\sqrt{n d_0}$ in choice of $\lambda, \alpha_n$ in Thm 2 statement with $1/\sqrt{n} (\sqrt{1/d_0 + c(v_\beta)/ n})$.
+
+\end{proof}
+
+\begin{Proposition}
+Given fixed $\hat \cB$, prediction errors follow bound in T2 with high enough probability.
+\end{Proposition}
+
+\bibliographystyle{apalike}
+%\bibliographystyle{imsart-nameyear}
+\bibliography{snpbib}
+\end{document}
