@@ -4,7 +4,9 @@
 \usepackage{mycommands1,amssymb,amsmath,amsthm,color,pagesize,outlines,cite,subfigure}
 \usepackage[small]{caption}
 \usepackage[pdftex]{epsfig}
-\usepackage{hyperref} % for linking references 
+\usepackage{hyperref} % for linking references
+\hypersetup{colorlinks = true, citecolor = blue, urlcolor = blue}
+
 \usepackage{stackrel}
 
 \usepackage[round]{natbib}
@@ -26,7 +28,7 @@
 \addtolength{\topmargin}{-.875in}
 \addtolength{\textheight}{1.75in}
 
-\usepackage{setspace}
+%\usepackage{setspace}
 %\doublespacing
 
 %\pagestyle{myheadings}
@@ -113,7 +115,7 @@ Define
 %
 \begin{align}
 \hat \bfbeta^k &= \\
-\hat \Theta^i &= \argmin \left\{ \frac{1}{n_k} \sum_{k=1}^K \| \bfY^k_i - \bfY_{-i}^k \bftheta_i^k - \bfX^k \hat \bfB_i^k \|^2 + 2 \sum_{j \neq i} \sum_{g \in \cG_y^{ij}} \lambda_{ij}^g \| \bftheta_{ij}^{[g]} \| \right\}
+\hat \Theta^i &= \argmin_{\Theta_i} \left\{ \frac{1}{n_k} \sum_{k=1}^K \| \bfY^k_i - \bfY_{-i}^k \bftheta_i^k - \bfX^k \hat \bfB_i^k \|^2 + 2 \sum_{j \neq i} \sum_{g \in \cG_y^{ij}} \lambda_{ij}^g \| \bftheta_{ij}^{[g]} \| \right\}
 \end{align}
 
 \begin{Theorem}\label{thm:ThetaThm}
@@ -135,15 +137,90 @@ Then
 \begin{proof}[Proof of Theorem~\ref{thm:ThetaThm}]
 
 
-\textit{Part I.}
+\textit{Part I.} Follows proof of thm 1 in 15-656. The proof has 3 parts: consistency of neighborhood regression, selection of edge sets, and finally the refitting step.
+
+For any $g \in \cG^{ij}, k \in g$, and $j \neq i$, let
+%
+$$
+\hat \bfepsilon_i^k = \bfY_i^k - \bfY_{-i}^k \bftheta_{0,i}^k - \bfX^k \hat \bfB_i^k; \quad
+\hat \zeta_{ij}^k = \frac{(\hat \bfepsilon_i^k)^T \bfY_j^k}{n}; \quad
+\hat \bfzeta_{ij}^{[g]} = (\hat \zeta_{ij}^k)_{k \in g}
+$$
+%
+Consider the random event $\cA = \bigcap_{i, j\neq i, g} \cA_{ij}^g$ with $\cA_{ij}^g = \{ 2 \| \hat \bfzeta_{ij}^{[g]} \| \leq \lambda_{ij}^g \}$.
+
+\begin{Proposition}\label{lemma:LemmaE2}
+Given that $\lambda_{ij}^g$ are chosen as
+%
+$$
+\lambda_{ij}^g \geq \max_{k \in g} \frac{2}{\sqrt{n \omega_{ii}^k}} \left( \sqrt{|g|} + \frac{\pi}{\sqrt 2} \sqrt {q \log G_0}  + \sqrt {c (v_\beta)} \right)
+$$
+%
+we shall have $ \BP (\cA) \geq 1 - 2p G_0^{1-q} $ for some $q>1$.
+\end{Proposition}
+
+\begin{proof}[Proof of Proposition~\ref{lemma:LemmaE2}]
+We follow the proof of Lemma E.2 in 15-656, with $\bfY_j^k, \hat \bfepsilon_i^k, \hat \zeta_{ij}^k, \hat \bfzeta_{ij}^{[g]}$ in place of $\bfX_j^k, \bfepsilon_i^k, \zeta_{ij}^k, \bfzeta_{ij}^{[g]}$ respectively. Proceeding in a similar fashion we get
+%
+$$
+\| \hat \bfzeta_{ij}^{[g]} \|^2 = \frac{1}{n} ( \| \bfZ^{[g]} \|^2 + 2 \sum_{k \in g} Z^k (\bfQ_j^k)^T \bfdelta_i^k + \| (\bfQ_j^k)^T \bfdelta_i^k  \|^2)
+$$
+%
+where $\bfZ^{[g]} = (Z^k)_{k \in g}; Z^k = (\bfQ_j^k)^T \bfepsilon_i^k$ with $\bfepsilon_i^k := \bfY_i^k - \bfY_{-i}^k \bftheta_{0,i}^k - \bfX^k \bfB_{0,i}^k$, $\bfQ_j^k$ is the first eigenvector of $\bfY_j^k (\bfY_j^k)^T/n$, and $\bfdelta_i^k := \bfX^k (\bfB_{0,i}^k - \hat \bfB_i^k)$. Applying Cauchy-schwarz inequality to right side and by assumption (T2),
+%
+$$
+\| \hat \bfzeta_{ij}^{[g]} \| \leq \frac{1}{\sqrt n} ( \| \bfZ^{[g]} + \sqrt{ c(v_\beta)})
+$$
+%
+thus
+$$
+\BP ( \{ \cA_{ij}^g \}^c ) = \BP \left( \| \hat \bfzeta_{ij}^{[g]} \| > \frac{\lambda_{ij}^g}{2} \right) \leq \BP \left( \| \bfZ^{[g]} \|  > \frac{\sqrt n \lambda_{ij}^g}{2} - \sqrt{c(v_\beta)}  \right)
+$$
+We now proceed through the proof of Lemma E.2 in 15-656 to end up with the choice of $\lambda_{ij}^g$.
+\end{proof}
+%
+
+All subsequent derivations in the theorem go through with the new choice of $\lambda_{ij}^g$.
+
+%We now prove the norm consistency of $\hat \Theta_i - \Theta_{0,i}$.
+%
+%\begin{Proposition}\label{prop:PropA1}
+%Copy from Proposition A.1 in 15-656
+%\begin{align}
+%\sum_{j \neq i, g \in \cG^{ij}} \| \hat \bftheta_{ij}^{[g]} - \bftheta_{0,ij}^{[g]} \| & \leq \\
+%\cM ( \hat \Theta_i ) & \leq \\
+%\| \hat \Theta_i - \hat \Theta_{0,i} \|_F & \leq
+%\end{align}
+%\end{Proposition}
+%
+%\begin{proof}[Proof of Proposition~\ref{prop:PropA1}]
+%%We first proceed in a similar fashion as the proof of Lemma 3.1 in \cite{LouniciEtal11}. For any $\bftheta_i^k \in \BR^q$, we have
+%%%
+%%$$
+%%\sum_{k=1}^K \frac{1}{n} \| \bfY_i^k - \bfY_{-i}^k \hat \bftheta_i^k - \bfX^k \hat \bfB_i^k \|^2 + \sum_{j \neq i, g \in \cG^{ij}} \| \hat \bftheta_{ij}^{[g]} \| \leq 
+%%\sum_{k=1}^K \frac{1}{n} \| \bfY_i^k - \bfY_{-i}^k \bftheta_i^k - \bfX^k \hat \bfB_i^k \|^2 + \sum_{j \neq i, g \in \cG^{ij}} \| \bftheta_{ij}^{[g]} \|
+%%$$
+%%%
+%%subtracting and adding $\bfY_{-i}^k \bftheta_{0,i}^k$ inside the squared norms on both sides, then simolifying and writing $\hat \bfepsilon_i^k = \bfY_i^k - \bfY_{-i}^k \bftheta_{0,i}^k - \bfX_i^k \hat \bfB_i^k$ we get
+%%%
+%%\begin{align*}
+%%\frac{1}{n} \| \bfY_{-i}^k ( \hat \bftheta_i^k - \bftheta_{0,i}^k ) \|^2 & \leq
+%%\| \bfY_{-i}^k ( \bftheta_i^k - \bftheta_{0,i}^k ) \|^2 + 
+%%\frac{2}{n} ( \hat \bfepsilon_i^k )^T \bfY_{-i}^k ( \hat \bftheta_i^k - \bftheta_i^k )\\
+%%& + 2 \sum_{j \neq i, g \in \cG^{ij}} \lambda_{ij}^g ( \| \bftheta_{ij}^{[g]} - \hat \bftheta_{ij}^{[g]} \|)
+%%\end{align*}
+%The statement of this proposition is same as that of Proposition A.1 in 15-656, and can proved in a similar fashion. The only difference is a modified choice of $\lambda_{ij}^g$, which we obtain from Proposition~\ref{lemma:LemmaE2}.
+%
+%\end{proof}
 
 \textit{Part II.} Proof of Thm 2 in 15-656 follows. We only need a new bound for $Var (\bfY_i^k | \bfY_{-i}^k, \bfX^k, \hat \bfB_i^k)$. For this we have
 %
-$$
-Var (\bfY_i^k | \bfY_{-i}^k, \bfX^k, \hat \bfB_i^k) \leq \frac{1}{\omega_{0,ii}^k} + \frac{1}{n_k} \| \bfX^k (\hat \bfB_i^k - \bfB_i^k) \|^2 \leq \frac{1}{d_0} + \frac{c(v_\beta)}{n}
+$$ Var (\bfY_i^k | \bfY_{-i}^k, \bfX^k, \hat \bfB_i^k) = \BE (\hat \bfepsilon_i^k)^2
+= \BE ( \bfepsilon_i^k + \bfdelta_i^k)^2
+\leq \left( \frac{1}{d_0} + \frac{c(v_\beta)}{n} \right)^2
 $$
 %
-Replace $1/\sqrt{n d_0}$ in choice of $\lambda, \alpha_n$ in Thm 2 statement with $1/\sqrt{n} (\sqrt{1/d_0 + c(v_\beta)/ n})$.
+applying cauchy-schwarz inequality followed by assumption (A2). Now Replace $1/\sqrt{n d_0}$ in choice of $\lambda, \alpha_n$ in Thm 2 statement with $1/\sqrt{n} (\sqrt{1/d_0} + \sqrt{c(v_\beta)/ n})$.
 
 \end{proof}
 
