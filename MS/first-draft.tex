@@ -28,8 +28,8 @@
 \addtolength{\topmargin}{-.875in}
 \addtolength{\textheight}{1.75in}
 
-%\usepackage{setspace}
-%\doublespacing
+\usepackage{setspace}
+\doublespacing
 
 %\pagestyle{myheadings}
 %\markboth{}{\underline{{\bf Notes: (do not circulate)} \hspace{4.5cm} {\sc  Ansu Chatterjee} \hspace{0.25cm}}}
@@ -79,16 +79,16 @@ We have data $\cZ = \{ \cZ^1, \ldots, \cZ^K \}; \cZ^k = (\bfY^k, \bfX^k)$ where 
 Want to estimate $\{ (\Omega^k_x, \Omega^k_y, \bfB^k); 1 \leq k \leq K \}$ in presence of known grouping structures $\cG_x, \cG_y, \cH$ respectively. Estimation of $\{ \Omega_x^k \}$ done using JSEM. For the other part, we use the following two-step procedure:
 
 \begin{enumerate}
-\item Run neighborhood selection on $y$-network incorporating effects of $x$-data:
+\item Run neighborhood selection on $y$-network incorporating effects of $x$-data and an additional blockwise group penalty:
 %
 \begin{align}
-& \min \left\{ \sum_{i=1}^p  \frac{1}{n_k} \left[ \sum_{k=1}^K \| \bfY^k_i - \bfY_{-i}^k \bftheta_i^k - \bfX^k \bfB_i^k \|^2 + 2 \sum_{j \neq i} \sum_{g \in \cG_y^{ij}} \lambda_{ij}^g \| \bftheta_{ij}^{[g]} \| \right] + 2 \sum_{h \in \cH} \eta^h \| \bfB^{[h]} \| \right\}\\
+& \min_{\cB, \Theta} \left\{ \sum_{i=1}^p  \frac{1}{n_k} \left[ \sum_{k=1}^K \| \bfY^k_i - \bfY_{-i}^k \bftheta_i^k - \bfX^k \bfB_i^k \|^2 + 2 \sum_{j \neq i} \sum_{g \in \cG_y^{ij}} \lambda_{ij}^g \| \bftheta_{ij}^{[g]} \| \right] + 2 \sum_{b \in \cG_x \times \cG_y \times \cH} \eta^b \| \bfB^{[b]} \| \right\}\\
 &= \min \left\{ f ( \cY, \cX, \cB, \Theta) + P (\Theta) + Q (\cB) \right\} 
 \end{align}
 %
 where $\Theta = \{ \Theta_i \}, \cB = \{ \bfB^k \}, \cY = \{ \bfY^k \}, \cX = \{ \bfX^k \}, \cE = \{ \bfE^k \}$.
 
-This estimates $\cB$ { \colrbf (maybe refit and/or within-group threshold?) }.
+This estimates $\cB$ { \colrbf (possibly refit and/or within-group threshold) }.
 
 \item Step I part 2 and step II of JSEM (see 15-656 pg 6) follows to estimate $\{ \Omega_y^k \}$.
 \end{enumerate}
@@ -100,8 +100,8 @@ The objective function is bi-convex, so we are going to do the following in step
 \item Iterate:
 %
 \begin{align}
-\Theta^{(k+1)} &= \argmin \left\{ f ( \cY, \cX, \cB^{(k)}, \Theta^{(k)}) + P (\Theta^{(k)}) \right\}\\
-\cB^{(k+1)} &= \argmin \left\{ f ( \cY, \cX, \cB^{(k)}, \Theta^{(k+1)}) + Q (\cB^{(k)}) \right\}
+\Theta^{(t+1)} &= \argmin \left\{ f ( \cY, \cX, \cB^{(t)}, \Theta^{(t)}) + P (\Theta^{(t)}) \right\}\\
+\cB^{(t+1)} &= \argmin \left\{ f ( \cY, \cX, \cB^{(t)}, \Theta^{(t+1)}) + Q (\cB^{(t)}) \right\}
 \end{align}
 \item Continue till convergence.
 \end{itemize}
