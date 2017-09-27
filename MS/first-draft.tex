@@ -55,15 +55,15 @@
 \newtheorem{Conjecture}[Theorem]{Conjecture}
 \theoremstyle{definition} \newtheorem{Definition}[Theorem]{Definition}
 
-\title{Simultaneous Selection of Multiple Important Single Nucleotide Polymorphisms in Familial Genome Wide Association Studies data}
+\title{Two-sample testing in data integration}
 \date{}
 \author{Subhabrata Majumdar}
 \maketitle
 
-\noindent\textbf{Abstract}: Genome Wide Association Studies (GWAS) on samples obtained from families instead of unrelated individuals are an established way of assessing gene-environment interactions and effects of Single Nucleotide Polymorphisms (SNP) on the development of behavioral disorders. Due to multiple reasons like weak signals of causal SNPs or multiple correlated SNPs, traditional methods of SNP detection based on single-marker analysis suffer from loss of power in such studies. Although statistical model selection methods are able to remedy this, owing to the dependent structure of the familial data they are computationally demanding. Here we propose a fast variable selection algorithm to address this problem. Working on a linear mixed model with three variance components and fixed effects for multiple SNPs, we obtain a quantity called the $e$-value for each SNP by only training the model with all covariates, and select SNPs having $e$-values below a threshold. To compute the $e$-values, we utilize a fast and scalable bootstrap procedure that relies on Monte-Carlo sampling to obtain bootstrapped copies of estimated fixed effect vectors. Numerical studies reveal our method to be more effective in detecting causal SNPs than either single-marker analysis on mixed models or model selection methods that ignore the familial dependency structure. We also use the $e$-values to perform gene-level analysis in a familial GWAS dataset and detect several SNPs that have potential effect on alcohol consumption in individuals.
+\noindent\textbf{Abstract}: 
 \vspace{.5cm}
 
-\noindent\textbf{Keywords}: Model selection, bootstrap, data depth, family data, twin studies, ACE model, alcoholism
+\noindent\textbf{Keywords}: 
 
 \newpage
 
@@ -76,7 +76,13 @@ We have data $\cZ = \{ \cZ^1, \ldots, \cZ^K \}; \cZ^k = (\bfY^k, \bfX^k)$ where 
 \Omega^k_x = (\Sigma^k_x)^{-1}; \quad \Omega^k_y = (\Sigma^k_y)^{-1}
 \end{eqnarray}
 
-Want to estimate $\{ (\Omega^k_x, \Omega^k_y, \bfB^k); 1 \leq k \leq K \}$ in presence of known grouping structures $\cG_x, \cG_y, \cH$ respectively. Estimation of $\{ \Omega_x^k \}$ done using JSEM. For the other part, we use the following two-step procedure:
+Want to estimate $\{ (\Omega^k_x, \Omega^k_y, \bfB^k); 1 \leq k \leq K \}$ in presence of known grouping structures $\cG_x, \cG_y, \cH$ respectively. 
+
+\paragraph{Notation:} Denote 3-dimensional array objects as elements of $\BT(a,b,c)$, the set of all $a \times b \times c$ tensors.
+Define $\cS^x = (\Omega^k_x), \cS^y = (\Omega^k_y), \cB = (\bfB^k)$
+
+
+Estimation of $\{ \Omega_x^k \}$ done using JSEM. For the other part, we use the following two-step procedure:
 
 \begin{enumerate}
 \item Run neighborhood selection on $y$-network incorporating effects of $x$-data and an additional blockwise group penalty:
@@ -107,6 +113,16 @@ The objective function is bi-convex, so we are going to do the following in step
 \end{itemize}
 %
 
+\section{Two-sample testing}
+Suppose there are two disease subtypes: $k = 1,2$, and we are interested in testing whether the downstream effect of a predictor is X-data is same across both subtypes, i.e. if $\bfb_i^1 = \bfb_i^2$ for some $i \in \{ 1, \ldots, p \}$. For this we consider the modified optimization problem:
+%
+\begin{align}
+& \min_{\cB, \Theta} \frac{1}{n} \left\{ \sum_{j=1}^q \sum_{k=1}^2 \| \bfY_j^k - \bfY_{-j}^k \bftheta_j^k - \bfX^k \bfb_{j}^k \|^2 + \sum_{j \neq j'} \lambda_{jj'} \| \bftheta_{jj'}^* \| + \sum_{i=1}^p \eta_i \| \bfB_{i*}^* \| \right\}\\
+&= \min \left\{ f ( \cY, \cX, \cB, \Theta) + P (\Theta) + Q (\cB) \right\} 
+\end{align}
+%
+with $n_1 = n_2 = n$ for simplicity; and $\bfB^k = (\bfb_1^k, \ldots, \bfb_q^k), (\bfB_{i*}^*) \in \BR^{ q \times K}$
+
 \section{Conditions}
 Conditions A1, A2, A3 from JSEM paper.
 
@@ -114,7 +130,6 @@ Conditions A1, A2, A3 from JSEM paper.
 Define
 %
 \begin{align}
-\hat \bfbeta^k &= \\
 \hat \Theta^i &= \argmin_{\Theta_i} \left\{ \frac{1}{n_k} \sum_{k=1}^K \| \bfY^k_i - \bfY_{-i}^k \bftheta_i^k - \bfX^k \hat \bfB_i^k \|^2 + 2 \sum_{j \neq i} \sum_{g \in \cG_y^{ij}} \lambda_{ij}^g \| \bftheta_{ij}^{[g]} \| \right\}
 \end{align}
 
@@ -227,6 +242,31 @@ applying cauchy-schwarz inequality followed by assumption (A2). Now Replace $1/\
 \begin{Proposition}
 Given fixed $\hat \cB$, prediction errors follow bound in T2 with high enough probability.
 \end{Proposition}
+
+
+\hrulefill
+
+Now concentrate on the $k$-population estimation problem. We want to obtain
+%
+$$
+\hat \bfbeta = \argmin_{ \bfbeta \in \BR^{pqK}} \{ -2 \bfbeta \hat \bfgamma + \bfbeta^T \bfGamma \bfbeta + \| \bfbeta \|_{2,g} \}
+$$
+with
+$$
+\bfbeta = \begin{bmatrix}
+\ve (\bfB^1)\\
+\vdots\\
+\ve (\bfB^K)\\
+\end{bmatrix}; \quad
+\bfGamma = \begin{bmatrix}
+I_q \otimes (\bfX^1) TX^1 / n) & &\\
+& \ddots &\\
+& & I_q \otimes (\bfX^K)^T X^K / n)
+\end{bmatrix} 
+$$
+\begin{Theorem}
+
+\end{Theorem}
 
 \bibliographystyle{apalike}
 %\bibliographystyle{imsart-nameyear}
