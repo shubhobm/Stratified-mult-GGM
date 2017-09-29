@@ -61,28 +61,29 @@
 \maketitle
 
 \noindent\textbf{Abstract}: 
+The rapid development of high-throughput technologies has enabled generation of data from biological processes that span multiple layers, like genomic, proteomic or metabolomic data; and pertain to multiple sources, like disease subtypes or experimental conditions. In this work we propose a general statistical framework based on graphical models for horizontal (i.e. across conditions or subtypes) and vertical (i.e. across different layers containing data on molecular compartments) integration of information in such datasets. We start with decomposing the multi-layer problem into a series of two-layer problems. For each two-layer problem, we model the outcomes at a node in the lower layer as dependent on those of other nodes in that layer, as well as all nodes in the upper layer. Following the biconvexity of our objective function, this estimation problem decomposes into two parts, where we use neighborhood selection and subsequent refitting of the precision matrix to quantify the dependency of two nodes in a single layer, and use group-penalized least square estimation to quantify the directional dependency of two nodes in different layers. Finally, to test for differences in these directional dependencies across multiple sources, we devise a hypothesis testing procedure that utilizes already computed neighborhood selection coefficients for nodes in the upper layer. We establish theoretical results for the validity of this testing procedure and the consistency of our estimates, and also evaluate their performance through simulations and a real data application.
+
 \vspace{.5cm}
-
-The rapid development of high-throughput technologies has enabled generation of data from biological processes that span multiple layers, like genomic, proteomic or metabolomic data; and pertain to multiple sources, like disease conditions, subtypes or biochemical pathways. In this work we propose a general statistical framework based on graphical models for horizontal (i.e. across conditions or pathways) and vertical (i.e. across different layers) integration of information in such datasets. We start with decomposing the multi-layer problem into a series of two-layer problems. For each two-layer problem, we model the outcomes at a node in the lower layer as dependent on those of other nodes in that layer, as well as all nodes in the upper layer. Following the biconvexity of our objective function, this estimation problem decomposes into two parts, where we use neighborhood selection and subsequent refitting of the precision matrix to quantify the dependency of two nodes in a single layer, and use group-penalized maximum likelihood estimation to quantify the directional dependency of two nodes in different layers. Finally, to test for differences in these directional dependencies across multiple sources, we devise a hypothesis testing procedure that utilizes already computed neighborhood selection coefficients for nodes in the upper layer. We establish theoretical results for the validity of this testing procedure and the consistency of our estimates, and also evaluate their performance through simulations and a real data application.
-
 \noindent\textbf{Keywords}: Data integration; Gaussian Graphical Models; Neighborhood selection; Group lasso
 
 \newpage
 
+\section{Notations}
+We shall denote scalars by small letters, vectors by bold small letters and matrices by bold capital letters. For any matrix $\bfA$, $(\bfA)_{ij}$ denote its element in the $(i,j)^\text{th}$ position. For $a,b \in \BN$, we denote the set of all $a \times b$ real matrices by $\BM(a,b)$.
+
 \section{Model}
-We have data $\cZ = \{ \cZ^1, \ldots, \cZ^K \}; \cZ^k = (\bfY^k, \bfX^k)$ where $\bfY^k \in \BR^{n \times q}, \bfX^k \in \BR^{n \times p}$ for $1 \leq k \leq K$.
+Consider the two -layered setup:
 
 \begin{eqnarray}
-\bfX^k = (\bfX^k_1, \ldots, \bfX^k_p)^T \sim \cN (0, \Sigma^k_x)\\
-\bfY^k = \bfX^k \bfB^k + \bfE^k; \quad \bfE^k = (\bfE^k_1, \ldots, \bfE^k_p)^T \sim \cN (0, \Sigma^k_y)\\
-\Omega^k_x = (\Sigma^k_x)^{-1}; \quad \Omega^k_y = (\Sigma^k_y)^{-1}
+\BX^k = (X^k_1, \ldots, X^k_p)^T \sim \cN (0, \Sigma^k_x)\\
+\BY^k = \BX^k \bfB^k + \bfE^k; \quad \bfE^k = (E^k_1, \ldots, E^k_p)^T \sim \cN (0, \Sigma^k_y)\\
+\bfB^k \in \BM(p,q); \quad \Omega^k_x = (\Sigma^k_x)^{-1}; \quad \Omega^k_y = (\Sigma^k_y)^{-1}
 \end{eqnarray}
 
-Want to estimate $\{ (\Omega^k_x, \Omega^k_y, \bfB^k); 1 \leq k \leq K \}$ in presence of known grouping structures $\cG_x, \cG_y, \cH$ respectively. 
+Want to estimate $\{ (\Omega^k_x, \Omega^k_y, \bfB^k); 1 \leq k \leq K \}$ from data $\cZ^k = \{ (\bfY^k, \bfX^k); \bfY^k \in \BM(n,q), \bfX^k \in \BM(n,p), k = 1, \ldots, K \}$. in presence of known grouping structures $\cG_x, \cG_y, \cH$ respectively. 
 
-\paragraph{Notation:} Denote 3-dimensional array objects as elements of $\BT(a,b,c)$, the set of all $a \times b \times c$ tensors.
-Define $\cS^x = (\Omega^k_x), \cS^y = (\Omega^k_y), \cB = (\bfB^k)$
-
+%\paragraph{Notation:} Denote 3-dimensional array objects as elements of $\BT(a,b,c)$, the set of all $a \times b \times c$ tensors.
+%Define $\cS^x = (\Omega^k_x), \cS^y = (\Omega^k_y), \cB = (\bfB^k)$
 
 Estimation of $\{ \Omega_x^k \}$ done using JSEM. For the other part, we use the following two-step procedure:
 
@@ -90,7 +91,7 @@ Estimation of $\{ \Omega_x^k \}$ done using JSEM. For the other part, we use the
 \item Run neighborhood selection on $y$-network incorporating effects of $x$-data and an additional blockwise group penalty:
 %
 \begin{align}
-& \min_{\cB, \Theta} \left\{ \sum_{i=1}^p  \frac{1}{n_k} \left[ \sum_{k=1}^K \| \bfY^k_i - \bfY_{-i}^k \bftheta_i^k - \bfX^k \bfB_i^k \|^2 + 2 \sum_{j \neq i} \sum_{g \in \cG_y^{ij}} \lambda_{ij}^g \| \bftheta_{ij}^{[g]} \| \right] + 2 \sum_{b \in \cG_x \times \cG_y \times \cH} \eta^b \| \bfB^{[b]} \| \right\}\\
+& \min_{\cB, \Theta} \left\{ \sum_{j=1}^q  \frac{1}{n_k} \left[ \sum_{k=1}^K \| \bfy^k_j - (\bfY_{-j}^k - \bfX^k \bfB_{-j}^k) \bftheta_j^k - \bfX^k \bfb_j^k \|^2 + \sum_{j \neq i} \sum_{g \in \cG_y^{ij}} \lambda_{ij}^g \| \bftheta_{ij}^{[g]} \| \right] + \sum_{b \in \cG_x \times \cG_y \times \cH} \eta^b \| \bfB^{[b]} \| \right\}\\
 &= \min \left\{ f ( \cY, \cX, \cB, \Theta) + P (\Theta) + Q (\cB) \right\} 
 \end{align}
 %
@@ -132,15 +133,15 @@ Conditions A1, A2, A3 from JSEM paper.
 Define
 %
 \begin{align}
-\hat \Theta^i &= \argmin_{\Theta_i} \left\{ \frac{1}{n_k} \sum_{k=1}^K \| \bfY^k_i - \bfY_{-i}^k \bftheta_i^k - \bfX^k \hat \bfB_i^k \|^2 + 2 \sum_{j \neq i} \sum_{g \in \cG_y^{ij}} \lambda_{ij}^g \| \bftheta_{ij}^{[g]} \| \right\}
+\hat \Theta_j &= \argmin_{\Theta_j} \left\{ \frac{1}{n} \sum_{k=1}^K \| \bfy^k_j - (\bfY_{-j}^k - \bfX^k \hat \bfB^k_{-j} ) \bftheta_j^k - \bfX^k \hat \bfb_j^k \|^2 + \sum_{j \neq j'} \sum_{g \in \cG_y^{jj'}} \lambda_{jj'}^g \| \bftheta_{jj'}^{[g]} \| \right\}
 \end{align}
 
 \begin{Theorem}\label{thm:ThetaThm}
-Assume fixed $\cX, \cE$ and deterministic $\hat \cB = \{ \bfB^k \}$. Also
+Assume fixed $\cX, \cE$ and deterministic $\hat \cB = \{ \hat \bfB^k \}$. Also for $k = 1, \ldots, K$,
 
-\noindent{\bf(T1)} $\| \hat \bfB_i^k - \bfB_i^k \| \leq v_\beta$;
+\noindent{\bf(T1)} $\| \hat \bfB^k - \bfB^k_0 \|_F \leq v_\beta$;
 
-\noindent{\bf(T2)} $\| \bfX^k (\hat \bfB_i^k - \bfB_i^k ) \| \leq c(v_\beta)$ for some non-negative function $c(.)$;
+\noindent{\bf(T2)} $\| \bfX^k (\hat \bfB^k - \hat \bfB^k_0 ) \|_F \leq c(v_\beta)$ for some non-negative function $c(.)$;
 
 Group uniform IC.
 
@@ -156,15 +157,15 @@ Then
 
 \textit{Part I.} Follows proof of thm 1 in 15-656. The proof has 3 parts: consistency of neighborhood regression, selection of edge sets, and finally the refitting step.
 
-For any $g \in \cG^{ij}, k \in g$, and $j \neq i$, let
+For any $g \in \cG^{jj'}, k \in g$, and $j \neq j'$, let
 %
 $$
-\hat \bfepsilon_i^k = \bfY_i^k - \bfY_{-i}^k \bftheta_{0,i}^k - \bfX^k \hat \bfB_i^k; \quad
-\hat \zeta_{ij}^k = \frac{(\hat \bfepsilon_i^k)^T \bfY_j^k}{n}; \quad
-\hat \bfzeta_{ij}^{[g]} = (\hat \zeta_{ij}^k)_{k \in g}
+\hat \bfepsilon_j^k = \bfy_j^k - (\bfY_{-j}^k - \bfX^k \hat \bfB^k_{-j} ) \bftheta_{0,j}^k - \bfX^k \hat \bfb_j^k; \quad
+\hat \zeta_{jj'}^k = \frac{(\hat \bfepsilon_j^k)^T \bfY_{j'}^k}{n}; \quad
+\hat \bfzeta_{jj'}^{[g]} = (\hat \zeta_{jj'}^k)_{k \in g}
 $$
 %
-Consider the random event $\cA = \bigcap_{i, j\neq i, g} \cA_{ij}^g$ with $\cA_{ij}^g = \{ 2 \| \hat \bfzeta_{ij}^{[g]} \| \leq \lambda_{ij}^g \}$.
+Consider the random event $\cA = \bigcap_{j, j'\neq j, g} \cA_{jj'}^g$ with $\cA_{jj'}^g = \{ 2 \| \hat \bfzeta_{jj'}^{[g]} \| \leq \lambda_{jj'}^g \}$.
 
 \begin{Proposition}\label{lemma:LemmaE2}
 Given that $\lambda_{ij}^g$ are chosen as
