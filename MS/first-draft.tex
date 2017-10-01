@@ -40,6 +40,20 @@
 \DeclareMathOperator*{\argmin}{arg\,min}
 \DeclareMathOperator*{\argmax}{arg\,max}
 
+\makeatletter
+\newcommand{\opnorm}{\@ifstar\@opnorms\@opnorm}
+\newcommand{\@opnorms}[1]{%
+  \left|\mkern-1.5mu\left|\mkern-1.5mu\left|
+   #1
+  \right|\mkern-1.5mu\right|\mkern-1.5mu\right|
+}
+\newcommand{\@opnorm}[2][]{%
+  \mathopen{#1|\mkern-1.5mu#1|\mkern-1.5mu#1|}
+  #2
+  \mathclose{#1|\mkern-1.5mu#1|\mkern-1.5mu#1|}
+}
+\makeatother
+
 %% Appendix theorem counter
 \usepackage{chngcntr}
 \usepackage{apptools}
@@ -69,7 +83,7 @@ The rapid development of high-throughput technologies has enabled generation of 
 \newpage
 
 \section{Notations}
-We shall denote scalars by small letters, vectors by bold small letters and matrices by bold capital letters. For any matrix $\bfA$, $(\bfA)_{ij}$ denote its element in the $(i,j)^\text{th}$ position. For $a,b \in \BN$, we denote the set of all $a \times b$ real matrices by $\BM(a,b)$.
+We shall denote scalars by small letters, vectors by bold small letters and matrices by bold capital letters. For any matrix $\bfA$, $(\bfA)_{ij}$ denote its element in the $(i,j)^\text{th}$ position. For $a,b \in \BN$, we denote the set of all $a \times b$ real matrices by $\BM(a,b)$. For any positive integer $c$, define $\cI_c = \{ 1, \ldots, c\}$.
 
 \section{Model}
 Consider the two -layered setup:
@@ -80,7 +94,7 @@ Consider the two -layered setup:
 \bfB^k \in \BM(p,q); \quad \Omega^k_x = (\Sigma^k_x)^{-1}; \quad \Omega^k_y = (\Sigma^k_y)^{-1}
 \end{eqnarray}
 
-Want to estimate $\{ (\Omega^k_x, \Omega^k_y, \bfB^k); 1 \leq k \leq K \}$ from data $\cZ^k = \{ (\bfY^k, \bfX^k); \bfY^k \in \BM(n,q), \bfX^k \in \BM(n,p), k = 1, \ldots, K \}$. in presence of known grouping structures $\cG_x, \cG_y, \cH$ respectively. 
+Want to estimate $\{ (\Omega^k_x, \Omega^k_y, \bfB^k); k \in \cI_K$ from data $\cZ^k = \{ (\bfY^k, \bfX^k); \bfY^k \in \BM(n,q), \bfX^k \in \BM(n,p), k \in \cI_K\}$. in presence of known grouping structures $\cG_x, \cG_y, \cH$ respectively. 
 
 %\paragraph{Notation:} Denote 3-dimensional array objects as elements of $\BT(a,b,c)$, the set of all $a \times b \times c$ tensors.
 %Define $\cS^x = (\Omega^k_x), \cS^y = (\Omega^k_y), \cB = (\bfB^k)$
@@ -91,7 +105,7 @@ Estimation of $\{ \Omega_x^k \}$ done using JSEM. For the other part, we use the
 \item Run neighborhood selection on $y$-network incorporating effects of $x$-data and an additional blockwise group penalty:
 %
 \begin{align}
-& \min_{\cB, \Theta} \left\{ \sum_{j=1}^q  \frac{1}{n_k} \left[ \sum_{k=1}^K \| \bfy^k_j - (\bfY_{-j}^k - \bfX^k \bfB_{-j}^k) \bftheta_j^k - \bfX^k \bfb_j^k \|^2 + \sum_{j \neq i} \sum_{g \in \cG_y^{ij}} \lambda_{ij}^g \| \bftheta_{ij}^{[g]} \| \right] + \sum_{b \in \cG_x \times \cG_y \times \cH} \eta^b \| \bfB^{[b]} \| \right\}\\
+& \min_{\cB, \Theta} \left\{ \sum_{j=1}^q  \frac{1}{n_k} \left[ \sum_{k=1}^K \| \bfY^k_j - (\bfY_{-j}^k - \bfX^k \bfB_{-j}^k) \bftheta_j^k - \bfX^k \bfB_j^k \|^2 + \sum_{j \neq i} \sum_{g \in \cG_y^{ij}} \lambda_{ij}^g \| \bftheta_{ij}^{[g]} \| \right] + \sum_{b \in \cG_x \times \cG_y \times \cH} \eta^b \| \bfB^{[b]} \| \right\}\\
 &= \min \left\{ f ( \cY, \cX, \cB, \Theta) + P (\Theta) + Q (\cB) \right\} 
 \end{align}
 %
@@ -120,36 +134,85 @@ The objective function is bi-convex, so we are going to do the following in step
 Suppose there are two disease subtypes: $k = 1,2$, and we are interested in testing whether the downstream effect of a predictor is X-data is same across both subtypes, i.e. if $\bfb_i^1 = \bfb_i^2$ for some $i \in \{ 1, \ldots, p \}$. For this we consider the modified optimization problem:
 %
 \begin{align}
-& \min_{\cB, \Theta} \frac{1}{n} \left\{ \sum_{j=1}^q \sum_{k=1}^2 \| \bfY_j^k - \bfY_{-j}^k \bftheta_j^k - \bfX^k \bfb_{j}^k \|^2 + \sum_{j \neq j'} \lambda_{jj'} \| \bftheta_{jj'}^* \| + \sum_{i=1}^p \eta_i \| \bfB_{i*}^* \| \right\}\\
+& \min_{\cB, \Theta} \frac{1}{n} \left\{ \sum_{j=1}^q \sum_{k=1}^2 \| \bfY_j^k - \bfY_{-j}^k \bftheta_j^k - \bfX^k \bfB_{j}^k \|^2 + \sum_{j \neq j'} \lambda_{jj'} \| \bftheta_{jj'}^* \| + \sum_{i=1}^p \eta_i \| \bfB_{i*}^* \| \right\}\\
 &= \min \left\{ f ( \cY, \cX, \cB, \Theta) + P (\Theta) + Q (\cB) \right\} 
 \end{align}
 %
 with $n_1 = n_2 = n$ for simplicity; and $\bfB^k = (\bfb_1^k, \ldots, \bfb_q^k), (\bfB_{i*}^*) \in \BR^{ q \times K}$
 
 \section{Conditions}
-Conditions A1, A2, A3 from JSEM paper.
+Conditions A1 from JSEM paper holds for $\cX$ and $\cE$. Also A2, A3 from JSEM paper.
 
 \section{Results}
-Define
+To prove the results in this section, we shall use a reparametrization of the neighborhood coefficients at the lower level. Specifically, notice that for $j \in \cI_q, k \in \cI_K$, the corresponding summand in $f(\cY, \cX, \cB, \Theta)$ can be rearranged as
+%
+\begin{align*}
+\| \bfY^k_j - \bfX^k \bfB_j^k - (\bfY_{-j}^k - \bfX^k \bfB_{-j}^k) \bftheta_j^k \|^2 &=
+\| \bfY^k_j - \bfY_{-j}^k \bftheta_j^k - (\bfX^k \bfB_j^k -\bfX^k \bfB_{-j}^k \bftheta_j^k) \|^2 \\
+&= \| ( \bfY - \bfX \bfB ) \bfT_j^k \|^2
+\end{align*}
+%
+where
+%
+$$
+T_{jj'}^k = \begin{cases}
+1 \text{ if } j = j'\\
+- \theta_{jj'}^k \text{ if } j \neq j'
+\end{cases}
+$$
+%
+Thus, with $\bfT^k := (\bfT_j^k)_{j \in \cI_q}$, we have
+$$
+f( \cY, \cX, \cB, \Theta) = \frac{1}{n} \sum_{j=1}^p \sum_{k=1}^K \| ( \bfY^k - \bfX^k \bfB^k ) \bfT_j^k \|^2
+= \frac{1}{n} \sum_{k=1}^K \| \bfY^k - \bfX^k \bfB^k ) \bfT^k \|_F^2
+= \sum_{k=1}^K \Tr (\bfS (\bfT^k)^2 )
+$$
+%
+where $\bfS^k = (1/n) (\bfY^k - \bfX^k \bfB^k) (\bfY^k - \bfX^k \bfB^k)^T$ is the sample covariance matrix.
+
+Now suppose $\bfbeta = \ve (\bfB)$, and any subscript or superscript on $\bfB$ will be passed on to $\bfbeta$. Denote by $\widehat \bfbeta$ and $\widehat \bfTheta$ the generic estimators given by
 %
 \begin{align}
-\hat \Theta_j &= \argmin_{\Theta_j} \left\{ \frac{1}{n} \sum_{k=1}^K \| \bfy^k_j - (\bfY_{-j}^k - \bfX^k \hat \bfB^k_{-j} ) \bftheta_j^k - \bfX^k \hat \bfb_j^k \|^2 + \sum_{j \neq j'} \sum_{g \in \cG_y^{jj'}} \lambda_{jj'}^g \| \bftheta_{jj'}^{[g]} \| \right\}
+\widehat \bfbeta &= \argmin_{\bfbeta \in \BR^{pq}} \left\{-2 \bfbeta^T \widehat \bfgamma + \bfbeta^T \widehat \bfGamma \bfbeta + \lambda_n \sum_{g \in \cG} \| \bfbeta^{[g]}  \| \right\} \\
+\widehat \Theta_j &= \argmin_{\Theta_j \in \BM(q-1, K)} \left\{ \frac{1}{n} \sum_{k=1}^K \| \bfY^k_j - \bfX^k \widehat \bfB_j^k - (\bfY_{-j}^k - \bfX^k \widehat \bfB^k_{-j} ) \bftheta_j^k \|^2 + \sum_{j \neq j'} \sum_{g \in \cG_y^{jj'}} \lambda_{jj'}^g \| \bftheta_{jj'}^{[g]} \| \right\}
 \end{align}
-
+%
+where
+%
+$$
+\widehat \bfGamma = \begin{bmatrix}
+(\widehat \bfT^1)^2 \otimes \frac{(\bfX^1)^T \bfX^1}{n} & &\\
+& \ddots &\\
+& & (\widehat \bfT^K)^2 \otimes \frac{(\bfX^K)^T \bfX^K}{n}
+\end{bmatrix}; \quad
+\widehat \bfgamma = \begin{bmatrix}
+(\widehat \bfT^1)^2 \otimes \frac{(\bfX^1)^T}{n}\\
+\vdots\\
+(\widehat \bfT^K)^2 \otimes \frac{(\bfX^K)^T}{n}
+\end{bmatrix}
+\begin{bmatrix}
+\ve (\bfY^1)\\
+\vdots\\
+\ve (\bfY^K)
+\end{bmatrix}
+$$
+with $\widehat \bfT^k$ defined the same way using $\widehat \bftheta_j^k$ as we defined $\bfT^k$ using $\bftheta_j^k$.
 \begin{Theorem}\label{thm:ThetaThm}
-Assume fixed $\cX, \cE$ and deterministic $\hat \cB = \{ \hat \bfB^k \}$. Also for $k = 1, \ldots, K$,
+Assume fixed $\cX, \cE$ and deterministic $\widehat \cB = \{ \widehat \bfB^k \}$. Also for $k = 1, \ldots, K$,
 
-\noindent{\bf(T1)} $\| \hat \bfB^k - \bfB^k_0 \|_F \leq v_\beta$;
+\noindent{\bf(T1)} $\| \widehat \bfB^k - \bfB^k_0 \|_F \leq v_\beta$;
 
-\noindent{\bf(T2)} $\| \bfX^k (\hat \bfB^k - \hat \bfB^k_0 ) \|_F \leq c(v_\beta)$ for some non-negative function $c(.)$;
+\noindent{\bf(T2)} $\| \bfX^k (\widehat \bfB^k - \bfB^k_0 ) \|_F \leq c(v_\beta)$ for some non-negative function $c(.)$;
 
-Group uniform IC.
+\noindent{\bf(T3)} Assumption (A1) holds for $\widehat \bfS^k := (\bfY^k - \bfX^k \widehat \bfB^k)(\bfY^k - \bfX^k \widehat \bfB^k)^T/n, k \in \cI_K$.
 
-Then
+\noindent{\bf(T4)} Assumption (A2) holds for $\widehat \bfE^k$. Then
 
-\noindent (I) Estimation consistency
+(I) Estimation consistency.
 
-\noindent (II) Direction consistency 
+Further if A1 holds with $s = s_0$, and A3 is satisfied then
+
+(II) Direction consistency.
 \end{Theorem}
 
 \begin{proof}[Proof of Theorem~\ref{thm:ThetaThm}]
@@ -157,42 +220,44 @@ Then
 
 \textit{Part I.} Follows proof of thm 1 in 15-656. The proof has 3 parts: consistency of neighborhood regression, selection of edge sets, and finally the refitting step.
 
-For any $g \in \cG^{jj'}, k \in g$, and $j \neq j'$, let
+Define $\bfT_{0,j}^k$ the same way as $\bfT_j^k$. For any $g \in \cG^{jj'}, k \in g$, and $j \neq j'$, let
 %
 $$
-\hat \bfepsilon_j^k = \bfy_j^k - (\bfY_{-j}^k - \bfX^k \hat \bfB^k_{-j} ) \bftheta_{0,j}^k - \bfX^k \hat \bfb_j^k; \quad
-\hat \zeta_{jj'}^k = \frac{(\hat \bfepsilon_j^k)^T \bfY_{j'}^k}{n}; \quad
-\hat \bfzeta_{jj'}^{[g]} = (\hat \zeta_{jj'}^k)_{k \in g}
+\widehat \bfepsilon_j^k = (\bfY^k - \bfX^k \widehat \bfB^k ) \bfT_{0,j}^k; \quad
+\widehat \zeta_{jj'}^k = \frac{(\widehat \bfepsilon_j^k)^T \bfY_{j'}^k}{n}; \quad
+\widehat \bfzeta_{jj'}^{[g]} = (\widehat \zeta_{jj'}^k)_{k \in g}
 $$
 %
-Consider the random event $\cA = \bigcap_{j, j'\neq j, g} \cA_{jj'}^g$ with $\cA_{jj'}^g = \{ 2 \| \hat \bfzeta_{jj'}^{[g]} \| \leq \lambda_{jj'}^g \}$.
+Consider the random event $\cA = \bigcap_{j, j'\neq j, g} \cA_{jj'}^g$ with $\cA_{jj'}^g = \{ 2 \| \widehat \bfzeta_{jj'}^{[g]} \| \leq \lambda_{jj'}^g \}$.
 
 \begin{Proposition}\label{lemma:LemmaE2}
-Given that $\lambda_{ij}^g$ are chosen as
+Given that $\lambda_{jj'}^g$ are chosen as
 %
 $$
-\lambda_{ij}^g \geq \max_{k \in g} \frac{2}{\sqrt{n \omega_{ii}^k}} \left( \sqrt{|g|} + \frac{\pi}{\sqrt 2} \sqrt {q \log G_0}  + \sqrt {c (v_\beta)} \right)
+\lambda_{jj'}^g \geq \max_{k \in g} \frac{2}{\sqrt{n \omega_{jj}^k}} \left( \sqrt{|g| (1 + c(v_\beta)) } + \frac{\pi}{\sqrt 2} \sqrt {r \log G_0} \right)
 $$
 %
-we shall have $ \BP (\cA) \geq 1 - 2p G_0^{1-q} $ for some $q>1$.
+we shall have $ \BP (\cA) \geq 1 - 2p G_0^{1-q} $ for some $r>1$.
 \end{Proposition}
 
 \begin{proof}[Proof of Proposition~\ref{lemma:LemmaE2}]
-We follow the proof of Lemma E.2 in 15-656, with $\bfY_j^k, \hat \bfepsilon_i^k, \hat \zeta_{ij}^k, \hat \bfzeta_{ij}^{[g]}$ in place of $\bfX_j^k, \bfepsilon_i^k, \zeta_{ij}^k, \bfzeta_{ij}^{[g]}$ respectively. Proceeding in a similar fashion we get
+We follow the proof of Lemma E.2 in 15-656, with $\bfY_j^k, \widehat \bfepsilon_j^k, \widehat \zeta_{jj'}^k, \widehat \bfzeta_{jj'}^{[g]}$ in place of $\bfX_j^k, \bfepsilon_i^k, \zeta_{ij}^k, \bfzeta_{ij}^{[g]}$ respectively. Proceeding in a similar fashion we get
 %
 $$
-\| \hat \bfzeta_{ij}^{[g]} \|^2 = \frac{1}{n} ( \| \bfZ^{[g]} \|^2 + 2 \sum_{k \in g} Z^k (\bfQ_j^k)^T \bfdelta_i^k + \| (\bfQ_j^k)^T \bfdelta_i^k  \|^2)
+\| \widehat \bfzeta_{jj'}^{[g]} \|^2 = \frac{1}{n} \left[ \| \bfZ^{[g]} \|^2 + \sum_{k \in g} \left\{ 2 Z^k (\bfQ_{j'}^k)^T \bfdelta_j^k + | (\bfQ_{j'}^k)^T \bfdelta_j^k |^2 \right\} \right]
 $$
 %
-where $\bfZ^{[g]} = (Z^k)_{k \in g}; Z^k = (\bfQ_j^k)^T \bfepsilon_i^k$ with $\bfepsilon_i^k := \bfY_i^k - \bfY_{-i}^k \bftheta_{0,i}^k - \bfX^k \bfB_{0,i}^k$, $\bfQ_j^k$ is the first eigenvector of $\bfY_j^k (\bfY_j^k)^T/n$, and $\bfdelta_i^k := \bfX^k (\bfB_{0,i}^k - \hat \bfB_i^k)$. Applying Cauchy-schwarz inequality to right side and by assumption (T2),
+where $\bfZ^{[g]} = (Z^k)_{k \in g}; Z^k = (\bfQ_{j'}^k)^T \bfepsilon_j^k$ with $\bfepsilon_j^k :=(\bfY^k - \bfX^k \bfB_0^k ) \bfT_{0,j}^k$, $\bfQ_j^k$ is the first eigenvector of $\bfY_j^k (\bfY_j^k)^T/n$, and $\bfdelta_j^k := \bfX^k (\bfB_0^k - \widehat \bfB^k) \bfT_{0,j}^k$.
+
+By cauchy-schwarz inequality, $| (\bfQ_{j'}^k)^T \bfdelta_j^k | \leq \| \bfdelta_j^k \|$. Now $T_{jj}^k = 1$, and for $j \neq j'$, $|T_{jj'}^k| =  |\theta_{jj'}^k| = |\omega_{y,jj'}^k| / \omega_{y,jj}^k \leq 1$ since $\Omega_y^k$ is diagonally dominant. Thus $\| \bfdelta_j^k \| \leq \| \bfX^k (\bfB_0^k - \widehat \bfB^k) \|_F$. Hence by assumption (T2),
 %
 $$
-\| \hat \bfzeta_{ij}^{[g]} \| \leq \frac{1}{\sqrt n} ( \| \bfZ^{[g]} + \sqrt{ c(v_\beta)})
+\| \widehat \bfzeta_{ij}^{[g]} \| \leq \frac{1}{\sqrt n} ( \| \bfZ^{[g]} \| + |g| c(v_\beta))
 $$
 %
-thus
+so that
 $$
-\BP ( \{ \cA_{ij}^g \}^c ) = \BP \left( \| \hat \bfzeta_{ij}^{[g]} \| > \frac{\lambda_{ij}^g}{2} \right) \leq \BP \left( \| \bfZ^{[g]} \|  > \frac{\sqrt n \lambda_{ij}^g}{2} - \sqrt{c(v_\beta)}  \right)
+\BP ( \{ \cA_{ij}^g \}^c ) = \BP \left( \| \widehat \bfzeta_{ij}^{[g]} \| > \frac{\lambda_{ij}^g}{2} \right) \leq \BP \left( \| \bfZ^{[g]} \|  > \frac{\sqrt n \lambda_{ij}^g}{2} - |g| c(v_\beta)  \right)
 $$
 We now proceed through the proof of Lemma E.2 in 15-656 to end up with the choice of $\lambda_{ij}^g$.
 \end{proof}
@@ -200,14 +265,14 @@ We now proceed through the proof of Lemma E.2 in 15-656 to end up with the choic
 
 All subsequent derivations in the theorem go through with the new choice of $\lambda_{ij}^g$.
 
-%We now prove the norm consistency of $\hat \Theta_i - \Theta_{0,i}$.
+%We now prove the norm consistency of $\widehat \Theta_i - \Theta_{0,i}$.
 %
 %\begin{Proposition}\label{prop:PropA1}
 %Copy from Proposition A.1 in 15-656
 %\begin{align}
-%\sum_{j \neq i, g \in \cG^{ij}} \| \hat \bftheta_{ij}^{[g]} - \bftheta_{0,ij}^{[g]} \| & \leq \\
-%\cM ( \hat \Theta_i ) & \leq \\
-%\| \hat \Theta_i - \hat \Theta_{0,i} \|_F & \leq
+%\sum_{j \neq i, g \in \cG^{ij}} \| \widehat \bftheta_{ij}^{[g]} - \bftheta_{0,ij}^{[g]} \| & \leq \\
+%\cM ( \widehat \Theta_i ) & \leq \\
+%\| \widehat \Theta_i - \widehat \Theta_{0,i} \|_F & \leq
 %\end{align}
 %\end{Proposition}
 %
@@ -215,25 +280,25 @@ All subsequent derivations in the theorem go through with the new choice of $\la
 %%We first proceed in a similar fashion as the proof of Lemma 3.1 in \cite{LouniciEtal11}. For any $\bftheta_i^k \in \BR^q$, we have
 %%%
 %%$$
-%%\sum_{k=1}^K \frac{1}{n} \| \bfY_i^k - \bfY_{-i}^k \hat \bftheta_i^k - \bfX^k \hat \bfB_i^k \|^2 + \sum_{j \neq i, g \in \cG^{ij}} \| \hat \bftheta_{ij}^{[g]} \| \leq 
-%%\sum_{k=1}^K \frac{1}{n} \| \bfY_i^k - \bfY_{-i}^k \bftheta_i^k - \bfX^k \hat \bfB_i^k \|^2 + \sum_{j \neq i, g \in \cG^{ij}} \| \bftheta_{ij}^{[g]} \|
+%%\sum_{k=1}^K \frac{1}{n} \| \bfY_i^k - \bfY_{-i}^k \widehat \bftheta_i^k - \bfX^k \widehat \bfB_i^k \|^2 + \sum_{j \neq i, g \in \cG^{ij}} \| \widehat \bftheta_{ij}^{[g]} \| \leq 
+%%\sum_{k=1}^K \frac{1}{n} \| \bfY_i^k - \bfY_{-i}^k \bftheta_i^k - \bfX^k \widehat \bfB_i^k \|^2 + \sum_{j \neq i, g \in \cG^{ij}} \| \bftheta_{ij}^{[g]} \|
 %%$$
 %%%
-%%subtracting and adding $\bfY_{-i}^k \bftheta_{0,i}^k$ inside the squared norms on both sides, then simolifying and writing $\hat \bfepsilon_i^k = \bfY_i^k - \bfY_{-i}^k \bftheta_{0,i}^k - \bfX_i^k \hat \bfB_i^k$ we get
+%%subtracting and adding $\bfY_{-i}^k \bftheta_{0,i}^k$ inside the squared norms on both sides, then simolifying and writing $\widehat \bfepsilon_i^k = \bfY_i^k - \bfY_{-i}^k \bftheta_{0,i}^k - \bfX_i^k \widehat \bfB_i^k$ we get
 %%%
 %%\begin{align*}
-%%\frac{1}{n} \| \bfY_{-i}^k ( \hat \bftheta_i^k - \bftheta_{0,i}^k ) \|^2 & \leq
+%%\frac{1}{n} \| \bfY_{-i}^k ( \widehat \bftheta_i^k - \bftheta_{0,i}^k ) \|^2 & \leq
 %%\| \bfY_{-i}^k ( \bftheta_i^k - \bftheta_{0,i}^k ) \|^2 + 
-%%\frac{2}{n} ( \hat \bfepsilon_i^k )^T \bfY_{-i}^k ( \hat \bftheta_i^k - \bftheta_i^k )\\
-%%& + 2 \sum_{j \neq i, g \in \cG^{ij}} \lambda_{ij}^g ( \| \bftheta_{ij}^{[g]} - \hat \bftheta_{ij}^{[g]} \|)
+%%\frac{2}{n} ( \widehat \bfepsilon_i^k )^T \bfY_{-i}^k ( \widehat \bftheta_i^k - \bftheta_i^k )\\
+%%& + 2 \sum_{j \neq i, g \in \cG^{ij}} \lambda_{ij}^g ( \| \bftheta_{ij}^{[g]} - \widehat \bftheta_{ij}^{[g]} \|)
 %%\end{align*}
 %The statement of this proposition is same as that of Proposition A.1 in 15-656, and can proved in a similar fashion. The only difference is a modified choice of $\lambda_{ij}^g$, which we obtain from Proposition~\ref{lemma:LemmaE2}.
 %
 %\end{proof}
 
-\textit{Part II.} Proof of Thm 2 in 15-656 follows. We only need a new bound for $Var (\bfY_i^k | \bfY_{-i}^k, \bfX^k, \hat \bfB_i^k)$. For this we have
+\textit{Part II.} Proof of Thm 2 in 15-656 follows. We only need a new bound for $Var (\bfY_i^k | \bfY_{-i}^k, \bfX^k, \widehat \bfB_i^k)$. For this we have
 %
-$$ Var (\bfY_i^k | \bfY_{-i}^k, \bfX^k, \hat \bfB_i^k) = \BE (\hat \bfepsilon_i^k)^2
+$$ Var (\bfY_i^k | \bfY_{-i}^k, \bfX^k, \widehat \bfB_i^k) = \BE (\widehat \bfepsilon_i^k)^2
 = \BE ( \bfepsilon_i^k + \bfdelta_i^k)^2
 \leq \left( \frac{1}{d_0} + \frac{c(v_\beta)}{n} \right)^2
 $$
@@ -242,17 +307,86 @@ applying cauchy-schwarz inequality followed by assumption (A2). Now Replace $1/\
 
 \end{proof}
 
-\begin{Proposition}
-Given fixed $\hat \cB$, prediction errors follow bound in T2 with high enough probability.
+%\begin{Proposition}
+%Given fixed $\widehat \cB$, prediction errors follow bound in T2 with high enough probability.
+%\end{Proposition}
+
+\begin{Proposition}\label{prop:ErrorRE}
+Consider deterministic $\widehat \cB$ satisfying assumption (T1). Then for sample size $n \succsim \log (pq)$ and $k \in \cI_K$,
+
+\begin{enumerate}
+\item With probability $\geq {\colrbf tbd}$ we have $\| \bfX^k ( \hat \bfB^k - \bfB_0^k ) \| \leq c( v_\beta)$, where
+%
+$$
+c(v_\beta) = {\colrbf tbd}
+$$
+%
+\item $\widehat \bfE^k$ satisfies the RE condition: $ \widehat \bfE^k \sim RE (\psi^*, \phi^*)$, where 
+%
+$$
+\psi^* = \frac{ \Lambda_{\min} (\Sigma_x^k)}{2}; \quad \phi^* = \frac{ \psi^* \log p}{n} + 2 v_\beta c_2 [ \Lambda_{\max} (\Sigma_x^k) \Lambda_{\max} (\Sigma_y^k) ]^{1/2} \sqrt{\frac{ \log(pq)}{n}}
+$$
+%
+with probability $\geq 1 - 6c_1 \exp [-(c_2^2-1) \log(pq)], c_1 > 0, c_2 > 1$.
+\end{enumerate} 
 \end{Proposition}
 
+\begin{proof}[Proof of Proposition~\ref{prop:ErrorRE}]
 
+We start with an auxiliary lemma:
+%
+\begin{Lemma}\label{lemma:ErrorRElemma1}
+For a sub-gaussian design matrix $\bfX \in \BM(n,p)$ with columns having mean ${\bf 0}_p$ and covariance matrix $\Sigma_x$, the sample covariance matrix $\widehat \Sigma_x = \bfX^T \bfX/n$ satisfies the RE condition
+%
+$$
+\widehat \Sigma_x \sim RE \left( \frac{\Lambda_{\min} ( \Sigma_x) }{2}, \frac{\Lambda_{\min} ( \Sigma_x) \log p }{2 n} \right)
+$$
+\end{Lemma}
+%
+This is the same as Lemma 2 in Appendix B of \cite{LinEtal16} and its proof can be found there. Now denote $\widehat \bfE^k = \bfY^k - \bfX^k \widehat \bfB^k$. For $\bfv \in \BR^q$, we have
+%
+\begin{align}\label{eqn:ErrorREeqn1}
+\bfv^T \widehat \bfS^k \bfv &= \frac{1}{n} \| \widehat \bfE^k \bfv \|^2 \notag\\
+&= \frac{1}{n} \| (\bfE^k + \bfX^k ( \bfB_0^k - \widehat \bfB^k ))\bfv \|^2 \notag\\
+&= \bfv^T \bfS^k \bfv + \frac{1}{n} \| \bfX^k (\bfB_0^k - \widehat \bfB^k) \bfv \|^2 + 2 \bfv^T (\bfB_0^k - \widehat \bfB^k)^T \left( \frac {(\bfX^k)^T \bfE^k}{n} \right) \bfv
+\end{align}
+%
+For the first summand, $ \bfv^T \bfS^k \bfv \geq \psi_y \| \bfv \|^2 - \phi_y \| \bfv \|_1^2$ with $\psi_y = \Lambda_{\min} (\Sigma_y^k)/2, \phi_y = \psi \log p/n$ by applying Lemma \ref{lemma:ErrorRElemma1} on $\bfS^k$. The second summand is greater than or equal to 0. For the third summand,
+%
+$$
+2 \bfv^T (\widehat \bfB^k - \bfB_0^k)^T \left( \frac {(\bfX^k)^T \bfE^k}{n} \right) \bfv \geq
+-2 v_\beta \left\| \frac {(\bfX^k)^T \bfE^k}{n} \right\|_\infty \| \bfv \|_1^2
+$$
+%
+by assumption (T1). Now we use another lemma:
+\begin{Lemma}\label{lemma:ErrorRElemma2}
+For zero-mean independent sub-gaussian matrices $\bfX \in \BM(n,p), \bfE = \in \BM(n,q)$ with parameters $(\Sigma_x, \sigma_x^2)$ and $(\Sigma_e, \sigma_e^2)$ respectively, given that $n \succsim \log(pq)$ the following holds for some $c_1 >0, c_2 > 1$:
+%
+$$
+\frac{1}{n} \| \bfX^T \bfE \|_\infty \leq c_2 [ \Lambda_{\max} (\Sigma_x) \Lambda_{\max} (\Sigma_e) ]^{1/2} \sqrt{\frac{ \log(pq)}{n}}
+$$
+%
+with probability $\geq 1 - 6c_1 \exp [-(c_2^2-1) \log(pq)]$.
+\end{Lemma}
+%
+This is a part of Lemma 3 of Appendix B in \cite{LinEDtal16}, and has been proved therein. Here we take $\bfX \equiv \bfX^k, \bfE \equiv \bfE^k$, and subsequently collecting all summands in (\ref{eqn:ErrorREeqn1}) get
+%
+$$
+\bfv^T \widehat{ \bfS}^k \bfv \geq \psi_y \| \bfv \|^2 - \left( \phi_y + 2 v_\beta c_2 [ \Lambda_{\max} (\Sigma_x^k) \Lambda_{\max} (\Sigma_y^k) ]^{1/2} \sqrt{\frac{ \log(pq)}{n}} \right) \| \bfv \|_1^2
+$$
+with probability $\geq 1 - 6c_1 \exp [-(c_2^2-1) \log(pq)]$. This concludes the proof.
+\end{proof}
+
+
+%-----------------------------
 \hrulefill
+%-----------------------------
+
 
 Now concentrate on the $k$-population estimation problem. We want to obtain
 %
 $$
-\hat \bfbeta = \argmin_{ \bfbeta \in \BR^{pqK}} \{ -2 \bfbeta \hat \bfgamma + \bfbeta^T \bfGamma \bfbeta + \| \bfbeta \|_{2,g} \}
+\widehat \bfbeta = \argmin_{ \bfbeta \in \BR^{pqK}} \{ -2 \bfbeta \widehat \bfgamma + \bfbeta^T \bfGamma \bfbeta + \| \bfbeta \|_{2,g} \}
 $$
 with
 $$
