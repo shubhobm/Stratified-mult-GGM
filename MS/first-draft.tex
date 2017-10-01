@@ -330,7 +330,7 @@ $$
 %
 with probability $ \geq 1 - 1/p^{\tau_1-2}, \tau_1 > 2$.
 %
-\item $\widehat \bfE^k$ satisfies the RE condition: $ \widehat \bfE^k \sim RE (\psi^*, \phi^*)$, where 
+\item $\widehat \bfS^k$ satisfies the RE condition: $ \widehat \bfS^k \sim RE (\psi^*, \phi^*)$, where 
 %
 $$
 \psi^* = \frac{ \Lambda_{\min} (\Sigma_x^k)}{2}; \quad \phi^* = \frac{ \psi^* \log p}{n} + 2 v_\beta c_2 [ \Lambda_{\max} (\Sigma_x^k) \Lambda_{\max} (\Sigma_y^k) ]^{1/2} \sqrt{\frac{ \log(pq)}{n}}
@@ -385,7 +385,7 @@ This is the same as Lemma 2 in Appendix B of \cite{LinEtal16} and its proof can 
 For the first summand, $ \bfv^T \bfS^k \bfv \geq \psi_y \| \bfv \|^2 - \phi_y \| \bfv \|_1^2$ with $\psi_y = \Lambda_{\min} (\Sigma_y^k)/2, \phi_y = \psi_y \log p/n$ by applying Lemma \ref{lemma:ErrorRElemma1} on $\bfS^k$. The second summand is greater than or equal to 0. For the third summand,
 %
 $$
-2 \bfv^T (\widehat \bfB^k - \bfB_0^k)^T \left( \frac {(\bfX^k)^T \bfE^k}{n} \right) \bfv \geq
+2 \bfv^T (\bfB_0^k - \widehat \bfB^k)^T \left( \frac {(\bfX^k)^T \bfE^k}{n} \right) \bfv \geq
 -2 v_\beta \left\| \frac {(\bfX^k)^T \bfE^k}{n} \right\|_\infty \| \bfv \|_1^2
 $$
 %
