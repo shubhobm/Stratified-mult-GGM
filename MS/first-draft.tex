@@ -29,7 +29,7 @@
 \addtolength{\textheight}{1.75in}
 
 \usepackage{setspace}
-\doublespacing
+%\doublespacing
 
 %\pagestyle{myheadings}
 %\markboth{}{\underline{{\bf Notes: (do not circulate)} \hspace{4.5cm} {\sc  Ansu Chatterjee} \hspace{0.25cm}}}
@@ -165,7 +165,7 @@ Thus, with $\bfT^k := (\bfT_j^k)_{j \in \cI_q}$, we have
 $$
 f( \cY, \cX, \cB, \Theta) = \frac{1}{n} \sum_{j=1}^p \sum_{k=1}^K \| ( \bfY^k - \bfX^k \bfB^k ) \bfT_j^k \|^2
 = \frac{1}{n} \sum_{k=1}^K \| \bfY^k - \bfX^k \bfB^k ) \bfT^k \|_F^2
-= \sum_{k=1}^K \Tr (\bfS (\bfT^k)^2 )
+= \sum_{k=1}^K \Tr (\bfS^k (\bfT^k)^2 )
 $$
 %
 where $\bfS^k = (1/n) (\bfY^k - \bfX^k \bfB^k) (\bfY^k - \bfX^k \bfB^k)^T$ is the sample covariance matrix.
@@ -200,9 +200,9 @@ with $\widehat \bfT^k$ defined the same way using $\widehat \bftheta_j^k$ as we 
 \begin{Theorem}\label{thm:ThetaThm}
 Assume fixed $\cX, \cE$ and deterministic $\widehat \cB = \{ \widehat \bfB^k \}$. Also for $k = 1, \ldots, K$,
 
-\noindent{\bf(T1)} $\| \widehat \bfB^k - \bfB^k_0 \|_F \leq v_\beta$;
+\noindent{\bf(T1)} $\| \widehat \bfB^k - \bfB^k_0 \|_F \leq v_\beta$, where $v_\beta = {\colrbf tbd}$;
 
-\noindent{\bf(T2)} $\| \bfX^k (\widehat \bfB^k - \bfB^k_0 ) \|_F \leq c(v_\beta)$ for some non-negative function $c(.)$;
+\noindent{\bf(T2)} $\| \bfX^k (\widehat \bfB^k - \bfB^k_0 ) \|_\infty \leq c(v_\beta)$ for some non-negative function $c(.)$;
 
 \noindent{\bf(T3)} Assumption (A1) holds for $\widehat \bfS^k := (\bfY^k - \bfX^k \widehat \bfB^k)(\bfY^k - \bfX^k \widehat \bfB^k)^T/n, k \in \cI_K$.
 
@@ -234,7 +234,7 @@ Consider the random event $\cA = \bigcap_{j, j'\neq j, g} \cA_{jj'}^g$ with $\cA
 Given that $\lambda_{jj'}^g$ are chosen as
 %
 $$
-\lambda_{jj'}^g \geq \max_{k \in g} \frac{2}{\sqrt{n \omega_{jj}^k}} \left( \sqrt{|g| (1 + c(v_\beta)) } + \frac{\pi}{\sqrt 2} \sqrt {r \log G_0} \right)
+\lambda_{jj'}^g \geq \max_{k \in g} \frac{2}{\sqrt{n \omega_{jj}^k}} \left( \sqrt{|g| (1 + 2 c(v_\beta)) } + \frac{\pi}{\sqrt 2} \sqrt {r \log G_0} \right)
 $$
 %
 we shall have $ \BP (\cA) \geq 1 - 2p G_0^{1-q} $ for some $r>1$.
@@ -249,15 +249,21 @@ $$
 %
 where $\bfZ^{[g]} = (Z^k)_{k \in g}; Z^k = (\bfQ_{j'}^k)^T \bfepsilon_j^k$ with $\bfepsilon_j^k :=(\bfY^k - \bfX^k \bfB_0^k ) \bfT_{0,j}^k$, $\bfQ_j^k$ is the first eigenvector of $\bfY_j^k (\bfY_j^k)^T/n$, and $\bfdelta_j^k := \bfX^k (\bfB_0^k - \widehat \bfB^k) \bfT_{0,j}^k$.
 
-By cauchy-schwarz inequality, $| (\bfQ_{j'}^k)^T \bfdelta_j^k | \leq \| \bfdelta_j^k \|$. Now $T_{jj}^k = 1$, and for $j \neq j'$, $|T_{jj'}^k| =  |\theta_{jj'}^k| = |\omega_{y,jj'}^k| / \omega_{y,jj}^k \leq 1$ since $\Omega_y^k$ is diagonally dominant. Thus $\| \bfdelta_j^k \| \leq \| \bfX^k (\bfB_0^k - \widehat \bfB^k) \|_F$. Hence by assumption (T2),
+By cauchy-schwarz inequality, $| (\bfQ_{j'}^k)^T \bfdelta_j^k | \leq \| \bfdelta_j^k \| \leq \| \bfX^k (\bfB_0^k - \widehat \bfB^k) \|_\infty \| \bfT_{0,j} \|_1$. Now since $\Omega_y^k$ is diagonally dominant,
 %
 $$
-\| \widehat \bfzeta_{ij}^{[g]} \| \leq \frac{1}{\sqrt n} ( \| \bfZ^{[g]} \| + |g| c(v_\beta))
+\sum_{j \neq j'} |T_{0,jj'}^k| =  \sum_{j \neq j'} |\theta_{0,jj'}^k| = \sum_{j \neq j'} \frac{|\sigma_{y,jj'}^k|}{ \sigma_{y,jj}^k} \leq 1
+$$
+%
+Also $T_{0,jj}^k = 1$, so that $\| \bfT_{0,j}^k \|_1 \leq 2$. Thus $\| \bfdelta_j^k \| \leq 2 \| \bfX^k (\bfB_0^k - \widehat \bfB^k) \|_\infty$. Hence by assumption (T2),
+%
+$$
+\| \widehat \bfzeta_{ij}^{[g]} \| \leq \frac{1}{\sqrt n} ( \| \bfZ^{[g]} \| + 2 |g| c(v_\beta))
 $$
 %
 so that
 $$
-\BP ( \{ \cA_{ij}^g \}^c ) = \BP \left( \| \widehat \bfzeta_{ij}^{[g]} \| > \frac{\lambda_{ij}^g}{2} \right) \leq \BP \left( \| \bfZ^{[g]} \|  > \frac{\sqrt n \lambda_{ij}^g}{2} - |g| c(v_\beta)  \right)
+\BP ( \{ \cA_{ij}^g \}^c ) = \BP \left( \| \widehat \bfzeta_{ij}^{[g]} \| > \frac{\lambda_{ij}^g}{2} \right) \leq \BP \left( \| \bfZ^{[g]} \|  > \frac{\sqrt n \lambda_{ij}^g}{2} - 2 |g| c(v_\beta)  \right)
 $$
 We now proceed through the proof of Lemma E.2 in 15-656 to end up with the choice of $\lambda_{ij}^g$.
 \end{proof}
@@ -315,11 +321,14 @@ applying cauchy-schwarz inequality followed by assumption (A2). Now Replace $1/\
 Consider deterministic $\widehat \cB$ satisfying assumption (T1). Then for sample size $n \succsim \log (pq)$ and $k \in \cI_K$,
 
 \begin{enumerate}
-\item With probability $\geq {\colrbf tbd}$ we have $\| \bfX^k ( \hat \bfB^k - \bfB_0^k ) \| \leq c( v_\beta)$, where
+\item We have $\| \bfX^k ( \hat \bfB^k - \bfB_0^k ) \|_\infty \leq c( v_\beta)$, where
 %
 $$
-c(v_\beta) = {\colrbf tbd}
+c(v_\beta) =\sqrt n v_\beta \left[ \sqrt{ \frac{ \log 4 + \tau_1 \log p}{c_x^k n}} + \max_j \sigma_{x,jj}^k \right]^{1/2}; \quad
+c_x^k = \left[ 128 ( 1 + 4 \Lambda_{\max} (\Sigma_x^k)  )^2 \max_j (\sigma_{x,jj}^k)^2 \right]^{-1}
 $$
+%
+with probability $ \geq 1 - 1/p^{\tau_1-2}, \tau_1 > 2$.
 %
 \item $\widehat \bfE^k$ satisfies the RE condition: $ \widehat \bfE^k \sim RE (\psi^*, \phi^*)$, where 
 %
@@ -333,7 +342,29 @@ with probability $\geq 1 - 6c_1 \exp [-(c_2^2-1) \log(pq)], c_1 > 0, c_2 > 1$.
 
 \begin{proof}[Proof of Proposition~\ref{prop:ErrorRE}]
 
-We start with an auxiliary lemma:
+For any sub-gaussian zero-mean design matrix $\bfX \in \BM(n,p)$ with parameters $(\Sigma_x, \sigma_x^2)$, and any $\hat \bfB, \bfB_0 \in \BM(p,q)$ such that $\| \hat \bfB - \bfB_0 \|_F \leq v_\beta$, we follow the proof of Proposition 3 in \cite{LinEtal16} to obtain that the following holds
+%
+$$
+\left\| (\widehat \bfB - \bfB_0)^T \left( \frac{\bfX^T \bfX}{n} \right) (\widehat \bfB - \bfB_0) \right\|_\infty \leq
+v_\beta^2 \left[ \sqrt{ \frac{ \log 4 + \tau_1 \log p}{c_x n}} + \max_j \sigma_{x,jj}^k \right]
+$$
+%
+with probability $\geq 1 - 1/p^{\tau_1-2}$ for some $\tau_1>2$, where
+%
+$$
+c_x = \left[ 128 ( 1 + 4 \sigma_x^2)^2 \max_j (\sigma_{x,jj}^k)^2 \right]^{-1}
+$$
+%
+Here we substitute $\bfX, \hat \bfB, \bfB_0$ with $\bfX^k, \hat \bfB^k, \hat \bfB_0^k$ respectively. Since rows of $\bfX^k$ come independently from $\cN( {\bf 0}, \Sigma_x^k)$, $\sigma_x^2$ in our case is the spectral norm of $\Sigma_x^k$ \citep{LohWainwright12}, which is $\Lambda_{\max} (\Sigma_x^k)$. Finally
+%
+$$
+\| \bfX^k ( \hat \bfB^k - \bfB_0^k ) \|_\infty \leq 
+\sqrt{\left\| (\widehat \bfB^k - \bfB_0^k)^T (\bfX^k)^T \bfX^k (\widehat \bfB^k - \bfB_0^k) \right\|_\infty}
+$$
+%
+The proof of part 1 is immediate now.
+
+For part 2, we start with an auxiliary lemma:
 %
 \begin{Lemma}\label{lemma:ErrorRElemma1}
 For a sub-gaussian design matrix $\bfX \in \BM(n,p)$ with columns having mean ${\bf 0}_p$ and covariance matrix $\Sigma_x$, the sample covariance matrix $\widehat \Sigma_x = \bfX^T \bfX/n$ satisfies the RE condition
@@ -351,7 +382,7 @@ This is the same as Lemma 2 in Appendix B of \cite{LinEtal16} and its proof can 
 &= \bfv^T \bfS^k \bfv + \frac{1}{n} \| \bfX^k (\bfB_0^k - \widehat \bfB^k) \bfv \|^2 + 2 \bfv^T (\bfB_0^k - \widehat \bfB^k)^T \left( \frac {(\bfX^k)^T \bfE^k}{n} \right) \bfv
 \end{align}
 %
-For the first summand, $ \bfv^T \bfS^k \bfv \geq \psi_y \| \bfv \|^2 - \phi_y \| \bfv \|_1^2$ with $\psi_y = \Lambda_{\min} (\Sigma_y^k)/2, \phi_y = \psi \log p/n$ by applying Lemma \ref{lemma:ErrorRElemma1} on $\bfS^k$. The second summand is greater than or equal to 0. For the third summand,
+For the first summand, $ \bfv^T \bfS^k \bfv \geq \psi_y \| \bfv \|^2 - \phi_y \| \bfv \|_1^2$ with $\psi_y = \Lambda_{\min} (\Sigma_y^k)/2, \phi_y = \psi_y \log p/n$ by applying Lemma \ref{lemma:ErrorRElemma1} on $\bfS^k$. The second summand is greater than or equal to 0. For the third summand,
 %
 $$
 2 \bfv^T (\widehat \bfB^k - \bfB_0^k)^T \left( \frac {(\bfX^k)^T \bfE^k}{n} \right) \bfv \geq
@@ -360,13 +391,12 @@ $$
 %
 by assumption (T1). Now we use another lemma:
 \begin{Lemma}\label{lemma:ErrorRElemma2}
-For zero-mean independent sub-gaussian matrices $\bfX \in \BM(n,p), \bfE = \in \BM(n,q)$ with parameters $(\Sigma_x, \sigma_x^2)$ and $(\Sigma_e, \sigma_e^2)$ respectively, given that $n \succsim \log(pq)$ the following holds for some $c_1 >0, c_2 > 1$:
+For zero-mean independent sub-gaussian matrices $\bfX \in \BM(n,p), \bfE \in \BM(n,q)$ with parameters $(\Sigma_x, \sigma_x^2)$ and $(\Sigma_e, \sigma_e^2)$ respectively, given that $n \succsim \log(pq)$ the following holds with probability $\geq 1 - 6c_1 \exp [-(c_2^2-1) \log(pq)]$ for some $c_1 >0, c_2 > 1$:
 %
 $$
 \frac{1}{n} \| \bfX^T \bfE \|_\infty \leq c_2 [ \Lambda_{\max} (\Sigma_x) \Lambda_{\max} (\Sigma_e) ]^{1/2} \sqrt{\frac{ \log(pq)}{n}}
 $$
 %
-with probability $\geq 1 - 6c_1 \exp [-(c_2^2-1) \log(pq)]$.
 \end{Lemma}
 %
 This is a part of Lemma 3 of Appendix B in \cite{LinEDtal16}, and has been proved therein. Here we take $\bfX \equiv \bfX^k, \bfE \equiv \bfE^k$, and subsequently collecting all summands in (\ref{eqn:ErrorREeqn1}) get
