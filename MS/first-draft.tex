@@ -29,7 +29,7 @@
 \addtolength{\textheight}{1.75in}
 
 \usepackage{setspace}
-%\doublespacing
+\doublespacing
 
 %\pagestyle{myheadings}
 %\markboth{}{\underline{{\bf Notes: (do not circulate)} \hspace{4.5cm} {\sc  Ansu Chatterjee} \hspace{0.25cm}}}
@@ -173,8 +173,8 @@ where $\bfS^k = (1/n) (\bfY^k - \bfX^k \bfB^k) (\bfY^k - \bfX^k \bfB^k)^T$ is th
 Now suppose $\bfbeta = \ve (\bfB)$, and any subscript or superscript on $\bfB$ will be passed on to $\bfbeta$. Denote by $\widehat \bfbeta$ and $\widehat \bfTheta$ the generic estimators given by
 %
 \begin{align}
-\widehat \bfbeta &= \argmin_{\bfbeta \in \BR^{pq}} \left\{-2 \bfbeta^T \widehat \bfgamma + \bfbeta^T \widehat \bfGamma \bfbeta + \lambda_n \sum_{g \in \cG} \| \bfbeta^{[g]}  \| \right\} \\
-\widehat \Theta_j &= \argmin_{\Theta_j \in \BM(q-1, K)} \left\{ \frac{1}{n} \sum_{k=1}^K \| \bfY^k_j - \bfX^k \widehat \bfB_j^k - (\bfY_{-j}^k - \bfX^k \widehat \bfB^k_{-j} ) \bftheta_j^k \|^2 + \sum_{j \neq j'} \sum_{g \in \cG_y^{jj'}} \lambda_{jj'}^g \| \bftheta_{jj'}^{[g]} \| \right\}
+\widehat \bfbeta &= \argmin_{\bfbeta \in \BR^{pq}} \left\{-2 \bfbeta^T \widehat \bfgamma + \bfbeta^T \widehat \bfGamma \bfbeta + \lambda_n \sum_{g \in \cG} \| \bfbeta^{[g]}  \| \right\} \label{eqn:EstEqn1}\\
+\widehat \Theta_j &= \argmin_{\Theta_j \in \BM(q-1, K)} \left\{ \frac{1}{n} \sum_{k=1}^K \| \bfY^k_j - \bfX^k \widehat \bfB_j^k - (\bfY_{-j}^k - \bfX^k \widehat \bfB^k_{-j} ) \bftheta_j^k \|^2 + \sum_{j \neq j'} \sum_{g \in \cG_y^{jj'}} \lambda_{jj'}^g \| \bftheta_{jj'}^{[g]} \| \right\} \label{eqn:EstEqn2}
 \end{align}
 %
 where
@@ -204,9 +204,15 @@ Assume fixed $\cX, \cE$ and deterministic $\widehat \cB = \{ \widehat \bfB^k \}$
 
 \noindent{\bf(T2)} $\| \bfX^k (\widehat \bfB^k - \bfB^k_0 ) \|_\infty \leq c(v_\beta)$ for some non-negative function $c(.)$;
 
-\noindent{\bf(T3)} Assumption (A1) holds for $\widehat \bfS^k := (\bfY^k - \bfX^k \widehat \bfB^k)(\bfY^k - \bfX^k \widehat \bfB^k)^T/n, k \in \cI_K$.
+\noindent{\bf(T3)} Define \textbf{$\widehat \bfS^k := (\bfY^k - \bfX^k \widehat \bfB^k)(\bfY^k - \bfX^k \widehat \bfB^k)^T/n, k \in \cI_K$}. Then for all $j \in \cI_q$
+%
+$$
+\left\| \frac{1}{n} \widehat \bfS^k \bfT_{0,j}^k \right\|_\infty \leq {\colrbf tbd}
+$$ 
 
-\noindent{\bf(T4)} Assumption (A2) holds for $\widehat \bfE^k$. Then
+\noindent{\bf(T4)} $\widehat \bfS^k \sim RE(\bar \psi_y^k, \bar \phi_y^k)$ with {\colrbf tbd};
+
+\noindent{\bf(T5)} Assumption (A2) holds for $\widehat \bfE^k$. Then
 
 (I) Estimation consistency.
 
@@ -258,19 +264,33 @@ $$
 Also $T_{0,jj}^k = 1$, so that $\| \bfT_{0,j}^k \|_1 \leq 2$. Thus $\| \bfdelta_j^k \| \leq 2 \| \bfX^k (\bfB_0^k - \widehat \bfB^k) \|_\infty$. Hence by assumption (T2),
 %
 $$
-\| \widehat \bfzeta_{ij}^{[g]} \| \leq \frac{1}{\sqrt n} ( \| \bfZ^{[g]} \| + 2 |g| c(v_\beta))
+\| \widehat \bfzeta_{jj'}^{[g]} \| \leq \frac{1}{\sqrt n} ( \| \bfZ^{[g]} \| + 2 |g| c(v_\beta))
 $$
 %
 so that
 $$
-\BP ( \{ \cA_{ij}^g \}^c ) = \BP \left( \| \widehat \bfzeta_{ij}^{[g]} \| > \frac{\lambda_{ij}^g}{2} \right) \leq \BP \left( \| \bfZ^{[g]} \|  > \frac{\sqrt n \lambda_{ij}^g}{2} - 2 |g| c(v_\beta)  \right)
+\BP ( \{ \cA_{jj'}^g \}^c ) = \BP \left( \| \widehat \bfzeta_{jj'}^{[g]} \| > \frac{\lambda_{jj'}^g}{2} \right) \leq \BP \left( \| \bfZ^{[g]} \|  > \frac{\sqrt n \lambda_{jj'}^g}{2} - 2 |g| c(v_\beta)  \right)
 $$
 We now proceed through the proof of Lemma E.2 in 15-656 to end up with the choice of $\lambda_{ij}^g$.
 \end{proof}
 %
 
-All subsequent derivations in the theorem go through with the new choice of $\lambda_{ij}^g$.
+%All subsequent derivations in the theorem go through with the new choice of $\lambda_{ij}^g$.
 
+Given this, the following proposition establishes bounds on the estimated $y$-neighborhood coefficients.
+
+\begin{Proposition}\label{prop:Thm1ProofProp2}
+Consider the estimation problem in (\ref{eqn:EstEqn2}) and choose $\lambda_{jj'}^{[g]}$ as in Proposition~\ref{lemma:LemmaE2}. Given the condition {\colrbf tbd} holds, on the event $\cA$ we shall have
+$$
+\sum_{j \neq j'} \sum_{g \in \cG_y^{jj'}} \lambda_{jj'}^g \| \widehat \bftheta_{jj'}^{[g]} - \bftheta_{0,jj'}^{[g]}\| \leq {\colrbf tbd}
+$$
+{\colrbf tbd}
+\end{Proposition}
+
+\begin{proof}[Proof of Proposition~\ref{prop:Thm1ProofProp2}]
+
+
+\end{proof}
 %We now prove the norm consistency of $\widehat \Theta_i - \Theta_{0,i}$.
 %
 %\begin{Proposition}\label{prop:PropA1}
@@ -329,6 +349,13 @@ c_x^k = \left[ 128 ( 1 + 4 \Lambda_{\max} (\Sigma_x^k)  )^2 \max_j (\sigma_{x,jj
 $$
 %
 with probability $ \geq 1 - 1/p^{\tau_1-2}, \tau_1 > 2$.
+%
+\item $\widehat \bfS^k$ satisfies the following bound
+%
+$$
+\left\| \frac{1}{n} \widehat \bfS^k \bfT_{0,j}^k \right\|_\infty \leq {\colrbf tbd}
+$$
+with probability $\geq {\colrbf tbd}$.
 %
 \item $\widehat \bfS^k$ satisfies the RE condition: $ \widehat \bfS^k \sim RE (\psi^*, \phi^*)$, where 
 %
