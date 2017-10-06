@@ -200,7 +200,7 @@ with $\widehat \bfT^k$ defined the same way using $\widehat \bftheta_j^k$ as we 
 \begin{Theorem}\label{thm:ThetaThm}
 Assume fixed $\cX, \cE$ and deterministic $\widehat \cB = \{ \widehat \bfB^k \}$. Also for $k = 1, \ldots, K$,
 
-\noindent{\bf(T1)} $\| \widehat \bfB^k - \bfB^k_0 \|_1 \leq v_\beta$, where $v_\beta = {\colrbf tbd}$;
+\noindent{\bf(T1)} $\| \widehat \bfB^k - \bfB^k_0 \|_1 \leq v_\beta$, where $v_\beta = { \colrbf \eta_\beta \sqrt{\frac{\log (pq)}{n}}}$ with $\eta_\beta$ being a quantity depending on $\cB$ only;
 
 %\noindent{\bf(T2)} $\| \bfX^k (\widehat \bfB^k - \bfB^k_0 ) \|_\infty \leq c(v_\beta)$, where $c(v_\beta)$ is $O(1)$ and depends on $v_\beta$.
 
@@ -212,32 +212,35 @@ $$
 \BQ \left(v_\beta, \Sigma_x^k, \Sigma_y^k \right)
 $$
 %
-where $\BQ \left(v_\beta, \Sigma_x^k, \Sigma_y^k \right)$ is a deterministic function depending on the population parametes $\cB, \Sigma_x^k$ and $\Sigma_y^k$.
+where $\BQ \left(v_\beta, \Sigma_x^k, \Sigma_y^k \right)$ is a $O(1/\sqrt n)$ deterministic function depending on the population parameters $\cB, \Sigma_x^k$ and $\Sigma_y^k$.
 
 \noindent{\bf(T3)} Denote $\widehat \bfS^k = (\widehat \bfE^k)^T \widehat \bfE^k/n$. Then $\widehat \bfS^k \sim RE(\psi^k, \phi^k)$ with $K^2 q \phi \leq \psi/2$ where $ \psi = \min_k \psi^k, \phi = \max_k \phi^k $;
 
-\noindent{\bf(T4?)} Assumption (A2) holds for $\widehat \Sigma_y^k$. Then, given the choice of tuning parameter
+\noindent{\bf(T4)} Assumption (A2) holds for $\Sigma_y^k$.
+
+Then, given the choice of tuning parameter
 %
 $$
-\gamma_n \geq 4 \sqrt q \BQ_{\max}; \quad \BQ_{\max} = \max_{k \in \cI_K} \BQ \left(v_\beta, \Sigma_x^k, \Sigma_y^k \right)
+\gamma_n \geq 4 \sqrt q \BQ_{\max}; \quad \BQ_{\max} := \max_{k \in \cI_K} \BQ \left(v_\beta, \Sigma_x^k, \Sigma_y^k \right)
 $$
 %
 the following holds
 %
 \begin{align}
 \frac{1}{K} \sum_{k=1}^K \| \widehat \Omega_y^k - \Omega_y^k \|_F^2 \leq
-{\colrbf O \left( \frac{48 \sqrt{S_0} c_0 \gamma_n }{\psi \sqrt K} \right)}
+{\colrbf O \left( \frac{48 \sqrt{ q |g_{\max}| S} \BQ_{\max}} {\psi}
+\right)}
 \end{align}
 %
-Further if A1 holds with $s = s_0$, and A3 is satisfied then
+where $|g_{\max}|$ is the maximum group size.
 
-(II) Direction consistency.
+%Further if A1 holds with $s = s_0$, and A3 is satisfied then
+%
+%(II) Direction consistency.
 \end{Theorem}
 
 \begin{proof}[Proof of Theorem~\ref{thm:ThetaThm}]
-
-
-\textit{Part I.} The proof has three parts, where we prove the consistency of the neighborhood regression coefficients, selection of edge sets, and finally the refitting step, respectively. This is the same structure as the proof of Theorem 1 in \cite{MaMichailidis15}, where they prove the consistency of the JSEM estimates. However, many details are entirely different here.
+The proof has three parts, where we prove the consistency of the neighborhood regression coefficients, selection of edge sets, and finally the refitting step, respectively. This is the same structure as the proof of Theorem 1 in \cite{MaMichailidis15}, where they prove consistency of the JSEM estimates. The derivation of the first part is different from that in the JSEM proof, which we shall show in detail. The second and third parts follow similar lines, incorporating the updated quantities from part 1. For these we provide a rough sketch and leave the details to the reader.
 
 %Define $\bfT_{0,j}^k$ the same way as $\bfT_j^k$. For any $g \in \cG^{jj'}, k \in g$, and $j \neq j'$, let
 %%
@@ -290,20 +293,20 @@ Further if A1 holds with $s = s_0$, and A3 is satisfied then
 
 %All subsequent derivations in the theorem go through with the new choice of $\lambda_{ij}^g$.
 
-The following proposition establishes error bounds for the estimated $y$-neighborhood coefficients.
+{\it Step 1: consistency of neighborhood regression.} The following proposition establishes error bounds for the estimated $y$-neighborhood coefficients.
 
 \begin{Proposition}\label{prop:Thm1ProofProp2}
 Consider the estimation problem in (\ref{eqn:EstEqn2}) and choose $\gamma_n \geq 4 \sqrt q \BQ_{\max}$. Given the conditions (T2) and (T3) hold, for any solution of (\ref{eqn:EstEqn2}) we shall have
 %
 \begin{align}
-\| \widehat \Theta_j - \Theta_{0,j} \|_F & \leq 12 \sqrt{s_j} \gamma_n / \psi \label{eqn:Thm1ProofProp2Bd1}\\
-\sum_{j \neq j', g \in \cG_y^{jj'}} \| \hat \bftheta_{jj'}^{[g]} - \bftheta_{0,jj'}^{[g]} \| & \leq 48 s_j \gamma_n / \psi \label{eqn:Thm1ProofProp2Bd2}
+\| \widehat \Theta_j - \Theta_{0,j} \|_F & \leq 12 \sqrt{|g_{\max}| s_j} \gamma_n / \psi \label{eqn:Thm1ProofProp2Bd1}\\
+\sum_{j \neq j', g \in \cG_y^{jj'}} \| \hat \bftheta_{jj'}^{[g]} - \bftheta_{0,jj'}^{[g]} \| & \leq 48 | g_{\max}| s_j \gamma_n / \psi \label{eqn:Thm1ProofProp2Bd2}
 \end{align}
 %
 Also denote the non-zero support of $\widehat \Theta_j$ by $\widehat \cS_j$, i.e. $\widehat \cS_j = \{ (j',g): \hat \bftheta_{jj'}^{[g]} \neq {\bf 0} \}$. Then
 %
 \begin{align}
-| \widehat \cS_j| \leq 128 s_j / \psi \label{eqn:Thm1ProofProp2Bd3}
+| \widehat \cS_j| \leq 128 | g_{\max}| s_j / \psi \label{eqn:Thm1ProofProp2Bd3}
 \end{align}
 \end{Proposition}
 
@@ -345,7 +348,6 @@ suppose $\cS_{0,j}$ is the support of $\Theta_{0,j}$, i.e. $\cS_{0,j} = \{ (j',g
 \sum_{(j',g) \notin \cS_{0,j}} \| \bfd_{jj'}^{[g]} \|\\
 & \leq \sum_{(j',g) \in \cS_{0,j}} \| \bfd_{jj'}^{[g]} \| - \sum_{(j',g) \notin \cS_{0,j}} \| \bfd_{jj'}^{[g]} \|
 \end{align*}
-
 %$ \| \bfT_{jj'}^{[g]} \| -  \| \bfT_{jj'}^{[g]} + \bfd_{jj'}^{[g]}\| \leq \| \bfd_{jj'}^{[g]}\|$ by triangle inequality, and then $ \| \bfd_{jj'}^{[g]}\| \leq \sum_{k \in g} | d_{jj'}^k | $, 
 so that (\ref{eqn::Thm1ProofProp2Eqn1}) reduces to
 %
@@ -362,7 +364,7 @@ Since the left hand side is $\geq 0$, this also implies
 $$
 \sum_{(j',g) \notin \cS_{0,j}} \| \bfd_{jj'}^{[g]} \| \leq 3 \sum_{(j',g) \in \cS_{0,j}} \| \bfd_{jj'}^{[g]} \| \quad \Rightarrow
 \sum_{j \neq j', g \in \cG_y^{jj'}} \| \bfd_{jj'}^{[g]} \| \leq
-4 \sum_{(j',g) \in \cS_{0,j}} \| \bfd_{jj'}^{[g]} \| \leq 4 \sqrt {s_j} \| \bfD_j \|_F
+4 \sum_{(j',g) \in \cS_{0,j}} \| \bfd_{jj'}^{[g]} \| \leq 4 \sqrt{| g_{\max}| s_j} \| \bfD_j \|_F
 $$
 % 
 with $\bfD_j = (\bfd_j^k)_{k \in \cI_K}$. Now the RE condition on $\widehat \bfS^k$ means that
@@ -379,7 +381,7 @@ by assumption (T3). Thus we finally have
 \begin{align}\label{eqn:Thm1ProofProp2Eqn2}
 \frac{\psi}{3} \| \bfD_j \|_F^2 & \leq
 \gamma_n \sum_{j \neq j', g \in \cG_y^{jj'}} \| \bfd_{jj'}^{[g]} \| \leq
-4 \gamma_n \sqrt{s_j} \| \bfD_j\|_F
+4 \gamma_n \sqrt{| g_{\max}| s_j} \| \bfD_j\|_F
 \end{align}
 %
 Since
@@ -391,7 +393,7 @@ $$
 \end{cases}
 $$
 %
-The bounds in (\ref{eqn:Thm1ProofProp2Bd1}) and (\ref{eqn:Thm1ProofProp2Bd2}) are obtained by replacing the corresponding elements in (\ref{eqn::Thm1ProofProp2Eqn2}).
+The bounds in (\ref{eqn:Thm1ProofProp2Bd1}) and (\ref{eqn:Thm1ProofProp2Bd2}) are obtained by replacing the corresponding elements in (\ref{eqn:Thm1ProofProp2Eqn2}).
 
 For the bound on $| \widehat \cS_j|$, notice that if $\hat \bftheta_{jj'}^{[g]} \neq 0$ for some $(j',g)$,
 %
@@ -407,10 +409,39 @@ using the KKT condition for (\ref{eqn:EstEqn2}) and assumption (T2). The choice 
 | \hat \cS_j| & \leq \sum_{(j',g) \in \widehat \cS_j} \frac{16}{9 n^2 |g|^2 \gamma_n^2 } \sum_{k \in g} \left| ((\widehat \bfE_{-j}^k)^T \widehat \bfE^k ( \widehat \bfT_j^k - \bfT_{0,j}^k ))^{j'} \right|^2\\
 & \leq \frac{16}{9 \gamma_n^2} \sum_{k=1}^K \frac{1}{n} \left\| (\widehat \bfE_{-j}^k)^T \widehat \bfE^k ( \widehat \bfT_j^k - \bfT_{0,j}^k ) \right\|^2 \\
 & = \frac{16}{9 \gamma_n^2} \sum_{k=1}^K (\bfd_j^k)^T \widehat \bfS^k \bfd_j^k \\
-& \leq \frac{8}{3 \gamma_n} \sum_{j \neq j', g \in \cG_y^{jj'}} \| \bfd_{jj'}^{[g]} \| \leq \frac{128 s_j}{\psi}
+& \leq \frac{8}{3 \gamma_n} \sum_{j \neq j', g \in \cG_y^{jj'}} \| \bfd_{jj'}^{[g]} \| \leq \frac{1}{\psi} 128 | g_{\max}| s_j 
 \end{align*}
 %
 using (\ref{eqn:Thm1ProofProp2Eqn3}) and (\ref{eqn:Thm1ProofProp2Eqn2}).
+
+{\it Step 2: Edge set selection.} We denote the selected edge set for the $k^\text{th}$ Y-network by $\hat E^k$. Denote its population version by $E_0^k$. Further, let
+%
+$$
+\tilde \Omega_y^k = \diag (\Omega_y^k) + \Omega_{y, E_0^k \cap \hat E^k}^k
+$$
+%
+With similar derivations to the proof of Corollary A.1 in \cite{MaMichailidis15}, The following two upper bounds can be established:
+%
+\begin{align}
+| \hat E^k | \leq \frac{ 128 | g_{\max} | S }{\psi}\\
+\frac{1}{K} \sum_{k=1}^K \| \tilde \Omega_y^k - \Omega_y^k \|_F \leq
+\frac{12 \sqrt{| g_{\max}| S} \gamma_n} {\sqrt K \psi}
+\end{align}
+%
+following which, taking $\gamma_n = 4 \sqrt q \BQ_{\max}$ and 
+%
+\begin{align}
+\Lambda_{\min} ( \tilde \Omega_y^k) \geq d_0 - 12 \sqrt{| g_{\max}| S} \gamma_n / \psi > 0; \quad
+\Lambda_{\max} ( \tilde \Omega_y^k) & \leq c_0 + 12 \sqrt{| g_{\max}| S} \gamma_n / \psi < \infty
+\end{align}
+%
+with
+%
+$$
+t_1 = {\colrbf tbd}
+$$
+
+{\it Step 3: Refitting.}
 
 \end{proof}
 
