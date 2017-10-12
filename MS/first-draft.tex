@@ -214,7 +214,7 @@ $$
 %
 where $\BQ \left(v_\beta, \Sigma_x^k, \Sigma_y^k \right)$ is a $O(1/\sqrt n)$ deterministic function depending on the population parameters $\cB, \Sigma_x^k$ and $\Sigma_y^k$.
 
-\noindent{\bf(T3)} Denote $\widehat \bfS^k = (\widehat \bfE^k)^T \widehat \bfE^k/n$. Then $\widehat \bfS^k \sim RE(\psi^k, \phi^k)$ with $K^2 q \phi \leq \psi/2$ where $ \psi = \min_k \psi^k, \phi = \max_k \phi^k $;
+\noindent{\bf(T3)} Denote $\widehat \bfS^k = (\widehat \bfE^k)^T \widehat \bfE^k/n$. Then $\widehat \bfS^k \sim RE(\psi^k, \phi^k)$ with $Kq \phi \leq \psi/2$ where $ \psi = \min_k \psi^k, \phi = \max_k \phi^k $;
 
 \noindent{\bf(T4)} Assumption (A2) holds for $\Sigma_y^k$.
 
@@ -373,7 +373,7 @@ $$
 \sum_{k=1}^K (\bfd_j^k)^T \widehat \bfS^k \bfd_j^k \geq 
 \sum_{k=1}^K \left( \psi_k \| \bfd_j^k \|^2 - \phi_k \| \bfd_j^k \|_1^2 \right) \geq
 \psi \| \bfD_j \|_F^2 - \phi \| \bfD_j \|_1^2 \geq 
-(\psi - K^2 q \phi ) \| \bfD_j \|_F^2 \geq \frac{\psi}{2}  \| \bfD_j \|_F^2
+(\psi - Kq \phi ) \| \bfD_j \|_F^2 \geq \frac{\psi}{2}  \| \bfD_j \|_F^2
 $$
 %
 by assumption (T3). Thus we finally have
@@ -593,6 +593,7 @@ $$
 $$
 %
 by assumption (T1). Now we use another lemma:
+%
 \begin{Lemma}\label{lemma:ErrorRElemma2}
 For zero-mean independent sub-gaussian matrices $\bfX \in \BM(n,p), \bfE \in \BM(n,q)$ with parameters $(\Sigma_x, \sigma_x^2)$ and $(\Sigma_e, \sigma_e^2)$ respectively, given that $n \succsim \log(pq)$ the following holds with probability $\geq 1 - 6c_1 \exp [-(c_2^2-1) \log(pq)]$ for some $c_1 >0, c_2 > 1$:
 %
@@ -646,7 +647,7 @@ The same bounds hold for $\bfW_2$ and $\bfW_4$:
 \left\| \frac{1}{n} \bfE^T \bfX \right\|_\infty \| \bfB_0 - \widehat \bfB \|_1 \| \bfT_{0,j} \|_1\\
 \end{align*}
 %
-Now since $\Omega_y$ is diagonally dominant, $\omega_{y,jj} \geq \sum_{j \neq j'} \omega_{y,jj'}$ for any $j \in \cI_q$. Hence
+Now since $\Omega_y$ is diagonally dominant, $|\omega_{y,jj}| \geq \sum_{j \neq j'} |\omega_{y,jj'}|$ for any $j \in \cI_q$. Hence
 %
 $$
 \| \bfT_{0,j} \|_1 = \sum_{j'=1}^q | T_{jj'} | = 1 + \sum_{j \neq j'} | \theta_{jj'} | = 1 + \frac{1}{\omega_{y,jj}} \sum_{j \neq j'} | \omega_{y,jj'} | \leq 2
@@ -737,24 +738,122 @@ We now bound the right hand side of (\ref{eqn:ErrorRElemma2maineqn}) using (\ref
 Now concentrate on the $k$-population estimation problem. We want to obtain
 %
 $$
-\widehat \bfbeta = \argmin_{ \bfbeta \in \BR^{pqK}} \{ -2 \bfbeta \widehat \bfgamma + \bfbeta^T \bfGamma \bfbeta + \| \bfbeta \|_{2,g} \}
+\widehat \bfbeta = \argmin_{\bfbeta \in \BR^{pq}} \left\{-2 \bfbeta^T \widehat \bfgamma + \bfbeta^T \widehat \bfGamma \bfbeta + \lambda_n \sum_{g \in \cG} \| \bfbeta^{[g]}  \| \right\}
 $$
-with
-$$
-\bfbeta = \begin{bmatrix}
-\ve (\bfB^1)\\
-\vdots\\
-\ve (\bfB^K)\\
-\end{bmatrix}; \quad
-\bfGamma = \begin{bmatrix}
-I_q \otimes (\bfX^1) TX^1 / n) & &\\
-& \ddots &\\
-& & I_q \otimes (\bfX^K)^T X^K / n)
-\end{bmatrix} 
-$$
-\begin{Theorem}
+%with
+%$$
+%\bfbeta = \begin{bmatrix}
+%\ve (\bfB^1)\\
+%\vdots\\
+%\ve (\bfB^K)\\
+%\end{bmatrix}; \quad
+%\bfGamma = \begin{bmatrix}
+%I_q \otimes (\bfX^1) TX^1 / n) & &\\
+%& \ddots &\\
+%& & I_q \otimes (\bfX^K)^T X^K / n)
+%\end{bmatrix} 
+%$$
+\begin{Theorem}\label{thm:BetaThm}
+Assume fixed $\cX, \cE$, and deterministic $\widehat \Theta = \{ \widehat \Theta_j \}$. Also for $j \in \cI_q$,
 
+\noindent{\bf(B1)} $\| \widehat \Theta_j - \Theta_{0,j} \|_F \leq v_\Theta \sqrt{\frac{\log q}{n}}$ for some $v_\Theta$ dependent on $\Theta$.
+
+\noindent{\bf(B2)} The deviation bound holds:
+%
+$$
+\| \widehat \bfgamma - \widehat \bfGamma \bfbeta_0 \|_\infty \leq \BR( v_\Theta, \Sigma_y)
+$$
+%
+{\colrbf tbd}
+
+\noindent{\bf(B3)} $\widehat \bfGamma \sim RE(\psi^*, \phi^*)$ with $Kpq \phi^* \leq \psi^*/2$.
+
+Then, given the choice of tuning parameter
+%
+$$
+\lambda \geq 4 \sqrt{pq} \BR( v_\Theta, \Sigma_y)
+$$
+%
+the following holds
+%
+\begin{align}
+\| \widehat \bfbeta - \bfbeta_0 \| & \leq 12 \sqrt s_\beta \lambda_n / \psi^* \label{eqn:BetaThmEqn1}\\
+\sum_{g \in \cG} \| \bfbeta^{[g]} - \bfbeta_0^{[g]} \| & \leq 48 s_\beta \lambda_n / \psi^* \label{eqn:BetaThmEqn2}\\
+(\widehat \bfbeta - \bfbeta_0 )^T \widehat \bfGamma (\widehat \bfbeta - \bfbeta_0 ) & \leq
+72 s_\beta \lambda_n^2 / \psi^* \label{eqn:BetaThmEqn3}
+\end{align}
+%
+Also denote the non-zero support of $\widehat \bfbeta$ by $\widehat \cS_\beta$, i.e. $\widehat \cS_\beta = \{ g: \hat \bfbeta^{[g]} \neq {\bf 0} \}$. Then
+%
+\begin{align}\label{eqn:BetaThmEqn4}
+| \widehat \cS_\beta| \leq 128 s_\beta / \psi^*
+\end{align}
 \end{Theorem}
+
+\begin{proof}[Proof of Theorem~\ref{thm:BetaThm}]
+The proof follows that of Theorem~\ref{thm:ThetaThm}, with a different group norm structure. We shall only point our the differences.
+
+Putting $\bfbeta = \bfbeta_0$ in (\ref{eqn:EstEqn1}) we get
+%
+$$
+-2 \widehat \bfbeta^T \widehat \bfgamma + \bfbeta^T \widehat \bfGamma \widehat \bfbeta + \lambda_n \sum_{g \in \cG} \| \widehat \bfbeta^{[g]}  \| \leq
+-2 \bfbeta_0^T \widehat \bfgamma + \bfbeta_0^T \widehat \bfGamma \bfbeta_0 + \lambda_n \sum_{g \in \cG} \| \bfbeta_0^{[g]}  \|
+$$
+%
+Denote $\bfb = \widehat \bfbeta - \bfbeta_0$. Then we have
+%
+$$
+\bfb^T \widehat \bfGamma \bfb \leq 2 \bfb^T ( \widehat \bfgamma - \widehat \bfGamma \bfbeta_0 ) + \lambda_n
+\sum_{g \in \cG} ( \| \bfbeta_0^{[g]} \| - \| \bfbeta_0^{[g]} + \bfb^{[g]} \|)
+$$
+%
+Proceeding similarly as the proof of Theorem~\ref{thm:ThetaThm}, with a different deviation bound and choice of $\lambda_n$ based on that, we get expressions equivalent to (\ref{eqn:Thm1ProofProp2Eqn3}) and (\ref{eqn:Thm1ProofProp2Eqn2}) respectively:
+%
+\begin{align}
+\bfb^T \widehat \bfGamma \bfb & \leq \frac{3}{2} \sum_{g \in \cG} \| \bfb^{[g]} \| \\
+\frac{\psi^*}{3} \| \bfb \|^2 & \leq \lambda_n \sum_{g \in \cG} \| \bfb^{[g]} \| \leq 4 \lambda_n \sqrt{s_\beta} \| \bfb \|
+\end{align}
+%
+The bounds in (\ref{eqn:BetaThmEqn1}), (\ref{eqn:BetaThmEqn2}), (\ref{eqn:BetaThmEqn3}) and (\ref{eqn:BetaThmEqn4}) follow.
+
+\end{proof}
+
+\begin{Proposition}\label{prop:ThmBetaRE}
+Consider deterministic $\widehat \Theta$ satisfying assumption (B1). Then for sample size $n \succsim \log (pq)$,
+
+\begin{enumerate}
+%\item We have $\| \bfX^k ( \hat \bfB^k - \bfB_0^k ) \|_\infty \leq c( v_\beta)$, where
+%%
+%$$
+%c(v_\beta) =\sqrt n v_\beta \left[ \sqrt{ \frac{ \log 4 + \tau_1 \log p}{c_x^k n}} + \max_j \sigma_{x,jj}^k \right]^{1/2}; \quad
+%c_x^k = \left[ 128 ( 1 + 4 \Lambda_{\max} (\Sigma_x^k)  )^2 \max_j (\sigma_{x,jj}^k)^2 \right]^{-1}
+%$$
+%%
+%with probability $ \geq 1 - 1/p^{\tau_1-2}, \tau_1 > 2$.
+%
+\item $\widehat \bfGamma$ satisfies the RE condition: $ \widehat \bfGamma \sim RE (\psi^*, \phi^*)$, where 
+%
+$$
+{\colrbf tbd}
+$$
+%
+with probability ${\colrbf tbd}$.
+%
+\item The following deviation bound is satisfied:
+%
+%$$
+%\left\| \widehat \bfS^k \bfT_{0,j}^k \right\|_\infty \leq 4 v_\beta c_2 [ \Lambda_{\max} (\Sigma_x^k) \Lambda_{\max} (\Sigma_y^k) ]^{1/2} \sqrt{\frac{ \log(pq)}{n}} + 2 \sqrt{ \frac{ \log 4 + \tau_1 \log p}{c_x^k n}} + 2 \max_j \sigma_{x,jj}^k
+%$$
+%
+$$
+\| \widehat \bfgamma - \widehat \bfGamma \bfbeta_0 \|_\infty \leq {\colrbf tbd}
+$$
+%
+
+with probability ${\colrbf tbd}$.
+\end{enumerate} 
+\end{Proposition}
+
 
 \bibliographystyle{apalike}
 %\bibliographystyle{imsart-nameyear}
