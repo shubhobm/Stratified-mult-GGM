@@ -1,9 +1,9 @@
-\documentclass[fleqn,11pt]{article}
+\documentclass[12pt, letterpaper]{article}
 %\documentclass[aoas,preprint]{imsart}
+\pdfoutput=1
 
 \usepackage{mycommands1,amssymb,amsmath,amsthm,color,pagesize,outlines,cite,subfigure}
 \usepackage[small]{caption}
-\usepackage[pdftex]{epsfig}
 \usepackage{hyperref} % for linking references
 \hypersetup{colorlinks = true, citecolor = blue, urlcolor = blue}
 
@@ -15,21 +15,19 @@
 \usepackage[noend]{algpseudocode}
 \usepackage{algorithm}
 
-%\addtolength{\evensidemargin}{-.5in}
-%\addtolength{\oddsidemargin}{-.5in}
-%\addtolength{\textwidth}{0.9in}
-%\addtolength{\textheight}{0.9in}
-%\addtolength{\topmargin}{-.4in}
+% DON'T change margins - should be 1 inch all around.
+\addtolength{\evensidemargin}{-.5in}
+\addtolength{\oddsidemargin}{-.5in}
+\addtolength{\textwidth}{0.9in}
+\addtolength{\textheight}{0.9in}
+\addtolength{\topmargin}{-.4in}
 
 %% measurements for 1 inch margin
-\addtolength{\oddsidemargin}{-.875in}
-\addtolength{\evensidemargin}{-.875in}
-\addtolength{\textwidth}{1.75in}
-\addtolength{\topmargin}{-.875in}
-\addtolength{\textheight}{1.75in}
-
-\usepackage{setspace}
-\doublespacing
+%\addtolength{\oddsidemargin}{-.875in}
+%\addtolength{\evensidemargin}{-.875in}
+%\addtolength{\textwidth}{1.75in}
+%\addtolength{\topmargin}{-.875in}
+%\addtolength{\textheight}{1.75in}
 
 %\pagestyle{myheadings}
 %\markboth{}{\underline{{\bf Notes: (do not circulate)} \hspace{4.5cm} {\sc  Ansu Chatterjee} \hspace{0.25cm}}}
@@ -39,6 +37,7 @@
 \DeclareMathOperator*{\Tr}{Tr}
 \DeclareMathOperator*{\argmin}{arg\,min}
 \DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\Th}{^{\text{th}}}
 
 \makeatletter
 \newcommand{\opnorm}{\@ifstar\@opnorms\@opnorm}
@@ -129,16 +128,6 @@ The objective function is bi-convex, so we are going to do the following in step
 \item Continue till convergence.
 \end{itemize}
 %
-
-\section{Two-sample testing}
-Suppose there are two disease subtypes: $k = 1,2$, and we are interested in testing whether the downstream effect of a predictor is X-data is same across both subtypes, i.e. if $\bfb_i^1 = \bfb_i^2$ for some $i \in \{ 1, \ldots, p \}$. For this we consider the modified optimization problem:
-%
-\begin{align}
-& \min_{\cB, \Theta} \frac{1}{n} \left\{ \sum_{j=1}^q \sum_{k=1}^2 \| \bfY_j^k - \bfY_{-j}^k \bftheta_j^k - \bfX^k \bfB_{j}^k \|^2 + \sum_{j \neq j'} \lambda_{jj'} \| \bftheta_{jj'}^* \| + \sum_{i=1}^p \eta_i \| \bfB_{i*}^* \| \right\}\\
-&= \min \left\{ f ( \cY, \cX, \cB, \Theta) + P (\Theta) + Q (\cB) \right\} 
-\end{align}
-%
-with $n_1 = n_2 = n$ for simplicity; and $\bfB^k = (\bfb_1^k, \ldots, \bfb_q^k), (\bfB_{i*}^*) \in \BR^{ q \times K}$
 
 \section{Conditions}
 Conditions A1 from JSEM paper holds for $\cX$ and $\cE$. Also A2, A3 from JSEM paper.
@@ -603,7 +592,7 @@ $$
 %
 \end{Lemma}
 %
-This is a part of Lemma 3 of Appendix B in \cite{LinEDtal16}, and is proved therein. Subsequently we collect all summands in (\ref{eqn:ErrorREeqn3}) and get
+This is a part of Lemma 3 of Appendix B in \cite{LinEtal16}, and is proved therein. Subsequently we collect all summands in (\ref{eqn:ErrorREeqn3}) and get
 %
 $$
 \bfv^T \widehat{ \bfS} \bfv \geq \psi_y \| \bfv \|^2 - \left( \phi_y + 2 v_\beta c_2 [ \Lambda_{\max} (\Sigma_x) \Lambda_{\max} (\Sigma_y) ]^{1/2} \sqrt{\frac{ \log(pq)}{n}} \right) \| \bfv \|_1^2
@@ -729,11 +718,9 @@ We now bound the right hand side of (\ref{eqn:ErrorRElemma2maineqn}) using (\ref
 %We now bound the right hand side of (\ref{eqn:ErrorRElemma2eqn1}) using (\ref{eqn:ErrorRElemma2eqn2}), (\ref{eqn:ErrorRElemma2eqn3}) and (\ref{eqn:ErrorRElemma2eqn4}), which proves part 3.
 \end{proof}
 
-
 %-----------------------------
 \hrulefill
 %-----------------------------
-
 
 Now concentrate on the $k$-population estimation problem. We want to obtain
 %
@@ -758,20 +745,20 @@ Assume fixed $\cX, \cE$, and deterministic $\widehat \Theta = \{ \widehat \Theta
 
 \noindent{\bf(B1)} $\| \widehat \Theta_j - \Theta_{0,j} \|_F \leq v_\Theta \sqrt{\frac{\log q}{n}}$ for some $v_\Theta$ dependent on $\Theta$.
 
-\noindent{\bf(B2)} The deviation bound holds:
+\noindent{\bf(B2)} Denote $\widehat \bfGamma^k = (\widehat \bfT^k)^2 \otimes (\bfX^k)^T \bfX^k/n, \widehat \bfgamma^k = (\widehat \bfT^k)^2 \otimes (\bfX^k)^T \bfY^k/n$. Then the deviation bound holds:
 %
 $$
-\| \widehat \bfgamma - \widehat \bfGamma \bfbeta_0 \|_\infty \leq \BR( v_\Theta, \Sigma_y)
+\left\| \widehat \bfgamma^k - \widehat \bfGamma^k \bfbeta_0 \right\|_\infty \leq \BR( v_\Theta, \Sigma_x^k, \Sigma_y^k)
 $$
 %
 {\colrbf tbd}
 
-\noindent{\bf(B3)} $\widehat \bfGamma \sim RE(\psi^*, \phi^*)$ with $Kpq \phi^* \leq \psi^*/2$.
+\noindent{\bf(B3)} $\widehat \bfGamma \sim RE(\psi_*, \phi_*)$ with $Kpq \phi_* \leq \psi_*/2$.
 
 Then, given the choice of tuning parameter
 %
 $$
-\lambda \geq 4 \sqrt{pq} \BR( v_\Theta, \Sigma_y)
+\lambda \geq 4 \sqrt{pq} \BR_{\max}; \quad \BR_{\max} := \max_{k \in \cI_K} \BR \left(v_\Theta, \Sigma_x^k, \Sigma_y^k \right)
 $$
 %
 the following holds
@@ -791,7 +778,7 @@ the following holds
 \end{Theorem}
 
 \begin{proof}[Proof of Theorem~\ref{thm:BetaThm}]
-The proof follows that of Theorem~\ref{thm:ThetaThm}, with a different group norm structure. We shall only point our the differences.
+The proof follows that of Theorem~\ref{thm:ThetaThm}, with a different group norm structure. We only point our the differences.
 
 Putting $\bfbeta = \bfbeta_0$ in (\ref{eqn:EstEqn1}) we get
 %
@@ -832,13 +819,15 @@ Consider deterministic $\widehat \Theta$ satisfying assumption (B1). Then for sa
 %%
 %with probability $ \geq 1 - 1/p^{\tau_1-2}, \tau_1 > 2$.
 %
-\item $\widehat \bfGamma$ satisfies the RE condition: $ \widehat \bfGamma \sim RE (\psi^*, \phi^*)$, where 
+\item %For sample size $n \succsim \max (s_\beta \log p, d^2 \log q)$,
+$\widehat \bfGamma$ satisfies the RE condition: $ \widehat \bfGamma \sim RE (\psi_*, \phi_*)$, where 
 %
 $$
-{\colrbf tbd}
+\psi_* = \min_k \psi^k \left( \min_i \psi_t^i - d v_\Theta \right), 
+\phi_* = \max_k \phi^k \left( \min_i \phi_t^i + d v_\Theta \right)
 $$
 %
-with probability ${\colrbf tbd}$.
+with probability $\geq 1 - 2 \exp(c_3 n), c_3>0$.
 %
 \item The following deviation bound is satisfied:
 %
@@ -847,16 +836,172 @@ with probability ${\colrbf tbd}$.
 %$$
 %
 $$
-\| \widehat \bfgamma - \widehat \bfGamma \bfbeta_0 \|_\infty \leq {\colrbf tbd}
+\left\| \widehat \bfgamma - \widehat \bfGamma \bfbeta_0 \right\|_\infty \leq \BR \left(v_\beta, \Sigma_x^k, \Sigma_y^k \right) \sqrt{ \frac{ \log(pq)}{n}}
 $$
 %
-
-with probability ${\colrbf tbd}$.
+with probability $1 - 12 c_1 \exp[ (c_2^2-1) \log (pq)], c_1>0, c_2>1$, where
+$$
+\BR \left(v_\beta, \Sigma_x^k, \Sigma_y^k \right) = c_2 \sqrt{\Lambda_{\max} (\Sigma_x^k)} \left( d v_\Theta \Lambda_{\min} (\Sigma_y^k) +
+\frac{1}{\Lambda_{\min} (\Sigma_y^k) } \right)
+$$
 \end{enumerate} 
 \end{Proposition}
 
+\begin{proof}[Proof of Proposition~\ref{prop:ThmBetaRE}]
+For part 1 it is enough to prove that with $ \widehat \Sigma_x^k := (\bfX^k)^T \bfX^k/n$,
+%
+\begin{align}\label{eqn:ThmBetaREProofEqn1}
+\widehat \bfT_k^2 \otimes \widehat \Sigma_x^k & \sim RE (\psi_*^k, \phi_*^k)
+\end{align}
+%
+with high enough probability. because then we can take $\psi_* = \min_k \psi_*^k, \phi_* = \max_k \phi_*^k$. The proof of (\ref{eqn:ThmBetaREProofEqn1}) follows similar lines of the proof of Proposition 1 in \cite{LinEtal16}, only replacing $\Theta_\epsilon, \widehat \Theta_\epsilon, \bfX$ therein with $(\bfT^k)^2, (\widehat \bfT^k)^2, \bfX^k$, respectively. We omit the details.%, with an extra step to prove that $(\bfT^k)^2$ is diagonally dominant. For this, denote the elements of $(\bfT^k)^2$ by $\tau_{jj'}, j; j' \in \cI_q$. Then
+%%
+%\begin{align*}
+%\tau_{jj} - \sum_{j \neq j'} | \tau_{jj'}| & = \sum_{l=1}^q \left[
+%\frac{\omega_{jl}^2}{\omega_{jj}^2 } - \sum_{j \neq j'} \frac{| \omega_{jl} \omega_{j'l} |}{\omega_{jj} \omega_{j'j'} } \right]
+%\end{align*}
+%%
+%For each summand,
+%%
+%\begin{align*}
+%\frac{\omega_{jl}^2}{\omega_{jj}^2 } - \sum_{j \neq j'} \frac{| \omega_{jl} \omega_{j'l} |}{\omega_{jj} \omega_{j'j'}} & = \frac{| \omega_{jl} |}{\omega_{jj} } \left[ \frac{| \omega_{jl}| }{\omega_{jj} } - \sum_{j' \neq j} \frac{| \omega_{j'l} |}{\omega_{j'j'}} \right] \\
+%\end{align*}
+%
 
+\end{proof}
+
+%-----------------------------
+\hrulefill
+%-----------------------------
+
+\section{Two-sample testing}
+Suppose there are two disease subtypes: $k = 1,2$, and we are interested in testing whether the downstream effect of a predictor in X-data is same across both subtypes, i.e. if $\bfb_i^1 = \bfb_i^2$ for some $i \in \cI_p$. For this we consider the modified optimization problem:
+%
+\begin{align}
+& \min_{\cB, \Theta} \frac{1}{n} \left\{ \sum_{j=1}^q \sum_{k=1}^2 \| \bfY_j^k - \bfY_{-j}^k \bftheta_j^k - \bfX^k \bfB_{j}^k \|^2 + \sum_{j \neq j'} \lambda_{jj'} \| \bftheta_{jj'}^* \| + \sum_{i=1}^p \eta_i \| \bfB_{i*}^* \| \right\} \notag\\
+&= \min \left\{ f ( \cY, \cX, \cB, \Theta) + P (\Theta) + Q (\cB) \right\} 
+\end{align}
+%
+with $n_1 = n_2 = n$ for simplicity; and $\bfB^k = (\bfb_1^k, \ldots, \bfb_q^k), (\bfB_{i*}^*) \in \BR^{ q \times K}$.
+
+In this setup, define the desparsified estimate of $\bfb_i^k$ as
+%
+\begin{align}\label{eqn:DebiasedBeta}
+\widehat \bfc_i^k = \widehat \bfb_i^k + \frac{1}{n t_i^k} \left( \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k \right)^T
+(\bfY^k - \bfX^k \widehat \bfB^k )
+\end{align}
+%
+for $k = 1,2$, where $t_i^k = ( \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k )^T \bfX_{-i}^k/n$. Then we have the asymptotic joint distribution of a scaled version of the debiased coefficients for the $i\Th$ predictor effect.
+
+\begin{Theorem}\label{Thm:ThmTesting}
+Define $\widehat s_i^k = \sqrt{\| \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k \|^2/n}$, and $m_i^k = \sqrt n t_i^k / \widehat s_i^k$. Then for the debiased estimators in \eqref{eqn:DebiasedBeta} we have
+%
+\begin{align}\label{eqn:ThmTestingEqn}
+\begin{bmatrix}
+\widehat \Omega_y^1 &\\
+& \widehat \Omega_y^2
+\end{bmatrix}^{1/2}
+%
+\begin{bmatrix}
+m_i^1 (\widehat \bfc_i^1 - \bfb_i^1) &\\
+&  m_i^2 (\widehat \bfc_i^2 - \bfb_i^2)
+\end{bmatrix}
+\sim \cN_{2q} ({\bf 0}, \bfI) + \bfS_n
+\end{align}
+%
+where
+%
+$$
+\| \bfS_n \|_\infty \leq {\colrbf tbd}
+$$
+%
+with probability $\geq {\colrbf tbd}$.
+\end{Theorem}
+%
+
+\begin{proof}[Proof of Theorem~\ref{Thm:ThmTesting}]
+Let us define the following:
+%
+\begin{align*}
+\bfM_i &= \diag(m^1_i, m^2_i)\\
+\widehat \bfC_i &= \diag(\widehat \bfc^1_i, \widehat \bfc^2_i)\\
+\widehat \bfD_i &= \diag(\widehat \bfb^1_i, \widehat \bfb^2_i)\\
+\bfD_i &= \diag(\bfb^1_i, \bfb^2_i)\\
+\bfR_i^k &= \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k; k = 1,2
+\end{align*}
+%
+Then from \eqref{eqn:DebiasedBeta} we have
+%
+\begin{align}\label{eqn:ThmTestingProofeq1}
+\bfM_i ( \widehat \bfC_i - \widehat \bfD_i )^T &= \frac{1}{\sqrt n}
+\begin{bmatrix}
+\frac{1}{\widehat s^1_i} (\bfR^1_i)^T \widehat \bfE^1 \\
+\frac{1}{\widehat s^2_i} (\bfR^2_i)^T \widehat \bfE^2
+\end{bmatrix}
+\end{align}
+%
+We now decompose $\widehat \bfE^k:$
+%
+\begin{align*}
+\widehat \bfE^k &= \bfY^k - \bfX^k \widehat \bfB^k \\
+&= \bfE^k + \bfX^k (\bfB^k - \widehat \bfB^k)\\
+&= \bfE^k + \bfX_i^k (\bfb_i^k - \widehat \bfb_i^k) + \bfX_{-i}^k (\bfB_{-i}^k - \widehat \bfB_{-i}^k)
+\end{align*}
+%
+Putting them back in \eqref{eqn:ThmTestingProofeq1} and using $t^k = (\bfR^k)^T \bfX^k/n$,
+%
+\begin{align}\label{eqn:ThmTestingProofeq2}
+\bfM_i ( \widehat \bfC_i - \widehat \bfD_i)^T &= \frac{1}{\sqrt n}
+\begin{bmatrix}
+\frac{1}{\widehat s^1_i} (\bfR^1_i)^T \bfE^1 \\
+\frac{1}{\widehat s^2_i} (\bfR^2_i)^T \bfE^2
+\end{bmatrix} +
+\bfM_i (\bfD_i - \widehat \bfD_i )^T +
+\frac{1}{\sqrt n}
+\begin{bmatrix}
+\frac{1}{\widehat s^1_i} (\bfR^1_i)^T \bfX_{-i}^1 (\bfB_{-i}^1 - \widehat \bfB_{-i}^1) \\
+\frac{1}{\widehat s^2_i} (\bfR^2_i)^T \bfX_{-i}^2 (\bfB_{-i}^2 - \widehat \bfB_{-i}^2)
+\end{bmatrix}\\
+\Rightarrow
+\bfM_i ( \widehat \bfC_i - \bfD_i)^T &= \frac{1}{\sqrt n}
+\begin{bmatrix}
+\frac{1}{\widehat s^1} (\bfR^1_i)^T \bfE^1 \\
+\frac{1}{\widehat s^2} (\bfR^2_i)^T \bfE^2
+\end{bmatrix} +
+\frac{1}{\sqrt n}
+\begin{bmatrix}
+\frac{1}{\widehat s^1_i} (\bfR^1_i)^T \bfX_{-i}^1 (\bfB_{-i}^1 - \widehat \bfB_{-i}^1) \\
+\frac{1}{\widehat s^2_i} (\bfR^2_i)^T \bfX_{-i}^2 (\bfB_{-i}^2 - \widehat \bfB_{-i}^2)
+\end{bmatrix}
+\end{align}
+
+At this point, to prove \eqref{eqn:ThmTestingEqn}, it is enough to show the following:
+%
+\begin{align}
+\frac{1}{\sqrt n \widehat s_i}  \widehat \Omega_y^{1/2} \bfE^T \bfR_i \sim
+\cN_q ({\bf 0}, \bfI) + \bfS_{1n}; \quad 
+\| \bfS_{1n} \|_\infty \leq {\colrbf tbd} \label{eqn:ThmTestingProofeq3}\\
+\left\| \frac{1}{\sqrt n \widehat s_i} \bfR_i^T \bfX_{-i} (\bfB_{-i} - \widehat \bfB_{-i})
+\widehat \Omega_y^{1/2} \right\|_\infty \leq {\colrbf tbd} \label{eqn:ThmTestingProofeq4}
+\end{align}
+%
+dropping $k$ in the superscripts. To show \eqref{eqn:ThmTestingProofeq3} we have
+%
+$$
+\frac{1}{\sqrt n \widehat s_i}  \widehat \Omega_y^{1/2} \bfE^T \bfR_i =
+\frac{1}{\sqrt n \widehat s_i}  (\widehat \Omega_y^{1/2} - \Omega_y^{1/2}) \bfE^T \bfR_i +
+\frac{1}{\sqrt n \widehat s_i}  \Omega_y^{-1/2} \bfE^T \bfR_i
+$$
+%
+The second summand is distributed as $\cN_q ({\bf 0}, \bfI)$. For the first summand we apply cauchy-schwarz inequality
+%
+$$
+\left\| \frac{1}{\sqrt n \widehat s_i}  (\widehat \Omega_y^{1/2} - \Omega_y^{1/2}) \bfE^T \bfR_i \right\| \leq
+\left\| \bfE (\widehat \Omega_y^{1/2} - \Omega_y^{1/2}) \right\| 
+$$
+%\| 
+\end{proof}
 \bibliographystyle{apalike}
 %\bibliographystyle{imsart-nameyear}
-\bibliography{snpbib}
+\bibliography{GGMbib}
 \end{document}

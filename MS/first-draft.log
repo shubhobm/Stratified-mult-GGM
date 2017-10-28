@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2016.12.9)  12 OCT 2017 18:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2016.12.9)  27 OCT 2017 19:34
 entering extended mode
 **./first-draft.tex
 (first-draft.tex
@@ -6,18 +6,8 @@ LaTeX2e <2016/03/31> patch level 3
 Babel <3.9r> and hyphenation patterns for 75 language(s) loaded.
 ("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\base\article.cls"
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\base\fleqn.clo"
-File: fleqn.clo 2015/03/31 v1.1i Standard LaTeX option (flush left equations)
-\mathindent=\dimen102
-Applying: [2015/01/01] Make \[ robust on input line 50.
-LaTeX Info: Redefining \[ on input line 51.
-Already applied: [0000/00/00] Make \[ robust on input line 62.
-Applying: [2015/01/01] Make \] robust on input line 74.
-LaTeX Info: Redefining \] on input line 75.
-Already applied: [0000/00/00] Make \] robust on input line 83.
-)
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\base\size11.clo"
-File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\base\size12.clo"
+File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
 \c@section=\count80
@@ -29,7 +19,7 @@ File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 \c@table=\count86
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
-\bibindent=\dimen103
+\bibindent=\dimen102
 ) (mycommands1.sty) ("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\amsfonts\amssymb
 .sty"
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
@@ -53,11 +43,11 @@ Package: amstext 2000/06/29 v2.01 AMS text
 ("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\amsmath\amsgen.sty"
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks15
-\ex@=\dimen104
+\ex@=\dimen103
 ))
 ("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\amsmath\amsbsy.sty"
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen105
+\pmbraise@=\dimen104
 )
 ("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\amsmath\amsopn.sty"
 Package: amsopn 2016/03/08 v2.02 operator names
@@ -74,7 +64,7 @@ LaTeX Info: Redefining \dots on input line 397.
 LaTeX Info: Redefining \cdots on input line 518.
 \Mathstrutbox@=\box26
 \strutbox@=\box27
-\big@size=\dimen106
+\big@size=\dimen105
 LaTeX Font Info:    Redeclaring font encoding OML on input line 634.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 635.
 \macc@depth=\count92
@@ -87,12 +77,12 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 635.
 \column@=\count97
 \maxfields@=\count98
 \andhelp@=\toks17
-\eqnshift@=\dimen107
-\alignsep@=\dimen108
-\tagshift@=\dimen109
-\tagwidth@=\dimen110
-\totwidth@=\dimen111
-\lineht@=\dimen112
+\eqnshift@=\dimen106
+\alignsep@=\dimen107
+\tagshift@=\dimen108
+\tagwidth@=\dimen109
+\totwidth@=\dimen110
+\lineht@=\dimen111
 \@envbody=\toks18
 \multlinegap=\skip44
 \multlinetaggap=\skip45
@@ -133,13 +123,13 @@ Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
 ))
 ("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\ltxmisc\pagesize.sty"
 Style-Option: `pagesize' v1.2  <94/06/09>.
-\pgsz@paper@width=\dimen113
-\pgsz@paper@height=\dimen114
-\pgsz@width=\dimen115
-\pgsz@height=\dimen116
-\pgsz@hmargin=\dimen117
-\pgsz@vmargin=\dimen118
-\pgsz@totheight=\dimen119
+\pgsz@paper@width=\dimen112
+\pgsz@paper@height=\dimen113
+\pgsz@width=\dimen114
+\pgsz@height=\dimen115
+\pgsz@hmargin=\dimen116
+\pgsz@vmargin=\dimen117
+\pgsz@totheight=\dimen118
 ) ("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\outlines\outlines.sty"
 Package: outlines 2012/1/23 1.1 Ch. Pecheur
 
@@ -155,9 +145,9 @@ Package: cite 2015/02/27  v 5.5
 Package: subfigure 2002/07/30 v2.1.4 subfigure package
 \subfigtopskip=\skip49
 \subfigcapskip=\skip50
-\subfigcaptopadj=\dimen120
+\subfigcaptopadj=\dimen119
 \subfigbottomskip=\skip51
-\subfigcapmargin=\dimen121
+\subfigcapmargin=\dimen120
 \subfiglabelskip=\skip52
 \c@subfigure=\count100
 \c@lofdepth=\count101
@@ -182,39 +172,16 @@ Package caption3 Info: TeX engine: e-TeX on input line 67.
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks26
 )
-\captionmargin=\dimen122
-\captionmargin@=\dimen123
-\captionwidth=\dimen124
-\caption@tempdima=\dimen125
-\caption@indent=\dimen126
-\caption@parindent=\dimen127
-\caption@hangindent=\dimen128
+\captionmargin=\dimen121
+\captionmargin@=\dimen122
+\captionwidth=\dimen123
+\caption@tempdima=\dimen124
+\caption@indent=\dimen125
+\caption@parindent=\dimen126
+\caption@hangindent=\dimen127
 )
 \c@ContinuedFloat=\count104
 Package caption Info: subfigure package is loaded.
-)
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\graphics\epsfig.sty"
-Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
-
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\graphics\graphicx.sty"
-Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
-
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\graphics\graphics.sty"
-Package: graphics 2016/07/10 v1.0t Standard LaTeX Graphics (DPC,SPQR)
-
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\graphics\trig.sty"
-Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
-)
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\graphics-cfg\graphics.cfg"
-File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
-)
-Package graphics Info: Driver file: pdftex.def on input line 99.
-)
-\Gin@req@height=\dimen129
-\Gin@req@width=\dimen130
-)
-\epsfxsize=\dimen131
-\epsfysize=\dimen132
 )
 ("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\hyperref\hyperref.sty"
 Package: hyperref 2016/06/24 v6.83q Hypertext links for LaTeX
@@ -272,7 +239,7 @@ Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
 ("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\oberdiek\kvoptions.sty"
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 )
-\@linkdim=\dimen133
+\@linkdim=\dimen128
 \Hy@linkcounter=\count105
 \Hy@pagecounter=\count106
 
@@ -298,10 +265,10 @@ Package hyperref Info: Bookmarks ON on input line 4735.
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 5088.
-\XeTeXLinkMargin=\dimen134
+\XeTeXLinkMargin=\dimen129
 \Fld@menulength=\count109
-\Field@Width=\dimen135
-\Fld@charsize=\dimen136
+\Field@Width=\dimen130
+\Fld@charsize=\dimen131
 Package hyperref Info: Hyper figures OFF on input line 6342.
 Package hyperref Info: Link nesting OFF on input line 6347.
 Package hyperref Info: Hyper index ON on input line 6350.
@@ -381,9 +348,6 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@every@algorithm=\toks29
 \c@algorithm=\count124
 )
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\setspace\setspace.sty"
-Package: setspace 2011/12/19 v6.7a set line spacing
-)
 ("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\chngcntr\chngcntr.sty"
 Package: chngcntr 2009/09/02 v1.0a change counter resetting
 )
@@ -393,55 +357,42 @@ Package: apptools 2012/11/28 v1.0 Tools for customizing appendices
 (first-draft.aux)
 \openout1 = `first-draft.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
 
 ("D:\Study\LaTeX\MikTeX 2.9.6161\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count125
-\scratchdimen=\dimen137
+\scratchdimen=\dimen132
 \scratchbox=\box30
 \nofMPsegments=\count126
 \nofMParguments=\count127
 \everyMPshowfont=\toks30
 \MPscratchCnt=\count128
-\MPscratchDim=\dimen138
+\MPscratchDim=\dimen133
 \MPnumerator=\count129
 \makeMPintoPDFobject=\count130
 \everyMPtoPDFconversion=\toks31
-) ("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\oberdiek\epstopdf-base.sty"
-Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
-
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\oberdiek\grfext.sty"
-Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
-)
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-38.
-Package grfext Info: Graphics extension search list:
-(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
-G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 456.
 )
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \AtBeginShipoutBox=\box31
-Package hyperref Info: Link coloring ON on input line 63.
-
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\hyperref\nameref.sty"
+Package hyperref Info: Link coloring ON on input line 62.
+ ("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\hyperref\nameref.sty"
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
 ("D:\Study\LaTeX\MikTeX 2.9.6161\tex\generic\oberdiek\gettitlestring.sty"
@@ -449,132 +400,168 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count131
 )
-LaTeX Info: Redefining \ref on input line 63.
-LaTeX Info: Redefining \pageref on input line 63.
-LaTeX Info: Redefining \nameref on input line 63.
+LaTeX Info: Redefining \ref on input line 62.
+LaTeX Info: Redefining \pageref on input line 62.
+LaTeX Info: Redefining \nameref on input line 62.
 
 (first-draft.out) (first-draft.out)
 \@outlinefile=\write3
 \openout3 = `first-draft.out'.
 
 \c@Theorem=\count132
-LaTeX Font Info:    Try loading font information for U+msa on input line 76.
+LaTeX Font Info:    Try loading font information for U+msa on input line 75.
 
 ("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 76.
+LaTeX Font Info:    Try loading font information for U+msb on input line 75.
 
 ("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
+)
+Overfull \hbox (3.75334pt too wide) in paragraph at lines 80--81
+\OT1/cmr/bx/n/12 Keywords\OT1/cmr/m/n/12 : Data in-te-gra-tion; Gaus-sian Graph
+-i-cal Mod-els; Neigh-bor-hood se-lec-tion; Group
+ []
+
+[1
 
 {C:/Users/Subho/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Overfull \hbox (2.81377pt too wide) in paragraph at lines 97--98
-[]\OT1/cmr/m/n/10.95 Want to es-ti-mate $\OMS/cmsy/m/n/10.95 f\OT1/cmr/m/n/10.9
-5 (
-[]\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 
-[]\OML/cmm/m/it/10.95 ; \OT1/cmr/bx/n/10.95 B[]\OT1/cmr/m/n/10.95 ); \OML/cmm/m
-/it/10.95 k \OMS/cmsy/m/n/10.95 2 I[]$ \OT1/cmr/m/n/10.95 from data $\OMS/cmsy/
-m/n/10.95 Z[] \OT1/cmr/m/n/10.95 = \OMS/cmsy/m/n/10.95 f\OT1/cmr/m/n/10.95 (\OT
-1/cmr/bx/n/10.95 Y[]\OML/cmm/m/it/10.95 ; \OT1/cmr/bx/n/10.95 X[]\OT1/cmr/m/n/1
-0.95 ); \OT1/cmr/bx/n/10.95 Y[] \OMS/cmsy/m/n/10.95 2 \U/msb/m/n/10.95 M\OT1/cm
-r/m/n/10.95 (\OML/cmm/m/it/10.95 n; q\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 ; 
-\OT1/cmr/bx/n/10.95 X[] \OMS/cmsy/m/n/10.95 2 \U/msb/m/n/10.95 M\OT1/cmr/m/n/10
-.95 (\OML/cmm/m/it/10.95 n; p\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 ; k \OMS/c
-msy/m/n/10.95 2
+Overfull \hbox (3.18628pt too wide) in paragraph at lines 96--97
+[]\OT1/cmr/m/n/12 Want to es-ti-mate $\OMS/cmsy/m/n/12 f\OT1/cmr/m/n/12 (
+[]\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 
+[]\OML/cmm/m/it/12 ; \OT1/cmr/bx/n/12 B[]\OT1/cmr/m/n/12 ); \OML/cmm/m/it/12 k 
+\OMS/cmsy/m/n/12 2 I[]$ \OT1/cmr/m/n/12 from data $\OMS/cmsy/m/n/12 Z[] \OT1/cm
+r/m/n/12 = \OMS/cmsy/m/n/12 f\OT1/cmr/m/n/12 (\OT1/cmr/bx/n/12 Y[]\OML/cmm/m/it
+/12 ; \OT1/cmr/bx/n/12 X[]\OT1/cmr/m/n/12 ); \OT1/cmr/bx/n/12 Y[] \OMS/cmsy/m/n
+/12 2 \U/msb/m/n/12 M\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 n; q\OT1/cmr/m/n/12 )\OM
+L/cmm/m/it/12 ; \OT1/cmr/bx/n/12 X[] \OMS/cmsy/m/n/12 2
  []
 
 
-Overfull \hbox (21.62405pt too wide) in paragraph at lines 110--110
+Overfull \hbox (53.21878pt too wide) in paragraph at lines 109--109
 [] 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 122.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 121.
 
 ("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 122.
- [2] [3] [4]
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 121.
+ [2]
+Overfull \hbox (12.23843pt too wide) detected at line 158
+\OML/cmm/m/it/12 f\OT1/cmr/m/n/12 (\OMS/cmsy/m/n/12 Y\OML/cmm/m/it/12 ; \OMS/cm
+sy/m/n/12 X\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 B\OML/cmm/m/it/12 ; \OT1/cmr/m/n
+/12 ) = [] [] [] \OMS/cmsy/m/n/12 k\OT1/cmr/m/n/12 (\OT1/cmr/bx/n/12 Y[] \OMS/
+cmsy/m/n/12   \OT1/cmr/bx/n/12 X[]B[]\OT1/cmr/m/n/12 )\OT1/cmr/bx/n/12 T[]\OMS/
+cmsy/m/n/12 k[] \OT1/cmr/m/n/12 = [] [] \OMS/cmsy/m/n/12 k\OT1/cmr/bx/n/12 Y[] 
+\OMS/cmsy/m/n/12   \OT1/cmr/bx/n/12 X[]B[]\OT1/cmr/m/n/12 )\OT1/cmr/bx/n/12 T[]
+\OMS/cmsy/m/n/12 k[] \OT1/cmr/m/n/12 = [] [](\OT1/cmr/bx/n/12 S[]\OT1/cmr/m/n/1
+2 (\OT1/cmr/bx/n/12 T[]\OT1/cmr/m/n/12 )[])
+ []
 
-Package natbib Warning: Citation `MaMichailidis15' on page 5 undefined on input
- line 243.
+[3] [4]
+Overfull \hbox (17.97781pt too wide) detected at line 314
+[] [] \OMS/cmsy/m/n/12 k\OT1/cmr/m/n/12 (\OT1/cmr/bx/n/12 Y[] \OMS/cmsy/m/n/12 
+  \OT1/cmr/bx/n/12 X[][]\OT1/cmr/m/n/12 )[]\OMS/cmsy/m/n/12 k[] \OT1/cmr/m/n/12
+ + \OML/cmm/m/it/12 [] [] \OMS/cmsy/m/n/12 k[]k  [] [] k\OT1/cmr/m/n/12 (\OT1
+/cmr/bx/n/12 Y[] \OMS/cmsy/m/n/12   \OT1/cmr/bx/n/12 X[][]\OT1/cmr/m/n/12 )\OT1
+/cmr/bx/n/12 T[]\OMS/cmsy/m/n/12 k[] \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 [] [] 
+\OMS/cmsy/m/n/12 k\OT1/cmr/bx/n/12 T[]\OMS/cmsy/m/n/12 k
+ []
 
-[5]
-Overfull \hbox (6.26472pt too wide) in paragraph at lines 360--360
+
+Overfull \hbox (29.74988pt too wide) in paragraph at lines 349--349
 [] 
  []
 
-[6] [7]
 
-Package natbib Warning: Citation `MaMichailidis15' on page 8 undefined on input
- line 423.
+Overfull \hbox (26.03737pt too wide) detected at line 357
+[] \OMS/cmsy/m/n/12 k\OT1/cmr/bx/n/12 d[]\OMS/cmsy/m/n/12 k  \OT1/cmr/m/n/12 3
+ [] \OMS/cmsy/m/n/12 k\OT1/cmr/bx/n/12 d[]\OMS/cmsy/m/n/12 k  ) [] k\OT1/cmr/bx
+/n/12 d[]\OMS/cmsy/m/n/12 k  \OT1/cmr/m/n/12 4 [] \OMS/cmsy/m/n/12 k\OT1/cmr/b
+x/n/12 d[]\OMS/cmsy/m/n/12 k  \OT1/cmr/m/n/12 4[]\OMS/cmsy/m/n/12 k\OT1/cmr/bx
+/n/12 D[]\OMS/cmsy/m/n/12 k[]
+ []
 
-[8] [9]
 
-Package natbib Warning: Citation `LinEtal16' on page 10 undefined on input line
- 580.
+Overfull \hbox (26.35728pt too wide) detected at line 366
+[]\OT1/cmr/m/n/12 (\OT1/cmr/bx/n/12 d[]\OT1/cmr/m/n/12 )[][]\OT1/cmr/bx/n/12 d[
+] \OMS/cmsy/m/n/12  [] []  \OML/cmm/m/it/12  \OMS/cmsy/m/n/12 k\OT1/cmr/bx/n/
+12 D[]\OMS/cmsy/m/n/12 k[]   \OML/cmm/m/it/12 \OMS/cmsy/m/n/12 k\OT1/cmr/bx/n/
+12 D[]\OMS/cmsy/m/n/12 k[]  \OT1/cmr/m/n/12 (\OML/cmm/m/it/12   \OMS/cmsy/m/n/
+12   \OML/cmm/m/it/12 Kq\OT1/cmr/m/n/12 )\OMS/cmsy/m/n/12 k\OT1/cmr/bx/n/12 D[
+]\OMS/cmsy/m/n/12 k[]  []k\OT1/cmr/bx/n/12 D[]\OMS/cmsy/m/n/12 k[]
+ []
+
+[5] [6]
+Overfull \hbox (39.35938pt too wide) in paragraph at lines 468--470
+[]\OT1/cmr/m/it/12 Part II. \OT1/cmr/m/n/12 Proof of Thm 2 in 15-656 fol-lows. 
+We only need a new bound for $\OML/cmm/m/it/12 Var\OT1/cmr/m/n/12 (\OT1/cmr/bx/
+n/12 Y[]\OMS/cmsy/m/n/12 j\OT1/cmr/bx/n/12 Y[]\OML/cmm/m/it/12 ; \OT1/cmr/bx/n/
+12 X[]\OML/cmm/m/it/12 ; []\OT1/cmr/m/n/12 )$.
+ []
 
 
-Package natbib Warning: Citation `LinEDtal16' on page 10 undefined on input lin
-e 606.
+Overfull \hbox (12.01698pt too wide) in paragraph at lines 515--517
+[]\OT1/cmr/m/it/12 with prob-a-bil-ity $\OMS/cmsy/m/n/12  \OT1/cmr/m/n/12 1 \O
+MS/cmsy/m/n/12   \OT1/cmr/m/n/12 1\OML/cmm/m/it/12 =p[] \OMS/cmsy/m/n/12   \OT1
+/cmr/m/n/12 6\OML/cmm/m/it/12 c[] []\OT1/cmr/m/n/12 [\OMS/cmsy/m/n/12  \OT1/cmr
+/m/n/12 (\OML/cmm/m/it/12 c[] \OMS/cmsy/m/n/12   \OT1/cmr/m/n/12 1) [](\OML/cmm
+/m/it/12 pq\OT1/cmr/m/n/12 )] \OMS/cmsy/m/n/12   \OT1/cmr/m/n/12 6\OML/cmm/m/it
+/12 c[] []\OT1/cmr/m/n/12 [\OMS/cmsy/m/n/12  \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 
+c[] \OMS/cmsy/m/n/12   \OT1/cmr/m/n/12 1) [](\OML/cmm/m/it/12 pq\OT1/cmr/m/n/12
+ )]\OML/cmm/m/it/12 ; c[] >
+ []
 
-[10] [11]
+[7] [8] [9] [10] [11] [12]
+Overfull \hbox (2.49431pt too wide) in paragraph at lines 976--976
+[] 
+ []
 
-Package natbib Warning: Citation `RavikumarEtal11' on page 12 undefined on inpu
-t line 665.
-
-[12] [13] (first-draft.bbl
-
-Package natbib Warning: Empty `thebibliography' environment on input line 3.
-
-)
-
-Package natbib Warning: There were undefined citations.
-
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 862.
-[14]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 862.
+[13] (first-draft.bbl)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1007.
+ [14]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1007.
  (first-draft.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 862.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 862.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1007.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1007.
+
 Package rerunfilecheck Info: File `first-draft.out' has not changed.
-(rerunfilecheck)             Checksum: DD91F844EC6A9A65D036FBD43C0B1B47;229.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 862.
+(rerunfilecheck)             Checksum: B4EFB294CC7B38986BA4B89F6D788FF4;229.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1007.
  ) 
 Here is how much of TeX's memory you used:
- 8701 strings out of 493333
- 126894 string characters out of 3137901
- 227697 words of memory out of 3000000
- 12028 multiletter control sequences out of 15000+200000
- 14212 words of font info for 52 fonts, out of 3000000 for 9000
+ 8403 strings out of 493333
+ 122196 string characters out of 3137901
+ 222039 words of memory out of 3000000
+ 11749 multiletter control sequences out of 15000+200000
+ 15264 words of font info for 57 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,16n,38p,1608b,484s stack positions out of 5000i,500n,10000p,200000b,50000s
-<D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmbx10.pfb><D:
-/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Stud
-y/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmbx8.pfb><D:/Study/LaTe
-X/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/Study/LaTeX/Mik
-TeX 2.9.6161/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><D:/Study/LaTeX/MikT
-eX 2.9.6161/fonts/type1/public/amsfonts/cm/cmmi10.pfb><D:/Study/LaTeX/MikTeX 2.
-9.6161/fonts/type1/public/amsfonts/cm/cmmi6.pfb><D:/Study/LaTeX/MikTeX 2.9.6161
-/fonts/type1/public/amsfonts/cm/cmmi8.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts
-/type1/public/amsfonts/cm/cmmib10.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/typ
-e1/public/amsfonts/cmextra/cmmib8.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/typ
-e1/public/amsfonts/cm/cmr10.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/pub
-lic/amsfonts/cm/cmr12.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/am
-sfonts/cm/cmr17.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts
-/cm/cmr6.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmr
-8.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmsy10.pfb
-><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmsy6.pfb><D:/S
-tudy/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmsy8.pfb><D:/Study/L
-aTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmti10.pfb><D:/Study/LaTeX/
-MikTeX 2.9.6161/fonts/type1/public/amsfonts/symbols/msam10.pfb><D:/Study/LaTeX/
-MikTeX 2.9.6161/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on first-draft.pdf (14 pages, 311875 bytes).
+ 36i,17n,38p,1608b,494s stack positions out of 5000i,500n,10000p,200000b,50000s
+<D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:
+/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmbx8.pfb><D:/Study
+/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/Study/LaTe
+X/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><D:/Study/LaTeX
+/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmmi12.pfb><D:/Study/LaTeX/MikT
+eX 2.9.6161/fonts/type1/public/amsfonts/cm/cmmi6.pfb><D:/Study/LaTeX/MikTeX 2.9
+.6161/fonts/type1/public/amsfonts/cm/cmmi8.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/
+fonts/type1/public/amsfonts/cm/cmmib10.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/font
+s/type1/public/amsfonts/cmextra/cmmib8.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/font
+s/type1/public/amsfonts/cm/cmr12.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type
+1/public/amsfonts/cm/cmr17.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/publ
+ic/amsfonts/cm/cmr6.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsf
+onts/cm/cmr8.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm
+/cmsy10.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmsy
+6.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+<D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmti12.pfb><D:/S
+tudy/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/symbols/msam10.pfb><D:/S
+tudy/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on first-draft.pdf (14 pages, 299850 bytes).
 PDF statistics:
- 258 PDF objects out of 1000 (max. 8388607)
- 64 named destinations out of 1000 (max. 500000)
+ 284 PDF objects out of 1000 (max. 8388607)
+ 75 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
