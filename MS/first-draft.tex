@@ -653,7 +653,7 @@ with probability $\geq 1 - 6c_1 \exp [-(c_2^2-1) \log(pq)]$ by applying Lemma~\r
 
 Finally for $\bfW_3$, we apply Lemma 8 of \cite{RavikumarEtal11} on the (sub-gaussian) design matrix $\bfX$ to obtain that for sample size
 $$
-n \geq 512 ( 1 + 4 \Lambda_{\max} (\Sigma_x^k))^4 \max_j (\sigma_{x,jj}^k )^4 \log (4p^{\tau_1})
+n \geq 512 ( 1 + 4 \Lambda_{\max} (\Sigma_x^k))^4 \max_i (\sigma_{x,ii}^k )^4 \log (4p^{\tau_1})
 $$
 %
 we get that with probability $ \geq 1 - 1/p^{\tau_1-2}, \tau_1 > 2$,
@@ -894,7 +894,17 @@ In this setup, define the desparsified estimate of $\bfb_i^k$ as
 for $k = 1,2$, where $t_i^k = ( \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k )^T \bfX_{-i}^k/n$. Then we have the asymptotic joint distribution of a scaled version of the debiased coefficients for the $i\Th$ predictor effect.
 
 \begin{Theorem}\label{Thm:ThmTesting}
-Define $\widehat s_i^k = \sqrt{\| \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k \|^2/n}$, and $m_i^k = \sqrt n t_i^k / \widehat s_i^k$. Then for the debiased estimators in \eqref{eqn:DebiasedBeta} we have
+Define $\widehat s_i^k = \sqrt{\| \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k \|^2/n}$, and $m_i^k = \sqrt n t_i^k / \widehat s_i^k$. Assume the following:
+
+\noindent {\bf (C1)} For the X-neighborhood estimators we have $\| \widehat \bfzeta^k - \bfzeta_0^k \|_1 \leq v_\zeta$.
+
+\noindent {\bf (C2)} The precision matrix estimators satisfy
+%
+$$
+\left\| \widehat (\Omega_y^k)^{1/2} - (\Omega_y^k)^{1/2} \right\|_\infty \leq v_\Omega
+$$
+%
+Then for the debiased estimators in \eqref{eqn:DebiasedBeta} we have
 %
 \begin{align}\label{eqn:ThmTestingEqn}
 \begin{bmatrix}
@@ -926,7 +936,7 @@ Let us define the following:
 \bfM_i &= \diag(m^1_i, m^2_i)\\
 \widehat \bfC_i &= \diag(\widehat \bfc^1_i, \widehat \bfc^2_i)\\
 \widehat \bfD_i &= \diag(\widehat \bfb^1_i, \widehat \bfb^2_i)\\
-\bfD_i &= \diag(\bfb^1_i, \bfb^2_i)\\
+\bfD_i &= \diag(\bfb^1_{0,i}, \bfb^2_{0,i})\\
 \bfR_i^k &= \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k; k = 1,2
 \end{align*}
 %
@@ -944,8 +954,8 @@ We now decompose $\widehat \bfE^k:$
 %
 \begin{align*}
 \widehat \bfE^k &= \bfY^k - \bfX^k \widehat \bfB^k \\
-&= \bfE^k + \bfX^k (\bfB^k - \widehat \bfB^k)\\
-&= \bfE^k + \bfX_i^k (\bfb_i^k - \widehat \bfb_i^k) + \bfX_{-i}^k (\bfB_{-i}^k - \widehat \bfB_{-i}^k)
+&= \bfE^k + \bfX^k (\bfB_0^k - \widehat \bfB^k)\\
+&= \bfE^k + \bfX_i^k (\bfb_{0,i}^k - \widehat \bfb_i^k) + \bfX_{-i}^k (\bfB_{0,-i}^k - \widehat \bfB_{-i}^k)
 \end{align*}
 %
 Putting them back in \eqref{eqn:ThmTestingProofeq1} and using $t^k = (\bfR^k)^T \bfX^k/n$,
@@ -959,8 +969,8 @@ Putting them back in \eqref{eqn:ThmTestingProofeq1} and using $t^k = (\bfR^k)^T 
 \bfM_i (\bfD_i - \widehat \bfD_i )^T +
 \frac{1}{\sqrt n}
 \begin{bmatrix}
-\frac{1}{\widehat s^1_i} (\bfR^1_i)^T \bfX_{-i}^1 (\bfB_{-i}^1 - \widehat \bfB_{-i}^1) \\
-\frac{1}{\widehat s^2_i} (\bfR^2_i)^T \bfX_{-i}^2 (\bfB_{-i}^2 - \widehat \bfB_{-i}^2)
+\frac{1}{\widehat s^1_i} (\bfR^1_i)^T \bfX_{-i}^1 (\bfB_{0,-i}^1 - \widehat \bfB_{-i}^1) \\
+\frac{1}{\widehat s^2_i} (\bfR^2_i)^T \bfX_{-i}^2 (\bfB_{0,-i}^2 - \widehat \bfB_{-i}^2)
 \end{bmatrix}\\
 \Rightarrow
 \bfM_i ( \widehat \bfC_i - \bfD_i)^T &= \frac{1}{\sqrt n}
@@ -970,8 +980,8 @@ Putting them back in \eqref{eqn:ThmTestingProofeq1} and using $t^k = (\bfR^k)^T 
 \end{bmatrix} +
 \frac{1}{\sqrt n}
 \begin{bmatrix}
-\frac{1}{\widehat s^1_i} (\bfR^1_i)^T \bfX_{-i}^1 (\bfB_{-i}^1 - \widehat \bfB_{-i}^1) \\
-\frac{1}{\widehat s^2_i} (\bfR^2_i)^T \bfX_{-i}^2 (\bfB_{-i}^2 - \widehat \bfB_{-i}^2)
+\frac{1}{\widehat s^1_i} (\bfR^1_i)^T \bfX_{-i}^1 (\bfB_{0,-i}^1 - \widehat \bfB_{-i}^1) \\
+\frac{1}{\widehat s^2_i} (\bfR^2_i)^T \bfX_{-i}^2 (\bfB_{0,-i}^2 - \widehat \bfB_{-i}^2)
 \end{bmatrix}
 \end{align}
 
@@ -981,25 +991,81 @@ At this point, to prove \eqref{eqn:ThmTestingEqn}, it is enough to show the foll
 \frac{1}{\sqrt n \widehat s_i}  \widehat \Omega_y^{1/2} \bfE^T \bfR_i \sim
 \cN_q ({\bf 0}, \bfI) + \bfS_{1n}; \quad 
 \| \bfS_{1n} \|_\infty \leq {\colrbf tbd} \label{eqn:ThmTestingProofeq3}\\
-\left\| \frac{1}{\sqrt n \widehat s_i} \bfR_i^T \bfX_{-i} (\bfB_{-i} - \widehat \bfB_{-i})
+\left\| \frac{1}{\sqrt n \widehat s_i} \bfR_i^T \bfX_{-i} (\bfB_{0,-i} - \widehat \bfB_{-i})
 \widehat \Omega_y^{1/2} \right\|_\infty \leq {\colrbf tbd} \label{eqn:ThmTestingProofeq4}
 \end{align}
 %
 dropping $k$ in the superscripts. To show \eqref{eqn:ThmTestingProofeq3} we have
 %
-$$
+\begin{align}\label{eqn:ThmTestingProofeq3}
 \frac{1}{\sqrt n \widehat s_i}  \widehat \Omega_y^{1/2} \bfE^T \bfR_i =
 \frac{1}{\sqrt n \widehat s_i}  (\widehat \Omega_y^{1/2} - \Omega_y^{1/2}) \bfE^T \bfR_i +
 \frac{1}{\sqrt n \widehat s_i}  \Omega_y^{-1/2} \bfE^T \bfR_i
+\end{align}
+%
+The second summand is distributed as $\cN_q ({\bf 0}, \bfI)$. For the first summand,
+%
+\begin{align}\label{eqn:ThmTestingProofeq31}
+\frac{1}{\sqrt n}  \left\| (\widehat \Omega_y^{1/2} - \Omega_y^{1/2}) \bfE^T \bfR_i \right\|_\infty & \leq
+\frac{1}{\sqrt n}  \left\| \widehat \Omega_y^{1/2} - \Omega_y^{1/2} \right\|_\infty  \left\| \bfE^T \bfR_i \right\|_\infty  \notag\\
+& \leq \sqrt n v_\Omega \frac{1}{n} \left[ \| \bfE^T (\bfX_i -  \bfX_{-i} \bfzeta_i ) \|_\infty + \| \bfE^T \bfX_{-i} (\widehat \bfzeta_i - \bfzeta_{0,i} ) \|_\infty \right] \notag\\
+& \leq \sqrt n v_\Omega \left[ \frac{1}{n} \| \bfE^T (\bfX_i -  \bfX_{-i} \bfzeta_i ) \|_\infty + 
+\frac{v_\zeta^2}{n} \| \bfE^T \bfX_{-i} \|_\infty \right]
+\end{align}
+%
+Applying Lemma~\ref{lemma:ErrorRElemma2} twice we have for $n \succsim \log(pq)$,
+%
+\begin{align}
+\frac{1}{n} \| \bfE^T (\bfX_i -  \bfX_{-i} \bfzeta_i ) \|_\infty & \leq 
+c_7 [ \sigma_{x,i,-i} \Lambda_{\max} (\Sigma_e) ]^{1/2} \sqrt{\frac{ \log q}{n}}\label{eqn:ThmTestingProofeq32}\\
+\frac{1}{n} \| \bfE^T \bfX_{-i} \|_\infty  & \leq 
+c_9 [ \Lambda_{\max} (\Sigma_{x,-i}) \Lambda_{\max} (\Sigma_e) ]^{1/2} \sqrt{\frac{ \log((p-1)q)}{n}}\label{eqn:ThmTestingProofeq33}
+\end{align}
+%
+with probability $\geq 1 - 6c_6 \exp [-(c_7^2-1) \log q] - 6c_8 \exp [-(c_9^2-1) \log((p-1)q)]$ for some $c_6, c_8 >0, c_7, c_9 > 1$.
+
+On the other hand
+%
+\begin{align}\label{eqn:ThmTestingProofeq34}
+s_i := \frac{1}{n} \left\| \bfX_i - \bfX_{-i} \widehat \bfzeta_i \right\|^2 & \leq 
+\widehat s_i + \frac{1}{n} \left\| \bfX_{-i} (\widehat \bfzeta_i - \bfzeta_{0,i} ) \right\|^2 \notag\\
+& \leq s_i + v_\zeta^2 \left[ \sqrt{ \frac{ \log 4 + \tau_{1 i} \log (p-1)}{c_{x i} n}} + \max_{i' \neq i} \sigma_{x,i'i'} \right]
+\end{align}
+%
+with probability $ \geq 1 - 1/p^{\tau_{1 i}-2}, \tau_{1 i} > 2$, and
+%
+\begin{align}\label{eqn:ThmTestingProofeq5}
+n \geq 512 ( 1 + 4 \Lambda_{\max} (\Sigma_{x,-i}^k))^4 \max_{i' \neq i} (\sigma_{x,i'i'}^k )^4 \log (4(p-1)^{\tau_{1 i}})
+\end{align}
+%
+where
+$$
+c_x = \left[ 128 ( 1 + 4 \Lambda_{\max} (\Sigma_{x,-i})  )^2 \max_{i' \neq i} (\sigma_{x,i'i'}^k )^2 \right]^{-1}
 $$
 %
-The second summand is distributed as $\cN_q ({\bf 0}, \bfI)$. For the first summand we apply cauchy-schwarz inequality
+by applying Lemma 8 of \cite{RavikumarEtal11} on $\bfX_{-i}^T \bfX_{-i}/n$.
+
+Denote the second term in the right hand side of \eqref{eqn:ThmTestingProofeq34} by $V_i$. Then, for $n$ satisfying \eqref{eqn:ThmTestingProofeq5} and $s_i > V_i$, we get the bound:
+%
+\begin{align}\label{eqn:ThmTestingProofeq6}
+\frac{1}{\widehat s_i} \leq \frac{1}{s_i - V_i}
+\end{align}
+%
+Combining \eqref{eqn:ThmTestingProofeq31}, \eqref{eqn:ThmTestingProofeq32}, \eqref{eqn:ThmTestingProofeq33} and \eqref{eqn:ThmTestingProofeq6} gives the upper bound for the first summand of \eqref{eqn:ThmTestingProofeq3} that holds with probability larger than or equal to
 %
 $$
-\left\| \frac{1}{\sqrt n \widehat s_i}  (\widehat \Omega_y^{1/2} - \Omega_y^{1/2}) \bfE^T \bfR_i \right\| \leq
-\left\| \bfE (\widehat \Omega_y^{1/2} - \Omega_y^{1/2}) \right\| 
+1 - 6c_6 e^{-(c_7^2-1) \log q} - 6c_8 e^{-(c_9^2-1) \log((p-1)q)} - \frac{1}{p^{\tau_{1 i}-2}}
 $$
-%\| 
+%
+for some $c_6, c_8 >0, c_7, c_9 > 1, \tau_{1 i} > 2$.
+
+To prove \eqref{eqn:ThmTestingProofeq4} we have
+%
+$$
+\frac{1}{n} \| \bfR_i^T \bfX_{-i} \|_\infty \leq \frac{1}{n} \| (\bfX_i - \bfX_{-i} \bfzeta_{0,i})^T \bfX_{-i} \|_\infty +
+\frac{1}{n} \| \bfX_{-i}^T \bfX_{-i} ( \widehat \bfzeta_i - \bfzeta_{0,i}) \|_\infty 
+$$
+
 \end{proof}
 \bibliographystyle{apalike}
 %\bibliographystyle{imsart-nameyear}
