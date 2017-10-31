@@ -320,7 +320,7 @@ For $\bfT_j = \bfT_{0,j}$ this reduces to
 \end{align}
 
 %
-with $\widehat \bfT_j^k := \bfT_{0,j}^k + \bfd_{j}^k$ etc. For the $k^\text{th}$ summand in the first term on the right hand side, since $d_{jj}^k = 0$, $\widehat \bfE^k \bfd_j^k = \widehat \bfE_{-j}^k \bfd_{-j}^k$. Thus by cauchy-schwarz inequality
+with $\widehat \bfT_j^k := \bfT_{0,j}^k + \bfd_{j}^k$ etc. For the $k^\text{th}$ summand in the first term on the right hand side, since $d_{jj}^k = 0$, $\widehat \bfE^k \bfd_j^k = \widehat \bfE_{-j}^k \bfd_{-j}^k$. Thus by Cauchy-Schwarz inequality
 %
 $$
 \left| (\bfd_j^k)^T \widehat \bfS^k \bfT_{0,j}^k \right| \leq
@@ -472,7 +472,7 @@ $$ Var (\bfY_i^k | \bfY_{-i}^k, \bfX^k, \widehat \bfB_i^k) = \BE (\widehat \bfep
 \leq \left( \frac{1}{d_0} + \frac{c(v_\beta)}{n} \right)^2
 $$
 %
-applying cauchy-schwarz inequality followed by assumption (A2). Now Replace $1/\sqrt{n d_0}$ in choice of $\lambda, \alpha_n$ in Thm 2 statement with $1/\sqrt{n} (\sqrt{1/d_0} + \sqrt{c(v_\beta)/ n})$.
+applying Cauchy-Schwarz inequality followed by assumption (A2). Now Replace $1/\sqrt{n d_0}$ in choice of $\lambda, \alpha_n$ in Thm 2 statement with $1/\sqrt{n} (\sqrt{1/d_0} + \sqrt{c(v_\beta)/ n})$.
 
 \end{proof}
 
@@ -516,12 +516,16 @@ with probability $\geq 1 - 1/p^{\tau_1-2} - 6c_1 \exp [-(c_2^2-1) \log(pq)] - 6c
 %
 \begin{align*}
 \BQ \left(v_\beta, \Sigma_x^k, \Sigma_y^k \right) &=
-2 v_\beta^2 \left[ \sqrt{ \frac{ \log 4 + \tau_1 \log p}{c_x^k n}} + \max_i \sigma_{x,ii}^k \right] +\\
-& 4 v_\beta c_2 [ \Lambda_{\max} (\Sigma_x^k) \Lambda_{\max} (\Sigma_y^k) ]^{1/2} \sqrt{\frac{ \log(pq)}{n}} +\\
-& c_5 \left[ \Lambda_{\max} ( \Sigma_{y,-j}^k) ( \sigma_{y,jj}^k +
-(\bftheta_{0,j}^k)^T \Sigma_{y,-j}^k \bftheta_{0,j}^k - 2 (\bfsigma_{y,j,-j}^k)^T \bftheta_{0,j}^k ) \right]^{1/2} \sqrt{\frac{\log(q-1)}{n}}
+2 v_\beta^2 V_x^k + 4 v_\beta c_2 [ \Lambda_{\max} (\Sigma_x^k) \Lambda_{\max} (\Sigma_y^k) ]^{1/2} \sqrt{\frac{ \log(pq)}{n}} +\\
+& c_5 \left[ \Lambda_{\max} ( \Sigma_{y,-j}^k) \sigma_{y,j,-j}^k \right]^{1/2} \sqrt{\frac{\log q}{n}}
 \end{align*}
 %
+with $\sigma_{y,j,-j}^k = \BV( E_j - \BE_{-j} \bftheta_{0,j})$, and 
+%
+$$
+V_x^k = \sqrt{ \frac{ \log 4 + \tau_1 \log p}{c_x^k n}} + \max_i \sigma_{x,ii}^k; \quad
+c_x^k = \left[ 128 ( 1 + 4 \Lambda_{\max} (\Sigma_x)  )^2 \max_i (\sigma_{x,ii})^2 \right]^{-1}
+$$
 \end{enumerate} 
 \end{Proposition}
 
@@ -620,8 +624,7 @@ $$
 For node $j$ in the $y$-network, $\BE_{-j}$ and $E_j - \BE_{-j} \bftheta_{0,j}$ are the neighborhood regression coefficients and residuals, respectively. Thus they are orthogonal, so we can apply Lemma \ref{lemma:ErrorRElemma2} on $\bfE_{-j}$ and $\bfE_j - \bfE_{-j} \bftheta_{0,j}$ to obtain that for $n \succsim \log (q-1)$,
 %
 \begin{align}\label{eqn:ErrorRElemma2eqn5}
-\| \bfW_1 \|_\infty & \leq c_5 \left[ \Lambda_{\max} ( \Sigma_{y,-j}) ( \sigma_{y,jj} + 
-\bftheta_{0,j}^T \Sigma_{y,-j} \bftheta_{0,j} - 2 \bfsigma_{y,j,-j}^T \bftheta_{0,j} ) \right]^{1/2} \sqrt{\frac{\log(q-1)}{n}}
+\| \bfW_1 \|_\infty & \leq c_5 \left[ \Lambda_{\max} ( \Sigma_{y,-j}) \sigma_{y,j,-j} \right]^{1/2} \sqrt{\frac{\log(q-1)}{n}}
 \end{align}
 %
 holds with probability $\geq 1 - 6c_4 \exp [-(c_5^2-1) \log(pq)]$ for some $c_4 > 0, c_5 > 1$.
@@ -652,14 +655,15 @@ so that for $n \succsim \log (pq)$,
 with probability $\geq 1 - 6c_1 \exp [-(c_2^2-1) \log(pq)]$ by applying Lemma~\ref{lemma:ErrorRElemma2} and assumption (T1).
 
 Finally for $\bfW_3$, we apply Lemma 8 of \cite{RavikumarEtal11} on the (sub-gaussian) design matrix $\bfX$ to obtain that for sample size
-$$
+%
+\begin{align}\label{eqn:ErrorRElemma2eqn7}
 n \geq 512 ( 1 + 4 \Lambda_{\max} (\Sigma_x^k))^4 \max_i (\sigma_{x,ii}^k )^4 \log (4p^{\tau_1})
-$$
+\end{align}
 %
 we get that with probability $ \geq 1 - 1/p^{\tau_1-2}, \tau_1 > 2$,
 %
 $$
-\left\| \frac{\bfX^T \bfX}{n} \right\|_\infty \leq \sqrt{ \frac{ \log 4 + \tau_1 \log p}{c_x n}} + \max_i \sigma_{x,ii}; \quad
+\left\| \frac{\bfX^T \bfX}{n} \right\|_\infty \leq \sqrt{ \frac{ \log 4 + \tau_1 \log p}{c_x n}} + \max_i \sigma_{x,ii} = V_x; \quad
 c_x = \left[ 128 ( 1 + 4 \Lambda_{\max} (\Sigma_x)  )^2 \max_i (\sigma_{x,ii})^2 \right]^{-1}
 $$
 %
@@ -667,7 +671,7 @@ Thus with the same probability,
 %
 \begin{align}\label{eqn:ErrorRElemma2eqn4}
 \| \bfW_4 \|_\infty \leq \left\| \frac{\bfX^T \bfX}{n} \right\|_\infty \| \widehat \bfB - \bfB_0 \|_1^2 \| \bfT_{0,j} \|_1 
-\leq 2 v_\beta^2 \left[ \sqrt{ \frac{ \log 4 + \tau_1 \log p}{c_x n}} + \max_i \sigma_{x,ii} \right]
+\leq 2 v_\beta^2 V_x
 \end{align}
 %
 We now bound the right hand side of (\ref{eqn:ErrorRElemma2maineqn}) using (\ref{eqn:ErrorRElemma2eqn5}), (\ref{eqn:ErrorRElemma2eqn6}) and (\ref{eqn:ErrorRElemma2eqn4}) to complete the proof, with the leading term of the sample size requirement being $n \succsim \log(pq)$.
@@ -901,10 +905,12 @@ Define $\widehat s_i^k = \sqrt{\| \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k \|
 \noindent {\bf (C2)} The precision matrix estimators satisfy
 %
 $$
-\left\| \widehat (\Omega_y^k)^{1/2} - (\Omega_y^k)^{1/2} \right\|_\infty \leq v_\Omega
+\left\| (\widehat \Omega_y^k)^{1/2} - (\widehat \Omega_y^k)^{1/2} \right\|_\infty \leq v_\Omega
 $$
 %
-Then for the debiased estimators in \eqref{eqn:DebiasedBeta} we have
+\noindent{\bf(C3)} $\| \widehat \bfB^k - \bfB^k_0 \|_1 \leq v_\beta$, where $v_\beta = { \colrbf \eta_\beta \sqrt{\frac{\log (pq)}{n}}}$ with $\eta_\beta$ being a quantity depending on $\cB$ only.
+
+Then for the debiased estimators in \eqref{eqn:DebiasedBeta} and sample size $n \succsim \log (pq)$ we have
 %
 \begin{align}\label{eqn:ThmTestingEqn}
 \begin{bmatrix}
@@ -916,16 +922,9 @@ Then for the debiased estimators in \eqref{eqn:DebiasedBeta} we have
 m_i^1 (\widehat \bfc_i^1 - \bfb_i^1) &\\
 &  m_i^2 (\widehat \bfc_i^2 - \bfb_i^2)
 \end{bmatrix}
-\sim \cN_{2q} ({\bf 0}, \bfI) + \bfS_n
+\sim \cN_{2q} ({\bf 0}, \bfI) + o_P(1)
 \end{align}
 %
-where
-%
-$$
-\| \bfS_n \|_\infty \leq {\colrbf tbd}
-$$
-%
-with probability $\geq {\colrbf tbd}$.
 \end{Theorem}
 %
 
@@ -933,6 +932,7 @@ with probability $\geq {\colrbf tbd}$.
 Let us define the following:
 %
 \begin{align*}
+\widehat \Omega_y &= \diag(\widehat \Omega_y^1, \widehat \Omega_y^2)\\
 \bfM_i &= \diag(m^1_i, m^2_i)\\
 \widehat \bfC_i &= \diag(\widehat \bfc^1_i, \widehat \bfc^2_i)\\
 \widehat \bfD_i &= \diag(\widehat \bfb^1_i, \widehat \bfb^2_i)\\
@@ -960,7 +960,7 @@ We now decompose $\widehat \bfE^k:$
 %
 Putting them back in \eqref{eqn:ThmTestingProofeq1} and using $t^k = (\bfR^k)^T \bfX^k/n$,
 %
-\begin{align}\label{eqn:ThmTestingProofeq2}
+\begin{align}
 \bfM_i ( \widehat \bfC_i - \widehat \bfD_i)^T &= \frac{1}{\sqrt n}
 \begin{bmatrix}
 \frac{1}{\widehat s^1_i} (\bfR^1_i)^T \bfE^1 \\
@@ -971,37 +971,70 @@ Putting them back in \eqref{eqn:ThmTestingProofeq1} and using $t^k = (\bfR^k)^T 
 \begin{bmatrix}
 \frac{1}{\widehat s^1_i} (\bfR^1_i)^T \bfX_{-i}^1 (\bfB_{0,-i}^1 - \widehat \bfB_{-i}^1) \\
 \frac{1}{\widehat s^2_i} (\bfR^2_i)^T \bfX_{-i}^2 (\bfB_{0,-i}^2 - \widehat \bfB_{-i}^2)
-\end{bmatrix}\\
+\end{bmatrix} \notag\\
 \Rightarrow
-\bfM_i ( \widehat \bfC_i - \bfD_i)^T &= \frac{1}{\sqrt n}
+\widehat \Omega_y^{1/2} \bfM_i ( \widehat \bfC_i - \bfD_i)^T &=
+\frac{\widehat \Omega_y^{1/2}}{\sqrt n}
 \begin{bmatrix}
 \frac{1}{\widehat s^1} (\bfR^1_i)^T \bfE^1 \\
 \frac{1}{\widehat s^2} (\bfR^2_i)^T \bfE^2
 \end{bmatrix} +
-\frac{1}{\sqrt n}
+\frac{\widehat \Omega_y^{1/2}}{\sqrt n}
 \begin{bmatrix}
 \frac{1}{\widehat s^1_i} (\bfR^1_i)^T \bfX_{-i}^1 (\bfB_{0,-i}^1 - \widehat \bfB_{-i}^1) \\
 \frac{1}{\widehat s^2_i} (\bfR^2_i)^T \bfX_{-i}^2 (\bfB_{0,-i}^2 - \widehat \bfB_{-i}^2)
-\end{bmatrix}
+\end{bmatrix}\label{eqn:ThmTestingProofeq2}
 \end{align}
 
-At this point, to prove \eqref{eqn:ThmTestingEqn}, it is enough to show the following:
+At this point, we drop $k$ in the subscripts, and prove the following:
+
+\begin{Lemma}\label{Lemma:ThmTestingLemma}
+Given conditions (C1) and (C2), the following holds for $n \succsim \log (pq)$:
 %
-\begin{align}
+$$
 \frac{1}{\sqrt n \widehat s_i}  \widehat \Omega_y^{1/2} \bfE^T \bfR_i \sim
-\cN_q ({\bf 0}, \bfI) + \bfS_{1n}; \quad 
-\| \bfS_{1n} \|_\infty \leq {\colrbf tbd} \label{eqn:ThmTestingProofeq3}\\
-\left\| \frac{1}{\sqrt n \widehat s_i} \bfR_i^T \bfX_{-i} (\bfB_{0,-i} - \widehat \bfB_{-i})
-\widehat \Omega_y^{1/2} \right\|_\infty \leq {\colrbf tbd} \label{eqn:ThmTestingProofeq4}
-\end{align}
-%
-dropping $k$ in the superscripts. To show \eqref{eqn:ThmTestingProofeq3} we have
+\cN_q ({\bf 0}, \bfI) + \bfS_{1n};
+$$
 %
 \begin{align}\label{eqn:ThmTestingProofeq3}
+\| \bfS_{1n} \|_\infty & \leq 
+\frac{v_\Omega \sqrt{\Lambda_{\max} (\Sigma_e) } }{\sigma_{x,i,-i} - n^{-1/2} - v_\zeta^2 V_i}
+\left[ c_7 \sqrt{ \sigma_{x,i,-i} \log q} +
+c_9  \sqrt{\Lambda_{\max} (\Sigma_{x,-i}) \log (p q)} \right]
+\end{align}
+%
+with probability larger than or equal to
+%
+\begin{align}\label{eqn:ThmTestingProofeq30}
+1 - 6c_6 e^{-(c_7^2-1) \log q} - 6c_8 e^{-(c_9^2-1) \log(p q)} - \frac{1}{p^{\tau_1-2}} - 
+\frac{\kappa_i}{\sqrt n}
+\end{align}
+%
+for some $c_6, c_8 >0, c_7, c_9 > 1$, and $\kappa_i := \BV [(X_i - \BX_{-i} \bfzeta_{0,-i})^2]$.
+%
+Additionally, given condition (C3)
+%
+\begin{align}\label{eqn:ThmTestingProofeq4}
+\left\| \frac{1}{\sqrt n \widehat s_i} \bfR_i^T \bfX_{-i} (\bfB_{0,-i} - \widehat \bfB_{-i})
+\widehat \Omega_y^{1/2} \right\|_\infty & \leq
+\frac{v_\beta ( \Lambda_{\min} (\Sigma_y)^{1/2} + v_\Omega)}{\sigma_{x,i,-i} - n^{-1/2} - v_\zeta^2 V_i} \times \notag\\
+& \left[ c_{11} \sqrt{ (\sigma_{x,i,-i} \Lambda_{\max} (\Sigma_{x, -i}) ) \log p} + \sqrt n v_\zeta V_x \right]
+\end{align}
+%
+with probability $\geq 1 - 6c_{10} \exp [-(c_{11}^2-1) \log (p-1)] - (1/p)^{\tau_{1 i}-2} - \kappa_i/ \sqrt n$ for some $c_{10} >0, c_{11} > 1$.
+\end{Lemma}
+
+Given Lemma~\ref{Lemma:ThmTestingLemma}, the first and second summands on the right hand side of \eqref{eqn:ThmTestingProofeq2} are bounded above by applying each of \eqref{eqn:ThmTestingProofeq3} and \eqref{eqn:ThmTestingProofeq4} twice, respectively. This completes our proof.
+\end{proof}
+
+\begin{proof}[Proof of Lemma~\ref{Lemma:ThmTestingLemma}]
+To show \eqref{eqn:ThmTestingProofeq3} we have
+%
+\begin{align*}
 \frac{1}{\sqrt n \widehat s_i}  \widehat \Omega_y^{1/2} \bfE^T \bfR_i =
 \frac{1}{\sqrt n \widehat s_i}  (\widehat \Omega_y^{1/2} - \Omega_y^{1/2}) \bfE^T \bfR_i +
 \frac{1}{\sqrt n \widehat s_i}  \Omega_y^{-1/2} \bfE^T \bfR_i
-\end{align}
+\end{align*}
 %
 The second summand is distributed as $\cN_q ({\bf 0}, \bfI)$. For the first summand,
 %
@@ -1026,47 +1059,59 @@ with probability $\geq 1 - 6c_6 \exp [-(c_7^2-1) \log q] - 6c_8 \exp [-(c_9^2-1)
 
 On the other hand
 %
+\begin{align*}
+s_i := \frac{1}{n} \left\| \bfX_i - \bfX_{-i}  \bfzeta_i \right\|^2 & \leq 
+\widehat s_i + \frac{1}{n} \left\| \bfX_{-i} (\widehat \bfzeta_i - \bfzeta_{0,i} ) \right\|^2
+\leq \widehat s_i + \| \widehat \bfzeta_i - \bfzeta_{0,i} \|_1^2 \left\| \frac{1}{n} \bfX_{-i}^T \bfX_{-i} \right\|_\infty
+\end{align*}
+%
+By applying Lemma 8 of \cite{RavikumarEtal11},
+%
 \begin{align}\label{eqn:ThmTestingProofeq34}
-s_i := \frac{1}{n} \left\| \bfX_i - \bfX_{-i} \widehat \bfzeta_i \right\|^2 & \leq 
-\widehat s_i + \frac{1}{n} \left\| \bfX_{-i} (\widehat \bfzeta_i - \bfzeta_{0,i} ) \right\|^2 \notag\\
-& \leq s_i + v_\zeta^2 \left[ \sqrt{ \frac{ \log 4 + \tau_{1 i} \log (p-1)}{c_{x i} n}} + \max_{i' \neq i} \sigma_{x,i'i'} \right]
+\left\| \frac{1}{n} \bfX_{-i}^T \bfX_{-i} \right\|_\infty \leq
+\left\| \frac{1}{n} \bfX^T \bfX \right\|_\infty \leq V_x
 \end{align}
 %
-with probability $ \geq 1 - 1/p^{\tau_{1 i}-2}, \tau_{1 i} > 2$, and
+with probability $ \geq 1 - 1/p^{\tau_1-2}, \tau_1>2$, and
 %
 \begin{align}\label{eqn:ThmTestingProofeq5}
-n \geq 512 ( 1 + 4 \Lambda_{\max} (\Sigma_{x,-i}^k))^4 \max_{i' \neq i} (\sigma_{x,i'i'}^k )^4 \log (4(p-1)^{\tau_{1 i}})
+n \geq 512 ( 1 + 4 \Lambda_{\max} (\Sigma_{x}))^4 \max_i (\sigma_{x,ii} )^4 \log (4p^{\tau_1})
 \end{align}
 %
-where
+On the other hand, by Chebyshev inequality, for any $\epsilon>0$
+%
 $$
-c_x = \left[ 128 ( 1 + 4 \Lambda_{\max} (\Sigma_{x,-i})  )^2 \max_{i' \neq i} (\sigma_{x,i'i'}^k )^2 \right]^{-1}
+P\left( | s_i - \sigma_{x,i,-i}| \geq \epsilon \right) \leq \frac{\BV s_i}{\epsilon^2} =
+\frac{\kappa_i}{n \epsilon^2}
 $$
 %
-by applying Lemma 8 of \cite{RavikumarEtal11} on $\bfX_{-i}^T \bfX_{-i}/n$.
-
-Denote the second term in the right hand side of \eqref{eqn:ThmTestingProofeq34} by $V_i$. Then, for $n$ satisfying \eqref{eqn:ThmTestingProofeq5} and $s_i > V_i$, we get the bound:
+Taking $\epsilon = n^{-1/2}$, we have $s_i \geq \sigma_{x,i,-i} - n^{-1/2}$ with probability $\geq 1 - \kappa_i n^{-1/2}$. Then, for $n$ satisfying \eqref{eqn:ThmTestingProofeq5} and $\sigma_{x,i,-i} - n^{-1/2} > v_\zeta^2 V_x$, we get the bound with the above probability bound:
 %
 \begin{align}\label{eqn:ThmTestingProofeq6}
-\frac{1}{\widehat s_i} \leq \frac{1}{s_i - V_i}
+\frac{1}{\widehat s_i} \leq \frac{1}{\sigma_{x,i,-i} - n^{-1/2} - v_\zeta^2 V_x}
 \end{align}
 %
-Combining \eqref{eqn:ThmTestingProofeq31}, \eqref{eqn:ThmTestingProofeq32}, \eqref{eqn:ThmTestingProofeq33} and \eqref{eqn:ThmTestingProofeq6} gives the upper bound for the first summand of \eqref{eqn:ThmTestingProofeq3} that holds with probability larger than or equal to
-%
-$$
-1 - 6c_6 e^{-(c_7^2-1) \log q} - 6c_8 e^{-(c_9^2-1) \log((p-1)q)} - \frac{1}{p^{\tau_{1 i}-2}}
-$$
-%
-for some $c_6, c_8 >0, c_7, c_9 > 1, \tau_{1 i} > 2$.
+Combining \eqref{eqn:ThmTestingProofeq31}, \eqref{eqn:ThmTestingProofeq32}, \eqref{eqn:ThmTestingProofeq33} and \eqref{eqn:ThmTestingProofeq6} gives the upper bound for the right hand side of \eqref{eqn:ThmTestingProofeq3} with the probability condition \eqref{eqn:ThmTestingProofeq30}.
 
 To prove \eqref{eqn:ThmTestingProofeq4} we have
 %
-$$
-\frac{1}{n} \| \bfR_i^T \bfX_{-i} \|_\infty \leq \frac{1}{n} \| (\bfX_i - \bfX_{-i} \bfzeta_{0,i})^T \bfX_{-i} \|_\infty +
-\frac{1}{n} \| \bfX_{-i}^T \bfX_{-i} ( \widehat \bfzeta_i - \bfzeta_{0,i}) \|_\infty 
-$$
-
+\begin{align}\label{eqn:ThmTestingProofeq41}
+\frac{1}{n} \| \bfR_i^T \bfX_{-i} \|_\infty & \leq
+\frac{1}{n} \| (\bfX_i - \bfX_{-i} \bfzeta_{0,i})^T \bfX_{-i} \|_\infty +
+\frac{1}{n} \| \bfX_{-i}^T \bfX_{-i} ( \widehat \bfzeta_i - \bfzeta_{0,i}) \|_\infty
+\end{align}
+%
+Applying Lemma~\ref{lemma:ErrorRElemma2}, for $n \succsim \log(p-1)$ we have
+%
+%
+\begin{align}
+\frac{1}{n} \| (\bfX_i -  \bfX_{-i} \bfzeta_i )^T \bfX_{-i} \|_\infty \leq 
+c_{11} [ \sigma_{x,i,-i} \Lambda_{\max} (\Sigma_{x, -i}) ]^{1/2} \sqrt{\frac{ \log (p-1)}{n}}
+\end{align}
+%
+with probability $\geq 1 - 6c_{10} \exp [-(c_{11}^2-1) \log (p-1)]$ for some $c_{10} >0, c_{11} > 1$. By \eqref{eqn:ThmTestingProofeq34}, the second term on the right side of \eqref{eqn:ThmTestingProofeq41} is bounded above by $v_\zeta V_x$ with probability $ \geq 1 - 1/p^{\tau_{1 i}-2}$ and $n$ satisfying \eqref{eqn:ThmTestingProofeq5}. The bound of \eqref{eqn:ThmTestingProofeq4} follows by conditions (C2), (C3) and \eqref{eqn:ThmTestingProofeq6}.
 \end{proof}
+
 \bibliographystyle{apalike}
 %\bibliographystyle{imsart-nameyear}
 \bibliography{GGMbib}
