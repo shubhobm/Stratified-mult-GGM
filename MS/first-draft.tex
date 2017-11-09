@@ -12,8 +12,11 @@
 \usepackage[round]{natbib}
 
 % for algorithm
-\usepackage[noend]{algpseudocode}
-\usepackage{algorithm}
+%\usepackage[noend]{algpseudocode}
+%\usepackage{algorithm}
+\theoremstyle{definition}
+\newtheorem{Algorithm}{Algorithm}
+\newtheorem{Example}{Example}[section]
 
 % DON'T change margins - should be 1 inch all around.
 \addtolength{\evensidemargin}{-.5in}
@@ -227,7 +230,253 @@ where $|g_{\max}|$ is the maximum group size.
 %
 %(II) Direction consistency.
 \end{Theorem}
+\begin{Proposition}\label{prop:ErrorRE}
+Consider deterministic $\widehat \cB$ satisfying assumption (T1). Then for sample size $n \succsim \log (pq)$ and $k \in \cI_K$,
 
+\begin{enumerate}
+%\item We have $\| \bfX^k ( \hat \bfB^k - \bfB_0^k ) \|_\infty \leq c( v_\beta)$, where
+%%
+%$$
+%c(v_\beta) =\sqrt n v_\beta \left[ \sqrt{ \frac{ \log 4 + \tau_1 \log p}{c_x^k n}} + \max_j \sigma_{x,jj}^k \right]^{1/2}; \quad
+%c_x^k = \left[ 128 ( 1 + 4 \Lambda_{\max} (\Sigma_x^k)  )^2 \max_j (\sigma_{x,jj}^k)^2 \right]^{-1}
+%$$
+%%
+%with probability $ \geq 1 - 1/p^{\tau_1-2}, \tau_1 > 2$.
+%
+\item $\widehat \bfS^k$ satisfies the RE condition: $ \widehat \bfS^k \sim RE (\psi^k, \phi^k)$, where 
+%
+$$
+\psi^k = \frac{ \Lambda_{\min} (\Sigma_x^k)}{2}; \quad \phi^k = \frac{ \psi^k \log p}{n} + 2 v_\beta c_2 [ \Lambda_{\max} (\Sigma_x^k) \Lambda_{\max} (\Sigma_y^k) ]^{1/2} \sqrt{\frac{ \log(pq)}{n}}
+$$
+%
+with probability $\geq 1 - 6c_1 \exp [-(c_2^2-1) \log(pq)] - 2 \exp (- c_3 n), c_1, c_3 > 0, c_2 > 1$.
+%
+\item The following deviation bound is satisfied for any $j \in \cI_q$
+%
+%$$
+%\left\| \widehat \bfS^k \bfT_{0,j}^k \right\|_\infty \leq 4 v_\beta c_2 [ \Lambda_{\max} (\Sigma_x^k) \Lambda_{\max} (\Sigma_y^k) ]^{1/2} \sqrt{\frac{ \log(pq)}{n}} + 2 \sqrt{ \frac{ \log 4 + \tau_1 \log p}{c_x^k n}} + 2 \max_j \sigma_{x,jj}^k
+%$$
+%
+$$
+\left\|\frac{1}{n} (\widehat \bfE_{-j}^k)^T \widehat \bfE^k \bfT_{0,j}^k \right\|_\infty \leq \BQ \left(v_\beta, \Sigma_x^k, \Sigma_y^k \right)
+$$
+%
+
+with probability $\geq 1 - 1/p^{\tau_1-2} - 6c_1 \exp [-(c_2^2-1) \log(pq)] - 6c_4 \exp [-(c_5^2-1) \log(pq)], c_4 > 0, c_5 > 1$, where
+%
+\begin{align*}
+\BQ \left(v_\beta, \Sigma_x^k, \Sigma_y^k \right) &=
+2 v_\beta^2 V_x^k + 4 v_\beta c_2 [ \Lambda_{\max} (\Sigma_x^k) \Lambda_{\max} (\Sigma_y^k) ]^{1/2} \sqrt{\frac{ \log(pq)}{n}} +\\
+& c_5 \left[ \Lambda_{\max} ( \Sigma_{y,-j}^k) \sigma_{y,j,-j}^k \right]^{1/2} \sqrt{\frac{\log q}{n}}
+\end{align*}
+%
+with $\sigma_{y,j,-j}^k = \BV( E_j - \BE_{-j} \bftheta_{0,j})$, and 
+%
+$$
+V_x^k = \sqrt{ \frac{ \log 4 + \tau_1 \log p}{c_x^k n}} + \max_i \sigma_{x,ii}^k; \quad
+c_x^k = \left[ 128 ( 1 + 4 \Lambda_{\max} (\Sigma_x)  )^2 \max_i (\sigma_{x,ii})^2 \right]^{-1}
+$$
+\end{enumerate} 
+\end{Proposition}
+
+%-----------------------------
+\hrulefill
+%-----------------------------
+
+Now concentrate on the $k$-population estimation problem. We want to obtain
+%
+$$
+\widehat \bfbeta = \argmin_{\bfbeta \in \BR^{pq}} \left\{-2 \bfbeta^T \widehat \bfgamma + \bfbeta^T \widehat \bfGamma \bfbeta + \lambda_n \sum_{g \in \cG} \| \bfbeta^{[g]}  \| \right\}
+$$
+%with
+%$$
+%\bfbeta = \begin{bmatrix}
+%\ve (\bfB^1)\\
+%\vdots\\
+%\ve (\bfB^K)\\
+%\end{bmatrix}; \quad
+%\bfGamma = \begin{bmatrix}
+%I_q \otimes (\bfX^1) TX^1 / n) & &\\
+%& \ddots &\\
+%& & I_q \otimes (\bfX^K)^T X^K / n)
+%\end{bmatrix} 
+%$$
+\begin{Theorem}\label{thm:BetaThm}
+Assume fixed $\cX, \cE$, and deterministic $\widehat \Theta = \{ \widehat \Theta_j \}$. Also for $j \in \cI_q$,
+
+\noindent{\bf(B1)} $\| \widehat \Theta_j - \Theta_{0,j} \|_F \leq v_\Theta \sqrt{\frac{\log q}{n}}$ for some $v_\Theta$ dependent on $\Theta$.
+
+\noindent{\bf(B2)} Denote $\widehat \bfGamma^k = (\widehat \bfT^k)^2 \otimes (\bfX^k)^T \bfX^k/n, \widehat \bfgamma^k = (\widehat \bfT^k)^2 \otimes (\bfX^k)^T \bfY^k/n$. Then the deviation bound holds:
+%
+$$
+\left\| \widehat \bfgamma^k - \widehat \bfGamma^k \bfbeta_0 \right\|_\infty \leq \BR( v_\Theta, \Sigma_x^k, \Sigma_y^k)
+$$
+%
+{\colrbf tbd}
+
+\noindent{\bf(B3)} $\widehat \bfGamma \sim RE(\psi_*, \phi_*)$ with $Kpq \phi_* \leq \psi_*/2$.
+
+Then, given the choice of tuning parameter
+%
+$$
+\lambda \geq 4 \sqrt{pq} \BR_{\max}; \quad \BR_{\max} := \max_{k \in \cI_K} \BR \left(v_\Theta, \Sigma_x^k, \Sigma_y^k \right)
+$$
+%
+the following holds
+%
+\begin{align}
+\| \widehat \bfbeta - \bfbeta_0 \| & \leq 12 \sqrt s_\beta \lambda_n / \psi^* \label{eqn:BetaThmEqn1}\\
+\sum_{g \in \cG} \| \bfbeta^{[g]} - \bfbeta_0^{[g]} \| & \leq 48 s_\beta \lambda_n / \psi^* \label{eqn:BetaThmEqn2}\\
+(\widehat \bfbeta - \bfbeta_0 )^T \widehat \bfGamma (\widehat \bfbeta - \bfbeta_0 ) & \leq
+72 s_\beta \lambda_n^2 / \psi^* \label{eqn:BetaThmEqn3}
+\end{align}
+%
+%Also denote the non-zero support of $\widehat \bfbeta$ by $\widehat \cS_\beta$, i.e. $\widehat \cS_\beta = \{ g: \hat \bfbeta^{[g]} \neq {\bf 0} \}$. Then
+%%
+%\begin{align}\label{eqn:BetaThmEqn4}
+%| \widehat \cS_\beta| \leq 128 s_\beta / \psi^*
+%\end{align}
+\end{Theorem}
+
+
+\begin{Proposition}\label{prop:ThmBetaRE}
+Consider deterministic $\widehat \Theta$ satisfying assumption (B1). Then for sample size $n \succsim \log (pq)$,
+
+\begin{enumerate}
+%\item We have $\| \bfX^k ( \hat \bfB^k - \bfB_0^k ) \|_\infty \leq c( v_\beta)$, where
+%%
+%$$
+%c(v_\beta) =\sqrt n v_\beta \left[ \sqrt{ \frac{ \log 4 + \tau_1 \log p}{c_x^k n}} + \max_j \sigma_{x,jj}^k \right]^{1/2}; \quad
+%c_x^k = \left[ 128 ( 1 + 4 \Lambda_{\max} (\Sigma_x^k)  )^2 \max_j (\sigma_{x,jj}^k)^2 \right]^{-1}
+%$$
+%%
+%with probability $ \geq 1 - 1/p^{\tau_1-2}, \tau_1 > 2$.
+%
+\item %For sample size $n \succsim \max (s_\beta \log p, d^2 \log q)$,
+$\widehat \bfGamma$ satisfies the RE condition: $ \widehat \bfGamma \sim RE (\psi_*, \phi_*)$, where 
+%
+$$
+\psi_* = \min_k \psi^k \left( \min_i \psi_t^i - d v_\Theta \right), 
+\phi_* = \max_k \phi^k \left( \min_i \phi_t^i + d v_\Theta \right)
+$$
+%
+with probability $\geq 1 - 2 \exp(c_3 n), c_3>0$.
+%
+\item The following deviation bound is satisfied:
+%
+%$$
+%\left\| \widehat \bfS^k \bfT_{0,j}^k \right\|_\infty \leq 4 v_\beta c_2 [ \Lambda_{\max} (\Sigma_x^k) \Lambda_{\max} (\Sigma_y^k) ]^{1/2} \sqrt{\frac{ \log(pq)}{n}} + 2 \sqrt{ \frac{ \log 4 + \tau_1 \log p}{c_x^k n}} + 2 \max_j \sigma_{x,jj}^k
+%$$
+%
+$$
+\left\| \widehat \bfgamma - \widehat \bfGamma \bfbeta_0 \right\|_\infty \leq \BR \left(v_\beta, \Sigma_x^k, \Sigma_y^k \right) \sqrt{ \frac{ \log(pq)}{n}}
+$$
+%
+with probability $1 - 12 c_1 \exp[ (c_2^2-1) \log (pq)], c_1>0, c_2>1$, where
+$$
+\BR \left(v_\beta, \Sigma_x^k, \Sigma_y^k \right) = c_2 \sqrt{\Lambda_{\max} (\Sigma_x^k)} \left( d v_\Theta \Lambda_{\min} (\Sigma_y^k) +
+\frac{1}{\Lambda_{\min} (\Sigma_y^k) } \right)
+$$
+\end{enumerate} 
+\end{Proposition}
+
+%-----------------------------
+\hrulefill
+%-----------------------------
+
+\section{Two-sample testing}
+Suppose there are two disease subtypes: $k = 1,2$, and we are interested in testing whether the downstream effect of a predictor in X-data is same across both subtypes, i.e. if $\bfb_i^1 = \bfb_i^2$ for some $i \in \cI_p$. For this we consider the modified optimization problem:
+%
+\begin{align}
+& \min_{\cB, \Theta} \frac{1}{n} \left\{ \sum_{j=1}^q \sum_{k=1}^2 \| \bfY_j^k - \bfY_{-j}^k \bftheta_j^k - \bfX^k \bfB_{j}^k \|^2 + \sum_{j \neq j'} \lambda_{jj'} \| \bftheta_{jj'}^* \| + \sum_{i=1}^p \eta_i \| \bfB_{i*}^* \| \right\} \notag\\
+&= \min \left\{ f ( \cY, \cX, \cB, \Theta) + P (\Theta) + Q (\cB) \right\} 
+\end{align}
+%
+with $n_1 = n_2 = n$ for simplicity; and $\bfB^k = (\bfb_1^k, \ldots, \bfb_q^k), (\bfB_{i*}^*) \in \BR^{ q \times K}$.
+
+In this setup, define the desparsified estimate of $\bfb_i^k$ as
+%
+\begin{align}\label{eqn:DebiasedBeta}
+\widehat \bfc_i^k = \widehat \bfb_i^k + \frac{1}{n t_i^k} \left( \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k \right)^T
+(\bfY^k - \bfX^k \widehat \bfB^k )
+\end{align}
+%
+for $k = 1,2$, where $t_i^k = ( \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k )^T \bfX_{-i}^k/n$. Then we have the asymptotic joint distribution of a scaled version of the debiased coefficients for the $i\Th$ predictor effect.
+
+\begin{Theorem}\label{Thm:ThmTesting}
+Define $\widehat s_i^k = \sqrt{\| \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k \|^2/n}$, and $m_i^k = \sqrt n t_i^k / \widehat s_i^k$. Assume the following:
+
+\noindent {\bf (C1)} For the X-neighborhood estimators we have $\| \widehat \bfzeta^k - \bfzeta_0^k \|_1 \leq v_\zeta$.
+
+\noindent {\bf (C2)} The precision matrix estimators satisfy
+%
+$$
+\left\| (\widehat \Omega_y^k)^{1/2} - (\widehat \Omega_y^k)^{1/2} \right\|_\infty \leq v_\Omega
+$$
+%
+\noindent{\bf(C3)} $\| \widehat \bfB^k - \bfB^k_0 \|_1 \leq v_\beta$, where $v_\beta = { \colrbf \eta_\beta \sqrt{\frac{\log (pq)}{n}}}$ with $\eta_\beta$ being a quantity depending on $\cB$ only.
+
+Then for the debiased estimators in \eqref{eqn:DebiasedBeta} and sample size $n \succsim \log (pq)$ we have
+%
+\begin{align}\label{eqn:ThmTestingEqn}
+\begin{bmatrix}
+\widehat \Omega_y^1 &\\
+& \widehat \Omega_y^2
+\end{bmatrix}^{1/2}
+%
+\begin{bmatrix}
+m_i^1 (\widehat \bfc_i^1 - \bfb_i^1) &\\
+&  m_i^2 (\widehat \bfc_i^2 - \bfb_i^2)
+\end{bmatrix}
+\sim \cN_{2q} ({\bf 0}, \bfI) + o_P(1)
+\end{align}
+%
+\end{Theorem}
+%
+
+Based on the theorem, we have the global test for the effect of the $i^{\Th}$ X-covariate.
+
+\begin{Algorithm} (Global test for $H_0^i: \bfB_i^1 = \bfB_i^2$ at level-$\alpha, 0< \alpha< 1$)
+
+\noindent 1. Obtain the debiased estimators $\widehat \bfc_i^1, \widehat \bfc_i^2$ using \eqref{eqn:DebiasedBeta}.
+
+
+\noindent 2. Calculate the test statistic
+%
+$$
+D_i = \left\| m_i^1 (\widehat \Omega_y^1)^{1/2} \widehat \bfc_i^1 - 
+ (\widehat m_i^2 \Omega_y^2)^{1/2} \widehat \bfc_i^2 \right\|^2
+$$
+%
+
+\noindent 3. Reject $H_0^i$ if $D_i > \chi^2_{2q, 1-\alpha}$.
+\end{Algorithm}
+
+Given the null hypothesis is rejected, we now consider the multiple testing problem of simultaneously testing for the entrywise differences, i.e. testing
+%
+$$
+H_0^{ij}: b_{ij}^1 - b_{ij}^2 = 0 \quad \text{vs.} \quad H_1^{ij}: b_{ij}^1 - b_{ij}^2 \neq 0 
+$$
+%
+For this we use the test statistic
+%
+$$
+d_{ij} = \frac{\widehat c_{ij}^1 - \widehat c_{ij}^2}{\tau_{ij}^1/ m_i^1 + \tau_{ij}^2/ m_i^2}
+$$
+%
+with $\tau_{ij}^k$ being the $(i,j)^{\Th}$ element of $( \widehat \Omega_y^k)^{-1/2}$, for $k = 1,2$.
+
+Now consider tests where $H_0^{ij}$ is rejected if $| d_{ij} | > \tau$. We denote $\cH_0^i = \{ j: b_{ij}^1 = b_{ij}^2 \}$ and define the false discovery proportion (FDP) and false discovery rate (FDR) for these tests as follows:
+%
+$$
+FDP (\tau) = \frac{\sum_{j \in \cH_0^i} \BI( |d_{ij}| > \tau)}{\max\left\{
+\sum_{j \in \cI_q} \BI( |d_{ij}| > \tau), 1\right\} }\quad
+FDR (\tau) = \BE [ FDP (\tau) ]
+$$
+%
+For a pre-specified level $\alpha$, we now choose a threshold that ensures both FDP and FDR $\leq \alpha$ using the framework of \cite{Liu17} and \cite{Efron07}.
+\appendix
+\section{Proofs}
 \begin{proof}[Proof of Theorem~\ref{thm:ThetaThm}]
 The proof has three parts, where we prove the consistency of the neighborhood regression coefficients, selection of edge sets, and finally the refitting step, respectively. This is the same structure as the proof of Theorem 1 in \cite{MaMichailidis15}, where they prove consistency of the JSEM estimates. The derivation of the first part is different from that in the JSEM proof, which we shall show in detail. The second and third parts follow similar lines, incorporating the updated quantities from part 1. For these we provide a rough sketch and leave the details to the reader.
 
@@ -480,55 +729,6 @@ applying Cauchy-Schwarz inequality followed by assumption (A2). Now Replace $1/\
 %Given fixed $\widehat \cB$, prediction errors follow bound in T2 with high enough probability.
 %\end{Proposition}
 
-\begin{Proposition}\label{prop:ErrorRE}
-Consider deterministic $\widehat \cB$ satisfying assumption (T1). Then for sample size $n \succsim \log (pq)$ and $k \in \cI_K$,
-
-\begin{enumerate}
-%\item We have $\| \bfX^k ( \hat \bfB^k - \bfB_0^k ) \|_\infty \leq c( v_\beta)$, where
-%%
-%$$
-%c(v_\beta) =\sqrt n v_\beta \left[ \sqrt{ \frac{ \log 4 + \tau_1 \log p}{c_x^k n}} + \max_j \sigma_{x,jj}^k \right]^{1/2}; \quad
-%c_x^k = \left[ 128 ( 1 + 4 \Lambda_{\max} (\Sigma_x^k)  )^2 \max_j (\sigma_{x,jj}^k)^2 \right]^{-1}
-%$$
-%%
-%with probability $ \geq 1 - 1/p^{\tau_1-2}, \tau_1 > 2$.
-%
-\item $\widehat \bfS^k$ satisfies the RE condition: $ \widehat \bfS^k \sim RE (\psi^k, \phi^k)$, where 
-%
-$$
-\psi^k = \frac{ \Lambda_{\min} (\Sigma_x^k)}{2}; \quad \phi^k = \frac{ \psi^k \log p}{n} + 2 v_\beta c_2 [ \Lambda_{\max} (\Sigma_x^k) \Lambda_{\max} (\Sigma_y^k) ]^{1/2} \sqrt{\frac{ \log(pq)}{n}}
-$$
-%
-with probability $\geq 1 - 6c_1 \exp [-(c_2^2-1) \log(pq)] - 2 \exp (- c_3 n), c_1, c_3 > 0, c_2 > 1$.
-%
-\item The following deviation bound is satisfied for any $j \in \cI_q$
-%
-%$$
-%\left\| \widehat \bfS^k \bfT_{0,j}^k \right\|_\infty \leq 4 v_\beta c_2 [ \Lambda_{\max} (\Sigma_x^k) \Lambda_{\max} (\Sigma_y^k) ]^{1/2} \sqrt{\frac{ \log(pq)}{n}} + 2 \sqrt{ \frac{ \log 4 + \tau_1 \log p}{c_x^k n}} + 2 \max_j \sigma_{x,jj}^k
-%$$
-%
-$$
-\left\|\frac{1}{n} (\widehat \bfE_{-j}^k)^T \widehat \bfE^k \bfT_{0,j}^k \right\|_\infty \leq \BQ \left(v_\beta, \Sigma_x^k, \Sigma_y^k \right)
-$$
-%
-
-with probability $\geq 1 - 1/p^{\tau_1-2} - 6c_1 \exp [-(c_2^2-1) \log(pq)] - 6c_4 \exp [-(c_5^2-1) \log(pq)], c_4 > 0, c_5 > 1$, where
-%
-\begin{align*}
-\BQ \left(v_\beta, \Sigma_x^k, \Sigma_y^k \right) &=
-2 v_\beta^2 V_x^k + 4 v_\beta c_2 [ \Lambda_{\max} (\Sigma_x^k) \Lambda_{\max} (\Sigma_y^k) ]^{1/2} \sqrt{\frac{ \log(pq)}{n}} +\\
-& c_5 \left[ \Lambda_{\max} ( \Sigma_{y,-j}^k) \sigma_{y,j,-j}^k \right]^{1/2} \sqrt{\frac{\log q}{n}}
-\end{align*}
-%
-with $\sigma_{y,j,-j}^k = \BV( E_j - \BE_{-j} \bftheta_{0,j})$, and 
-%
-$$
-V_x^k = \sqrt{ \frac{ \log 4 + \tau_1 \log p}{c_x^k n}} + \max_i \sigma_{x,ii}^k; \quad
-c_x^k = \left[ 128 ( 1 + 4 \Lambda_{\max} (\Sigma_x)  )^2 \max_i (\sigma_{x,ii})^2 \right]^{-1}
-$$
-\end{enumerate} 
-\end{Proposition}
-
 \begin{proof}[Proof of Proposition~\ref{prop:ErrorRE}]
 
 %For any sub-gaussian zero-mean design matrix $\bfX \in \BM(n,p)$ with parameters $(\Sigma_x, \sigma_x^2)$, and any $\hat \bfB, \bfB_0 \in \BM(p,q)$ such that $\| \hat \bfB - \bfB_0 \|_F \leq v_\beta$, we follow the proof of Proposition 3 in \cite{LinEtal16} to obtain that for sample size
@@ -722,65 +922,6 @@ We now bound the right hand side of (\ref{eqn:ErrorRElemma2maineqn}) using (\ref
 %We now bound the right hand side of (\ref{eqn:ErrorRElemma2eqn1}) using (\ref{eqn:ErrorRElemma2eqn2}), (\ref{eqn:ErrorRElemma2eqn3}) and (\ref{eqn:ErrorRElemma2eqn4}), which proves part 3.
 \end{proof}
 
-%-----------------------------
-\hrulefill
-%-----------------------------
-
-Now concentrate on the $k$-population estimation problem. We want to obtain
-%
-$$
-\widehat \bfbeta = \argmin_{\bfbeta \in \BR^{pq}} \left\{-2 \bfbeta^T \widehat \bfgamma + \bfbeta^T \widehat \bfGamma \bfbeta + \lambda_n \sum_{g \in \cG} \| \bfbeta^{[g]}  \| \right\}
-$$
-%with
-%$$
-%\bfbeta = \begin{bmatrix}
-%\ve (\bfB^1)\\
-%\vdots\\
-%\ve (\bfB^K)\\
-%\end{bmatrix}; \quad
-%\bfGamma = \begin{bmatrix}
-%I_q \otimes (\bfX^1) TX^1 / n) & &\\
-%& \ddots &\\
-%& & I_q \otimes (\bfX^K)^T X^K / n)
-%\end{bmatrix} 
-%$$
-\begin{Theorem}\label{thm:BetaThm}
-Assume fixed $\cX, \cE$, and deterministic $\widehat \Theta = \{ \widehat \Theta_j \}$. Also for $j \in \cI_q$,
-
-\noindent{\bf(B1)} $\| \widehat \Theta_j - \Theta_{0,j} \|_F \leq v_\Theta \sqrt{\frac{\log q}{n}}$ for some $v_\Theta$ dependent on $\Theta$.
-
-\noindent{\bf(B2)} Denote $\widehat \bfGamma^k = (\widehat \bfT^k)^2 \otimes (\bfX^k)^T \bfX^k/n, \widehat \bfgamma^k = (\widehat \bfT^k)^2 \otimes (\bfX^k)^T \bfY^k/n$. Then the deviation bound holds:
-%
-$$
-\left\| \widehat \bfgamma^k - \widehat \bfGamma^k \bfbeta_0 \right\|_\infty \leq \BR( v_\Theta, \Sigma_x^k, \Sigma_y^k)
-$$
-%
-{\colrbf tbd}
-
-\noindent{\bf(B3)} $\widehat \bfGamma \sim RE(\psi_*, \phi_*)$ with $Kpq \phi_* \leq \psi_*/2$.
-
-Then, given the choice of tuning parameter
-%
-$$
-\lambda \geq 4 \sqrt{pq} \BR_{\max}; \quad \BR_{\max} := \max_{k \in \cI_K} \BR \left(v_\Theta, \Sigma_x^k, \Sigma_y^k \right)
-$$
-%
-the following holds
-%
-\begin{align}
-\| \widehat \bfbeta - \bfbeta_0 \| & \leq 12 \sqrt s_\beta \lambda_n / \psi^* \label{eqn:BetaThmEqn1}\\
-\sum_{g \in \cG} \| \bfbeta^{[g]} - \bfbeta_0^{[g]} \| & \leq 48 s_\beta \lambda_n / \psi^* \label{eqn:BetaThmEqn2}\\
-(\widehat \bfbeta - \bfbeta_0 )^T \widehat \bfGamma (\widehat \bfbeta - \bfbeta_0 ) & \leq
-72 s_\beta \lambda_n^2 / \psi^* \label{eqn:BetaThmEqn3}
-\end{align}
-%
-%Also denote the non-zero support of $\widehat \bfbeta$ by $\widehat \cS_\beta$, i.e. $\widehat \cS_\beta = \{ g: \hat \bfbeta^{[g]} \neq {\bf 0} \}$. Then
-%%
-%\begin{align}\label{eqn:BetaThmEqn4}
-%| \widehat \cS_\beta| \leq 128 s_\beta / \psi^*
-%\end{align}
-\end{Theorem}
-
 \begin{proof}[Proof of Theorem~\ref{thm:BetaThm}]
 The proof follows that of Theorem~\ref{thm:ThetaThm}, with a different group norm structure. We only point our the differences.
 
@@ -810,47 +951,6 @@ follow.
 
 \end{proof}
 
-\begin{Proposition}\label{prop:ThmBetaRE}
-Consider deterministic $\widehat \Theta$ satisfying assumption (B1). Then for sample size $n \succsim \log (pq)$,
-
-\begin{enumerate}
-%\item We have $\| \bfX^k ( \hat \bfB^k - \bfB_0^k ) \|_\infty \leq c( v_\beta)$, where
-%%
-%$$
-%c(v_\beta) =\sqrt n v_\beta \left[ \sqrt{ \frac{ \log 4 + \tau_1 \log p}{c_x^k n}} + \max_j \sigma_{x,jj}^k \right]^{1/2}; \quad
-%c_x^k = \left[ 128 ( 1 + 4 \Lambda_{\max} (\Sigma_x^k)  )^2 \max_j (\sigma_{x,jj}^k)^2 \right]^{-1}
-%$$
-%%
-%with probability $ \geq 1 - 1/p^{\tau_1-2}, \tau_1 > 2$.
-%
-\item %For sample size $n \succsim \max (s_\beta \log p, d^2 \log q)$,
-$\widehat \bfGamma$ satisfies the RE condition: $ \widehat \bfGamma \sim RE (\psi_*, \phi_*)$, where 
-%
-$$
-\psi_* = \min_k \psi^k \left( \min_i \psi_t^i - d v_\Theta \right), 
-\phi_* = \max_k \phi^k \left( \min_i \phi_t^i + d v_\Theta \right)
-$$
-%
-with probability $\geq 1 - 2 \exp(c_3 n), c_3>0$.
-%
-\item The following deviation bound is satisfied:
-%
-%$$
-%\left\| \widehat \bfS^k \bfT_{0,j}^k \right\|_\infty \leq 4 v_\beta c_2 [ \Lambda_{\max} (\Sigma_x^k) \Lambda_{\max} (\Sigma_y^k) ]^{1/2} \sqrt{\frac{ \log(pq)}{n}} + 2 \sqrt{ \frac{ \log 4 + \tau_1 \log p}{c_x^k n}} + 2 \max_j \sigma_{x,jj}^k
-%$$
-%
-$$
-\left\| \widehat \bfgamma - \widehat \bfGamma \bfbeta_0 \right\|_\infty \leq \BR \left(v_\beta, \Sigma_x^k, \Sigma_y^k \right) \sqrt{ \frac{ \log(pq)}{n}}
-$$
-%
-with probability $1 - 12 c_1 \exp[ (c_2^2-1) \log (pq)], c_1>0, c_2>1$, where
-$$
-\BR \left(v_\beta, \Sigma_x^k, \Sigma_y^k \right) = c_2 \sqrt{\Lambda_{\max} (\Sigma_x^k)} \left( d v_\Theta \Lambda_{\min} (\Sigma_y^k) +
-\frac{1}{\Lambda_{\min} (\Sigma_y^k) } \right)
-$$
-\end{enumerate} 
-\end{Proposition}
-
 \begin{proof}[Proof of Proposition~\ref{prop:ThmBetaRE}]
 For part 1 it is enough to prove that with $ \widehat \Sigma_x^k := (\bfX^k)^T \bfX^k/n$,
 %
@@ -873,60 +973,6 @@ with high enough probability. because then we can take $\psi_* = \min_k \psi_*^k
 %
 
 \end{proof}
-
-%-----------------------------
-\hrulefill
-%-----------------------------
-
-\section{Two-sample testing}
-Suppose there are two disease subtypes: $k = 1,2$, and we are interested in testing whether the downstream effect of a predictor in X-data is same across both subtypes, i.e. if $\bfb_i^1 = \bfb_i^2$ for some $i \in \cI_p$. For this we consider the modified optimization problem:
-%
-\begin{align}
-& \min_{\cB, \Theta} \frac{1}{n} \left\{ \sum_{j=1}^q \sum_{k=1}^2 \| \bfY_j^k - \bfY_{-j}^k \bftheta_j^k - \bfX^k \bfB_{j}^k \|^2 + \sum_{j \neq j'} \lambda_{jj'} \| \bftheta_{jj'}^* \| + \sum_{i=1}^p \eta_i \| \bfB_{i*}^* \| \right\} \notag\\
-&= \min \left\{ f ( \cY, \cX, \cB, \Theta) + P (\Theta) + Q (\cB) \right\} 
-\end{align}
-%
-with $n_1 = n_2 = n$ for simplicity; and $\bfB^k = (\bfb_1^k, \ldots, \bfb_q^k), (\bfB_{i*}^*) \in \BR^{ q \times K}$.
-
-In this setup, define the desparsified estimate of $\bfb_i^k$ as
-%
-\begin{align}\label{eqn:DebiasedBeta}
-\widehat \bfc_i^k = \widehat \bfb_i^k + \frac{1}{n t_i^k} \left( \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k \right)^T
-(\bfY^k - \bfX^k \widehat \bfB^k )
-\end{align}
-%
-for $k = 1,2$, where $t_i^k = ( \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k )^T \bfX_{-i}^k/n$. Then we have the asymptotic joint distribution of a scaled version of the debiased coefficients for the $i\Th$ predictor effect.
-
-\begin{Theorem}\label{Thm:ThmTesting}
-Define $\widehat s_i^k = \sqrt{\| \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k \|^2/n}$, and $m_i^k = \sqrt n t_i^k / \widehat s_i^k$. Assume the following:
-
-\noindent {\bf (C1)} For the X-neighborhood estimators we have $\| \widehat \bfzeta^k - \bfzeta_0^k \|_1 \leq v_\zeta$.
-
-\noindent {\bf (C2)} The precision matrix estimators satisfy
-%
-$$
-\left\| (\widehat \Omega_y^k)^{1/2} - (\widehat \Omega_y^k)^{1/2} \right\|_\infty \leq v_\Omega
-$$
-%
-\noindent{\bf(C3)} $\| \widehat \bfB^k - \bfB^k_0 \|_1 \leq v_\beta$, where $v_\beta = { \colrbf \eta_\beta \sqrt{\frac{\log (pq)}{n}}}$ with $\eta_\beta$ being a quantity depending on $\cB$ only.
-
-Then for the debiased estimators in \eqref{eqn:DebiasedBeta} and sample size $n \succsim \log (pq)$ we have
-%
-\begin{align}\label{eqn:ThmTestingEqn}
-\begin{bmatrix}
-\widehat \Omega_y^1 &\\
-& \widehat \Omega_y^2
-\end{bmatrix}^{1/2}
-%
-\begin{bmatrix}
-m_i^1 (\widehat \bfc_i^1 - \bfb_i^1) &\\
-&  m_i^2 (\widehat \bfc_i^2 - \bfb_i^2)
-\end{bmatrix}
-\sim \cN_{2q} ({\bf 0}, \bfI) + o_P(1)
-\end{align}
-%
-\end{Theorem}
-%
 
 \begin{proof}[Proof of Theorem~\ref{Thm:ThmTesting}]
 Let us define the following:
@@ -989,7 +1035,7 @@ Putting them back in \eqref{eqn:ThmTestingProofeq1} and using $t^k = (\bfR^k)^T 
 At this point, we drop $k$ in the subscripts, and prove the following:
 
 \begin{Lemma}\label{Lemma:ThmTestingLemma}
-Given conditions (C1) and (C2), the following holds for $n \succsim \log (pq)$:
+Given conditions (C1) and (C2), the following holds for sample size $n$ such that $n \succsim \log (pq)$ and $\sigma_{x,i,-i} - n^{-1/4} - v_\zeta^2 V_x > 0$:
 %
 $$
 \frac{1}{\sqrt n \widehat s_i}  \widehat \Omega_y^{1/2} \bfE^T \bfR_i \sim
@@ -998,9 +1044,9 @@ $$
 %
 \begin{align}\label{eqn:ThmTestingProofeq3}
 \| \bfS_{1n} \|_\infty & \leq 
-\frac{v_\Omega \sqrt{\Lambda_{\max} (\Sigma_e) } }{\sigma_{x,i,-i} - n^{-1/2} - v_\zeta^2 V_i}
-\left[ c_7 \sqrt{ \sigma_{x,i,-i} \log q} +
-c_9  \sqrt{\Lambda_{\max} (\Sigma_{x,-i}) \log (p q)} \right]
+\frac{v_\Omega \sqrt{\Lambda_{\max} (\Sigma_e) } }{\sigma_{x,i,-i} - n^{-1/4} - v_\zeta^2 V_x}
+\left[ c_7 \sqrt{ \sigma_{x,ii} \log q} +
+c_9  (1 + v_\zeta^2) \sqrt{\Lambda_{\max} (\Sigma_{x,-i}) \log (p q)} \right]
 \end{align}
 %
 with probability larger than or equal to
@@ -1017,11 +1063,11 @@ Additionally, given condition (C3)
 \begin{align}\label{eqn:ThmTestingProofeq4}
 \left\| \frac{1}{\sqrt n \widehat s_i} \bfR_i^T \bfX_{-i} (\bfB_{0,-i} - \widehat \bfB_{-i})
 \widehat \Omega_y^{1/2} \right\|_\infty & \leq
-\frac{v_\beta ( \Lambda_{\min} (\Sigma_y)^{1/2} + v_\Omega)}{\sigma_{x,i,-i} - n^{-1/2} - v_\zeta^2 V_i} \times \notag\\
+\frac{v_\beta ( \Lambda_{\min} (\Sigma_y)^{1/2} + v_\Omega)}{\sigma_{x,i,-i} - n^{-1/2} - v_\zeta^2 V_x} \times \notag\\
 & \left[ c_{11} \sqrt{ (\sigma_{x,i,-i} \Lambda_{\max} (\Sigma_{x, -i}) ) \log p} + \sqrt n v_\zeta V_x \right]
 \end{align}
 %
-with probability $\geq 1 - 6c_{10} \exp [-(c_{11}^2-1) \log (p-1)] - (1/p)^{\tau_{1 i}-2} - \kappa_i/ \sqrt n$ for some $c_{10} >0, c_{11} > 1$.
+with probability $\geq 1 - 6c_{10} \exp [-(c_{11}^2-1) \log (p-1)] - (1/p)^{\tau_1-2} - \kappa_i/ \sqrt n$ for some $c_{10} >0, c_{11} > 1$.
 \end{Lemma}
 
 Given Lemma~\ref{Lemma:ThmTestingLemma}, the first and second summands on the right hand side of \eqref{eqn:ThmTestingProofeq2} are bounded above by applying each of \eqref{eqn:ThmTestingProofeq3} and \eqref{eqn:ThmTestingProofeq4} twice, respectively. This completes our proof.
@@ -1033,24 +1079,26 @@ To show \eqref{eqn:ThmTestingProofeq3} we have
 \begin{align*}
 \frac{1}{\sqrt n \widehat s_i}  \widehat \Omega_y^{1/2} \bfE^T \bfR_i =
 \frac{1}{\sqrt n \widehat s_i}  (\widehat \Omega_y^{1/2} - \Omega_y^{1/2}) \bfE^T \bfR_i +
-\frac{1}{\sqrt n \widehat s_i}  \Omega_y^{-1/2} \bfE^T \bfR_i
+\frac{1}{\sqrt n \widehat s_i}  \Omega_y^{1/2} \bfE^T \bfR_i
 \end{align*}
 %
 The second summand is distributed as $\cN_q ({\bf 0}, \bfI)$. For the first summand,
 %
 \begin{align}\label{eqn:ThmTestingProofeq31}
 \frac{1}{\sqrt n}  \left\| (\widehat \Omega_y^{1/2} - \Omega_y^{1/2}) \bfE^T \bfR_i \right\|_\infty & \leq
-\frac{1}{\sqrt n}  \left\| \widehat \Omega_y^{1/2} - \Omega_y^{1/2} \right\|_\infty  \left\| \bfE^T \bfR_i \right\|_\infty  \notag\\
-& \leq \sqrt n v_\Omega \frac{1}{n} \left[ \| \bfE^T (\bfX_i -  \bfX_{-i} \bfzeta_i ) \|_\infty + \| \bfE^T \bfX_{-i} (\widehat \bfzeta_i - \bfzeta_{0,i} ) \|_\infty \right] \notag\\
-& \leq \sqrt n v_\Omega \left[ \frac{1}{n} \| \bfE^T (\bfX_i -  \bfX_{-i} \bfzeta_i ) \|_\infty + 
-\frac{v_\zeta^2}{n} \| \bfE^T \bfX_{-i} \|_\infty \right]
+\frac{1}{\sqrt n}  \left\| \widehat \Omega_y^{1/2} - \Omega_y^{1/2} \right\|_\infty  \left\| \bfE^T \bfR_i \right\|_1  \notag\\
+& \leq \sqrt n v_\Omega \frac{1}{n} \left[ \| \bfE^T (\bfX_i -  \bfX_{-i} \bfzeta_i ) \|_1 + \| \bfE^T \bfX_{-i} (\widehat \bfzeta_i - \bfzeta_{0,i} ) \|_1 \right] \notag\\
+& \leq \sqrt n v_\Omega \frac{1}{n} \left[ \| \bfE^T \bfX_i \|_\infty + \| \bfE^T \bfX_{-i} \|_\infty
+\left\{ \| \bfzeta_i  \|_1 + \| \widehat \bfzeta_i - \bfzeta_i  \|_1 \right\} \right] \notag\\
+& \leq \sqrt n v_\Omega \left[ \frac{1}{n} \| \bfE^T \bfX_i \|_\infty + 
+\frac{1 + v_\zeta^2}{n} \| \bfE^T \bfX_{-i} \|_\infty \right]
 \end{align}
 %
-Applying Lemma~\ref{lemma:ErrorRElemma2} twice we have for $n \succsim \log(pq)$,
+because $\Omega_x$ is diagonally dominant implies $\| \bfzeta_i \|_1 = \sum_{i' \neq i} |\omega_{x,ii'}|/ \omega_{x,ii} \leq 1$, and using assumption (C1). Applying Lemma~\ref{lemma:ErrorRElemma2} twice we have for $n \succsim \log(pq)$,
 %
 \begin{align}
-\frac{1}{n} \| \bfE^T (\bfX_i -  \bfX_{-i} \bfzeta_i ) \|_\infty & \leq 
-c_7 [ \sigma_{x,i,-i} \Lambda_{\max} (\Sigma_e) ]^{1/2} \sqrt{\frac{ \log q}{n}}\label{eqn:ThmTestingProofeq32}\\
+\frac{1}{n} \| \bfE^T \bfX_i \|_\infty & \leq 
+c_7 [ \sigma_{x,ii} \Lambda_{\max} (\Sigma_e) ]^{1/2} \sqrt{\frac{ \log q}{n}}\label{eqn:ThmTestingProofeq32}\\
 \frac{1}{n} \| \bfE^T \bfX_{-i} \|_\infty  & \leq 
 c_9 [ \Lambda_{\max} (\Sigma_{x,-i}) \Lambda_{\max} (\Sigma_e) ]^{1/2} \sqrt{\frac{ \log((p-1)q)}{n}}\label{eqn:ThmTestingProofeq33}
 \end{align}
@@ -1085,10 +1133,10 @@ P\left( | s_i - \sigma_{x,i,-i}| \geq \epsilon \right) \leq \frac{\BV s_i}{\epsi
 \frac{\kappa_i}{n \epsilon^2}
 $$
 %
-Taking $\epsilon = n^{-1/2}$, we have $s_i \geq \sigma_{x,i,-i} - n^{-1/2}$ with probability $\geq 1 - \kappa_i n^{-1/2}$. Then, for $n$ satisfying \eqref{eqn:ThmTestingProofeq5} and $\sigma_{x,i,-i} - n^{-1/2} > v_\zeta^2 V_x$, we get the bound with the above probability bound:
+Taking $\epsilon = n^{-1/4}$, we have $s_i \geq \sigma_{x,i,-i} - n^{-1/4}$ with probability $\geq 1 - \kappa_i n^{-1/2}$. Then, for $n$ satisfying \eqref{eqn:ThmTestingProofeq5} and $\sigma_{x,i,-i} - n^{-1/4} > v_\zeta^2 V_x$, we get the bound with the above probability:
 %
 \begin{align}\label{eqn:ThmTestingProofeq6}
-\frac{1}{\widehat s_i} \leq \frac{1}{\sigma_{x,i,-i} - n^{-1/2} - v_\zeta^2 V_x}
+\frac{1}{\widehat s_i} \leq \frac{1}{\sigma_{x,i,-i} - n^{-1/4} - v_\zeta^2 V_x}
 \end{align}
 %
 Combining \eqref{eqn:ThmTestingProofeq31}, \eqref{eqn:ThmTestingProofeq32}, \eqref{eqn:ThmTestingProofeq33} and \eqref{eqn:ThmTestingProofeq6} gives the upper bound for the right hand side of \eqref{eqn:ThmTestingProofeq3} with the probability condition \eqref{eqn:ThmTestingProofeq30}.
@@ -1109,7 +1157,7 @@ Applying Lemma~\ref{lemma:ErrorRElemma2}, for $n \succsim \log(p-1)$ we have
 c_{11} [ \sigma_{x,i,-i} \Lambda_{\max} (\Sigma_{x, -i}) ]^{1/2} \sqrt{\frac{ \log (p-1)}{n}}
 \end{align}
 %
-with probability $\geq 1 - 6c_{10} \exp [-(c_{11}^2-1) \log (p-1)]$ for some $c_{10} >0, c_{11} > 1$. By \eqref{eqn:ThmTestingProofeq34}, the second term on the right side of \eqref{eqn:ThmTestingProofeq41} is bounded above by $v_\zeta V_x$ with probability $ \geq 1 - 1/p^{\tau_{1 i}-2}$ and $n$ satisfying \eqref{eqn:ThmTestingProofeq5}. The bound of \eqref{eqn:ThmTestingProofeq4} follows by conditions (C2), (C3) and \eqref{eqn:ThmTestingProofeq6}.
+with probability $\geq 1 - 6c_{10} \exp [-(c_{11}^2-1) \log (p-1)]$ for some $c_{10} >0, c_{11} > 1$. By \eqref{eqn:ThmTestingProofeq34}, the second term on the right side of \eqref{eqn:ThmTestingProofeq41} is bounded above by $v_\zeta V_x$ with probability $ \geq 1 - 1/p^{\tau_1-2}$ and $n$ satisfying \eqref{eqn:ThmTestingProofeq5}. The bound of \eqref{eqn:ThmTestingProofeq4} follows by conditions (C2), (C3) and \eqref{eqn:ThmTestingProofeq6}.
 \end{proof}
 
 \bibliographystyle{apalike}

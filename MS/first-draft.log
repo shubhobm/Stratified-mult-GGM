@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2016.12.9)  31 OCT 2017 19:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2016.12.9)  8 NOV 2017 19:48
 entering extended mode
 **./first-draft.tex
 (first-draft.tex
@@ -314,41 +314,10 @@ Package natbib Warning: The `cite' package should not be used
 LaTeX Info: Redefining \cite on input line 694.
 LaTeX Info: Redefining \citenum on input line 708.
 \c@NAT@ctr=\count115
-) ("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\algorithmicx\algpseudocode.sty"
-Package: algpseudocode 
-
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\algorithmicx\algorithmicx.sty"
-Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
-
-Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
-\c@ALG@line=\count116
-\c@ALG@rem=\count117
-\c@ALG@nested=\count118
-\ALG@tlm=\skip58
-\ALG@thistlm=\skip59
-\c@ALG@Lnr=\count119
-\c@ALG@blocknr=\count120
-\c@ALG@storecount=\count121
-\c@ALG@tmpcounter=\count122
-\ALG@tmplength=\skip60
 )
-Document Style - pseudocode environments for use with the `algorithmicx' style
-) ("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\algorithms\algorithm.sty"
-Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
-nment
-
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\float\float.sty"
-Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count123
-\float@exts=\toks27
-\float@box=\box28
-\@float@everytoks=\toks28
-\@floatcapt=\box29
-)
-\@float@every@algorithm=\toks29
-\c@algorithm=\count124
-)
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\chngcntr\chngcntr.sty"
+\c@Algorithm=\count116
+\c@Example=\count117
+ ("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\chngcntr\chngcntr.sty"
 Package: chngcntr 2009/09/02 v1.0a change counter resetting
 )
 ("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\apptools\apptools.sty"
@@ -357,69 +326,68 @@ Package: apptools 2012/11/28 v1.0 Tools for customizing appendices
 (first-draft.aux)
 \openout1 = `first-draft.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
 
 ("D:\Study\LaTeX\MikTeX 2.9.6161\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count125
+\scratchcounter=\count118
 \scratchdimen=\dimen132
-\scratchbox=\box30
-\nofMPsegments=\count126
-\nofMParguments=\count127
-\everyMPshowfont=\toks30
-\MPscratchCnt=\count128
+\scratchbox=\box28
+\nofMPsegments=\count119
+\nofMParguments=\count120
+\everyMPshowfont=\toks27
+\MPscratchCnt=\count121
 \MPscratchDim=\dimen133
-\MPnumerator=\count129
-\makeMPintoPDFobject=\count130
-\everyMPtoPDFconversion=\toks31
+\MPnumerator=\count122
+\makeMPintoPDFobject=\count123
+\everyMPtoPDFconversion=\toks28
 )
 Package caption Info: Begin \AtBeginDocument code.
-Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\AtBeginShipoutBox=\box31
-Package hyperref Info: Link coloring ON on input line 62.
+\AtBeginShipoutBox=\box29
+Package hyperref Info: Link coloring ON on input line 65.
  ("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\hyperref\nameref.sty"
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
 ("D:\Study\LaTeX\MikTeX 2.9.6161\tex\generic\oberdiek\gettitlestring.sty"
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count131
+\c@section@level=\count124
 )
-LaTeX Info: Redefining \ref on input line 62.
-LaTeX Info: Redefining \pageref on input line 62.
-LaTeX Info: Redefining \nameref on input line 62.
+LaTeX Info: Redefining \ref on input line 65.
+LaTeX Info: Redefining \pageref on input line 65.
+LaTeX Info: Redefining \nameref on input line 65.
 
 (first-draft.out) (first-draft.out)
 \@outlinefile=\write3
 \openout3 = `first-draft.out'.
 
-\c@Theorem=\count132
-LaTeX Font Info:    Try loading font information for U+msa on input line 75.
+\c@Theorem=\count125
+LaTeX Font Info:    Try loading font information for U+msa on input line 78.
 
 ("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 75.
+LaTeX Font Info:    Try loading font information for U+msb on input line 78.
 
 ("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (3.75334pt too wide) in paragraph at lines 80--81
+Overfull \hbox (3.75334pt too wide) in paragraph at lines 83--84
 \OT1/cmr/bx/n/12 Keywords\OT1/cmr/m/n/12 : Data in-te-gra-tion; Gaus-sian Graph
 -i-cal Mod-els; Neigh-bor-hood se-lec-tion; Group
  []
@@ -427,7 +395,7 @@ Overfull \hbox (3.75334pt too wide) in paragraph at lines 80--81
 [1
 
 {C:/Users/Subho/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Overfull \hbox (3.18628pt too wide) in paragraph at lines 96--97
+Overfull \hbox (3.18628pt too wide) in paragraph at lines 99--100
 []\OT1/cmr/m/n/12 Want to es-ti-mate $\OMS/cmsy/m/n/12 f\OT1/cmr/m/n/12 (
 []\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 
 []\OML/cmm/m/it/12 ; \OT1/cmr/bx/n/12 B[]\OT1/cmr/m/n/12 ); \OML/cmm/m/it/12 k 
@@ -439,19 +407,19 @@ L/cmm/m/it/12 ; \OT1/cmr/bx/n/12 X[] \OMS/cmsy/m/n/12 2
  []
 
 
-Overfull \hbox (53.21878pt too wide) in paragraph at lines 109--109
+Overfull \hbox (53.21878pt too wide) in paragraph at lines 112--112
 [] 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 121.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 124.
 
 ("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 121.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 124.
  [2]
-Overfull \hbox (12.23843pt too wide) detected at line 158
+Overfull \hbox (12.23843pt too wide) detected at line 161
 \OML/cmm/m/it/12 f\OT1/cmr/m/n/12 (\OMS/cmsy/m/n/12 Y\OML/cmm/m/it/12 ; \OMS/cm
 sy/m/n/12 X\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 B\OML/cmm/m/it/12 ; \OT1/cmr/m/n
 /12 ) = [] [] [] \OMS/cmsy/m/n/12 k\OT1/cmr/m/n/12 (\OT1/cmr/bx/n/12 Y[] \OMS/
@@ -462,8 +430,20 @@ cmsy/m/n/12 k[] \OT1/cmr/m/n/12 = [] [] \OMS/cmsy/m/n/12 k\OT1/cmr/bx/n/12 Y[]
 2 (\OT1/cmr/bx/n/12 T[]\OT1/cmr/m/n/12 )[])
  []
 
-[3] [4]
-Overfull \hbox (17.97781pt too wide) detected at line 314
+[3]
+Overfull \hbox (16.57373pt too wide) in paragraph at lines 265--267
+[]\OT1/cmr/m/n/12 with prob-a-bil-ity $\OMS/cmsy/m/n/12  \OT1/cmr/m/n/12 1 \OM
+S/cmsy/m/n/12   \OT1/cmr/m/n/12 1\OML/cmm/m/it/12 =p[] \OMS/cmsy/m/n/12   \OT1/
+cmr/m/n/12 6\OML/cmm/m/it/12 c[] []\OT1/cmr/m/n/12 [\OMS/cmsy/m/n/12  \OT1/cmr/
+m/n/12 (\OML/cmm/m/it/12 c[] \OMS/cmsy/m/n/12   \OT1/cmr/m/n/12 1) [](\OML/cmm/
+m/it/12 pq\OT1/cmr/m/n/12 )] \OMS/cmsy/m/n/12   \OT1/cmr/m/n/12 6\OML/cmm/m/it/
+12 c[] []\OT1/cmr/m/n/12 [\OMS/cmsy/m/n/12  \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 c
+[] \OMS/cmsy/m/n/12   \OT1/cmr/m/n/12 1) [](\OML/cmm/m/it/12 pq\OT1/cmr/m/n/12 
+)]\OML/cmm/m/it/12 ; c[] >
+ []
+
+[4] [5] [6] [7]
+Overfull \hbox (17.97781pt too wide) detected at line 563
 [] [] \OMS/cmsy/m/n/12 k\OT1/cmr/m/n/12 (\OT1/cmr/bx/n/12 Y[] \OMS/cmsy/m/n/12 
   \OT1/cmr/bx/n/12 X[][]\OT1/cmr/m/n/12 )[]\OMS/cmsy/m/n/12 k[] \OT1/cmr/m/n/12
  + \OML/cmm/m/it/12 [] [] \OMS/cmsy/m/n/12 k[]k  [] [] k\OT1/cmr/m/n/12 (\OT1
@@ -473,12 +453,12 @@ Overfull \hbox (17.97781pt too wide) detected at line 314
  []
 
 
-Overfull \hbox (29.74988pt too wide) in paragraph at lines 349--349
+Overfull \hbox (29.74988pt too wide) in paragraph at lines 598--598
 [] 
  []
 
-
-Overfull \hbox (26.03737pt too wide) detected at line 357
+[8]
+Overfull \hbox (26.03737pt too wide) detected at line 606
 [] \OMS/cmsy/m/n/12 k\OT1/cmr/bx/n/12 d[]\OMS/cmsy/m/n/12 k  \OT1/cmr/m/n/12 3
  [] \OMS/cmsy/m/n/12 k\OT1/cmr/bx/n/12 d[]\OMS/cmsy/m/n/12 k  ) [] k\OT1/cmr/bx
 /n/12 d[]\OMS/cmsy/m/n/12 k  \OT1/cmr/m/n/12 4 [] \OMS/cmsy/m/n/12 k\OT1/cmr/b
@@ -487,7 +467,7 @@ x/n/12 d[]\OMS/cmsy/m/n/12 k  \OT1/cmr/m/n/12 4[]\OMS/cmsy/m/n/12 k\OT1/cmr/bx
  []
 
 
-Overfull \hbox (26.35728pt too wide) detected at line 366
+Overfull \hbox (26.35728pt too wide) detected at line 615
 []\OT1/cmr/m/n/12 (\OT1/cmr/bx/n/12 d[]\OT1/cmr/m/n/12 )[][]\OT1/cmr/bx/n/12 d[
 ] \OMS/cmsy/m/n/12  [] []  \OML/cmm/m/it/12  \OMS/cmsy/m/n/12 k\OT1/cmr/bx/n/
 12 D[]\OMS/cmsy/m/n/12 k[]   \OML/cmm/m/it/12 \OMS/cmsy/m/n/12 k\OT1/cmr/bx/n/
@@ -496,58 +476,55 @@ Overfull \hbox (26.35728pt too wide) detected at line 366
 ]\OMS/cmsy/m/n/12 k[]  []k\OT1/cmr/bx/n/12 D[]\OMS/cmsy/m/n/12 k[]
  []
 
-[5] [6]
-Overfull \hbox (39.35938pt too wide) in paragraph at lines 468--470
+[9]
+Overfull \hbox (39.35938pt too wide) in paragraph at lines 717--719
 []\OT1/cmr/m/it/12 Part II. \OT1/cmr/m/n/12 Proof of Thm 2 in 15-656 fol-lows. 
 We only need a new bound for $\OML/cmm/m/it/12 Var\OT1/cmr/m/n/12 (\OT1/cmr/bx/
 n/12 Y[]\OMS/cmsy/m/n/12 j\OT1/cmr/bx/n/12 Y[]\OML/cmm/m/it/12 ; \OT1/cmr/bx/n/
 12 X[]\OML/cmm/m/it/12 ; []\OT1/cmr/m/n/12 )$.
  []
 
-
-Overfull \hbox (12.01698pt too wide) in paragraph at lines 515--517
-[]\OT1/cmr/m/it/12 with prob-a-bil-ity $\OMS/cmsy/m/n/12  \OT1/cmr/m/n/12 1 \O
-MS/cmsy/m/n/12   \OT1/cmr/m/n/12 1\OML/cmm/m/it/12 =p[] \OMS/cmsy/m/n/12   \OT1
-/cmr/m/n/12 6\OML/cmm/m/it/12 c[] []\OT1/cmr/m/n/12 [\OMS/cmsy/m/n/12  \OT1/cmr
-/m/n/12 (\OML/cmm/m/it/12 c[] \OMS/cmsy/m/n/12   \OT1/cmr/m/n/12 1) [](\OML/cmm
-/m/it/12 pq\OT1/cmr/m/n/12 )] \OMS/cmsy/m/n/12   \OT1/cmr/m/n/12 6\OML/cmm/m/it
-/12 c[] []\OT1/cmr/m/n/12 [\OMS/cmsy/m/n/12  \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 
-c[] \OMS/cmsy/m/n/12   \OT1/cmr/m/n/12 1) [](\OML/cmm/m/it/12 pq\OT1/cmr/m/n/12
- )]\OML/cmm/m/it/12 ; c[] >
+[10]
+Overfull \hbox (3.46933pt too wide) in paragraph at lines 791--793
+[][]\OT1/cmr/bx/n/12 Lemma A.3. []\OT1/cmr/m/n/12 For zero-mean in-de-pen-dent 
+sub-gaussian ma-tri-ces $\OT1/cmr/bx/n/12 X \OMS/cmsy/m/n/12 2 \U/msb/m/n/12 M\
+OT1/cmr/m/n/12 (\OML/cmm/m/it/12 n; p\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; \OT1/c
+mr/bx/n/12 E \OMS/cmsy/m/n/12 2 \U/msb/m/n/12 M\OT1/cmr/m/n/12 (\OML/cmm/m/it/1
+2 n; q\OT1/cmr/m/n/12 )$
  []
 
-[7] [8] [9]
-Overfull \hbox (9.46317pt too wide) detected at line 668
+[11]
+Overfull \hbox (9.46317pt too wide) detected at line 868
 [][] \OMS/cmsy/m/n/12  [] \OT1/cmr/m/n/12 + [] \OML/cmm/m/it/12 [] \OT1/cmr/m
 /n/12 = \OML/cmm/m/it/12 V[]\OT1/cmr/m/n/12 ;  \OML/cmm/m/it/12 c[] \OT1/cmr/m/
 n/12 = [][]
  []
 
-[10] [11] [12]
-Overfull \hbox (30.84172pt too wide) in paragraph at lines 987--987
+[12] [13]
+Overfull \hbox (30.84172pt too wide) in paragraph at lines 1033--1033
 [] 
  []
 
-[13] [14] (first-draft.bbl [15])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1118.
- [16]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1118.
+[14] [15] (first-draft.bbl [16])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1166.
+ [17]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1166.
  (first-draft.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1118.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1118.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1166.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1166.
 
 Package rerunfilecheck Info: File `first-draft.out' has not changed.
-(rerunfilecheck)             Checksum: B4EFB294CC7B38986BA4B89F6D788FF4;229.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1118.
+(rerunfilecheck)             Checksum: DA2B1380E62F5E6E9969E707EA3C9800;272.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1166.
  ) 
 Here is how much of TeX's memory you used:
- 8425 strings out of 493333
- 122581 string characters out of 3137901
- 222439 words of memory out of 3000000
- 11759 multiletter control sequences out of 15000+200000
- 15264 words of font info for 57 fonts, out of 3000000 for 9000
+ 7899 strings out of 493333
+ 114813 string characters out of 3137901
+ 213326 words of memory out of 3000000
+ 11244 multiletter control sequences out of 15000+200000
+ 14905 words of font info for 56 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,17n,38p,1608b,494s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,17n,38p,1608b,482s stack positions out of 5000i,500n,10000p,200000b,50000s
 <D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:
 /Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmbx8.pfb><D:/Study
 /LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/Study/LaTe
@@ -566,9 +543,9 @@ onts/cm/cmr8.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm
 <D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmti12.pfb><D:/S
 tudy/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/symbols/msam10.pfb><D:/S
 tudy/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on first-draft.pdf (16 pages, 316207 bytes).
+Output written on first-draft.pdf (17 pages, 319585 bytes).
 PDF statistics:
- 325 PDF objects out of 1000 (max. 8388607)
- 87 named destinations out of 1000 (max. 500000)
- 41 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 342 PDF objects out of 1000 (max. 8388607)
+ 92 named destinations out of 1000 (max. 500000)
+ 49 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,10 +1,21 @@
 \begin{thebibliography}{}
 
+\bibitem[Efron, 2007]{Efron07}
+Efron, B. (2007).
+\newblock {Correlation and large-scale simultaneous significance testing}.
+\newblock {\em J. Amer. Statist. Assoc.}, 102:93--103.
+
 \bibitem[Lin et~al., 2016]{LinEtal16}
 Lin, J., Basu, S., Banerjee, M., and Michailidis, G. (2016).
 \newblock {Penalized Maximum Likelihood Estimation of Multi-layered Gaussian
   Graphical Models}.
 \newblock {\em J. Mach. Learn. Res.}, 17:5097--5147.
+
+\bibitem[Liu, 2017]{Liu17}
+Liu, W. (2017+).
+\newblock {Structural similarity and difference testing on multiple sparse
+  Gaussian graphical models}.
+\newblock {\em Ann. Statist.}, To appear.
 
 \bibitem[Ma and Michailidis, 2016]{MaMichailidis15}
 Ma, J. and Michailidis, G. (2016).
