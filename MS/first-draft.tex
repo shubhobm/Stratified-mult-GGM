@@ -436,7 +436,8 @@ m_i^1 (\widehat \bfc_i^1 - \bfb_i^1) &\\
 
 Based on the theorem, we have the global test for the effect of the $i^{\Th}$ X-covariate.
 
-\begin{Algorithm} (Global test for $H_0^i: \bfB_i^1 = \bfB_i^2$ at level-$\alpha, 0< \alpha< 1$)
+\begin{Algorithm}\label{algo:AlgoGlobalTest}
+(Global test for $H_0^i: \bfB_{0 i}^1 = \bfB_{0 i}^2$ at level $\alpha, 0< \alpha< 1$)
 
 \noindent 1. Obtain the debiased estimators $\widehat \bfc_i^1, \widehat \bfc_i^2$ using \eqref{eqn:DebiasedBeta}.
 
@@ -445,36 +446,72 @@ Based on the theorem, we have the global test for the effect of the $i^{\Th}$ X-
 %
 $$
 D_i = \left\| m_i^1 (\widehat \Omega_y^1)^{1/2} \widehat \bfc_i^1 - 
- (\widehat m_i^2 \Omega_y^2)^{1/2} \widehat \bfc_i^2 \right\|^2
+ m_i^2 (\widehat \Omega_y^2)^{1/2} \widehat \bfc_i^2 \right\|^2
 $$
 %
 
-\noindent 3. Reject $H_0^i$ if $D_i > \chi^2_{2q, 1-\alpha}$.
+\noindent 3. Reject $H_0^i$ if $D_i \geq \chi^2_{2q, 1-\alpha}$.
 \end{Algorithm}
 
 Given the null hypothesis is rejected, we now consider the multiple testing problem of simultaneously testing for the entrywise differences, i.e. testing
 %
 $$
-H_0^{ij}: b_{ij}^1 - b_{ij}^2 = 0 \quad \text{vs.} \quad H_1^{ij}: b_{ij}^1 - b_{ij}^2 \neq 0 
+H_0^{ij}: b_{0 ij}^1 - b_{0ij}^2 = 0 \quad \text{vs.} \quad H_1^{ij}: b_{0 ij}^1 - b_{0 ij}^2 \neq 0 
 $$
 %
 For this we use the test statistic
 %
-$$
-d_{ij} = \frac{\widehat c_{ij}^1 - \widehat c_{ij}^2}{\tau_{ij}^1/ m_i^1 + \tau_{ij}^2/ m_i^2}
-$$
+\begin{align}\label{eqn:PairwiseStatistic}
+d_{ij} &= \frac{\widehat c_{ij}^1 - \widehat c_{ij}^2}{\tau_{ij}^1/ m_i^1 + \tau_{ij}^2/ m_i^2}
+\end{align}
 %
 with $\tau_{ij}^k$ being the $(i,j)^{\Th}$ element of $( \widehat \Omega_y^k)^{-1/2}$, for $k = 1,2$.
 
 Now consider tests where $H_0^{ij}$ is rejected if $| d_{ij} | > \tau$. We denote $\cH_0^i = \{ j: b_{ij}^1 = b_{ij}^2 \}$ and define the false discovery proportion (FDP) and false discovery rate (FDR) for these tests as follows:
 %
 $$
-FDP (\tau) = \frac{\sum_{j \in \cH_0^i} \BI( |d_{ij}| > \tau)}{\max\left\{
-\sum_{j \in \cI_q} \BI( |d_{ij}| > \tau), 1\right\} }\quad
+FDP (\tau) = \frac{\sum_{j \in \cH_0^i} \BI( |d_{ij}| \geq \tau)}{\max\left\{
+\sum_{j \in \cI_q} \BI( |d_{ij}| \geq \tau), 1\right\} }\quad
 FDR (\tau) = \BE [ FDP (\tau) ]
 $$
 %
-For a pre-specified level $\alpha$, we now choose a threshold that ensures both FDP and FDR $\leq \alpha$ using the framework of \cite{Liu17} and \cite{Efron07}.
+For a pre-specified level $\alpha$, we now choose a threshold that ensures both FDP and FDR $\leq \alpha$ using the framework of \cite{Liu17} and \cite{Efron07}. To do this we define the following:
+%
+\begin{align*}
+P_0 = 2 \Phi (1) - 1; \quad
+\hat P_0 = \frac{1}{q} \sum_{j \in \cH_0^i} \BI (|d_{ij}| \leq 1); \quad
+Q_0 = \sqrt 2 \phi (1);\\
+A = \frac{P_0 - \hat P_0}{Q_0}; \quad A(t) = \left[ 1 + |A| \frac{|t| \phi(t)}{\sqrt 2 (1 - \Phi(t))} \right]^{-1}
+\end{align*}
+%
+where $\Phi(\cdot)$ and $\phi(\cdot)$ are the standard normal distribution and density functions, respectively. The procedure for FDR control is now given by Algorithm \ref{algo:AlgoFDR}.
+
+\begin{Algorithm}\label{algo:AlgoFDR}
+(Simultaneous tests for $H_0^{ij}: b_{0 ij}^1 = b_{0 ij}^2$ at level $\alpha, 0< \alpha< 1$)
+
+\noindent 1. Calculate the pairwise test statistics $d_{ij}$ using \eqref{algo:AlgoFDR} for $j \in \cI_q$.
+
+\noindent 2. Obtain the threshold
+%
+$$
+\hat \tau = \inf \left\{\tau \in \BR: 1 - \Phi(\tau) \leq \frac{\alpha}{q}
+A(\tau) \max \left( \sum_{j \in \cI_q} \BI( |d_{ij}| \geq \tau), 1 \right) \right\}
+$$
+%
+
+\noindent 3. For $j \in \cI_q$, reject $H_0^{ij}$ if $|d_{ij}| \geq \hat \tau$.
+\end{Algorithm}
+
+%Denote $\hat \cH_0^i = \{ j\ in \cI_q: |d_{ij}| \geq \hat \tau \}$.
+Under some regularity conditions, this procedure maintains FDR and FDP asymptotically at a pre-specified level $\alpha \in (0,1)$.
+
+\begin{Theorem}\label{thm:FDRthm}
+Assume the following conditions:
+{\colrbf tbd}
+
+Then the following hold: (i) $A(\hat \tau) \stackrel{P}{\rightarrow} 1$, (ii) $FDP(\hat \tau) \stackrel{P}{\rightarrow} \alpha$ and $\lim_{(n,p) \rightarrow \infty} FDR(\hat \tau) \rightarrow \alpha$.
+\end{Theorem}
+
 \appendix
 \section{Proofs}
 \begin{proof}[Proof of Theorem~\ref{thm:ThetaThm}]
@@ -923,7 +960,7 @@ We now bound the right hand side of (\ref{eqn:ErrorRElemma2maineqn}) using (\ref
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:BetaThm}]
-The proof follows that of Theorem~\ref{thm:ThetaThm}, with a different group norm structure. We only point our the differences.
+The proof follows that of Theorem~\ref{thm:ThetaThm}, with a different group norm structure. We only point out the differences.
 
 Putting $\bfbeta = \bfbeta_0$ in (\ref{eqn:EstEqn1}) we get
 %
@@ -1158,6 +1195,10 @@ c_{11} [ \sigma_{x,i,-i} \Lambda_{\max} (\Sigma_{x, -i}) ]^{1/2} \sqrt{\frac{ \l
 \end{align}
 %
 with probability $\geq 1 - 6c_{10} \exp [-(c_{11}^2-1) \log (p-1)]$ for some $c_{10} >0, c_{11} > 1$. By \eqref{eqn:ThmTestingProofeq34}, the second term on the right side of \eqref{eqn:ThmTestingProofeq41} is bounded above by $v_\zeta V_x$ with probability $ \geq 1 - 1/p^{\tau_1-2}$ and $n$ satisfying \eqref{eqn:ThmTestingProofeq5}. The bound of \eqref{eqn:ThmTestingProofeq4} follows by conditions (C2), (C3) and \eqref{eqn:ThmTestingProofeq6}.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:FDRthm}]
+
 \end{proof}
 
 \bibliographystyle{apalike}
