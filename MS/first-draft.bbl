@@ -1,10 +1,5 @@
 \begin{thebibliography}{}
 
-\bibitem[Efron, 2007]{Efron07}
-Efron, B. (2007).
-\newblock {Correlation and large-scale simultaneous significance testing}.
-\newblock {\em J. Amer. Statist. Assoc.}, 102:93--103.
-
 \bibitem[Lin et~al., 2016]{LinEtal16}
 Lin, J., Basu, S., Banerjee, M., and Michailidis, G. (2016).
 \newblock {Penalized Maximum Likelihood Estimation of Multi-layered Gaussian
@@ -16,6 +11,12 @@ Liu, W. (2017+).
 \newblock {Structural similarity and difference testing on multiple sparse
   Gaussian graphical models}.
 \newblock {\em Ann. Statist.}, To appear.
+
+\bibitem[Liu and Shao, 2014]{LiuShao14}
+Liu, W. and Shao, Q.-M. (2014).
+\newblock {Phase transition and regularized bootstrap in large-scale $t$-tests
+  with false discovery rate control}.
+\newblock {\em Ann. Statist.}, 42(5):2003--2025.
 
 \bibitem[Ma and Michailidis, 2016]{MaMichailidis15}
 Ma, J. and Michailidis, G. (2016).

@@ -475,16 +475,17 @@ FDP (\tau) = \frac{\sum_{j \in \cH_0^i} \BI( |d_{ij}| \geq \tau)}{\max\left\{
 FDR (\tau) = \BE [ FDP (\tau) ]
 $$
 %
-For a pre-specified level $\alpha$, we now choose a threshold that ensures both FDP and FDR $\leq \alpha$ using the framework of \cite{Liu17} and \cite{Efron07}. To do this we define the following:
-%
-\begin{align*}
-P_0 = 2 \Phi (1) - 1; \quad
-\hat P_0 = \frac{1}{q} \sum_{j \in \cH_0^i} \BI (|d_{ij}| \leq 1); \quad
-Q_0 = \sqrt 2 \phi (1);\\
-A = \frac{P_0 - \hat P_0}{Q_0}; \quad A(t) = \left[ 1 + |A| \frac{|t| \phi(t)}{\sqrt 2 (1 - \Phi(t))} \right]^{-1}
-\end{align*}
-%
-where $\Phi(\cdot)$ and $\phi(\cdot)$ are the standard normal distribution and density functions, respectively. The procedure for FDR control is now given by Algorithm \ref{algo:AlgoFDR}.
+For a pre-specified level $\alpha$, we now choose a threshold that ensures both FDP and FDR $\leq \alpha$ using the Benjamini-Hochberg (BH) procedure. % To do this we define the following:
+%%
+%\begin{align*}
+%P_0 = 2 \Phi (1) - 1; \quad
+%\hat P_0 = \frac{1}{q} \sum_{j \in \cH_0^i} \BI (|d_{ij}| \leq 1); \quad
+%Q_0 = \sqrt 2 \phi (1);\\
+%A = \frac{P_0 - \hat P_0}{Q_0}; \quad A(t) = \left[ 1 + |A| \frac{|t| \phi(t)}{\sqrt 2 (1 - \Phi(t))} \right]^{-1}
+%\end{align*}
+%%
+%where $\Phi(\cdot)$ and $\phi(\cdot)$ are the standard normal distribution and density functions, respectively.   
+The procedure for FDR control is now given by Algorithm \ref{algo:AlgoFDR}.
 
 \begin{Algorithm}\label{algo:AlgoFDR}
 (Simultaneous tests for $H_0^{ij}: b_{0 ij}^1 = b_{0 ij}^2$ at level $\alpha, 0< \alpha< 1$)
@@ -494,8 +495,8 @@ where $\Phi(\cdot)$ and $\phi(\cdot)$ are the standard normal distribution and d
 \noindent 2. Obtain the threshold
 %
 $$
-\hat \tau = \inf \left\{\tau \in \BR: 1 - \Phi(\tau) \leq \frac{\alpha}{q}
-A(\tau) \max \left( \sum_{j \in \cI_q} \BI( |d_{ij}| \geq \tau), 1 \right) \right\}
+\hat \tau = \inf \left\{\tau \in \BR: 1 - \Phi(\tau) \leq \frac{\alpha}{2 q}
+\max \left( \sum_{j \in \cI_q} \BI( |d_{ij}| \geq \tau), 1 \right) \right\}
 $$
 %
 
@@ -503,14 +504,33 @@ $$
 \end{Algorithm}
 
 %Denote $\hat \cH_0^i = \{ j\ in \cI_q: |d_{ij}| \geq \hat \tau \}$.
-Under some regularity conditions, this procedure maintains FDR and FDP asymptotically at a pre-specified level $\alpha \in (0,1)$.
+This procedure maintains FDR and FDP asymptotically at a pre-specified level $\alpha \in (0,1)$  under weak dependence conditions.
 
 \begin{Theorem}\label{thm:FDRthm}
-Assume the following conditions:
-{\colrbf tbd}
+Suppose $\mu_j = b_{0,ij}^1 - b_{0,ij}^2, \sigma_j = \sqrt n \BE (\tau_{ij}^1/ m_i^1 + \tau_{ij}^2/ m_i^2)$. Assume the following holds as $(n,q) \rightarrow \infty$
+%
+\begin{align}\label{eqn:FDRthmEqn1}
+\left| \left\{ j \in \cI_q: |\mu_j / \sigma_j | \geq
+4 \sqrt{ \log q/n} \right\} \right| \rightarrow \infty
+\end{align}
+%
+Now Consider the conditions {\colrbf C1, C1*}
 
-Then the following hold: (i) $A(\hat \tau) \stackrel{P}{\rightarrow} 1$, (ii) $FDP(\hat \tau) \stackrel{P}{\rightarrow} \alpha$ and $\lim_{(n,p) \rightarrow \infty} FDR(\hat \tau) \rightarrow \alpha$.
+
+If (C1) is satisfied, then the following holds when $\log q = O(n^{\xi}), 0 < \xi < 3/23$:
+%
+\begin{align}\label{eqn:FDReqn}
+\frac{FDP( \hat \tau)}{(| \cH_0^i|/q) \alpha} \stackrel{P}{\rightarrow} 1; \quad
+\lim_{n, q \rightarrow \infty} \frac{FDR( \hat \tau)}{(| \cH_0^i|/q) \alpha} = 1
+\end{align}
+%
+Further, if (C1*) is satisfied, then \eqref{eqn:FDReqn} holds for $\log q = o(n^{1/3})$.
 \end{Theorem}
+%
+%Theorem~\ref{thm:FDRthm} is essentially a restatement of Theorem 4.1 in \cite{LiuShao14}.
+The condition \eqref{eqn:FDRthmEqn1} is essential for FDR control in a diverging parameter space \citep{LiuShao14, Liu17}, while the dependence conditions (C1) and (C1*) control the amount of correlation between variables in the Y-layer.
+
+\paragraph{Remark} Following \cite{LiuShao14}, a version of Algorithm~\ref{algo:AlgoFDR}, where the null distribution is calibrated using bootstrap instead of normal approximation, gives asymptotic FDR control under (C1*) and $\log q = o(n^{1/2})$. We believe it is possible to obtain \eqref{eqn:FDReqn} under the weaker condition (C1) for $ \log q = o(n^{1/2})$ by extending the framework of \cite{Liu17} that performs multiple testing in multiple (single layer) GGMs, with the added advantage of being generalizable to the case of $K > 2$. However, this requires a significant amount of theoretical analysis, and we leave it for future research.
 
 \appendix
 \section{Proofs}
@@ -585,110 +605,6 @@ Also denote the non-zero support of $\widehat \Theta_j$ by $\widehat \cS_j$, i.e
 \end{align}
 \end{Proposition}
 
-\begin{proof}[Proof of Proposition~\ref{prop:Thm1ProofProp2}]
-In its reparametrized version, (\ref{eqn:EstEqn2}) becomes
-%
-\begin{align}
-\widehat \bfT_j = \argmin_{\bfT_j} \left\{ \frac{1}{n} \sum_{k=1}^K \| (\bfY^k - \bfX^k \widehat \bfB^k) \bfT_j^k \|^2 + \gamma_n \sum_{j \neq j', g \in \cG_y^{jj'}} \| \bfT_{jj'}^{[g]} \| \right\}
-\end{align}
-%
-with $\bfT_{jj'}^{[g]} := (T_{jj'}^k)_{k \in g}$. Now for any $\bfT_j \in \BM(q, K)$ we have
-%
-$$
-\frac{1}{n} \sum_{k=1}^K \| (\bfY^k - \bfX^k \widehat \bfB^k) \widehat \bfT_j^k \|^2 + \gamma_n \sum_{j \neq j', g \in \cG_y^{jj'}} \| \widehat \bfT_{jj'}^{[g]} \| \leq
-\frac{1}{n} \sum_{k=1}^K \| (\bfY^k - \bfX^k \widehat \bfB^k) \bfT_j^k \|^2 + \gamma_n \sum_{j \neq j', g \in \cG_y^{jj'}} \| \bfT_{jj'}^{[g]} \|
-$$
-%
-For $\bfT_j = \bfT_{0,j}$ this reduces to
-%
-\begin{align}\label{eqn::Thm1ProofProp2Eqn1}
-\sum_{k=1}^K (\bfd_j^k)^T \widehat \bfS^k \bfd_j^k & \leq - 2 \sum_{k=1}^K (\bfd_j^k)^T \widehat \bfS^k \bfT_{0,j}^k + \gamma_n \sum_{j \neq j', g \in \cG_y^{jj'}} \left( \| \bfT_{jj'}^{[g]} \| -  \| \bfT_{jj'}^{[g]} + \bfd_{jj'}^{[g]}\| \right)
-\end{align}
-
-%
-with $\widehat \bfT_j^k := \bfT_{0,j}^k + \bfd_{j}^k$ etc. For the $k^\text{th}$ summand in the first term on the right hand side, since $d_{jj}^k = 0$, $\widehat \bfE^k \bfd_j^k = \widehat \bfE_{-j}^k \bfd_{-j}^k$. Thus by Cauchy-Schwarz inequality
-%
-$$
-\left| (\bfd_j^k)^T \widehat \bfS^k \bfT_{0,j}^k \right| \leq
-\| (\bfd_j^k \| \left\| \frac{ (\widehat \bfE^k)^T \widehat \bfE^k }{n} \bfT_{0,j}^k \right\| \leq
-\sqrt{q} \| \bfd_j^k \| \left\| \frac{1}{n} (\widehat \bfE_{-j}^k)^T \widehat \bfE^k \bfT_{0,j}^k \right\|_\infty
-$$
-%
-which is $\leq \| \bfd_j^k\| \sqrt q \BQ(v_\beta, \Sigma_x^k, \Sigma_y^k) \leq \| \bfd_j^k\| \gamma_n/4 $ by assumption (T2) and choice of $\gamma_n$. For the second term, 
-suppose $\cS_{0,j}$ is the support of $\Theta_{0,j}$, i.e. $\cS_{0,j} = \{ (j',g): \bftheta_{jj'}^{[g]} \neq 0 \}$. Then
-%
-\begin{align*}
-\sum_{j \neq j', g \in \cG_y^{jj'}} \left( \| \bfT_{jj'}^{[g]} \| -  \| \bfT_{jj'}^{[g]} + \bfd_{jj'}^{[g]}\| \right) & \leq
-\sum_{(j',g) \in \cS_{0,j}} \left( \| \bfT_{jj'}^{[g]} \| -  \| \bfT_{jj'}^{[g]} + \bfd_{jj'}^{[g]}\| \right) -
-\sum_{(j',g) \notin \cS_{0,j}} \| \bfd_{jj'}^{[g]} \|\\
-& \leq \sum_{(j',g) \in \cS_{0,j}} \| \bfd_{jj'}^{[g]} \| - \sum_{(j',g) \notin \cS_{0,j}} \| \bfd_{jj'}^{[g]} \|
-\end{align*}
-%$ \| \bfT_{jj'}^{[g]} \| -  \| \bfT_{jj'}^{[g]} + \bfd_{jj'}^{[g]}\| \leq \| \bfd_{jj'}^{[g]}\|$ by triangle inequality, and then $ \| \bfd_{jj'}^{[g]}\| \leq \sum_{k \in g} | d_{jj'}^k | $, 
-so that (\ref{eqn::Thm1ProofProp2Eqn1}) reduces to
-%
-\begin{align}\label{eqn:Thm1ProofProp2Eqn3}
-\sum_{k=1}^K (\bfd_j^k)^T \widehat \bfS^k \bfd_j^k & \leq 
-\frac{\gamma_n}{2} \left[ \sum_{(j',g) \in \cS_{0,j}} \| \bfd_{jj'}^{[g]} \| + \sum_{(j',g) \notin \cS_{0,j}} \| \bfd_{jj'}^{[g]} \| \right] +
-\gamma_n \left[ \sum_{(j',g) \in \cS_{0,j}} \| \bfd_{jj'}^{[g]} \| - \sum_{(j',g) \notin \cS_{0,j}} \| \bfd_{jj'}^{[g]} \| \right] \notag\\
-& = \frac{3 \gamma_n}{2} \sum_{(j',g) \in \cS_{0,j}} \| \bfd_{jj'}^{[g]} \| - \frac{\gamma_n}{2} \sum_{(j',g) \notin \cS_{0,j}} \| \bfd_{jj'}^{[g]} \| \notag\\
-& \leq \frac{3 \gamma_n}{2} \sum_{j \neq j', g \in \cG_y^{jj'}} \| \bfd_{jj'}^{[g]} \|
-\end{align}
-%
-Since the left hand side is $\geq 0$, this also implies
-%
-$$
-\sum_{(j',g) \notin \cS_{0,j}} \| \bfd_{jj'}^{[g]} \| \leq 3 \sum_{(j',g) \in \cS_{0,j}} \| \bfd_{jj'}^{[g]} \| \quad \Rightarrow
-\sum_{j \neq j', g \in \cG_y^{jj'}} \| \bfd_{jj'}^{[g]} \| \leq
-4 \sum_{(j',g) \in \cS_{0,j}} \| \bfd_{jj'}^{[g]} \| \leq 4 \sqrt{| g_{\max}| s_j} \| \bfD_j \|_F
-$$
-% 
-with $\bfD_j = (\bfd_j^k)_{k \in \cI_K}$. Now the RE condition on $\widehat \bfS^k$ means that
-%
-$$
-\sum_{k=1}^K (\bfd_j^k)^T \widehat \bfS^k \bfd_j^k \geq 
-\sum_{k=1}^K \left( \psi_k \| \bfd_j^k \|^2 - \phi_k \| \bfd_j^k \|_1^2 \right) \geq
-\psi \| \bfD_j \|_F^2 - \phi \| \bfD_j \|_1^2 \geq 
-(\psi - Kq \phi ) \| \bfD_j \|_F^2 \geq \frac{\psi}{2}  \| \bfD_j \|_F^2
-$$
-%
-by assumption (T3). Thus we finally have
-%
-\begin{align}\label{eqn:Thm1ProofProp2Eqn2}
-\frac{\psi}{3} \| \bfD_j \|_F^2 & \leq
-\gamma_n \sum_{j \neq j', g \in \cG_y^{jj'}} \| \bfd_{jj'}^{[g]} \| \leq
-4 \gamma_n \sqrt{| g_{\max}| s_j} \| \bfD_j\|_F
-\end{align}
-%
-Since
-%
-$$
-(\bfD_j)_{j',k} = \widehat T_{jj'}^k - T_{0,jj'}^k = \begin{cases}
-0 \text{ if } j = j'\\
--(\widehat \theta_{jj'}^k - \theta_{0,jj'}^k ) \text{ if } j \neq j'
-\end{cases}
-$$
-%
-The bounds in (\ref{eqn:Thm1ProofProp2Bd1}) and (\ref{eqn:Thm1ProofProp2Bd2}) are obtained by replacing the corresponding elements in (\ref{eqn:Thm1ProofProp2Eqn2}).
-
-For the bound on $| \widehat \cS_j|$, notice that if $\hat \bftheta_{jj'}^{[g]} \neq 0$ for some $(j',g)$,
-%
-\begin{align*}
-\frac{1}{n} \sum_{k \in g} \left| ((\widehat \bfE_{-j}^k)^T \widehat \bfE^k ( \widehat \bfT_j^k - \bfT_{0,j}^k ))^{j'} \right| & \geq
-\frac{1}{n} \sum_{k \in g} \left| ((\widehat \bfE_{-j}^k)^T \widehat \bfE^k \widehat \bfT_j^k )^{j'} \right| - \frac{1}{n} \sum_{k \in g} \left| ((\widehat \bfE_{-j}^k)^T \widehat \bfE^k \bfT_{0,j}^k )^{j'} \right|\\
-& \geq |g| \gamma_n - \sum_{k \in g} \BQ ( v_\beta, \Sigma_x^k, \Sigma_y^k )
-\end{align*}
-%
-using the KKT condition for (\ref{eqn:EstEqn2}) and assumption (T2). The choice of $\gamma_n$ now ensures that the right hand side is $\geq 3|g| \gamma_n / 4$. Hence
-%
-\begin{align*}
-| \hat \cS_j| & \leq \sum_{(j',g) \in \widehat \cS_j} \frac{16}{9 n^2 |g|^2 \gamma_n^2 } \sum_{k \in g} \left| ((\widehat \bfE_{-j}^k)^T \widehat \bfE^k ( \widehat \bfT_j^k - \bfT_{0,j}^k ))^{j'} \right|^2\\
-& \leq \frac{16}{9 \gamma_n^2} \sum_{k=1}^K \frac{1}{n} \left\| (\widehat \bfE_{-j}^k)^T \widehat \bfE^k ( \widehat \bfT_j^k - \bfT_{0,j}^k ) \right\|^2 \\
-& = \frac{16}{9 \gamma_n^2} \sum_{k=1}^K (\bfd_j^k)^T \widehat \bfS^k \bfd_j^k \\
-& \leq \frac{8}{3 \gamma_n} \sum_{j \neq j', g \in \cG_y^{jj'}} \| \bfd_{jj'}^{[g]} \| \leq \frac{1}{\psi} 128 | g_{\max}| s_j 
-\end{align*}
-%
-using (\ref{eqn:Thm1ProofProp2Eqn3}) and (\ref{eqn:Thm1ProofProp2Eqn2}).
-
 {\it Step 2: Edge set selection.} We denote the selected edge set for the $k^\text{th}$ Y-network by $\hat E^k$. Denote its population version by $E_0^k$. Further, let
 %
 $$
@@ -717,8 +633,6 @@ t_1 = {\colrbf tbd}
 $$
 
 {\it Step 3: Refitting.}
-
-\end{proof}
 
 %We now prove the norm consistency of $\widehat \Theta_i - \Theta_{0,i}$.
 %
@@ -751,14 +665,14 @@ $$
 %
 %\end{proof}
 
-\textit{Part II.} Proof of Thm 2 in 15-656 follows. We only need a new bound for $Var (\bfY_i^k | \bfY_{-i}^k, \bfX^k, \widehat \bfB_i^k)$. For this we have
-%
-$$ Var (\bfY_i^k | \bfY_{-i}^k, \bfX^k, \widehat \bfB_i^k) = \BE (\widehat \bfepsilon_i^k)^2
-= \BE ( \bfepsilon_i^k + \bfdelta_i^k)^2
-\leq \left( \frac{1}{d_0} + \frac{c(v_\beta)}{n} \right)^2
-$$
-%
-applying Cauchy-Schwarz inequality followed by assumption (A2). Now Replace $1/\sqrt{n d_0}$ in choice of $\lambda, \alpha_n$ in Thm 2 statement with $1/\sqrt{n} (\sqrt{1/d_0} + \sqrt{c(v_\beta)/ n})$.
+%\textit{Part II.} Proof of Thm 2 in 15-656 follows. We only need a new bound for $Var (\bfY_i^k | \bfY_{-i}^k, \bfX^k, \widehat \bfB_i^k)$. For this we have
+%%
+%$$ Var (\bfY_i^k | \bfY_{-i}^k, \bfX^k, \widehat \bfB_i^k) = \BE (\widehat \bfepsilon_i^k)^2
+%= \BE ( \bfepsilon_i^k + \bfdelta_i^k)^2
+%\leq \left( \frac{1}{d_0} + \frac{c(v_\beta)}{n} \right)^2
+%$$
+%%
+%applying Cauchy-Schwarz inequality followed by assumption (A2). Now Replace $1/\sqrt{n d_0}$ in choice of $\lambda, \alpha_n$ in Thm 2 statement with $1/\sqrt{n} (\sqrt{1/d_0} + \sqrt{c(v_\beta)/ n})$.
 
 \end{proof}
 
@@ -960,7 +874,7 @@ We now bound the right hand side of (\ref{eqn:ErrorRElemma2maineqn}) using (\ref
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:BetaThm}]
-The proof follows that of Theorem~\ref{thm:ThetaThm}, with a different group norm structure. We only point out the differences.
+The proof follows that of Proposition~\ref{prop:Thm1ProofProp2}, with a different group norm structure. We only point out the differences.
 
 Putting $\bfbeta = \bfbeta_0$ in (\ref{eqn:EstEqn1}) we get
 %
@@ -1110,6 +1024,116 @@ with probability $\geq 1 - 6c_{10} \exp [-(c_{11}^2-1) \log (p-1)] - (1/p)^{\tau
 Given Lemma~\ref{Lemma:ThmTestingLemma}, the first and second summands on the right hand side of \eqref{eqn:ThmTestingProofeq2} are bounded above by applying each of \eqref{eqn:ThmTestingProofeq3} and \eqref{eqn:ThmTestingProofeq4} twice, respectively. This completes our proof.
 \end{proof}
 
+\begin{proof}[Proof of Theorem~\ref{thm:FDRthm}]
+
+\end{proof}
+
+\section{Proof of auxiliary results}
+\begin{proof}[Proof of Proposition~\ref{prop:Thm1ProofProp2}]
+In its reparametrized version, (\ref{eqn:EstEqn2}) becomes
+%
+\begin{align}
+\widehat \bfT_j = \argmin_{\bfT_j} \left\{ \frac{1}{n} \sum_{k=1}^K \| (\bfY^k - \bfX^k \widehat \bfB^k) \bfT_j^k \|^2 + \gamma_n \sum_{j \neq j', g \in \cG_y^{jj'}} \| \bfT_{jj'}^{[g]} \| \right\}
+\end{align}
+%
+with $\bfT_{jj'}^{[g]} := (T_{jj'}^k)_{k \in g}$. Now for any $\bfT_j \in \BM(q, K)$ we have
+%
+$$
+\frac{1}{n} \sum_{k=1}^K \| (\bfY^k - \bfX^k \widehat \bfB^k) \widehat \bfT_j^k \|^2 + \gamma_n \sum_{j \neq j', g \in \cG_y^{jj'}} \| \widehat \bfT_{jj'}^{[g]} \| \leq
+\frac{1}{n} \sum_{k=1}^K \| (\bfY^k - \bfX^k \widehat \bfB^k) \bfT_j^k \|^2 + \gamma_n \sum_{j \neq j', g \in \cG_y^{jj'}} \| \bfT_{jj'}^{[g]} \|
+$$
+%
+For $\bfT_j = \bfT_{0,j}$ this reduces to
+%
+\begin{align}\label{eqn::Thm1ProofProp2Eqn1}
+\sum_{k=1}^K (\bfd_j^k)^T \widehat \bfS^k \bfd_j^k & \leq - 2 \sum_{k=1}^K (\bfd_j^k)^T \widehat \bfS^k \bfT_{0,j}^k + \gamma_n \sum_{j \neq j', g \in \cG_y^{jj'}} \left( \| \bfT_{jj'}^{[g]} \| -  \| \bfT_{jj'}^{[g]} + \bfd_{jj'}^{[g]}\| \right)
+\end{align}
+
+%
+with $\widehat \bfT_j^k := \bfT_{0,j}^k + \bfd_{j}^k$ etc. For the $k^\text{th}$ summand in the first term on the right hand side, since $d_{jj}^k = 0$, $\widehat \bfE^k \bfd_j^k = \widehat \bfE_{-j}^k \bfd_{-j}^k$. Thus by Cauchy-Schwarz inequality
+%
+$$
+\left| (\bfd_j^k)^T \widehat \bfS^k \bfT_{0,j}^k \right| \leq
+\| (\bfd_j^k \| \left\| \frac{ (\widehat \bfE^k)^T \widehat \bfE^k }{n} \bfT_{0,j}^k \right\| \leq
+\sqrt{q} \| \bfd_j^k \| \left\| \frac{1}{n} (\widehat \bfE_{-j}^k)^T \widehat \bfE^k \bfT_{0,j}^k \right\|_\infty
+$$
+%
+which is $\leq \| \bfd_j^k\| \sqrt q \BQ(v_\beta, \Sigma_x^k, \Sigma_y^k) \leq \| \bfd_j^k\| \gamma_n/4 $ by assumption (T2) and choice of $\gamma_n$. For the second term, 
+suppose $\cS_{0,j}$ is the support of $\Theta_{0,j}$, i.e. $\cS_{0,j} = \{ (j',g): \bftheta_{jj'}^{[g]} \neq 0 \}$. Then
+%
+\begin{align*}
+\sum_{j \neq j', g \in \cG_y^{jj'}} \left( \| \bfT_{jj'}^{[g]} \| -  \| \bfT_{jj'}^{[g]} + \bfd_{jj'}^{[g]}\| \right) & \leq
+\sum_{(j',g) \in \cS_{0,j}} \left( \| \bfT_{jj'}^{[g]} \| -  \| \bfT_{jj'}^{[g]} + \bfd_{jj'}^{[g]}\| \right) -
+\sum_{(j',g) \notin \cS_{0,j}} \| \bfd_{jj'}^{[g]} \|\\
+& \leq \sum_{(j',g) \in \cS_{0,j}} \| \bfd_{jj'}^{[g]} \| - \sum_{(j',g) \notin \cS_{0,j}} \| \bfd_{jj'}^{[g]} \|
+\end{align*}
+%$ \| \bfT_{jj'}^{[g]} \| -  \| \bfT_{jj'}^{[g]} + \bfd_{jj'}^{[g]}\| \leq \| \bfd_{jj'}^{[g]}\|$ by triangle inequality, and then $ \| \bfd_{jj'}^{[g]}\| \leq \sum_{k \in g} | d_{jj'}^k | $, 
+so that (\ref{eqn::Thm1ProofProp2Eqn1}) reduces to
+%
+\begin{align}\label{eqn:Thm1ProofProp2Eqn3}
+\sum_{k=1}^K (\bfd_j^k)^T \widehat \bfS^k \bfd_j^k & \leq 
+\frac{\gamma_n}{2} \left[ \sum_{(j',g) \in \cS_{0,j}} \| \bfd_{jj'}^{[g]} \| + \sum_{(j',g) \notin \cS_{0,j}} \| \bfd_{jj'}^{[g]} \| \right] +
+\gamma_n \left[ \sum_{(j',g) \in \cS_{0,j}} \| \bfd_{jj'}^{[g]} \| - \sum_{(j',g) \notin \cS_{0,j}} \| \bfd_{jj'}^{[g]} \| \right] \notag\\
+& = \frac{3 \gamma_n}{2} \sum_{(j',g) \in \cS_{0,j}} \| \bfd_{jj'}^{[g]} \| - \frac{\gamma_n}{2} \sum_{(j',g) \notin \cS_{0,j}} \| \bfd_{jj'}^{[g]} \| \notag\\
+& \leq \frac{3 \gamma_n}{2} \sum_{j \neq j', g \in \cG_y^{jj'}} \| \bfd_{jj'}^{[g]} \|
+\end{align}
+%
+Since the left hand side is $\geq 0$, this also implies
+%
+$$
+\sum_{(j',g) \notin \cS_{0,j}} \| \bfd_{jj'}^{[g]} \| \leq 3 \sum_{(j',g) \in \cS_{0,j}} \| \bfd_{jj'}^{[g]} \| \quad \Rightarrow
+\sum_{j \neq j', g \in \cG_y^{jj'}} \| \bfd_{jj'}^{[g]} \| \leq
+4 \sum_{(j',g) \in \cS_{0,j}} \| \bfd_{jj'}^{[g]} \| \leq 4 \sqrt{| g_{\max}| s_j} \| \bfD_j \|_F
+$$
+% 
+with $\bfD_j = (\bfd_j^k)_{k \in \cI_K}$. Now the RE condition on $\widehat \bfS^k$ means that
+%
+$$
+\sum_{k=1}^K (\bfd_j^k)^T \widehat \bfS^k \bfd_j^k \geq 
+\sum_{k=1}^K \left( \psi_k \| \bfd_j^k \|^2 - \phi_k \| \bfd_j^k \|_1^2 \right) \geq
+\psi \| \bfD_j \|_F^2 - \phi \| \bfD_j \|_1^2 \geq 
+(\psi - Kq \phi ) \| \bfD_j \|_F^2 \geq \frac{\psi}{2}  \| \bfD_j \|_F^2
+$$
+%
+by assumption (T3). Thus we finally have
+%
+\begin{align}\label{eqn:Thm1ProofProp2Eqn2}
+\frac{\psi}{3} \| \bfD_j \|_F^2 & \leq
+\gamma_n \sum_{j \neq j', g \in \cG_y^{jj'}} \| \bfd_{jj'}^{[g]} \| \leq
+4 \gamma_n \sqrt{| g_{\max}| s_j} \| \bfD_j\|_F
+\end{align}
+%
+Since
+%
+$$
+(\bfD_j)_{j',k} = \widehat T_{jj'}^k - T_{0,jj'}^k = \begin{cases}
+0 \text{ if } j = j'\\
+-(\widehat \theta_{jj'}^k - \theta_{0,jj'}^k ) \text{ if } j \neq j'
+\end{cases}
+$$
+%
+The bounds in (\ref{eqn:Thm1ProofProp2Bd1}) and (\ref{eqn:Thm1ProofProp2Bd2}) are obtained by replacing the corresponding elements in (\ref{eqn:Thm1ProofProp2Eqn2}).
+
+For the bound on $| \widehat \cS_j|$, notice that if $\hat \bftheta_{jj'}^{[g]} \neq 0$ for some $(j',g)$,
+%
+\begin{align*}
+\frac{1}{n} \sum_{k \in g} \left| ((\widehat \bfE_{-j}^k)^T \widehat \bfE^k ( \widehat \bfT_j^k - \bfT_{0,j}^k ))^{j'} \right| & \geq
+\frac{1}{n} \sum_{k \in g} \left| ((\widehat \bfE_{-j}^k)^T \widehat \bfE^k \widehat \bfT_j^k )^{j'} \right| - \frac{1}{n} \sum_{k \in g} \left| ((\widehat \bfE_{-j}^k)^T \widehat \bfE^k \bfT_{0,j}^k )^{j'} \right|\\
+& \geq |g| \gamma_n - \sum_{k \in g} \BQ ( v_\beta, \Sigma_x^k, \Sigma_y^k )
+\end{align*}
+%
+using the KKT condition for (\ref{eqn:EstEqn2}) and assumption (T2). The choice of $\gamma_n$ now ensures that the right hand side is $\geq 3|g| \gamma_n / 4$. Hence
+%
+\begin{align*}
+| \hat \cS_j| & \leq \sum_{(j',g) \in \widehat \cS_j} \frac{16}{9 n^2 |g|^2 \gamma_n^2 } \sum_{k \in g} \left| ((\widehat \bfE_{-j}^k)^T \widehat \bfE^k ( \widehat \bfT_j^k - \bfT_{0,j}^k ))^{j'} \right|^2\\
+& \leq \frac{16}{9 \gamma_n^2} \sum_{k=1}^K \frac{1}{n} \left\| (\widehat \bfE_{-j}^k)^T \widehat \bfE^k ( \widehat \bfT_j^k - \bfT_{0,j}^k ) \right\|^2 \\
+& = \frac{16}{9 \gamma_n^2} \sum_{k=1}^K (\bfd_j^k)^T \widehat \bfS^k \bfd_j^k \\
+& \leq \frac{8}{3 \gamma_n} \sum_{j \neq j', g \in \cG_y^{jj'}} \| \bfd_{jj'}^{[g]} \| \leq \frac{1}{\psi} 128 | g_{\max}| s_j 
+\end{align*}
+%
+using (\ref{eqn:Thm1ProofProp2Eqn3}) and (\ref{eqn:Thm1ProofProp2Eqn2}).
+\end{proof}
+
 \begin{proof}[Proof of Lemma~\ref{Lemma:ThmTestingLemma}]
 To show \eqref{eqn:ThmTestingProofeq3} we have
 %
@@ -1195,10 +1219,6 @@ c_{11} [ \sigma_{x,i,-i} \Lambda_{\max} (\Sigma_{x, -i}) ]^{1/2} \sqrt{\frac{ \l
 \end{align}
 %
 with probability $\geq 1 - 6c_{10} \exp [-(c_{11}^2-1) \log (p-1)]$ for some $c_{10} >0, c_{11} > 1$. By \eqref{eqn:ThmTestingProofeq34}, the second term on the right side of \eqref{eqn:ThmTestingProofeq41} is bounded above by $v_\zeta V_x$ with probability $ \geq 1 - 1/p^{\tau_1-2}$ and $n$ satisfying \eqref{eqn:ThmTestingProofeq5}. The bound of \eqref{eqn:ThmTestingProofeq4} follows by conditions (C2), (C3) and \eqref{eqn:ThmTestingProofeq6}.
-\end{proof}
-
-\begin{proof}[Proof of Theorem~\ref{thm:FDRthm}]
-
 \end{proof}
 
 \bibliographystyle{apalike}

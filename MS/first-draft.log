@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2016.12.9)  9 NOV 2017 10:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2016.12.9)  10 NOV 2017 10:43
 entering extended mode
 **./first-draft.tex
 (first-draft.tex
@@ -442,8 +442,29 @@ m/it/12 pq\OT1/cmr/m/n/12 )] \OMS/cmsy/m/n/12   \OT1/cmr/m/n/12 6\OML/cmm/m/it/
 )]\OML/cmm/m/it/12 ; c[] >
  []
 
-[4] [5] [6] [7]
-Overfull \hbox (17.97781pt too wide) detected at line 600
+[4] [5] [6] [7] [8] [9]
+Overfull \hbox (3.46933pt too wide) in paragraph at lines 742--744
+[][]\OT1/cmr/bx/n/12 Lemma A.3. []\OT1/cmr/m/n/12 For zero-mean in-de-pen-dent 
+sub-gaussian ma-tri-ces $\OT1/cmr/bx/n/12 X \OMS/cmsy/m/n/12 2 \U/msb/m/n/12 M\
+OT1/cmr/m/n/12 (\OML/cmm/m/it/12 n; p\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; \OT1/c
+mr/bx/n/12 E \OMS/cmsy/m/n/12 2 \U/msb/m/n/12 M\OT1/cmr/m/n/12 (\OML/cmm/m/it/1
+2 n; q\OT1/cmr/m/n/12 )$
+ []
+
+[10]
+Overfull \hbox (9.46317pt too wide) detected at line 819
+[][] \OMS/cmsy/m/n/12  [] \OT1/cmr/m/n/12 + [] \OML/cmm/m/it/12 [] \OT1/cmr/m
+/n/12 = \OML/cmm/m/it/12 V[]\OT1/cmr/m/n/12 ;  \OML/cmm/m/it/12 c[] \OT1/cmr/m/
+n/12 = [][]
+ []
+
+[11]
+Overfull \hbox (30.84172pt too wide) in paragraph at lines 984--984
+[] 
+ []
+
+[12] [13]
+Overfull \hbox (17.97781pt too wide) detected at line 1044
 [] [] \OMS/cmsy/m/n/12 k\OT1/cmr/m/n/12 (\OT1/cmr/bx/n/12 Y[] \OMS/cmsy/m/n/12 
   \OT1/cmr/bx/n/12 X[][]\OT1/cmr/m/n/12 )[]\OMS/cmsy/m/n/12 k[] \OT1/cmr/m/n/12
  + \OML/cmm/m/it/12 [] [] \OMS/cmsy/m/n/12 k[]k  [] [] k\OT1/cmr/m/n/12 (\OT1
@@ -452,13 +473,13 @@ Overfull \hbox (17.97781pt too wide) detected at line 600
 \OMS/cmsy/m/n/12 k\OT1/cmr/bx/n/12 T[]\OMS/cmsy/m/n/12 k
  []
 
-[8]
-Overfull \hbox (29.74988pt too wide) in paragraph at lines 635--635
+
+Overfull \hbox (29.74988pt too wide) in paragraph at lines 1079--1079
 [] 
  []
 
 
-Overfull \hbox (26.03737pt too wide) detected at line 643
+Overfull \hbox (26.03737pt too wide) detected at line 1087
 [] \OMS/cmsy/m/n/12 k\OT1/cmr/bx/n/12 d[]\OMS/cmsy/m/n/12 k  \OT1/cmr/m/n/12 3
  [] \OMS/cmsy/m/n/12 k\OT1/cmr/bx/n/12 d[]\OMS/cmsy/m/n/12 k  ) [] k\OT1/cmr/bx
 /n/12 d[]\OMS/cmsy/m/n/12 k  \OT1/cmr/m/n/12 4 [] \OMS/cmsy/m/n/12 k\OT1/cmr/b
@@ -466,8 +487,8 @@ x/n/12 d[]\OMS/cmsy/m/n/12 k  \OT1/cmr/m/n/12 4[]\OMS/cmsy/m/n/12 k\OT1/cmr/bx
 /n/12 D[]\OMS/cmsy/m/n/12 k[]
  []
 
-
-Overfull \hbox (26.35728pt too wide) detected at line 652
+[14]
+Overfull \hbox (26.35728pt too wide) detected at line 1096
 []\OT1/cmr/m/n/12 (\OT1/cmr/bx/n/12 d[]\OT1/cmr/m/n/12 )[][]\OT1/cmr/bx/n/12 d[
 ] \OMS/cmsy/m/n/12  [] []  \OML/cmm/m/it/12  \OMS/cmsy/m/n/12 k\OT1/cmr/bx/n/
 12 D[]\OMS/cmsy/m/n/12 k[]   \OML/cmm/m/it/12 \OMS/cmsy/m/n/12 k\OT1/cmr/bx/n/
@@ -476,52 +497,23 @@ Overfull \hbox (26.35728pt too wide) detected at line 652
 ]\OMS/cmsy/m/n/12 k[]  []k\OT1/cmr/bx/n/12 D[]\OMS/cmsy/m/n/12 k[]
  []
 
-[9] [10]
-Overfull \hbox (39.35938pt too wide) in paragraph at lines 754--756
-[]\OT1/cmr/m/it/12 Part II. \OT1/cmr/m/n/12 Proof of Thm 2 in 15-656 fol-lows. 
-We only need a new bound for $\OML/cmm/m/it/12 Var\OT1/cmr/m/n/12 (\OT1/cmr/bx/
-n/12 Y[]\OMS/cmsy/m/n/12 j\OT1/cmr/bx/n/12 Y[]\OML/cmm/m/it/12 ; \OT1/cmr/bx/n/
-12 X[]\OML/cmm/m/it/12 ; []\OT1/cmr/m/n/12 )$.
- []
-
-
-Overfull \hbox (3.46933pt too wide) in paragraph at lines 828--830
-[][]\OT1/cmr/bx/n/12 Lemma A.3. []\OT1/cmr/m/n/12 For zero-mean in-de-pen-dent 
-sub-gaussian ma-tri-ces $\OT1/cmr/bx/n/12 X \OMS/cmsy/m/n/12 2 \U/msb/m/n/12 M\
-OT1/cmr/m/n/12 (\OML/cmm/m/it/12 n; p\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; \OT1/c
-mr/bx/n/12 E \OMS/cmsy/m/n/12 2 \U/msb/m/n/12 M\OT1/cmr/m/n/12 (\OML/cmm/m/it/1
-2 n; q\OT1/cmr/m/n/12 )$
- []
-
-[11] [12]
-Overfull \hbox (9.46317pt too wide) detected at line 905
-[][] \OMS/cmsy/m/n/12  [] \OT1/cmr/m/n/12 + [] \OML/cmm/m/it/12 [] \OT1/cmr/m
-/n/12 = \OML/cmm/m/it/12 V[]\OT1/cmr/m/n/12 ;  \OML/cmm/m/it/12 c[] \OT1/cmr/m/
-n/12 = [][]
- []
-
-[13]
-Overfull \hbox (30.84172pt too wide) in paragraph at lines 1070--1070
-[] 
- []
-
-[14] [15] [16] (first-draft.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1207.
+[15] [16] (first-draft.bbl)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1227.
  [17]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1207.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1227.
  (first-draft.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1207.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1207.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1227.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1227.
 
 Package rerunfilecheck Info: File `first-draft.out' has not changed.
-(rerunfilecheck)             Checksum: DA2B1380E62F5E6E9969E707EA3C9800;272.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1207.
+(rerunfilecheck)             Checksum: 2700654910E5F64CE82F60588F354C60;335.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1227.
  ) 
 Here is how much of TeX's memory you used:
- 7906 strings out of 493333
- 114917 string characters out of 3137901
- 214450 words of memory out of 3000000
- 11248 multiletter control sequences out of 15000+200000
+ 7913 strings out of 493333
+ 115000 string characters out of 3137901
+ 213697 words of memory out of 3000000
+ 11251 multiletter control sequences out of 15000+200000
  14905 words of font info for 56 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  36i,17n,38p,1608b,482s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -543,9 +535,9 @@ onts/cm/cmr8.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm
 <D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmti12.pfb><D:/S
 tudy/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/symbols/msam10.pfb><D:/S
 tudy/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on first-draft.pdf (17 pages, 324717 bytes).
+Output written on first-draft.pdf (17 pages, 328333 bytes).
 PDF statistics:
- 348 PDF objects out of 1000 (max. 8388607)
- 95 named destinations out of 1000 (max. 500000)
- 49 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 364 PDF objects out of 1000 (max. 8388607)
+ 99 named destinations out of 1000 (max. 500000)
+ 57 words of extra memory for PDF output out of 10000 (max. 10000000)
 
