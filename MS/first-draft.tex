@@ -215,19 +215,19 @@ where $\BQ \left(v_\beta, \Sigma_x^k, \Sigma_y^k \right)$ is a $O(\sqrt{ \log (p
 Then, given the choice of tuning parameter
 %
 $$
-\gamma_n = 4 \sqrt{G_0} \BQ_0; \quad \BQ_0 := \max_{k \in \cI_K} \BQ \left(v_\beta, \Sigma_x^k, \Sigma_y^k \right)
+\gamma_n = 4 \sqrt{| g_{\max}|} \BQ_0; \quad \BQ_0 := \max_{k \in \cI_K} \BQ \left(v_\beta, \Sigma_x^k, \Sigma_y^k \right)
 $$
 %
 the following holds
 %
 \begin{align*}
-\frac{1}{K} \sum_{k=1}^K \| \widehat \Omega_y^k - \Omega_y^k \|_F^2 \leq
-O \left( \BQ_0 \sqrt{ \frac{ | g_{\max} | G_0 S}{K}} \right)
+\frac{1}{K} \sum_{k=1}^K \| \widehat \Omega_y^k - \Omega_y^k \|_F \leq
+O \left( \BQ_0 \sqrt{\frac{| g_{\max}| S}{K}} \right)
 \end{align*}
 %
 where $|g_{\max}|$ is the maximum group size.
 
-%{\colrbf Discuss tighter bound compared to vanilla JSEM}
+{\colrbf Discuss tighter bound compared to vanilla JSEM}
 
 %Further if A1 holds with $s = s_0$, and A3 is satisfied then
 %
@@ -297,8 +297,8 @@ $$
 Then, for sample size $n \succsim \log (pq)$ and choice of tuning parameter $\gamma_n = 4 \sqrt{G_0} \BQ_0$, there exist constants $ c_1, c_3, c_4 > 0, c_2, c_5 > 1$ such that the following holds
 %
 \begin{align*}
-\frac{1}{K} \sum_{k=1}^K \| \widehat \Omega_y^k - \Omega_y^k \|_F^2 \leq
-O \left( \BQ_0 \sqrt{ \frac{ | g_{\max} | G_0 S}{K}} \right)
+\frac{1}{K} \sum_{k=1}^K \| \widehat \Omega_y^k - \Omega_y^k \|_F \leq
+O \left( \BQ_0 \sqrt{\frac{| g_{\max}| S}{K}} \right)
 \end{align*}
 %
 with probability $\geq 1 - 1/p^{\tau_1-2} - 6c_1 \exp [-(c_2^2-1) \log(pq)] - 2 \exp (- c_3 n) - 6c_4 \exp [-(c_5^2-1) \log(pq)]$.
@@ -341,14 +341,14 @@ where $\BR \left(v_\Theta, \Sigma_x^k, \Sigma_y^k \right)$ is a $O(1)$ determini
 Then, given the choice of tuning parameter
 %
 $$
-\lambda \geq 4 \sqrt{| \cH|} \BR_0 \sqrt{ \frac{ \log(pq)}{n}}; \quad 
+\lambda_n \geq 4 \sqrt{| h_{\max} |} \BR_0 \sqrt{ \frac{ \log(pq)}{n}}; \quad 
 \BR_0 := \max_{k \in \cI_K} \BR \left(v_\Theta, \Sigma_x^k, \Sigma_y^k \right)
 $$
 %
 the following holds
 %
 \begin{align}
-\| \widehat \bfbeta - \bfbeta_0 \|_1 & \leq 48 \sqrt{ |\cH|} s_\beta \lambda_n / \psi^* \label{eqn:BetaThmEqn1}\\
+\| \widehat \bfbeta - \bfbeta_0 \|_1 & \leq 48 \sqrt{ | h_{\max} |} s_\beta \lambda_n / \psi^* \label{eqn:BetaThmEqn1}\\
 \| \widehat \bfbeta - \bfbeta_0 \| & \leq 12 \sqrt s_\beta \lambda_n / \psi^* \label{eqn:BetaThmEqn2}\\
 \sum_{h \in \cH} \| \bfbeta^{[h]} - \bfbeta_0^{[h]} \| & \leq 48 s_\beta \lambda_n / \psi^* \label{eqn:BetaThmEqn3}\\
 (\widehat \bfbeta - \bfbeta_0 )^T \widehat \bfGamma (\widehat \bfbeta - \bfbeta_0 ) & \leq
@@ -364,7 +364,7 @@ the following holds
 
 
 \begin{Proposition}\label{prop:ThmBetaRE}
-Consider deterministic $\widehat \Theta$ satisfying assumption (B1). Then for sample size $n \succsim \log (pq)$,
+Consider deterministic $\widehat \Theta$ satisfying assumption (B1). Assume that the matrices $(\widehat \bfT^k)^2, k \in \cI_K$ are diagonally dominant. Then for sample size $n \succsim \log (pq)$,
 
 \begin{enumerate}
 %\item We have $\| \bfX^k ( \hat \bfB^k - \bfB_0^k ) \|_\infty \leq c( v_\beta)$, where
@@ -611,20 +611,20 @@ The proof has three parts, where we prove the consistency of the neighborhood re
 
 %All subsequent derivations in the theorem go through with the new choice of $\lambda_{ij}^g$.
 
-{\it Step 1: consistency of neighborhood regression.} The following proposition establishes error bounds for the estimated $y$-neighborhood coefficients.
+{\it Step 1: consistency of neighborhood regression.} The following proposition establishes error bounds for estimated neighborhood coefficients in the Y-network.
 
 \begin{Proposition}\label{prop:Thm1ProofProp2}
-Consider the estimation problem in (\ref{eqn:EstEqn2}) and take $\gamma_n \geq 4 \sqrt{G_j} \BQ_0$. Given the conditions (T2) and (T3) hold, for any solution of (\ref{eqn:EstEqn2}) we shall have
+Consider the estimation problem in (\ref{eqn:EstEqn2}) and take $\gamma_n \geq 4 \sqrt{| g_{\max}|} \BQ_0$. Given the conditions (T2) and (T3) hold, for any solution of (\ref{eqn:EstEqn2}) we shall have
 %
 \begin{align}
-\| \widehat \Theta_j - \Theta_{0,j} \|_F & \leq 12 \sqrt{|g_{\max}| s_j} \gamma_n / \psi \label{eqn:Thm1ProofProp2Bd1}\\
-\sum_{j \neq j', g \in \cG_y^{jj'}} \| \hat \bftheta_{jj'}^{[g]} - \bftheta_{0,jj'}^{[g]} \| & \leq 48 | g_{\max}| s_j \gamma_n / \psi \label{eqn:Thm1ProofProp2Bd2}
+\| \widehat \Theta_j - \Theta_{0,j} \|_F & \leq 12 \sqrt{s_j} \gamma_n / \psi \label{eqn:Thm1ProofProp2Bd1}\\
+\sum_{j \neq j', g \in \cG_y^{jj'}} \| \hat \bftheta_{jj'}^{[g]} - \bftheta_{0,jj'}^{[g]} \| & \leq 48 s_j \gamma_n / \psi \label{eqn:Thm1ProofProp2Bd2}
 \end{align}
 %
 Also denote the non-zero support of $\widehat \Theta_j$ by $\widehat \cS_j$, i.e. $\widehat \cS_j = \{ (j',g): \hat \bftheta_{jj'}^{[g]} \neq {\bf 0} \}$. Then
 %
 \begin{align}
-| \widehat \cS_j| \leq 128 | g_{\max}| s_j / \psi \label{eqn:Thm1ProofProp2Bd3}
+| \widehat \cS_j| \leq 128 s_j / \psi \label{eqn:Thm1ProofProp2Bd3}
 \end{align}
 \end{Proposition}
 
@@ -637,29 +637,29 @@ $$
 With similar derivations to the proof of Corollary A.1 in \cite{MaMichailidis15}, The following two upper bounds can be established:
 %
 \begin{align}
-| \hat E^k | \leq \frac{ 128 | g_{\max} | S }{\psi} \label{eqn:Thm1ProofProp2Bd4}\\
+| \hat E^k | \leq \frac{ 128 S }{\psi} \label{eqn:Thm1ProofProp2Bd4}\\
 \frac{1}{K} \sum_{k=1}^K \| \tilde \Omega_y^k - \Omega_y^k \|_F \leq
-\frac{12 c_0 \sqrt{| g_{\max}| S} \gamma_n} {\sqrt K \psi} 
+\frac{12 c_0 \sqrt{S} \gamma_n} {\sqrt K \psi} \label{eqn:Thm1ProofProp2Bd5}
 \end{align}
 %
-following which, taking $\gamma_n = 4 \sqrt{G_0} \BQ_0$,
+following which, taking $\gamma_n = 4 \sqrt{| g_{\max}|} \BQ_0$,
 %
 \begin{align}
-\Lambda_{\min} ( \tilde \Omega_y^k) \geq d_0 - \frac{48 c_0 \sqrt{| g_{\max}| G_0 S} \BQ_0}{ \psi} \geq (1 - t_1) d_0 > 0\\
-\Lambda_{\max} ( \tilde \Omega_y^k) \leq c_0 + \frac{48 c_0 \sqrt{| g_{\max}| G_0 S} \BQ_0}{ \psi} \leq c_0 + t_1 d_0 < \infty \label{eqn:Thm1ProofProp2Bd5}
+\Lambda_{\min} ( \tilde \Omega_y^k) \geq d_0 - \frac{48 c_0 \BQ_0 \sqrt{| g_{\max}| S}}{ \psi} \geq (1 - t_1) d_0 > 0 \label{eqn:Thm1ProofProp2Bd6}\\
+\Lambda_{\max} ( \tilde \Omega_y^k) \leq c_0 + \frac{48 c_0 \BQ_0 \sqrt{| g_{\max}| S}}{ \psi} \leq c_0 + t_1 d_0 < \infty \label{eqn:Thm1ProofProp2Bd7}
 \end{align}
 %
 with $0 < t_1 < 1$, and the sample size $n$ satisfying
 %
 $$
-n \geq | g_{\max}| G_0 S \left[ \frac{48 c_0 Q_0}{\psi t_1 d_0} \right]^2; \quad Q_0 := \sqrt n \BQ_0
+n \geq | g_{\max}| S \left[ \frac{48 c_0 Q_0}{\psi t_1 d_0} \right]^2; \quad Q_0 := \sqrt n \BQ_0
 $$
 
 {\it Step 3: Refitting.}
-Following the same steps as part A.3 in the proof of Theorem 4.1 in \cite{MaMichailidis15}, it can be proven using \eqref{eqn:Thm1ProofProp2Bd4}--\eqref{eqn:Thm1ProofProp2Bd5} that
+Following the same steps as part A.3 in the proof of Theorem 4.1 in \cite{MaMichailidis15}, it can be proven using \eqref{eqn:Thm1ProofProp2Bd4}--\eqref{eqn:Thm1ProofProp2Bd7} that
 %
 $$
-\sum_{k=1}^K \| \widehat \Omega_y^k - \tilde \Omega_y^k \|^2 \leq O \left( \BQ_0^2 | g_{\max}| G_0 S \right)
+\sum_{k=1}^K \| \widehat \Omega_y^k - \tilde \Omega_y^k \|^2 \leq O \left( \BQ_0^2 | g_{\max}| S \right)
 $$
 %
 The proof is now complete by combining this with \eqref{eqn:Thm1ProofProp2Bd5} then applying Cauchy-Schwarz inequality and triangle inequality.
@@ -751,7 +751,7 @@ $$
 with probability $\geq 1 - 2 \exp(-c_3 n)$ for some $c_3 > 0$.
 \end{Lemma}
 %
-This is same as Lemma 2 in Appendix B of \cite{LinEtal16} and its proof can be found there. Now denote $\widehat \bfE = \bfY - \bfX \widehat \bfB$. For $\bfv \in \BR^q$, we have
+Now denote $\widehat \bfE = \bfY - \bfX \widehat \bfB$. For $\bfv \in \BR^q$, we have
 %
 \begin{align}\label{eqn:ErrorREeqn3}
 \bfv^T \widehat \bfS \bfv &= \frac{1}{n} \| \widehat \bfE \bfv \|^2 \notag\\
@@ -777,7 +777,7 @@ $$
 %
 \end{Lemma}
 %
-This is a part of Lemma 3 of Appendix B in \cite{LinEtal16}, and is proved therein. Subsequently we collect all summands in (\ref{eqn:ErrorREeqn3}) and get
+Subsequently we collect all summands in (\ref{eqn:ErrorREeqn3}) and get
 %
 $$
 \bfv^T \widehat{ \bfS} \bfv \geq \psi_y \| \bfv \|^2 - \left( \phi_y + 2 v_\beta c_2 [ \Lambda_{\max} (\Sigma_x) \Lambda_{\max} (\Sigma_y) ]^{1/2} \sqrt{\frac{ \log(pq)}{n}} \right) \| \bfv \|_1^2
@@ -917,17 +917,17 @@ Denote $\bfb = \widehat \bfbeta - \bfbeta_0$. Then we have
 %
 $$
 \bfb^T \widehat \bfGamma \bfb \leq 2 \bfb^T ( \widehat \bfgamma - \widehat \bfGamma \bfbeta_0 ) + \lambda_n
-\sum_{g \in \cG} ( \| \bfbeta_0^{[h]} \| - \| \bfbeta_0^{[h]} + \bfb^{[h]} \|)
+\sum_{h \in \cH} ( \| \bfbeta_0^{[h]} \| - \| \bfbeta_0^{[h]} + \bfb^{[h]} \|)
 $$
 %
-Proceeding similarly as the proof of Theorem~\ref{thm:ThetaThm}, with a different deviation bound and choice of $\lambda_n$ based on that, we get expressions equivalent to (\ref{eqn:Thm1ProofProp2Eqn3}) and (\ref{eqn:Thm1ProofProp2Eqn2}) respectively:
+Proceeding similarly as the proof of Proposition~\ref{prop:Thm1ProofProp2}, with a different deviation bound and choice of $\lambda_n$, we get expressions equivalent to (\ref{eqn:Thm1ProofProp2Eqn3}) and (\ref{eqn:Thm1ProofProp2Eqn2}) respectively:
 %
 \begin{align}
 \bfb^T \widehat \bfGamma \bfb & \leq \frac{3}{2} \sum_{h \in \cH} \| \bfb^{[h]} \| \\
 \frac{\psi^*}{3} \| \bfb \|^2 & \leq \lambda_n \sum_{h \in \cH} \| \bfb^{[h]} \| \leq 4 \lambda_n \sqrt{s_\beta} \| \bfb \|
 \end{align}
 %
-Furthermore, $\sum_{h \in \cH} \| \bfb^{[h]} \| \leq \sqrt{ | \cH|} \| \bfb \|_1$. The bounds in (\ref{eqn:BetaThmEqn1}), (\ref{eqn:BetaThmEqn2}), (\ref{eqn:BetaThmEqn3}) and (\ref{eqn:BetaThmEqn4}) 
+Furthermore, $\| \bfb \|_1 \leq \sqrt{ | h_{\max} |} \sum_{h \in \cH} \| \bfb^{[h]} \| $. The bounds in (\ref{eqn:BetaThmEqn1}), (\ref{eqn:BetaThmEqn2}), (\ref{eqn:BetaThmEqn3}) and (\ref{eqn:BetaThmEqn4}) now
 follow.
 
 \end{proof}
@@ -939,7 +939,10 @@ For part 1 it is enough to prove that with $ \widehat \Sigma_x^k := (\bfX^k)^T \
 \widehat \bfT_k^2 \otimes \widehat \Sigma_x^k & \sim RE (\psi_*^k, \phi_*^k)
 \end{align}
 %
-with high enough probability. because then we can take $\psi_* = \min_k \psi_*^k, \phi_* = \max_k \phi_*^k$. The proof of (\ref{eqn:ThmBetaREProofEqn1}) follows similar lines of the proof of Proposition 1 in \cite{LinEtal16}, only replacing $\Theta_\epsilon, \widehat \Theta_\epsilon, \bfX$ therein with $(\bfT^k)^2, (\widehat \bfT^k)^2, \bfX^k$, respectively. We omit the details.%, with an extra step to prove that $(\bfT^k)^2$ is diagonally dominant. For this, denote the elements of $(\bfT^k)^2$ by $\tau_{jj'}, j; j' \in \cI_q$. Then
+with high enough probability. because then we can take $\psi_* = \min_k \psi_*^k, \phi_* = \max_k \phi_*^k$. The proof of (\ref{eqn:ThmBetaREProofEqn1}) follows similar lines of the proof of Proposition 1 in \cite{LinEtal16}, only replacing $\Theta_\epsilon, \widehat \Theta_\epsilon, \bfX$ therein with $(\bfT^k)^2, (\widehat \bfT^k)^2, \bfX^k$, respectively. We omit the details.
+
+Part 2 follows the proof of Proposition 2 in \cite{LinEtal16}.
+%, with an extra step to prove that $(\bfT^k)^2$ is diagonally dominant. For this, denote the elements of $(\bfT^k)^2$ by $\tau_{jj'}, j; j' \in \cI_q$. Then
 %%
 %\begin{align*}
 %\tau_{jj} - \sum_{j \neq j'} | \tau_{jj'}| & = \sum_{l=1}^q \left[
@@ -1085,7 +1088,7 @@ with $\bfd_{j}^k := \widehat \bfT_j^k - \bfT_{0,j}^k$ etc. For the $k^\text{th}$
 \sum_{k=1}^K \left| (\bfd_j^k)^T \widehat \bfS^k \bfT_{0,j}^k \right| &=
 \sum_{k=1}^K \left| \bfd_j^k. \frac{1}{n} (\widehat \bfE^k)^T \widehat \bfE^k \bfT_{0,j}^k \right| \\
 & \leq \sum_{k=1}^K \left\| \frac{1}{n} (\widehat \bfE_{-j}^k)^T \widehat \bfE^k \bfT_{0,j}^k \right\|_\infty \| \bfd_{-j}^k \|_1 \\
-& \leq \BQ_0 \sqrt {G_j} \sum_{j \neq j', g \in \cG} \| \bfd_{jj'}^{[g]} \|
+& \leq \BQ_0 \sqrt {| g_{\max}|} \sum_{j \neq j', g \in \cG} \| \bfd_{jj'}^{[g]} \|
 \end{align*}
 %
 by assumption (T2). For the second term, suppose $\cS_{0,j}$ is the support of $\Theta_{0,j}$, i.e. $\cS_{0,j} = \{ (j',g): \bftheta_{jj'}^{[g]} \neq 0 \}$. Then
@@ -1112,7 +1115,7 @@ Since the left hand side is $\geq 0$, this also implies
 $$
 \sum_{(j',g) \notin \cS_{0,j}} \| \bfd_{jj'}^{[g]} \| \leq 3 \sum_{(j',g) \in \cS_{0,j}} \| \bfd_{jj'}^{[g]} \| \quad \Rightarrow
 \sum_{j \neq j', g \in \cG_y^{jj'}} \| \bfd_{jj'}^{[g]} \| \leq
-4 \sum_{(j',g) \in \cS_{0,j}} \| \bfd_{jj'}^{[g]} \| \leq 4 \sqrt{| g_{\max}| s_j} \| \bfD_j \|_F
+4 \sum_{(j',g) \in \cS_{0,j}} \| \bfd_{jj'}^{[g]} \| \leq 4 \sqrt{s_j} \| \bfD_j \|_F
 $$
 % 
 with $\bfD_j = (\bfd_j^k)_{k \in \cI_K}$. Now the RE condition on $\widehat \bfS^k$ means that
@@ -1131,7 +1134,7 @@ Thus we finally have
 \begin{align}\label{eqn:Thm1ProofProp2Eqn2}
 \frac{\psi}{3} \| \bfD_j \|_F^2 & \leq
 \gamma_n \sum_{j \neq j', g \in \cG_y^{jj'}} \| \bfd_{jj'}^{[g]} \| \leq
-4 \gamma_n \sqrt{| g_{\max}| s_j} \| \bfD_j\|_F
+4 \gamma_n \sqrt{s_j} \| \bfD_j\|_F
 \end{align}
 %
 Since
@@ -1159,10 +1162,18 @@ using the KKT condition for (\ref{eqn:EstEqn2}) and assumption (T2). The choice 
 | \hat \cS_j| & \leq \sum_{(j',g) \in \widehat \cS_j} \frac{16}{9 n^2 |g|^2 \gamma_n^2 } \sum_{k \in g} \left| ((\widehat \bfE_{-j}^k)^T \widehat \bfE^k ( \widehat \bfT_j^k - \bfT_{0,j}^k ))^{j'} \right|^2\\
 & \leq \frac{16}{9 \gamma_n^2} \sum_{k=1}^K \frac{1}{n} \left\| (\widehat \bfE_{-j}^k)^T \widehat \bfE^k ( \widehat \bfT_j^k - \bfT_{0,j}^k ) \right\|^2 \\
 & = \frac{16}{9 \gamma_n^2} \sum_{k=1}^K (\bfd_j^k)^T \widehat \bfS^k \bfd_j^k \\
-& \leq \frac{8}{3 \gamma_n} \sum_{j \neq j', g \in \cG_y^{jj'}} \| \bfd_{jj'}^{[g]} \| \leq \frac{1}{\psi} 128 | g_{\max}| s_j 
+& \leq \frac{8}{3 \gamma_n} \sum_{j \neq j', g \in \cG_y^{jj'}} \| \bfd_{jj'}^{[g]} \| \leq \frac{128 s_j}{\psi} 
 \end{align*}
 %
 using (\ref{eqn:Thm1ProofProp2Eqn3}) and (\ref{eqn:Thm1ProofProp2Eqn2}).
+\end{proof}
+
+\begin{proof}[Proof of Lemma~\ref{lemma:ErrorRElemma1}]
+This is same as Lemma 2 in Appendix B of \cite{LinEtal16} and its proof can be found there.
+\end{proof}
+
+\begin{proof}[Proof of Lemma~\ref{lemma:ErrorRElemma2}]
+This is a part of Lemma 3 of Appendix B in \cite{LinEtal16}, and is proved therein. 
 \end{proof}
 
 \begin{proof}[Proof of Lemma~\ref{Lemma:ThmTestingLemma}]
