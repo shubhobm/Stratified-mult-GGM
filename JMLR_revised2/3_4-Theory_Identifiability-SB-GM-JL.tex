@@ -1,0 +1,44 @@
+\subsection{Estimation Error and Identifiability}\label{sec:identifiability}
+
+In this subsection, we discuss in detail the conditions needed for the parameters in our multi-layered network to be identifiable (estimable). 
+We focus the presentation for ease of exposition on a three-layer network and then discuss the general $M$-layer case.
+
+Consider a $3$-layer graphical model. Let $\widetilde{X} = [(X^1)', (X^2)']'$ be the $(p_1+p_2)$ dimensional random variable, which represents the 
+``super"-layer on which we regress $X^3$ to estimate $B^{13}$, $B^{23}$ and $\Sigma^3$. As shown in Theorem~\ref{thm:ErrorBound_beta}, the estimation error for $\widehat{\beta}$ takes the following form:
+\begin{equation*}
+\|\widehat{\beta}-\beta^*\|_1 \leq 64s^{**}\lambda_n/\varphi 
+\end{equation*}
+where $\varphi$ is the curvature parameter for RE condition that scales with $\Lambda_{\min}(\Sigma_{\widetilde{X}})$ (see Proposition~\ref{prop:REcondition}). Therefore, the error of estimating these regression parameters is higher when $\Lambda_{\min}(\Sigma_{\tilde{X}})$ is smaller. In this section, we derive a lower bound on this quantity to demonstrate how the estimation error depends on the underlying structure of the graph.
+
+For the undirected subgraph within a layer $k$, we denote its maximum node capacity by $\mathbf{v}(\Theta^k):= \max_{1 \le i \le p_k} \sum_{j=1}^{p_k} |\Theta_{ij}|$. For the directed bipartite subgraph consisting of Layer $s \rightarrow t$ edges ($s<t$), we similarly define the maximum incoming and outgoing node capacities by $\mathbf{v}_{in}(B^{st}):= \max_{1 \le j \le p_t} \sum_{i=1}^{p_s}|B^{st}_{ij}|$ and $\mathbf{v}_{out}(B^{st}):= \max_{1 \le i \le p_s} \sum_{j=1}^{p_t} |B^{st}_{ij}|$. The following proposition establishes the lower bound in terms of these node capacities
+
+\begin{proposition}\label{prop:RE-bound}
+\begin{equation*}
+%\Lambda_{\min}(\Sigma_{\widetilde{X}}) \ge \| \Theta^1 \|^{-1} \| \Theta^2 \|^{-1} \left(1+\|B^{12}\| \right)^{-2}
+\Lambda_{\min}(\Sigma_{\widetilde{X}}) \ge \mathbf{v}(\Theta^1)^{-1} \mathbf{v}(\Theta^2)^{-1} 
+\left[1+\left(\mathbf{v}_{in}(B^{12})+\mathbf{v}_{out}(B^{12})\right)/2 \right]^{-2}
+\end{equation*}
+\end{proposition}
+
+
+The three components in the lower bound demonstrate how the structure of Layers 1 and 2 impact the accurate estimation of directed edges to Layer 3. Essentially, the bound suggests that accurate estimation is possible when the total effect (incoming and outgoing edges) at every node of each of the three subgraphs is not very large. 
+
+This is inherently related to the identifiability of the multi-layered graphical models and our ability to distinguish between the parents from different layers. For instance, if a node in Layer $2$ has high partial correlation with nodes of Layer $1$, i.e., a node in Layer 2 has parents from many nodes in Layer 1 and yields a large $\mathbf{v}_{in}(B^{12})$; or similarly, a node in Layer $1$ is the parent of many nodes in Layer $2$, yielding a large $\mathbf{v}_{out}(B^{12})$. In either case, we end up with some large lower bound for $\Lambda_{\min}(\Sigma_{\widetilde{X}})$ and it can be hard to distinguish Layer $1 \rightarrow 3$ edges from Layer $2 \rightarrow 3$ edges.
+
+For a general $M$-layer network, the argument in the proof of Proposition \ref{prop:RE-bound} (see Section~\ref{sec:proofs-proposition} for details) can be generalized in a straightforward manner. In the 2-layer network setting, with the notation defined in Section~\ref{sec:methodology}, by setting $\epsilon^1 = X^1$, we have 
+\begin{equation*}
+\left[\begin{array}{c}\epsilon^1 \\ \epsilon^2 \end{array} \right] = 
+P
+\left[\begin{array}{c} X^1 \\ X^2 \end{array} \right],\quad \text{where}~~~ P = \left[\begin{array}{cc}I & 0 \\ -(B^{12})' & I \end{array}\right] .
+\end{equation*}
+For an $M$-layer network, a modified $P$ is given in the following form: 
+\begin{equation*}
+P = \left[\begin{array}{cccc}
+I & 0 & \ldots & 0 \\ 
+-(B^{12})' & I & \ldots & 0 \\
+\vdots & \vdots & \vdots & 0 \\
+-(B^{1, M-1})' & -(B^{2, M-1})' & \ldots & I
+ \end{array} \right]
+\end{equation*}
+and combines node capacities for different layers. The conclusion is qualitatively similar, i.e., the estimation error of an $M$-layer graphical model is small as long as the maximum node capacities of different inter-layer and intra-layer subgraphs are not too large.
+

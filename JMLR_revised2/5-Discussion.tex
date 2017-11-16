@@ -1,0 +1,53 @@
+\section{Discussion}\label{sec:grouping}
+
+In this paper, we examined multi-layered Gaussian networks, proposed a provably converging algorithm for obtaining 
+the estimates of the key model parameters and established their theoretical properties in  high-dimensional settings.
+Note that we focused on $\ell_1$ penalties for both the directed and undirected edges, since it was assumed that the multi-layer network was sparse both between layers and within layers. In many scientific applications, external information may require
+imposing group penalties, primarily on the directed edge parameters ($B$). For example, in a gene-protein 2-layer network, genes
+can be grouped according to their function in pathways and one may be interested in assessing the pathway's impact on proteins.
+In that case, a group lasso penalty can be imposed. In general, the proposed framework can easily accommodate 
+other types of penalties in accordance to the underlying data generating procedure. The exact form of the error bounds
+established would be different, depending on the exact choice of penalty selected. Nevertheless, as long as the penalty is convex, all arguments regarding bi-convexity and convergence follow, and we can use similar strategies to bound the statistical error of the estimators, obtained via the iterative algorithm.
+
+Next, we discuss connections of this work to that in \citet{sohn2012joint,yuan2014partial,mccarter2014sparse}. In these papapers,
+an alternative parameterization of the 2-layer network is adopted. Specifically, all nodes in layersd 1 and 2 are considered
+jointly and assumed to be drawn from the following Gaussian distribution:
+\begin{equation*}
+\begin{pmatrix}
+\bs{X} \\ \bs{Y}
+\end{pmatrix}\sim \mathcal{N}\left( 0, \begin{pmatrix}
+\Omega_{X} & \Omega_{XY} \\ \Omega_{YX} & \Omega_{Y}
+\end{pmatrix}^{-1} \right), 
+\end{equation*}
+and by conditioning $\bs{Y}$ on $\bs{X}$, one obtains:
+\begin{equation}\label{eqn:YonX}
+\bs{Y}|\bs{X} \sim \mathcal{N}\left(-\Omega_Y^{-1} \Omega'_{XY} \bs{X},  \Omega_Y^{-1}\right).
+\end{equation}
+Compare (\ref{eqn:YonX}) with our model set-up in Section~\ref{sec:set-up}, the following correspondence holds:
+\begin{equation}\label{eqn:correspondence}
+B = - \Omega_{XY}\Omega_{Y}^{-1}, \qquad \Omega_Y = \Theta_\epsilon. 
+\end{equation}
+Note that the correspondence in (\ref{eqn:correspondence}) is only guaranteed to hold in selective settings.
+Specifically, at the population level, the correspondence between $(\Omega_{XY},\Omega_Y)$ and $(B,\Theta_\epsilon)$ holds
+in the absence of any sparsity penalization. Further, in a low-dimensional data setting without penalty terms in the 
+objective function, the estimates from the two
+parameterizations would be similar provided that the problem is well-conditioned and the sample size reasonably large.
+
+However, the situation is different in high-dimensional settings and in the presence of sparsity penalties. Specifically,
+given data $X$ and $Y$, instead of parametrizing the model in terms of $(B,\Theta_\epsilon)$, the authors in \cite{sohn2012joint,yuan2014partial,mccarter2014sparse} consider the following optimization problem, parametrized in $(\Omega_{XY},\Omega_Y)$:
+\begin{equation}\label{opt:convex}
+\min\limits_{\Omega_{XY},\Omega_Y} g(\Omega_{XY},\Omega_Y) \equiv  g_0(\Omega_{XY},\Omega_Y)
++ \mathcal{R}(\Omega_{XY},\Omega_{Y})
+\end{equation}
+where $g_0(\Omega_{XY},\Omega_Y) = -\log\det\Omega_Y + \frac{1}{n}\text{tr}\left[ (Y + \Omega_{XY}\Omega_{Y}^{-1} X)'\Omega_Y (Y + \Omega_{XY}\Omega_{Y}^{-1}X) \right]$ is jointly convex in $(\Omega_{XY},\Omega_Y)$, and $\mathcal{R}(\Omega_{XY},\Omega_Y)$ is some regularization term. In particular, the element-wise $\ell_1$ norm on $\Omega_Y$, and the element-wise $\ell_1$ or column-wise $\ell_1$ norm (matrix $2,1$ norm) on $\Omega_{XY}$ are the main penalties under consideration in those papers. 
+
+Despite the convex formulation in (\ref{opt:convex}), we would like to point out that in general, the sparsity pattern in $B$ and $\Omega_{XY}$ are not transferable through the regularization term, which underlies a major difference between the formulation in (\ref{opt:convex}) and the one presented in this paper. Given the correspondence in (\ref{eqn:correspondence}), there are two cases where $B$ and $\Omega_{XY}$ share the same sparsity pattern: 1) $\Omega_{Y}$ (or $\Theta_{\epsilon}$, equivalently) is diagonal, or 2) both the $i^{\text{th}}$ row in $B$ and $\Omega_{XY}$ are identically zero, for an arbitrary $i=1,\cdots,p_1$.  However,
+both settings are fairly restrictive and unlike to occur in many applications. 
+
+Note that the linear model represents a natural modeling tool for a number of problems and the regression coefficients have a
+specific scientific interpretation. This is easily accomplished through the $(B,\Theta_\epsilon)$-parametrization, by adding 
+proper regularization to $B$ (e.g., penalty which enforces element-wise sparsity or group-Lasso type of sparsity, etc) if necessary.
+However, with the $(\Omega_{XY},\Omega_Y)$-parametrization, the underlying sparsity in the true data generating procedure, encoded by $B$, will not be easily incorporated, and to add a regularization term on $\Omega_{XY}$ may lose the scientific interpretability, and may also lead to an estimated $B$ whose sparsity pattern is completely mis-specified, obtained from (\ref{eqn:correspondence}) with $\widehat{\Omega}_{XY},\widehat{\Omega}_Y$ plugged in.
+
+Another difference we would like to point out is that once we add penalty terms to the objective function in the low dimensional setting, or switch to the high dimensional setting (as considered in \citet{sohn2012joint} and \citet{yuan2014partial}), the correspondence between the optimizer(s) of (\ref{eqn:opt}) and the optimizer(s) of (\ref{opt:convex}) become difficult
+to connect analytically. 

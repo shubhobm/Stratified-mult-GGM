@@ -1,0 +1,82 @@
+%---------------------------------------------------------
+%
+%               Convergence
+%
+%---------------------------------------------------------
+
+
+\subsection{\normalsize Convergence of the Iterative Algorithm}\label{sec:convergence}
+
+In this subsection, we prove that the proposed block relaxation algorithm converges to a stationary point for any fixed set of data, provided that the estimates for all iterations lie in a compact ball around the true value of the parameters. This requirement is shown to be satisfied with high probability in the next subsection \ref{sec:consistency}.
+
+Decompose the optimization problem in (\ref{eqn:obj2}) as follows:
+\begin{equation*}
+\min\limits_{\substack{B\in\mathbb{R}^{p_1\times p_2}\\ \Theta_\epsilon\in\mathbb{S}_{++}^{p_2\times p_2}}}f(B,\Theta_\epsilon) \equiv f_0(B,\Theta_\epsilon) + f_1(B) + f_2(\Theta_\epsilon) 
+\end{equation*}
+where 
+\begin{equation*}
+f_0(B,\Theta_\epsilon) =\frac{1}{n}\sum_{j=1}^{p_2}\sum_{i=1}^{p_2}\sigma^{ij}_\epsilon (Y_i-XB_i)'(Y_j - XB_j)-\log \det \Theta_\epsilon = \text{tr}(S\Theta_\epsilon) - \log \det \Theta_\epsilon, 
+\end{equation*}
+\begin{equation*}
+f_1(B) = \lambda_n\|B\|_1, \quad f_2(\Theta_\epsilon) = \rho_n\|\Theta_\epsilon\|_{1,\text{off}}.
+\end{equation*}
+and $\mathbb{S}_{++}^{p_2\times p_2}$ is the collection of $p_2\times p_2$ symmetric positive definite matrices. Further, denote the limit point (if there is any) of $\{\widehat{B}^{(k)}\}$ and $\{\widehat{\Theta}_\epsilon^{(k)}\}$ by 
+$B^\infty = \lim_{k\rightarrow\infty} \widehat{B}^{(k)}$ and $\Theta^\infty_\epsilon =  \lim_{k\rightarrow\infty} \widehat{\Theta}_\epsilon^{(k)}$, respectively. 
+
+\begin{definition}[stationary point \citep{tseng2001convergence} pp.479] Define $z$ to be a stationary point of $f$ if $z\in \dom (f)$ and $f'(z;d)\geq 0,\forall \text{ direction }d=(d_1,\cdots,d_N)$ where $d_t$ is the $t^{\text{th}}$ coordinate block. 
+\end{definition}
+
+\begin{definition}[Regularity \citep{tseng2001convergence} pp.479] $f$ is regular at $z\in\dom(f)$ if $f'(z;d)\geq 0$ for all $d=(d_1,\cdots,d_N)$ such that 
+\begin{equation*}
+f'(z;(0,\cdots,d_t,\cdots,0))\geq 0,\qquad t=1,2,\cdots,N.
+\end{equation*}  
+\end{definition}
+
+\begin{definition}[Coordinate-wise minimum] Define $(B^\infty,\Theta_\epsilon^\infty)$ to be a coordinate-wise minimum if 
+\begin{eqnarray*}
+f(B^{\infty},\Theta_\epsilon) &\geq& f(B^\infty,\Theta_\epsilon^\infty), \quad \forall \Theta_\epsilon\in \mathbb{S}_{++}^{p_2\times p_2}, \\
+f(B,\Theta_\epsilon^{\infty})&\geq & f(B^{\infty},\Theta_\epsilon^{\infty}),\quad \forall B\in\mathbb{R}^{p_1\times p_2}.
+\end{eqnarray*}
+\end{definition}
+Note for our iterative algorithm, we only have two blocks, hence with the above notation, $N=2$. 
+
+\begin{remark}
+\citet{tseng2001convergence} proved that if the level set $\{x:f(x)\leq f(x^0)\}$ is compact and $f$ satisfies certain conditions \citep[see Theorem 4.1 (a), (b) and (c) for details]{tseng2001convergence}, the limit point given by the general block-coordinate descent algorithm (with $N\geq 2$ blocks) is a stationary point of $f$. However, the conditions given in Theorem 4.1 (a), (b) and (c) are not satisfied for the objective function at hand. Hence, for the problem under consideration, a different strategy is needed to prove convergence of the $2-$block alternating algorithm to a stationary point, and the resulting statements hold true for all problems that use a $2$-block coordinate descent algorithm.
+\end{remark}
+\medskip
+Since $\dom(f_0)$ is open and $f_0$ is G\^{a}teaux-differentiable on the $\dom(f_0)$, by \citet{tseng2001convergence} Lemma 3.1, $f$ is regular in the $\dom (f)$. From the discussion on Page 479 of \citep{tseng2001convergence}, we then have: 
+\newline
+\newline
+{\bf Fact 1:} 
+%\begin{claim}\label{claim:minimum}
+Every coordinate-wise minimum is a stationary point of $f$.
+%\end{claim}
+\newline
+\newline
+The following theorem shows that any limit point $(B^\infty,\Theta_\epsilon^\infty)$ of the iterative algorithm described in Section~\ref{sec:estimation} is a stationary point of $f$, as long as all the iterates are within a closed ball around the truth.
+
+\begin{theorem}[Convergence for fixed design]\label{thm:convergence}
+Suppose for any fixed realization of $X$ and $E$, the estimates $\left\{(\widehat{B}^{(k)},\widehat{\Theta}_\epsilon^{(k)})\right\}_{k=1}^\infty$ obtained by implemeting the alternating search step satisfy the following bound for some $R>0$ that only depends on $p_1$, $p_2$ and $n$:
+\begin{equation*}
+\fnorm{(\widehat{B}^{(k)},\widehat{\Theta}_\epsilon^{(k)})-(B^*,\Theta^*)}\leq R(p_1,p_2,n),\quad~~\forall k\geq 1.
+\end{equation*}
+Then any limit point $(B^\infty,\Theta_\epsilon^\infty)$ of the iterative algorithm is a stationary point of $f$. 
+\end{theorem}
+
+\begin{remark}
+Recall that in classical parametric statistics, MLE-type asymptotics are derived
+after establishing that with probability tending to $1$ as the sample
+size $n$ goes to infinity, the likelihood equation has a sequence of
+roots (hence stationary points of the likelihood function)  that converges in probability to the true value. Any such sequence of roots is shown to be asymptotically normal and efficient. Note that such (a sequence of) roots may not be global maximizers since parametric likelihoods are not globally log-concave \cite[see Chapter 6][]{lehmann1998theory}. Here we show that the $(B^\infty,\Theta_\epsilon^\infty)$ obtained by the iterative algorithm is a
+stationary point which satisfies the first-order condition for being a maximizer of the penalized log--likelihood function (which is just the negative of the penalized 
+least--squares function). Moreover, if we let $n$ go to infinity, $(B^\infty,\Theta_\epsilon^\infty)$ converges to the true value in probability (shown in Theorem~\ref{thm:beta-theta-bound}), and therefore behaves the same as the sequence of roots in the classical parametric problem alluded to above. Thus, while 
+$(B^\infty,\Theta_\epsilon^\infty)$ may not be the global maximizer, it can, nevertheless, to all intents and purposes, be deemed as the MLE.
+\end{remark}
+
+\begin{remark}
+The above convergence result is based upon solving the optimization problem on the ``entire" space, that is, we don't restrict $B$ to live in any subspace. However, when actually implementing the proposed computational procedure, the optimization of the $B$ coordinate is restricted to $\mathcal{B}_1\times\cdots\times \mathcal{B}_{p_2}$ (as defined in eqn.\ref{eqn:support}). It should be noted that the same convergence property still holds, since for all $k\geq 1$, the following bound holds, for some $R'>0$: 
+\begin{equation}\label{eqn:bound}
+\left\|\left(\widehat{B}^{(k)}_{\text{restricted}},\widehat{\Theta}^{(k)}_\epsilon\right) - \left(B^*,\Theta_\epsilon^*\right)\right\|_\text{F}\leq R'(p_1,p_2,n).
+\end{equation}
+Consequently, the rest of the derivation in Theorem~\ref{thm:convergence} follows, leading to the convergence property. The bound in eqn (\ref{eqn:bound}) will be shown at the end of Section~\ref{sec:consistency}.  
+\end{remark} 

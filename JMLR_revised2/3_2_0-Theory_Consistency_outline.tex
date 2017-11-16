@@ -1,0 +1,72 @@
+\subsection{\normalsize Estimation consistency}\label{sec:consistency}
+
+In this subsection, we show that given a random realization of $X$ and $E$, with high probability, the sequence $\left\{(\widehat{B}^{(k)},\widehat{\Theta}_\epsilon^{(k)})\right\}_{k=1}^\infty$ lies in a non-expanding ball around $(B^*,\Theta_\epsilon^*)$, thus satisfying the
+condition of Theorem ~\ref{thm:convergence} for convergence of the alternating algorithm.
+
+It should be noted that for the alternating search procedure, we restrict our estimation on a subspace identified by the screening step. However, for the remaining of this subsection, the main propositions and theorems are based on the procedure without such restriction, i.e., we consider ``generic" regressions on the entire space of dimension $p_1\times p_2$. Notwithstanding, it can be easily shown that the theoretical results for the regression
+parameters on a restricted domain follow easily from the generic case, as explained in Remark~\ref{remark:restriction}.
+
+
+Before providing the details of the main theorem statements and proofs, we first introduce additional notations. Let $\beta = \mathrm{vec}(B)$ be the vectorized version of the regression coefficient matrix. Correspondingly, we have $\widehat{\beta}^{(k)}=\mathrm{vec}(\widehat{B}^{(k)})$ and $\beta^* = \mathrm{vec}(B^*)$. Moreover, we drop the superscripts and use $\widehat{\beta}$ and $\widehat{\Theta}_\epsilon$ to denote the generic estimators given by (\ref{est-1}) and (\ref{est-2}), as opposed to those obtained in any specific iteration:
+\begin{eqnarray}
+\widehat{\beta} & \equiv & \argmin\limits_{\beta\in\mathbb{R}^{p_1p_2}}\left\{ -2\beta'\widehat{\gamma} + \beta'\widehat{\Gamma}\beta + \lambda_n\|\beta\|_1\right\}, \label{est-1}\\
+\widehat{\Theta}_\epsilon & \equiv & \argmin\limits_{\Theta_\epsilon\in\mathbb{S}^{p_2\times p_2}_{++}} \left\{ -\log\det\Theta_\epsilon + \text{tr}\left( \widehat{S}\Theta_\epsilon\right) + \rho_n \|\Theta_\epsilon\|_{1,\text{off}}\right\}, \label{est-2}
+\end{eqnarray}
+where 
+\begin{equation*}
+\widehat{\Gamma} = \left(\widehat{\Theta}_\epsilon \otimes \frac{X'X}{n}\right), \ \widehat{\gamma} = \left(\widehat{\Theta}_\epsilon \otimes X' \right) \mathrm{vec}(Y)/n, \ \widehat{S} = \frac{1}{n}\left( Y - X\widehat{B}\right)'\left( Y - X\widehat{B}\right).
+\end{equation*}
+
+\begin{remark} As opposed to (\ref{est-1}) and (\ref{est-2}), if $\widehat{\gamma}$ and $\widehat{\Gamma}$ are replaced by plugging in the true values of the parameters, the two problems in (\ref{est-1}) and (\ref{est-2}) become:
+\begin{eqnarray}
+\bar{\beta} & \equiv & \argmin\limits_{\beta\in\mathbb{R}^{p_1p_2}}\left\{ -2\beta'\bar{\gamma} + \beta'\bar{\Gamma}\beta + \lambda_n\|\beta\|_1\right\}, \label{est-1.1}\\
+\bar{\Theta}_\epsilon & \equiv & \argmin\limits_{\Theta_\epsilon\in \mathbb{S}^{p_2\times p_2}_{++}} \left\{ -\log\det\Theta_\epsilon + \text{tr}\left( S\Theta_\epsilon\right) + \rho_n \|\Theta_\epsilon\|_{1,\text{off}}\right\}, \label{est-2.1}
+\end{eqnarray}     
+where 
+\begin{equation*}
+\bar{\Gamma} = \left(\Theta^*_\epsilon \otimes \frac{X'X}{n}\right), ~~ \bar{\gamma} = \left( \Theta^*_\epsilon \otimes X'\right) \mathrm{vec}(Y)/n, ~~ S = \frac{1}{n}\left( Y - XB^*\right)'\left( Y - XB^*\right)\equiv\widehat{\Sigma}_\epsilon.
+\end{equation*}
+In (\ref{est-1.1}), we obtain $\beta$ using a penalized maximum likelihood regression estimate, and (\ref{est-2.1}) corresponds to the generic setting for using the graphical Lasso. A key difference between the estimation problems in (\ref{est-1}) and (\ref{est-2}) versus those in (\ref{est-1.1}) and (\ref{est-2.1}) is that to obtain $\widehat{\beta}$ and $\widehat{\Theta}_\epsilon$ we use {\em estimated quantities} rather than the raw data. This is exactly how we implement our iterative algorithm, namely, we obtain $\widehat{\beta}^{(k)}$ using $\widehat{S}^{(k-1)}$ as a surrogate for the sample covariance of the true error (which is unavailable), then estimate $\widehat{\Theta}_\epsilon^{(k)}$ using the information in $\widehat{\beta}^{(k)}$. This adds complication for establishing the consistency results. Original consistency results for the estimation problem in (\ref{est-1.1}) and (\ref{est-2.1}) are available in \citet{basu2015estimation} and \citet{ravikumar2011high}, respectively. Here we borrow ideas from corresponding theorems in those two papers, but need to tackle concentration bounds of relevant quantities with additional care. This part of the result and its proof are shown in Theorem~\ref{thm:beta-theta-bound}. 
+\end{remark}
+
+As a road map toward our desired result established in Theorem~\ref{thm:beta-theta-bound}, we first show in Theorem~\ref{thm:ErrorBound_beta} that for any fixed realization of $X$ and $E$, under a number of conditions on (or related to) $X$ and $E$,  when $\|\widehat{\Theta}_\epsilon-\Theta_\epsilon^*\|_\infty$ is small (up to a certain order), the error of $\widehat{\beta}$ is well-bounded. We then verify in Proposition \ref{prop:REcondition} and \ref{prop:deviation} that for random $X$ and $E$, the above-mentioned conditions hold with high probability. Similarly in Theorem~\ref{thm:ErrorBound_Theta}, we show that for fixed realizations in $X$ and $E$, under certain conditions (verified for random $X$ and $E$ in Proposition~\ref{prop:residual-concentration}), the error of $\widehat{\Theta}_\epsilon$ is also well-bounded, given $\|\widehat{\beta}-\beta^*\|_1$ being small. Finally in Theorem~\ref{thm:beta-theta-bound}, we show that for random $X$ and $E$, with high probability, the iterative algorithm gives $\{(\widehat{\beta}^{(k)},\Theta^{(k)}_\epsilon)\}$ that lies in a small ball centered at $(\beta^*,\Theta_\epsilon^*)$, whose radius depends on $p_1$, $p_2$, $n$ and the sparsity levels. %and with a radius of the order $\sqrt{\log(p_1p_2)/n}$.%
+
+
+Next, for establishing the main propositions and theorems, we introduce some additional notations:
+\begin{itemize}
+\setlength\itemsep{0pt}
+\item[--] Sparsity level of $\beta^*$: $s^{**} := \|\beta^*\|_0 = \sum_{j=1}^{p_2}\|B_j^*\|_0 = \sum_{j=1}^{p_2}s_j^*$. As a reminder of the previous notation, we have $s^*=\max\limits_{j=1,\cdots,p_2}s_j^*$.
+\item[--] True edge set of $\Theta_\epsilon^*$: $S^*_\epsilon$, and let $s^*_\epsilon:=|S^*_\epsilon|$ be its cardinality.
+\item[--] Hessian of the log-determinant barrier $\log\det\Theta$ evaluated at $\Theta_\epsilon^*$: \[H^*:=\frac{\mbox{d}^2}{\mbox{d}\Theta^2}\log\Theta\big{|}_{\Theta^*_\epsilon} = \Theta^{*-1}_\epsilon\otimes \Theta^{*-1}_\epsilon.\]
+\item[--] Matrix infinity norm of the true error covariance matrix $\Sigma_\epsilon^*$: \[\kappa_{\Sigma^*_\epsilon}:=\vertiii{\Sigma^*_\epsilon}_\infty =  \max\limits_{i=1,2,\cdots,p_2}\sum_{j=1}^{p_2} |\Sigma_{\epsilon,ij}^*|.\]
+\item[--] Matrix infinity norm of the Hessian restricted to the true edge set: 
+\[\kappa_{H^*} := \vertiii{(H^*_{S^*_\epsilon S^*_\epsilon})}_\infty =\max\limits_{i=1,2,\cdots,p_2}\sum_{j=1}^{p_2} \left|H^*_{S^*_\epsilon S^*_\epsilon,ij}\right|.\] 
+\item[--] Maximum degree of $\Theta^*_\epsilon$: $d:= \max\limits_{i=1,2,\cdots,p_2}\|\Theta_{\epsilon,i\cdot}^*\|_0$.
+\item[--] We write $A\gtrsim B$ if there exists some absolute constant $c$ that is independent of the model parameters such that $A\geq cB$. 
+\end{itemize}
+
+\begin{definition}[Incoherence condition \citep{ravikumar2011high}]\label{def:incoherence} $\Theta^*_\epsilon$ satisfies the incoherence condition if:
+\begin{equation*}
+\max\limits_{e\in (S_\epsilon^*)^c}\| H^*_{eS^*_\epsilon}(H^*_{S_\epsilon^* S_\epsilon^*})^{-1}\|_1 \leq 1-\xi, \quad \text{for some }\xi\in(0,1).
+\end{equation*}
+\end{definition}
+\begin{definition}[Restricted eigenvalue (RE) condition \citep{loh2011high}] A symmetric matrix $A\in\mathbb{R}^{m\times m}$ satisfies the RE condition with curvature $\varphi>0$ and tolerance $\phi>0$, denoted by $A\sim RE(\varphi,\phi)$ if 
+\begin{equation*}
+\theta'A\theta\geq \varphi\|\theta\|^2 - \phi\|\theta\|_1^2, \quad \forall \theta\in\mathbb{R}^m.
+\end{equation*}
+\end{definition}
+
+\begin{definition}[Diagonal dominance] A matrix $A\in\mathbb{R}^{m\times m}$ is strictly diagonally dominant if 
+\begin{equation*}
+|a_{ii}|>\sum_{j\neq i}|a_{ij}|,\quad \forall i=1,\cdots,m.
+\end{equation*}
+\end{definition}
+
+
+Based on the model in Section~\ref{sec:set-up}, since we are assuming $\bs{X}=(X_1,\cdots,X_{p_1})'$ and $\bs{\epsilon}=(\epsilon_1,\cdots,\epsilon_{p_2})$ come from zero-mean Gaussian distributions, it follows that $\bs{X}$ and $\bs{\epsilon}$ are zero-mean sub-Gaussian random vectors with parameters $(\Sigma_X,\sigma_x^2)$ and $(\Sigma_\epsilon^*,\sigma_\epsilon^2)$, respectively. Moreover, throughout this section, all results are based on the assumption that $\Theta_\epsilon^*$ is diagonally dominant. 
+
+
+\begin{remark}
+Before moving on to the main statements of Theorem~\ref{thm:ErrorBound_beta}, we would like to point out that with a slight abuse of notation, for Theorem~\ref{thm:ErrorBound_beta} and its related propositions and corollaries, the statements and analyses are based on equation~(\ref{est-1}) only, with \textit{any deterministic symmetric matrix} $\widehat{\Theta}_\epsilon$ within a small ball around $\Theta^*_\epsilon$. Similarly in Theorem~\ref{thm:ErrorBound_Theta}, Proposition~\ref{prop:residual-concentration} and Corollary~\ref{cor:erorrboundTheta}, the analyses are based on equation~（(\ref{est-2}) only, for {\em any given deterministic}  $\widehat{\beta}$ within a small ball around $\beta^*$. The randomness of $\widehat{\beta}$ and $\widehat{\Theta}_\epsilon$ during the iterative procedure will be taken into consideration comprehensively in Theorem~\ref{thm:beta-theta-bound}. 
+\end{remark}
+

@@ -1,0 +1,35 @@
+
+% --------------------------------
+%
+% Theoretical result -- outline
+%
+% --------------------------------
+
+\section{Theoretical Results} \label{sec:Theory}
+
+In this section, we establish a number of theoretical results for the proposed iterative algorithm. We focus the presentation on the two-layer structure,
+since as explained in the previous section the multi-layer estimation problem decomposes to a series of two-layer ones. 
+As mentioned in the introduction, one key challenge for establishing the theoretical results comes from the fact that the objective function (\ref{eqn:obj2}) is not jointly convex in $B$ and $\Theta_\epsilon$. Consequently, if we simply used properties of block-coordinate descent algorithms, we would not be able to provide the necessary theoretical guarantees for the estimates we obtain. On the other hand, the biconvex nature of the objective function allows
+us to establish convergence of the alternating algorithm to a stationary point, provided it is initialized from a point close enough to the true parameters.
+This can be accomplished using a Lasso-based initializer for $B$ and $\Theta_\epsilon$ as previously discussed. The details of algorithmic convergence 
+are presented in Section~\ref{sec:convergence}.
+
+Another technical challenge is that each update in the alternating search step relies on estimated quantities --namely the regression and precision matrix parameters --rather than the raw data, whose estimation precision needs to be controlled {\em uniformly} across all iterations. The details of establishing
+consistency of the estimates for both fixed and random realizations are given in Section~\ref{sec:consistency}. 
+
+Next, we outline the structure of this section. In Section \ref{sec:convergence} Theorem~\ref{thm:convergence}, we show that for any fixed set of realization of $X$ and $E$\footnote{We actually observe $X$ and $Y$, which is given by a corresponding set of realization in $X$ and $E$ based on the model.}, the iterative algorithm is guaranteed to converge to a stationary point if estimates for all iterations lie in a compact ball around the true value of the parameters. In Section \ref{sec:consistency}, we show in Theorem~\ref{thm:beta-theta-bound} that for any random $X$ and $E$, with high probability, the estimates for all iterations lie in a compact ball around the true value of the parameters. Then in Section~\ref{sec:FWER}, we show that asymptotically with $\log(p_1p_2)/n\rightarrow 0$, while keeping the family-wise type I error under some pre-specified level, the screening step correctly identifies the true support set for each of the regressions, based upon which the iterative algorithm is provided with an initializer that is close to the true value of the parameters. Finally in Section \ref{sec:identifiability}, we provide sufficient conditions for both directed and undirected edges to be 
+identifiable (estimable) for multi-layered network. 
+
+To aid the readability of the main results, we only present statements of theorems and propositions, while all proofs are relegated to the Appendix (Section~\ref{sec:proof-theorems} and \ref{sec:proofs-proposition}).
+
+Throughout this section, to distinguish the estimates from the true values, we use $B^*$ and $\Theta_\epsilon^*$ to denote the true values. 
+
+
+
+
+
+
+
+
+
+

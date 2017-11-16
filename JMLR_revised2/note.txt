@@ -1,0 +1,4 @@
+A few notes:
+
+1) Remark 3, p.12. It reads like it is high-dimension that breaks down the assumptions in Tseng Theorem 4.1, which however, the assumptions breaks at the level set being compact, which is due to bi-convexity? 
+

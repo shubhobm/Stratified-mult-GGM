@@ -1,0 +1,35 @@
+% % here we insert the estimation algorithm 
+
+\begin{algorithm}[t]
+\SetKwData{Left}{left}\SetKwData{This}{this}\SetKwData{Up}{up}
+\SetKwFunction{Union}{Union}\SetKwFunction{FindCompress}{FindCompress}
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+\caption{Computational procedure for estimating $B$ and $\Theta_\epsilon$}\label{alg:as}
+
+\Input{Data from the parent layer $X$ and the response layer $Y$.}
+\BlankLine
+\textbf{Screening:}\\
+\hspace*{5mm}\begin{minipage}[t]{14.5cm}
+ \For{$j=1,\cdots,p_2$}{regress $Y_j$ on $X$ using the de-biased Lasso procedure in \citet{javanmard2014confidence} and obtain the corresponding vector of $p$-values $P_j$\;}
+ obtain adjusted $p$-values $\widetilde{P}_j$ by applying Bonferroni correction to  $\mathrm{vec}(P_1,\cdots,P_j)$\;
+ determine the support set $\mathcal{B}_j$ for each regression using (\ref{eqn:support}).
+\end{minipage}
+\BlankLine
+\textbf{Initialization:}\\
+\hspace*{5mm}\begin{minipage}[t]{14.5cm}
+Initialize column $j=1,\cdots,p_2$ of $\widehat{B}^{(0)}$ by solving (\ref{eqn:initialB}).\\
+Initialize $\widehat{\Theta}_\epsilon^{(0)}$ by solving (\ref{eqn:initialTheta}) using the graphical lasso \citep{friedman2008sparse}.
+\end{minipage}\\
+\While{$|f(\widehat{B}^{(k)},\widehat{\Theta}_\epsilon^{(k)})-f(\widehat{B}^{(k+1)},\widehat{\Theta}_\epsilon^{(k+1)})|\geq \epsilon$}{
+update $\widehat{B}$ with (\ref{eqn:updateB})\;
+update $\widehat{\Theta}_\epsilon$ with (\ref{eqn:updateTheta})\;
+}
+\BlankLine
+\textbf{Refitting $B$ and $\Theta_\epsilon$:}
+\hspace*{5mm}\begin{minipage}[t]{14.5cm}
+ \For{$j=1,\cdots,p_2$}{Obtain the refitted $\widetilde{B}_j$ using (\ref{eqn:refitB})\;}
+ re-estimate $\widetilde{\Theta}_\epsilon$ using (\ref{glasso-final}) with $W$ coming from stability selection.
+\end{minipage} 
+\BlankLine
+\Output{Final Estimates $\widetilde{B}$ and $\widetilde{\Theta}_\epsilon$.}
+\end{algorithm}

@@ -1,0 +1,240 @@
+\subsection{Proofs for Propositions and Auxillary Lemmas}\label{sec:proofs-proposition}
+
+In this subsection, we provide proofs for the propositions presented in Section~\ref{sec:Theory}, which requires several auxillary lemmas, whose proofs are presented along the context. 
+
+\medskip
+To prove Proposition~\ref{prop:REcondition}, we need the following two lemmas. Lemma~\ref{lemma:restateB.1} was originally provided as Lemma~B.1 in \citet{basu2015estimation}, which states that if the sample covariance matrix of $X$ satisfies the RE condition and $\Theta$ is diagonally dominant, then $(X'X/n)\otimes \Theta$ also satisfies the RE condition. Here we omit its proof and only state the main result. Lemma~\ref{lemma:RESX} verifies that with high probability, the sample covariance matrix of the design matrix $X$ satisfies the RE condition. 
+
+\medskip
+\begin{lemma}\label{lemma:restateB.1}
+If $X'X/n\sim RE(\varphi^*,\phi^*)$, and $\Theta$ is diagonally dominant, that is, $\psi^i:= \sigma^{ii}-\sum_{j\neq i} \sigma^{ij}>0$ for all $i=1,2,\cdots,p_2$, where $\sigma^{ij}$ is the $ij$th entry in $\Theta$, then
+\begin{equation*}
+\Theta\otimes X'X/n \sim RE\left(\varphi^*\min_i \psi^i,\phi^*\max_i\psi^i\right).
+\end{equation*}
+\end{lemma}
+\medskip 
+
+\begin{lemma}\label{lemma:RESX}
+With probability at least $1-2\exp(-c_3n)$, for a zero-mean sub-Gaussian random design matrix $X\in\mathbb{R}^{n\times p_1}$, its sample covariance matrix $\widehat{\Sigma}_X$ satisfies the RE condition with parameter $\varphi^*$ and $\phi^*$, i.e.,
+\begin{equation}
+\widehat{\Sigma}_X\sim RE(\varphi^*,\phi^*),
+\end{equation}
+where $\widehat{\Sigma}_X=X'X/n$, $\varphi^*=\Lambda_{\min}(\Sigma^*_X)/2$, $\phi^*=\varphi^* \log p_1/n$.
+\end{lemma}
+\begin{proof}
+To prove this lemma, we first use Lemma 15 in \citet{loh2011high}, which states that if $X\in\mathbb{R}^{n\times p}$ is  zero-mean sub-Gaussian with parameter $(\Sigma,\sigma^2)$, then there exists a universal constant $c>0$ such that 
+\begin{equation}
+\mathbb{P}\left( \sup_{v\in\mathbb{K}(2s)}\left| \frac{\|Xv\|_2^2}{n} - \mathbb{E}\left[ \frac{\|Xv\|_2^2}{n}\right] \right| \geq t\right) \leq 2\exp\left( -cn \min(\frac{t^2}{\sigma^4},\frac{t}{\sigma^2})+ 2s\log p\right),
+\end{equation}
+where $\mathbb{K}(2s)$ is a set of $2s$ sparse vectors, defined as:
+\begin{equation*}
+\mathbb{K}(2s) : = \{v\in\mathbb{R}^p:\|v\|\leq 1,\|v\|_0\leq 2s\}.
+\end{equation*}
+By taking $t=\frac{\Lambda_{\min}(\Sigma^*_X)}{54}$, with probability at least $1-2\exp\left(-c'n + 2s\log p_1\right)$ for some $c'>0$, the following bound holds:
+\begin{equation}\label{dev:Sx}
+|v' (\widehat{\Sigma}_X-\Sigma^*_X) v | \leq \frac{\Lambda_{\min}(\Sigma^*_X)}{54}, \quad \forall v\in \mathbb{K}(2s).
+\end{equation}
+Then applying supplementary Lemma~13 in \citet{loh2011high}, for an estimator $\widehat{\Sigma}_X$ of $\Sigma^*_X$ satisfying the deviation condition in (\ref{dev:Sx}), the following RE condition holds:
+\begin{equation*}
+v'S_xv \geq \frac{\Lambda_{\min}(\Sigma^*_X)}{2}\|v\|_2^2 - \frac{\Lambda_{\min}(\Sigma^*_X)}{2s}\|v\|_1^2.
+\end{equation*}
+Finally, set $s=c''n/4\log p_1$, then with probability at least $1-2\exp(-c_3n)~(c_3>0)$, $\widehat{\Sigma}_X\sim RE(\varphi^*,\phi^*)$ with $\varphi^*=\Lambda_{\min}(\Sigma^*_X)/2$, $\phi^*= \varphi^*\log p_1/n$. 
+\end{proof}
+
+\medskip
+
+With the above two lemmas, we are ready to prove Proposition~\ref{prop:REcondition}. 
+
+\begin{proof}[\textbf{Proof of Proposition~\ref{prop:REcondition}}]
+We first show that if $\Theta^*_\epsilon$ is diagonally dominant, then $\widehat{\Theta}_\epsilon$ is also diagonally dominant provided that the error of $\widehat{\Theta}_\epsilon$ is of the given order and $n$ is sufficiently large. Define 
+\begin{equation*}
+\widehat{\psi}^i = \widehat{\sigma}_\epsilon^{ii} - \sum\limits_{j\neq i}\widehat{\sigma}_\epsilon^{ij},
+\end{equation*}
+where $\widehat{\sigma}_\epsilon^{ij}$ is the $ij$th entry of $\widehat{\Theta}_\epsilon$, then $\widehat{\psi}^i$ is the gap between the diagonal entry and the off-diagonal entries of row $i$ in matrix $\widehat{\Theta}_\epsilon$. We can decompose $\widehat{\psi}^i$ into the following:
+\begin{equation*}
+\widehat{\psi}^i = \left[\sigma^{ii}_\epsilon - \sum\limits_{j\neq i}\sigma^{ij}_\epsilon\right] + \left[ (\widehat{\sigma}^{ii}_\epsilon - \sigma^{ii}_\epsilon) + \sum\limits_{j\neq i} (\sigma^{ij}_\epsilon - \widehat{\sigma}^{ij}_\epsilon)\right].
+\end{equation*}
+Recall that we define $\psi_i$ as $\psi^i=\sigma_\epsilon^{ii}-\sum_{j\neq i}^{p_2}\sigma_\epsilon^{ij}$. Hence
+\begin{equation}\label{eqn:boundpsi}
+\begin{split}
+\min\widehat{\psi}^i& \geq \min_i \psi^i - \vertiii{\widehat{\Theta}_\epsilon-\Theta_\epsilon^*}_\infty \geq \min_i (\sigma_\epsilon^{ii} - \sum_{j\neq i}\sigma^{ij}_\epsilon) - d\nu_\Theta = \min\psi^i - d\nu_\Theta,\\
+\max\widehat{\psi}^i& \leq \max_i \psi^i + \vertiii{\widehat{\Theta}_\epsilon-\Theta_\epsilon^*}_\infty \leq \max_i (\sigma_\epsilon^{ii} - \sum_{j\neq i}\sigma^{ij}_\epsilon) + d\nu_\Theta = \max\psi^i + d\nu_\Theta.
+\end{split}
+\end{equation}
+Now given $\nu_\Theta = \eta_\Theta\frac{\log p_2}{n} = O(\sqrt{\log p_2/n})$, with $n\succsim d^2\log p_2$, $d\nu_\Theta=o(1)$, and it follows that
+\begin{equation*}
+\min\limits_i \psi^i - d\nu_\Theta \geq 0.
+\end{equation*}
+Now by Lemma~\ref{lemma:RESX}, $X'X/n\sim RE(\varphi^*,\phi^*)$ with high probability. Combine with Lemma~\ref{lemma:restateB.1} and inequality (\ref{eqn:boundpsi}), with probability at least $1-2\exp(-c_3n)$ for some  $c_3>0$,  $\widehat{\Gamma}$ satisfies the following RE condition:
+\begin{equation}
+\widehat{\Gamma} = \widehat{\Theta}_\epsilon\otimes (X'X/n)\sim RE\left(\varphi^* (\min_i\psi^i-d\nu_\Theta), \phi^* \max\limits_i(\psi^i+d\nu_\Theta)\right),
+\end{equation}
+where $\varphi^*=\Lambda_{\min}(\Sigma^*_X)/2$, $\phi^*=\varphi^*\log p_1/n$.
+\end{proof}
+
+
+\medskip
+
+To prove Proposition~\ref{prop:deviation}, we first prove Lemma~\ref{lemma:deviation_aux}.
+
+\begin{lemma}\label{lemma:deviation_aux}
+Let $X\in\mathbb{R}^{n\times p}$ be a zero-mean sub-Gaussian matrix with parameter $(\Sigma_X,\sigma_X^2)$ and $E\in\mathbb{R}^{n\times p_2}$ be a zero-mean sub-Gaussian matrix with parameters $(\Sigma_\epsilon,\sigma^2_\epsilon)$. Moreover, $X$ and $E$ are independent. Let $\Theta_\epsilon:=\Sigma_\epsilon^{-1}$, then if $n\succsim \log (p_1p_2)$, the following two expressions hold with probability at least $1-6c_1\exp[-(c_2^2-1)\log (p_1p_2)]$ for some $c_1>0,c_2>1$, respectively:
+\begin{equation}\label{deviation_aux-1}
+\frac{1}{n}\left\|X'E\right\|_\infty \leq c_2\left[\Lambda_{\max}(\Sigma_X)\Lambda_{\max}(\Sigma_\epsilon)\right]^{1/2} \sqrt{\frac{\log (p_1p_2) }{n}}.
+\end{equation}
+and
+\begin{equation}\label{deviation_aux-2}
+\frac{1}{n}\left\| X'E\Theta_\epsilon\right\|_\infty \leq c_2\left[\frac{\Lambda_{\max}(\Sigma_X)}{\Lambda_{\min}(\Sigma_\epsilon)}\right]^{1/2} \sqrt{\frac{\log (p_1p_2) }{n}}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The proof of this lemma uses Lemma 14 in \citet{loh2011high}, in which they show that if $X\in\mathbb{R}^{n\times p_1}$ is a zero-mean sub-Gaussian matrix with parameters $(\Sigma_x,\sigma_x^2)$ and $Y\in\mathbb{R}^{n\times p_2}$ is a zero-mean sub-Gaussian matrix with parameters $(\Sigma_y,\sigma_y^2)$, then if $n\succsim \log(p_1p_2)$, 
+\begin{equation*}
+\mathbb{P}\left(\left\| \frac{Y'X}{n} - cov(y_i,x_i)\right\|_\infty \geq t \right) \leq 6p_1p_2\exp\left(-cn\min\left\{\frac{t^2}{(\sigma_x\sigma_y)^2},\frac{t}{\sigma_x\sigma_y} \right\} \right)
+\end{equation*}
+where $X_i$ and $Y_i$ are the $i$th row of $X$ and $Y$, respectively. 
+
+
+Here, we replace $Y$ by $E$, and since $E$ and $X$ are independent, $cov(X_i,E_i)=0$. Let $t=c_2\sigma_X\sigma_\epsilon\sqrt{\log(p_1p_2)/n}$, $c_2>1$ we get:
+\begin{equation*}
+\mathbb{P}\left(\left\| \frac{X'E}{n}\right\|_\infty\geq c_2\sigma_X\sigma_\epsilon\sqrt{\frac{\log(p_1p_2)}{n}} \right)\leq 6c_1(p_1p_2)^{1-c_2^2} = 6c_1\exp\left[-(c_2^2-2)\log(p_1p_2)\right]
+\end{equation*}
+Note that the sub-Gaussian parameter satisfies $\sigma^2_X\leq \max_i(\Sigma_{X,ii})\leq \Lambda_{\max}(\Sigma_X)$. This directly gives the bound in (\ref{deviation_aux-1}). 
+
+
+To obtain the bound in (\ref{deviation_aux-2}), we note that if $E$ is sub-Gaussian with parameters $(\Sigma_\epsilon,\sigma_\epsilon^2)$, then $E\Theta$ is sub-Gaussian with parameter $(\Theta,\theta_\epsilon^2)$, where
+\begin{equation*}
+\theta_\epsilon^2 \leq \max_i(\Theta_{\epsilon,ii}) \leq \Lambda_{\max}(\Theta_\epsilon) = \frac{1}{\Lambda_{\min}(\Sigma_\epsilon)}.
+\end{equation*}
+Then we replace $Y$ by $E\Theta$ and yield the bound in (\ref{deviation_aux-2}).
+\end{proof}
+
+As a remark, here we note that the event in (\ref{deviation_aux-1}) and (\ref{deviation_aux-2}) may not be independent. However, the two events hold simultaneously with probability at least $1-2c_2\exp[-c_2\log(p_1p_2)]$, with this crude bound for probability hold for sure. 
+
+\medskip
+Now we are ready to prove Proposition~\ref{prop:deviation}. 
+
+\begin{proof}[\textbf{Proof of Proposition~\ref{prop:deviation}}] 
+First we note that 
+\begin{equation*}
+X'E\widehat{\Theta}_\epsilon= X'E\Theta_\epsilon + X'E (\widehat{\Theta}_\epsilon -\Theta^*_\epsilon),
+\end{equation*}
+which directly gives the following inequality:
+\begin{equation}\label{decomp}
+\begin{split}
+\|\widehat{\gamma}-\widehat{\Gamma}\beta^*\|_\infty=\frac{1}{n}\left\|X'E\widehat{\Theta}_\epsilon\right\|_\infty  \leq \frac{1}{n} \left\|X'E\Theta_\epsilon^*\right\|_\infty + \frac{1}{n}\left\|X'E (\widehat{\Theta}_\epsilon-\Theta_\epsilon^*)\right\|_\infty.
+\end{split}
+\end{equation}
+Now we would like to bound the two terms separately. 
+
+The first term can be bounded by (\ref{deviation_aux-2}) in Lemma~\ref{lemma:deviation_aux}, that is:
+\begin{equation*}
+\frac{1}{n}\left\| X'E\Theta_\epsilon^*\right\|_\infty \leq c_2\left[\frac{\Lambda_{\max}(\Sigma_X)}{\Lambda_{\min}(\Sigma^*_\epsilon)}\right]^{1/2} \sqrt{\frac{\log (p_1p_2)}{n}}.
+\end{equation*}
+w.p. at least $1-6c_1\exp[-(c_2^2-1)\log (p_1p_2)]$.
+
+For the second term, first we note that 
+\begin{equation}\label{exp: 2nd term}
+\begin{split}
+\frac{1}{n}\left\|X'E (\widehat{\Theta}_\epsilon-\Theta_\epsilon^*)\right\|_\infty & = \frac{1}{n}\max\limits_{\substack{1\leq i\leq p_1\\ 1\leq j\leq p_2}} \left|e_i'X'E (\widehat{\Theta}_\epsilon-\Theta_\epsilon^*) e_j\right| \\
+& \leq \frac{1}{n}\max\limits_{i} \left\|e_i'X'E \right\|_\infty \max\limits_j \left\| (\widehat{\Theta}_\epsilon-\Theta^*_\epsilon) e_j\right\|_1
+\end{split}
+\end{equation}
+where we have $e_i\in\mathbb{R}^{p_1}$ and $e_j\in\mathbb{R}^{p_2}$, and the inequality comes from the fact that $|a'b|\leq \|a\|_\infty \|b\|_1$. Note that 
+\begin{equation*}
+\max\limits_{i} \left\|e_i'X'E \right\|_\infty = \|X'E\|_\infty
+\end{equation*}
+since $\|e_i'X'E \|_\infty$ gives the largest element (in absolute value) of the $i$th row of $X'E$, and taking the maximum over all $i$'s gives the largest element of $X'E$ over all entries. And for $\max\limits_j \left\| (\widehat{\Theta}_\epsilon-\Theta_\epsilon^*) e_j\right\|_1$, it holds that 
+\begin{equation*}
+\max\limits_j \left\| (\widehat{\Theta}_\epsilon-\Theta_\epsilon^*) e_j\right\|_1 = \vertiii{\widehat{\Theta}_\epsilon-\Theta_\epsilon^*}_1 = \vertiii{\widehat{\Theta}_\epsilon-\Theta_\epsilon^*}_\infty,
+\end{equation*}
+where $\vertiii{A}_1 :=\max_{\|x\|_1=1}\|Ax\|_1$ is the $\ell_1$-operator norm, and the last equality follows from the fact that $\vertiii{A}_1=\vertiii{A'}_\infty$. As a result,  (\ref{exp: 2nd term}) can be re-written as:
+\begin{equation}\label{term2simplified}
+\frac{1}{n}\left\|X'E (\widehat{\Theta}_\epsilon-\Theta_\epsilon^*)\right\|_\infty\leq \left(\frac{1}{n}\|X'E\|_\infty\right) \left( \vertiii{\widehat{\Theta}_\epsilon-\Theta_\epsilon^*}_\infty\right).
+\end{equation}
+Now, using (\ref{deviation_aux-1}), w.p. at least $1-6c_1\exp[-(c_2^2-1)\log (p_1p_2)]$, we have 
+\begin{equation*}
+\frac{1}{n}\left\|X'E\right\|_\infty \leq c_2\left[\Lambda_{\max}(\Sigma_X)\Lambda_{\max}(\Sigma^*_\epsilon)\right]^{1/2} \sqrt{\frac{\log (p_1p_2)}{n}},
+\end{equation*}
+and since $\|\widehat{\Theta}_\epsilon-\Theta_\epsilon^*\|_\infty\leq \nu_\Theta$, it directly follows that $\vertiii{\widehat{\Theta}_\epsilon-\Theta_\epsilon^*}_\infty\leq d\nu_\Theta$. Therefore, with probability at least $1-6c_1\exp[-(c_2^2-1)\log (p_1p_2)]$, 
+\begin{equation}\label{bound:2nd}
+\frac{1}{n}\left\|X'E (\widehat{\Theta}_\epsilon-\Theta_\epsilon^*)\right\|_\infty \leq c_2d\nu_\Theta\left[\Lambda_{\max}(\Sigma_X)\Lambda_{\max}(\Sigma^*_\epsilon)\right]^{1/2} \sqrt{\frac{\log (p_1p_2)}{n}}.
+\end{equation}
+Combine the two terms, we obtain the conclusion in Proposition~\ref{prop:deviation}.
+\end{proof}
+
+%\medskip
+%\input{Cor1_pf}
+\medskip
+\begin{proof}[\textbf{Proof of Proposition~\ref{prop:residual-concentration}}]
+First we note the following decomposition:
+\begin{equation*}
+\|\widehat{S} - \Sigma^*_\epsilon\|_\infty \leq   \| S - \Sigma_\epsilon \|_\infty + \|\widehat{S} - S \|_\infty : = \|W_1\|_\infty + \|W_2\|_\infty
+\end{equation*}
+where $S$ is the sample covariance matrix of the true errors $E$. 
+
+For $W_1$, by Lemma~8 in \citet{ravikumar2011high}, for sample size $$n\geq 512(1+4\sigma_\epsilon^2)^4 \max_i(\Sigma^*_{\epsilon,ii})^4\log(4p_2^{\tau_2}),$$ the following bound holds w.p. at least $1-1/p_2^{\tau_2-2}(\tau_2>2)$:
+\begin{equation}\label{exp:c_epsilon}
+\|W_1\|_\infty \leq \sqrt{\frac{\log 4 + \tau_2 \log p_2}{c^*_\epsilon n}}, \quad \text{where }c_\epsilon^*=\left[ 128(1+4\sigma_\epsilon^2)^2\max\limits_{i}(\Sigma_{\epsilon,ii}^*)^2\right]^{-1}.
+\end{equation}
+For $W_2$, re-write it as:
+\begin{equation}\label{W2:decom}
+W_2 = \frac{2}{n} E'X(B^*-\widehat{B}) + (B^*-\widehat{B})'\left(\frac{X'X}{n}\right)  (B^*-\widehat{B}) 
+\end{equation}
+The first term in (\ref{W2:decom}) can be bounded as:
+\begin{equation}\label{W1bound}
+\left\|\frac{2}{n} E'X(B^*-\widehat{B})\right\|_\infty \leq 2 \vertiii{B^*-\widehat{B}}_1\left\|\frac{1}{n}X'E\right\|_\infty \leq 2\|\beta^*-\widehat{\beta}\|_1\cdot \left\|\frac{1}{n}X'E\right\|_\infty.
+\end{equation}
+By Lemma~\ref{lemma:deviation_aux},  with probability at least $1-6c_1\exp[-(c_2^2-1)\log (p_1p_2)]$, the following bound holds:
+\begin{equation}\label{W2bound:1st}
+\left\|\frac{2}{n} E'X(B^*-\widehat{B})\right\|_\infty \leq 2c_2\nu_\beta \left[\Lambda_{\max}(\Sigma_X)\Lambda_{\max}(\Sigma^*_\epsilon)\right]^{1/2} \sqrt{\frac{\log (p_1p_2) }{n}},
+\end{equation}
+with the sample size requirement being $n\succsim \log(p_1p_2)$. 
+
+For the second term in (\ref{W2:decom}), we consider the following bound:
+\begin{equation} \label{W2bound:2nd}
+\begin{split}
+\|(B^*-\widehat{B})'\left(\frac{X'X}{n}\right)  (B^*-\widehat{B}) \|_\infty & \leq \vertiii{B^*-\widehat{B}}_1 \left\|\left(\frac{X'X}{n}\right) (B^*-\widehat{B})\right\|_\infty\\
+& \leq  \vertiii{B^*-\widehat{B}}^2_1   \left\| \left(\frac{X'X}{n}\right) \right\|_\infty
+\end{split} 
+\end{equation}
+Here, we apply Lemma~8 in \citet{ravikumar2011high} to the design matrix $X$, for sample size $$n\geq 512(1+4\sigma_x^2)^4 \max_i(\Sigma_{X,ii})^4\log (4p_1^{\tau_1}),$$ the following bound holds w.p. at least $1-1/p_1^{\tau_1-2}(\tau_1>2)$:
+\begin{equation}\label{exp:c_X}
+\left\|\left(\frac{X'X}{n}\right) - \Sigma_X\right\|_\infty \leq \sqrt{\frac{\log 4 + \tau_1 \log p_1}{c^{*}_X n}}, \qquad \text{where }~c_X^*=\left[ 128(1+4\sigma_x^2)^2\max\limits_{i}(\Sigma_{X,ii})^2\right]^{-1}
+\end{equation}
+This indicates that with this choice of $n$, the following bound holds with probability at least $1-1/p_1^{\tau_1-2}(\tau_1>2)$:
+\begin{equation*}
+\left\| \left(\frac{X'X}{n}\right) \right\|_\infty \leq \sqrt{\frac{\log 4 + \tau_1 \log p_1}{c^*_Xn}} +  \max_i(\Sigma_{X,ii})
+\end{equation*}
+Combine with the bound in (\ref{W2bound:2nd}), with probability at least $1-1/p_1^{\tau_1-2}(\tau_1>2)$, the following bound holds:
+\begin{equation} \label{W2bound:2nd-final}
+\|(B^*-\widehat{B})'\left(\frac{X'X}{n}\right)  (B^*-\widehat{B}) \|_\infty  \leq \nu_\beta^2\left( \sqrt{\frac{\log 4 + \tau_1 \log p_1}{c^*_Xn}} +  \max_i(\Sigma_{X,ii})\right)
+\end{equation}
+Now combine (\ref{W1bound}), (\ref{W2bound:1st}) and (\ref{W2bound:2nd-final}), we reach the conclusion of Proposition 3, with the leading term in the sample size requirement being $n\succsim \log(p_1p_2)$. 
+\end{proof}
+
+\medskip
+\begin{proof}[\textbf{Proof for Proposition~\ref{prop:RE-bound}}]
+	From the structural equations of a multi-layered graph introduced in Section~\ref{sec:set-up}, and setting $\epsilon^1:= X^1$, we can write 
+	\begin{equation}\label{eqn:invert-SEM}
+	\left[\begin{array}{c}\epsilon^1 \\ \epsilon^2 \end{array} \right] = 
+	\left[\begin{array}{cc}I & 0 \\ -(B^{12})' & I \end{array}\right] 
+	\left[\begin{array}{c} X^1 \\ X^2 \end{array} \right]
+	\end{equation}
+	Define $P = [I, 0; -(B^{12})', I]$. Then,  $P \widetilde{X}$ is a centered Gaussian random vector with a block diagonal variance-covariance matrix  $diag(\Sigma^1, \Sigma^2)$. Hence, the concentration matrix of $\widetilde{X}$ takes the form
+	%the variance-covariance matrix of $\widetilde{X}$ takes the form 
+	%\begin{equation*}
+	%\Sigma_{\widetilde{X}} = \left[\begin{array}{cc} \Sigma^1 & \Sigma^2 B^{12} \\ (B^{12})' \Sigma^2 & (B^{12})' \Sigma^1 B^{12} + \Sigma^2 \end{array} \right]
+	%\end{equation*}
+	%By standard matrix inversion formula and the properties of Schur complement, we have
+	\begin{equation*}
+	\Theta_{\tilde{X}} = \Sigma^{-1}_{\tilde{X}} = \left[ \begin{array}{cc}I & -B^{12} \\ 0 & I\end{array} \right] \left[ \begin{array}{cc} \Theta^1 & 0 \\ 0 & \Theta^2 \end{array} \right] \left[\begin{array}{cc}I & 0 \\ -(B^{12})' & 0  \end{array} \right]
+	\end{equation*}
+	This leads to an upper bound  
+	\begin{equation*}
+	\| \Theta_{\widetilde{X}} \| \le \| \Theta^1 \| \| \Theta^2 \| \|P\|^2
+	\end{equation*}
+	%where $P = \left[I, -B^{12}; 0, I \right]$. 
+	The result then follows by using the matrix norm inequality $\|A\| \le \sqrt{\|A\|_1 \|A\|_{\infty}}$ \citep{golub2012matrix}, where $\|A\|_1$ and $\|A\|_{\infty}$ denote the maximum absolute row and column sums of $A$, and the fact that $\Lambda_{\min}(\Sigma_{\tilde{X}}) = \| \Theta_{\tilde{X}} \|^{-1}$. 
+\end{proof}

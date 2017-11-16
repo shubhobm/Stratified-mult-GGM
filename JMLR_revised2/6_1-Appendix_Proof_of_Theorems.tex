@@ -1,0 +1,170 @@
+\section{Appendix}
+\subsection{Proofs for Main Theorems}\label{sec:proof-theorems}
+\begin{proof}[\textbf{Proof of Theorem~\ref{thm:convergence}}]
+	We initialize the algorithm at $(\widehat{B}^{(0)},\widehat{\Theta}^{(0)}_\epsilon)\in\dom(f)$. Then for all $k\geq 1$:
+	\begin{eqnarray}
+	\widehat{B}^{(k)} &=& \argmin\limits_{B} f(B,\widehat{\Theta}_\epsilon^{(k-1)}) \label{getB}\\
+	\widehat{\Theta}^{(k)}_\epsilon & = & \argmin\limits_{\Theta_\epsilon} f(\widehat{B}^k,\Theta_\epsilon)\label{getTheta}
+	\end{eqnarray} 
+	Now, consider a limit point $(B^\infty,\Theta_\epsilon^\infty)$ of the sequence $\{(\widehat{B}^{(k)},\widehat{\Theta}_\epsilon^{(k)})\}_{k\geq 1}$. Note that such limit point exists by Bolzano-Weierstrass theorem since the sequence $\{(\widehat{B}^{(k)},\widehat{\Theta}_\epsilon^{(k)})\}_{k\geq 1}$ is bounded. Consider a subsequence $\mathcal{K}\subseteq\{1,2,\cdots\}$ such that $(\widehat{B}^{(k)},\widehat{\Theta}_\epsilon^{(k)})_{k\in \mathcal{K}}$ converges to $(B^\infty,\Theta_\epsilon^{\infty})$. Now for the bounded sequence $\{(\widehat{B}^{(k+1)},\widehat{\Theta}_\epsilon^{(k)})\}_{k\in\mathcal{K}}$, without loss of generality\footnote{switching to some further subsequence of $\mathcal{K}$ if necessary.}, we can say that 
+	\begin{equation*}
+	\{(\widehat{B}^{(k+1)},\widehat{\Theta}_\epsilon^{(k)})\}_{k\in\mathcal{K}}\rightarrow (\widetilde{B}^\infty,\widetilde{\Theta}_\epsilon^\infty), \quad \text{for some }(\widetilde{B}^\infty,\widetilde{\Theta}_\epsilon^\infty)\in\dom(f).
+	\end{equation*}
+	By (\ref{getB}) it follows immediately that $\widetilde{\Theta}_\epsilon^\infty = \Theta^\infty_\epsilon$. Also, the following inequality holds: 
+	\begin{equation*}
+	f(\widehat{B}^{(k+1)},\widehat{\Theta}_\epsilon^{(k+1)})\leq f(\widehat{B}^{(k+1)},\widehat{\Theta}_\epsilon^{(k)})\leq f(\widehat{B}^{(k)},\widehat{\Theta}_\epsilon^{(k)}).
+	\end{equation*}
+	Thus, by letting $k\rightarrow\infty$ over $\mathcal{K}$, we have 
+	\begin{equation*}
+	f(B^\infty,\Theta_\epsilon^\infty)\leq f(\widetilde{B}^\infty,\Theta_\epsilon^\infty)\leq f(B^\infty,\Theta_\epsilon^\infty),
+	\end{equation*}
+	since $f$ is continuous. This implies that 
+	\begin{equation} \label{equal}
+	f(\widetilde{B}^\infty,\Theta_\epsilon^\infty) = f(B^\infty,\Theta_\epsilon^\infty)
+	\end{equation}
+	Next, since $f(\widehat{B}^{(k+1)},\widehat{\Theta}_\epsilon^{(k)})\leq f(B,\widehat{\Theta}_\epsilon^{(k)})$, for all $B\in \mathbb{R}^{p_1\times p_2}$, let $k$ grow along $\mathcal{K}$, and we obtain the following:
+	\begin{equation*}
+	f(\widetilde{B}^\infty,\Theta_\epsilon^\infty)\leq f(B,\Theta_\epsilon^\infty),\quad \forall B\in \mathbb{R}^{p_1\times p_2}.
+	\end{equation*}
+	It then follows from (\ref{equal}) that 
+	\begin{equation}\label{unequal-1}
+	f(B^\infty,\Theta_\epsilon^\infty)\leq f(B,\Theta_\epsilon^\infty), \quad \forall B\in\mathbb{R}^{p_1\times p_2}.
+	\end{equation}
+	Finally, note that $f(\widehat{B}^{(k)},\widehat{\Theta}_\epsilon^{(k)})\leq f(\widehat{B}^{(k)},\Theta_\epsilon)$, for all $\Theta\in\mathbb{S}^{p_2\times p_2}_{++}$. As before, let $k$ grow along $\mathcal{K}$ and with the continuity of $f$, we obtain:
+	\begin{equation}\label{unequal-2}
+	f(B^\infty,\Theta_\epsilon^\infty) \leq f(B^\infty,\Theta_\epsilon), \quad \forall \Theta_\epsilon\in\mathbb{S}_{++}^{p_2\times p_2}. 
+	\end{equation}
+	Now, (\ref{unequal-1}) and (\ref{unequal-2}) together imply that $(B^\infty,\Theta_\epsilon^\infty)$ is a coordinate-wise minimum of $f$ and by Fact 1, 
+	also a stationary point of $f$. 
+\end{proof}
+
+\medskip
+\begin{proof}[\textbf{Proof of Theorem~\ref{thm:ErrorBound_beta}}]
+	The statement of  Theorem~\ref{thm:ErrorBound_beta} is a variation of Proposition 4.1 in \citet{basu2015estimation}, and its proof follows directly from the proof of the
+	proposition in \citet[Appendix B]{basu2015estimation}. We only outline how the statement differs. In the original statement of Proposition 4.1 in \citet{basu2015estimation}, the authors provide the error bound for $\bar{\beta}$, obtained as per (\ref{est-1.1}) whose dimension is $qp^2$ with $q$ denoting the true lag of the vector-autoregressive process, under an RE condition for $\bar{\Gamma}$ and a deviation bound for $(\bar{\gamma},\bar{\Gamma})$. For our problem, we impose a similar RE condition on $\widehat{\Gamma}$ and deviation bound on $(\widehat{\gamma},\widehat{\Gamma})$, so as to yield a bound on $\widehat{\beta}$ that lies in a $p_1p_2$-dimensional space. 
+\end{proof}
+\medskip
+
+\begin{proof}[\textbf{Proof of Theorem~\ref{thm:ErrorBound_Theta}}]
+	The statement of this theorem is a variation of Theorem~1 in \citet{ravikumar2011high}, so here, instead of providing a complete proof of the theorem, we only outline how the estimation problem differs in our setting, as well as the required changes in its proof.
+	
+	In \citet{ravikumar2011high}, the authors consider the optimization problem in (\ref{est-2.1}), and show that for a random realization, with certain sample size requirement and choice of the regularization parameter, the following bound for $\bar{\Theta}_\epsilon$ holds with probability at least $1-1/p_2^\tau$ for some $\tau>2$:
+	\begin{equation}\label{glasso-bound}
+	\|\bar{\Theta}_\epsilon -\Theta_\epsilon^*\|_\infty \leq \{2(1+8\xi^{-1})\kappa_{H^*}\}\bar{\delta}_f(p_2^\tau,n),
+	\end{equation}
+	where $\bar{\delta}(r,n)$ is defined as:
+	\begin{equation}\label{delta-bar}
+	\bar{\delta}(r,n): = 8(1+4\sigma^2)\max_i(\Sigma^*_{\epsilon,ii})\sqrt{\frac{2\log(4r)}{n}}.
+	\end{equation}
+	The quantity  $\bar{\delta}(p_2^\tau,n)$ that shows up in expression (\ref{glasso-bound}) is the bound for $\|S-\Sigma_\epsilon^*\|_\infty \equiv \|\widehat{\Sigma}_\epsilon - \Sigma_\epsilon^*\|_\infty$. In particular, in Lemma~8 \citep{ravikumar2011high}, they show that with probability at least $1-1/p_2^\tau$, $\tau>2$,  the following bound holds:
+	\begin{equation*}
+	\|S - \Sigma_\epsilon^*\|_\infty \leq \bar{\delta}(p_2^\tau,n).
+	\end{equation*}
+	In our optimization problem (\ref{est-2}), we are using $\widehat{S}$ instead of $S$, hence a bound for $\|\widehat{S}-\Sigma_\epsilon^*\|_\infty$ is necessary, and the remaining argument in the proof of Theorem~1 \citep{ravikumar2011high} will follow through. 
+	
+	Therefore in our theorem statement, we use $g(\nu_\beta)$ as a bound for $\|\widehat{S}-\Sigma_\epsilon^*\|_\infty$ then yield the bound for $\|\widehat{\Theta}_\epsilon-\Theta^*_\epsilon\|_\infty$, since we are using the surrogate error $\widehat{E}=Y-X\widehat{B}$ in the estimation, instead of the true error $E$. 
+\end{proof}
+
+\input{Thm_4_pf} % use updated proof avoiding conditional statements
+
+\begin{proof}[\textbf{Proof of Theorem~\ref{thm:FWER}}]
+	First, we note that with a Bonferroni correction, the family-wise type I error will be automatically controlled at level $\alpha$. Hence, we will focus on the power of the screening step. Also, from Theorem 7 of \citet{javanmard2014confidence}, it is easy to see that all the arguments below hold for a large set of random realizations of $X$, whose probability approaches 1 under the specified asymptotic regime when the eigenvalues of $\Sigma_X$ are bounded away from $0$ and infinity.
+	
+	Let $B^*=\begin{bmatrix}
+	B_1^* & \cdots & B_{p_2}^*
+	\end{bmatrix}$ denote the true value of the regression coefficients and $\check{B}_j,j=1,\cdots,p_2$ denote the estimates given by the de-biased Lasso procedure in \citet{javanmard2014confidence}. With the given level for sparsity, by Theorem~8 in  \citet{javanmard2014confidence}, each $\check{B}_j$ satisfies the following:
+	\begin{equation*}
+	\sqrt{n}(\check{B}_j-B_j^*) = Z+\Delta, ,
+	\end{equation*}
+	where $Z\sim\mathcal{N}\left(0,\sigma^2 M_j\widehat{\Sigma}_XM_j'\right)$ and $\Delta$ vanishes asymptically. Here $\widehat{\Sigma}_X$ is the sample covariance matrix of the predictors $X$, $\sigma$ is the population noise level of the error term $\epsilon_j$, and $M_j$ is the matrix corresponding to the $j$th regression, produced by the procedure described in \citet{javanmard2014confidence}\footnote{Details of the procedure is described in p.2871 in \citet{javanmard2014confidence}, with $M$ being an intermediate quantity obtained by solving an optimization problem.}. Let $\check{B}_{j,i}$ denote the $i$th coordinate of the $j$th regression coefficient vector $\check{B}_j$ and $\check{\Sigma}_{j}$ be the covariance matrix of the estimator $\check{B}_j$, then 
+	\begin{equation*}
+	\check{\Sigma}_j = \frac{\sigma^2}{n}M_j\widehat{\Sigma}_XM_j',
+	\end{equation*}
+	and in particular, the variance of $\check{B}_{j,i}$ is $\check{\Sigma}_{j,ii}:=\check{\sigma}^j_{ii}$. Using these notations, for a prespecified level $\alpha$, the test statistics for testing $H^{ji}_0:B^*_{j,i}=0$ vs. $H^{ji}_A:B^*_{j,i}\neq 0$, for all $i=1,\cdots,p_1;j=1,\cdots,p_2$ can be equivalently written as: 
+	\begin{equation*}
+	\widehat{T}_{j,i} = \begin{cases}
+	1 \quad &\text{if }|\check{B}_{j,i}|/\check{\sigma}^j_{ii}> z_{\alpha/(2p_1p_2)}, \\
+	0 \quad &\text{otherwise.}
+	\end{cases}
+	\end{equation*}
+	where $z_{\alpha}$ denotes the upper $\alpha$ quantiles of $\mathcal{N}(0,1)$. 
+	
+	Define the ``family-wise" power as follows: 
+	\begin{equation*}
+	\begin{split}
+	\mathbb{P}\left( \text{all true alternatives are detected} \right) & = \mathbb{P}\left( \bigcap\limits_{1\leq j\leq p_2}\bigcap\limits_{k\in S^*_j}\{\widehat{T}_{j,k}=1\}\right) \\
+	& = 1 - \mathbb{P}\left( \bigcup\limits_{1\leq j\leq p_2}\bigcup\limits_{k\in S^*_j}\{\widehat{T}_{j,k}=0\}\right).
+	\end{split}
+	\end{equation*}
+	Correspondingly, the family-wise type II error can be  written as:
+	\begin{equation}\label{type2}
+	\mathbb{P}\left( \bigcup\limits_{1\leq j\leq p_2}\bigcup\limits_{k\in S^*_j}\{\widehat{T}_{j,k}=0\}\right) \leq \sum_{j=1}^{p_2}\sum_{k\in S^*_j} \mathbb{P}\left( \widehat{T}_{j,k}=0\right). 
+	\end{equation}
+	By Theorem~16 in \citet{javanmard2014confidence}, asymptotically, $\forall k\in S_j,j=1,\cdots,p_2$:
+	\begin{equation}\label{powerbound}
+	\begin{split}
+	\mathbb{P}\left(\widehat{T}_{j,k}=0\right) & \leq 1 - G\left(\frac{\alpha}{p_1p_2},\frac{\sqrt{n}\gamma}{\sigma[\Sigma^{-1}_{k,k}]^{1/2}}\right); \qquad 0<\gamma\leq \min|B^*_{j,k}|,~~\forall k\in S_j,j=1,\cdots,p_2.
+	\end{split}
+	\end{equation}
+	Here 
+	\begin{equation*}
+	G(\alpha,u) \equiv  2- \mathbb{P}(\Phi < z_{\alpha/2}+u) - \mathbb{P}(\Phi < z_{\alpha/2} - u),
+	\end{equation*}
+	where we use $\Phi$ to denote the random variable following a standard Gaussian distribution and the choice of $n$ in (\ref{powerbound}) doesn't depend on $k$. Hence, (\ref{powerbound}) can be re-written as:
+	\begin{equation}\label{type2:ind}
+	\begin{split}
+	\mathbb{P}\left(\widehat{T}_{j,k}=0\right) & \leq 1 - G\left(\frac{\alpha}{p_1p_2},\frac{\sqrt{n}\gamma}{\sigma[\Sigma^{-1}_{k,k}]^{1/2}}\right)  \\
+	& =   \mathbb{P}\left( \Phi < z_{\alpha/(2p_1p_2)} - \frac{\sqrt{n}\gamma}{\sigma[\Sigma^{-1}_{k,k}]^{1/2}}\right) - \mathbb{P}\left( \Phi > z_{\alpha/(2p_1p_2)} + \frac{\sqrt{n}\gamma}{\sigma[\Sigma^{-1}_{k,k}]^{1/2}}\right) \\
+	& \leq  \mathbb{P}\left( \Phi >  \frac{\sqrt{n}\gamma}{\sigma[\Sigma^{-1}_{k,k}]^{1/2}}-z_{\alpha/(2p_1p_2)} \right),
+	\end{split}
+	\end{equation}
+	where we use $\Phi$ to denote the random variable following a standard Gaussian distribution.
+	
+	Note that the following inequality holds for standard Normal percentiles:
+	\begin{equation*}
+	2e^{-t^2}\leq \mathbb{P}(|\Phi|>t) \leq e^{-t^2/2},
+	\end{equation*}
+	and by taking the inverse function, the following inequality holds:
+	\begin{equation*}
+	\sqrt{-\log \frac{y}{2}} \leq z_{y/2} \leq \sqrt{-2\log y}.
+	\end{equation*}
+	Letting $y=\frac{\alpha}{p_1p_2}$, it follows that:
+	\begin{equation*}
+	\left( -\log\frac{\alpha}{2p_1p_2}\right)^{1/2} \leq z_{\alpha/(2p_1p_2)}\leq \left( -2\log \frac{\alpha}{p_1p_2} \right)^{1/2},
+	\end{equation*}
+	hence
+	\begin{equation*}
+	\mathbb{P}\left(  \Phi >\frac{\sqrt{n}\gamma}{\sigma[\Sigma^{-1}_{k,k}]^{1/2}}-z_{\alpha/(2p_1p_2)}  \right)\leq \mathbb{P}\left(  \Phi >\frac{\sqrt{n}\gamma}{\sigma[\Sigma^{-1}_{k,k}]^{1/2}}-\sqrt{-2\log \frac{\alpha}{p_1p_2}}\right)
+	\end{equation*}
+	Now given 
+	\begin{equation*}
+	\frac{\log(p_1p_2) }{n} \rightarrow 0, 
+	\end{equation*}
+	the following expression follows:
+	\begin{equation*}
+	\frac{\sqrt{2\log\left(\frac{p_1p_2}{\alpha}\right)}}{\sqrt{n}/\sigma[\Sigma^{-1}_{k,k}]^{1/2}}\rightarrow 0,
+	\end{equation*}
+	indicating that for sufficiently large $n$, the following lower bound holds for some constant $c_0>0$:
+\begin{equation*}
+\left(\frac{\sqrt{n}\gamma}{\sigma[\Sigma^{-1}_{k,k}]^{1/2}}-\sqrt{-2\log \frac{\alpha}{p_1p_2}}\right) \geq c_0\sqrt{n}.
+\end{equation*}
+Note that $c_0$ is univeral for all choices of $k$, since this lower bound can be achieved by substituting $\Sigma^{-1}_{k,k}$ by $(1/\Lambda_{\min}(\Sigma_X))$, which is assumed to be bounded away from infinity.  Combined with the fact that $\mathbb{P}(\Phi >t)\leq e^{-t^2/2}$, the last expression in (\ref{type2:ind}) can thus be bounded by:
+\begin{equation}\label{powerbound1}
+	\mathbb{P}\left( \Phi >  \frac{\sqrt{n}\gamma}{\sigma[\Sigma^{-1}_{k,k}]^{1/2}}-z_{\alpha/(2p_1p_2)} \right) \leq \exp\left[ -\frac{1}{2} \left(\frac{\sqrt{n}\gamma}{\sigma[\Sigma^{-1}_{k,k}]^{1/2}}-\sqrt{-2\log \frac{\alpha}{p_1p_2}}\right)^2 \right] \leq  e^{-c_1 n}, 
+\end{equation}
+for some universal constant $c_1>0$, and the bound in (\ref{powerbound1}) holds uniformly for all $k\in S_j,\forall j$. Combine (\ref{type2}), (\ref{powerbound}) and (\ref{powerbound1}), it follows that 
+\begin{equation}\label{powerbound2}
+\mathbb{P}\left( \bigcup\limits_{1\leq j\leq p_2}\bigcup\limits_{k\in S^*_j}\{\widehat{T}_{j,k}=0\}\right) \leq s^*p_2 \exp(-c_1n).
+\end{equation}
+Now with $\log(p_1p_2)/n = o(1)$ and the given sparsity level, that is, $s^* = o(\sqrt{n}/\log p_1)$, it follows that:
+	\begin{equation*}
+	s^*p_2 \exp(-c_1n) = o(1),
+	\end{equation*}
+and by (\ref{powerbound2}), we have:
+	\begin{equation*}
+	\mathbb{P}\left(\text{family-wise type II error}\right) \rightarrow 0, \quad \Leftrightarrow \quad \mathbb{P}\left(\text{family-wise power}\right) \rightarrow 1.
+	\end{equation*}
+	This is equivalent to establishing that, given $\log(p_1p_2)/n\rightarrow 0$, the screening step recovers the true support sets $S_j^*$ for all $j=1,2,\cdots,p_2$ with high probability, while keeping the family-wise type I error rate under control. 
+\end{proof}
+
+

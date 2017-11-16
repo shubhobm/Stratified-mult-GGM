@@ -1,0 +1,24 @@
+% --------------------------------
+%
+% Theoretical result -- FWER Recovery
+%
+% --------------------------------
+
+\subsection{\normalsize Family-Wise Error Rate  control of the Screening Step}\label{sec:FWER}
+
+As mentioned in the Introduction, for the iterative algorithm to work effectively, it is crucial to initialize from points that are close to the true parameters. Our screening step provides such guarantees {\em asymptotically}. Based on the screening step described in Section~\ref{sec:estimation}, initial estimates for each column of the regression matrix are obtained by Lasso or Ridge regression with the support set restricted to the one identified by the screening step. It is desirable for the screening step to correctly identify the true support set. In particular, we would like to retain as many true positive predictor variables as possible without discovering too many false positive ones. The following theorem states that as long as $\log(p_1p_2)/n = o(1)$ and the sparsity is not beyond a specified level, the screening step will be able to recover all true positive predictors, while keeping the family-wise type I error under control. 
+
+\begin{theorem}\label{thm:FWER}
+Let $S^*_j$ denote the true support set of the $j$th regression and $s^*_j$ be its cardinality. Suppose that $\log(p_1p_2)/n\rightarrow 0$ and the following condition for sparsity holds:
+\begin{equation*}
+\max\{s^*_j,j=1,\cdots,p_2\} = o(\sqrt{n}/\log p_1).
+\end{equation*}
+Then, the screening step described in Section 2.2 will correctly recover $S^*_j$ for all $j=1,\cdots,p_2$ with probability approaching to 1, while keeping the family-wise type I error rate under the prespecified level $\alpha$. 
+\end{theorem}
+
+
+
+\begin{remark}
+The specified level for sparsity is necessary for the de-biased Lasso procedure in \citet{javanmard2014confidence} to produce unbiased estimates for the regression coefficients. In terms of support recovery for the screening step, with $\log(p_1p_2)/n = o(1)$, we only require $s^*=o(p_1)$, which is much weaker and easily satisfied. 
+\end{remark}
+

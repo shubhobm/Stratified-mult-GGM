@@ -1,0 +1,49 @@
+Consider a $3$-layer graphical model. Let $\widetilde{X} = [(X^1)', (X^2)']'$ be the $(p_1+p_2)$ dimensional random variable, which represents a pooled layer on which we regress $X^3$ to estimate $B^{13}$, $B^{23}$ and $\Sigma^3$. As shown in Theorem~\ref{thm:ErrorBound_beta} and Proposition~\ref{prop:deviation}, the error of estimating these parameters is higher when $\Lambda_{\min}(\Sigma_{\tilde{X}})$ is smaller. In this section, we derive a lower bound on this quantity to demonstrate how estimation error depends on the underlying structure of the graph.
+
+For the undirected subgraph within a layer $k$, we denote its maximum node capacity by $\mathbf{v}(\Theta^k):= \max_{1 \le i \le p} \sum_{j=1}^p |\Theta_{ij}|$. For the directed bipartite subgraph consisting of Layer $s \rightarrow t$ edges, we similarly define the maximum incoming and outgoing node capacities by $\mathbf{v}_{in}(B^{st}):= \max_{1 \le j \le p} \sum_{i=1}^p|B^{st}_{ij}|$ and $\mathbf{v}_{out}(B^{st}):= \max_{1 \le i \le p} \sum_{j=1}^p |B^{st}_{ij}|$. The following proposition establishes the lower bound in terms of these node capacities
+
+\begin{proposition}\label{prop:RE-bound}
+\begin{equation*}
+%\Lambda_{\min}(\Sigma_{\widetilde{X}}) \ge \| \Theta^1 \|^{-1} \| \Theta^2 \|^{-1} \left(1+\|B^{12}\| \right)^{-2}
+\Lambda_{\min}(\Sigma_{\widetilde{X}}) \ge \mathbf{v}(\Theta^1)^{-1} \mathbf{v}(\Theta^2)^{-1} 
+\left[1+\left(\mathbf{v}_{in}(B^{12})+\mathbf{v}_{out}(B^{12})\right)/2 \right]^{-2}
+\end{equation*}
+\end{proposition}
+\begin{proof}
+From the structural equations of a multi-layered graph introduced in Section~\ref{sec:set-up}, and setting $\epsilon^1:= X^1$, we can write 
+\begin{equation}\label{eqn:invert-SEM}
+\left[\begin{array}{c}\epsilon^1 \\ \epsilon^2 \end{array} \right] = 
+\left[\begin{array}{cc}I & 0 \\ -(B^{12})' & I \end{array}\right] 
+\left[\begin{array}{c} X^1 \\ X^2 \end{array} \right]
+\end{equation}
+Define $P = [I, 0; -(B^{12})', 0]$. Then  $P \widetilde{X}$ is centered Gaussian with a block diagonal variance-covariance matrix  $diag(\Sigma^1, \Sigma^2)$. Hence, the concentration matrix of $\widetilde{X}$ takes the form
+%the variance-covariance matrix of $\widetilde{X}$ takes the form 
+%\begin{equation*}
+%\Sigma_{\widetilde{X}} = \left[\begin{array}{cc} \Sigma^1 & \Sigma^2 B^{12} \\ (B^{12})' \Sigma^2 & (B^{12})' \Sigma^1 B^{12} + \Sigma^2 \end{array} \right]
+%\end{equation*}
+%By standard matrix inversion formula and the properties of Schur complement, we have
+\begin{equation*}
+\Theta_{\tilde{X}} = \Sigma^{-1}_{\tilde{X}} = \left[ \begin{array}{cc}I & -B^{12} \\ 0 & I\end{array} \right] \left[ \begin{array}{cc} \Theta^1 & 0 \\ 0 & \Theta^2 \end{array} \right] \left[\begin{array}{cc}I & 0 \\ -(B^{12})' & 0  \end{array} \right]
+\end{equation*}
+This leads to an upper bound  
+\begin{equation*}
+\| \Theta_{\widetilde{X}} \| \le \| \Theta^1 \| \| \Theta^2 \| \|P\|^2
+\end{equation*}
+%where $P = \left[I, -B^{12}; 0, I \right]$. 
+The result then follows by using the matrix norm inequality $\|A\| \le \sqrt{\|A\|_1 \|A\|_{\infty}}$ \citep{golub2012matrix}, where $\|A\|_1$ and $\|A\|_{\infty}$ denote the maximum absolute row and column sums of $A$, and the fact that $\Lambda_{\min}(\Sigma_{\tilde{X}}) = \| \Theta_{\tilde{X}} \|^{-1}$. 
+\end{proof}
+
+The three components in the lower bound demonstrate suggest how the structure of Layers 1 and 2 affect our ability to accurately estimate the edges to Layer 3. Essentially, the bound suggests that accurate estimation is possible when the total effect (incoming and outgoing) at every node of each of the three subgraphs is not very large. 
+
+This is inherently related to the identifiability of the multi-layered graphical models and our ability to distinguish between the parents from different layers. For instance, if a node in Layer $2$ has high partial correlation with nodes of Layer $1$ so that $\mathbf{v}_{in}(B^{12})$ is large, it can be hard to distinguish Layer $1 \rightarrow 3$ edges from Layer $2 \rightarrow 3$ edges.
+
+For a general $M$-layer network, the argument in the proof of Proposition \ref{prop:RE-bound} can be genaralized in a straightforward manner, with a modified $P$ of the form 
+\begin{equation*}
+P = \left[\begin{array}{cccc}
+I & 0 & \ldots & 0 \\ 
+-(B^{12})' & I & \ldots & 0 \\
+\vdots & \vdots & \vdots & 0 \\
+-(B^{1, M-1})' & -(B^{2, M-1})' & \ldots & I
+ \end{array} \right]
+\end{equation*}
+and combining node capacities for different layers. The conclusion is qualitatively similar, i.e., the estimation error of a $M$-layer graphical model is small as long as the maximum node capacities of different inter-layer and intra-layer subgraphs are not too large.

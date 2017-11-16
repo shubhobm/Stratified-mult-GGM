@@ -1,0 +1,52 @@
+\subsection{Numerical comparisons between different parametrizations.}
+
+In this subsection, we provide some numerical evidence to substantiate the point we made in Section~\ref{sec:grouping}, that the two parametrizations are not always equivalent. This is a point also mentioned in the original work on
+AMP graphs by \citet{andersson2001alternative}, the framework adopted in this paper. The other parametrization which we referred to as the \textit{$(\Omega_{XY},\Omega_Y)$-parametrization} corresponds to the LWF framework (\citet[see][p.34-35]{andersson2001alternative}).  In the presence of sparsity penalization, a specific sparsity pattern for the \textit{$(B,\Theta_\epsilon)$-parameterization} may not be recoverable through the \textit{$(\Omega_{XY},\Omega_Y)$-parametrization} and vice versa. 
+
+Consider the following two simulation settings, in which the data are generated from the AMP framework ($(B,\Theta_\epsilon)$-parameterization) and the LWF framework (\textit{$(\Omega_{XY},\Omega_Y)$-parametrization}) respectively. 
+\begin{itemize}
+\item AMP framework. The data are generated according to the model $Y=XB^* + E$, similar to Model~A described in Section~\ref{sec: Implementation}; that is, each entry in $B^*$ is nonzero with probability $5/p_1$, and off-diagonal entries for $\Theta_\epsilon^*$ are nonzero with probability $5/p_2$.  Nonzero entries of $B^*$ and $\Theta_\epsilon^*$ are generated from $\mathsf{Unif}\left[(-1,-0.5)\cup(0.5,1)\right]$, and diagonals of $\Theta_\epsilon^*$ are set identical, such that the condition number of $\Theta_\epsilon^*$ is $p_2$. Table~\ref{table:AMP} shows the performance of estimated $B$ using different methods that are designed for different parameterizations: the node-conditional method (mixed MRF) and the proposed method
+in this study (PML):
+	\begin{table}[!h]
+		\centering
+		\caption{Performance for $\widehat{B}$ using different parameterizations}\label{table:AMP}
+		\begin{tabular}{llccc}
+			\hline
+			$(p_1,p_2,n)$ 	  &  Method    & SEN   & SPC   & MCC \\ \hline
+			$(30,60,100)$ & mixed MRF (th) & 0.86 & 0.71 & 0.45 \\ 
+			& PML-th        & 0.96 & 0.99 & 0.93 \\  \hline		
+			$(60,30,100)$ & mixed MRF (th)& 0.96 &  0.76 & 0.70 \\
+			& PML-th &  0.99 & 0.99 & 0.93\\ \hline
+			$(200,200,150)$ & mixed MRF (th)& 0.80 & 0.99  & 0.70  \\
+			& PML-th &  0.99 & 0.99 & 0.88 \\ \hline
+		\end{tabular}
+	\end{table}
+\item LWF framework. The data are generated based on the multivariate Normal specification:
+\begin{equation*}
+\begin{pmatrix}
+\bs{X} \\ \bs{Y}
+\end{pmatrix}\sim \mathcal{N}\left( 0, \begin{pmatrix}
+\Omega_{X} & \Omega_{XY} \\ \Omega_{YX} & \Omega_{Y}
+\end{pmatrix}^{-1} \right), 
+\end{equation*}
+Specifically, $\Omega_X$ is banded with 1 on the diagonal and 0.2 on the upper and lower first diagonal, $\Omega_Y$ is also banded with 1 on the diagonal and 0.3 on the upper and lower first diagonal. Each entry in $\Omega_XY$ is nonzero with probability $5/p_1$, and the nonzero entries are generated from $\mathsf{Unif}\left[(-1,-0.8)\cup (0.8,1)\right]$. Further, we bump up the diagonal of the joint precision matrix $\left[ \begin{smallmatrix} \Omega_X & \Omega_{XY} \\ \Omega'_{XY} & \Omega_Y \end{smallmatrix} \right]$ such that it is positive definite. Table~\ref{table:LWF} depicts the selection property of the estimated $\Omega_{XY}$ using different methods that are designed for different parameterizations: 
+\begin{table}[!h]
+	\centering
+	\caption{Performance for $\widehat{\Omega}_{XY}$ using different parameterizations}\label{table:LWF}
+	\begin{tabular}{llccc}
+		\hline
+		$(p_1,p_2,n)$ 	  &  Method    & SEN   & SPC   & MCC \\ \hline
+		$(30,60,100)$ & mixed MRF & 0.84 & 0.88 & 0.63 \\ 
+		& PML-th        & 0.99 & 0.52 & 0.39 \\  \hline		
+		$(60,30,100)$ & mixed MRF & 0.847 &  0.95 & 0.70 \\
+		& PML-th & 1 & 0.80 & 0.52 \\ \hline
+		$(200,200,150)$ & mixed MRF & 0.89 &  0.93 & 		0.70 \\
+		& PML-th &  1 & 0.79 & 0.30 \\ \hline
+	\end{tabular}
+\end{table}
+\end{itemize}
+Note that for both data generating procedures, the final estimates are thresholded at a proper level to retrieve meaningful results for comparison purposes. 
+
+It can be seen that the method compatible with the data generation mechanism exhibits superior performance, vis-a-vis its competitor that was designed for another parameterization.
+Further, the mixed MRF method suffers in terms of both sensititvity and specificity under the AMP parameterization, while the PML method suffers in terms of specificity only under
+the LWF parameterization.

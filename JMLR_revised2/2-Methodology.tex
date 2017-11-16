@@ -1,0 +1,210 @@
+% % ---------------------------------
+%
+%  Methodology - start with K layers 
+%
+% % ---------------------------------
+\section{Problem Formulation.}\label{sec:methodology}
+
+%As discussed in the introduction, we develop a computational procedure and establish its theoretical properties for the MLE in multi-layered Gaussian graphical models. However, the lack of overall convexity of the likelihood function poses a significant technical challenge for establishing theoretical guarantees about the quality of the parameter estimates.  In contrast with cases where the nonconvexity arises due to missing data or nonconvex regularizers, the jointly nonconvexity within the likelihood function is inherent, and such lack of convexity persits in both high-dimensional and low-dimensional settings. On the other hand, we devise a novel proof strategy that provides such guarantees for a 2-layer network. Leveraging this finding, we discuss next how to turn the general problem into a sequence of 2-layer problems. 
+
+Consider an $M$-layered Gaussian graphical model. Suppose there are $p_m$ nodes in Layer $m$, denoted by 
+\begin{equation*}
+\bs{X}^m=(X^m_1,\cdots,X^m_{p_m})', \quad \text{for }m=1,\cdots,M.
+\end{equation*}
+The structure of the model is given as follows: 
+\begin{itemize}
+\item[--] Layer 1. $\bs{X}^1=(X^1_1,\cdots,X^1_{p_1})'\sim \mathcal{N}(0,\Sigma^1)$.
+\item[--] Layer 2. For $j=1,\cdots,p_2$: $X^2_j=(B^{12}_j)'\bs{X}^1 + \epsilon_j^2$, with $B^{12}_j\in\mathbb{R}^{p_1}$, and $\bs{\epsilon}^2 = (\epsilon^2_1,\cdots,\epsilon^2_{p_2})'\sim \mathcal{N}(0,\Sigma^2)$.
+\item[ ] $\vdots$
+\item[--] Layer $M$. For $j=1,2,\cdots,p_M$: 
+\begin{equation*}
+X^M_j = \sum_{m=1}^{M-1} \{(B^{mM}_j)'\bs{X}^m \}+ \epsilon_j^M, \quad \text{where }B^{mM}_j\in\mathbb{R}^{p_m}~~\text{for }m=1,\cdots,M-1,
+\end{equation*}
+and $\bs{\epsilon}^M=(\epsilon^M_1,\cdots,\epsilon^M_{p_M})'\sim\mathcal{N}(0,\Sigma^M)$.
+\end{itemize}
+The parameters of interest are {\em all directed edges} that encode the dependencies across layers, that is:
+\begin{equation*}
+B^{st} := \begin{bmatrix}B^{st}_1 & \cdots & B^{st}_{p_t}\end{bmatrix}, \quad \text{for } 1\leq s < t \leq M,
+\end{equation*}
+and {\em all undirected edges} that encode the conditional dependencies within layers after adjusting for the effects from directed edges, that is:
+\begin{equation*}
+\Theta^m := (\Sigma^m)^{-1}, \quad \text{for }m=1,\cdots,M.
+\end{equation*}
+It is assumed that $B^{st}$ and $\Theta^m$ are {\em sparse} for all $1,\dotsc, M$ and $1\leq s < t\leq M$.
+
+Given centered data for all $M$ layers, denoted by $X^m=[X_1^m,\cdots,X^m_{p_m}]\in\mathbb{R}^{n\times p_m}$ for all $m=1,\cdots,M$, we aim to obtain the MLE for all $B^{st},1\leq s<t\leq M$ and all $\Theta^m,m=1,\cdots,M$ parameters. Henceforth, we use $\bs{X}^m$ to denote random vectors, and $X_j^m$ to denote the $j$th column in the data matrix $X_{n \times p_m}^m$ whenever there is no ambiguity. 
+
+\medskip
+Through Markov factorization \citep{lauritzen1996graphical}, the full log-likelihood function can be decomposed as:
+\begin{equation*}
+\scriptsize
+\begin{split}
+\ell(X^m; B^{st},\Theta^m,1\leq s<t\leq M,1\leq m\leq M)& =\ell(X^M|X^{M-1},\cdots,X^1;B^{1M},\cdots,B^{M-1,M},\Theta^M) \\ 
+&\quad  + \ell(X^{M-1}|X^{M-2},\cdots,X^1;B^{1M-1},\cdots,B^{M-2,M-1},\Theta^{M-1})\\
+& \quad + \cdots + \ell(X^2|X^1; B^{12},\Theta^2)+ \ell(X^1; \Theta^1)\\
+& = \ell(X^1; \Theta^1) + \sum\nolimits_{m=2}^M \ell(X^m|X^1,\cdots,X^{m-1}; B^{1m},\cdots,B^{m-1,m},\Theta^m). 
+\end{split}
+\end{equation*}
+Note that the summands share no common parameters, which enables us to maximize the likelihood with respect to individual parameters in the $M$ terms separately. More importantly, by conditioning Layer $m$ nodes on nodes in its previous $(m-1)$ layers, we can treat Layer $m$ nodes as the``response" layer, and all nodes in the previous $(m-1)$ layer combined as a super ``parent" layer. If we ignore the structure within the bottom layer ($X^1$) for the moment, the $M$-layered network can be viewed as $(M-1)$ two-layered networks, each comprising a response layer and a parent layer. Thus, the network structure in Figure~\ref{fig:diagram} can be viewed as a 2 two-layered network: for the first network, Layer 3 is the response layer, while Layers 1 and 2 combined form the ``parent" layer; for the second network, Layer 2 is the response layer, and Layer 1 is the ``parent" layer. Therefore, the problem for estimating all $\binom{M}{2}$ coefficient matrices and $M$ precision matrices can be translated into estimating $(M-1)$ two-layered network structures with directed edges from the parent layer to the response layer, and undirected edges within the response layer, and finally estimating the undirected edges within the bottom layer separately. 
+
+Since all estimation problems boil down to estimating the structure of a 2-layered network, we focus the technical discussion on introducing our proposed methodology for a 2-layered network setting\footnote{In Appendix~\ref{appendix:example}, we give a detail example on how our proposed method works under a 3-layered network setting.}. The theoretical results obtained extend in a straightforward manner to an $M$-layered Gaussian graphical model.
+
+
+\noindent
+\begin{remark}
+For the $M$-layer network structure, we impose certain identifiability-type condition on the largest ``parent" layer (encompassing $M-1$ layers), so that the directed edges of the entire network are estimable. The imposed condition translates into a minimum eigenvalue-type condition on the population precision matrix within layers, and conditions on the magnitude of dependencies across layers. Intuitively, consider a three-layered network: if $\bs{X}^1$ and $\bs{X}^2$ are highly correlated, then the proposed (as well as any other) method will exhibit difficulties in distinguishing the effect of $\bs{X}^1$ on $\bs{X}^3$ from that of $\bs{X}^2$ on $\bs{X}^3$. The (group) identifiability-type condition is thus imposed to obviate such circumstances. An in-depth discussion on this issue is provided in Section~\ref{sec:identifiability}.
+\end{remark}
+
+\subsection{\normalsize A Two-layered Network Set-up.}\label{sec:set-up}
+
+Consider a two-layered Gaussian graphical model with $p_1$ nodes in the first layer, denoted by $\bs{X}=(X_1,\cdots,X_{p_1})'$, and $p_2$ nodes in the second layers, denoted by $\bs{Y}=(Y_1,\cdots,Y_{p_2})'$. The model is defined as follows: 
+\begin{itemize}
+\setlength\itemsep{1pt}
+\renewcommand\labelitemi{--}
+\item $\bs{X}=(X_1,\cdots,X_{p_1})'\sim \mathcal{N}(0,\Sigma_X)$.
+\item For $j=1,2,\cdots,p_2$: $Y_j = B_j' \bs{X} + \epsilon_j$, $B_j\in\mathbb{R}^{p_1}$ and $\bs{\epsilon}=(\epsilon_1,\cdots,\epsilon_{p_2})^\top\sim\mathcal{N}(0,\Sigma_\epsilon)$.
+\end{itemize}
+The parameters of interest are: $\Theta_X:=\Sigma_X^{-1},\Theta_\epsilon:=\Sigma_\epsilon^{-1}$ and $B=[B_1,\cdots,B_{p_2}]$. As with most estimation problems in the high dimensional setting, we assume these parameters to be sparse. 
+
+Now given data $X=[X_1,\cdots,X_{p_1}]\in\mathbb{R}^{n\times p_1}$ and $Y=[Y_1,\cdots,Y_{p_2}]\in\mathbb{R}^{n\times p_2}$, both centered, we would like to use the penalized maximum likelihood approach to obtain estimates for $\Theta_X$, $\Theta_\epsilon$ and $B$. Throughout this paper, we use $X$, $Y$ and $E$ to denote the size-$n$ realizations of the random vectors $\bs{X}$, $\bs{Y}$ and $\bs{\epsilon}$, respectively. Also, with a slight abuse of notation, we use $X_i,i=1,2,\cdots,p_1$ and $Y_{j},j=1,2,\cdots,p_2$ to denote the columns of the data matrix $X$ and $Y$, respectively, whenever there is no ambiguity. \\
+
+The full log-likelihood can be written as 
+\begin{equation}\label{eqn:opt}
+\ell(X,Y;B,\Theta_\epsilon,\Theta_X) = \ell(Y|X;\Theta_\epsilon,B) + \ell(X;\Theta_X)
+\end{equation}
+Note that the first term only involves $\Theta_\epsilon$ and $B$, and the second term only involves $\Theta_X$. Hence, (\ref{eqn:opt}) can be maximized by maximizing $\ell(Y|X)$ w.r.t. $(\Theta_\epsilon,B)$, and maximizing $\ell(X)$ w.r.t. $\Theta_X$, respectively. $\widehat{\Theta}_X$ can be obtained using traditional methods for estimating undirected graphs, e.g., the Graphical Lasso \citep{friedman2008sparse} or the Nodewise Regression prcoedure \citep{meinshausen2006high}. Therefore, the rest of this paper will mainly focus on obtaining estimates for $\Theta_\epsilon$ and $B$. In the next subsection, we introduce our estimation procedure for obtaining the MLE for $\Theta_\epsilon$ and 
+$B$.
+
+\noindent
+\begin{remark}
+Our proposed method is targeted towards maximizing $\ell(Y|X;\Theta_\epsilon,B)$ (with proper penalization) in (\ref{eqn:opt}) only, which gives the estimates for across-layers dependencies between the response layer and the parent layer, as well as estimates for the conditional dependencies within the response layer each time we solve a 2-layered network estimation problem. For an $M$-layered estimation problem, the maximization regarding $\ell(X;\Theta_X)$ occurs only when we are estimating the within-layer conditional dependencies for the bottom layer.  
+\end{remark}
+% --------------------------------
+%
+% Methodology -- Estimation Procedure
+%
+% --------------------------------
+
+\subsection{\normalsize Estimation Algorithm.}\label{sec:estimation}
+
+The conditional likelihood for response $Y$ given $X$ can be written as:
+\begin{eqnarray*}
+L(Y|X) & = (\frac{1}{\sqrt{2\pi}})^{n{p_2}} |\Sigma_\epsilon\otimes I_n|^{-1/2}\exp\begin{Bmatrix}-\frac{1}{2} (\mathcal{Y}-\mathcal{X}\bs{\beta})^\top(\Sigma_\epsilon\otimes I_n)^{-1}(\mathcal{Y}-\mathcal{X}\bs{\beta})  \end{Bmatrix},
+\end{eqnarray*}
+where $\mathcal{Y} = vec(Y_1,\cdots,Y_{p_2})$, $\mathcal{X}=I_{p_2}\otimes X$ and $\beta=vec(B_1,\cdots,B_{p_2})$. After writing out the Kronecker product, the log-likelihood can be written as:
+\begin{equation*}
+\ell (Y|X) = \text{constant}+\frac{n}{2}\log\det\Theta_\epsilon-\frac{1}{2}\sum_{j=1}^{p_2}\sum_{i=1}^{p_2}\sigma^{ij}_\epsilon(Y_i-XB_i)^\top(Y_j-XB_j).
+\end{equation*}
+Here, $\sigma^{ij}_{\epsilon}$ denotes the $ij$-th entry of $\Theta_\epsilon$. With $\ell_1$ penalization which induces sparsity, we formulate the following optimization problem using penalized log-likelihood, which was initially proposed in \citet{rothman2010sparse}, and has also been examined in \citet{lee2012simultaneous}:
+\begin{equation}\label{eqn:obj}
+\min\limits_{\substack{B\in\mathbb{R}^{p_1\times p_2} \\ \Theta_\epsilon\in \mathbb{S}_{++}^{p_2\times p_2}}} \left\{
+\frac{1}{n}\sum_{j=1}^{p_2}\sum_{i=1}^{p_2} \sigma_\epsilon^{ij}(Y_i-XB_i)^\top(Y_j-XB_j)-\log\det \Theta_\epsilon + \lambda_n\sum_{j=1}^{p_2} \|B_j\|_1 + \rho_n \|\Theta_\epsilon\|_{1,\text{off}} \right\},
+\end{equation}
+and the first term in (\ref{eqn:obj}) can be equivalently written as:
+\begin{equation*}
+\text{tr}\begin{Bmatrix}\frac{1}{n}\begin{bmatrix}
+(Y_1-XB_1)^\top \\  \vdots \\ (Y_{p_2}-XB_{p_2})^\top  
+\end{bmatrix} \begin{bmatrix}
+(Y_1-XB_1) & \cdots & (Y_{p_2}-XB_{p_2})
+\end{bmatrix}\Theta_\epsilon \end{Bmatrix}:=\text{tr}(S\Theta_\epsilon).
+\end{equation*}
+where $S$ is defined as the sample covariance matrix of $E\equiv Y-XB$. This gives rise to the following optimization problem:
+\begin{equation}\label{eqn:obj2}
+\min\limits_{\substack{B\in\mathbb{R}^{p_1\times p_2} \\\Theta_\epsilon\in \mathbb{S}_{++}^{p_2\times p_2}}}  \left\{ \text{tr}(S\Theta_\epsilon) - \log\det\Theta_\epsilon +  \lambda_n\sum_{j=1}^{p_2} \|B_j\|_1 + \rho_n \|\Theta_\epsilon\|_{1,\text{off}} \right\}\equiv f(B,\Theta_\epsilon),
+\end{equation}
+where $\|\Theta\|_{1,\text{off}}$ is the absulote sum of the off-diagonal entries in $\Theta$, $\lambda_n$ and $\rho_n$ are both positive tuning parameters. 
+
+Note that the objective function (\ref{eqn:obj2}) is {\em not jointly convex} in $(B,\Theta_\epsilon)$, but only 
+convex in $B$ for fixed $\Theta_\epsilon$ and in $\Theta_\epsilon$ for fixed $B$; hence, it is bi-convex, which in turn
+implies that the proposed algorithm may fail to converge to the global optimum, especially in settings where $p_1>n$, as pointed out by \citet{lee2012simultaneous}. As is the case with most non-convex problems, good initial parameters are beneficial for fast 
+convergence of the algorithm, a fact supported by our numerical work on the present problem.  
+Further, a good initialization is critical in establishing convergence of the algorithm for this problem (see Section~\ref{sec:convergence}).
+To that end, we introduce a {\em screening step} for obtaining a good initial estimate for $B$. The theoretical 
+justification for employing the screening step is provided in Section~\ref{sec:FWER}.
+
+An outline of the computational procedure is presented in Algorithm~\ref{alg:as}, while the details of each step involved are discussed next.
+\input{algorithm}
+
+\textit{\textbf{Screening.}} For each variable $Y_j, j=1,\cdots,p_2$ in the response layer, regress $Y_j$ on $X$ via the de-biased Lasso procedure proposed by \citet{javanmard2014confidence}. The output consists of the $p$-value(s) for each predictor in each regression, denoted by $P_j$, with $P_j\in
+[0,1]^{p_1}$. To control the family-wise error rate of the estimates, we do a Bonferroni correction at level $\alpha$: define $\alpha^{\star} = \alpha/p_1 p_2$ and set $B_{j,k} = 0$ if the
+$p$-value obtained for the $k$'th predictor in the $j$'th regression $P_{j,k}$ exceeds $\alpha^{\star}$. Further, let 
+\begin{equation}\label{eqn:support}
+\mathcal{B}_j=\{B_j\in\mathbb{R}^{p_1}:B_{j,k}=0\text{ if }k\in \widehat{S}_j^c\} \subseteq \mathbb{R}^{p_1},
+\end{equation}
+where $\widehat{S}_j$ is the collection of indices for those predictors deemed ``active" for response $Y_j$:
+\begin{equation*}
+\widehat{S}_j = \{k:P_{j,k}<\alpha^{\star}\}, \quad \text{for }j=1,\cdots,p_2.
+\end{equation*}
+Therefore, subsequent estimation of the elements of $B$ will be restricted to $\mathcal{B}_1\times\cdots\times \mathcal{B}_{p_2}$. \\
+
+\textit{\textbf{Alternating Search.}} In this step, we utilize the bi-convexity of the problem and estimate $B$ and $\Theta_\epsilon$ by minimizing in an iterative fashion the objective function with respect to (w.r.t.) one set of parameters, while holding the other set fixed within each iteration. 
+
+As with most iterative algorithms, we need an initializer; for $\widehat{B}^{(0)}$ it corresponds to a Lasso/Ridge regression estimate with a small penalty, while for $\widehat{\Theta}_\epsilon$ we use the Graphical Lasso procedure applied to the residuals obtained from the first stage regression. That is, for each $j=1,\cdots,p_2$, 
+\begin{equation}\label{eqn:initialB}
+\widehat{B}_j^{(0)} = \argmin\limits_{B_j\in\mathcal{B}_j} \left\{ \|Y_j - XB_j\|^2_2 + \lambda_n^0 \|B_j\|_1\right\},
+\end{equation}
+where $\lambda_n^0$ is some small tuning parameter for initialization, and set  $\widehat{E}^{(0)}_j := Y_j-X\widehat{B}_j^{(0)}$. An initial estimate for $\widehat{\Theta}_\epsilon$ is then given by solving for the following optimization problem with the graphical lasso \citep{friedman2008sparse} procedure:
+ \begin{equation*}\label{eqn:initialTheta}
+ \widehat{\Theta}_\epsilon^{(0)} = \argmin\limits_{\Theta_\epsilon\in\mathbb{S}_{++}^{p_2\times p_2}} \left\{
+ \log\det\Theta_\epsilon - \text{tr}(\widehat{S}^{(0)}\Theta_\epsilon) + \rho_n\|\Theta_\epsilon\|_{1,\text{off}}
+ \right\},
+ \end{equation*}
+where $\widehat{S}^{(0)}$ is the sample covariance matrix based on $(\widehat{E}^{(0)}_1,\cdots,\widehat{E}^{(0)}_{p_2})$.\\
+
+Next, we use an alternating block coordinate descent algorithm with $\ell_1$ penalization to reach a stationary point of the objective function (\ref{eqn:obj2}):
+\begin{itemize}
+\setlength{\itemsep}{0.2pt}
+\item[--] Update $B$ as:
+\begin{equation}\label{eqn:updateB}
+\widehat{B}^{(k+1)} = \argmin\limits_{B\in \mathcal{B}_1\times \cdots\times \mathcal{B}_{p_2}} \left\{ \frac{1}{n}\sum_{i=1}^{p_2}\sum_{j=1}^{p_2}(\widehat{\sigma}_{\epsilon}^{ij})^{(k)}(Y_i-XB_i)^\top (Y_j - XB_j) + \lambda_n\sum_{j=1}^{p_2}\|B_j\|_1 \right\},
+\end{equation}
+which can be obtained by cyclic coordinate descent w.r.t each column $B_j$ of $B$, that is, update each column $B_j$ by: 
+\begin{equation}\label{eqn:Bjunrestricted}
+\widehat{B}_j^{(t+1)} = \argmin\limits_{B_j\in\mathcal{B}_j} \begin{Bmatrix} \frac{(\widehat{\sigma}^{jj}_\epsilon)^{(k)}}{n}\|Y_j+r_j^{{(t+1)}}-XB_j\|_2^2 + \lambda_n\|B_j\|_1 \end{Bmatrix},
+\end{equation}
+ where 
+$$r_j^{(t+1)} = \frac{1}{(\widehat{\sigma}^{jj}_\epsilon)^{(k)}}\left[ \sum_{i=1}^{j-1} (\widehat{\sigma}^{ij}_\epsilon)^{(k)}(Y_i-X\widehat{B}_i^{(t+1)}) + \sum_{i=j+1}^{p_2} (\widehat{\sigma}^{ij}_\epsilon)^{(k)} (Y_i-X\widehat{B}_i^{(t)})\right],$$
+and iterate over all columns until convergence. Here, we use $k$ to index the outer iteration while minimizing w.r.t. $B$ or $\Theta_\epsilon$, and use $t$ to index the inner iteration while cyclically minimizing w.r.t. each column of $B$. 
+\item[--] Update  $\Theta_\epsilon$ as:
+\begin{equation}\label{eqn:updateTheta}
+ \widehat{\Theta}_\epsilon^{(k+1)} = \argmin\limits_{\Theta_\epsilon\in\mathbb{S}_{++}^{p_2\times p_2}} \left\{
+ \log\det\Theta_\epsilon - \text{tr}(\widehat{S}^{(k+1)}\Theta_\epsilon) + \rho_n\|\Theta_\epsilon\|_{1,\text{off}}
+ \right\},
+ \end{equation}
+ where $\widehat{S}^{(k+1)}$ is the sample covariance matrix based on $\widehat{E}^{(k+1)}_j = Y_j - X\widehat{B}_j^{(k+1)},j=1,\cdots,p_2$.
+\end{itemize}
+
+
+\textit{\textbf{Refitting and Stabilizing.}} As noted in the introduction, this step is beneficial in applications, especially when one deals with large scale multi-layer networks and relatively smaller sample sizes. Denote the solution obtained by the above iterative procedure by $B^{\infty}$ and $\Theta_\epsilon^\infty$. For each $j=1,\cdots,p_2$, set $\widetilde{\mathcal{B}}_j = \{B_j: B_{j,i}=0 \text{ if }B^\infty_{j,i}=0,B_j\in\mathbb{R}^{p_1}\}$ and the final estimate for $B_j$ is given by ordinary least squares: 
+\begin{equation}\label{eqn:refitB}
+\widetilde{B}_j = \argmin\limits_{B_j \in \widetilde{\mathcal{B}}_j} \|Y_j - XB_j\|^2.
+\end{equation}
+For $\Theta_\epsilon$, we obtain the final estimate by a combination of stability selection \citep{meinshausen2010stability} and graphical lasso \citep{friedman2008sparse}. That is, after obtaining the refitted residuals $\widetilde{E}_j:=Y_j-X\widetilde{B}_j,j=1,\cdots,p_2$, based on the stability selection procedure with the graphical lasso, we obtain the stability path, or probability matrix $W$ for each edge, which records the proportion of each edge being selected based on bootstrapped samples of $\widetilde{E}_j$'s. Then, using this probability matrix $W$ as a weight matrix, we obtain the final estimate of $\widetilde{\Theta}_\epsilon$ as follow:
+\begin{equation}\label{glasso-final}
+\widetilde{\Theta}_\epsilon = \argmin\limits_{\Theta_\epsilon\in\mathbb{S}^{p_2\times p_2}_{++}}\left\{ \log\det \Theta_\epsilon - \mbox{tr}(\widetilde{S}\Theta_\epsilon) + \widetilde{\rho}_n\|(1-W)*\Theta_\epsilon\|_{1,\text{off}} \right\},
+\end{equation} 
+where we use $*$ to denote the element-wise product of two matrices, and $\widetilde{S}$ is the sample covariance matrix based on the refitted residuals $\widetilde{E}$. Again, (\ref{glasso-final}) can be solved by the graphical lasso procedure \citep{friedman2008sparse}, with $\widetilde{\rho}_n$ properly chosen. 
+
+% --------------------------------
+%
+% Methodology -- Tuning parameter selection
+%
+% --------------------------------
+
+\subsection{\normalsize Tuning Parameter Selection.}
+
+To select the tuning parameters $(\lambda_n,\rho_n)$, we use the Bayesian Information Criterion(BIC), which is the summation of a goodness-of-fit term (log-likelihood) and a penalty term. The explicit form of BIC (as a function of $B$ and $\Theta_\epsilon$) in our setting is 
+given by 
+\begin{equation*}
+\text{BIC}(B,\Theta_\epsilon) = -\log\det\Theta_\epsilon + \text{tr}(S\Theta_\epsilon) + \frac{\log n}{n} (\frac{\|\Theta_\epsilon\|_0-p_2}{2} + \|B\|_0)
+\end{equation*}
+where 
+\begin{equation*}
+S :=  \frac{1}{n}\begin{bmatrix}
+(Y_1-XB_1)^\top \\  \vdots \\ (Y_{p2}-XB_{p_2})^\top  
+\end{bmatrix} \begin{bmatrix}
+(Y_1-XB_1) & \cdots & (Y_{p_2}-XB_{p_2})
+\end{bmatrix},
+\end{equation*}
+and $\|\Theta_\epsilon\|_0$ is the total number of nonzero entries in $\Theta_\epsilon$. Here we penalize the non-zero elements in the upper-triangular part of $\Theta_\epsilon$ and the non-zero ones in 
+$B$. We choose the combination $(\lambda_n^*,\rho_n^*)$ over a grid of $(\lambda,\rho)$ values, and $(\lambda_n^*,\rho_n^*)$ should minimize the BIC evaluated at $(B^{\infty},\Theta_\epsilon^{\infty})$.  \\

@@ -1,0 +1,22 @@
+
+The following corollary connects the screening step with the alternating search step, under the discussed asymptotic regime : 
+\begin{corollary}\label{cor:connection1}
+Consider the model set-up given in Section~\ref{sec:set-up}. Let $s^*$ denote the maximum sparsity for all $B^*_j, j=2,\cdots,p_2$, and $d$ denote the maximum degree of $\Theta^*_\epsilon$. Also, let $s^{**}$ denote the sparsity for $\beta^*$ and $s^*_\epsilon$ denote the sparsity for $\Theta^*_\epsilon$. Assume there exist positive constants $c_{s^*},c_{s^{**}}, c_d, c_{\bar{s}},c_{p_2}$ satisfying:
+\begin{equation*}
+0<c_{s^*}+c_{\bar{s}}<1/2; ~~ 0<c_{s^{**}}+ c_{\bar{s}} <1; ~~ 0<2c_{d}+c_{\bar{s}} <1;~~ 0< \max\{c_{s^*_\epsilon},c_{p_2}\}+ c_{\bar{s}}<1
+\end{equation*}
+such that 
+\begin{equation*}
+s^*=O(n^{c_s});~~ s^{**}=O(n^{c_{s^{**}}}); ~~ s_\epsilon^*=O(n^{c_{s^*_\epsilon}});~~  d=O(n^{c_d});~~ \bar{s} = O(e^{n^{c_{p_1}}}); ~~ p_2 = O(n^{c_{p_2}}).
+\end{equation*}
+As $n\rightarrow\infty$, 
+\begin{equation*}
+\mathbb{P}\left( \{\text{The screening step correctly recovers the true support set for all $B_j,j=1,\cdots,p$} \}\right) \rightarrow 1, 
+\end{equation*}
+and for all iterations $k$:
+\begin{equation*}
+\max\limits_{k\geq 1} \left\|(\widehat{\beta}_{\mathrm{R}},\widehat{\Theta}_\epsilon^{(k)}) - (\beta^*_{\mathrm{R}},\Theta^*_\epsilon)\right\| \stackrel{p}{\rightarrow} 0.
+\end{equation*}
+\end{corollary}
+The proof of this corollary follows along the same lines as Theorem~\ref{thm:beta-theta-bound}, and we leave the details to the reader. 
+

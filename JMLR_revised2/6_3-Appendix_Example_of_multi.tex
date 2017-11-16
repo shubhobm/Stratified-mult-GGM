@@ -1,0 +1,36 @@
+\subsection{An example for multi-layered network estimation.} \label{appendix:example}
+As mentioned at the beginning of Section~\ref{sec:methodology}, the proposed methodology is designed for obtaining MLEs for multi-layer Gaussian networks, but the problem breaks down into a sequence of 2-layered estimation problems. Here we give an detailed example to illustrate how our proposed methodology proceeds for a 3-layered network. \\
+
+Suppose there are $p_1,p_2$ and $p_3$ nodes in Layers 1, 2 and 3, respectively. This three-layered network is modeled as follows: 
+\begin{itemize}
+ \setlength\itemsep{1pt}
+\renewcommand\labelitemi{--}
+\item $\bs{X}\sim \mathcal{N}(0,\Sigma_X)$, $\bs{X}\in\mathbb{R}^{p_1}$. 
+\item For $j=1,\cdots,p_2$: $Y_j = \bs{X}'B_j^{xy}+\epsilon^Y_j$, $B_j^{xy}\in\mathbb{R}^{p_1}$. $(\epsilon^Y_1  \cdots \epsilon^Y_{p_2})'\sim \mathcal{N}(0,\Sigma_{\epsilon,Y})$. 
+\item For $l=1,2,\cdots,p_3$: $Z_l = \bs{X}'B_l^{xz} + \bs{Y}'B_l^{yz}+\epsilon_l^Z$, $B_l^{xz}\in\mathbb{R}^{p_1}$ and $B_l^{yz}\in\mathbb{R}^{p_2}$. 
+$(\epsilon^Z_1 \cdots \epsilon^Z_{p_3})'\sim \mathcal{N}(0,\Sigma_{\epsilon,Z})$.
+\end{itemize}
+The parameters of interest are : $\Theta_X$, $\Theta_{\epsilon,Y}:=\Sigma_{\epsilon,Y}^{-1}$, $\Theta_{\epsilon,Z}:=\Sigma_{\epsilon,Z}^{-1}$, which denote the within-layer conditional dependencies, and
+\begin{equation*}
+B_{XY} = \begin{bmatrix}
+B_1^{xy} & \cdots & B_{p_2}^{xy}
+\end{bmatrix},~~  B_{XZ} = \begin{bmatrix}
+B_1^{xz} & \cdots & B_{p_3}^{xz}
+\end{bmatrix} ~~\text{and}~~ B_{YZ} = \begin{bmatrix}
+B_1^{yz} & \cdots & B_{p_3}^{yz},
+\end{bmatrix}
+\end{equation*}
+which encode the across-layer dependencies.\\
+
+Now given data $X\in\mathbb{R}^{n\times p_1}$, $Y\in\mathbb{R}^{n\times p_2}$ and $Z\in\mathbb{R}^{n \times p_3}$, all centered, the full log-likelihood can be written as:
+\begin{equation}
+\ell(Z,Y,X) = \ell(Z|Y,X; \Theta_{\epsilon,Z},B_{YZ},B_{XZ}) + \ell(Y|X;\Theta_{\epsilon,Y},B_{XY}) + \ell(X;\Theta_X).
+\end{equation}
+The separability of the log-likelihood enables us to ignore the inner structure of the combined layer $\widetilde{X}:=(X,Y)$ when trying to estimate the dependencies between Layer 1 and Layer 3, Layer 2 and Layer 3, as well as the conditional dependencies within Layer 3. As a consequence, the optimization problem minimizing the negative log-likelihood can be decomposed into three separate problems, i.e., solving for $\{\Theta_{\epsilon,Z},B_{XZ},B_{YZ}\}$, $\{\Theta_{\epsilon,Y},B_{XY}\}$ and $\{\Theta_X\}$, respectively. 
+
+The estimation procedure described in Section~\ref{sec:estimation} can thus be carried out in a recursive way in a sense of what follows. To obtain estimates for $\{B_{XZ},B_{YZ},\Theta_{\epsilon,Z}\}$, based on the formulation in (\ref{eqn:obj}), we solve the following opmization problem:
+\begin{eqnarray*}
+\min\limits_{\substack{\Theta_{\epsilon,Z}\in\mathbb{S}_{++}^{p_3\times p_3}\\B_{XZ},B_{YZ}}}  \begin{Bmatrix} -\log\det\Theta_{\epsilon,Z} + \frac{1}{n}\sum_{j=1}^{p_3}\sum_{i=1}^{p_3} \sigma_Z^{ij}(Z_i-XB^{xz}_i-YB^{yz}_i)^\top(Z_j-XB^{xz}_j-YB^{yz}_j)  \vspace*{3mm}\\
++\lambda_n(\|B_{XZ}\|_1 + \|B_{YZ}\|_1)+ \rho_n\|\Theta_{\epsilon,Z}\|_{1,\text{off}}  \end{Bmatrix},
+\end{eqnarray*}
+which can be solved by treating the combined design matrix $\widetilde{X}=(X,Y)$ as a single super layer and $Z$ as the response layer, then apply each step described in Section~\ref{sec:estimation}. To obtain estimates for $B_{XY}$ and $\Theta_{\epsilon,Y}$, we can ignore the 3rd layer for now and apply the exact procedure all over again, by treating $Y$ as the response layer and $X$ as the design layer. The estimate for the precision matrix of the bottom layer $\Theta_X$ can be obtained by graphical lasso \citep{friedman2008sparse} or the nodewise regression \citep{meinshausen2006high}. \\

@@ -1,0 +1,100 @@
+% % This file include the error bound for Theta with fixed design, concentration bound for residual sample covariance matrix, and error bound for Theta under random design % % 
+
+% % ---------------------------------------------
+% 
+%
+%  Theorem -- Error bound for Theta, fixed design
+%
+%
+% % -----------------------------------------------
+\medskip
+Next, we move onto analyzing the error bound of the other component, for a fixed given $\widehat{\beta}$. 
+
+\begin{theorem}[Error bound for $\widehat{\Theta}_\epsilon$ for fixed realizations of $X$ and $E$]\label{thm:ErrorBound_Theta}
+Consider $\widehat{\Theta}_\epsilon$ given by (\ref{est-2}). For any fixed pair of realization $(X,E)$, assume the following:
+\begin{itemize}
+\item[] \textbf{B1.} $\widehat{\beta}$ is a deterministic vector satisfying $\|\widehat{\beta}-\beta^*\|_1\leq \nu_\beta$, where $\nu_\beta = \eta_{\beta}\left( \sqrt{\frac{\log(p_1p_2)}{n}}\right)$, with$\eta_\beta$ being some constant depending only on $\beta^*$;
+\item[] \textbf{B2.} $\|\widehat{S}-\Sigma^*_\epsilon\|_\infty \leq g({\nu_\beta})$ where 
+\begin{equation*}
+\widehat{S} = \frac{1}{n}(Y-X\widehat{B})'(Y-X\widehat{B}),
+\end{equation*}
+and $g({\nu_\beta})$ is some quantity depending on $\nu_\beta$;
+\item[] \textbf{B3.} Incoherence condition holds for $\Theta_\epsilon^*$. 
+\end{itemize}
+Then, for $\rho_n = (8/\xi)g(\nu_\beta)$ and sample size $n$ satisfying $n \succsim \log(p_1p_2)$,
+the following error bound for $\widehat{\Theta}_\epsilon$ holds:
+\begin{equation}\label{Thetabound}
+\|\widehat{\Theta}_\epsilon-\Theta^*_\epsilon\|_\infty\leq \{2(1+8\xi^{-1})\kappa_{H^*}\} g(\nu_\beta),
+\end{equation}
+where $\xi$ is the incoherence parameter as defined in Definition~\ref{def:incoherence}.
+\end{theorem}
+
+
+Proposition~\ref{prop:residual-concentration} gives an explicit expression for $g(\nu_\beta)$ under condition (B1). Specifically, it shows how well $\widehat{S}$ concentrates around $\Sigma^*_\epsilon$ for random $X$ and $E$, given some $\widehat{B}$ exhibiting a small error from its true value (or $\widehat{\beta}$, equivalently),
+
+
+% % --------------------------------------------
+%
+%
+% Proposition -- concentration bound for S-hat
+%
+%
+% % --------------------------------------------
+
+\begin{proposition}\label{prop:residual-concentration}
+Consider any determinisitc $\widehat{\beta}$ satisfying (B1). Then for sample size $n$ satisfying $n \succsim \log(p_1p_2)$, 
+% 
+%\begin{equation}\label{samplesizecond-complete}
+%n\succsim \max\left\{ 512(1+4\sigma_\epsilon^2)^4 \max_i(\Sigma_{\epsilon,ii})^4\log %(4p_2^\tau), 512(1+4\sigma_x^2)^4 \max_i(\Sigma_{X,ii})^4\log(4p_1^\tau),\log(p_1p_2)\right\} 
+%\end{equation}
+with probability at least:
+\begin{equation*}
+1-1/p_1^{\tau_1-2}-1/p_2^{\tau_2-2}-6c_1\exp[-(c_2^2-1)\log (p_1p_2)], \quad \text{for some }c_1>0,c_2>1,\tau_1,\tau_2>2,
+\end{equation*}
+the following bound holds: 
+\begin{equation}\label{bound:S-hat}
+\begin{split}
+\|\widehat{S} - \Sigma^*_\epsilon\|_\infty &\leq g(\nu_\beta),
+\end{split} 
+\end{equation}
+where
+\begin{equation}\label{g-expression}
+\begin{split}
+g(\nu_\beta) & = \sqrt{\frac{\log 4 + \tau_2 \log p_2}{c^*_\epsilon n}} + \nu_\beta^2 \left( \sqrt{\frac{\log 4 + \tau_1 \log p_1}{c^*_Xn}} +  \max_i(\Sigma^*_{X,ii})\right)\\
+& \quad + 2c_2\nu_\beta\left[\Lambda_{\max}(\Sigma^*_X)\Lambda_{\max}(\Sigma^*_\epsilon)\right]^{1/2} \sqrt{\frac{\log (p_1p_2) }{n}},
+\end{split}
+\end{equation}
+$c_\epsilon^*$ and $c_X^*$ are population quantities given in (\ref{exp:c_epsilon}) and (\ref{exp:c_X}), respectively.
+\end{proposition} 
+
+% ----------------------------------------------
+%
+%
+% Corollary -- Error bound for Theta, random design
+%
+%
+% ----------------------------------------------
+
+Given Theorem~\ref{thm:ErrorBound_Theta} and Proposition~\ref{prop:residual-concentration}, we provide Corollary~\ref{cor:erorrboundTheta}, which gives the error bound for $\widehat{\Theta}_\epsilon$ for random realizations of $X$ and $E$:
+
+\begin{corollary}[Error bound for $\widehat{\Theta}$ for random $X$ and $E$] \label{cor:erorrboundTheta}
+Consider any deterministic $\widehat{\beta}$ satisfying the following bound:
+\begin{equation*}
+\|\widehat{\beta} - \beta^*\|_1\leq \nu_\beta
+\end{equation*}
+with $\nu_\beta = \eta_\beta\sqrt{\frac{\log (p_1p_2)}{n}}$. Also suppose the incoherence condition (B3) is satisfied. Then, for sample size $n \succsim \log(p_1p_2) $  and regularization parameter $\rho_n=(8/\xi)g(\nu_\beta)$ with $g(\nu_\beta)$ given in (\ref{g-expression}), with probability at least
+\begin{equation*}
+1-1/p_1^{\tau_1-2}-1/p_2^{\tau_2-2}-6c_1\exp[-(c_2^2-1)\log (p_1p_2)], \quad \text{for some }c_1>0,c_2>1,\tau_1,\tau_2>2,
+\end{equation*}
+the following bound holds:
+\begin{equation*}
+\|\widehat{\Theta}_\epsilon-\Theta^*_\epsilon\|_\infty \leq \{2(1+8\xi^{-1})\kappa_{H^*}\} g(\nu_\beta).
+\end{equation*}
+\end{corollary}
+
+% % The following proof has been comment-ed
+\iffalse
+\begin{proof}[Proof of Corollary~\ref{cor:erorrboundTheta}]
+The statement of this corollary directly follows from Theorem~\ref{thm:ErrorBound_Theta} and Proposition~\ref{prop:residual-concentration}. In particular, for random realizations of the sub-Gaussian vectors $X$ and $E$, B2 in Theorem~\ref{thm:ErrorBound_Theta} occurs w.p. at least $1-1/p_2^{\tau-2}-1/p_1^{\tau-2}-c_1\exp[-c_2\log (p_1p_2)]$. 
+\end{proof}
+\fi

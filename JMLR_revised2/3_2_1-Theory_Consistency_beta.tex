@@ -1,0 +1,107 @@
+% % This file includes the error bound for beta with fixed design, RE and deviation bound verify, and error bound for beta under random design % % 
+
+
+% % --------------------------------------
+% 
+%
+%  Theorem -- Error bound for Beta, fixed design
+%
+%
+% % ----------------------------------------
+
+\begin{theorem}[Error bound for $\widehat{\beta}$ with fixed realizations of $X$ and $E$] \label{thm:ErrorBound_beta}
+Consider $\widehat{\beta}$ given by (\ref{est-1}). For any fixed pair of realizations of $X$ and $E$ , assume the following:
+\begin{itemize}
+\item[] \textbf{A1.} $\widehat{\Theta}_\epsilon$ is a deterministic matrix satisfying the bound: $\|\widehat{\Theta}_\epsilon-\Theta_\epsilon^*\|_\infty\leq\nu_\Theta$ where $\nu_\Theta= \eta_\Theta\left(\sqrt{\frac{\log p_2}{n}}\right)$ and $\eta_\Theta$ is some constant depending only on $\Theta_\epsilon^*$;
+\item[] \textbf{A2.} $\widehat{\Gamma}\sim RE(\varphi,\phi)$, with $s^{**}\phi\leq \varphi/32$;
+\item[] \textbf{A3.} $(\widehat{\Gamma},\widehat{\gamma})$ satisfies the deviation bound:
+\begin{equation*}
+\|\widehat{\gamma}-\widehat{\Gamma}\beta^*\|_\infty \leq \mathbb{Q}({\nu_\Theta})\sqrt{\frac{\log(p_1p_2)}{n}},
+\end{equation*}
+where $\mathbb{Q}({\nu_\Theta})$ is some quantity depending on $\nu_\Theta$. 
+\end{itemize}
+Then, for any $\lambda_n\geq 4\mathbb{Q}(\nu_\Theta)\sqrt{\frac{\log(p_1p_2)}{n}}$, the following bound holds:
+\begin{equation*}
+\|\widehat{\beta}-\beta^*\|_1 \leq 64s^{**}\lambda_n/\varphi. 
+\end{equation*}
+\end{theorem}
+
+The following two propositions verify the RE condition for $\widehat{\Gamma}$ and deviation bound for $(\widehat{\Gamma},\widehat{\gamma})$ hold with high probability for a random pair $(X,E)$, given any symmetric, matrix $\widehat{\Theta}_\epsilon$ satisfying (A1). 
+
+
+% % ---------------------------------------
+%
+%
+% Proposition for RE condition with random design
+%
+%
+% % ---------------------------------------
+
+
+\begin{proposition}[Verification of RE condition for random $X$ and $E$]\label{prop:REcondition}
+Consider any deterministic matrix $\widehat{\Theta}_{\epsilon}$ satisfying (A1). Let the sample size satisfy $n\succsim \max\{s^{**}\log p_1,d^2\log p_2\}$. With probability at least $1-2\exp(-c_3n)$ for some constant $c_3>0$, $\widehat{\Gamma}$ satisfies the following RE condition:
+\begin{equation*}
+\widehat{\Gamma} \equiv \widehat{\Theta}_\epsilon\otimes (X'X/n)\sim RE\left(\varphi^*(\min\limits_i\psi^i-d\nu_\Theta), \phi^* \max\limits_i(\psi^i+d\nu_\Theta)\right)
+\end{equation*}
+where $\varphi^*=\frac{\Lambda_{\min}(\Sigma^*_X)}{2}$, $\phi^*=(\varphi^*\log p_1)/n$, and $\psi^i$ is defined as:
+\begin{equation*}
+\psi^i:=\sigma^{ii}_\epsilon-\sum_{j\neq i}^{p_2}\sigma^{ij}_\epsilon,
+\end{equation*}
+where $\sigma^{ij}_\epsilon$'s denote the entries in $\Theta^*_\epsilon$ hence $\psi^i$ is the gap between its diagonal entry and the sum of off-diagonal entries for row $i$.
+\end{proposition}
+
+ % % ---------------------------------------
+%
+%
+% Prop for deviation bound with random design
+%
+%
+% % ---------------------------------------
+
+
+\begin{proposition}[Deviation bound for $(\widehat{\Gamma},\widehat{\gamma})$ for random $X$ and $E$] \label{prop:deviation}
+Consider any deterministic matrix $\widehat{\Theta}_{\epsilon}$ satisfying (A1). Let sample size $n$ satisfy $n \succsim \log (p_1p_2)$. With probability at least 
+\begin{equation*}
+1-12c_1\exp[-(c_2^2-1)\log (p_1p_2)]\quad \text{for some } c_1>0,c_2>1
+\end{equation*}
+the following bound holds:
+\begin{equation*}
+\|\widehat{\gamma}-\widehat{\Gamma}\beta^*\|_\infty=\frac{1}{n}\left\|X'E\widehat{\Theta}_\epsilon\right\|_\infty  \leq \mathbb{Q}(\nu_\Theta)\sqrt{\frac{\log (p_1p_2)}{n}},  
+\end{equation*}
+where
+\begin{equation}\label{Q-expression}
+\mathbb{Q}(\nu_\Theta)= c_2\left\{ d\nu_\Theta\left[\Lambda_{\max}(\Sigma^*_X)\Lambda_{\max}(\Sigma^*_\epsilon)\right]^{1/2} + \left[ \frac{\Lambda_{\max}(\Sigma_X^*)}{\Lambda_{\min}(\Sigma_\epsilon^*)}\right]^{1/2} \right\} .
+\end{equation}
+\end{proposition}
+
+\begin{remark} 
+In Proposition~\ref{prop:REcondition}, the quantity $d^2\log p_2$ that shows up in the sample size requirement is a result of $\nu_\Theta =O(\sqrt{\log p_2/n})$, which is the common order of error in a generic graphical Lasso problem. Hence here we explicitly list it for the purpose of showing results for the generic graphical Lasso estimation problem. In our iterative algorithm, the order of $\nu_\Theta^{(k)}$ depends on the relative order of $p_1$ and $p_2$, which may potentially make the sample size requirement more stringent. This will be discussed in more detail in the proof of Theorem~\ref{thm:beta-theta-bound}.
+\end{remark}
+
+% ----------------------------------------------
+%
+%
+% Corollary -- Error bound for beta, random design
+%
+%
+% ----------------------------------------------
+
+\medskip
+Given the results in Theorem~\ref{thm:ErrorBound_beta}, Proposition~\ref{prop:REcondition} and Proposition~\ref{prop:deviation}, next we provide Corollary~\ref{cor:ErrorBoundB}, which gives the error bound for $\widehat{\beta}$ for random realizations of $X$ and $E$. 
+
+
+\begin{corollary}[Error Bound for $\widehat{\beta}$ for random $X$ and $E$] \label{cor:ErrorBoundB}
+Consider any determinisitic $\widehat{\Theta}_\epsilon$ satisfying the following element-wise $\ell_\infty$-bound:
+\begin{equation*}
+\|\widehat{\Theta}_\epsilon-\Theta_\epsilon^*\|_\infty \leq  \nu_\Theta,  \label{Theta-condition}
+\end{equation*}
+with $\nu_\Theta= \eta_\Theta\sqrt{\frac{\log p_2}{n}}$. Then for sample size $n \succsim \log(p_1p_2)$ and for any regularization parameter $\lambda_n\geq 4\mathbb{Q}(\nu_\Theta)\sqrt{\frac{\log (p_1p_2)}{n}}$ with the expression of $\mathbb{Q}(\cdot)$ given in (\ref{Q-expression}), there exists $c_1>0$ and $c_2>1$ such that with probability at least:
+\begin{equation*}
+1-12c_1\exp[-(c_2^2-1)\log (p_1p_2)] -  2\exp(-c_3n),
+\end{equation*}
+the following bound holds:
+\begin{equation}\label{bbound-1}
+\|\widehat{\beta}-\beta^*\|_1  \leq  64s^{**}\lambda_n/\varphi,
+\end{equation}
+where $\varphi = \frac{1}{2}\Lambda_{\min}(\Sigma_\epsilon^*)(\min\limits_i\psi^i-d\nu_\Theta)$.
+\end{corollary}

@@ -1,0 +1,125 @@
+\documentclass[twoside,11pt]{article}
+
+\usepackage{jmlr2e}
+\usepackage{amsfonts,amssymb,amsmath,color}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=red,citecolor=blue}
+\usepackage{ctable} % for \specialrule command
+\usepackage{multirow}
+\usepackage{float}
+
+% for drawing the diagram
+\usepackage{tikz}
+\usepackage{boxedminipage}
+
+% for inserting algorithm
+\usepackage[ruled,linesnumbered]{algorithm2e}
+%\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+
+
+
+% Definitions of handy macros can go here
+\newcommand{\dataset}{{\cal D}}
+\newcommand{\fracpartial}[2]{\frac{\partial #1}{\partial  #2}}
+\newcommand{\argmax}{\mathop{\text{argmax}}}
+\newcommand{\argmin}{\mathop{\text{argmin}}}
+\newcommand{\bs}{\boldsymbol}
+\newcommand{\Rmnum}[1]{\MakeUppercase{\romannumeral #1}}
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+\newcommand{\vertiii}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1 
+    \right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}}
+\newcommand{\twonorm}[1]{\left\lVert#1\right\rVert_2}
+\newcommand{\onenorm}[1]{\left\lVert#1\right\rVert_1}
+\newcommand{\fnorm}[1]{\left\lVert#1\right\rVert_F}
+\newcommand{\rmnum}[1]{\romannumeral #1}
+\newcommand{\dom}{\mbox{dom}}
+
+
+% \renewenvironment{proof}{{\noindent\bfseries\em Proof.}}{$\hfill\blacksquare$\newline}
+\newcommand*\samethanks[1][\value{footnote}]{\footnotemark[#1]}
+
+% Heading arguments are {volume}{year}{pages}{submitted}{published}{author-full-names}
+% \jmlrheading{0}{2015}{0}{unknown}{unknown}{}
+
+% Short headings should be running head and authors last names
+\ShortHeadings{Estimating Multi-layered Gaussian Graphical Models}{Lin, Basu, Michailidis and Banerjee}
+\firstpageno{1}
+
+\begin{document}
+
+\title{Penalized Maximum Likelihood Estimation of \\ Multi-layered Gaussian Graphical Models}
+
+
+\author{\name Jiahe Lin \thanks{Equal Contribution} \email jiahelin@umich.edu \\
+       \addr Department of Statistics\\
+       University of Michigan\\
+       Ann Arbor, MI 48109, USA
+       \AND
+       \name Sumanta Basu \samethanks \email sumbose@berkeley.edu \\
+       \addr Department of Statistics\\
+       University of California, Berkeley\\
+       Berkeley, CA 94720, USA
+       \AND 
+       \name Moulinath Banerjee \email moulib@umich.edu \\
+       \addr Department of Statistics\\
+              University of Michigan\\
+              Ann Arbor, MI 48109, USA
+      \AND
+      \name George Michailidis \thanks{Corresponding Author. Post Address: 205 Griffin Floyd Hall, 1 University Ave, Gainesville, FL, 32611.} \email gmichail@ufl.edu \\
+      \addr Department of Statistics and Computer \& Information Science \& Engineering \\
+      University of Florida \\
+      Gainesville, FL 32611, USA 
+       }
+
+\editor{}
+
+
+\maketitle
+\begin{abstract} %   <- trailing '%' for backward compatibility of .sty file
+Analyzing multi-layered graphical models provides insight into understanding the conditional relationships among nodes within layers after adjusting for and quantifying the effects of nodes from other layers. We obtain the penalized maximum likelihood estimator for Gaussian multi-layered graphical models, based on a computational approach involving screening of variables, iterative estimation of the directed edges between layers and undirected edges within layers and a final refitting and stability selection step that provides improved performance in finite sample settings. We establish the consistency of the estimator in a high-dimensional setting. To obtain this result, we develop a strategy that leverages the biconvexity of the likelihood function to ensure convergence of the developed iterative algorithm to a stationary point, as well as careful uniform error control of the estimates over iterations.  The performance of the maximum likelihood estimator is illustrated on synthetic data. 
+\end{abstract}
+
+\begin{keywords}
+graphical models; penalized likelihood; block coordinate descent; convergence; consistency
+\end{keywords}
+%\footnote{The first two authors contributed equally to this paper.}
+%\footnote{Corresponding author: George Michailidis, \texttt{gmichail@ufl.edu}. 205 Griffin Floyd hall, 1 University Ave, Gainesville, FL, 32611.}
+
+
+
+\input{1-Introduction}
+\input{2-Methodology}
+\input{3_0-Theory_Outline}
+\input{3_1-Theory_Convergence}
+\input{3_2_0-Theory_Consistency_outline}
+\input{3_2_1-Theory_Consistency_beta}
+\input{3_2_2-Theory_Consistency_Theta}
+\input{3_2_3-Theory_Consistency_Iter}
+\input{3_3-Theory_FWER}
+\input{3_3_1-Theory_Asymptotics}
+\input{3_4-Theory_Identifiability-SB-GM-JL}
+\input{4-Implementation}
+\input{5-Discussion-SB}
+%\input{5-Summary}
+
+% Acknowledgements should go at the end, before appendices and references
+
+\acks{George Michailidis was supported by NSF awards
+DMS-1228164 and DMS-1545277 and NIH award 7R21GM10171903. Moulinath Banerjee was supported by
+NSF award DMS-1308890.
+}
+
+% Manual newpage inserted to improve layout of sample file - not
+% needed in general before appendices/bibliography.
+
+\newpage
+\vskip 0.1in
+\bibliography{00-bib}
+
+\newpage
+\input{6_1-Appendix_Proof_of_Theorems}
+\input{6_2-Appendix_Proof_of_Propositions_and_Lemmas}
+\input{6_4-Appendix_comparison}
+\input{6_3-Appendix_Example_of_multi}
+
+\end{document}

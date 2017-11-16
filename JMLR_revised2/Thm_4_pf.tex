@@ -1,0 +1,116 @@
+\medskip
+\begin{proof}[\textbf{Proof of Theorem~\ref{thm:beta-theta-bound}}] We first consider part (I) of the theorem. Note that by (\ref{eqn:initialB}), $\widehat{\beta}^{(0)}$ can be equivalently written as:
+\begin{equation}\label{eqn:beta0}
+\widehat{\beta}^{(0)} \equiv \argmin\limits_{\beta\in\mathbb{R}^{p_1\times p_2}}\left\{-2\beta'\gamma^0 + \beta'\Gamma^0\beta + \lambda_n^0\|\beta\|_1 \right\},
+\end{equation}
+where 
+\begin{equation*}
+\Gamma^{(0)} = \mathrm{I} \otimes \frac{X'X}{n}, \quad \gamma^{(0)} = (\mathrm{I} \otimes X')\mathrm{vec}{Y}/n.
+\end{equation*}
+Consider the following events:
+\begin{itemize}
+\item[\bf E1.] $\left\{\frac{X'X}{n}\sim RE(\varphi^*,\phi^*)\right\}$, 
+\item[\bf E2.] $\left\{\frac{1}{n}\left\| X'E \right\|_\infty \leq c_2\left[\Lambda_{\max}(\Sigma_X^*)\Lambda_{\max}(\Sigma_\epsilon^*)\right]^{1/2}\sqrt{\frac{\log(p_1p_2)}{n}}\right\}$.
+\end{itemize}
+Note that \textbf{E1} $\cap$ \textbf{E2} implies the following events:
+\begin{equation*}
+\Gamma^{(0)} \equiv \mathrm{I}\otimes \frac{X'X}{n} \sim RE(\varphi^*,\phi^*), \quad \text{where }\varphi^*=\Lambda_{\min}(\Sigma_X^*)/2. 
+\end{equation*}
+and
+\begin{equation}\label{bound:gamma0}
+\|\gamma^{(0)} - \Gamma^{(0)}\beta^*\|_\infty = \frac{1}{n}\left\| X'E \right\|_\infty \leq c_2\left[\Lambda_{\max}(\Sigma_X^*)\Lambda_{\max}(\Sigma_\epsilon^*)\right]^{1/2}\sqrt{\frac{\log(p_1p_2)}{n}}.
+\end{equation}
+Hence, by Proposition~4.1 of \citet{basu2015estimation}, the bound \eqref{eqn:beta0bound} holds on \textbf{E1} $\cap$ \textbf{E2}.
+
+\noindent By Lemmas~\ref{lemma:restateB.1} and ~\ref{lemma:RESX}, $\mathbb{P}(\mathbf{E1})$ is at least $1-2\exp(-c_3n)$, for some $c_3>0$. 
+%\begin{equation*}
+%\Gamma^{(0)} \equiv \mathrm{I}\otimes \frac{X'X}{n} \sim RE(\varphi^*,\phi^*), \quad \text{where }\varphi^*=\Lambda_{\min}(\Sigma_X^*)/2. 
+%\end{equation*}
+By Lemma~\ref{lemma:deviation_aux}, $\mathbb{P}(\mathbf{E2})$  is at least $1-6c_1\exp[-(c_2^2-1)\log(p_1p_2)]$ for some $c_1>0$, $c_2>1$.
+%\begin{equation}\label{bound:gamma0}
+%\|\gamma^{(0)} - \Gamma^{(0)}\beta^*\|_\infty = \frac{1}{n}\left\| X'E \right\|_\infty \leq c_2\left[\Lambda_{\max}(\Sigma_X^*)\Lambda_{\max}(\Sigma_\epsilon^*)\right]^{1/2}\sqrt{\frac{\log(p_1p_2)}{n}}.
+%\end{equation}
+Hence, with probability at least 
+\begin{equation*}
+\mathbb{P} \left(\mathbf{E1} \cap \mathbf{E2} \right) \ge 1 - \mathbb{P} \left(\mathbf{E1}^c \right) - \mathbb{P} \left(\mathbf{E2}^c \right)
+\end{equation*}
+the bound in (\ref{eqn:beta0bound}) holds, which proves the first part of (I). In particular, we have $\|\hat{\beta}^0 - \beta^*\|_1 \le \nu_\beta^{(0)}\sim O(\sqrt{\log(p_1p_2)/n})$ on $\mathbf{E1} \cap \mathbf{E2}$. 
+
+\noindent To prove the second part of (I), note that by Theorem \ref{thm:ErrorBound_Theta} the bound in (\ref{eqn:Theta0bound}) holds when B1-B3 are satisfied. Now, from the argument above, B1 holds on the event \textbf{E1} $\cap$ \textbf{E2}. Also, from the proof of Proposition~\ref{prop:residual-concentration}, B2 is satisfied, i.e., 
+\begin{equation}\label{eqn:S0prob}
+\left\|\widehat{S}^{(0)} - \Sigma_\epsilon^*\right\|_\infty\leq g(\nu_\beta^{(0)}),\quad \text{where }\widehat{S}^{(0)}= \frac{1}{n}(Y-X\widehat{B}^{(0)})'(Y-X\widehat{B}^{(0)}),
+\end{equation}
+on \textbf{E1} $\cap$ \textbf{E2} $\cap$ \textbf{E3} $\cap$ \textbf{E4}, where the events \textbf{E3} and \textbf{E4} are given by:
+\begin{itemize}
+\item[\bf E3.] $\left\{  \left\|\frac{E'E}{n}-\Sigma^*_\epsilon\right\|_\infty \leq \sqrt{\frac{\log 4 + \tau_2 \log p_2}{c_\epsilon^* n}} \right\}$ for some $\tau_2>2$ and $c_\epsilon^*>0$ that depends on $\Sigma_{\epsilon}^*$,
+\item[\bf E4.] $\left\{  \left\|\frac{X'X}{n}-\Sigma^*_X\right\|_\infty \leq \sqrt{\frac{\log 4 + \tau_1 \log p_1}{c_X^* n}} \right\}$ for some $\tau_1>2$ and $c_X*>0$ that depends on $\Sigma_{X}^*$.
+\end{itemize}
+
+Therefore, the probability of the bound for $\widehat{\Theta}_\epsilon^{(0)}$ in (\ref{eqn:Theta0bound}) to hold is at least
+\begin{equation}\label{eqn:prob-intersection}
+\mathbb{P}\left(\mathbf{E1}\cap \mathbf{E2} \cap \mathbf{E3} \cap \mathbf{E4}\right),
+\end{equation}
+By Lemma~\ref{lemma:RESX}, Lemma~\ref{lemma:deviation_aux} and the proof of Proposition~\ref{prop:residual-concentration}, the probability in (\ref{eqn:prob-intersection}) is lower bounded by:
+\begin{equation*}
+1-2\exp(-c_3n) - 6c_1\exp[-(c_2^2-1)\log (p_1p_2)]-1/p_1^{\tau_1-2}-1/p_2^{\tau_2-2}.
+\end{equation*}
+
+Consider the following two cases where the relative order of $p_1$ and $p_2$ differ. Case 1: $p_1\prec p_2$, then $\nu_\Theta^{(0)}\sim O(\sqrt{\log p_2/n})$; case 2: $p_1\succsim p_2$, then $\nu_\Theta^{(0)}\sim O\left(\log(p_1p_2)/n\right)$. In either case, since we are assuming $\log(p_1p_2)/n$ to be a small quantity and it follows that $\sqrt{\log(p_1p_2)/n}\succsim \log(p_1p_2)/n$, the following bound always holds: 
+\begin{equation*}
+\nu_\Theta^{(0)} \leq C_\Theta \sqrt{\frac{\log(p_1p_2)}{n}} \equiv  M_\Theta,
+\end{equation*}
+where $C_\Theta$ is some large fixed constant that bounds the constant terms in front of $\sqrt{\log(p_1p_2)/n}$.
+
+
+Now we consider part (II) of the theorem. Note that for each $k\geq 1$, $\widehat{\beta}^{(k)}$ and $\widehat{\Theta}_\epsilon^{(k)}$ are obtained via solving the following two optimizations: 
+\begin{eqnarray}
+\widehat{\beta}^{(k)} & =& \argmin\limits_{\beta\in\mathbb{R}^{p_1\times p_2}} \left\{ -2\beta'\widehat{\gamma}^{(k-1)} + \beta'\widehat{\Gamma}^{(k-1)}\beta + \lambda_n\|\beta\|_1 \right\}, \\
+\widehat{\Theta}_\epsilon^{(k)} & = & \argmin\limits_{\Theta_\epsilon\in\mathbb{S}_{++}^{p_2\times p_2}}\left\{ \log\det \Theta_\epsilon - \text{tr}(\widehat{S}^{(k)} \Theta_\epsilon) + \rho_n\|\Theta_\epsilon\|_{1,\text{off}}  \right\},
+\end{eqnarray}
+where 
+\begin{equation*}
+\widehat{\gamma}^{(k)} = \widehat{\Theta}^{(k)}\otimes \frac{X'Y}{n}, \quad \widehat{\Gamma}^{(k)} = \widehat{\Theta}^{(k)}\otimes \frac{X'X}{n}, \quad \widehat{S}^{(k)} = \frac{1}{n}(Y-X\widehat{B}^{(k)})'(Y-X\widehat{B}^{(k)}).
+\end{equation*}
+Consider the bound on $\hat{\beta}^{(k)}$ for $k=1$. The argument is similar to that of $\hat{\beta}^{(0)}$, with appropriate modifications to account for the fact that the objective function now involves log likelihood instead of least squares. Formally, we consider the event \textbf{E1} $\cap$ \textbf{E2} $\cap$ \textbf{E3} $\cap$ \textbf{E4} $\cap$ \textbf{E5}, where 
+\begin{itemize}
+\item[\bf E5.] $\left\{\frac{1}{n}\left\| X'E\Theta^*_\epsilon\right\|_\infty \leq c_2\left[\frac{\Lambda_{\max}(\Sigma^*_X)}{\Lambda_{\min}(\Sigma^*_\epsilon)}\right]^{1/2} \sqrt{\frac{\log (p_1p_2) }{n}}\right\}$.
+\end{itemize}
+Note that $\{\|\widehat{\Theta}^{(0)}_\epsilon-\Theta^*_\epsilon\|_\infty\leq \nu_\Theta^{(0)}\}$ holds on this event.  By Lemma~\ref{lemma:deviation_aux}, $\mathbb{P}(\textbf{E5}) \geq 1- 6c_1\exp[-(c_2^2-1)\log(p_1p_2)]$. Combining this with the lower bound on \eqref{eqn:prob-intersection} and 
+% As in previous analyses for Theorem~\ref{thm:ErrorBound_beta}, Proposition~\ref{prop:REcondition}, Proposition~\ref{prop:deviation} and Lemma~\ref{lemma:deviation_aux}, if we take  as a deterministic event for now, the randomness in event $\{\|\widehat{\beta}_1 -\beta^*\|_1\leq \nu_\beta^{(1)}\}$ comes from the randomness in \textbf{E1}, \textbf{E2}, and the following event: 
+%Now conditioning on the random event $\{\|\widehat{\Theta}^{(0)}-\Theta^*_\epsilon\|_\infty\leq \nu_\Theta^{(0)}\}$, based on the previous discussion, the only randomness that needs to be taken care of is that in event \textbf{E5}. By Lemma~\ref{lemma:deviation_aux}, $\mathbb{P}(\textbf{E5}) \geq 1- 6c_1\exp[-(c_2^2-1)\log(p_1p_2)]$. Combining $\mathbb{P}\left( \{\|\widehat{\Theta}^{(0)}-\Theta^*_\epsilon\|_\infty\leq \nu_\Theta^{(0)}\} \right)$ with 
+the sample size requirement (note this sample size requirement can be relaxed to $n\succsim \log(p_1p_2)$ if $p_1\prec p_2$), we obtain that with probability at least
+\begin{equation*}
+1-1/p_1^{\tau_1-2} - 1/p_2^{\tau_2-2} - 12c_1\exp[-(c^2_2-1)\log (p_1p_2)] - 2\exp[-c_3n], 
+\end{equation*}
+the following three events hold simultaneously: 
+\begin{itemize}
+\item[] \textbf{\em A1'} $\|\widehat{\Theta}^{(0)}_\epsilon-\Theta^*_\epsilon\|_\infty\leq \nu_\Theta^{(0)}\precsim O(\sqrt{\log(p_1p_2)/n})$;
+\item[] \textbf{\em A2'} $\widehat{\Gamma}^{(0)}\sim RE(\varphi^{(0)},\phi^{(0)})$ where
+\begin{equation*}
+\varphi^{(0)} \geq \frac{\Lambda_{\min}(\Sigma^*_X)}{2}(\min_i\psi^i - dM_\Theta)~~~\text{and} ~~~ \phi^{(0)} \leq \frac{\log p_1}{n}\frac{\Lambda_{\min}(\Sigma^*_X)}{2}(\max_j\psi^j + dM_\Theta);
+\end{equation*}
+\item[] \textbf{\em A3'} $\|\widehat{\gamma}^{(0)}-\widehat{\Gamma}^{(0)}\beta^*\|_\infty \leq \mathbb{Q}(\nu_\Theta^{(0)})\sqrt{\frac{\log(p_1p_2)}{n}}$ with the expression for $\mathbb{Q}(\cdot)$ given in (\ref{Q-expression}).
+\end{itemize}
+By Theorem~\ref{thm:ErrorBound_beta}, by choosing $\lambda_n\geq 4\mathbb{Q}(M_\Theta)\sqrt{\frac{\log(p_1p_2)}{n}}$, the following bound holds:
+\begin{equation}\label{beta-bound}
+\|\widehat{\beta}^{(1)}-\beta^*\|_1 \leq 64s^{**}\lambda_n/\varphi^{(0)}
+\end{equation}
+
+%Note that until this step, all sources of randomness have been taken into consideration; thus, for all subsequent iterations, the probability that the error bounds for $\widehat{\beta}^{(k)},\widehat{\Theta}_\epsilon^{(k)}$ hold no longer changes. 
+The error bound for $\widehat{\Theta}^{(1)}_\epsilon$ can now be established using the same argument for $\hat{\Theta}^{(0)}_\epsilon$, with the only difference that now we consider the event $\mathbf{E1} \cap \ldots \cap \mathbf{E5}$ instead of $\mathbf{E1} \cap \ldots \cap \mathbf{E4}$ and use \eqref{beta-bound} instead of \eqref{eqn:beta0bound}.
+
+Note that an upper bound for the leading term of the right hand side of (\ref{beta-bound}) is at most of the order $O(\sqrt{\log(p_1p_2)/n})$, and can be written as:
+\begin{equation*}
+C_\beta\left( s^{**}\sqrt{\frac{\log(p_1p_2)}{n}}\right)\equiv M_\beta,
+\end{equation*}
+with $C_\beta$ being some potentially large number that bounds the constant term. Notice that $M_\beta$ is of the same order as $\nu_\beta^{(0)}$;
+thus, for $\widehat{\Theta}^{(1)}_\epsilon$, we can also achieve the following bound: 
+\begin{equation*}
+\|\widehat{\Theta}_\epsilon^{(1)}-\Theta^*_\epsilon\|_\infty\leq M_\Theta
+\end{equation*}
+with high probability since we are assuming $C_\Theta$ to be some potentially large number. 
+
+Note that the events $\textbf{E1}, \ldots, \textbf{E5}$ rely only on the parameters and not on the estimated quantities, and on their intersection we have uniform upper bounds on the errors of $\widehat{\beta}^{(k)}$ and $\widehat{\Theta}^{k}_{\epsilon}$ for $k = 0, 1$. Hence the error bounds for $k=1$ can be used to invoke Theorems 2 and 3 inductively on realizations $X$ and $E$ from the set $\textbf{E1} \cap \ldots \cap \textbf{E5}$ to provide high probability error bounds for all subsequent iterates as well. This leads to the uniform error bounds of part (II) with the desired probability.
+
+%By analogy, the bounds for $\widehat{\beta}^{(2)}$, $\widehat{\Theta}_\epsilon^{(2)}$ and all subsequent estimates remain unchanged. 
+\end{proof}

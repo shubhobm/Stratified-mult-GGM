@@ -1,0 +1,101 @@
+ % ----------------------------------------------------------------
+%
+%
+% Error bound for Random Design, iteration
+%
+%
+% ----------------------------------------------------------------
+
+\medskip
+After providing the error bound for (\ref{est-1}) and (\ref{est-2}), in Theorem~\ref{thm:beta-theta-bound} we establish that with high probability, the error of the sequence of estimates obtained in the alternating search step of the algorithm described in Section~\ref{sec:estimation} is {\em uniformly} bounded; that is, the sequence of estimates lie in a non-expanding ball around the true value of the parameters uniformly with a radius that does not depend on the iteration number $k$. 
+
+\begin{theorem}[Error bound for $\{\widehat{\beta}^{(k)}\}$ and $\{\widehat{\Theta}_\epsilon^{(k)}\}$]\label{thm:beta-theta-bound}
+Consider the iterative algorithm given in Section~\ref{sec:estimation} that gives rise to sequences of $\{\widehat{\beta}^{(k)}\}$ and $\{\widehat{\Theta}_\epsilon^{(k)}\}$ alternately. For random realization of $X$ and $E$, we assume the following:
+\begin{itemize}
+\item[] \textbf{C1.} The incoherence condition holds for $\Theta^*_\epsilon$.
+\item[] \textbf{C2.} $\Theta^*_\epsilon$ is diagonally dominant.
+\item[] \textbf{C3.} The maximum sparsity level for all $p_2$ regression $s^*$ satisfies $s^*=o(n/\log p_1)$.
+\end{itemize}
+(I) For sample size satisfying $n\succsim \log(p_1p_2)$, there exist constants $c_1>0,c_2>1,c_3>0$ such that for any
+\begin{equation*}
+\lambda_n^0\geq 4c_2\left[\Lambda_{\max}(\Sigma_X^*)\Lambda_{\max}(\Sigma_\epsilon^*)\right]^{1/2}\sqrt{\frac{\log(p_1p_2)}{n}},
+\end{equation*}
+with probability at least $1-2\exp(-c_3n)-6c_1\exp[-(c_2^2-1)\log(p_1p_2)]$, the initial estimate $\widehat{\beta}^{(0)}\equiv vec(\widehat{B}^{(0)})$ satisfies the following bound:  
+\begin{equation}\label{eqn:beta0bound}
+\|\widehat{\beta}^{(0)} - \beta^*\|_1 \leq 64 s^{**}\lambda_n^0/\varphi^*\equiv \nu_\beta^{(0)},
+\end{equation}
+where $\varphi^* = \Lambda_{\min}(\Sigma_X^*)/2$. Moreover, by choosing $\rho_n^{0} = (\frac{8}{\xi})g(\nu_\beta^{(0)})$ where the expression for $g(\cdot)$ is given in (\ref{g-expression}), with probability at least $$ 1-1/p_1^{\tau_1-2}-1/p_2^{\tau_2-2}-2\exp(-c_3n) - 6c_1\exp[-(c_2^2-1)\log (p_1p_2)],\quad \text{for some }\tau_1,\tau_2>2$$ 
+the following bound holds:
+\begin{equation}\label{eqn:Theta0bound}
+\|\widehat{\Theta}^{(0)}_\epsilon - \Theta^*_\epsilon\|_\infty \leq \{2(1+8\xi^{-1})\kappa_{H^*}\}g({\nu_\beta^{(0)}}) \equiv \nu_\Theta^{(0)}.
+\end{equation}
+(II) For sample size satisfying $n \succsim d^2\log(p_1p_2) $, for any iteration $k\geq 1$, with probability at least 
+\begin{equation*}
+1-1/p_1^{\tau_1-2} - 1/p_2^{\tau_2-2} - 12c_1\exp[-(c_2^2-1)\log (p_1p_2)] - 2\exp[-c_3n], 
+\end{equation*}
+the following bounds hold for all $\widehat{\beta}^{(k)}$ and $\widehat{\Theta}^{(k)}_\epsilon$: 
+\begin{eqnarray*}
+\|\widehat{\beta}^{(k)} - \beta^*\|_1 &\leq & C_\beta\left( s^{**}\sqrt{\frac{\log(p_1p_2)}{n}}\right),\\
+\|\widehat{\Theta}^{(k)}_\epsilon - \Theta^*_\epsilon\|_\infty &\leq& C_\Theta\left(\sqrt{\frac{\log(p_1p_2)}{n}}\right).
+\end{eqnarray*}
+where $s^{**}$ is the sparsity of $\beta^*$, $C_\beta$ and $C_\Theta$ are constants depending only on $\beta^*$ and $\Theta_\epsilon^*$, respectively.
+\end{theorem}
+
+\medskip
+As a direct result of Proposition~1 in \citet{basu2015estimation} and Corollary~3 in \citet{ravikumar2011high}, the following bound also holds:
+\begin{corollary}\label{cor:beta-theta-bound}
+Under the same set of conditions C1, C2 and C3 in Theorem~\ref{thm:beta-theta-bound}, there exists $\tau_1,\tau_2>2$, $c_1>0,c_2>1,c_3>0$ and constants $C_\beta'$ and $C_\Theta'$ such that for all iterations $k$, the following bound holds:
+\begin{eqnarray*}
+\|\widehat{\beta}^{(k)} - \beta^*\|_F &\leq & C'_\beta\left( \sqrt{\frac{s^{**}\log(p_1p_2)}{n}}\right),\\
+\|\widehat{\Theta}^{(k)}_\epsilon - \Theta^*_\epsilon\|_F &\leq& C'_\Theta\sqrt{\frac{(s_\epsilon^*+p_2)\log(p_1p_2)}{n}},
+\end{eqnarray*}
+with probability at least 
+\begin{equation*}
+1-1/p_1^{\tau_1-2} - 1/p_2^{\tau_2-2} - 12c_1\exp[-(c_2^2-1)\log (p_1p_2)] - 2\exp[-c_3n],
+\end{equation*}
+where $s^{**}$ and $s^*_\epsilon$ are the sparsity for $\beta^*$ and $\Theta^*_\epsilon$, respectively.
+\end{corollary}
+
+\begin{remark}\label{remark:restriction}
+As mentioned earlier in this subsection, the actual implementation of the alternating search step is restricted to a subspace of $\mathbb{R}^{p_1\times p_2}$. 
+Next, we outline the corresponding theoretical results for this specific scenario in which for each regression $j$, some {\em fixed superset} of the indices of true covariates is given, and the regressions are restricted to these supersets, respectively. Note that we need to make sure that the restricted subspace contains all the true covariates for the results below to be valid. 
+
+Let $S_j$ denote the given {\em fixed superset} for each regression $j$, and  we consider regressing the response on $X_{S_j}$. We use $\widehat{\beta}_{\mathrm{R}}^{(k)}$ to denote the corresponding vectorized estimator of iteration $k$, that is, 
+\begin{equation*}
+\widehat{\beta}^{(k)}_{\mathrm{R}} = (\widehat{B}^{(k)'}_{1,\mathrm{Restricted}},\cdots,\widehat{B}^{(k)'}_{p_2,\mathrm{Restricted}})'
+\end{equation*}
+where $\widehat{B}^{(k)'}_{j,\mathrm{Restricted}}$ is obtained by doing the regression in (\ref{eqn:Bjunrestricted}), however with the indices of covariates restricted to $S_j$. Also, we let $\beta^*_{\mathrm{R}}$ be the corresponding true value of $\widehat{\beta}^{(k)}_{\mathrm{R}}$. Note that always holds that 
+\begin{equation*}
+\|\widehat{\beta}^{(k)}_{\mathrm{R}}-\beta^*_{\mathrm{R}}\|= \ \|\widehat{\beta}^{(k)}-\beta^*\|.
+\end{equation*} 
+
+Now let   
+\begin{equation*}
+\bar{S} = \bigcup\limits_{j\in\{1,\cdots,p_2\}} S_j
+\end{equation*}
+and let $\bar{s}$ be its cardinality. It can be shown that the best achievable error bound for $\widehat{\beta}^{(k)}_{\mathrm{R}}$ is identical to $\widehat{\beta}^{(k)}_{\bar{S}}$, where $\widehat{\beta}^{(k)}_{\bar{S}}$ is obtained by considering covariates $X_{\bar{S}}$ for all $p_2$ regressions, instead of the entire $X$. For this specific reason, formally, we state the theoretical results for the case where we consider regressing on $X_{\bar{S}}$, which is almost identical to the generic case.
+
+Suppose conditions C1, C2 and C3 in Theorem 4 hold, then there exists constants $c_1>0,c_2>1,c_3>0,\tau_1>2,\tau_2>2$ such that: (I) for sample size satisfying $n\succsim \log(\bar{s}p_2)$, w.p. at least $1-2\exp(-c_3n)-6c_1\exp[-(c_2^2-1)\log(\bar{s}p_2)]$, for any $$
+\lambda_n^0\geq 4c_2\left[\Lambda_{\max}(\Sigma_{X_{\bar{S}}}^*)\Lambda_{\max}(\Sigma_\epsilon^*)\right]^{1/2}\sqrt{\frac{\log(\bar{s}p_2)}{n}},
+$$ the initial estimate $\widehat{\beta}^{(0)}_{\bar{S}}$ satisfies the following bound:  
+\begin{equation*}
+\|\widehat{\beta}^{(0)}_{\bar{S}} - \beta^*_{\bar{S}}\|_1 \leq 64 s^{**}\lambda_n^0/\varphi^*_{\bar{S}}\equiv \nu_{\beta_{\bar{S}}}^{(0)},
+\end{equation*}
+where $\varphi^*_{\bar{S}} = \Lambda_{\min}(\Sigma_{X_{\bar{S}}}^*)/2$. Moreover, by choosing $\rho_n^{0} = (\frac{8}{\xi})g(\nu_{\beta_{\bar{S}}}^{(0)})$ where the expression for $g(\cdot)$ is given in (\ref{g-expression}), with probability at least $$ 1-1/\bar{s}^{\tau_1-2}-1/p_2^{\tau_2-2}-2\exp(-c_3n) - 6c_1\exp[-(c_2^2-1)\log (\bar{s}p_2)],$$ 
+the following bound holds:
+\begin{equation*}
+\|\widehat{\Theta}^{(0)}_\epsilon - \Theta^*_\epsilon\|_\infty \leq \{2(1+8\xi^{-1})\kappa_{H^*}\}g({\nu_{\beta_{\bar{S}}}^{(0)}}) \equiv \nu_\Theta^{(0)}.
+\end{equation*}
+(II) For sample size satisfying $n \succsim d^2\log(\bar{s}p_2) $, for any iteration $k\geq 1$, with probability at least 
+\begin{equation*}
+1-1/\bar{s}^{\tau_1-2} - 1/p_2^{\tau_2-2} - 12c_1\exp[-(c_2^2>1)\log (\bar{s}p_2)] - 2\exp[-c_3n], 
+\end{equation*}
+the following bound hold for all $\widehat{\beta}_{\bar{S}}^{(k)}$ and $\widehat{\Theta}^{(k)}_\epsilon$: 
+\begin{eqnarray*}
+&\|\widehat{\beta}_{\bar{S}}^{(k)} - \beta^*\|_1 \leq  C_\beta\left( s^{**}\sqrt{\frac{\log(\bar{s}p_2)}{n}}\right), &\|\widehat{\beta}^{(k)}_{\bar{S}} - \beta^*\|_F \leq  C'_\beta\left( \sqrt{\frac{s^{**}\log(\bar{s}p_2)}{n}}\right) \\
+&\|\widehat{\Theta}^{(k)}_\epsilon - \Theta^*_\epsilon\|_\infty \leq C_\Theta\left(\sqrt{\frac{\log(\bar{s}p_2)}{n}}\right), 
+&\|\widehat{\Theta}^{(k)}_\epsilon - \Theta^*_\epsilon\|_F \leq C'_\Theta\sqrt{\frac{(s_\epsilon^*+p_2)\log(\bar{s}p_2)}{n}}
+\end{eqnarray*}
+where $s^{**}$ is the sparsity of $\beta^*$, $C_\beta$, $C_{\beta}'$, $C_\Theta$ and $C_{\theta}'$ are all constants that do not depend on $n,\bar{S},p_2$. 
+\end{remark}
+

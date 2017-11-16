@@ -1,0 +1,7 @@
+\begin{proof}[\textbf{Proof of Corollary~\ref{cor:ErrorBoundB}}]
+Here we examine the probability that events A1-A3 hold in Theorem~\ref{thm:ErrorBound_beta}. First we note that (A1) in Theorem~\ref{thm:ErrorBound_beta} holds deterministically. Now by Proposition~\ref{prop:REcondition}, (A2) is satisfied w.p. at least $1-2\exp(-c_3n)$. By Proposition~\ref{prop:deviation}, the deviation bound (A3) holds with probability at least $1-12c_1\exp[-(c_2^2-1)\log(p_1p_2)]$, where $\mathbb{Q}$ is specified in (\ref{Q-expression}). Combine all sample size requirement, the leading term becomes $n\succsim \log(p_1p_2)$. Therefore, for random pair $(X,E)$, with probability at least 
+\begin{equation*}
+1-12c_1\exp[-(c_2^2-1)\log (p_1p_2)] -  2\exp(-c_3n),
+\end{equation*}
+for some $c_1>0,c_2>1,c_3>0$, the bound in (\ref{bbound-1}) holds, as the result of Theorem~\ref{thm:ErrorBound_beta} and Proposition~\ref{prop:REcondition} and \ref{prop:deviation} combined. 
+\end{proof}
