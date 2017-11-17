@@ -2,7 +2,7 @@
 ## initialization of the residual matrix
 Ehat = list();
 for(k in 1:K){
-  Ehat[[k]] = (Y[[k]] - X[[k]] %*% B0[[k]])
+  Ehat[[k]] = Y[[k]] - X[[k]] %*% B0[[k]]
 }
 
 ## record the result from every iteration
@@ -10,10 +10,10 @@ for(k in 1:K){
 if (TRACE){
   TRACE.est =  vector("list")
 }
-
+library(Matrix)
 ## make long X and Y matrices
 Y.long = lapply(Y, rbind)
-X.long = lapply(X, rbind)
+X.diag = bdiag(X)
 
 ## Here we start with the alternating procedure
 B_new = B0; Theta_new = Theta0
@@ -45,15 +45,14 @@ while(!CONVERGE){
     #   B_j[which(Existing.edges[,j]!=0)] = predict(temp,s=lambda/(2*Theta_old[j,j]),type="coefficients")[-1];
     # }
     # B_j;
-    temp = grpreg(X.long, Y.long[,j] - Et.j.long, B.group, # B.group tbd
+    temp = grpreg(X.diag, Y.long[,j] - Et.j.long, B.group, # B.group tbd
                   family="gaussian", penalty="grLasso", lambda=lambda)
     B_new.j = matrix(temp$beta[-1], ncol=K, byrow=F)
-    E.j = matrix(Y.long[,j] - X.long %*% temp$beta[-1], ncol=K, byrow=F)
-    
+
     # now update j-th column of all K matrices in B_new, and Ehat
     for(k in 1:K){
       B_new[[k]][,j] = B.new.j[,k]
-      Ehat[[k]][,j] = E.j[,k]
+      Ehat[[k]][,j] = Y[[k]] - X[[k]] %*% B.new.j[,k]
     }
   }
   
