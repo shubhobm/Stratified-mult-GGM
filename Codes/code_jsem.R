@@ -79,7 +79,7 @@ JSEM <- function(
   Theta = lapply(Ahat, FUN = symmetrize)
   Ahat = lapply(Theta, function(u) {u[abs(u)>eps] = 1; return(u)})
   
-  return(list(Ahat = Ahat, lambda = lambda.grpreg))
+  return(list(Ahat = Ahat, Theta=Theta, lambda = lambda.grpreg))
 }  
 
 ##########################################################
