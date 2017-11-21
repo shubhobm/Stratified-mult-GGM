@@ -87,7 +87,8 @@ system.time(
     SSE.vec = rep(0,K)
     jmle.bic.vec = rep(0,K)
     jmle.hbic.vec = rep(0,K)
-
+    jmle.hbic2.vec = rep(0,K)
+    
     for(k in 1:K){
       nk = nrow(Y.list[[k]])
       Theta.k = jmle.model$Theta_refit$Theta[[k]]
@@ -101,6 +102,7 @@ system.time(
       jmle.bic.vec[k] = SSE.vec[k] + log(nk)/nk * (sum(Theta.k != 0)/2 + sum(jmle.model$B.refit[,,k] != 0))
       jmle.hbic.vec[k] = SSE.vec[k] + 
         log(log(nk))/nk * (log(q*(q-1)/2)*sum(Theta.k != 0)/2 + log(p*q)*sum(jmle.model$B.refit[,,k] != 0))
+      jmle.hbic2.vec[k] = SSE.vec[k] + (log(nk))/nk * sum(Theta.k != 0)/2
     }
     bic.vec[m] = sum(jmle.bic.vec)
     hbic.vec[m] = sum(jmle.hbic.vec)
@@ -119,9 +121,8 @@ system.time(
     B.norms = lapply(unique.B.groups, function(g)
       sqrt(sum(B_new.array[which(B0.group.array==g, arr.ind=T)]^2)))
     sum(as.numeric(B.norms!=0))
-    hbic2.vec[m] = sum(SSE.vec) +
-      log(nk)/nk * (log(length(unique.B.groups))*sum(as.numeric(B.norms!=0))) +
-                           log(length(unique.Theta.groups))*sum(as.numeric(Theta.norms!=0))
+    hbic2.vec[m] = sum(jmle.hbic2.vec) + 
+      log(log(nk))/nk * log(length(unique.B.groups))*sum(as.numeric(B.norms)!=0)
   }
 )
 
