@@ -55,8 +55,9 @@ jmle = function(Y.list, Y.indices=NULL, X.list,
     init.bic.jsem <- sel.lambda.jsem(do.call(rbind, Ehat.list), do.call(rbind, Ehat.list),
                                      unlist(Y.indices), unlist(Y.indices),
                                      Theta.groups, lambda=gamma)
+    gamma.min = gamma[which.min(init.bic.jsem$BIC)]
     init.jsem.model = JSEM(do.call(rbind, Ehat.list), unlist(Y.indices),
-                           Theta.groups, lambda=gamma[which.min(init.bic.jsem$BIC)])
+                           Theta.groups, lambda=gamma.min)
     Theta_init.array = array(0, c(q,q,K))
     for(k in 1:K){
       Theta_init.array[,,k] = init.jsem.model$Theta[[k]]
@@ -70,8 +71,9 @@ jmle = function(Y.list, Y.indices=NULL, X.list,
     init.bic.jsem <- sel.lambda.jsem(do.call(rbind, Y.list), do.call(rbind, Y.list),
                                      unlist(Y.indices), unlist(Y.indices),
                                      Theta.groups, lambda=gamma)
+    gamma.min = gamma[which.min(init.bic.jsem$BIC)]
     init.jsem.model = JSEM(do.call(rbind, Y.list), unlist(Y.indices),
-                           Theta.groups, lambda=gamma[which.min(init.bic.jsem$BIC)])
+                           Theta.groups, lambda=gamma.min)
     Theta_init.array = array(0, c(q,q,K))
     for(k in 1:K){
       Theta_init.array[,,k] = init.jsem.model$Theta[[k]]
@@ -85,10 +87,11 @@ jmle = function(Y.list, Y.indices=NULL, X.list,
   X = as.matrix(do.call(bdiag, X.list))
   
   # initialize
-  Normfunc = c(); iter = 0; CONVERGE=FALSE; refit.B=TRUE; update.counter=0;
+  Normfunc = c(); Objfunc = c(); iter = 0; CONVERGE=FALSE; refit.B=TRUE; update.counter=0;
   updateTheta = FALSE; # we don't update Theta until B is stabilized a bit
   B_new.array = B_init.array
   Theta_new.array = Theta_init.array
+  jsem.model = init.jsem.model
   
   # # store bic values from JSEM models
   # bic.mat = init.bic.jsem$BIC
@@ -151,8 +154,9 @@ jmle = function(Y.list, Y.indices=NULL, X.list,
       bic.jsem <- sel.lambda.jsem(do.call(rbind, Ehat.list), do.call(rbind, Ehat.list),
                                   unlist(Y.indices), unlist(Y.indices),
                                   Theta.groups, lambda=gamma)
+      gamma.min = gamma[which.min(bic.jsem$BIC)]
       jsem.model = JSEM(do.call(rbind, Ehat.list), unlist(Y.indices),
-                        Theta.groups, lambda=gamma[which.min(bic.jsem$BIC)])
+                        Theta.groups, lambda=gamma.min)
       Theta_new.array = array(0, c(q,q,K))
       for(k in 1:K){
         Theta_new.array[,,k] = jsem.model$Theta[[k]]
@@ -162,31 +166,32 @@ jmle = function(Y.list, Y.indices=NULL, X.list,
     }
     
     # check convergence
-    # Objfunc[iter] = Obj(Y.list, X.list, Theta_new.array, B_new.array,
-    #                     Theta.group.array, B0.group.array,
-    #                     lambda=sqrt(log(p)/n)*.5, gamma=lambda.jsem)
+    Objfunc[iter] = Obj(Y.list, X.list, Theta_new.array, B_new.array,
+                        Theta.group.array, B0.group.array,
+                        lambda=lambda, gamma=gamma.min)
     Normfunc[iter] = sqrt(sum(B_new.array - B_old.array)^2)/sqrt(sum(B_new.array^2)) +
       sqrt(sum(Theta_new.array - Theta_old.array)^2)/sqrt(sum(Theta_new.array^2))
     if (iter == 1){
       Norm_diff = Normfunc[1]
+      Obj_diff = Objfunc[1]
     }
     else{
       Norm_diff = Normfunc[iter] - Normfunc[iter-1]
+      Obj_diff = (Objfunc[iter] - Objfunc[iter-1])/Objfunc[iter-1]
     }
-    cat("Norm_diff =",round(abs(Norm_diff),4),'\n-----\n')
+    cat("Norm_diff =",round(abs(Norm_diff),4),'Obj_diff',round(abs(Obj_diff),5),'\n-----\n')
     CONVERGE = (abs(Norm_diff)<tol)
     
     if (iter == maxit){
-      cat("Max iterations reached",'\n')
+      cat("Max iterations reached.",'\n')
+      warning("algorithm didn't converge.\nRequired epsilon for convergence is ", tol,
+              " while current value is ", round(abs(Norm_diff), 4))
       break;
     }
   }
   
   if(CONVERGE){
     cat("Converged after",iter,"iterations.\n")
-  } else{
-    warning("algorithm didn't converge.\nRequired epsilon for convergence is ", tol,
-            " while current value is ", round(abs(Norm_diff), 4))
   }
   
   ## If refitting of B matrices hasn't been done inside the loop then refit in the end
@@ -221,8 +226,7 @@ jmle = function(Y.list, Y.indices=NULL, X.list,
   for (k in 1:K){
     Info[[k]] = zeroInd(Ahat[[k]], 1)$zeroArr
   }
-  Theta_refit = multi.glasso(do.call(rbind, Ehat.list), unlist(Y.indices),
-                             gamma[which.min(bic.jsem$BIC)], Info)
+  Theta_refit = multi.glasso(do.call(rbind, Ehat.list), unlist(Y.indices), gamma.min, Info)
   
   ## return
   return(list(B.refit=B_refit.array, Theta_refit=Theta_refit))
