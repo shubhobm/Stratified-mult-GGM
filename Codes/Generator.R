@@ -104,7 +104,9 @@ GenerateLayer = function(n, subnetSize, group, m=2, rho=0, rho.joint=0.01){
     weights <- weights + t(weights)
     
     pdobj <- pd(weights * Amat[[k]])
-    Omega[[k]] <- pdobj$A
+    Omega.k = pdobj$A
+    Omega.k[which(abs(Omega.k) < 1e-10, arr.ind=T)] = 0 # very small elements set to 0
+    Omega[[k]] = Omega.k
     Sigma[[k]] <- pdobj$Ainv
   }
   
@@ -118,7 +120,7 @@ GenerateLayer = function(n, subnetSize, group, m=2, rho=0, rho.joint=0.01){
   x <- vector("list", K)
   for (k in 1:K){
     x[[k]] <- mvrnorm(n, mu = rep(0, p), Sigma = Sigma[[k]])
-    x[[k]] <- as.matrix(scale(x[[k]], center = T, scale = T))
+    x[[k]] <- scale(x[[k]], center = T, scale = T)
   }
   # trainX <- do.call(rbind, x) # training data
   return(list(data=x, indices=y, groups=ix, Omega=Omega))
