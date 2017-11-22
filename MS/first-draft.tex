@@ -430,7 +430,7 @@ $$
 %
 \noindent{\bf(C3)} $\| \widehat \bfB^k - \bfB^k_0 \|_1 \leq v_\beta$, where $v_\beta = \eta_\beta \sqrt{\frac{\log (pq)}{n}}$ with $\eta_\beta$ depending on $\cB$ only.
 
-Then for the debiased estimators in \eqref{eqn:DebiasedBeta} and sample size $n \succsim \log (pq)$ we have
+Then for the debiased estimators in \eqref{eqn:DebiasedBeta} and sample size satisfying $n \succsim \log (pq), \log p = o(n^{1/2}), \log q = o(n^{1/2})$ we have
 %
 \begin{align}\label{eqn:ThmTestingEqn}
 \begin{bmatrix}
@@ -1016,7 +1016,7 @@ Putting them back in \eqref{eqn:ThmTestingProofeq1} and using $t^k = (\bfR^k)^T 
 At this point, we drop $k$ in the subscripts, and prove the following:
 
 \begin{Lemma}\label{Lemma:ThmTestingLemma}
-Given conditions (C1) and (C2), the following holds for sample size $n$ such that $n \succsim \log (pq)$ and $\sigma_{x,i,-i} - n^{-1/4} - v_\zeta^2 V_x > 0$:
+Given conditions (C1) and (C2), the following holds for sample size $n$ such that $n \succsim \log (pq)$ and $\sigma_{x,i,-i} - n^{-1/4} - v_\zeta \sqrt{V_x} > 0$:
 %
 $$
 \frac{1}{\sqrt n \widehat s_i}  \widehat \Omega_y^{1/2} \bfE^T \bfR_i \sim
@@ -1025,30 +1025,30 @@ $$
 %
 \begin{align}\label{eqn:ThmTestingProofeq3}
 \| \bfS_{1n} \|_\infty & \leq 
-\frac{v_\Omega \sqrt{\Lambda_{\max} (\Sigma_e) } }{\sigma_{x,i,-i} - n^{-1/4} - v_\zeta^2 V_x}
-\left[ c_7 \sqrt{ \sigma_{x,ii} \log q} +
-c_9  (1 + v_\zeta^2) \sqrt{\Lambda_{\max} (\Sigma_{x,-i}) \log (p q)} \right]
+\frac{v_\Omega (2 + v_\zeta) c_2 [ \Lambda_{\max} (\Sigma_x) \Lambda_{\max} (\Sigma_e) ]^{1/2} \sqrt{ \log(pq)}}{\sigma_{x,i,-i} - n^{-1/4} - v_\zeta \sqrt{V_x}} =
+O \left( \frac{ \log(pq)}{\sqrt n} \right)
 \end{align}
 %
 with probability larger than or equal to
 %
 \begin{align}\label{eqn:ThmTestingProofeq30}
-1 - 6c_6 e^{-(c_7^2-1) \log q} - 6c_8 e^{-(c_9^2-1) \log(p q)} - \frac{1}{p^{\tau_1-2}} - 
-\frac{\kappa_i}{\sqrt n}
+1 - 6c_1 e^{-(c_2^2-1) \log p q} - \frac{1}{p^{\tau_1-2}} - \frac{\kappa_i}{\sqrt n}
 \end{align}
 %
-for some $c_6, c_8 >0, c_7, c_9 > 1$, and $\kappa_i := \BV [(X_i - \BX_{-i} \bfzeta_{0,-i})^2]$.
+for some $c_1, c_4 >0, c_2, c_5 > 1$, and $\kappa_i := \BV [(X_i - \BX_{-i} \bfzeta_{0,-i})^2]$.
 %
 Additionally, given condition (C3)
 %
 \begin{align}\label{eqn:ThmTestingProofeq4}
-\left\| \frac{1}{\sqrt n \widehat s_i} \bfR_i^T \bfX_{-i} (\bfB_{0,-i} - \widehat \bfB_{-i})
-\widehat \Omega_y^{1/2} \right\|_\infty & \leq
-\frac{v_\beta ( \Lambda_{\min} (\Sigma_y)^{1/2} + v_\Omega)}{\sigma_{x,i,-i} - n^{-1/2} - v_\zeta^2 V_x} \times \notag\\
-& \left[ c_{11} \sqrt{ (\sigma_{x,i,-i} \Lambda_{\max} (\Sigma_{x, -i}) ) \log p} + \sqrt n v_\zeta V_x \right]
+& \left\| \frac{1}{\sqrt n \widehat s_i} \bfR_i^T \bfX_{-i} (\bfB_{0,-i} - \widehat \bfB_{-i})
+\widehat \Omega_y^{1/2} \right\|_\infty \notag\\
+& \leq
+\frac{v_\beta ( \Lambda_{\min} (\Sigma_y)^{1/2} + v_\Omega)}{\sigma_{x,i,-i} - n^{-1/2} - v_\zeta \sqrt{V_x}} 
+\left[ c_{7} \sqrt{ (\sigma_{x,i,-i} \Lambda_{\max} (\Sigma_{x, -i}) ) \log p} + \sqrt n v_\zeta V_x \right] =
+O \left( \frac{ \log(pq)}{\sqrt n} \right)
 \end{align}
 %
-with probability $\geq 1 - 6c_{10} \exp [-(c_{11}^2-1) \log (p-1)] - (1/p)^{\tau_1-2} - \kappa_i/ \sqrt n$ for some $c_{10} >0, c_{11} > 1$.
+with probability condition \eqref{eqn:ThmTestingProofeq30}.
 \end{Lemma}
 
 Given Lemma~\ref{Lemma:ThmTestingLemma}, the first and second summands on the right hand side of \eqref{eqn:ThmTestingProofeq2} are bounded above by applying each of \eqref{eqn:ThmTestingProofeq3} and \eqref{eqn:ThmTestingProofeq4} twice, respectively. This completes our proof.
@@ -1184,45 +1184,43 @@ To show \eqref{eqn:ThmTestingProofeq3} we have
 %
 The second summand is distributed as $\cN_q ({\bf 0}, \bfI)$. For the first summand,
 %
-\begin{align}\label{eqn:ThmTestingProofeq31}
+\begin{align*}
 \frac{1}{\sqrt n}  \left\| (\widehat \Omega_y^{1/2} - \Omega_y^{1/2}) \bfE^T \bfR_i \right\|_\infty & \leq
-\frac{1}{\sqrt n}  \left\| \widehat \Omega_y^{1/2} - \Omega_y^{1/2} \right\|_\infty  \left\| \bfE^T \bfR_i \right\|_1  \notag\\
-& \leq \sqrt n v_\Omega \frac{1}{n} \left[ \| \bfE^T (\bfX_i -  \bfX_{-i} \bfzeta_i ) \|_1 + \| \bfE^T \bfX_{-i} (\widehat \bfzeta_i - \bfzeta_{0,i} ) \|_1 \right] \notag\\
+\frac{1}{\sqrt n}  \left\| \widehat \Omega_y^{1/2} - \Omega_y^{1/2} \right\|_\infty  \left\| \bfE^T \bfR_i \right\|_1 \\
+& \leq \sqrt n v_\Omega \frac{1}{n} \left[ \| \bfE^T (\bfX_i -  \bfX_{-i} \bfzeta_i ) \|_1 + \| \bfE^T \bfX_{-i} (\widehat \bfzeta_i - \bfzeta_{0,i} ) \|_1 \right] \\
 & \leq \sqrt n v_\Omega \frac{1}{n} \left[ \| \bfE^T \bfX_i \|_\infty + \| \bfE^T \bfX_{-i} \|_\infty
 \left\{ \| \bfzeta_i  \|_1 + \| \widehat \bfzeta_i - \bfzeta_i  \|_1 \right\} \right] \notag\\
 & \leq \sqrt n v_\Omega \left[ \frac{1}{n} \| \bfE^T \bfX_i \|_\infty + 
-\frac{1 + v_\zeta^2}{n} \| \bfE^T \bfX_{-i} \|_\infty \right]
+\frac{1 + v_\zeta}{n} \| \bfE^T \bfX_{-i} \|_\infty \right] \\
+& \leq \sqrt n v_\Omega (2 + v_\zeta) .\frac{1}{n} \| \bfE^T \bfX \|_\infty
+\end{align*}
+%
+because $\Omega_x$ is diagonally dominant implies $\| \bfzeta_i \|_1 = \sum_{i' \neq i} |\omega_{x,ii'}|/ \omega_{x,ii} \leq 1$, and using assumption (C1). Applying Lemma~\ref{lemma:ErrorRElemma2}, the following holds:
+%
+\begin{align}\label{eqn:ThmTestingProofeq31}
+\frac{1}{\sqrt n}  \left\| (\widehat \Omega_y^{1/2} - \Omega_y^{1/2}) \bfE^T \bfR_i \right\|_\infty & \leq v_\Omega (2 + v_\zeta) c_2 [ \Lambda_{\max} (\Sigma_x) \Lambda_{\max} (\Sigma_e) ]^{1/2} \sqrt{ \log(pq)}
 \end{align}
 %
-because $\Omega_x$ is diagonally dominant implies $\| \bfzeta_i \|_1 = \sum_{i' \neq i} |\omega_{x,ii'}|/ \omega_{x,ii} \leq 1$, and using assumption (C1). Applying Lemma~\ref{lemma:ErrorRElemma2} twice we have for $n \succsim \log(pq)$,
-%
-\begin{align}
-\frac{1}{n} \| \bfE^T \bfX_i \|_\infty & \leq 
-c_7 [ \sigma_{x,ii} \Lambda_{\max} (\Sigma_e) ]^{1/2} \sqrt{\frac{ \log q}{n}}\label{eqn:ThmTestingProofeq32}\\
-\frac{1}{n} \| \bfE^T \bfX_{-i} \|_\infty  & \leq 
-c_9 [ \Lambda_{\max} (\Sigma_{x,-i}) \Lambda_{\max} (\Sigma_e) ]^{1/2} \sqrt{\frac{ \log((p-1)q)}{n}}\label{eqn:ThmTestingProofeq33}
-\end{align}
-%
-with probability $\geq 1 - 6c_6 \exp [-(c_7^2-1) \log q] - 6c_8 \exp [-(c_9^2-1) \log((p-1)q)]$ for some $c_6, c_8 >0, c_7, c_9 > 1$.
+with probability $ \geq 1 - 6c_1 \exp [-(c_2^2-1) \log(pq)]$ for some $c_1 >0, c_2 > 1$.
 
 On the other hand
 %
 \begin{align*}
-s_i := \frac{1}{n} \left\| \bfX_i - \bfX_{-i}  \bfzeta_i \right\|^2 & \leq 
-\widehat s_i + \frac{1}{n} \left\| \bfX_{-i} (\widehat \bfzeta_i - \bfzeta_{0,i} ) \right\|^2
-\leq \widehat s_i + \| \widehat \bfzeta_i - \bfzeta_{0,i} \|_1^2 \left\| \frac{1}{n} \bfX_{-i}^T \bfX_{-i} \right\|_\infty
+s_i^2 := \frac{1}{n} \left\| \bfX_i - \bfX_{-i}  \bfzeta_i \right\|^2 & \leq 
+\widehat s_i^2 + \frac{1}{n} \left\| \bfX_{-i} (\widehat \bfzeta_i - \bfzeta_{0,i} ) \right\|^2
+\leq \widehat s_i^2 + \| \widehat \bfzeta_i - \bfzeta_{0,i} \|_1^2 \left\| \frac{1}{n} \bfX_{-i}^T \bfX_{-i} \right\|_\infty
 \end{align*}
 %
-By applying Lemma 8 of \cite{RavikumarEtal11},
+which implies $s_i \leq \widehat s_i + v_\zeta \sqrt{ V_x}$. By applying Lemma 8 of \cite{RavikumarEtal11},
 %
-\begin{align}\label{eqn:ThmTestingProofeq34}
+\begin{align}\label{eqn:ThmTestingProofeq32}
 \left\| \frac{1}{n} \bfX_{-i}^T \bfX_{-i} \right\|_\infty \leq
 \left\| \frac{1}{n} \bfX^T \bfX \right\|_\infty \leq V_x
 \end{align}
 %
 with probability $ \geq 1 - 1/p^{\tau_1-2}, \tau_1>2$, and
 %
-\begin{align}\label{eqn:ThmTestingProofeq5}
+\begin{align}\label{eqn:ThmTestingProofeq33}
 n \geq 512 ( 1 + 4 \Lambda_{\max} (\Sigma_{x}))^4 \max_i (\sigma_{x,ii} )^4 \log (4p^{\tau_1})
 \end{align}
 %
@@ -1233,13 +1231,13 @@ P\left( | s_i - \sigma_{x,i,-i}| \geq \epsilon \right) \leq \frac{\BV s_i}{\epsi
 \frac{\kappa_i}{n \epsilon^2}
 $$
 %
-Taking $\epsilon = n^{-1/4}$, we have $s_i \geq \sigma_{x,i,-i} - n^{-1/4}$ with probability $\geq 1 - \kappa_i n^{-1/2}$. Then, for $n$ satisfying \eqref{eqn:ThmTestingProofeq5} and $\sigma_{x,i,-i} - n^{-1/4} > v_\zeta^2 V_x$, we get the bound with the above probability:
+Taking $\epsilon = n^{-1/4}$, we have $s_i \geq \sigma_{x,i,-i} - n^{-1/4}$ with probability $\geq 1 - \kappa_i n^{-1/2}$. Then, for $n$ satisfying \eqref{eqn:ThmTestingProofeq32} and $\sigma_{x,i,-i} - n^{-1/4} >  v_\zeta \sqrt{ V_x}$, we get the bound with the above probability:
 %
-\begin{align}\label{eqn:ThmTestingProofeq6}
-\frac{1}{\widehat s_i} \leq \frac{1}{\sigma_{x,i,-i} - n^{-1/4} - v_\zeta^2 V_x}
+\begin{align}\label{eqn:ThmTestingProofeq34}
+\frac{1}{\widehat s_i} \leq \frac{1}{\sigma_{x,i,-i} - n^{-1/4} - v_\zeta \sqrt{ V_x}}
 \end{align}
 %
-Combining \eqref{eqn:ThmTestingProofeq31}, \eqref{eqn:ThmTestingProofeq32}, \eqref{eqn:ThmTestingProofeq33} and \eqref{eqn:ThmTestingProofeq6} gives the upper bound for the right hand side of \eqref{eqn:ThmTestingProofeq3} with the probability condition \eqref{eqn:ThmTestingProofeq30}.
+Combining \eqref{eqn:ThmTestingProofeq31} and \eqref{eqn:ThmTestingProofeq34} gives the upper bound for the right hand side of \eqref{eqn:ThmTestingProofeq3} with the requisite probability and sample size conditions.
 
 To prove \eqref{eqn:ThmTestingProofeq4} we have
 %
@@ -1254,10 +1252,10 @@ Applying Lemma~\ref{lemma:ErrorRElemma2}, for $n \succsim \log(p-1)$ we have
 %
 \begin{align}
 \frac{1}{n} \| (\bfX_i -  \bfX_{-i} \bfzeta_i )^T \bfX_{-i} \|_\infty \leq 
-c_{11} [ \sigma_{x,i,-i} \Lambda_{\max} (\Sigma_{x, -i}) ]^{1/2} \sqrt{\frac{ \log (p-1)}{n}}
+c_{7} [ \sigma_{x,i,-i} \Lambda_{\max} (\Sigma_{x, -i}) ]^{1/2} \sqrt{\frac{ \log (p-1)}{n}}
 \end{align}
 %
-with probability $\geq 1 - 6c_{10} \exp [-(c_{11}^2-1) \log (p-1)]$ for some $c_{10} >0, c_{11} > 1$. By \eqref{eqn:ThmTestingProofeq34}, the second term on the right side of \eqref{eqn:ThmTestingProofeq41} is bounded above by $v_\zeta V_x$ with probability $ \geq 1 - 1/p^{\tau_1-2}$ and $n$ satisfying \eqref{eqn:ThmTestingProofeq5}. The bound of \eqref{eqn:ThmTestingProofeq4} follows by conditions (C2), (C3) and \eqref{eqn:ThmTestingProofeq6}.
+with probability $\geq 1 - 6c_{6} \exp [-(c_{7}^2-1) \log (p-1)]$ for some $c_{6} >0, c_{7} > 1$. By \eqref{eqn:ThmTestingProofeq32}, the second term on the right side of \eqref{eqn:ThmTestingProofeq41} is bounded above by $v_\zeta V_x$ with probability $ \geq 1 - 1/p^{\tau_1-2}$ and $n$ satisfying \eqref{eqn:ThmTestingProofeq33}. The bound of \eqref{eqn:ThmTestingProofeq4} now follows by conditions (C2), (C3) and \eqref{eqn:ThmTestingProofeq34}.
 \end{proof}
 
 \bibliographystyle{apalike}
