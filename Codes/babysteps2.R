@@ -72,17 +72,17 @@ bic.vec = rep(0, length(lambda.vec))
 hbic.vec = rep(0, length(lambda.vec))
 hbic2.vec = rep(0, length(lambda.vec))
 
-model.list = list()
+model.list = vector("list", length(lambda.vec))
 
 system.time(
   for(m in 1:length(lambda.vec)){
-    # jmle.model = jmle(Y.list, Y.indices, X.list, B.group.array=B0.group.array, Theta.groups=Theta.groups,
-    #                   lambda = lambda.vec[m],
-    #                   gamma = sqrt(log(q)/n) * seq(1, 0.2, -0.2),
-    #                   init.option=1, tol=1e-3)
-    # 
-    # model.list[[m]] = jmle.model
-    jmle.model = model.list[[m]]
+    jmle.model = jmle(Y.list, Y.indices, X.list, B.group.array=B0.group.array, Theta.groups=Theta.groups,
+                      lambda = lambda.vec[m],
+                      gamma = sqrt(log(q)/n) * seq(1, 0.2, -0.2),
+                      init.option=1, tol=1e-3)
+
+    model.list[[m]] = jmle.model
+    # jmle.model = model.list[[m]]
     ## calculate BIC
     SSE.vec = rep(0,K)
     jmle.bic.vec = rep(0,K)

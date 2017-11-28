@@ -361,32 +361,37 @@ multi.glasso <- function(
     zero = rep(list(zero), K)
   }
   
-  if (max(sapply(zero, length)) == p*(p-1)){
-    stop("One or more matrices are constrained to be zero")
-  }  
+  # if (max(sapply(zero, length)) == p*(p-1)){
+  #   stop("One or more matrices are constrained to be zero")
+  # }  
   
   bic.score = rep(0, K)
   
   for (k in 1:K) {
     Ahat[[k]] = matrix(0, p, p)
-    data <- trainX[which(trainY == k), ]
     
-    empcov <- cov(data) #empirical cov
-    while (kappa(empcov) > 1e+2){
-      empcov = empcov + 0.05 * diag(p)
+    if(length(zero[[k]])<p*(p-1)){
+      data <- trainX[which(trainY == k), ]
+      
+      empcov <- cov(data) #empirical cov
+      while (kappa(empcov) > 1e+2){
+        empcov = empcov + 0.05 * diag(p)
+      }
+      
+      fit <- glasso(empcov, rho = rho[k], zero = zero[[k]], penalize.diagonal=FALSE, maxit = 30)
+      
+      Omega.hat[[k]] = (fit$wi + t(fit$wi))/2
+      Theta[[k]] <- diag(diag(Omega.hat[[k]])^(-0.5)) %*% Omega.hat[[k]] %*% diag(diag(Omega.hat[[k]])^(-0.5))
+      Ahat[[k]][abs(Omega.hat[[k]])>eps] = 1
+      diag(Ahat[[k]]) = 0
+      
+      if(BIC){
+        bic.score[k] = matTr(empcov %*% Omega.hat[[k]]) - log(det(Omega.hat[[k]])) + log(n[k]) * sum(Ahat[[k]])/(2*n[k])
+      }
+    } else{ # in case all edges are zero in k-th adjacency matrix
+      Omega.hat[[k]] = diag(1/(diag(empcov)-0.05))
+      Theta[[k]] = diag(1, p)
     }
-    
-    fit <- glasso(empcov, rho = rho[k], zero = zero[[k]], penalize.diagonal=FALSE, maxit = 30)
-    
-    Omega.hat[[k]] = (fit$wi + t(fit$wi))/2
-    Theta[[k]] <- diag(diag(Omega.hat[[k]])^(-0.5)) %*% Omega.hat[[k]] %*% diag(diag(Omega.hat[[k]])^(-0.5))
-    Ahat[[k]][abs(Omega.hat[[k]])>eps] = 1
-    diag(Ahat[[k]]) = 0
-    
-    if (BIC){
-      bic.score[k] = matTr(empcov %*% Omega.hat[[k]]) - log(det(Omega.hat[[k]])) + log(n[k]) * sum(Ahat[[k]])/(2*n[k])
-    }
-    
   }
   
   out = list(Omega = Omega.hat, Theta = Theta, Adj = Ahat, BIC = bic.score, lambda = lambda)

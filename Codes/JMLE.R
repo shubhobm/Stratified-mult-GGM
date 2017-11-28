@@ -1,19 +1,22 @@
 ## The Joint Multi-level Estimation (JMLE) Method
 jmle = function(Y.list, Y.indices=NULL, X.list,
                 B.group.array, Theta.groups,
+                B_init.array=NULL, Theta_init.array=NULL, init.gamma=NULL, init.option=1,
                 lambda=NULL, gamma=NULL,
-                init.option=1, refit.B=TRUE, tol=1e-4, maxit=20){
+                refit.B=TRUE, tol=1e-4, maxit=20, eps=1e-6, VERBOSE=TRUE){
   
-  ## initialize quantities
+  #****************************************************#
+  # Define and initialize some quantities
+  #****************************************************#
   arraydims = dim(B.group.array)
   p = arraydims[1]; q = arraydims[2]; K = arraydims[3]
   n = nrow(Y.list[[1]])
   Theta.group.array = array(0, c(q,q,K))
   for(j in 1:q){
-    Theta.group.array[j,-j,] = Y.layer$groups[[j]]
+    Theta.group.array[j,-j,] = Theta.groups[[j]]
   }
   
-  ## default values if NULL
+  ## default values of arguments if they are NULL
   if(is.null(Y.indices)){
     Y.indices = list()
     for(k in 1:K){
@@ -21,21 +24,31 @@ jmle = function(Y.list, Y.indices=NULL, X.list,
     }
   }
   if(is.null(lambda)){
-    lambda = .5 * sqrt(log(p*q)/n)
+    lambda = .5 * sqrt(log(p)/n)
   }
   if(is.null(gamma)){
     gamma = sqrt(log(q)/n) * seq(1, 0.1, -0.1)
   }
 
-  skeleton.hat = array(1, c(p,q)); # assuming all directed edges possibly exist
-  Existing.edges = diag(1:p) %*% skeleton.hat
-  B_init.array = array(0, dim=c(p,q,K))
-  Ehat.list = list()
+  #****************************************************#
+  # Initialization of iterates
+  #****************************************************#
   
-  ## Two options for intialization
+  ## Option 0: initial values supplied. Nothing to do
+  if(!is.null(B_init.array) & !is.null(Theta_init.array)){
+    cat("Initial values detected. Skipping initialization\n")
+    Ehat.list = list()
+    for(k in 1:K){
+      Ehat.list[[k]] = Y.list[[k]] - X.list[[k]] %*% B_init.array[,,k]
+    }
+    gamma.min = init.gamma
+    
+    init.option = 0
+  }
+  
   ## Option 1: initialize B, then run JSEM to initialize Theta
   if(init.option==1){
-    ## initialize B
+    ## initialize B from separate analysis
     cat("Initializing B array\n")
     skeleton.hat = array(1, c(p,q)); # assuming all directed edges possibly exist
     Existing.edges = diag(1:p) %*% skeleton.hat
@@ -48,7 +61,6 @@ jmle = function(Y.list, Y.indices=NULL, X.list,
       B_init.array[,,k] = LS$B0
       Ehat.list[[k]] = Y.list[[k]] - X.list[[k]] %*% LS$B0
     }
-
 
     ## initialize Theta
     cat("Initializing Theta array: ")
@@ -82,21 +94,29 @@ jmle = function(Y.list, Y.indices=NULL, X.list,
     Ehat.list = Y.list
   }
 
+  #****************************************************#
+  # Alternating algorithm
+  #****************************************************#
+  
   ## make long X and Y matrices
   Y = do.call(rbind, Y.list)
   X = as.matrix(do.call(bdiag, X.list))
   
   # initialize
-  Normfunc = c(); Objfunc = c(); iter = 0; CONVERGE=FALSE; refit.B=TRUE; update.counter=0;
+  Normdiff = c()
+  Objfunc = Obj(Y.list, X.list, Theta_init.array, B_init.array,
+                Theta.group.array, B.group.array,
+                lambda=lambda, gamma=.5 * sqrt(log(q)/n))
+  iter = 0; CONVERGE=FALSE; refit.B=TRUE; update.counter=0;
   updateTheta = FALSE; # we don't update Theta until B is stabilized a bit
   B_new.array = B_init.array
   Theta_new.array = Theta_init.array
-  jsem.model = init.jsem.model
+  jsem.model = NULL
   
   # # store bic values from JSEM models
   # bic.mat = init.bic.jsem$BIC
   
-  ## Here we start with the alternating procedure
+  ## start with the alternating procedure
   cat('-----\n')
   while(!CONVERGE){
     iter = iter + 1;
@@ -117,7 +137,7 @@ jmle = function(Y.list, Y.indices=NULL, X.list,
       rm(Et.j.list)
       
       # build model
-      temp = grpreg(X, Y[,j] + Ehat.theta.j, unlist(as.numeric(B0.group.array[,j,])),
+      temp = grpreg(X, Y[,j] + Ehat.theta.j, unlist(as.numeric(B.group.array[,j,])),
                     family="gaussian", penalty="grLasso", lambda=lambda)
       B_new.array[,j,] = matrix(temp$beta[-1], ncol=K, byrow=F)
       
@@ -163,40 +183,53 @@ jmle = function(Y.list, Y.indices=NULL, X.list,
       }
       update.counter = update.counter + 1
       # bic.mat = rbind(bic.mat, bic.jsem$BIC)
+    } else{
+      Theta_new.array = Theta_old.array
     }
     
     # check convergence
-    Objfunc[iter] = Obj(Y.list, X.list, Theta_new.array, B_new.array,
-                        Theta.group.array, B0.group.array,
+    Objfunc[iter+1] = Obj(Y.list, X.list, Theta_new.array, B_new.array,
+                        Theta.group.array, B.group.array,
                         lambda=lambda, gamma=gamma.min)
-    Normfunc[iter] = sqrt(sum(B_new.array - B_old.array)^2)/sqrt(sum(B_new.array^2)) +
+    Normdiff[iter] = sqrt(sum(B_new.array - B_old.array)^2)/sqrt(sum(B_new.array^2)) +
       sqrt(sum(Theta_new.array - Theta_old.array)^2)/sqrt(sum(Theta_new.array^2))
-    if (iter == 1){
-      Norm_diff = Normfunc[1]
-      Obj_diff = Objfunc[1]
+    # if (iter == 1){
+    #   Norm_diff = Normfunc[1]
+    # }
+    # else{
+    #   Norm_diff = Normfunc[iter] - Normfunc[iter-1]
+    #   Obj_diff = (Objfunc[iter] - Objfunc[iter-1])/Objfunc[iter-1]
+    # }
+    Obj_diff = Objfunc[iter+1]/Objfunc[iter] - 1
+    
+    # convergence criterion value
+    nd = abs(Normdiff[iter])
+    if(iter>1){
+      nd = c(nd, abs(rev(diff(Normdiff))[1]))
     }
-    else{
-      Norm_diff = Normfunc[iter] - Normfunc[iter-1]
-      Obj_diff = (Objfunc[iter] - Objfunc[iter-1])/Objfunc[iter-1]
+    if(iter>2){
+      nd = c(nd, abs(rev(diff(Normdiff,2))[1]))
     }
-    cat("Norm_diff =",round(abs(Norm_diff),4),'Obj_diff',round(abs(Obj_diff),5),'\n-----\n')
-    CONVERGE = (abs(Norm_diff)<tol)
+    cat("Norm_diff =",round(nd,4),'Obj_diff',round(abs(Obj_diff),5),'\n-----\n')
+    CONVERGE = (min(nd)<tol)
     
     if (iter == maxit){
       cat("Max iterations reached.",'\n')
-      warning("algorithm didn't converge.\nRequired epsilon for convergence is ", tol,
-              " while current value is ", round(abs(Norm_diff), 4))
       break;
     }
   }
   
   if(CONVERGE){
     cat("Converged after",iter,"iterations.\n")
+  } else{
+    warning("algorithm didn't converge.\nRequired epsilon for convergence is ", tol,
+            " while current value is ", round(min(nd), 4))
   }
   
   ## If refitting of B matrices hasn't been done inside the loop then refit in the end
   B_refit.array = B_new.array
-  if(!refit.B){ 
+  if(!refit.B){
+    cat("Refitting B\n")
     for(j in 1:q){
 
             # make long vector or errors for j-th column for all k
@@ -220,20 +253,41 @@ jmle = function(Y.list, Y.indices=NULL, X.list,
     }
   }
   
-  ## Refit Theta
-  Ahat <- jsem.model$Ahat
+  ## Refit to get Omega
+  # cat("Getting Omega 1\n")
+  if(is.null(jsem.model)){
+    Ahat = list()
+    for(k in 1:K){
+      Ahat[[k]] = matrix(0, q, q)
+      Ahat[[k]][which(abs(Theta_new.array[,,k])>eps, arr.ind=T)] = 1
+      diag(Ahat[[k]]) = 0
+    }
+  } else{
+    Ahat = jsem.model$Ahat
+  }
+
+  # cat("Getting Omega 2\n")
   Info = list()
   for (k in 1:K){
     Info[[k]] = zeroInd(Ahat[[k]], 1)$zeroArr
   }
+  # cat("Getting Omega 3\n")
   Theta_refit = multi.glasso(do.call(rbind, Ehat.list), unlist(Y.indices), gamma.min, Info)
   
   ## return
   return(list(B.refit=B_refit.array, Theta_refit=Theta_refit))
 }
 
+#****************************************************#
+# Auxiliary functions
+#****************************************************#
+# cat = function(string, VERBOSE){
+#   if(VERBOSE){
+#     cat(string)
+#   }
+# }
 
 
-##################################
+#****************************************************#
 # EOF
-##################################
+#****************************************************#
