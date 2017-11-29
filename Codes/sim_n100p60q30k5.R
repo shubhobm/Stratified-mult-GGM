@@ -98,6 +98,8 @@ loopfun = function(rep){
       jmle.bic.vec[k] = sum(diag(crossprod((Y.list[[k]] - X.list[[k]] %*%
                                               jmle.model$B.refit[,,k]) %*% (diag(1,q) - Theta.k))))/nk +
         log(nk)/nk * (sum(Theta.k != 0)/2 + sum(jmle.model$B.refit[,,k] != 0))
+        # log(log(nk))*log(q*(q-1)/2)/nk * sum(Theta.k != 0)/2 + 
+        # log(log(nk))*log(p*q)/nk * sum(jmle.model$B.refit[,,k] != 0)
     }
     bic.vec[m] = sum(jmle.bic.vec)
   }

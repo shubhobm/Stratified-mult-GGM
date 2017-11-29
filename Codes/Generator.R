@@ -35,11 +35,13 @@ CoefArray = function(B.group.array, sparsity=NULL, SNR=NULL){
 #***********************************************************#
 # generates a single layer of data: a K-length list of matrices
 #***********************************************************#
-GenerateLayer = function(n, subnetSize, group, m=2, rho=0, rho.joint=0.01){
+GenerateLayer = function(n, subnetSize, group, sparsity=NULL, m=2, rho=0, rho.joint=0.01){
   
   p =  sum(subnetSize)      # number of variables
   rho = 0                   # misspecification ratio
-  K = dim(group)[1]         # number of models/networks 
+  K = dim(group)[1]         # number of models/networks
+  if (is.null(sparsity))
+    sparsity = 5/p
   
   ## Generate the sparsity pattern for all variables
   ix = vector("list", p)
@@ -100,7 +102,7 @@ GenerateLayer = function(n, subnetSize, group, m=2, rho=0, rho.joint=0.01){
     Amat[[k]] <- as.matrix(get.adjacency(tmp.g, type="both"))
     
     weights <- matrix(0, p, p)
-    upperTriangle(weights, diag = F) <- runif((p*(p - 1))/2, 0.5, 1)*(2*rbinom((p*(p - 1))/2, 1, 0.5) - 1)
+    upperTriangle(weights, diag = F) <- runif((p*(p - 1))/2, 0.5, 1)*(2*rbinom((p*(p - 1))/2, 1, sparsity) - 1)
     weights <- weights + t(weights)
     
     pdobj <- pd(weights * Amat[[k]])
