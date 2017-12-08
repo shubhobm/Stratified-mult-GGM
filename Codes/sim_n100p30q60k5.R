@@ -17,8 +17,8 @@ group = rbind(
   c(3, 4),
   c(5, 2)
 )                         # grouping pattern
-subnetSize.X = c(30, 30)
-subnetSize.E = c(15, 15)    # subnet size
+subnetSize.E = c(30, 30)
+subnetSize.X = c(15, 15)    # subnet size
 n = 100
 p = sum(subnetSize.X)
 q = sum(subnetSize.E)
@@ -67,12 +67,12 @@ loopfun = function(rep){
   ## tune JMLE model
   lambda.vec = sqrt(log(p)/n) * seq(0.8, 0.1, -0.1)
   nlambda = length(lambda.vec)
-
+  
   ## get all models
   loopfun1 = function(m){
     jmle(Y.list, Y.indices, X.list, B.group.array=B0.group.array, Theta.groups=Theta.groups,
          lambda = lambda.vec[m],
-         gamma = sqrt(log(q)/n) * seq(0.8, 0.1, -0.1),
+         gamma = sqrt(log(q)/n) * seq(0.8, 0.2, -0.2),
          init.option=1, tol=1e-3)
   }
   system.time(
@@ -134,4 +134,4 @@ loopfun = function(rep){
 }
 
 eval.list = lapply(1:1e2, loopfun)
-save(eval.list, file="out_n100p60q30k5.Rda")
+save(eval.list, file="out_n100p30q60k5.Rda")
