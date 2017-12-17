@@ -5,10 +5,12 @@ setwd("D:/Study/My projects/Stratified-mult-GGM/Codes")
 ## *******************************************
 ## for jmle estimators
 load('out_n100p60q30k5.Rda')
-HBIC.mat = matrix(0, nrow=100, ncol=6)
-for(i in 1:100) HBIC.mat[i,] = as.numeric(eval.list[[i]][which.min(eval.list[[i]][,3]),-(1:3)])
-BIC.mat = matrix(0, nrow=100, ncol=6)
-for(i in 1:100) BIC.mat[i,] = as.numeric(eval.list[[i]][which.min(eval.list[[i]][,2]),-(1:3)])
+nrep = length(eval.list)
+eval.list = lapply(eval.list, function(x) x[which(x$BIC>0),])
+HBIC.mat = matrix(0, nrow=nrep, ncol=6)
+for(i in 1:nrep) HBIC.mat[i,] = as.numeric(eval.list[[i]][which.min(eval.list[[i]][,3]),-(1:3)])
+BIC.mat = matrix(0, nrow=nrep, ncol=6)
+for(i in 1:nrep) BIC.mat[i,] = as.numeric(eval.list[[i]][which.min(eval.list[[i]][,2]),-(1:3)])
 z = data.frame(rbind(round(apply(HBIC.mat,2,mean),3),
                      round(apply(HBIC.mat,2,sd),3),
                      round(apply(BIC.mat,2,mean),3),
@@ -33,10 +35,11 @@ zsep
 ## *******************************************
 ## for jmle estimators
 load('out_n100p30q60k5_biggrid.Rda')
-HBIC.mat = matrix(0, nrow=100, ncol=6)
-for(i in 1:100) HBIC.mat[i,] = as.numeric(eval.list[[i]][which.min(eval.list[[i]][,3]),-(1:3)])
-BIC.mat = matrix(0, nrow=100, ncol=6)
-for(i in 1:100) BIC.mat[i,] = as.numeric(eval.list[[i]][which.min(eval.list[[i]][,2]),-(1:3)])
+nrep = length(eval.list)
+HBIC.mat = matrix(0, nrow=nrep, ncol=6)
+for(i in 1:nrep) HBIC.mat[i,] = as.numeric(eval.list[[i]][which.min(eval.list[[i]][,3]),-(1:3)])
+BIC.mat = matrix(0, nrow=nrep, ncol=6)
+for(i in 1:nrep) BIC.mat[i,] = as.numeric(eval.list[[i]][which.min(eval.list[[i]][,2]),-(1:3)])
 z = data.frame(rbind(round(apply(HBIC.mat,2,mean),3),
                      round(apply(HBIC.mat,2,sd),3),
                      round(apply(BIC.mat,2,mean),3),
