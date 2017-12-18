@@ -33,9 +33,47 @@ CoefArray = function(B.group.array, sparsity=NULL, SNR=NULL){
 }
 
 #***********************************************************#
+# Generates the p times q times K array of regression coefficients
+# K=2 version for hypothesis testing
+#***********************************************************#
+CoefArray2 = function(B.group.matrix, sparsity=NULL, SNR=NULL,
+                      p.diff=NULL, D=1){
+  
+  # default sparsity is 5/p (model 1 in Cai, model 2 in Cai has a sparsity of 30/p)
+  dims = dim(B.group.matrix)
+  if (is.null(sparsity))
+    sparsity = 5/dims[1]
+  
+  # default SNR is 1
+  if (is.null(SNR))
+    SNR = 1
+  
+  # default p for nonzero diff is .2
+  if(is.null(p.diff))
+    p.diff = .2
+  
+  # construct matrix of differences
+  Diff = D*rbinom(prod(dims), 1, prob=p.diff)*
+    sample(c(-1,1), prod(dims), replace=T)
+  Diff = matrix(Diff, nrow=dims[1], ncol=dims[2], byrow=T)
+  
+  unique.elems = unique(as.numeric(B.group.matrix))
+  signal.groups = unique.elems[which(rbinom(length(unique.elems), 1, sparsity)==1)] # randomly assign non-zero groups
+  B.array = array(0, c(dims[1],dims[2],2))
+  for(h in signal.groups){ # generate entries in non-zero groups
+    h.indices = which(B.group.matrix==h, arr.ind=T)
+    B.array[cbind(h.indices,1)] = sample(c(-1,1),nrow(h.indices),replace=T)*runif(nrow(h.indices),0.5,SNR)
+    B.array[cbind(h.indices,2)] = B.array[cbind(h.indices,1)] + Diff[h.indices]
+  }
+  
+  list(B.array, Diff)
+}
+
+#***********************************************************#
 # generates a single layer of data: a K-length list of matrices
 #***********************************************************#
-GenerateLayer = function(n, subnetSize, group, sparsity=NULL, m=2, rho=0, rho.joint=0.01){
+GenerateLayer = function(n, subnetSize, group, sparsity=NULL,
+                         m=2, rho=0, rho.joint=0.01, D=1){
   
   p =  sum(subnetSize)      # number of variables
   rho = 0                   # misspecification ratio
@@ -102,7 +140,7 @@ GenerateLayer = function(n, subnetSize, group, sparsity=NULL, m=2, rho=0, rho.jo
     Amat[[k]] <- as.matrix(get.adjacency(tmp.g, type="both"))
     
     weights <- matrix(0, p, p)
-    upperTriangle(weights, diag = F) <- runif((p*(p - 1))/2, 0.5, 1)*(2*rbinom((p*(p - 1))/2, 1, sparsity) - 1)
+    upperTriangle(weights, diag = F) <- D*runif((p*(p - 1))/2, 0.5, 1)*(2*rbinom((p*(p - 1))/2, 1, sparsity) - 1)
     weights <- weights + t(weights)
     
     pdobj <- pd(weights * Amat[[k]])
