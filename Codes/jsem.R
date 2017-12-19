@@ -369,11 +369,11 @@ multi.glasso <- function(
   
   for (k in 1:K) {
     Ahat[[k]] = matrix(0, p, p)
+    data <- trainX[which(trainY == k), ]
+    empcov <- cov(data) #empirical cov
     
     if(length(zero[[k]])<p*(p-1)){
-      data <- trainX[which(trainY == k), ]
       
-      empcov <- cov(data) #empirical cov
       while (kappa(empcov) > 1e+2){
         empcov = empcov + 0.05 * diag(p)
       }

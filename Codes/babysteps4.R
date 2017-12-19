@@ -11,8 +11,8 @@ library(parallel)
 
 ##### Generate data
 group = matrix(c(1, 2), nrow=2, ncol=2, byrow=T)           # grouping pattern
-subnetSize.E = c(5, 5)
-subnetSize.X = c(5, 5)    # subnet size
+subnetSize.E = c(50, 50)
+subnetSize.X = c(50, 50)    # subnet size
 n = 100
 p = sum(subnetSize.X)
 q = sum(subnetSize.E)
@@ -61,7 +61,7 @@ for(j in 1:q){
 ## Obtain JMMLE fit ****************************************************
 # **********************************************************************
 ## tune JMMLE model
-lambda.vec = sqrt(log(p)/n) * seq(1, 0.2, -0.2)
+lambda.vec = sqrt(log(p)/n) * seq(1, 0.4, -0.1)
 model.list = vector("list", length(lambda.vec))
 nlambda = length(lambda.vec)
 
@@ -69,7 +69,7 @@ nlambda = length(lambda.vec)
 loopfun1 = function(m){
   jmmle.1step(Y.list, Y.indices, X.list, B.group.array=B0.group.array, Theta.groups=Theta.groups,
        lambda = lambda.vec[m],
-       gamma = sqrt(log(q)/n) * seq(1, 0.2, -0.2),
+       gamma = sqrt(log(q)/n) * seq(1, 0.4, -0.1),
        init.option=1, tol=1e-3)
 }
 system.time(
@@ -105,7 +105,7 @@ jmmle.model = model.list[[which.min(hbic.vec)]]
 # **********************************************************************
 X.indices = X.layer$indices
 Zeta.groups = X.layer$groups
-gamma = sqrt(log(p)/n) * seq(1, 0.2, -0.2)
+gamma = sqrt(log(p)/n) * seq(1, 0.4, -0.1)
 bic.jsem <- sel.lambda.jsem(do.call(rbind, X.list), do.call(rbind, X.list),
                             unlist(X.indices), unlist(X.indices),
                             Zeta.groups,lambda=gamma)
@@ -170,7 +170,7 @@ for(i in 1:p){
 
 ## determine threshold for i-th test
 alpha = .05
-d.ind.mat = matrix(NA,p,q)
+d.ind.mat = matrix(0,p,q)
 tau = rep(NA,p)
 for(i in which(D > qchisq(.95, 2*q))){
   tau.vec = seq(0, 20, length.out=1e2)
@@ -180,11 +180,11 @@ for(i in which(D > qchisq(.95, 2*q))){
   d.ind.mat[i,] = as.numeric(abs(d[i,])>tau[i])
 }
 
-tau.vec = seq(0, 20, length.out=1e2)
-thres.vec = lapply(tau.vec, function(x) alpha/(p*q) * max(sum(d>x),1))
-thres.vec = as.numeric(thres.vec)
-tau = tau.vec[which.min(abs(1 - pchisq(tau.vec,2) - thres.vec))]
-d.ind.mat = (d>tau)
+# tau.vec = seq(0, 20, length.out=1e2)
+# thres.vec = lapply(tau.vec, function(x) alpha/(p*q) * max(sum(d>x),1))
+# thres.vec = as.numeric(thres.vec)
+# tau = tau.vec[which.min(abs(1 - pchisq(tau.vec,2) - thres.vec))]
+# d.ind.mat = matrix(as.numeric(d>tau), nrow=p, ncol=q, byrow=F)
 
 pow = sum(d.ind.mat == 1 & Diff.mat != 0, na.rm=T)/sum(Diff.mat != 0)
 size = 1 - sum(d.ind.mat == 0 & Diff.mat == 0, na.rm=T)/sum(Diff.mat == 0)

@@ -63,8 +63,8 @@ CoefArray2 = function(B.group.matrix, sparsity=NULL, SNR=NULL,
   for(h in signal.groups){ # generate entries in non-zero groups
     h.indices = which(B.group.matrix==h, arr.ind=T)
     B.array[cbind(h.indices,1)] = sample(c(-1,1),nrow(h.indices),replace=T)*runif(nrow(h.indices),0.5,SNR)
-    B.array[cbind(h.indices,2)] = B.array[cbind(h.indices,1)] + Diff[h.indices]
   }
+  B.array[,,2] = B.array[,,1] + Diff
   
   list(B.array, Diff)
 }
