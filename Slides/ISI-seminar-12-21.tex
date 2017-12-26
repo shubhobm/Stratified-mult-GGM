@@ -1,0 +1,803 @@
+\documentclass[10pt]{beamer}
+\usepackage{SexySlides1,fancyvrb,outlines,pbox}
+\usepackage[round]{natbib}
+\usepackage{hyperref} % link references
+\hypersetup{colorlinks = true, citecolor = red, urlcolor = blue}
+\usepackage[font=footnotesize]{caption} % caption options
+\usepackage{fancyvrb}
+
+\theoremstyle{definition}
+\newtheorem{Algorithm}{Algorithm}
+
+
+\usepackage[tikz]{bclogo}
+\presetkeys{bclogo}{
+ombre=true,
+epBord=3,
+couleur = white,
+couleurBord = black,
+arrondi = 0.2,
+logo=\bctrombone
+}{}
+
+\definecolor{UniBlue}{RGB}{83,121,170}
+\setbeamercolor{title}{fg=UniBlue}
+\setbeamercolor{frametitle}{fg=UniBlue}
+\newcommand{\coluit}{\color{UniBlue}\it}
+\newcommand{\colubf}{\color{UniBlue}\bf}
+\DeclareMathOperator*{\diag}{diag}
+\DeclareMathOperator*{\Tr}{Tr}
+\DeclareMathOperator*{\argmin}{argmin}
+
+% Row color change in table
+\makeatletter
+\def\zapcolorreset{\let\reset@color\relax\ignorespaces}
+\def\colorrows#1{\noalign{\aftergroup\zapcolorreset#1}\ignorespaces}
+\makeatother
+
+     \setbeamertemplate{footline}
+        {
+      \leavevmode%
+      \hbox{%
+      \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+        \usebeamerfont{author in head/foot}\insertshortauthor~~
+        %(\insertshortinstitute)
+      \end{beamercolorbox}%
+      \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+        \usebeamerfont{title in head/foot}\insertshorttitle
+      \end{beamercolorbox}%
+      \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+        \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+
+    %#turning the next line into a comment, erases the frame numbers
+        %\insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+
+      \end{beamercolorbox}}}%
+
+%\def\logo{%
+%{\includegraphics[height=1cm]{goldy1.png}}
+%}
+%%
+%\setbeamertemplate{footline}
+%{%
+%	\hspace*{.05cm}\logo
+%  \begin{beamercolorbox}[sep=1em,wd=10cm,rightskip=0.5cm]
+%  {footlinecolor,author in head/foot}
+%%    \usebeamercolor{UniBlue}
+%    \vspace{0.1cm}
+%    \insertshortdate \hfill \insertshorttitle
+%    \newline
+%    \insertshortauthor   - \insertshortinstitute
+%    \hfill
+%    \hfill \insertframenumber/\inserttotalframenumber
+%  \end{beamercolorbox}
+%  \vspace*{0.05cm}
+%}
+
+%% smart verbatim
+\fvset{framesep=1cm,fontfamily=courier,fontsize=\scriptsize,framerule=.3mm,numbersep=1mm,commandchars=\\\{\}}
+
+\title[Fast Model Selection with $e$-values]
+{\Large  
+Fast and General Best Subset Selection using Data Depth and Resampling}
+
+\author[Majumdar and Chatterjee]{Subhabrata Majumdar and Snigdhansu Chatterjee}
+\institute[]{University of Florida and University of Minnesota Twin Cities\\
+\vspace{1em}
+December 21, 2017} 
+
+%\vspace{.5cm}
+%\includegraphics[height=.5cm]{UMNlogo}}
+
+\date [September 19, 2017]
+
+%%%%%%%List Outline in the beginning of each section.
+\AtBeginSection[] {
+   \begin{frame}
+       \frametitle{Outline}
+       \tableofcontents[currentsection]
+   \end{frame}
+}
+
+%-------------------------------------------------------------------
+\begin{document}
+
+%\begin{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\frame{ \titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Summary}
+
+Consider the linear model:
+%
+\begin{align}\label{eqn:linmodel}
+Y = X \beta + \epsilon; \quad
+Y \in \BR^n, X \in \BR^{n \times p}, \beta \in \BR^p
+\end{align}
+%
+\begin{itemize}
+\item Variable selection in \eqref{eqn:linmodel} is a fundamental problem in statistics. There are two ways to do this- sparse penalized regression and best subset selection.
+\vspace{1em}
+
+\item Sparse methods have inferential and algorithmic issues. Best subset selection is computationally demanding.
+\vspace{1em}
+
+\item Best subset selection in other models with dependent or structured $\epsilon$, e.g. mixed effect models is poorly explored.
+\vspace{1em}
+
+\item {\colbit Our method:} We propose a fast and general algorithm for best subset selection in a wide range of statistical models. Our method trains only a single model, and evaluates a model selection criterion at $p+1$ models ($p$ = no. of predictors) to come up with a selected set of variables.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\frame{\frametitle{Table of contents}\tableofcontents}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Section 1: background
+\section{Formulation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Data Depth}
+\textbf{Example}: 500 points from $\mathcal{N}_2 ((0,0)^T, \diag (2,1))$.
+\begin{figure}\begin{center}
+   \includegraphics[height=6cm]{depthplot_cropped}
+   \label{fig:fig3}
+\end{center}
+\end{figure}
+%
+Data depth is a {\colbbf scalar measure of how much inside a point is with respect to a data cloud}. Denote it by $D( \bfx, F)$.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Our model selection criterion}
+
+\begin{itemize}
+\item Parameters are estimated based on a finite random sample from sample space. So the estimates have their own probability distributions- these are called {\colbit sampling distributions};
+
+e.g. in linear regression, $\hat \beta \sim \cN (\beta, \sigma^2 (X^T X)^{-1}) \equiv [ \hat \beta ]$.
+\vspace{1em}
+
+\item We compare sampling distributions of parameter estimates in a candidate model with that of a baseline model using a generic quantity called the {\colbbf $e$-value}.
+\vspace{1em}
+
+\item Given some depth function $D(.,.)$ we define the $e$-value as
+%
+$$
+e (\cM) = \BE D( \hat \beta_\cM, [ \hat \beta])
+$$
+%
+i.e. the expected depth of the model estimates with respect to the sampling distribution of $\hat \beta$.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+\frametitle{The fast variable selection `algorithm'}
+
+\begin{minipage}[b]{.6\textwidth}
+%\begin{enumerate}
+%\item Get $\hat \bfbeta$. Calculate criterion full model, say $e_\text{full}$;
+%
+%\item Replace the $j^\text{th}$ coefficient with 0, name it $\hat \bfbeta_{-j}$;
+%
+%\item Calculate criterion $j^\text{th}$-covariate-dropped model, say $e_{-j}$;
+%
+%\item Select covariates with $e$-value less than mean depth of full model:
+%%
+%$$
+%\hat \cS_0 = \{ j: e_{-j} < e_\text{full} \}
+%$$
+%%
+%\end{enumerate}
+\noindent 1. Obtain $e$-value for the full model:
+$$
+e(\cM_{full}) = \BE D ( \hat\bfbeta, [ \hat \bfbeta] )
+$$
+
+\noindent 2. Set $\cS_{select} = \phi$.
+\vspace{1em}
+
+\noindent 3. For $j = 1, 2, \ldots, p$
+
+\hspace{1em} Replace $j^\text{th}$ index of $\hat\bfbeta$ by 0, name it $\hat \beta_{-j}$.
+
+\hspace{1em} Obtain $e(\cM_{-j}) = \BE D ( \hat\bfbeta_{-j}, [ \hat \bfbeta] )$.
+
+\hspace{1em} If $e(\cM_{-j}) < e(\cM_{full})$
+
+\hspace{2em} Set $ \cS_{select} \leftarrow \{ \cS_{select}, j \} $.
+\vspace{1em}
+
+{\colb For large enough $n$, $\cS_{select}$ is the set of non-zero indices in the true parameter vector.}
+\vspace{3em}
+\end{minipage}
+\hspace{1.5em}
+%
+\tikzstyle{mybox} = [draw=black, fill=none, thick, 
+rectangle, rounded corners, inner sep=.5em, inner ysep=.5em,font=\scriptsize,text width=.25\textwidth]
+\begin{tikzpicture}
+\node [mybox](box){%
+%
+\begin{minipage}{1\textwidth}
+	\begin{Verbatim}[commandchars=\\\{\}]
+   DroppedVar        Cn
+\textbf{1         - x2 0.2356008}
+\textbf{2         - x3 0.2428004}
+\textbf{3         - x4 0.2448785}
+\textbf{4         - x1 0.2473548}
+\textbf{5         - x5 0.2486610}
+\textbf{6       - x20 0.2503475}
+7     <none> 0.2505000
+8          - x9 0.2522873
+9        - x21 0.2538186
+10      - x22 0.2547132
+11      - x14 0.2548410
+12      - x17 0.2554293
+13      - x13 0.2559990
+14      - x10 0.2564211
+15      - x24 0.2566334
+16      - x19 0.2568725
+17      - x25 0.2573902
+18        - x8 0.2578656
+19      - x16 0.2588032
+20      - x12 0.2590218
+21        - x6 0.2595048
+22      - x23 0.2598039
+23      - x15 0.2605307
+24      - x11 0.2606763
+25      - x18 0.2610460
+26        - x7 0.2613168
+	\end{Verbatim}
+\end{minipage}
+};
+\end{tikzpicture}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{The idea- an example}
+
+Consider a linear model with $p=2$, and true coefficient vector $\beta_0 = (5,0)^T$. Here we have the following choice of models:
+%
+\begin{center}
+\begin{tabular}{ll}
+{\colb $\cM_1: \ \ Y = X_1 \beta_1 + X_2 \beta_2 + \epsilon$;} & {\colb $\ \ \Theta_1 = \BR^2$}\\
+{\colb $\cM_{2}: \ \ Y  =  X_1 \beta_1 + \epsilon$;} & {\colb $\ \ \Theta_2 = \BR \times \{ 0 \}$} \\
+{\colr $\cM_{3}: \ \ Y  =  X_2 \beta_2 + \epsilon$;} & {\colr $\ \ \Theta_3 = \{ 0 \} \times \BR$}\\
+{\colr $\cM_{4}: \ \ Y  =  \epsilon $;} & {\colr $\ \ \Theta_4 = (0,0)^T$}
+\end{tabular}
+\end{center}
+Some are {\colb good models}, some are {\colr bad models}.
+%
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{The idea- an example}
+
+\begin{figure}
+\centering
+\includegraphics[height=.5\textheight]{contour}
+\end{figure}
+
+As $n$ grows, the full model sampling distribution concentrates around $\beta_0$, so mean depths at $\cM_3$ and $\cM_4$ vanish.
+
+However, both depth and density contours scale down by the same multiple as $n$ goes down, so that mean depths at $\cM_1$ and $\cM_2$ remain constant.
+
+\vspace{3em}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Section 2: theory
+\section{Theory}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Definition of a model}
+
+At stage $n$ there is a triangular array of functions
+%
+\begin{align*}
+\{ \Psi_{ni} (\theta_n, Z_{ni}): 1 \leq i \leq k_n, n \geq 1 \}
+\end{align*}
+%
+where $\cZ_n = \{ Z_{n1}, \ldots, Z_{n k_n} \}$ is an observable array of random variables, and $\theta_n \in \Theta_n \subseteq \BR^{p}$.
+
+The true unknown vector of parameters $\theta_{0 n}$ is the unique minimizer of
+%
+\begin{align*}
+\Psi_n (\theta_n) = \BE \sum_{i=1}^{k_n} \Psi_{n i} (\theta_n, Z_{n i})
+\end{align*}
+%
+The common non-zero support of all estimable parameters is $\cS_{* n} = \cup_{ \theta_n \in \Theta_n} \text{support}(\theta_n)$.
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Definition of a model}
+In this general setup, we associate a candidate model $\cM_n$ with two quantities:
+
+\begin{enumerate}
+\item[(a)] The set of indices $\cS_n \subseteq \cS_{* n} $ where the parameter values are unknown and {\colbbf estimated from the data}, and
+\item[(b)] an ordered vector of {\colbbf known constants} $C_{n} = (C_{n j}: j \notin \cS_n)$ for  parameters not indexed by $\cS_n$.
+\end{enumerate}
+\vspace{1em}
+
+The generic parameter vector corresponding to this model, denoted by $\theta_{m n} \in \Theta_{m n} \subseteq \Theta_{n} := \prod_j \Theta_{n j}$, will thus have the structure
+\begin{align*}
+\theta_{m n j} = \left\{ \begin{array}{ll}
+ \text{ unknown} \ \theta_{ m n j} \in \Theta_{n j} & \text{ for } 
+ 			j \in \cS_n, \\
+ \text{ known} \  C_{n j} \in \Theta_{n j} & \text{ for } j \notin \cS_n.
+\end{array}
+\right.
+\end{align*}
+%
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Method of estimation}
+The estimator $\hat{\theta}_{* n}$ of $\theta_{0 n}$ is obtained as
+%
+\begin{align*}
+\hat{\theta}_{* n} = 
+\argmin_{\theta_n} \hat{\Psi}_{n} (\theta_n) =
+\argmin_{\theta_n} \sum_{i = 1}^{k_{n}} \Psi_{n i}  \bigl( \theta_n, Y_{ni} \bigr)
+\end{align*}
+%
+We assume an elliptical asymptotic distribution for $\hat \theta_{* n}$ with the conditions-
+
+\begin{enumerate}
+\item[(A1)]
+There exists a sequence of positive reals $a_n \uparrow \infty$ such that $a_{n} (\hat \theta_{* n} - \theta_{0 n} ) \leadsto \cE ( 0_p, V, g)$, for some p.d. matrix $V \in \BR^{p \times p}$ and density generator function $g$;
+
+\item[(A2)]
+For almost every data sequence $\cZ_n$, There exists a sequence of positive definite matrices $V_n \in \BR^{p \times p}$ such that  $\text{plim}_{n \raro \infty} V_n = V$.
+\end{enumerate}
+ 
+For any other model $\cM_n$, we use the plugin estimate:
+%
+\begin{align*}
+ \hat{\theta}_{m n j} = \left\{ \begin{array}{ll}
+ \hat{\theta}_{ * n j} & \text{ for } j \in \cS_n, \\
+ C_{n j} & \text{ for } j \notin \cS_n.
+\end{array}
+\right.
+\end{align*}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{`Good' and `bad' models}
+
+\begin{itemize}
+\item A model $\cM_{n}$ is called {\colbit adequate} if
+%
+\begin{align*}
+\lim_{n \raro \infty}
+\sum_{j \notin \cS_n} | C_{n j}  - {\theta}_{0 nj} | = 0
+\end{align*}
+%
+A model that is not adequate, will be called an {\colbit inadequate} model.
+
+\item The model $\cM_{n}$ is called {\colbit strictly adequate} if, for all $n$ and $j \notin \cS_n$, $C_{n j}  = {\theta}_{0 n j}$.
+\end{itemize}
+%
+\vspace{1em}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Motivation}
+
+{\colbbf Covers obvious cases:} 
+%
+\begin{align*}
+& (1, 2, 3, 0, -1) \quad - \quad \text{preferred parameter vector}\\
+& (*, 0, *, *, *) \quad - \quad \text{inadequate model}\\
+& (*, *, *, *, *) \quad - \quad \text{full model}\\
+& (*, *, *, 0, *) \quad - \quad \text{ strictly adequate model}
+\end{align*}
+
+\vspace{1em}
+{\colbbf Covers limiting cases:}, e.g. $(*, *, *, \delta_n), \delta_n = o(1)$ will be an adequate model in our framework.
+%
+$$ 
+$$
+%
+
+Such data generating models, e.g.
+$$
+Y_{ni} = X_{1i} \beta_{01} + X_{2i} \delta_n + \epsilon; \quad \beta_{01} \in \BR, \delta_n = o(1)
+$$
+for linear regression, frequently arise from prior choices in bayesian variable selection techniques.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Statistical evaluation maps and $e$-values}
+We now use a {\colbit data depth function}:
+%
+$$
+D: \BR^{p} \times \tilde \BR^{p} \mapsto [0, \infty)
+$$
+%
+to quantify the relative position of $\bftheta_{m n}$ with respect to the preferred model estimate distribution. Denote this by
+%
+$$
+D ( \hat \bftheta_{m n}, [\hat \bftheta_{* n}])
+$$
+
+{\colbbf $e$-value} is simply a functional of the distribution of this random evaluation function. Denote this by $e_n (\cM_n)$.
+
+\vspace{1em}
+We shall now elaborate on the following choice of the $e$-value:
+%
+$$
+e_n (\cM_n) = \BE D ( \hat \bftheta_{m n}, [\hat \bftheta_{* n}])
+$$
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Resampling approximation of $e$-values}
+
+\begin{itemize}
+\item We use resampling to approximate the distributions of the random quantities $\hat \theta_{m n}$ and $\hat \theta_{* n}$. The resampling estimate of a model $e$-value is defined using two bootstrap samples: 
+%
+\begin{align*}
+e_{r n} (\cM_{n}) = \BE_{r_{1}} D \bigl(  \hat{\theta}_{r_{1} m n}, 
+[\hat{\theta}_{r * n}] \bigr)
+\end{align*}
+%
+
+\item For $\hat \theta_{* n}$, we use {\colbit Generalized bootstrap} \citep{ChatterjeeBose05} that is based on the following approximation:
+%
+\begin{align*}
+\hat\theta_{r * n} & = \hat\bftheta_{* n} - \frac{ \tau_n}{a_n} \left[ \sum_{i=1}^n W_i \Psi_{n i}'' (\hat \bftheta_{* n}, Z_{n i}) \right]^{-1}
+\sum_{i=1}^n W_i \Psi_{n i}' (\hat \bftheta_{* n}, Z_{n i}) + R_{rn};\\
+& \BE_r \| R_{r n} \|^2 = o_P(1), \tau_n \rightarrow \infty, \tau_n = o(a_n) \notag 
+\end{align*}
+
+\item For $\hat \theta_{m n}$ we use the plugin estimate
+\begin{align*}
+ \hat{\theta}_{r_{1} m n j} = \left\{ \begin{array}{ll}
+ 	 \hat{\theta}_{r_1 * n j} & \text{ for } 
+ 			j \in \cS_n; \\
+ 	 C_{n j} & \text{ for } j \notin \cS_n
+\end{array}
+\right.
+\end{align*}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Fast algorithm for variable selection}
+
+\noindent 1. (Dropping $n$ in all subscripts except $e$) Fix resampling standard deviation $\tau$.
+\vspace{1em}
+
+\noindent 2. Obtain bootstrap samples: $\cT = \{ \hat\theta_{1 *}, ..., \hat\theta_{R *} \} $, and $\cT_1 = \{ \hat\theta_{1 *}, ..., \hat\theta_{R_1 *} \} $.
+\vspace{1em}
+
+\noindent 3. Calculate $\hat e_{r n} (\cM_*) = \frac{1}{R_1} \sum_{r_1=1}^{R_1} D ( \hat\theta_{r_1 *}, [\cT_1] )$.
+\vspace{1em}
+
+\noindent 4. Set $\hat \cS_0 = \phi$.
+\vspace{1em}
+
+\noindent 5. For $j$ in $1:p$
+
+\hspace{1em} For $r_1$ in $1:R_1$
+
+\hspace{2em} Replace $j^\text{th}$ index of $\hat\theta_{* r_1}$ by 0 to get $\hat \theta_{r_1, -j}$.
+
+\hspace{1em} Calculate $\hat e_{r n} (\cM_{-j}) = \frac{1}{R_1} \sum_{r_1=1}^{R_1} D ( \hat\theta_{r_1, -j}, [\cT_1] )$.
+
+\hspace{1em} If $\hat e_{r n} (\cM_{-j}) < \hat e_{r n} (\cM_*)$
+
+\hspace{2em} Set $ \hat \cS_0 \leftarrow \{ \hat \cS_0, j \} $.
+\end{frame}
+
+\begin{frame}
+\frametitle{Model selection consistency}
+\begin{Corollary}\label{corollary:BootConsistency}
+Consider two sets of bootstrap estimates of $\hat \theta_*$: $\cT = \{ \hat \theta_{r *}: r = 1, \ldots, R \}$ and $\cT_1 = \{ \hat \theta_{r_1 *}: r_1 = 1, \ldots, R_1 \}$. Obtain sample $e$-value estimates as
+%
+\begin{align*}
+\hat e_{r n} (\cM) & = \frac{1}{R_1} \sum_{r_1=1}^{R_1} D( \hat \theta_{r_1 m}, [ \cT ])
+\end{align*}
+%
+where $[\cT]$ is the empirical distribution of the corresponding bootstrap samples. Consider the set of predictors $\hat \cS_0 = \{ \hat e_{r n} (\cM_{-j} ) < \hat e_{r n} (\cM_*) \}$. Then as $n, R, R_1 \rightarrow \infty$,
+
+%
+\begin{align*}
+P_2( \hat \cS_0 = \cS_0 ) \rightarrow 1
+\end{align*}
+%
+where $P_2$ is the probability conditional on the data and bootstrap samples, and $\cS_0$ is the true index set of non-zero predictors.
+\end{Corollary}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Section 3: Simulation and real data
+\section{Numerical performance}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Simulation: linear models}
+{\colb Methods compared:}
+
+{\bf (a)} Mixed Integer Optimization (MIO) \citep{BertsimasEtal16}
+
+{\bf (b)} Lasso penalized regression
+
+{\bf (c)} SCAD penalized regression
+
+{\bf (d)} BIC forward selection
+
+\vspace{1em}
+{\colb Comparison metrics:}
+
+$$
+\text{Sparsity} ( \hat \beta) = \| \hat \beta \|_0; \quad
+\text{PE} (\hat \beta) = \frac{\| X_\text{test} \hat \beta - X_\text{test} \beta_0 \|}{\|X_\text{test} \beta_0 \|}
+$$
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Results: $n=1000, p=60$}
+
+\begin{figure}
+\includegraphics[width=.8\textwidth]{plot_n1kp60}
+\caption{Model sparsity (top row) and prediction performance (bottom row) for all methods in $n=60, p=1000$ setup.}
+\end{figure}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Results: $n=60, p=1000$}
+\begin{figure}
+\includegraphics[width=.8\textwidth]{plot_n60p1k}
+\caption{Model sparsity (top row) and prediction performance (bottom row) for all methods in $n=60, p=1000$ setup.}
+\end{figure}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Results: effect of tuning parameter}
+\begin{table}
+\centering
+\begin{scriptsize}
+\begin{tabular}{c|cc|cc|cc}
+    \hline
+    \multicolumn{7}{c}{Setting 1: $n = 1000, p = 60$}\\\hline
+    Choice of $\tau_n$ & \multicolumn{2}{|c}{$\rho = 0.5$} & \multicolumn{2}{|c}{$\rho = 0.7$} & \multicolumn{2}{|c}{$\rho = 0.9$}\\\cline{2-7}
+    & Sparsity  & PE $(\times 10^{-4})$ & Sparsity  & PE $(\times 10^{-4})$ & Sparsity  & PE $(\times 10^{-4})$  \\ \hline
+    $\tau_n = \log n$       & 5.01  & 4.5   & 5.00  & 3.3   & 5.06  & 2.6    \\
+    $\tau_n = n^{0.1}$           & 16.16 & 33.6  & 16.85 & 23.3  & 17.89 & 16.3   \\
+    $\tau_n = n^{0.2}$           & 5.74  & 8.1   & 6.03  & 5.7   & 6.75  & 4.8   \\
+    $\tau_n = n^{0.3}$           & 5.01  & 4.5   & 5.01  & 3.3   & 4.96  & 5.0   \\
+    $\tau_n = n^{0.4}$           & 5.00  & 4.4   & 5.00  & 3.3   & 3.14  & 633.6 \\\hline
+    \multicolumn{7}{c}{Setting 2: $n = 60, p = 1000$}\\\hline
+    Choice of $\tau_n$ & \multicolumn{2}{|c}{$\rho = 0.5$} & \multicolumn{2}{|c}{$\rho = 0.7$} & \multicolumn{2}{|c}{$\rho = 0.9$}\\\cline{2-7}
+    & Sparsity  & PE $(\times 10^{-2})$ & Sparsity  & PE $(\times 10^{-2})$ & Sparsity  & PE $(\times 10^{-2})$  \\ \hline
+    $\tau_n = \log n$       	 & 6.63  & 4.5   & 6.34 & 3.4   & 4.79  & 3.7 \\
+    $\tau_n = n^{0.1}$      	 & 7.57  & 4.6   & 7.24 & 3.0   & 7.16  & 2.1  \\
+    $\tau_n = n^{0.2}$           & 7.38  & 4.6   & 7.23 & 3.0   & 6.61  & 2.3   \\
+    $\tau_n = n^{0.3}$           & 6.94  & 4.6   & 6.58 & 3.0   & 5.44  & 3.0   \\
+    $\tau_n = n^{0.4}$           & 6.08  & 4.1   & 5.66 & 3.9   & 3.90  & 6.0 \\\hline
+%    $\tau_n = \log n$       	 & 7.64  & 3.8   & 7.67 & 3.1   & 7.17  & 2.4 \\
+%    $\tau_n = n^{0.1}$      	 & 7.74  & 3.9   & 7.80 & 3.1   & 7.51  & 2.4  \\
+%    $\tau_n = n^{0.2}$           & 7.72  & 3.9   & 7.78 & 3.1   & 7.43  & 2.4   \\
+%    $\tau_n = n^{0.3}$           & 7.72  & 3.9   & 7.73 & 3.1   & 7.31  & 3.4   \\
+%    $\tau_n = n^{0.4}$           & 7.60  & 3.9   & 7.58 & 3.1   & 7.05  & 2.4 \\\hline
+    \end{tabular}
+\caption{Model sparsity and prediction errors for different choices of $\tau$}
+\end{scriptsize}
+\end{table}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Simulation: linear mixed models}
+
+\begin{align*}
+& Y_i = X_i \bfbeta + \epsilon \in \BR^{n_i} \\
+& epsilon \sim N (0, V_i) ; \quad V_i = \sigma^2 I_{n_i} + Z_i \Delta Z_i^T
+\end{align*}
+
+\begin{itemize}
+\item $m$ subjects, $n_i$ observations per subject, $n = m \times n_i$ total observations;
+
+\item $p = 9, \bfbeta = (1,1,0,0,0,0,0,0,0)^T$;
+
+\item Elements of $X_1, \ldots, X_m$ chosen from Unif$(-2,2)$, random effect design matrix $Z_i$ is first 4 columns of $X_i$;
+
+\item
+%
+$$ \Delta = \left(
+	\begin{tabular}{cccc}
+		9 & ~ & ~ & ~\\
+		4.8 & 4 & ~ & ~\\
+		0.6 & 1 & 1 & ~\\
+		0 & 0 & 0 & 0\\
+	\end{tabular}
+	\right) $$
+%
+\item Two settings: (i) $m = 30, n_i=5$, (ii) $m = 60, n_i = 10$;
+
+\item We use i.i.d. draws of Gamma(1,1) as bootstrap weights $W_i+1$.
+
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Simulation results}
+
+\begin{table}[t]
+	\centering
+	\begin{scriptsize}
+   \begin{tabular}{lr|lll|lll}
+    \hline
+    Method      & Tuning     & FPR\% & FNR\% & Model size & FPR\% & FNR\% & Model size \\ \cline{3-8}
+    ~ & ~ & \multicolumn{3}{l|}{$n_i=5,m=30$} & \multicolumn{3}{l}{$n_i=10,m=60$}\\ \hline
+  $e$-value based       & $\tau_n / \sqrt n = 1$      & 57.4     & 0.0   & 5.24       & 43.8     & 0.0   & 4.03       \\
+    ~      & $2$      & 30.4     & 0.0   & 3.32       & 12.3     & 0.0   & 2.42       \\
+    ~      & $3$      & 15.6     & 0.0   & 2.54       & 3.2      & 0.0   & 2.10       \\
+    ~      & $4$      & 7.3      & 0.0   & 2.24       & 1.0      & 0.0   & 2.03       \\
+    ~      & $5$      & 3.0     & 0.0   & 2.09       & 0.7   & 0.0   & 2.02       \\
+    ~      & $6$      & 1.7     & 0.0   & 2.05       & 0.3   & 0.0   & 2.01       \\
+    ~      & $7$      & 1.0   & 0.0   & 2.03       & 0.0   & 0.0   & 2.00       \\
+    ~      & $8$      & 0.7   & 0.0   & 2.02       & 0.0   & 0.0   & 2.00       \\
+    ~      & $9$      & 0.0   & 0.0   & 2.00       & 0.0   & 0.0   & 2.00       \\
+    ~      & $10$      & 0.0   & 0.0   & 2.00       & 0.0   & 0.0   & 2.00       \\
+     \hline
+    \cite{PengLu12} & BIC    & 21.5  & 9.9   & 2.26       & 1.5   & 1.9   & 2.10       \\
+    ~      & AIC    & 17    & 11.0  & 2.43       & 1.5   & 3.3   & 2.20       \\
+    ~      & GCV    & 20.5  & 6     & 2.30       & 1.5   & 3     & 2.18       \\
+    ~      & $\sqrt{\log n/n}$ & 21    & 15.6  & 2.67       & 1.5   & 4.1   & 2.26       \\ \hline
+    \end{tabular}
+    \caption*{Comparison between our method and that proposed by \cite{PengLu12} through average false positive percentage, false negative percentage and model size}
+    \label{table:simtable1}
+    \end{scriptsize}
+\end{table}
+%
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Simulation results}
+
+\begin{table}[t]
+	\centering
+	\begin{scriptsize}
+    \begin{tabular}{llll}
+    \hline
+    Method          & $\tau_n / \sqrt n$ & Setting 1 & Setting 2 \\ \hline
+    $e$-value based     & 1 & 2         & 16       \\
+    ~               & 2 & 36      & 67        \\
+    ~               & 3 & 60        & 91      \\
+    ~               & 4 & 80        & 97      \\
+    ~               & 5 & 91        & 98       \\
+    ~               & 6 & 95      & 99       \\
+    ~               & 7 & 97       & 100       \\
+    ~               & 7 & 98       & 100       \\
+    ~               & 8 & 100       & 100       \\
+    ~               & 10 & 100       & 100       \\\hline
+    \cite{BondellKrishnaGhosh10} & ~ & 73        & 83        \\
+    \cite{PengLu12}         & ~ & 49        & 86        \\
+    \cite{FanLi12}           & ~ & 90        & 100       \\ \hline
+    \end{tabular}
+    \caption*{Comparison of our method and three sparsity-based methods of mixed effect model selection through accuracy of selecting correct fixed effects}
+	\label{table:simtable2MS}
+    \end{scriptsize}
+\end{table}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Application: selection of important predictors in Indian monsoon}
+
+\begin{itemize}
+\item Annual median observations for 1978-2012;
+
+\item Local measurements across 36 weather stations (e.g. elevation, latitude, longitude), as well as global variables (e.g. El-Nino, tropospheric temperature variations) : total 35 predictors;
+
+\item Aim is two-fold: (i) Selecting important predictors, (ii) providing good predictions using the reduced model.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Application: results}
+
+\begin{figure}[t]
+\captionsetup{justification=centering, font=footnotesize}
+\begin{center}
+\subfigure[]{\epsfxsize=0.45\linewidth \epsfbox{rolling_predbias_full_vs_reduced_gamma}}
+\subfigure[]{\epsfxsize=0.45\linewidth \epsfbox{rolling_predMSE_full_vs_reduced_gamma}}\\
+\caption{Comparing full model rolling predictions with reduced models:\\
+(a) Bias across years, (b) MSE across years}
+\label{fig:prepost1}
+\end{center}
+\end{figure}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Application: results}
+
+\begin{figure}[t]
+	\captionsetup{justification=centering, font=footnotesize}
+	\begin{center}
+		%\subfigure[]{}
+		%\subfigure[]{}
+		\subfigure[]{\epsfxsize=0.45\linewidth \epsfbox{rolling_density2012_full_vs_reduced_gamma}}
+		\subfigure[]{\epsfxsize=0.45\linewidth \epsfbox{rolling_map2012_full_vs_reduced_gamma}}
+		\caption{Comparing full model rolling predictions with reduced models:\\
+		(a) density plots for 2012, (b) stationwise residuals for 2012}
+		\label{fig:prepost2}
+	\end{center}
+\end{figure}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{References}
+
+{\scriptsize
+\bibliographystyle{plainnat}
+\bibliography{finalbib}
+}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\centering
+{\huge\textcolor{UniBlue}{\textbf{THANK YOU!}}}\\
+
+\vspace{2em}
+{\colbbf \url{https://arxiv.org/abs/1706.02429}}
+
+\vspace{1em}
+{\colubf Questions?}
+\end{frame}
+
+\end{document}

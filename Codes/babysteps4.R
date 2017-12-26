@@ -11,16 +11,16 @@ library(parallel)
 
 ##### Generate data
 group = matrix(c(1, 2), nrow=2, ncol=2, byrow=T)           # grouping pattern
-subnetSize.E = c(50, 50)
-subnetSize.X = c(50, 50)    # subnet size
+subnetSize.X = c(30, 30)
+subnetSize.E = c(15, 15)    # subnet size
 n = 100
 p = sum(subnetSize.X)
 q = sum(subnetSize.E)
 K = 2
 
 set.seed(12182017)
-X.layer = GenerateLayer(n, subnetSize.X, group)
-E.layer = GenerateLayer(n, subnetSize.E, group)
+X.layer = GenerateLayer(n, subnetSize.X, group, D=3)
+E.layer = GenerateLayer(n, subnetSize.E, group, D=3)
 
 ## generate group structure for coef array
 B0.group.array = array(0, c(p,q,K))
@@ -174,10 +174,10 @@ d.ind.mat = matrix(0,p,q)
 tau = rep(NA,p)
 for(i in which(D > qchisq(.95, 2*q))){
   tau.vec = seq(0, 20, length.out=1e2)
-  thres.vec = lapply(tau.vec, function(x) alpha/q * max(sum(abs(d[i,])>x),1))
+  thres.vec = lapply(tau.vec, function(x) alpha/q * max(sum(d[i,]>x),1))
   thres.vec = as.numeric(thres.vec)
   tau[i] = tau.vec[which.min(abs(1 - pchisq(tau.vec,2) - thres.vec))]
-  d.ind.mat[i,] = as.numeric(abs(d[i,])>tau[i])
+  d.ind.mat[i,] = as.numeric(d[i,]>tau[i])
 }
 
 # tau.vec = seq(0, 20, length.out=1e2)
