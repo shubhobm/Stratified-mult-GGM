@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2017.1.18)  26 DEC 2017 23:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2017.1.18)  27 DEC 2017 13:52
 entering extended mode
 **./IISA-seminar-12-25-17.tex
 (IISA-seminar-12-25-17.tex
@@ -1193,21 +1193,21 @@ orations.pathmorphing.code.tex"))
 ) (IISA-seminar-12-25-17.aux)
 \openout1 = `IISA-seminar-12-25-17.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 106.
-LaTeX Font Info:    ... okay on input line 106.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 106.
-LaTeX Font Info:    ... okay on input line 106.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 106.
-LaTeX Font Info:    ... okay on input line 106.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 106.
-LaTeX Font Info:    ... okay on input line 106.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 106.
-LaTeX Font Info:    ... okay on input line 106.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 106.
-LaTeX Font Info:    ... okay on input line 106.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 106.
-LaTeX Font Info:    ... okay on input line 106.
-LaTeX Font Info:    Try loading font information for T1+phv on input line 106.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Try loading font information for T1+phv on input line 107.
 
 ("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\psnfss\t1phv.fd"
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
@@ -1274,7 +1274,7 @@ Package grfext Info: Graphics extension search list:
 )
 ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box83
-Package hyperref Info: Link coloring ON on input line 106.
+Package hyperref Info: Link coloring ON on input line 107.
 
 ("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -1284,56 +1284,56 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count307
 )
-LaTeX Info: Redefining \ref on input line 106.
-LaTeX Info: Redefining \pageref on input line 106.
-LaTeX Info: Redefining \nameref on input line 106.
+LaTeX Info: Redefining \ref on input line 107.
+LaTeX Info: Redefining \pageref on input line 107.
+LaTeX Info: Redefining \nameref on input line 107.
 
 (IISA-seminar-12-25-17.out) (IISA-seminar-12-25-17.out)
 \@outlinefile=\write6
 \openout6 = `IISA-seminar-12-25-17.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 106.
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 107.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 106.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 107.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> T1/ptm/m/n on input line 106.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 106.
+(Font)                  OT1/cmss/m/n --> T1/ptm/m/n on input line 107.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 107.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> T1/phv/bx/n on input line 106.
+(Font)                  OT1/cmr/bx/n --> T1/phv/bx/n on input line 107.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> T1/phv/bx/n on input line 106.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 106.
+(Font)                  OT1/cmr/bx/n --> T1/phv/bx/n on input line 107.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 107.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> T1/phv/m/n on input line 106.
+(Font)                  OT1/cmss/m/n --> T1/phv/m/n on input line 107.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> T1/phv/m/n on input line 106.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 106.
+(Font)                  OT1/cmss/bx/n --> T1/phv/m/n on input line 107.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 107.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> T1/phv/m/it on input line 106.
+(Font)                  OT1/cmr/m/it --> T1/phv/m/it on input line 107.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> T1/phv/m/it on input line 106.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 106.
+(Font)                  OT1/cmr/bx/it --> T1/phv/m/it on input line 107.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 107.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> T1/pcr/m/n on input line 106.
+(Font)                  OT1/cmtt/m/n --> T1/pcr/m/n on input line 107.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> T1/pcr/m/n on input line 106.
+(Font)                  OT1/cmtt/m/n --> T1/pcr/m/n on input line 107.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  T1/phv/m/n --> T1/phv/bx/n on input line 106.
+(Font)                  T1/phv/m/n --> T1/phv/bx/n on input line 107.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  T1/phv/m/it --> T1/phv/bx/it on input line 106.
+(Font)                  T1/phv/m/it --> T1/phv/bx/it on input line 107.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/bx/n --> T1/ptm/bx/n on input line 106.
+(Font)                  OT1/cmss/bx/n --> T1/ptm/bx/n on input line 107.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  T1/phv/bx/n --> T1/phv/bx/n on input line 106.
+(Font)                  T1/phv/bx/n --> T1/phv/bx/n on input line 107.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  T1/phv/m/n --> T1/phv/bx/n on input line 106.
+(Font)                  T1/phv/m/n --> T1/phv/bx/n on input line 107.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  T1/phv/m/it --> T1/phv/bx/it on input line 106.
+(Font)                  T1/phv/m/it --> T1/phv/bx/it on input line 107.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  T1/pcr/m/n --> T1/pcr/bx/n on input line 106.
+(Font)                  T1/pcr/m/n --> T1/pcr/bx/n on input line 107.
 
 ("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\beamer\translator\dicts\translator-basic-
 dictionary\translator-basic-dictionary-English.dict"
@@ -1359,32 +1359,32 @@ Dictionary: translator-numbers-dictionary, Language: English
 m-dictionary\translator-theorem-dictionary-English.dict"
 Dictionary: translator-theorem-dictionary, Language: English 
 )
-LaTeX Info: Redefining \includegraphics on input line 106.
+LaTeX Info: Redefining \includegraphics on input line 107.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 
 (IISA-seminar-12-25-17.nav)
-LaTeX Font Info:    Try loading font information for U+msa on input line 106.
+LaTeX Font Info:    Try loading font information for U+msa on input line 107.
 
 ("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 106.
+LaTeX Font Info:    Try loading font information for U+msb on input line 107.
 
 ("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <5> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 106.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 107.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 111.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 112.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 111.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 112.
  [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 131.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 132.
  [2
 
 ]
@@ -1392,7 +1392,7 @@ LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
 File: data_integration_schematic.jpg Graphic file (type jpg)
 
 <use data_integration_schematic.jpg>
-Package pdftex.def Info: data_integration_schematic.jpg used on input line 145.
+Package pdftex.def Info: data_integration_schematic.jpg used on input line 146.
 
 (pdftex.def)             Requested size: 229.01175pt x 208.51917pt.
  [3
@@ -1407,12 +1407,12 @@ LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <7> not available
 
 ]
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <7> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 168.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 169.
 
 <formulation_2.png, id=104, 574.39594pt x 610.53094pt>
 File: formulation_2.png Graphic file (type png)
  <use formulation_2.png>
-Package pdftex.def Info: formulation_2.png used on input line 168.
+Package pdftex.def Info: formulation_2.png used on input line 169.
 (pdftex.def)             Requested size: 137.67603pt x 146.33478pt.
 
 [5
@@ -1420,28 +1420,28 @@ Package pdftex.def Info: formulation_2.png used on input line 168.
  <./formulation_2.png>]
 File: formulation_2.png Graphic file (type png)
  <use formulation_2.png>
-Package pdftex.def Info: formulation_2.png used on input line 198.
+Package pdftex.def Info: formulation_2.png used on input line 199.
 (pdftex.def)             Requested size: 86.04883pt x 91.45457pt.
 
 <formulation_3.png, id=122, 574.39594pt x 609.77812pt>
 File: formulation_3.png Graphic file (type png)
  <use formulation_3.png>
-Package pdftex.def Info: formulation_3.png used on input line 198.
+Package pdftex.def Info: formulation_3.png used on input line 199.
 (pdftex.def)             Requested size: 86.04883pt x 91.34181pt.
 
 <formulation_4.png, id=123, 574.39594pt x 610.53094pt>
 File: formulation_4.png Graphic file (type png)
  <use formulation_4.png>
-Package pdftex.def Info: formulation_4.png used on input line 198.
+Package pdftex.def Info: formulation_4.png used on input line 199.
 (pdftex.def)             Requested size: 86.04883pt x 91.45457pt.
 
 [6
 
  <./formulation_3.png> <./formulation_4.png>]
-<formulation_5.png, id=135, 465.23813pt x 596.2275pt>
+<formulation_5.png, id=139, 465.23813pt x 596.2275pt>
 File: formulation_5.png Graphic file (type png)
  <use formulation_5.png>
-Package pdftex.def Info: formulation_5.png used on input line 226.
+Package pdftex.def Info: formulation_5.png used on input line 227.
 (pdftex.def)             Requested size: 142.36949pt x 182.45277pt.
 
 [7
@@ -1449,16 +1449,16 @@ Package pdftex.def Info: formulation_5.png used on input line 226.
  <./formulation_5.png>]
 File: formulation_5.png Graphic file (type png)
  <use formulation_5.png>
-Package pdftex.def Info: formulation_5.png used on input line 254.
+Package pdftex.def Info: formulation_5.png used on input line 255.
 (pdftex.def)             Requested size: 86.04883pt x 110.27306pt.
 File: formulation_5.png Graphic file (type png)
  <use formulation_5.png>
-Package pdftex.def Info: formulation_5.png used on input line 254.
+Package pdftex.def Info: formulation_5.png used on input line 255.
 (pdftex.def)             Requested size: 86.04883pt x 110.27306pt.
 File: formulation_5.png Graphic file (type png)
 
 <use formulation_5.png>
-Package pdftex.def Info: formulation_5.png used on input line 254.
+Package pdftex.def Info: formulation_5.png used on input line 255.
 (pdftex.def)             Requested size: 86.04883pt x 110.27306pt.
  [8
 
@@ -1468,24 +1468,24 @@ Package pdftex.def Info: formulation_5.png used on input line 254.
 
 ]
 LaTeX Font Info:    Font shape `T1/phv/bx/it' in size <10> not available
-(Font)              Font shape `T1/phv/b/it' tried instead on input line 288.
+(Font)              Font shape `T1/phv/b/it' tried instead on input line 311.
 LaTeX Font Info:    Font shape `T1/phv/b/it' in size <10> not available
-(Font)              Font shape `T1/phv/b/sl' tried instead on input line 288.
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 311.
 LaTeX Font Info:    Font shape `T1/phv/bx/it' in size <7> not available
-(Font)              Font shape `T1/phv/b/it' tried instead on input line 288.
+(Font)              Font shape `T1/phv/b/it' tried instead on input line 311.
 LaTeX Font Info:    Font shape `T1/phv/b/it' in size <7> not available
-(Font)              Font shape `T1/phv/b/sl' tried instead on input line 288.
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 311.
 LaTeX Font Info:    Font shape `T1/phv/bx/it' in size <5> not available
-(Font)              Font shape `T1/phv/b/it' tried instead on input line 288.
+(Font)              Font shape `T1/phv/b/it' tried instead on input line 311.
 LaTeX Font Info:    Font shape `T1/phv/b/it' in size <5> not available
-(Font)              Font shape `T1/phv/b/sl' tried instead on input line 288.
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 311.
  [11
 
 ]
-<multilayer.png, id=181, 1207.51125pt x 496.10344pt>
+<multilayer.png, id=185, 1207.51125pt x 496.10344pt>
 File: multilayer.png Graphic file (type png)
  <use multilayer.png>
-Package pdftex.def Info: multilayer.png used on input line 305.
+Package pdftex.def Info: multilayer.png used on input line 328.
 (pdftex.def)             Requested size: 309.77368pt x 127.26547pt.
 
 [12
@@ -1498,10 +1498,10 @@ Package pdftex.def Info: multilayer.png used on input line 305.
 
 ] [16
 
-] (IISA-seminar-12-25-17.toc)
-[17
+] [17
 
-] [18
+] (IISA-seminar-12-25-17.toc)
+[18
 
 ] [19
 
@@ -1509,15 +1509,27 @@ Package pdftex.def Info: multilayer.png used on input line 305.
 
 ] [21
 
-] (IISA-seminar-12-25-17.toc) [22
+] [22
+
+] (IISA-seminar-12-25-17.toc) [23
+
+] [24
+
+] [25
 
 ]
-(IISA-seminar-12-25-17.bbl) [23
+Overfull \hbox (1.63864pt too wide) in paragraph at lines 586--586
+ [] 
+ []
+
+[26
+
+] (IISA-seminar-12-25-17.bbl) [27
 
 ]
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <20.74> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 508.
- [24
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 607.
+ [28
 
 ]
 \tf@nav=\write7
@@ -1529,39 +1541,40 @@ LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <20.74> not available
 \tf@snm=\write9
 \openout9 = `IISA-seminar-12-25-17.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 510.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 510.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 609.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 609.
  (IISA-seminar-12-25-17.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 510.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 510.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 609.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 609.
 Package rerunfilecheck Info: File `IISA-seminar-12-25-17.out' has not changed.
 (rerunfilecheck)             Checksum: AA5B394FF920574821D27FA64EB33F41;273.
  ) 
 Here is how much of TeX's memory you used:
- 32304 strings out of 493333
- 629919 string characters out of 3140056
- 700374 words of memory out of 3000000
- 35135 multiletter control sequences out of 15000+200000
+ 32328 strings out of 493333
+ 630163 string characters out of 3140056
+ 702454 words of memory out of 3000000
+ 35150 multiletter control sequences out of 15000+200000
  49958 words of font info for 63 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  58i,18n,82p,10479b,731s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Study/LaTeX/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Study/LaTeX/MiKTeX
  2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts
 /type1/public/amsfonts/cm/cmmi10.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/pub
-lic/amsfonts/cm/cmmi7.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfont
-s/cm/cmmib10.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra
-/cmmib7.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss10.pf
-b><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/Study
-/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Study/LaTeX/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Study/LaTeX/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/pu
-blic/amsfonts/symbols/msam10.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/public/
-amsfonts/symbols/msbm10.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/urw/helvetic
-/uhvb8a.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/
-Study/LaTeX/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on IISA-seminar-12-25-17.pdf (24 pages, 684266 bytes).
+lic/amsfonts/cm/cmmi5.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfont
+s/cm/cmmi7.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmib1
+0.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb
+><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Study
+/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/Study/LaTeX/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Study/LaTeX/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/pu
+blic/amsfonts/cm/cmsy7.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfon
+ts/symbols/msam10.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/sy
+mbols/msbm10.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvb8a.pfb
+><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Study/LaTeX
+/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvro8a.pfb>
+Output written on IISA-seminar-12-25-17.pdf (28 pages, 703733 bytes).
 PDF statistics:
- 333 PDF objects out of 1000 (max. 8388607)
- 60 named destinations out of 1000 (max. 500000)
+ 367 PDF objects out of 1000 (max. 8388607)
+ 69 named destinations out of 1000 (max. 500000)
  237 words of extra memory for PDF output out of 10000 (max. 10000000)
 
