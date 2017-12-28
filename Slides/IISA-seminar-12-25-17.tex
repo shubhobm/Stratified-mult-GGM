@@ -115,37 +115,52 @@ December 28, 2017}
 
 \begin{frame}
 \frametitle{Summary}
-
 \begin{itemize}
 \item Biological processes in the body have a natural hierarchical structure, e.g. {\colubf Gene > Protein > Metabolite};
 \vspace{1em}
 
-\item There are within layer and between-layer connections in this structure;
-\vspace{1em}
-
-\item These connections can be different inside different organs, experimental conditions, or for different subtypes of the same disease;
-\vspace{1em}
-
-\item We design a framework for {\colbit joint estimation and hypothesis testing} for all the connections in these complex biological structure.
+\item There are within layer and between-layer connections in this structure.
 \end{itemize}
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Schematic of data integration}
 
 \begin{figure}
 \centering
-\includegraphics[height=.8\textheight]{data_integration_schematic}
+\includegraphics[height=.6\textheight]{data_integration_schematic}
 \end{figure}
 
 {\center
-(Source: {\colr \cite{GligPrzulj15}})
+{\scriptsize Source: {\colr \cite{GligPrzulj15}}}
 }
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Summary}
+
+These connections can be different inside different organs, experimental conditions, or for different subtypes of the same disease;
+
+\begin{center}
+\begin{scriptsize}
+\begin{tabular}{ccc}
+\includegraphics[width=.3\textwidth,angle=-90]{data_integration_schematic}\vspace{.5em}
+& \includegraphics[width=.3\textwidth,angle=-90]{data_integration_schematic}\vspace{.5em}
+& \includegraphics[width=.3\textwidth,angle=-90]{data_integration_schematic}\vspace{.5em}\\
+Liver & Kidney & Lungs\\
+\end{tabular}
+\end{scriptsize}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{What we do}
+In this work we propose a general statistical framework based on graphical models for horizontal (i.e. across conditions or subtypes) and vertical (i.e. across different layers containing data on molecular compartments) integration of information in data from such complex biological structures.
+
+\vspace{1em}
+Specifically, we perform {\colbit joint estimation and hypothesis testing} for all the connections in these structures.
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Formulation of multiple multi-level graphical models}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -335,7 +350,7 @@ Take $\Theta_j = (\bftheta_j^1, \ldots, \bftheta_j^K), \Theta = \{ \Theta_j \}_{
 
 \begin{align*}
 \{ \hat \cB, \hat \Theta \} &=
-\argmin_{\cB, \Theta} \left\{ \sum_{j=1}^q \frac{1}{n_k} \sum_{k=1}^K
+\argmin_{\cB, \Theta} \left\{ \sum_{k=1}^K \frac{1}{n_k} \sum_{j=1}^q
 \left\| \bfY_j^k - ( \bfY_{-j}^k - \bfX^k \bfB_{-j}^k) \bftheta_j^k
 - \bfX^k \bfB_j^k \right\|^2 \right.\\
 & + \lambda_n \sum_{h \in \cH} \| \bfB^{[h]} \|
@@ -370,6 +385,33 @@ The objective function is biconvex, so we solve the above by the following alter
 
 \begin{frame}
 \frametitle{The two subproblems}
+\begin{align*}
+\hat \cB &=
+\argmin_{\cB} \left\{
+\sum_{k=K}^q \frac{1}{n_k} \sum_{j=1}^q
+\left\| \bfY_j^k - ( \bfY_{-j}^k - \bfX^k \bfB_{-j}^k) \hat \bftheta_j^k
+- \bfX^k \bfB_j^k \right\|^2
++ \lambda_n \sum_{h \in \cH} \| \bfB^{[h]} \| \right\}\\
+&= \argmin_{\cB} \left\{ \sum_{k=1}^K \frac{1}{n_k}
+\| (\bfY^k - \bfX^k \bfB^k) \bfT^k \|_F^2 +
++ \lambda_n \sum_{h \in \cH} \| \bfB^{[h]} \| \right\}
+\end{align*}
+%
+where $t_{jj}^k = 1, t_{jj'}^k = - \theta_{jj'}^k$.
+
+\begin{align*}
+\hat \Theta &=
+\argmin_{\Theta} \left\{ \sum_{k=K}^q \frac{1}{n_k} \sum_{j=1}^q
+\left\| \bfY_j^k - ( \bfY_{-j}^k - \bfX^k \hat \bfB_{-j}^k) \bftheta_j^k
+- \bfX^k \hat \bfB_j^k \right\|^2 
++ \gamma_n \sum_{j' \neq j, g \in \cG_{jj'}} \| \bftheta_{jj'}^{[g]} \| \right\}\\
+&= \argmin_{\Theta} \left\{ 
+\sum_{k=K}^q \frac{1}{n_k} \sum_{j=1}^q
+\| \hat \bfE_j^k - \hat \bfE_{-j}^k \bftheta_j^k \|^2
++ \gamma_n \sum_{j' \neq j, g \in \cG_{jj'}} \| \bftheta_{jj'}^{[g]} \| \right\}
+\end{align*}
+%
+where $\hat \bfE^k = \bfY^k - \bfX^k \hat \bfB^k$.
 
 \end{frame}
 
@@ -579,12 +621,26 @@ Same metrics are used for $\hat \Theta$.
     \multicolumn{7}{c}{{\bf Setting 3: $n=150, p=200, q=200, K=5$}}\\\hline
     Method        & TP($\hat\cB$)         & TN($\hat\cB$)         & rel.Frob($\hat\cB$) & TP($\hat\Theta$)   & TN($\hat\Theta$)   & rel.Frob($\hat\Theta$) \\\hline
     Joint (JMMLE) & 1.00 (0) & 1.00 (0)   & 0.12 (5e-3)  & 0.39 (0.04) & 0.996 (2e-3) & 0.30 (7e-3)      \\
-    Separate      & 0.95 (0.02)   & 0.99  (2e-3) & 0.27 (0.03)  & 0.89 (0.02) & 0.63 (0.01) & 0.77 (0.04)      \\\hline
+    Separate      & 0.42 (0.03)   & 0.99  (1e-3) & 0.48 (0.02)  & 0.41 (0.02) & 0.73 (0.01) & 0.44 (0.02)      \\\hline
     \end{tabular}
 \end{table}
 \end{scriptsize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Future work}
+
+\begin{itemize}
+\item Larger simulation: effect of signal strength and sparsity;
+\vspace{1em}
+
+\item Real data application, application to personalized medicine;
+\vspace{1em}
+
+\item Mediation analysis.
+\end{itemize}
+\end{frame}
 
 \begin{frame}
 \frametitle{References}

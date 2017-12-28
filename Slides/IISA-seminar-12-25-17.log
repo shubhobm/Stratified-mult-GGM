@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2017.1.18)  27 DEC 2017 13:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2017.1.18)  28 DEC 2017 08:09
 entering extended mode
 **./IISA-seminar-12-25-17.tex
 (IISA-seminar-12-25-17.tex
@@ -1383,127 +1383,147 @@ LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
  [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 132.
- [2
-
-]
-<data_integration_schematic.jpg, id=78, 191.2746pt x 174.1707pt>
+<data_integration_schematic.jpg, id=71, 191.2746pt x 174.1707pt>
 File: data_integration_schematic.jpg Graphic file (type jpg)
 
 <use data_integration_schematic.jpg>
-Package pdftex.def Info: data_integration_schematic.jpg used on input line 146.
+Package pdftex.def Info: data_integration_schematic.jpg used on input line 133.
 
-(pdftex.def)             Requested size: 229.01175pt x 208.51917pt.
- [3
+(pdftex.def)             Requested size: 171.76027pt x 156.39037pt.
+ [2
 
  <./data_integration_schematic.jpg>]
-(IISA-seminar-12-25-17.toc
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <7> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 151.
+File: data_integration_schematic.jpg Graphic file (type jpg)
+
+<use data_integration_schematic.jpg>
+Package pdftex.def Info: data_integration_schematic.jpg used on input line 151.
+
+(pdftex.def)             Requested size: 103.25964pt x 94.0242pt.
+File: data_integration_schematic.jpg Graphic file (type jpg)
+ <use data_integration_schematic.jpg>
+Package pdftex.def Info: data_integration_schematic.jpg used on input line 151.
+
+(pdftex.def)             Requested size: 103.25964pt x 94.0242pt.
+File: data_integration_schematic.jpg Graphic file (type jpg)
+
+<use data_integration_schematic.jpg>
+Package pdftex.def Info: data_integration_schematic.jpg used on input line 151.
+
+(pdftex.def)             Requested size: 103.25964pt x 94.0242pt.
+ [3
+
+]
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 161.
+ [4
+
+] (IISA-seminar-12-25-17.toc
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <5> not available
 (Font)              Font shape `T1/phv/b/n' tried instead on input line 2.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <7> not available
 (Font)              Font shape `T1/phv/b/n' tried instead on input line 2.
-) [4
-
-]
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <7> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 169.
-
-<formulation_2.png, id=104, 574.39594pt x 610.53094pt>
-File: formulation_2.png Graphic file (type png)
- <use formulation_2.png>
-Package pdftex.def Info: formulation_2.png used on input line 169.
-(pdftex.def)             Requested size: 137.67603pt x 146.33478pt.
-
+)
 [5
+
+] <formulation_2.png, id=110, 574.39594pt x 610.53094pt>
+File: formulation_2.png Graphic file (type png)
+
+<use formulation_2.png>
+Package pdftex.def Info: formulation_2.png used on input line 184.
+(pdftex.def)             Requested size: 137.67603pt x 146.33478pt.
+ [6
 
  <./formulation_2.png>]
 File: formulation_2.png Graphic file (type png)
  <use formulation_2.png>
-Package pdftex.def Info: formulation_2.png used on input line 199.
+Package pdftex.def Info: formulation_2.png used on input line 214.
 (pdftex.def)             Requested size: 86.04883pt x 91.45457pt.
 
-<formulation_3.png, id=122, 574.39594pt x 609.77812pt>
+<formulation_3.png, id=128, 574.39594pt x 609.77812pt>
 File: formulation_3.png Graphic file (type png)
  <use formulation_3.png>
-Package pdftex.def Info: formulation_3.png used on input line 199.
+Package pdftex.def Info: formulation_3.png used on input line 214.
 (pdftex.def)             Requested size: 86.04883pt x 91.34181pt.
 
-<formulation_4.png, id=123, 574.39594pt x 610.53094pt>
+<formulation_4.png, id=129, 574.39594pt x 610.53094pt>
 File: formulation_4.png Graphic file (type png)
  <use formulation_4.png>
-Package pdftex.def Info: formulation_4.png used on input line 199.
+Package pdftex.def Info: formulation_4.png used on input line 214.
 (pdftex.def)             Requested size: 86.04883pt x 91.45457pt.
 
-[6
+[7
 
  <./formulation_3.png> <./formulation_4.png>]
-<formulation_5.png, id=139, 465.23813pt x 596.2275pt>
+<formulation_5.png, id=146, 465.23813pt x 596.2275pt>
 File: formulation_5.png Graphic file (type png)
  <use formulation_5.png>
-Package pdftex.def Info: formulation_5.png used on input line 227.
+Package pdftex.def Info: formulation_5.png used on input line 242.
 (pdftex.def)             Requested size: 142.36949pt x 182.45277pt.
 
-[7
+[8
 
  <./formulation_5.png>]
 File: formulation_5.png Graphic file (type png)
  <use formulation_5.png>
-Package pdftex.def Info: formulation_5.png used on input line 255.
+Package pdftex.def Info: formulation_5.png used on input line 270.
 (pdftex.def)             Requested size: 86.04883pt x 110.27306pt.
 File: formulation_5.png Graphic file (type png)
  <use formulation_5.png>
-Package pdftex.def Info: formulation_5.png used on input line 255.
+Package pdftex.def Info: formulation_5.png used on input line 270.
 (pdftex.def)             Requested size: 86.04883pt x 110.27306pt.
 File: formulation_5.png Graphic file (type png)
 
 <use formulation_5.png>
-Package pdftex.def Info: formulation_5.png used on input line 255.
+Package pdftex.def Info: formulation_5.png used on input line 270.
 (pdftex.def)             Requested size: 86.04883pt x 110.27306pt.
- [8
+ [9
 
-] (IISA-seminar-12-25-17.toc) [9
+] (IISA-seminar-12-25-17.toc) [10
 
-] [10
+] [11
 
 ]
 LaTeX Font Info:    Font shape `T1/phv/bx/it' in size <10> not available
-(Font)              Font shape `T1/phv/b/it' tried instead on input line 311.
+(Font)              Font shape `T1/phv/b/it' tried instead on input line 326.
 LaTeX Font Info:    Font shape `T1/phv/b/it' in size <10> not available
-(Font)              Font shape `T1/phv/b/sl' tried instead on input line 311.
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 326.
 LaTeX Font Info:    Font shape `T1/phv/bx/it' in size <7> not available
-(Font)              Font shape `T1/phv/b/it' tried instead on input line 311.
+(Font)              Font shape `T1/phv/b/it' tried instead on input line 326.
 LaTeX Font Info:    Font shape `T1/phv/b/it' in size <7> not available
-(Font)              Font shape `T1/phv/b/sl' tried instead on input line 311.
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 326.
 LaTeX Font Info:    Font shape `T1/phv/bx/it' in size <5> not available
-(Font)              Font shape `T1/phv/b/it' tried instead on input line 311.
+(Font)              Font shape `T1/phv/b/it' tried instead on input line 326.
 LaTeX Font Info:    Font shape `T1/phv/b/it' in size <5> not available
-(Font)              Font shape `T1/phv/b/sl' tried instead on input line 311.
- [11
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 326.
+ [12
 
 ]
-<multilayer.png, id=185, 1207.51125pt x 496.10344pt>
+<multilayer.png, id=191, 1207.51125pt x 496.10344pt>
 File: multilayer.png Graphic file (type png)
  <use multilayer.png>
-Package pdftex.def Info: multilayer.png used on input line 328.
+Package pdftex.def Info: multilayer.png used on input line 343.
 (pdftex.def)             Requested size: 309.77368pt x 127.26547pt.
 
-[12
+[13
 
- <./multilayer.png>] [13
-
-] [14
+ <./multilayer.png>] [14
 
 ] [15
 
-] [16
+]
+Overfull \hbox (6.65742pt too wide) in paragraph at lines 416--416
+[]  
+ []
+
+[16
 
 ] [17
 
-] (IISA-seminar-12-25-17.toc)
-[18
+] [18
 
-] [19
+] (IISA-seminar-12-25-17.toc) [19
 
 ] [20
 
@@ -1511,25 +1531,30 @@ Package pdftex.def Info: multilayer.png used on input line 328.
 
 ] [22
 
-] (IISA-seminar-12-25-17.toc) [23
+] [23
 
-] [24
+]
+(IISA-seminar-12-25-17.toc) [24
 
 ] [25
 
+] [26
+
 ]
-Overfull \hbox (1.63864pt too wide) in paragraph at lines 586--586
+Overfull \hbox (1.63864pt too wide) in paragraph at lines 628--628
  [] 
  []
 
-[26
+[27
 
-] (IISA-seminar-12-25-17.bbl) [27
+] [28
+
+] (IISA-seminar-12-25-17.bbl) [29
 
 ]
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <20.74> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 607.
- [28
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 663.
+ [30
 
 ]
 \tf@nav=\write7
@@ -1541,19 +1566,19 @@ LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <20.74> not available
 \tf@snm=\write9
 \openout9 = `IISA-seminar-12-25-17.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 609.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 609.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 665.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 665.
  (IISA-seminar-12-25-17.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 609.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 609.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 665.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 665.
 Package rerunfilecheck Info: File `IISA-seminar-12-25-17.out' has not changed.
 (rerunfilecheck)             Checksum: AA5B394FF920574821D27FA64EB33F41;273.
  ) 
 Here is how much of TeX's memory you used:
- 32328 strings out of 493333
- 630163 string characters out of 3140056
- 702454 words of memory out of 3000000
- 35150 multiletter control sequences out of 15000+200000
+ 32334 strings out of 493333
+ 630217 string characters out of 3140056
+ 703453 words of memory out of 3000000
+ 35152 multiletter control sequences out of 15000+200000
  49958 words of font info for 63 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  58i,18n,82p,10479b,731s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1572,9 +1597,9 @@ ts/symbols/msam10.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/sy
 mbols/msbm10.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvb8a.pfb
 ><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Study/LaTeX
 /MiKTeX 2.9/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on IISA-seminar-12-25-17.pdf (28 pages, 703733 bytes).
+Output written on IISA-seminar-12-25-17.pdf (30 pages, 711520 bytes).
 PDF statistics:
- 367 PDF objects out of 1000 (max. 8388607)
- 69 named destinations out of 1000 (max. 500000)
+ 381 PDF objects out of 1000 (max. 8388607)
+ 73 named destinations out of 1000 (max. 500000)
  237 words of extra memory for PDF output out of 10000 (max. 10000000)
 
