@@ -153,7 +153,11 @@ Liver & Kidney & Lungs\\
 
 \begin{frame}
 \frametitle{What we do}
-In this work we propose a general statistical framework based on graphical models for horizontal (i.e. across conditions or subtypes) and vertical (i.e. across different layers containing data on molecular compartments) integration of information in data from such complex biological structures.
+
+{\colrbf A general model for data integreation.}
+\vspace{1em}
+
+In this work we propose a general statistical framework based on graphical models for {\colbit horizontal} (i.e. across conditions or subtypes) {\colbit and vertical} (i.e. across different layers containing data on molecular compartments) {\colbit integration of information} in data from such complex biological structures.
 
 \vspace{1em}
 Specifically, we perform {\colbit joint estimation and hypothesis testing} for all the connections in these structures.
@@ -309,7 +313,7 @@ $ similarly.
 %
 \begin{align*}
 \hat \bfzeta_i &= \argmin_{\bfzeta_i} \left\{ \frac{1}{n} \| \bfX_i - \bfX_{-i} \bfzeta_i \|^2 + \nu_n \sum_{i' \neq i} |\zeta_{ii'}| \right\};\\
-\hat \Omega_x &= \argmin_{\Omega_x \in \cup_i \text{support} (\bfzeta_i)}
+\hat \Omega_x &= \argmin_{\Omega_x \in \cup_i \supp (\bfzeta_i)}
 \{ \Tr (\bfS_x \Omega_x ) + \log \det(\Omega_x) \}
 \end{align*}
 %
@@ -319,7 +323,7 @@ Can do this because $\zeta_{ii'} = -\omega_{ii'}/\omega_{ii}$, so zeros of the p
 %
 \begin{align*}
 \hat \bfzeta_i &= \argmin_{\zeta_i} \left\{ \sum_{k=1}^K \frac{1}{n_k} \| \bfX_i^k - \bfX_{-i}^k \bfzeta_i^k \|^2 + \nu_n \sum_{i' \neq i, g \in \cG_{x,ii'}} \| \bfzeta_{ii'}^{[g]} \| \right\};\\
-\hat \Omega_x^k &= \argmin_{\Omega_x^k \in \cup_i \text{support} (\bfzeta_i^k)}
+\hat \Omega_x^k &= \argmin_{\Omega_x^k \in \cup_i \supp (\bfzeta_i^k)}
 \left\{ \Tr (\bfS_x^k \Omega_x^k ) + \log \det (\Omega_x^k ) \right\}; \end{align*}
 %
 \end{itemize}
@@ -351,11 +355,11 @@ Take $\Theta_j = (\bftheta_j^1, \ldots, \bftheta_j^K), \Theta = \{ \Theta_j \}_{
 \begin{align*}
 \{ \hat \cB, \hat \Theta \} &=
 \argmin_{\cB, \Theta} \left\{ \sum_{k=1}^K \frac{1}{n_k} \sum_{j=1}^q
-\left\| \bfY_j^k - ( \bfY_{-j}^k - \bfX^k \bfB_{-j}^k) \bftheta_j^k
-- \bfX^k \bfB_j^k \right\|^2 \right.\\
-& + \lambda_n \sum_{h \in \cH} \| \bfB^{[h]} \|
-+ \gamma_n \left. \sum_{j' \neq j, g \in \cG_{jj'}} \| \bftheta_{jj'}^{[g]} \| \right\}\\
-\hat \Omega_y^k &= \argmin_{\Omega_y^k \in \cup_i \text{support} (\bftheta_i^k)}
+\left\| \bfY_j^k - ( \bfY_{-j}^k - \bfX^k {\colr \bfB_{-j}^k}) {\colb \bftheta_j^k}
+- \bfX^k {\colr \bfB_j^k} \right\|^2 \right.\\
+& + {\colr \lambda_n \sum_{h \in \cH} \| \bfB^{[h]}} \|
+\left. + {\colb \gamma_n  \sum_{j' \neq j, g \in \cG_{jj'}} \| \bftheta_{jj'}^{[g]} \|} \right\}\\
+\hat \Omega_y^k &= \argmin_{\Omega_y^k \in \cup_i \supp (\bftheta_i^k)}
 \left\{ \Tr (\bfS_y^k \Omega_y^k ) + \log \det (\Omega_y^k ) \right\}
 \quad k = 1, 2, \ldots, K
 \end{align*}
@@ -365,7 +369,7 @@ Take $\Theta_j = (\bftheta_j^1, \ldots, \bftheta_j^K), \Theta = \{ \Theta_j \}_{
 \frametitle{Computational algorithm}
 \begin{align*}
 \{ \hat \cB, \hat \Theta \} &= \argmin_{\cB, \Theta}
-\left\{ f(\cY, \cX, \cB, \Theta) + P(\cB) + Q(\Theta) \right\}
+\left\{ f(\cY, \cX, {\colr \cB}, {\colb \Theta}) + {\colr P(\cB)} + {\colb Q(\Theta)} \right\}
 \end{align*}
 
 The objective function is biconvex, so we solve the above by the following alternating iterative algorithm:
@@ -389,26 +393,26 @@ The objective function is biconvex, so we solve the above by the following alter
 \hat \cB &=
 \argmin_{\cB} \left\{
 \sum_{k=K}^q \frac{1}{n_k} \sum_{j=1}^q
-\left\| \bfY_j^k - ( \bfY_{-j}^k - \bfX^k \bfB_{-j}^k) \hat \bftheta_j^k
-- \bfX^k \bfB_j^k \right\|^2
-+ \lambda_n \sum_{h \in \cH} \| \bfB^{[h]} \| \right\}\\
+\left\| \bfY_j^k - ( \bfY_{-j}^k - \bfX^k {\colr \bfB_{-j}^k} ) \hat \bftheta_j^k
+- \bfX^k {\colr \bfB_j^k} \right\|^2
++ {\colr \lambda_n \sum_{h \in \cH} \| \bfB^{[h]} \|} \right\}\\
 &= \argmin_{\cB} \left\{ \sum_{k=1}^K \frac{1}{n_k}
-\| (\bfY^k - \bfX^k \bfB^k) \bfT^k \|_F^2 +
-+ \lambda_n \sum_{h \in \cH} \| \bfB^{[h]} \| \right\}
+\| (\bfY^k - \bfX^k {\colr \bfB^k}) \hat \bfT^k \|_F^2 +
++ {\colr \lambda_n \sum_{h \in \cH} \| \bfB^{[h]} \|} \right\}
 \end{align*}
 %
-where $t_{jj}^k = 1, t_{jj'}^k = - \theta_{jj'}^k$.
+where $\hat t_{jj}^k = 1, \hat t_{jj'}^k = - \hat \theta_{jj'}^k$.
 
 \begin{align*}
 \hat \Theta &=
 \argmin_{\Theta} \left\{ \sum_{k=K}^q \frac{1}{n_k} \sum_{j=1}^q
-\left\| \bfY_j^k - ( \bfY_{-j}^k - \bfX^k \hat \bfB_{-j}^k) \bftheta_j^k
+\left\| \bfY_j^k - ( \bfY_{-j}^k - \bfX^k \hat \bfB_{-j}^k) {\colb \bftheta_j^k}
 - \bfX^k \hat \bfB_j^k \right\|^2 
-+ \gamma_n \sum_{j' \neq j, g \in \cG_{jj'}} \| \bftheta_{jj'}^{[g]} \| \right\}\\
++ {\colb \gamma_n \sum_{j' \neq j, g \in \cG_{jj'}} \| \bftheta_{jj'}^{[g]} \|} \right\}\\
 &= \argmin_{\Theta} \left\{ 
 \sum_{k=K}^q \frac{1}{n_k} \sum_{j=1}^q
-\| \hat \bfE_j^k - \hat \bfE_{-j}^k \bftheta_j^k \|^2
-+ \gamma_n \sum_{j' \neq j, g \in \cG_{jj'}} \| \bftheta_{jj'}^{[g]} \| \right\}
+\| \hat \bfE_j^k - \hat \bfE_{-j}^k {\colb \bftheta_j^k} \|^2
++ {\colb \gamma_n \sum_{j' \neq j, g \in \cG_{jj'}} \| \bftheta_{jj'}^{[g]} \|} \right\}
 \end{align*}
 %
 where $\hat \bfE^k = \bfY^k - \bfX^k \hat \bfB^k$.
@@ -428,7 +432,7 @@ For $\lambda_n \geq 4 \sqrt{| h_{\max} |} \BR_0 \sqrt{ \frac{ \log(pq)}{n}}$, th
 \sum_{h \in \cH} \| \bfbeta^{[h]} - \bfbeta_0^{[h]} \| & \leq \frac{48 s_\beta \lambda_n}{ \psi^*}
 \end{align*}
 %
-with $\psi^*, \BR_0$ being constants, and $\bfbeta = (\ve(\bfB^1)^T, \ldots, \ve(\bfB^K)^T)^T$, $| h_{\max} |$ the maximum group size in $\bfbeta_0$ and $s_\beta$ the sparsity of $\bfbeta_0$.
+with $\psi^*, \BR_0$ being constants, and $\bfbeta = (\ve(\bfB^1)^T, \ldots, \ve(\bfB^K)^T)^T$, $| h_{\max} |$ the maximum group size in $\bfbeta_0$ (the true $\bfbeta$) and $s_\beta$ the sparsity of $\bfbeta_0$.
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -440,7 +444,7 @@ For $\gamma_n = 4 \sqrt{| g_{\max}|} \BQ_0 \sqrt{ \frac{ \log(pq)}{n}}$, the fol
 \begin{align*}
 \| \hat \Theta_j - \Theta_{0,j} \|_F & \leq \frac{12 \sqrt{s_j} \gamma_n}{\psi} \\
 \sum_{j \neq j', g \in \cG_y^{jj'}} \| \hat \bftheta_{jj'}^{[g]} - \bftheta_{0,jj'}^{[g]} \| & \leq \frac{48 s_j \gamma_n}{\psi} \\
-\left| \text{support} (\hat \Theta_j) \right| & \leq
+\left| \supp (\hat \Theta_j) \right| & \leq
 \frac{128 s_j}{ \psi}\\
 \frac{1}{K} \sum_{k=1}^K \| \hat \Omega_y^k - \Omega_y^k \|_F & \leq
 O \left( \frac{\sqrt S \gamma_n }{\sqrt K} \right)\\
