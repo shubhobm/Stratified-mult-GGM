@@ -1,5 +1,5 @@
 rm(list=ls())
-setwd('c:/Study/My projects/Stratified-mult-GGM/Codes')
+setwd('d:/Study/My projects/Stratified-mult-GGM/Codes')
 source('jsem.R')
 source('Generator.R')
 source('l1LS_Main.R')
@@ -11,16 +11,16 @@ library(parallel)
 
 ##### Generate data
 group = matrix(c(1, 2), nrow=2, ncol=2, byrow=T)           # grouping pattern
-subnetSize.X = c(30, 30)
-subnetSize.E = c(15, 15)    # subnet size
+subnetSize.E = c(30, 30)
+subnetSize.X = c(15, 15)    # subnet size
 n = 100
 p = sum(subnetSize.X)
 q = sum(subnetSize.E)
 K = 2
 
 set.seed(12182017)
-X.layer = GenerateLayer(n, subnetSize.X, group, D=3)
-E.layer = GenerateLayer(n, subnetSize.E, group, D=3)
+X.layer = GenerateLayer(n, subnetSize.X, group, D=1)
+E.layer = GenerateLayer(n, subnetSize.E, group, D=1)
 
 ## generate group structure for coef array
 B0.group.array = array(0, c(p,q,K))
@@ -160,11 +160,13 @@ for(i in 1:p){
 which(D > qchisq(.95, 2*q)) # indices where global test is rejected
 
 ## pairwise test statistics
+Omega1i.sqrt = P1 %*% diag(1/sqrt(L1)) %*% t(P1)
+Omega2i.sqrt = P2 %*% diag(1/sqrt(L2)) %*% t(P2)
 d = matrix(0,p,q)
 for(i in 1:p){
   for(j in 1:q){
-    d[i,] = (M[i,1]*Omega1.sqrt%*%C.hat.array[i,,1] -
-      M[i,2]*Omega2.sqrt%*%C.hat.array[i,,2])^2
+    d[i,j] = ((C.hat.array[i,j,1] - C.hat.array[i,j,2])/
+                (Omega1i.sqrt[j,j]/M[i,1] + Omega2i.sqrt[j,j]/M[i,2]))^2
   }
 }
 
@@ -176,7 +178,7 @@ for(i in which(D > qchisq(.95, 2*q))){
   tau.vec = seq(0, 20, length.out=1e2)
   thres.vec = lapply(tau.vec, function(x) alpha/q * max(sum(d[i,]>x),1))
   thres.vec = as.numeric(thres.vec)
-  tau[i] = tau.vec[which.min(abs(1 - pchisq(tau.vec,2) - thres.vec))]
+  tau[i] = tau.vec[which.min(abs(1 - pchisq(tau.vec,1) - thres.vec))]
   d.ind.mat[i,] = as.numeric(d[i,]>tau[i])
 }
 
