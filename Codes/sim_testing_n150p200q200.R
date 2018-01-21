@@ -174,13 +174,16 @@ loopfun = function(rep){
     d.ind.mat[i,] = as.numeric(d[i,]>tau[i])
   }
   
-  size.simul = 1 - sum(D > qchisq(.95, 2*q))/length(D)
+  pow.simul = sum(D > qchisq(.95, 2*q))/length(D)
   pow = sum(d.ind.mat == 1 & Diff.mat != 0, na.rm=T)/sum(Diff.mat != 0)
   size = 1 - sum(d.ind.mat == 0 & Diff.mat == 0, na.rm=T)/sum(Diff.mat == 0)
   FDP = sum(d.ind.mat == 1 & Diff.mat == 0, na.rm=T)/sum(d.ind.mat == 1, na.rm=T)
-  c(size.simul,pow,size,FDP)
+  c(pow.simul,pow,size,FDP)
 }
 
-out.mat = mclapply(1:1e2, loopfun, mc.cores=5)
-out.mat = matrix(unlist(out.mat), ncol=4, byrow=T)
+out.mat = mclapply(1:1e2, loopfun, mc.cores=8)
+# out.mat = matrix(unlist(out.mat), ncol=4, byrow=T)
 save(out.mat, file="outtest_n150p200q200.Rda")
+out.mat = matrix(unlist(out.mat), ncol=4, byrow=T)
+apply(out.mat,2,mean)
+apply(out.mat,2,sd)
