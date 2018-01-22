@@ -162,14 +162,14 @@ get.outputs = function(n=100, subnetSize.X=rep(10,2), subnetSize.E=rep(10,2),
 }
 
 ##### Generate data
-get.outputs(n = 100, subnetSize.X = c(15, 15), subnetSize.E = c(30, 30))
-get.outputs(n = 100, subnetSize.X = c(30, 30), subnetSize.E = c(15, 15), nrep=2)
-get.outputs(n = 150, subnetSize.X = c(100, 100), subnetSize.E = c(100, 100))
-# get.outputs(n = 150, subnetSize.X = c(150, 150), subnetSize.E = c(150, 150))
-# get.outputs(n = 150, subnetSize.X = c(100, 100), subnetSize.E = c(100, 100),
-#             sparsity.B=30, sparsity.Theta=30, filename="outtestsize_n150p200q200modelB.Rda")
-# get.outputs(n = 150, subnetSize.X = c(150, 150), subnetSize.E = c(150, 150),
-#             sparsity.B=30, sparsity.Theta=30, filename="outtestsize_n150p300q300modelB.Rda")
+# get.outputs(n = 100, subnetSize.X = c(15, 15), subnetSize.E = c(30, 30))
+get.outputs(n = 100, subnetSize.X = c(30, 30), subnetSize.E = c(15, 15))
+# get.outputs(n = 150, subnetSize.X = c(100, 100), subnetSize.E = c(100, 100))
+get.outputs(n = 150, subnetSize.X = c(150, 150), subnetSize.E = c(150, 150))
+get.outputs(n = 150, subnetSize.X = c(100, 100), subnetSize.E = c(100, 100),
+            sparsity.B=30, sparsity.Theta=30, filename="outtestsize_n150p200q200modelB.Rda")
+get.outputs(n = 150, subnetSize.X = c(150, 150), subnetSize.E = c(150, 150),
+            sparsity.B=30, sparsity.Theta=30, filename="outtestsize_n150p300q300modelB.Rda")
 
 
 
