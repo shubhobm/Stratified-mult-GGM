@@ -3,6 +3,7 @@ squaredError = function(Y.list, X.list, Theta.array, B.array){
   # this function calculates the total squared error for all list entries
   
   err.list = list()
+  K = dim(B.array)[3]
   for(k in 1:K){
     nk = nrow(X.list[[k]])
     qk = ncol(Y.list[[k]])
