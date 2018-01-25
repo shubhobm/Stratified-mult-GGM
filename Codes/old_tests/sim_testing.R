@@ -140,7 +140,7 @@ get.outputs = function(n=100, subnetSize.X=rep(10,2), subnetSize.E=rep(10,2),
     L1 = e1$values
     e2 = eigen(jmmle.model$Theta_refit$Omega[[2]])
     P2 = e2$vectors
-    L2 = e2$values
+    L2 = e2$valuesjmmle.model$Theta_refit$Omega[[2]]
     
     ## Global test statistics for i-th X-variable
     Omega1.sqrt = P1 %*% diag(sqrt(L1)) %*% t(P1)
@@ -180,8 +180,8 @@ get.outputs = function(n=100, subnetSize.X=rep(10,2), subnetSize.E=rep(10,2),
     c(pow.simul,pow,size,FDP)
   }
   
-  out.mat = mclapply(1:nrep, loopfun, mc.cores=8)
-  # out.mat = lapply(1:nrep, loopfun)
+  # out.mat = mclapply(1:nrep, loopfun, mc.cores=8)
+  out.mat = lapply(1:nrep, loopfun)
   if(is.null(filename)){
     filename = paste0("outtest_n",n,"p",p,"q",q,".Rda")
   }

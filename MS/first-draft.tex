@@ -1,4 +1,4 @@
-\documentclass[12pt, letterpaper]{article}
+\documentclass[11pt,letterpaper]{article}
 %\documentclass[aoas,preprint]{imsart}
 \pdfoutput=1
 
@@ -87,7 +87,7 @@ The rapid development of high-throughput technologies has enabled generation of 
 \section{Introduction}
 
 \subsection{Notations and terminology}
-We shall denote scalars by small letters, vectors by bold small letters and matrices by bold capital letters. For any matrix $\bfA$, $(\bfA)_{ij}$ denote its element in the $(i,j)^\text{th}$ position. For $a,b \in \BN$, we denote the set of all $a \times b$ real matrices by $\BM(a,b)$. For any positive integer $c$, define $\cI_c = \{ 1, \ldots, c\}$.
+We denote scalars by small letters, vectors by bold small letters and matrices by bold capital letters. For any matrix $\bfA$, $(\bfA)_{ij}$ denote its element in the $(i,j)^\text{th}$ position. For $a,b \in \BN$, we denote the set of all $a \times b$ real matrices by $\BM(a,b)$. For any positive integer $c$, define $\cI_c = \{ 1, \ldots, c\}$.
 
 \section{Model}
 Consider the two -layered setup:
@@ -398,7 +398,7 @@ We now put both the pieces together, and prove that our alternating algorithm re
 %-----------------------------
 
 \section{Two-sample testing}
-Suppose there are two disease subtypes: $k = 1,2$, and we are interested in testing whether the downstream effect of a predictor in X-data is same across both subtypes, i.e. if $\bfb_i^1 = \bfb_i^2$ for some $i \in \cI_p$. For this we consider the modified optimization problem:
+Suppose there are two disease subtypes: $k = 1,2$, and we are interested in testing whether the downstream effect of a predictor in X-data is same across both subtypes, i.e. if $\bfb_{0i}^1 = \bfb_{0i}^2$ for some fixed $i \in \cI_p$. For this we consider the modified optimization problem:
 %
 \begin{align}
 & \min_{\cB, \Theta} \frac{1}{n} \left\{ \sum_{j=1}^q \sum_{k=1}^2 \| \bfY_j^k - \bfY_{-j}^k \bftheta_j^k - \bfX^k \bfB_{j}^k \|^2 + \sum_{j \neq j'} \lambda_{jj'} \| \bftheta_{jj'}^* \| + \sum_{i=1}^p \eta_i \| \bfB_{i*}^* \| \right\} \notag\\
@@ -407,7 +407,7 @@ Suppose there are two disease subtypes: $k = 1,2$, and we are interested in test
 %
 with $n_1 = n_2 = n$ for simplicity; and $\bfB^k = (\bfb_1^k, \ldots, \bfb_q^k), (\bfB_{i*}^*) \in \BR^{ q \times K}$.
 
-In this setup, define the desparsified estimate of $\bfb_i^k$ as
+In this setup, define the desparsified estimate of $\bfb_{0i}^k$ as
 %
 \begin{align}\label{eqn:DebiasedBeta}
 \widehat \bfc_i^k = \widehat \bfb_i^k + \frac{1}{n t_i^k} \left( \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k \right)^T
@@ -459,12 +459,13 @@ Based on the theorem, we have the global test for the effect of the $i^{\Th}$ X-
 \noindent 2. Calculate the test statistic
 %
 $$
-D_i = \left\| m_i^1 (\widehat \Omega_y^1)^{1/2} \widehat \bfc_i^1 - 
- m_i^2 (\widehat \Omega_y^2)^{1/2} \widehat \bfc_i^2 \right\|^2
+D_i = (\widehat \bfc_i^1 - \widehat \bfc_i^2)^T
+\left( \frac{ (\widehat \Omega_y^1)^{-1}}{(m_i^1)^2} +
+\frac{(\widehat \Omega_y^2)^{-1}}{(m_i^2)^2} \right)^{-1} (\widehat \bfc_i^1 - \widehat \bfc_i^2)
 $$
 %
 
-\noindent 3. Reject $H_0^i$ if $D_i \geq \chi^2_{2q, 1-\alpha}$.
+\noindent 3. Reject $H_0^i$ if $D_i \geq \chi^2_{q, 1-\alpha}$.
 \end{Algorithm}
 
 Given the null hypothesis is rejected, we now consider the multiple testing problem of simultaneously testing for all entrywise differences, i.e. testing
@@ -476,10 +477,10 @@ $$
 for $j \in \cI_q$. Here we use the test statistic
 %
 \begin{align}\label{eqn:PairwiseStatistic}
-d_{ij} &= \frac{\widehat c_{ij}^1 - \widehat c_{ij}^2}{\tau_{ij}^1/ m_i^1 + \tau_{ij}^2/ m_i^2}
+d_{ij} &= \frac{\widehat c_{ij}^1 - \widehat c_{ij}^2}{\sqrt{\tau_{ij}^1/ (m_i^1)^2 + \tau_{ij}^2/ (m_i^2)^2}}
 \end{align}
 %
-with $\tau_{ij}^k$ being the $(i,j)^{\Th}$ element of $( \widehat \Omega_y^k)^{-1/2}$, for $k = 1,2$.
+with $\tau_{ij}^k$ being the $(i,j)^{\Th}$ element of $( \widehat \Omega_y^k)^{-1}$, for $k = 1,2$.
 
 Now consider tests where $H_0^{ij}$ is rejected if $| d_{ij} | > \tau$. We denote $\cH_0^i = \{ j: b_{ij}^1 = b_{ij}^2 \}$ and define the false discovery proportion (FDP) and false discovery rate (FDR) for these tests as follows:
 %
@@ -521,7 +522,7 @@ $$
 This procedure maintains FDR and FDP asymptotically at a pre-specified level $\alpha \in (0,1)$  under weak dependence conditions.
 
 \begin{Theorem}\label{thm:FDRthm}
-Suppose $\mu_j = b_{0,ij}^1 - b_{0,ij}^2, \sigma_j = \sqrt n \BE (\tau_{ij}^1/ m_i^1 + \tau_{ij}^2/ m_i^2)$. Assume the following holds as $(n,q) \rightarrow \infty$
+Suppose $\mu_j = b_{0,ij}^1 - b_{0,ij}^2, \sigma_j^2 = n \BE (\tau_{ij}^1/ (m_i^1)^2 + \tau_{ij}^2/ (m_i^2)^2)$. Assume the following holds as $(n,q) \rightarrow \infty$
 %
 \begin{align}\label{eqn:FDRthmEqn1}
 \left| \left\{ j \in \cI_q: |\mu_j / \sigma_j | \geq
@@ -551,6 +552,9 @@ Following \cite{LiuShao14}, a version of Algorithm~\ref{algo:AlgoFDR}, where the
 \begin{Remark}
 {\colrbf does within-group thresholding with FDR control for $K=1$}
 \end{Remark}
+
+\section{Numerical performance}
+
 
 \appendix
 \section{Proofs}

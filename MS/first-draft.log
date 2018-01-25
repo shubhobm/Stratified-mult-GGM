@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2016.12.9)  22 NOV 2017 10:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2016.12.9)  24 JAN 2018 18:55
 entering extended mode
 **./first-draft.tex
 (first-draft.tex
@@ -6,8 +6,8 @@ LaTeX2e <2016/03/31> patch level 3
 Babel <3.9r> and hyphenation patterns for 75 language(s) loaded.
 ("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\base\article.cls"
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\base\size12.clo"
-File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\base\size11.clo"
+File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
 \c@section=\count80
@@ -387,27 +387,29 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 78.
 ("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (3.75334pt too wide) in paragraph at lines 83--84
-\OT1/cmr/bx/n/12 Keywords\OT1/cmr/m/n/12 : Data in-te-gra-tion; Gaus-sian Graph
--i-cal Mod-els; Neigh-bor-hood se-lec-tion; Group
+Overfull \hbox (2.78476pt too wide) in paragraph at lines 83--84
+\OT1/cmr/bx/n/10.95 Keywords\OT1/cmr/m/n/10.95 : Data in-te-gra-tion; Gaus-sian
+ Graph-i-cal Mod-els; Neigh-bor-hood se-lec-tion; Group
  []
 
 [1
 
 {C:/Users/Subho/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Overfull \hbox (3.18628pt too wide) in paragraph at lines 101--102
-[]\OT1/cmr/m/n/12 Want to es-ti-mate $\OMS/cmsy/m/n/12 f\OT1/cmr/m/n/12 (
-[]\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 
-[]\OML/cmm/m/it/12 ; \OT1/cmr/bx/n/12 B[]\OT1/cmr/m/n/12 ); \OML/cmm/m/it/12 k 
-\OMS/cmsy/m/n/12 2 I[]$ \OT1/cmr/m/n/12 from data $\OMS/cmsy/m/n/12 Z[] \OT1/cm
-r/m/n/12 = \OMS/cmsy/m/n/12 f\OT1/cmr/m/n/12 (\OT1/cmr/bx/n/12 Y[]\OML/cmm/m/it
-/12 ; \OT1/cmr/bx/n/12 X[]\OT1/cmr/m/n/12 ); \OT1/cmr/bx/n/12 Y[] \OMS/cmsy/m/n
-/12 2 \U/msb/m/n/12 M\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 n; q\OT1/cmr/m/n/12 )\OM
-L/cmm/m/it/12 ; \OT1/cmr/bx/n/12 X[] \OMS/cmsy/m/n/12 2
+Overfull \hbox (4.1417pt too wide) in paragraph at lines 101--102
+[]\OT1/cmr/m/n/10.95 Want to es-ti-mate $\OMS/cmsy/m/n/10.95 f\OT1/cmr/m/n/10.9
+5 (
+[]\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 
+[]\OML/cmm/m/it/10.95 ; \OT1/cmr/bx/n/10.95 B[]\OT1/cmr/m/n/10.95 ); \OML/cmm/m
+/it/10.95 k \OMS/cmsy/m/n/10.95 2 I[]$ \OT1/cmr/m/n/10.95 from data $\OMS/cmsy/
+m/n/10.95 Z[] \OT1/cmr/m/n/10.95 = \OMS/cmsy/m/n/10.95 f\OT1/cmr/m/n/10.95 (\OT
+1/cmr/bx/n/10.95 Y[]\OML/cmm/m/it/10.95 ; \OT1/cmr/bx/n/10.95 X[]\OT1/cmr/m/n/1
+0.95 ); \OT1/cmr/bx/n/10.95 Y[] \OMS/cmsy/m/n/10.95 2 \U/msb/m/n/10.95 M\OT1/cm
+r/m/n/10.95 (\OML/cmm/m/it/10.95 n; q\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 ; 
+\OT1/cmr/bx/n/10.95 X[] \OMS/cmsy/m/n/10.95 2
  []
 
 
-Overfull \hbox (53.21878pt too wide) in paragraph at lines 114--114
+Overfull \hbox (55.67892pt too wide) in paragraph at lines 114--114
 [] 
  []
 
@@ -416,135 +418,157 @@ LaTeX Font Info:    Try loading font information for OMS+cmr on input line 126.
 ("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 126.
  [2]
-Overfull \hbox (12.23843pt too wide) detected at line 163
-\OML/cmm/m/it/12 f\OT1/cmr/m/n/12 (\OMS/cmsy/m/n/12 Y\OML/cmm/m/it/12 ; \OMS/cm
-sy/m/n/12 X\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 B\OML/cmm/m/it/12 ; \OT1/cmr/m/n
-/12 ) = [] [] [] \OMS/cmsy/m/n/12 k\OT1/cmr/m/n/12 (\OT1/cmr/bx/n/12 Y[] \OMS/
-cmsy/m/n/12   \OT1/cmr/bx/n/12 X[]B[]\OT1/cmr/m/n/12 )\OT1/cmr/bx/n/12 T[]\OMS/
-cmsy/m/n/12 k[] \OT1/cmr/m/n/12 = [] [] \OMS/cmsy/m/n/12 k\OT1/cmr/bx/n/12 Y[] 
-\OMS/cmsy/m/n/12   \OT1/cmr/bx/n/12 X[]B[]\OT1/cmr/m/n/12 )\OT1/cmr/bx/n/12 T[]
-\OMS/cmsy/m/n/12 k[] \OT1/cmr/m/n/12 = [] [](\OT1/cmr/bx/n/12 S[]\OT1/cmr/m/n/1
-2 (\OT1/cmr/bx/n/12 T[]\OT1/cmr/m/n/12 )[])
+Overfull \hbox (12.1272pt too wide) detected at line 163
+\OML/cmm/m/it/10.95 f\OT1/cmr/m/n/10.95 (\OMS/cmsy/m/n/10.95 Y\OML/cmm/m/it/10.
+95 ; \OMS/cmsy/m/n/10.95 X\OML/cmm/m/it/10.95 ; \OMS/cmsy/m/n/10.95 B\OML/cmm/m
+/it/10.95 ; \OT1/cmr/m/n/10.95 ) = [] [] [] \OMS/cmsy/m/n/10.95 k\OT1/cmr/m/n/
+10.95 (\OT1/cmr/bx/n/10.95 Y[] \OMS/cmsy/m/n/10.95   \OT1/cmr/bx/n/10.95 X[]B[]
+\OT1/cmr/m/n/10.95 )\OT1/cmr/bx/n/10.95 T[]\OMS/cmsy/m/n/10.95 k[] \OT1/cmr/m/n
+/10.95 = [] [] \OMS/cmsy/m/n/10.95 k\OT1/cmr/bx/n/10.95 Y[] \OMS/cmsy/m/n/10.95
+   \OT1/cmr/bx/n/10.95 X[]B[]\OT1/cmr/m/n/10.95 )\OT1/cmr/bx/n/10.95 T[]\OMS/cm
+sy/m/n/10.95 k[] \OT1/cmr/m/n/10.95 = [] [](\OT1/cmr/bx/n/10.95 S[]\OT1/cmr/m/n
+/10.95 (\OT1/cmr/bx/n/10.95 T[]\OT1/cmr/m/n/10.95 )[])
  []
 
 [3]
-Overfull \hbox (12.01698pt too wide) in paragraph at lines 269--271
-[]\OT1/cmr/m/it/12 with prob-a-bil-ity $\OMS/cmsy/m/n/12  \OT1/cmr/m/n/12 1 \O
-MS/cmsy/m/n/12   \OT1/cmr/m/n/12 1\OML/cmm/m/it/12 =p[] \OMS/cmsy/m/n/12   \OT1
-/cmr/m/n/12 6\OML/cmm/m/it/12 c[] []\OT1/cmr/m/n/12 [\OMS/cmsy/m/n/12  \OT1/cmr
-/m/n/12 (\OML/cmm/m/it/12 c[] \OMS/cmsy/m/n/12   \OT1/cmr/m/n/12 1) [](\OML/cmm
-/m/it/12 pq\OT1/cmr/m/n/12 )] \OMS/cmsy/m/n/12   \OT1/cmr/m/n/12 6\OML/cmm/m/it
-/12 c[] []\OT1/cmr/m/n/12 [\OMS/cmsy/m/n/12  \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 
-c[] \OMS/cmsy/m/n/12   \OT1/cmr/m/n/12 1) [](\OML/cmm/m/it/12 pq\OT1/cmr/m/n/12
- )]\OML/cmm/m/it/12 ; c[] >
+Overfull \hbox (11.66574pt too wide) in paragraph at lines 269--271
+[]\OT1/cmr/m/it/10.95 with prob-a-bil-ity $\OMS/cmsy/m/n/10.95  \OT1/cmr/m/n/1
+0.95 1 \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 1\OML/cmm/m/it/10.95 =p[] \OMS/
+cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 6\OML/cmm/m/it/10.95 c[] []\OT1/cmr/m/n/10.
+95 [\OMS/cmsy/m/n/10.95  \OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 c[] \OMS/cmsy/
+m/n/10.95   \OT1/cmr/m/n/10.95 1) [](\OML/cmm/m/it/10.95 pq\OT1/cmr/m/n/10.95 )
+] \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 6\OML/cmm/m/it/10.95 c[] []\OT1/cmr/
+m/n/10.95 [\OMS/cmsy/m/n/10.95  \OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 c[] \OM
+S/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 1) [](\OML/cmm/m/it/10.95 pq\OT1/cmr/m/n/
+10.95 )]\OML/cmm/m/it/10.95 ; c[] >
  []
 
 [4] [5]
-Overfull \hbox (29.40639pt too wide) in paragraph at lines 386--387
-[]\OT1/cmr/m/it/12 The de-vi-a-tion bound in (B2) is sat-is-fied with prob-a-bi
-l-ity $\OMS/cmsy/m/n/12  \OT1/cmr/m/n/12 1 \OMS/cmsy/m/n/12   \OT1/cmr/m/n/12 
-12\OML/cmm/m/it/12 c[] []\OT1/cmr/m/n/12 [(\OML/cmm/m/it/12 c[] \OMS/cmsy/m/n/1
-2   \OT1/cmr/m/n/12 1) [](\OML/cmm/m/it/12 pq\OT1/cmr/m/n/12 )]\OML/cmm/m/it/12
- ; c[] >
+Overfull \hbox (26.96025pt too wide) in paragraph at lines 386--387
+[]\OT1/cmr/m/it/10.95 The de-vi-a-tion bound in (B2) is sat-is-fied with prob-a
+-bil-ity $\OMS/cmsy/m/n/10.95  \OT1/cmr/m/n/10.95 1 \OMS/cmsy/m/n/10.95   \OT1
+/cmr/m/n/10.95 12\OML/cmm/m/it/10.95 c[] []\OT1/cmr/m/n/10.95 [(\OML/cmm/m/it/1
+0.95 c[] \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 1) [](\OML/cmm/m/it/10.95 pq\
+OT1/cmr/m/n/10.95 )]\OML/cmm/m/it/10.95 ; c[] >
  []
 
-[6]
-Overfull \hbox (1.71175pt too wide) in paragraph at lines 433--435
-[]\OT1/cmr/m/it/12 Then for the de-bi-ased es-ti-ma-tors in [] and sam-ple size
- sat-is-fy-ing $\OML/cmm/m/it/12 n \U/msa/m/n/12 % []\OT1/cmr/m/n/12 (\OML/cmm/
-m/it/12 pq\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; [] p \OT1/cmr/m/n/12 =
+
+Overfull \hbox (1.09523pt too wide) in paragraph at lines 433--435
+[]\OT1/cmr/m/it/10.95 Then for the de-bi-ased es-ti-ma-tors in [] and sam-ple s
+ize sat-is-fy-ing $\OML/cmm/m/it/10.95 n \U/msa/m/n/10.95 % []\OT1/cmr/m/n/10.9
+5 (\OML/cmm/m/it/10.95 pq\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 ; [] p \OT1/cm
+r/m/n/10.95 =
  []
 
-[7] [8] [9]
-Overfull \hbox (3.03821pt too wide) in paragraph at lines 769--771
-[][]\OT1/cmr/bx/n/12 Lemma A.3. []\OT1/cmr/m/it/12 For zero-mean in-de-pen-dent
- sub-gaussian ma-tri-ces $\OT1/cmr/bx/n/12 X \OMS/cmsy/m/n/12 2 \U/msb/m/n/12 M
-\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 n; p\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; \OT1/
-cmr/bx/n/12 E \OMS/cmsy/m/n/12 2 \U/msb/m/n/12 M\OT1/cmr/m/n/12 (\OML/cmm/m/it/
-12 n; q\OT1/cmr/m/n/12 )$
+[6] [7] [8] [9]
+Overfull \hbox (1.4644pt too wide) in paragraph at lines 773--775
+[][]\OT1/cmr/bx/n/10.95 Lemma A.3. []\OT1/cmr/m/it/10.95 For zero-mean in-de-pe
+n-dent sub-gaussian ma-tri-ces $\OT1/cmr/bx/n/10.95 X \OMS/cmsy/m/n/10.95 2 \U/
+msb/m/n/10.95 M\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 n; p\OT1/cmr/m/n/10.95 )
+\OML/cmm/m/it/10.95 ; \OT1/cmr/bx/n/10.95 E \OMS/cmsy/m/n/10.95 2 \U/msb/m/n/10
+.95 M\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 n; q\OT1/cmr/m/n/10.95 )$
  []
 
-[10] [11]
-Overfull \hbox (9.46317pt too wide) detected at line 846
-[][] \OMS/cmsy/m/n/12  [] \OT1/cmr/m/n/12 + [] \OML/cmm/m/it/12 [] \OT1/cmr/m
-/n/12 = \OML/cmm/m/it/12 V[]\OT1/cmr/m/n/12 ;  \OML/cmm/m/it/12 c[] \OT1/cmr/m/
-n/12 = [][]
+[10]
+Overfull \hbox (14.67491pt too wide) detected at line 850
+[][] \OMS/cmsy/m/n/10.95  [] \OT1/cmr/m/n/10.95 + [] \OML/cmm/m/it/10.95 [] \
+OT1/cmr/m/n/10.95 = \OML/cmm/m/it/10.95 V[]\OT1/cmr/m/n/10.95 ;  \OML/cmm/m/it/
+10.95 c[] \OT1/cmr/m/n/10.95 = [][]
  []
 
-[12]
-Overfull \hbox (30.84172pt too wide) in paragraph at lines 1014--1014
+[11] [12]
+Overfull \hbox (34.92566pt too wide) in paragraph at lines 1018--1018
 [] 
  []
 
 [13]
-Overfull \hbox (17.97781pt too wide) detected at line 1074
-[] [] \OMS/cmsy/m/n/12 k\OT1/cmr/m/n/12 (\OT1/cmr/bx/n/12 Y[] \OMS/cmsy/m/n/12 
-  \OT1/cmr/bx/n/12 X[][]\OT1/cmr/m/n/12 )[]\OMS/cmsy/m/n/12 k[] \OT1/cmr/m/n/12
- + \OML/cmm/m/it/12 [] [] \OMS/cmsy/m/n/12 k[]k  [] [] k\OT1/cmr/m/n/12 (\OT1
-/cmr/bx/n/12 Y[] \OMS/cmsy/m/n/12   \OT1/cmr/bx/n/12 X[][]\OT1/cmr/m/n/12 )\OT1
-/cmr/bx/n/12 T[]\OMS/cmsy/m/n/12 k[] \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 [] [] 
-\OMS/cmsy/m/n/12 k\OT1/cmr/bx/n/12 T[]\OMS/cmsy/m/n/12 k
+Overfull \hbox (25.55247pt too wide) detected at line 1078
+[] [] \OMS/cmsy/m/n/10.95 k\OT1/cmr/m/n/10.95 (\OT1/cmr/bx/n/10.95 Y[] \OMS/cms
+y/m/n/10.95   \OT1/cmr/bx/n/10.95 X[][]\OT1/cmr/m/n/10.95 )[]\OMS/cmsy/m/n/10.9
+5 k[] \OT1/cmr/m/n/10.95 + \OML/cmm/m/it/10.95 [] [] \OMS/cmsy/m/n/10.95 k[]k 
+ [] [] k\OT1/cmr/m/n/10.95 (\OT1/cmr/bx/n/10.95 Y[] \OMS/cmsy/m/n/10.95   \OT1
+/cmr/bx/n/10.95 X[][]\OT1/cmr/m/n/10.95 )\OT1/cmr/bx/n/10.95 T[]\OMS/cmsy/m/n/1
+0.95 k[] \OT1/cmr/m/n/10.95 + \OML/cmm/m/it/10.95 [] [] \OMS/cmsy/m/n/10.95 k\
+OT1/cmr/bx/n/10.95 T[]\OMS/cmsy/m/n/10.95 k
  []
 
-[14]
-Overfull \hbox (29.74988pt too wide) in paragraph at lines 1108--1108
+
+Overfull \hbox (1.97311pt too wide) in paragraph at lines 1102--1102
 [] 
  []
 
 
-Overfull \hbox (26.35728pt too wide) detected at line 1125
-[]\OT1/cmr/m/n/12 (\OT1/cmr/bx/n/12 d[]\OT1/cmr/m/n/12 )[][]\OT1/cmr/bx/n/12 d[
-] \OMS/cmsy/m/n/12  [] []  \OML/cmm/m/it/12  \OMS/cmsy/m/n/12 k\OT1/cmr/bx/n/
-12 D[]\OMS/cmsy/m/n/12 k[]   \OML/cmm/m/it/12 \OMS/cmsy/m/n/12 k\OT1/cmr/bx/n/
-12 D[]\OMS/cmsy/m/n/12 k[]  \OT1/cmr/m/n/12 (\OML/cmm/m/it/12   \OMS/cmsy/m/n/
-12   \OML/cmm/m/it/12 Kq\OT1/cmr/m/n/12 )\OMS/cmsy/m/n/12 k\OT1/cmr/bx/n/12 D[
-]\OMS/cmsy/m/n/12 k[]  []k\OT1/cmr/bx/n/12 D[]\OMS/cmsy/m/n/12 k[]
+Overfull \hbox (40.3196pt too wide) in paragraph at lines 1112--1112
+[] 
  []
 
-[15] [16] [17] (first-draft.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1264.
+[14]
+Overfull \hbox (7.3078pt too wide) detected at line 1120
+[] \OMS/cmsy/m/n/10.95 k\OT1/cmr/bx/n/10.95 d[]\OMS/cmsy/m/n/10.95 k  \OT1/cmr
+/m/n/10.95 3 [] \OMS/cmsy/m/n/10.95 k\OT1/cmr/bx/n/10.95 d[]\OMS/cmsy/m/n/10.95
+ k  ) [] k\OT1/cmr/bx/n/10.95 d[]\OMS/cmsy/m/n/10.95 k  \OT1/cmr/m/n/10.95 4 [
+] \OMS/cmsy/m/n/10.95 k\OT1/cmr/bx/n/10.95 d[]\OMS/cmsy/m/n/10.95 k  \OT1/cmr/
+m/n/10.95 4[]\OMS/cmsy/m/n/10.95 k\OT1/cmr/bx/n/10.95 D[]\OMS/cmsy/m/n/10.95 k[
+]
+ []
+
+
+Overfull \hbox (29.32535pt too wide) detected at line 1129
+[]\OT1/cmr/m/n/10.95 (\OT1/cmr/bx/n/10.95 d[]\OT1/cmr/m/n/10.95 )[][]\OT1/cmr/b
+x/n/10.95 d[] \OMS/cmsy/m/n/10.95  [] []  \OML/cmm/m/it/10.95  \OMS/cmsy/m/n/
+10.95 k\OT1/cmr/bx/n/10.95 D[]\OMS/cmsy/m/n/10.95 k[]   \OML/cmm/m/it/10.95 \O
+MS/cmsy/m/n/10.95 k\OT1/cmr/bx/n/10.95 D[]\OMS/cmsy/m/n/10.95 k[]  \OT1/cmr/m/
+n/10.95 (\OML/cmm/m/it/10.95   \OMS/cmsy/m/n/10.95   \OML/cmm/m/it/10.95 Kq\OT
+1/cmr/m/n/10.95 )\OMS/cmsy/m/n/10.95 k\OT1/cmr/bx/n/10.95 D[]\OMS/cmsy/m/n/10.9
+5 k[]  []k\OT1/cmr/bx/n/10.95 D[]\OMS/cmsy/m/n/10.95 k[]
+ []
+
+[15] [16] (first-draft.bbl [17])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1268.
  [18]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1264.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1268.
  (first-draft.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1264.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1264.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1268.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1268.
 
 Package rerunfilecheck Info: File `first-draft.out' has not changed.
-(rerunfilecheck)             Checksum: 0A9AAA041EB2FBB46CE190C958E04F92;413.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1264.
+(rerunfilecheck)             Checksum: 72EC0FAD41413A144A8AAA09DCA2A1A5;470.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1268.
  ) 
 Here is how much of TeX's memory you used:
- 7933 strings out of 493333
- 115257 string characters out of 3137901
- 213607 words of memory out of 3000000
- 11266 multiletter control sequences out of 15000+200000
- 15571 words of font info for 58 fonts, out of 3000000 for 9000
+ 7931 strings out of 493333
+ 115243 string characters out of 3137901
+ 212603 words of memory out of 3000000
+ 11262 multiletter control sequences out of 15000+200000
+ 14519 words of font info for 53 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  36i,17n,38p,1608b,484s stack positions out of 5000i,500n,10000p,200000b,50000s
-<D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:
-/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmbx8.pfb><D:/Study
-/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/Study/LaTe
-X/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><D:/Study/LaTeX
-/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmmi12.pfb><D:/Study/LaTeX/MikT
-eX 2.9.6161/fonts/type1/public/amsfonts/cm/cmmi6.pfb><D:/Study/LaTeX/MikTeX 2.9
-.6161/fonts/type1/public/amsfonts/cm/cmmi8.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/
-fonts/type1/public/amsfonts/cm/cmmib10.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/font
-s/type1/public/amsfonts/cmextra/cmmib8.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/font
-s/type1/public/amsfonts/cm/cmr12.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type
-1/public/amsfonts/cm/cmr17.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/publ
-ic/amsfonts/cm/cmr6.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsf
-onts/cm/cmr8.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm
-/cmsy10.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmsy
-6.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-<D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmti12.pfb><D:/S
-tudy/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/symbols/msam10.pfb><D:/S
-tudy/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on first-draft.pdf (18 pages, 338617 bytes).
+<D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmbx10.pfb><D:
+/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Stud
+y/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmbx8.pfb><D:/Study/LaTe
+X/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/Study/LaTeX/Mik
+TeX 2.9.6161/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><D:/Study/LaTeX/MikT
+eX 2.9.6161/fonts/type1/public/amsfonts/cm/cmmi10.pfb><D:/Study/LaTeX/MikTeX 2.
+9.6161/fonts/type1/public/amsfonts/cm/cmmi6.pfb><D:/Study/LaTeX/MikTeX 2.9.6161
+/fonts/type1/public/amsfonts/cm/cmmi8.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts
+/type1/public/amsfonts/cm/cmmib10.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/typ
+e1/public/amsfonts/cmextra/cmmib8.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/typ
+e1/public/amsfonts/cm/cmr10.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/pub
+lic/amsfonts/cm/cmr12.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/am
+sfonts/cm/cmr17.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts
+/cm/cmr6.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmr
+8.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmsy10.pfb
+><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmsy6.pfb><D:/S
+tudy/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmsy8.pfb><D:/Study/L
+aTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmti10.pfb><D:/Study/LaTeX/
+MikTeX 2.9.6161/fonts/type1/public/amsfonts/symbols/msam10.pfb><D:/Study/LaTeX/
+MikTeX 2.9.6161/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on first-draft.pdf (18 pages, 367547 bytes).
 PDF statistics:
- 386 PDF objects out of 1000 (max. 8388607)
- 103 named destinations out of 1000 (max. 500000)
- 65 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 398 PDF objects out of 1000 (max. 8388607)
+ 104 named destinations out of 1000 (max. 500000)
+ 73 words of extra memory for PDF output out of 10000 (max. 10000000)
 

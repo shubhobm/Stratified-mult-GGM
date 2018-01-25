@@ -11,7 +11,7 @@ library(parallel)
 
 ##### Common wrapper function
 get.outputs = function(n=100, subnetSize.X=rep(10,2), subnetSize.E=rep(10,2),
-                       sparsity.B=5, sparsity.Theta=5, K=2, nrep=1e2, filename=NULL){
+                       sparsity.B=5, sparsity.Theta=5, K=2, nrep=50, filename=NULL){
   
   ## Set up some quantities
   group = matrix(c(1, 2), nrow=2, ncol=2, byrow=T)           # grouping pattern
@@ -35,7 +35,7 @@ get.outputs = function(n=100, subnetSize.X=rep(10,2), subnetSize.E=rep(10,2),
         g = g+1
       }
     }
-    B0.array = CoefArray2(B0.group.array[,,1], D=0, sparsity=sparsity.B/p)
+    B0.array = CoefArray2(B0.group.array[,,1], D=1, sparsity=sparsity.B/p)
     B0.array = B0.array[[1]]
     Diff.mat = B0.array[,,1] - B0.array[,,2]
     Theta0.array = array(0, c(q,q,K))
@@ -135,44 +135,64 @@ get.outputs = function(n=100, subnetSize.X=rep(10,2), subnetSize.E=rep(10,2),
     }
     
     ## Get eigenvectors and eigenvalues of precision matrices
-    e1 = eigen(jmmle.model$Theta_refit$Omega[[1]])
-    P1 = e1$vectors
-    L1 = e1$values
-    e2 = eigen(jmmle.model$Theta_refit$Omega[[2]])
-    P2 = e2$vectors
-    L2 = e2$values
+    Theta1 = solve(jmmle.model$Theta_refit$Omega[[1]])
+    Theta2 = solve(jmmle.model$Theta_refit$Omega[[2]])
     
     ## Global test statistics for i-th X-variable
-    Omega1.sqrt = P1 %*% diag(sqrt(L1)) %*% t(P1)
-    Omega2.sqrt = P2 %*% diag(sqrt(L2)) %*% t(P2)
     D = rep(0,p)
+    d = matrix(0,p,q)
     for(i in 1:p){
-      D[i] = sum((M[i,1]*Omega1.sqrt%*%C.hat.array[i,,1] - M[i,2]*Omega2.sqrt%*%C.hat.array[i,,2])^2)
+      Pooled.Cov.i = Theta1/M[i,1]^2 + Theta2/M[i,2]^2
+      Diff.i = C.hat.array[i,,1] - C.hat.array[i,,2]
+      ## pairwise test statistics
+      d[i,] = (Diff.i)^2/diag(Pooled.Cov.i)
+      ## overall test statistic
+      D[i] = t(Diff.i) %*% solve(Pooled.Cov.i) %*% Diff.i
     }
     
-    sum(D > qchisq(.95, 2*q))/length(D)
+    ## determine threshold for i-th test
+    alpha = .2
+    d.ind.mat = matrix(0,p,q)
+    tau = rep(20,p)
+    which.i.reject = which(D > qchisq(.95, q))
+    for(i in which.i.reject){
+      tau.vec = seq(0, 20, length.out=1e2)
+      thres.vec = as.numeric(lapply(tau.vec, function(x) alpha/q * max(sum(d[i,]>x),1)))
+      which.less = which((1 - pchisq(tau.vec,1)) <= thres.vec)
+      if(length(which.less)>0){
+        tau[i] = tau.vec[which.less[1]] # set tau as minimizer only if there is at least one tau entry less
+      }
+      # tau[i] = tau.vec[which.min(abs(1 - pchisq(tau.vec,1) - thres.vec))]
+      
+      d.ind.mat[i,] = as.numeric(d[i,]>tau[i])
+    }
+    
+    pow.simul = length(which.i.reject)/p
+    pow = sum(d.ind.mat == 1 & Diff.mat != 0, na.rm=T)/sum(Diff.mat != 0)
+    size = 1 - sum(d.ind.mat == 0 & Diff.mat == 0, na.rm=T)/sum(Diff.mat == 0)
+    FDP = sum(d.ind.mat == 1 & Diff.mat == 0, na.rm=T)/max(sum(d.ind.mat == 1, na.rm=T),1)
+    c(pow.simul,pow,size,FDP)
   }
   
-  out.mat = as.numeric(mclapply(1:nrep, loopfun, mc.cores=8))
+  out.mat = mclapply(1:nrep, loopfun, mc.cores=8)
   # out.mat = lapply(1:nrep, loopfun)
   if(is.null(filename)){
-    filename = paste0("outtestsize_n",n,"p",p,"q",q,".Rda")
+    filename = paste0("testnew_n",n,"p",p,"q",q,".Rda")
   }
   save(out.mat, file=filename)
 }
 
 ##### Generate data
-# get.outputs(n = 100, subnetSize.X = c(15, 15), subnetSize.E = c(30, 30))
 get.outputs(n = 100, subnetSize.X = c(30, 30), subnetSize.E = c(15, 15))
-# get.outputs(n = 150, subnetSize.X = c(100, 100), subnetSize.E = c(100, 100))
+get.outputs(n = 100, subnetSize.X = c(15, 15), subnetSize.E = c(30, 30))
+get.outputs(n = 150, subnetSize.X = c(100, 100), subnetSize.E = c(100, 100))
 get.outputs(n = 150, subnetSize.X = c(150, 150), subnetSize.E = c(150, 150))
-get.outputs(n = 150, subnetSize.X = c(100, 100), subnetSize.E = c(100, 100),
-            sparsity.B=30, sparsity.Theta=30, filename="outtestsize_n150p200q200modelB.Rda")
-get.outputs(n = 150, subnetSize.X = c(150, 150), subnetSize.E = c(150, 150),
-            sparsity.B=30, sparsity.Theta=30, filename="outtestsize_n150p300q300modelB.Rda")
-
-
-
-
-
-
+get.outputs(n = 100, subnetSize.X = c(100, 100), subnetSize.E = c(100, 100),
+            sparsity.B=30, sparsity.Theta=30, filename="testnew_n100p200q200modelB.Rda")
+get.outputs(n = 200, subnetSize.X = c(100, 100), subnetSize.E = c(100, 100),
+            sparsity.B=30, sparsity.Theta=30, filename="testnew_n200p200q200modelB.Rda")
+# 
+# 
+# out.mat = matrix(unlist(out.mat), ncol=4, byrow=T)
+# rbind(round(apply(out.mat,2,mean),3),
+#       round(apply(out.mat,2,sd),3))
