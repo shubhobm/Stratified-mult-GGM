@@ -150,7 +150,7 @@ get.outputs = function(n=100, subnetSize.X=rep(10,2), subnetSize.E=rep(10,2),
     as.numeric(sum(D > qchisq(1-alpha, q))/p)
   }
   
-  out.mat = mclapply(1:nrep, loopfun, mc.cores=8)
+  out.mat = mclapply(1:nrep, loopfun, mc.cores=10)
   # out.mat = lapply(1:nrep, loopfun)
   if(is.null(filename)){
     filename = paste0("outtestsizenew_n",n,"p",p,"q",q,".Rda")
@@ -159,14 +159,14 @@ get.outputs = function(n=100, subnetSize.X=rep(10,2), subnetSize.E=rep(10,2),
 }
 
 ##### Generate data
-get.outputs(n = 100, subnetSize.X = c(30, 30), subnetSize.E = c(15, 15))
-get.outputs(n = 100, subnetSize.X = c(15, 15), subnetSize.E = c(30, 30))
-get.outputs(n = 150, subnetSize.X = c(100, 100), subnetSize.E = c(100, 100))
-get.outputs(n = 150, subnetSize.X = c(150, 150), subnetSize.E = c(150, 150))
 get.outputs(n = 100, subnetSize.X = c(100, 100), subnetSize.E = c(100, 100),
             sparsity.B=30, sparsity.Theta=30, filename="outtestsizenew_n100p200q200modelB.Rda")
 get.outputs(n = 200, subnetSize.X = c(100, 100), subnetSize.E = c(100, 100),
             sparsity.B=30, sparsity.Theta=30, filename="outtestsizenew_n200p200q200modelB.Rda")
+# get.outputs(n = 100, subnetSize.X = c(30, 30), subnetSize.E = c(15, 15))
+# get.outputs(n = 100, subnetSize.X = c(15, 15), subnetSize.E = c(30, 30))
+# get.outputs(n = 150, subnetSize.X = c(100, 100), subnetSize.E = c(100, 100))
+get.outputs(n = 150, subnetSize.X = c(150, 150), subnetSize.E = c(150, 150))
 
 # out.mat = matrix(unlist(out.mat), ncol=4, byrow=T)
 # rbind(round(apply(out.mat,2,mean),3),

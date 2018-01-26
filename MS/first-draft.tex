@@ -138,7 +138,7 @@ The objective function is bi-convex, so we are going to do the following in step
 Conditions A1 from JSEM paper holds for $\cX$ and $\cE$. Also A2, A3 from JSEM paper.
 
 \section{Results}
-To prove the results in this section, we shall use a reparametrization of the neighborhood coefficients at the lower level. Specifically, notice that for $j \in \cI_q, k \in \cI_K$, the corresponding summand in $f(\cY, \cX, \cB, \Theta)$ can be rearranged as
+To prove the results in this section, we use a reparametrization of the neighborhood coefficients at the lower level. Specifically, notice that for $j \in \cI_q, k \in \cI_K$, the corresponding summand in $f(\cY, \cX, \cB, \Theta)$ can be rearranged as
 %
 \begin{align*}
 \| \bfY^k_j - \bfX^k \bfB_j^k - (\bfY_{-j}^k - \bfX^k \bfB_{-j}^k) \bftheta_j^k \|^2 &=
@@ -164,7 +164,7 @@ $$
 %
 where $\bfS^k = (1/n) (\bfY^k - \bfX^k \bfB^k) (\bfY^k - \bfX^k \bfB^k)^T$ is the sample covariance matrix.
 
-Now suppose $\bfbeta = \ve (\bfB)$, and any subscript or superscript on $\bfB$ will be passed on to $\bfbeta$. Denote by $\widehat \bfbeta$ and $\widehat \Theta$ the generic estimators given by
+Now suppose $\bfbeta = \ve (\bfB)$, and any subscript or superscript on $\bfB$ is passed on to $\bfbeta$. Denote by $\widehat \bfbeta$ and $\widehat \Theta$ the generic estimators given by
 %
 \begin{align}
 \widehat \bfbeta &= \argmin_{\bfbeta \in \BR^{pq}} \left\{-2 \bfbeta^T \widehat \bfgamma + \bfbeta^T \widehat \bfGamma \bfbeta + \lambda_n \sum_{h \in \cH} \| \bfbeta^{[h]}  \| \right\} \label{eqn:EstEqn1}\\
@@ -439,8 +439,8 @@ Then for the debiased estimators in \eqref{eqn:DebiasedBeta} and sample size sat
 \end{bmatrix}^{1/2}
 %
 \begin{bmatrix}
-m_i^1 (\widehat \bfc_i^1 - \bfb_i^1) &\\
-&  m_i^2 (\widehat \bfc_i^2 - \bfb_i^2)
+m_i^1 (\widehat \bfc_i^1 - \bfb_{0i}^1) &\\
+&  m_i^2 (\widehat \bfc_i^2 - \bfb_{0i}^2)
 \end{bmatrix}
 \sim \cN_{2q} ({\bf 0}, \bfI) + o_P(1)
 \end{align}
@@ -451,7 +451,7 @@ m_i^1 (\widehat \bfc_i^1 - \bfb_i^1) &\\
 Based on the theorem, we have the global test for the effect of the $i^{\Th}$ X-covariate.
 
 \begin{Algorithm}\label{algo:AlgoGlobalTest}
-(Global test for $H_0^i: \bfB_{0 i}^1 = \bfB_{0 i}^2$ at level $\alpha, 0< \alpha< 1$)
+(Global test for $H_0^i: \bfb_{0 i}^1 = \bfb_{0 i}^2$ at level $\alpha, 0< \alpha< 1$)
 
 \noindent 1. Obtain the debiased estimators $\widehat \bfc_i^1, \widehat \bfc_i^2$ using \eqref{eqn:DebiasedBeta}.
 
