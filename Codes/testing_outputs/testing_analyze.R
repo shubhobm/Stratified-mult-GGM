@@ -1,21 +1,25 @@
 rm(list=ls())
 setwd('d:/Study/My projects/Stratified-mult-GGM/Codes/testing_outputs/')
 
-analyze = function(list, broken=FALSE){
+analyze = function(list, broken=FALSE, array=NULL){
   matrix.list = list()
 
   if(broken){
-    for(i in 1:4){
+    for(i in array){
       load(paste0(list,"_",i,".Rda"))
       matrix.list[[i]] = matrix(unlist(out.mat), ncol=4, byrow=T)
-      matrix = lapply(matrix.list, rbind)
+      matrix = matrix(unlist(matrix.list), ncol=4, byrow=T)
+      output = rbind(round(apply(simplify2array(matrix.list), 2, mean),3),
+                     round(apply(simplify2array(matrix.list), 2, sd),3))
     }
   } else{
     load(paste0(list,".Rda"))
     matrix = matrix(unlist(out.mat), ncol=4, byrow=T)
+    output =   rbind(round(apply(matrix,2,mean),3),
+                     round(apply(matrix,2,sd),3))
   }
-  rbind(round(apply(matrix,2,mean),3),
-        round(apply(matrix,2,sd),3))
+  
+  output
 }
 
 analyze.size = function(list, broken=FALSE){
@@ -35,7 +39,9 @@ analyze.size = function(list, broken=FALSE){
 }
 
 analyze("testnew_n100p60q30")
+analyze("testnew_n200p60q30", broken=T, array=1:5)
 analyze("testnew_n100p30q60")
+analyze("testnew_n200p30q60", broken=T, array=1:5)
 analyze("testnew_n150p200q200")
 analyze("testnew_n150p300q300")
 analyze("testnew_n100p200q200modelB")

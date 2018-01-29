@@ -1,0 +1,155 @@
+\section{Two-sample testing}
+Suppose there are two disease subtypes: $k = 1,2$, and we are interested in testing whether the downstream effect of a predictor in X-data is same across both subtypes, i.e. if $\bfb_{0i}^1 = \bfb_{0i}^2$ for some fixed $i \in \cI_p$. For this we consider the modified optimization problem:
+%
+\begin{align}
+& \min_{\cB, \Theta} \frac{1}{n} \left\{ \sum_{j=1}^q \sum_{k=1}^2 \| \bfY_j^k - \bfY_{-j}^k \bftheta_j^k - \bfX^k \bfB_{j}^k \|^2 + \sum_{j \neq j'} \lambda_{jj'} \| \bftheta_{jj'}^* \| + \sum_{i=1}^p \eta_i \| \bfB_{i*}^* \| \right\} \notag\\
+&= \min \left\{ f ( \cY, \cX, \cB, \Theta) + P (\Theta) + Q (\cB) \right\} 
+\end{align}
+%
+with $n_1 = n_2 = n$ for simplicity; and $\bfB^k = (\bfb_1^k, \ldots, \bfb_q^k), (\bfB_{i*}^*) \in \BR^{ q \times K}$.
+
+In this setup, define the desparsified estimate of $\bfb_{0i}^k$ as
+%
+\begin{align}\label{eqn:DebiasedBeta}
+\widehat \bfc_i^k = \widehat \bfb_i^k + \frac{1}{n t_i^k} \left( \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k \right)^T
+(\bfY^k - \bfX^k \widehat \bfB^k )
+\end{align}
+%
+for $k = 1,2$, where $t_i^k = ( \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k )^T \bfX_{-i}^k/n$. Then we have the asymptotic joint distribution of a scaled version of the debiased coefficients for the $i\Th$ predictor effect.
+
+\begin{Theorem}\label{Thm:ThmTesting}
+Define $\widehat s_i^k = \sqrt{\| \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k \|^2/n}$, and $m_i^k = \sqrt n t_i^k / \widehat s_i^k$. Assume the following:
+
+\noindent {\bf (C1)} For the X-neighborhood estimators we have $\| \widehat \bfzeta^k - \bfzeta_0^k \|_1 \leq v_\zeta = \eta_\zeta \sqrt { \frac{\log p}{n}}$.
+
+\noindent {\bf (C2)} The precision matrix estimators satisfy
+%
+$$
+\left\| (\widehat \Omega_y^k)^{1/2} - (\Omega_y^k)^{1/2} \right\|_\infty \leq v_\Omega =
+\eta_\Omega \sqrt { \frac{\log q}{n}}
+$$
+%
+\noindent{\bf(C3)} $\| \widehat \bfB^k - \bfB^k_0 \|_1 \leq v_\beta$, where $v_\beta = \eta_\beta \sqrt{\frac{\log (pq)}{n}}$ with $\eta_\beta$ depending on $\cB$ only.
+
+Then for the debiased estimators in \eqref{eqn:DebiasedBeta} and sample size satisfying $n \succsim \log (pq), \log p = o(n^{1/2}), \log q = o(n^{1/2})$ we have
+%
+\begin{align}\label{eqn:ThmTestingEqn}
+\begin{bmatrix}
+\widehat \Omega_y^1 &\\
+& \widehat \Omega_y^2
+\end{bmatrix}^{1/2}
+%
+\begin{bmatrix}
+m_i^1 (\widehat \bfc_i^1 - \bfb_{0i}^1) &\\
+&  m_i^2 (\widehat \bfc_i^2 - \bfb_{0i}^2)
+\end{bmatrix}
+\sim \cN_{2q} ({\bf 0}, \bfI) + o_P(1)
+\end{align}
+%
+\end{Theorem}
+%
+
+Based on the theorem, we have the global test for the effect of the $i^{\Th}$ X-covariate.
+
+\begin{Algorithm}\label{algo:AlgoGlobalTest}
+(Global test for $H_0^i: \bfb_{0 i}^1 = \bfb_{0 i}^2$ at level $\alpha, 0< \alpha< 1$)
+
+\noindent 1. Obtain the debiased estimators $\widehat \bfc_i^1, \widehat \bfc_i^2$ using \eqref{eqn:DebiasedBeta}.
+
+
+\noindent 2. Calculate the test statistic
+%
+$$
+D_i = (\widehat \bfc_i^1 - \widehat \bfc_i^2)^T
+\left( \frac{ (\widehat \Omega_y^1)^{-1}}{(m_i^1)^2} +
+\frac{(\widehat \Omega_y^2)^{-1}}{(m_i^2)^2} \right)^{-1} (\widehat \bfc_i^1 - \widehat \bfc_i^2)
+$$
+%
+
+\noindent 3. Reject $H_0^i$ if $D_i \geq \chi^2_{q, 1-\alpha}$.
+\end{Algorithm}
+
+Given the null hypothesis is rejected, we now consider the multiple testing problem of simultaneously testing for all entrywise differences, i.e. testing
+%
+$$
+H_0^{ij}: b_{0 ij}^1 = b_{0ij}^2 \quad \text{vs.} \quad H_1^{ij}: b_{0 ij}^1 \neq b_{0 ij}^2 
+$$
+%
+for $j \in \cI_q$. Here we use the test statistic
+%
+\begin{align}\label{eqn:PairwiseStatistic}
+d_{ij} &= \frac{\widehat c_{ij}^1 - \widehat c_{ij}^2}{\sqrt{\tau_{ij}^1/ (m_i^1)^2 + \tau_{ij}^2/ (m_i^2)^2}}
+\end{align}
+%
+with $\tau_{ij}^k$ being the $(i,j)^{\Th}$ element of $( \widehat \Omega_y^k)^{-1}$, for $k = 1,2$.
+
+Now consider tests where $H_0^{ij}$ is rejected if $| d_{ij} | > \tau$. We denote $\cH_0^i = \{ j: b_{ij}^1 = b_{ij}^2 \}$ and define the false discovery proportion (FDP) and false discovery rate (FDR) for these tests as follows:
+%
+$$
+FDP (\tau) = \frac{\sum_{j \in \cH_0^i} \BI( |d_{ij}| \geq \tau)}{\max\left\{
+\sum_{j \in \cI_q} \BI( |d_{ij}| \geq \tau), 1\right\} }\quad
+FDR (\tau) = \BE [ FDP (\tau) ]
+$$
+%
+For a pre-specified level $\alpha$, we choose a threshold that ensures both FDP and FDR $\leq \alpha$ using the Benjamini-Hochberg (BH) procedure. % To do this we define the following:
+%%
+%\begin{align*}
+%P_0 = 2 \Phi (1) - 1; \quad
+%\hat P_0 = \frac{1}{q} \sum_{j \in \cH_0^i} \BI (|d_{ij}| \leq 1); \quad
+%Q_0 = \sqrt 2 \phi (1);\\
+%A = \frac{P_0 - \hat P_0}{Q_0}; \quad A(t) = \left[ 1 + |A| \frac{|t| \phi(t)}{\sqrt 2 (1 - \Phi(t))} \right]^{-1}
+%\end{align*}
+%%
+%where $\Phi(\cdot)$ and $\phi(\cdot)$ are the standard normal distribution and density functions, respectively.   
+The procedure for FDR control is now given by Algorithm \ref{algo:AlgoFDR}.
+
+\begin{Algorithm}\label{algo:AlgoFDR}
+(Simultaneous tests for $H_0^{ij}: b_{0 ij}^1 = b_{0 ij}^2$ at level $\alpha, 0< \alpha< 1$)
+
+\noindent 1. Calculate the pairwise test statistics $d_{ij}$ using \eqref{algo:AlgoFDR} for $j \in \cI_q$.
+
+\noindent 2. Obtain the threshold
+%
+$$
+\hat \tau = \inf \left\{\tau \in \BR: 1 - \Phi(\tau) \leq \frac{\alpha}{2 q}
+\max \left( \sum_{j \in \cI_q} \BI( |d_{ij}| \geq \tau), 1 \right) \right\}
+$$
+%
+
+\noindent 3. For $j \in \cI_q$, reject $H_0^{ij}$ if $|d_{ij}| \geq \hat \tau$.
+\end{Algorithm}
+
+%Denote $\hat \cH_0^i = \{ j\ in \cI_q: |d_{ij}| \geq \hat \tau \}$.
+This procedure maintains FDR and FDP asymptotically at a pre-specified level $\alpha \in (0,1)$  under weak dependence conditions.
+
+\begin{Theorem}\label{thm:FDRthm}
+Suppose $\mu_j = b_{0,ij}^1 - b_{0,ij}^2, \sigma_j^2 = n \BE (\tau_{ij}^1/ (m_i^1)^2 + \tau_{ij}^2/ (m_i^2)^2)$. Assume the following holds as $(n,q) \rightarrow \infty$
+%
+\begin{align}\label{eqn:FDRthmEqn1}
+\left| \left\{ j \in \cI_q: |\mu_j / \sigma_j | \geq
+4 \sqrt{ \log q/n} \right\} \right| \rightarrow \infty
+\end{align}
+%
+Now Consider the conditions {\colrbf C1, C1*}
+
+
+If (C1) is satisfied, then the following holds when $\log q = O(n^{\xi}), 0 < \xi < 3/23$:
+%
+\begin{align}\label{eqn:FDReqn}
+\frac{FDP( \hat \tau)}{(| \cH_0^i|/q) \alpha} \stackrel{P}{\rightarrow} 1; \quad
+\lim_{n, q \rightarrow \infty} \frac{FDR( \hat \tau)}{(| \cH_0^i|/q) \alpha} = 1
+\end{align}
+%
+Further, if (C1*) is satisfied, then \eqref{eqn:FDReqn} holds for $\log q = o(n^{1/3})$.
+\end{Theorem}
+%
+%Theorem~\ref{thm:FDRthm} is essentially a restatement of Theorem 4.1 in \cite{LiuShao14}.
+The condition \eqref{eqn:FDRthmEqn1} is essential for FDR control in a diverging parameter space \citep{LiuShao14, Liu17}, while the dependence conditions (C1) and (C1*) control the amount of correlation between variables in the Y-layer.
+
+\begin{Remark}
+Following \cite{LiuShao14}, a version of Algorithm~\ref{algo:AlgoFDR}, where the null distribution is calibrated using bootstrap instead of normal approximation, gives asymptotic FDR control under (C1*) and $\log q = o(n^{1/2})$. We believe it is possible to obtain \eqref{eqn:FDReqn} under the weaker condition (C1) for $ \log q = o(n^{1/2})$ by extending the framework of \cite{Liu17} that performs multiple testing in multiple (single layer) GGMs, with the added advantage of being generalizable to the case of $K > 2$. However, this requires a significant amount of theoretical analysis, and we leave it for future research.
+\end{Remark}
+
+\begin{Remark}
+{\colrbf does within-group thresholding with FDR control for $K=1$}
+\end{Remark}

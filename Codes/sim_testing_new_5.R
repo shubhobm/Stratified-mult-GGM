@@ -11,15 +11,15 @@ library(parallel)
 
 ##### Common wrapper function
 get.outputs = function(n=100, subnetSize.X=rep(10,2), subnetSize.E=rep(10,2),
-                       sparsity.B=5, sparsity.Theta=5, K=2, nrep=50, filename=NULL){
+                       sparsity.B=5, sparsity.Theta=5, K=2, seed.vec=1:10, filename=NULL){
   
   ## Set up some quantities
   group = matrix(c(1, 2), nrow=2, ncol=2, byrow=T)           # grouping pattern
   p = sum(subnetSize.X)
   q = sum(subnetSize.E)
   
-  loopfun = function(rep){
-    set.seed(1e3*rep)
+  loopfun = function(seed){
+    set.seed(1e3*seed)
     
     ## Generate data *******************************************************
     # **********************************************************************
@@ -174,14 +174,14 @@ get.outputs = function(n=100, subnetSize.X=rep(10,2), subnetSize.E=rep(10,2),
     pow = sum(d.ind.mat == 1 & Diff.mat != 0, na.rm=T)/sum(Diff.mat != 0)
     size = 1 - sum(d.ind.mat == 0 & Diff.mat == 0, na.rm=T)/sum(Diff.mat == 0)
     FDP = sum(d.ind.mat == 1 & Diff.mat == 0, na.rm=T)/max(sum(d.ind.mat == 1, na.rm=T),1)
-    cat("=============\nReplication",rep,"done!\n=============\n")
+    cat("=============\nReplication",seed,"done!\n=============\n")
     c(pow.simul,pow,size,FDP)
   }
   
   # out.mat = mclapply(1:nrep, loopfun, mc.cores=8)
-  out.mat = lapply(1:nrep, loopfun)
+  out.mat = lapply(40+seed.vec, loopfun)
   if(is.null(filename)){
-    filename = paste0("testnew_n",n,"p",p,"q",q,".Rda")
+    filename = paste0("testnew_n",n,"p",p,"q",q,"_5.Rda")
   }
   save(out.mat, file=filename)
 }
@@ -196,11 +196,12 @@ get.outputs = function(n=100, subnetSize.X=rep(10,2), subnetSize.E=rep(10,2),
 # get.outputs(n = 100, subnetSize.X = c(100, 100), subnetSize.E = c(100, 100), nrep=10,
 #             sparsity.B=30, sparsity.Theta=30, filename="testnew_n100p200q200modelB.Rda")
 
-get.outputs(n = 200, subnetSize.X = c(30, 30), subnetSize.E = c(15, 15))
-get.outputs(n = 200, subnetSize.X = c(15, 15), subnetSize.E = c(30, 30))
-get.outputs(n = 300, subnetSize.X = c(150, 150), subnetSize.E = c(150, 150), nrep=10)
-get.outputs(n = 300, subnetSize.X = c(100, 100), subnetSize.E = c(100, 100), nrep=10,
-            sparsity.B=30, sparsity.Theta=30, filename="testnew_n300p200q200modelB.Rda")
+# get.outputs(n = 200, subnetSize.X = c(30, 30), subnetSize.E = c(15, 15))
+# get.outputs(n = 200, subnetSize.X = c(15, 15), subnetSize.E = c(30, 30))
+get.outputs(n = 300, subnetSize.X = c(150, 150), subnetSize.E = c(150, 150))
+get.outputs(n = 300, subnetSize.X = c(100, 100), subnetSize.E = c(100, 100),
+            sparsity.B=30, sparsity.Theta=30,
+            filename="testnew_n300p200q200modelB_5.Rda")
 
 # 
 # 
