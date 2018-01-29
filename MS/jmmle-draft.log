@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2017.1.18)  29 JAN 2018 13:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2017.1.18)  29 JAN 2018 18:25
 entering extended mode
 **./jmmle-draft.tex
 (jmmle-draft.tex
@@ -322,20 +322,20 @@ Package: apptools 2012/11/28 v1.0 Tools for customizing appendices
 ) (jmmle-draft.aux)
 \openout1 = `jmmle-draft.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
 ("C:\Study\LaTeX\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count116
@@ -354,7 +354,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \AtBeginShipoutBox=\box29
-Package hyperref Info: Link coloring ON on input line 62.
+Package hyperref Info: Link coloring ON on input line 63.
  ("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
@@ -363,9 +363,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count122
 )
-LaTeX Info: Redefining \ref on input line 62.
-LaTeX Info: Redefining \pageref on input line 62.
-LaTeX Info: Redefining \nameref on input line 62.
+LaTeX Info: Redefining \ref on input line 63.
+LaTeX Info: Redefining \pageref on input line 63.
+LaTeX Info: Redefining \nameref on input line 63.
 
 (jmmle-draft.out) (jmmle-draft.out)
 \@outlinefile=\write3
@@ -375,17 +375,17 @@ LaTeX Info: Redefining \nameref on input line 62.
 \c@Example=\count124
 \c@Algorithm=\count125
 \c@Remark=\count126
-LaTeX Font Info:    Try loading font information for U+msa on input line 78.
+LaTeX Font Info:    Try loading font information for U+msa on input line 79.
 
 ("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 78.
+LaTeX Font Info:    Try loading font information for U+msb on input line 79.
 
 ("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (2.78476pt too wide) in paragraph at lines 83--84
+Overfull \hbox (2.78476pt too wide) in paragraph at lines 84--85
 \OT1/cmr/bx/n/10.95 Keywords\OT1/cmr/m/n/10.95 : Data in-te-gra-tion; Gaus-sian
  Graph-i-cal Mod-els; Neigh-bor-hood se-lec-tion; Group
  []
@@ -399,18 +399,23 @@ Package natbib Warning: Citation `GuoEtal11' on page 2 undefined on input line
 29.
 
 [2]
-Overfull \hbox (55.67892pt too wide) in paragraph at lines 44--44
-[] 
- []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 56.
-("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+Package natbib Warning: Citation `MeinshausenBuhlmann10' on page 3 undefined on
+ input line 40.
+
+
+Package natbib Warning: Citation `JavanmardMontanari14' on page 3 undefined on 
+input line 69.
+
+[3]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 98.
+ ("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 56.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 98.
 
-Overfull \hbox (12.1272pt too wide) detected at line 99
+Overfull \hbox (12.1272pt too wide) detected at line 141
 \OML/cmm/m/it/10.95 f\OT1/cmr/m/n/10.95 (\OMS/cmsy/m/n/10.95 Y\OML/cmm/m/it/10.
 95 ; \OMS/cmsy/m/n/10.95 X\OML/cmm/m/it/10.95 ; \OMS/cmsy/m/n/10.95 B\OML/cmm/m
 /it/10.95 ; \OT1/cmr/m/n/10.95 ) = [] [] [] \OMS/cmsy/m/n/10.95 k\OT1/cmr/m/n/
@@ -422,8 +427,8 @@ sy/m/n/10.95 k[] \OT1/cmr/m/n/10.95 = [] [](\OT1/cmr/bx/n/10.95 S[]\OT1/cmr/m/n
 /10.95 (\OT1/cmr/bx/n/10.95 T[]\OT1/cmr/m/n/10.95 )[])
  []
 
-[3] [4]
-Overfull \hbox (11.66574pt too wide) in paragraph at lines 205--207
+[4] [5]
+Overfull \hbox (11.66574pt too wide) in paragraph at lines 247--249
 []\OT1/cmr/m/it/10.95 with prob-a-bil-ity $\OMS/cmsy/m/n/10.95  \OT1/cmr/m/n/1
 0.95 1 \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 1\OML/cmm/m/it/10.95 =p[] \OMS/
 cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 6\OML/cmm/m/it/10.95 c[] []\OT1/cmr/m/n/10.
@@ -435,8 +440,8 @@ S/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 1) [](\OML/cmm/m/it/10.95 pq\OT1/cmr/m/n/
 10.95 )]\OML/cmm/m/it/10.95 ; c[] >
  []
 
-[5]
-Overfull \hbox (26.96025pt too wide) in paragraph at lines 322--323
+[6]
+Overfull \hbox (26.96025pt too wide) in paragraph at lines 364--365
 []\OT1/cmr/m/it/10.95 The de-vi-a-tion bound in (B2) is sat-is-fied with prob-a
 -bil-ity $\OMS/cmsy/m/n/10.95  \OT1/cmr/m/n/10.95 1 \OMS/cmsy/m/n/10.95   \OT1
 /cmr/m/n/10.95 12\OML/cmm/m/it/10.95 c[] []\OT1/cmr/m/n/10.95 [(\OML/cmm/m/it/1
@@ -444,7 +449,7 @@ Overfull \hbox (26.96025pt too wide) in paragraph at lines 322--323
 OT1/cmr/m/n/10.95 )]\OML/cmm/m/it/10.95 ; c[] >
  []
 
-) (Testing.tex [6]
+) (Testing.tex [7]
 Overfull \hbox (1.09523pt too wide) in paragraph at lines 34--36
 []\OT1/cmr/m/it/10.95 Then for the de-bi-ased es-ti-ma-tors in [] and sam-ple s
 ize sat-is-fy-ing $\OML/cmm/m/it/10.95 n \U/msa/m/n/10.95 % []\OT1/cmr/m/n/10.9
@@ -452,7 +457,7 @@ ize sat-is-fy-ing $\OML/cmm/m/it/10.95 n \U/msa/m/n/10.95 % []\OT1/cmr/m/n/10.9
 r/m/n/10.95 =
  []
 
-[7] [8]) (Proofs.tex [9] [10]
+[8] [9]) (Proofs.tex [10] [11]
 Overfull \hbox (1.4644pt too wide) in paragraph at lines 215--217
 [][]\OT1/cmr/bx/n/10.95 Lemma A.3. []\OT1/cmr/m/it/10.95 For zero-mean in-de-pe
 n-dent sub-gaussian ma-tri-ces $\OT1/cmr/bx/n/10.95 X \OMS/cmsy/m/n/10.95 2 \U/
@@ -461,19 +466,19 @@ msb/m/n/10.95 M\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 n; p\OT1/cmr/m/n/10.95 )
 .95 M\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 n; q\OT1/cmr/m/n/10.95 )$
  []
 
-[11]
+[12]
 Overfull \hbox (14.67491pt too wide) detected at line 292
 [][] \OMS/cmsy/m/n/10.95  [] \OT1/cmr/m/n/10.95 + [] \OML/cmm/m/it/10.95 [] \
 OT1/cmr/m/n/10.95 = \OML/cmm/m/it/10.95 V[]\OT1/cmr/m/n/10.95 ;  \OML/cmm/m/it/
 10.95 c[] \OT1/cmr/m/n/10.95 = [][]
  []
 
-[12]
+[13]
 Overfull \hbox (34.92566pt too wide) in paragraph at lines 460--460
 [] 
  []
 
-[13]
+[14]
 Overfull \hbox (25.55247pt too wide) detected at line 520
 [] [] \OMS/cmsy/m/n/10.95 k\OT1/cmr/m/n/10.95 (\OT1/cmr/bx/n/10.95 Y[] \OMS/cms
 y/m/n/10.95   \OT1/cmr/bx/n/10.95 X[][]\OT1/cmr/m/n/10.95 )[]\OMS/cmsy/m/n/10.9
@@ -484,7 +489,7 @@ y/m/n/10.95   \OT1/cmr/bx/n/10.95 X[][]\OT1/cmr/m/n/10.95 )[]\OMS/cmsy/m/n/10.9
 OT1/cmr/bx/n/10.95 T[]\OMS/cmsy/m/n/10.95 k
  []
 
-[14]
+[15]
 Overfull \hbox (1.97311pt too wide) in paragraph at lines 544--544
 [] 
  []
@@ -494,7 +499,7 @@ Overfull \hbox (40.3196pt too wide) in paragraph at lines 554--554
 [] 
  []
 
-[15]
+[16]
 Overfull \hbox (7.3078pt too wide) detected at line 562
 [] \OMS/cmsy/m/n/10.95 k\OT1/cmr/bx/n/10.95 d[]\OMS/cmsy/m/n/10.95 k  \OT1/cmr
 /m/n/10.95 3 [] \OMS/cmsy/m/n/10.95 k\OT1/cmr/bx/n/10.95 d[]\OMS/cmsy/m/n/10.95
@@ -515,28 +520,28 @@ n/10.95 (\OML/cmm/m/it/10.95   \OMS/cmsy/m/n/10.95   \OML/cmm/m/it/10.95 Kq\OT
 5 k[]  []k\OT1/cmr/bx/n/10.95 D[]\OMS/cmsy/m/n/10.95 k[]
  []
 
-[16] [17]) (jmmle-draft.bbl [18])
+[17] [18]) (jmmle-draft.bbl [19])
 
 Package natbib Warning: There were undefined citations.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 102.
-[19]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 102.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 103.
+[20]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 103.
  (jmmle-draft.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 102.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 102.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 103.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 103.
 Package rerunfilecheck Info: File `jmmle-draft.out' has not changed.
 (rerunfilecheck)             Checksum: 10DC92F8D777A465FBCD0B59448BD4A3;616.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 102.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 103.
  ) 
 Here is how much of TeX's memory you used:
- 7947 strings out of 493333
- 114938 string characters out of 3140056
- 214623 words of memory out of 3000000
- 11264 multiletter control sequences out of 15000+200000
+ 7953 strings out of 493333
+ 115031 string characters out of 3140056
+ 214684 words of memory out of 3000000
+ 11269 multiletter control sequences out of 15000+200000
  14519 words of font info for 53 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,17n,38p,1608b,426s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,17n,38p,1608b,484s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Stud
 y/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Study/LaTeX/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Study/LaTeX/MiKTeX 2.9/fo
@@ -556,9 +561,9 @@ aTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Study/LaTeX/MiKTeX
  2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts
 /type1/public/amsfonts/symbols/msam10.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type
 1/public/amsfonts/symbols/msbm10.pfb>
-Output written on jmmle-draft.pdf (19 pages, 374184 bytes).
+Output written on jmmle-draft.pdf (20 pages, 381641 bytes).
 PDF statistics:
- 409 PDF objects out of 1000 (max. 8388607)
- 106 named destinations out of 1000 (max. 500000)
+ 419 PDF objects out of 1000 (max. 8388607)
+ 107 named destinations out of 1000 (max. 500000)
  81 words of extra memory for PDF output out of 10000 (max. 10000000)
 

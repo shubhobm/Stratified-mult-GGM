@@ -18,7 +18,7 @@ $ \BD_m^k = \BD_{m-1}^k \bfB_m^k + \BE_m^k$, with $\bfB_m^k \in \BM(p_{m-1}, p_m
 
 We assume known structured sparsity patterns, denoted by $\cG_m$ and $\cH_m$, for the parameters of interest in the above model, i.e. the precision matrices $\Omega_m^k := (\Sigma_m^k)^{-1}$ and the regression coefficient matrices $\bfB_m^k$, respectively. These patterns provide information on horizontal dependencies across $k$ for the corresponding parameters, and our goal here is to leverage them to estimate the full hierarchical structure of the network- specifically to obtain the undirected edges inside nodes of a single layer, and the directed edges between two successive layers through jointly estimating $\{ \Omega_m^k \}$ and $\{ \bfB_m^k \}$.
 
-Consider the following two-layer model, which is a special case of the above model with $M=2$:
+Consider a two-layer model, which is a special case of the above model with $M=2$:
 %
 \begin{eqnarray}
 \BX^k = (X^k_1, \ldots, X^k_p)^T \sim \cN (0, \Sigma^k_x);\\
@@ -26,29 +26,71 @@ Consider the following two-layer model, which is a special case of the above mod
 \bfB^k \in \BM(p,q), \quad \Omega^k_x = (\Sigma^k_x)^{-1}; \quad \Omega^k_y = (\Sigma^k_y)^{-1};
 \end{eqnarray}
 %
-where we want to estimate $\{ (\Omega^k_x, \Omega^k_y, \bfB^k); k \in \cI_K$ from data $\cZ^k = \{ (\bfY^k, \bfX^k); \bfY^k \in \BM(n,q), \bfX^k \in \BM(n,p), k \in \cI_K\}$. in presence of known grouping structures $\cG_x, \cG_y, \cH$ respectively. We focus most of the theoretical discussion in the rest of the paper on jointly estimating $\Omega_y:= \{ \Omega_y^k \}$ and $\cB := \{ \bfB^k \}$. This is because the parameters $\Omega_x := \{ \Omega_x^k \}$ are only dependent on $\{ \bfX^k\}$, so any method for joint estimation of multiple graphical models can be used to estimate them (e.g. \cite{GuoEtal11, MaMichailidis15}). On the other hand for $M>2$, xyz. Thus a joint estimation method for $\Omega_y$ and $\cB$ provides all building blocks for estimating the full hierarchical structure of our $M$-layered multiple GGMs.
+where we want to estimate $\{ (\Omega^k_x, \Omega^k_y, \bfB^k); k \in \cI_K$ from data $\cZ^k = \{ (\bfY^k, \bfX^k); \bfY^k \in \BM(n,q), \bfX^k \in \BM(n,p), k \in \cI_K\}$ in presence of known grouping structures $\cG_x, \cG_y, \cH$ respectively and assuming $n_k = n$ for all $k \in \cI_K$ for simplicity. We focus most of the theoretical discussion in the rest of the paper on jointly estimating $\Omega_y:= \{ \Omega_y^k \}$ and $\cB := \{ \bfB^k \}$. This is because for $M>2$, within-layer undirected edges of any $m{\Th}$ layer $(m>1)$ and the between-layer directed edges from the $(m-1)^{\Th}$ layer to the $m^{\Th}$ layer can be estimated from the corresponding data matrices in a similar fashion. On the other hand, parameters in the first layer are analogous to $\Omega_x := \{ \Omega_x^k \}$ that are dependent only on $\{ \bfX^k\}$, so any method for joint estimation of multiple graphical models can be used to estimate them (e.g. \cite{GuoEtal11, MaMichailidis15}). This provides all building blocks for estimating the full hierarchical structure of our $M$-layered multiple GGMs.
 
 %Setting $M=1$ reduces the above model to joint estimation of GGMs with structured sparsity \citep{MaMichailidis15}, while setting $K=1$ reduces the model to a multi-layer GGM, which can be estimated by breaking it down to successive two-layer models and then minimizing a penalized conditional log-likelihood function \citep{LinEtal16}.
 
-
-
 \subsection{Algorithm}
-Estimation of $\{ \Omega_x^k \}$ done using JSEM. For the other part, we use the following two-step procedure:
-
-\begin{enumerate}
-\item Run neighborhood selection on $y$-network incorporating effects of $x$-data and an additional blockwise group penalty:
+We assume element-wise group sparsity pattern over $k$ for the precision matrices $\Omega_x^k$:
+%
+\[
+\cG_x = \{ \cG_{x,ii'}: i \neq i'; i, i' \in \cI_p \},
+\]
+%
+where each $\cG_{ii'}$ is a partition of $\cI_K$. Subsequently we use the Joint Structural Estimation Method (JSEM) \citep{MaMichailidis15} to estimate $\Omega_x$, which first uses the group structure give by $\cG_x$ in nodewise penalized regression \citep{MeinshausenBuhlmann10} to obtain neighborhood coefficients of each variable $X_i, i \in \cI_p$, then fits a graphical lasso model over the combined support sets to obtain sparse estimates of the precision matrices:
 %
 \begin{align}
-& \min_{\cB, \Theta} \left\{ \sum_{j=1}^q  \frac{1}{n_k} \left[ \sum_{k=1}^K \| \bfY^k_j - (\bfY_{-j}^k - \bfX^k \bfB_{-j}^k) \bftheta_j^k - \bfX^k \bfB_j^k \|^2 + \sum_{j \neq i} \sum_{g \in \cG_y^{ij}} \lambda_{ij}^g \| \bftheta_{ij}^{[g]} \| \right] + \sum_{b \in \cG_x \times \cG_y \times \cH} \eta^b \| \bfB^{[b]} \| \right\}\\
-&= \min \left\{ f ( \cY, \cX, \cB, \Theta) + P (\Theta) + Q (\cB) \right\} 
+\widehat \zeta_i &= \argmin_{\zeta_i} \left\{
+\frac{1}{n} \sum_{k=1}^K \| \bfX_i^k - \bfX_{-i}^k \bfzeta_i^k \|^2 +
+2 \sum_{i' \leq i} \sum_{g \in \cG_x^{ii'}} \lambda_n \| \bfzeta_{ii'}^{[g]} \| \right\} \notag\\
+\widehat E_x^k &= \{(i,i'): 1 \leq i < i' \leq p, \hat \zeta_{ii'}^k \neq 0 \text{ OR } \hat \zeta_{i'i}^k \neq 0 \}\notag\\
+\widehat \Omega_x^k &= \argmin_{\Omega_x^k \in \BS_+ (\hat E_x^k)}
+\left\{ \Tr (\widehat \bfS_x^k \Omega_x^k ) - \log \det (\Omega_x^k) \right\}
 \end{align}
 %
-where $\Theta = \{ \Theta_i \}, \cB = \{ \bfB^k \}, \cY = \{ \bfY^k \}, \cX = \{ \bfX^k \}, \cE = \{ \bfE^k \}$.
+where $\widehat \bfS^k := (\bfX^k)^T \bfX^k/n_k$.
 
-This estimates $\cB$ { \colrbf (possibly refit and/or within-group threshold) }.
+We obtain sparse estimates of $\Omega_y$ and $\cB$ by solving the following group-penalized least square minimization problem:
+%
+\begin{align}\label{eqn:jmmle-objfun}
+\{ \widehat \cB, \widehat \Theta \} &= 
+\argmin_{\cB, \Theta} \left\{ \frac{1}{n} \sum_{j=1}^q \sum_{k=1}^K \| \bfY^k_j - (\bfY_{-j}^k - \bfX^k \bfB_{-j}^k) \bftheta_j^k - \bfX^k \bfB_j^k \|^2 \right. \notag\\
+& \left. + 2 \sum_{j \neq j'} \sum_{g \in \cG_y^{jj'}} \lambda_n \| \bftheta_{jj'}^{[g]} \| + \sum_{h \in \cH} \eta_n \| \bfB^{[h]} \| \right\} \notag\\
+\widehat E_y^k &= \{(j,j'): 1 \leq j < j' \leq q, \hat \theta_{jj'}^k \neq 0 \text{ OR } \hat \theta_{j'j}^k \neq 0 \}\notag\\
+\widehat \Omega_y^k &= \argmin_{\Omega_y^k \in \BS_+ (\hat E_y^k)}
+\left\{ \Tr (\widehat \bfS_y^k \Omega_y^k ) - \log \det (\Omega_y^k) \right\}
+\end{align}
+%&= \min \left\{ f ( \cY, \cX, \cB, \Theta) + P (\Theta) + Q (\cB) \right\} 
+%
+The outcome of a node in the lower layer is thus modeled using all other nodes in that layer {\it and} nodes in the immediate upper layer, with their effects quantified using $\widehat \bftheta_j^k$ and $\widehat \bfB_j^k$, respectively.
 
-\item Step I part 2 and step II of JSEM (see 15-656 pg 6) follows to estimate $\{ \Omega_y^k \}$.
-\end{enumerate}
+The objective function in \eqref{eqn:jmmle-objfun} is bi-convex, i.e. convex in $\cB$ for fixed $\Theta$, and vice-versa, but not jointly convex in $\{ \cB, Theta \}$. Consequently, we use an alternating iterative algorithm to solve for $\{ \cB, \Theta \}$ that minimizes \eqref{eqn:jmmle-objfun} for one set of parameters holding the other set fixed: iteratively cycling between $\cB$ and $\Theta$ holding one constant then solving for the other until convergence.
+
+Choice of initial values plays a crucial role in the performance of the alternating algorithm. Following the analysis of \cite{LinEtal16}, who proposed an estimation framework for the special case of our multi-level structure for $K=1$ based on a similar alternating algorithm, we choose the initial values $\{ \bfB^{k (0)} \}$ by first selecting a support set for the $j^{\Th}$ column, say $\tilde \cS_j^k$, as the support of the debiased lasso estimate of \cite{JavanmardMontanari14}, then fitting a Lasso regression model with small penalty value $\lambda_n^0$:
+%
+\begin{align}
+\widehat \bfB_j^{k (0)} = \argmin_{\supp(\bfB_j^k) \subseteq \tilde \cS_j^k} \|\bfY_j^k - \bfX^k \bfB_j^k \|^2 + \lambda_n^0 \| \bfB_j^k \|_1
+\end{align}
+%
+We obtain initial estimates of $\{ \Theta \}$ by performing group-penalized nodewise regression in the residuals $\widehat \bfE^{k (0)} := \bfY^k - \bfX^k \bfB_j^{k (0)}$:
+%
+\begin{align}
+\widehat \Theta_j^{(0)} = \argmin_{\Theta_j} \frac{1}{n} \sum_{k=1}^K \|
+\widehat \bfE_j^{k (0)} - \widehat \bfE_{-j}^{k (0)} \bftheta_j^k \|^2
++ 2 \sum_{j \neq j'} \sum_{g \in \cG_y^{jj'}} \| \bftheta_{jj'}^{[g]} \|';
+\quad j \in \cI_q
+\end{align}
+%\begin{enumerate}
+%\item Run neighborhood selection on $y$-network incorporating effects of $x$-data and an additional blockwise group penalty:
+%%
+%
+%%
+%where $\Theta = \{ \Theta_i \}, \cB = \{ \bfB^k \}, \cY = \{ \bfY^k \}, \cX = \{ \bfX^k \}, \cE = \{ \bfE^k \}$.
+%
+%This estimates $\cB$ { \colrbf (possibly refit and/or within-group threshold) }.
+%
+%\item Step I part 2 and step II of JSEM (see 15-656 pg 6) follows to estimate $\{ \Omega_y^k \}$.
+%\end{enumerate}
 
 The objective function is bi-convex, so we are going to do the following in step 1-
 
