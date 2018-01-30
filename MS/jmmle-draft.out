@@ -3,8 +3,10 @@
 \BOOKMARK [1][-]{section.2}{The Joint Multiple Multilevel Estimation Framework}{}% 3
 \BOOKMARK [2][-]{subsection.2.1}{Formulation}{section.2}% 4
 \BOOKMARK [2][-]{subsection.2.2}{Algorithm}{section.2}% 5
-\BOOKMARK [2][-]{subsection.2.3}{Theoretical properties}{section.2}% 6
-\BOOKMARK [3][-]{subsubsection.2.3.1}{Conditions}{subsection.2.3}% 7
-\BOOKMARK [1][-]{section.3}{Two-sample testing}{}% 8
-\BOOKMARK [1][-]{appendix.A}{Proofs}{}% 9
-\BOOKMARK [1][-]{appendix.B}{Proof of auxiliary results}{}% 10
+\BOOKMARK [3][-]{subsubsection.2.2.1}{Alternating algorithm}{subsection.2.2}% 6
+\BOOKMARK [3][-]{subsubsection.2.2.2}{Tuning parameter selection}{subsection.2.2}% 7
+\BOOKMARK [2][-]{subsection.2.3}{Convergence of JMMLE estimators}{section.2}% 8
+\BOOKMARK [3][-]{subsubsection.2.3.1}{Conditions}{subsection.2.3}% 9
+\BOOKMARK [1][-]{section.3}{Two-sample testing}{}% 10
+\BOOKMARK [1][-]{appendix.A}{Proofs}{}% 11
+\BOOKMARK [1][-]{appendix.B}{Proof of auxiliary results}{}% 12

@@ -31,55 +31,115 @@ where we want to estimate $\{ (\Omega^k_x, \Omega^k_y, \bfB^k); k \in \cI_K$ fro
 %Setting $M=1$ reduces the above model to joint estimation of GGMs with structured sparsity \citep{MaMichailidis15}, while setting $K=1$ reduces the model to a multi-layer GGM, which can be estimated by breaking it down to successive two-layer models and then minimizing a penalized conditional log-likelihood function \citep{LinEtal16}.
 
 \subsection{Algorithm}
-We assume element-wise group sparsity pattern over $k$ for the precision matrices $\Omega_x^k$:
+We assume an element-wise group sparsity pattern over $k$ for the precision matrices $\Omega_x^k$:
 %
 \[
-\cG_x = \{ \cG_{x,ii'}: i \neq i'; i, i' \in \cI_p \},
+\cG_x = \{ \cG_x^{ii'}: i \neq i'; i, i' \in \cI_p \},
 \]
 %
-where each $\cG_{ii'}$ is a partition of $\cI_K$. Subsequently we use the Joint Structural Estimation Method (JSEM) \citep{MaMichailidis15} to estimate $\Omega_x$, which first uses the group structure give by $\cG_x$ in nodewise penalized regression \citep{MeinshausenBuhlmann10} to obtain neighborhood coefficients of each variable $X_i, i \in \cI_p$, then fits a graphical lasso model over the combined support sets to obtain sparse estimates of the precision matrices:
+where each $\cG_x{ii'}$ is a partition of $\cI_K$. Subsequently we use the Joint Structural Estimation Method (JSEM) \citep{MaMichailidis15} to estimate $\Omega_x$, which first uses the group structure give by $\cG_x$ in nodewise penalized regression \citep{MeinshausenBuhlmann10} to obtain neighborhood coefficients of each variable $X_i, i \in \cI_p$, then fits a graphical lasso model over the combined support sets to obtain sparse estimates of the precision matrices:
 %
-\begin{align}
+\begin{align}\label{eqn:jsem-model}
 \widehat \zeta_i &= \argmin_{\zeta_i} \left\{
 \frac{1}{n} \sum_{k=1}^K \| \bfX_i^k - \bfX_{-i}^k \bfzeta_i^k \|^2 +
-2 \sum_{i' \leq i} \sum_{g \in \cG_x^{ii'}} \lambda_n \| \bfzeta_{ii'}^{[g]} \| \right\} \notag\\
+2 \sum_{i' \leq i} \sum_{g \in \cG_x^{ii'}} \eta_n \| \bfzeta_{ii'}^{[g]} \| \right\} \notag\\
 \widehat E_x^k &= \{(i,i'): 1 \leq i < i' \leq p, \hat \zeta_{ii'}^k \neq 0 \text{ OR } \hat \zeta_{i'i}^k \neq 0 \}\notag\\
 \widehat \Omega_x^k &= \argmin_{\Omega_x^k \in \BS_+ (\hat E_x^k)}
 \left\{ \Tr (\widehat \bfS_x^k \Omega_x^k ) - \log \det (\Omega_x^k) \right\}
 \end{align}
 %
-where $\widehat \bfS^k := (\bfX^k)^T \bfX^k/n_k$.
+where $\widehat \bfS_x^k := (\bfX^k)^T \bfX^k/n_k$.
 
 We obtain sparse estimates of $\Omega_y$ and $\cB$ by solving the following group-penalized least square minimization problem:
 %
-\begin{align}\label{eqn:jmmle-objfun}
+\begin{align}
 \{ \widehat \cB, \widehat \Theta \} &= 
 \argmin_{\cB, \Theta} \left\{ \frac{1}{n} \sum_{j=1}^q \sum_{k=1}^K \| \bfY^k_j - (\bfY_{-j}^k - \bfX^k \bfB_{-j}^k) \bftheta_j^k - \bfX^k \bfB_j^k \|^2 \right. \notag\\
-& \left. + 2 \sum_{j \neq j'} \sum_{g \in \cG_y^{jj'}} \lambda_n \| \bftheta_{jj'}^{[g]} \| + \sum_{h \in \cH} \eta_n \| \bfB^{[h]} \| \right\} \notag\\
+& \left. + 2 \sum_{j \neq j'} \sum_{g \in \cG_y^{jj'}} \gamma_n \| \bftheta_{jj'}^{[g]} \| + \sum_{h \in \cH} \lambda_n \| \bfB^{[h]} \| \right\} \label{eqn:jmmle-objfun}\\
 \widehat E_y^k &= \{(j,j'): 1 \leq j < j' \leq q, \hat \theta_{jj'}^k \neq 0 \text{ OR } \hat \theta_{j'j}^k \neq 0 \}\notag\\
 \widehat \Omega_y^k &= \argmin_{\Omega_y^k \in \BS_+ (\hat E_y^k)}
-\left\{ \Tr (\widehat \bfS_y^k \Omega_y^k ) - \log \det (\Omega_y^k) \right\}
+\left\{ \Tr (\widehat \bfS_y^k \Omega_y^k ) - \log \det (\Omega_y^k) \right\} \label{eqn:omega-y-calc}
 \end{align}
 %&= \min \left\{ f ( \cY, \cX, \cB, \Theta) + P (\Theta) + Q (\cB) \right\} 
 %
 The outcome of a node in the lower layer is thus modeled using all other nodes in that layer {\it and} nodes in the immediate upper layer, with their effects quantified using $\widehat \bftheta_j^k$ and $\widehat \bfB_j^k$, respectively.
 
-The objective function in \eqref{eqn:jmmle-objfun} is bi-convex, i.e. convex in $\cB$ for fixed $\Theta$, and vice-versa, but not jointly convex in $\{ \cB, Theta \}$. Consequently, we use an alternating iterative algorithm to solve for $\{ \cB, \Theta \}$ that minimizes \eqref{eqn:jmmle-objfun} for one set of parameters holding the other set fixed: iteratively cycling between $\cB$ and $\Theta$ holding one constant then solving for the other until convergence.
+\subsubsection{Alternating algorithm}
+The objective function in \eqref{eqn:jmmle-objfun} is bi-convex, i.e. convex in $\cB$ for fixed $\Theta$, and vice-versa, but not jointly convex in $\{ \cB, \Theta \}$. Consequently, we use an alternating iterative algorithm to solve for $\{ \cB, \Theta \}$ that minimizes \eqref{eqn:jmmle-objfun} by iteratively cycling between $\cB$ and $\Theta$ holding one set of parameters fixed and solving for the other,  then alternating until convergence.
 
 Choice of initial values plays a crucial role in the performance of the alternating algorithm. Following the analysis of \cite{LinEtal16}, who proposed an estimation framework for the special case of our multi-level structure for $K=1$ based on a similar alternating algorithm, we choose the initial values $\{ \bfB^{k (0)} \}$ by first selecting a support set for the $j^{\Th}$ column, say $\tilde \cS_j^k$, as the support of the debiased lasso estimate of \cite{JavanmardMontanari14}, then fitting a Lasso regression model with small penalty value $\lambda_n^0$:
 %
-\begin{align}
+\begin{align}\label{eqn:init-B}
 \widehat \bfB_j^{k (0)} = \argmin_{\supp(\bfB_j^k) \subseteq \tilde \cS_j^k} \|\bfY_j^k - \bfX^k \bfB_j^k \|^2 + \lambda_n^0 \| \bfB_j^k \|_1
 \end{align}
 %
-We obtain initial estimates of $\{ \Theta \}$ by performing group-penalized nodewise regression in the residuals $\widehat \bfE^{k (0)} := \bfY^k - \bfX^k \bfB_j^{k (0)}$:
+We obtain initial estimates of $ \Theta_j, j \in \cI_q$ by performing group-penalized nodewise regression on the residuals $\widehat \bfE^{k (0)} := \bfY^k - \bfX^k \bfB_j^{k (0)}$:
 %
-\begin{align}
+\begin{align}\label{eqn:init-Theta}
 \widehat \Theta_j^{(0)} = \argmin_{\Theta_j} \frac{1}{n} \sum_{k=1}^K \|
 \widehat \bfE_j^{k (0)} - \widehat \bfE_{-j}^{k (0)} \bftheta_j^k \|^2
-+ 2 \sum_{j \neq j'} \sum_{g \in \cG_y^{jj'}} \| \bftheta_{jj'}^{[g]} \|';
-\quad j \in \cI_q
++ 2 \gamma_n \sum_{j \neq j'} \sum_{g \in \cG_y^{jj'}} \| \bftheta_{jj'}^{[g]} \|
 \end{align}
+
+The steps of our full estimation procedure, which we call the Joint Multiple Multilevel Estimation (JMMLE) method, can thus be summarized in Algorithm \ref{algo:jmmle-algo}.
+
+\begin{Algorithm}
+(The JMMLE Algorithm)
+\label{algo:jmmle-algo}
+
+\noindent 1. Initialize $\widehat \cB$ using \eqref{eqn:init-B}.
+
+\noindent 2. Initialize $\widehat \Theta$ using \eqref{eqn:init-Theta}.
+
+\noindent 3. Update $\widehat \cB$ as:
+%
+\begin{align}\label{eqn:update-B}
+\widehat \cB^{(t+1)} &= \argmin_{\cB \in \BM(p,q)} \left\{ \frac{1}{n} \sum_{j=1}^q \sum_{k=1}^K \| \bfY^k_j - (\bfY_{-j}^k - \bfX^k \bfB_{-j}^k) \widehat \bftheta_j^{k (t)} - \bfX^k \bfB_j^{k } \|^2
++ \lambda_n \sum_{h \in \cH} \| \bfB^{[h]} \| \right\}
+\end{align}
+
+\noindent 4. Obtain $\widehat \bfE^{k (t+1)} := \bfY^k - \bfX^k \bfB_j^{k (t)}, k \in \cI_K$. Update $\widehat \Theta$ as:
+%
+\begin{align}\label{eqn:update-Theta}
+\widehat \Theta_j^{(t+1)} = \argmin_{\Theta_j \in \BM(q-1, K)}
+\left\{ \frac{1}{n} \sum_{k=1}^K
+\| \widehat \bfE_j^{k (t+1)} - \widehat \bfE_{-j}^{k (t+1)} \bftheta_j^k \|^2
++ 2 \gamma_n \sum_{j \neq j'} \sum_{g \in \cG_y^{jj'}} \| \bftheta_{jj'}^{[g]} \| \right\}
+\end{align}
+
+\noindent 5. Continue till convergence.
+
+\noindent 6. Calculate $\widehat \Omega_y^k, k \in \cI_K$ using \eqref{eqn:omega-y-calc}.
+\end{Algorithm}
+
+\subsubsection{Tuning parameter selection}
+The nodewise regression step in the JSEM model \eqref{eqn:jsem-model} uses Bayesian Information Criterion (BIC) for tuning parameter selection. The step for updating $\{ \Theta \}$, i.e. \eqref{eqn:update-Theta}, in our JMMLE algorithm is analogous to this procedure, hence we use BIC to select the penalty parameter $\gamma_n$. In our setting the BIC for a given $\gamma$ and fixed $\cB$ is given by:
+%
+\begin{align*}
+\text{BIC} (\gamma; \cB) &=
+\Tr \left( \bfS_y^k \widehat \Omega_{y,\gamma}^k \right) - \log \det \left( \widehat \Omega_{y,\gamma}^k \right) +
+\frac{\log n}{n} \sum_{k=1}^K | \widehat E_{y,\gamma}^k |
+\end{align*}
+%
+where $\gamma$ in subscript indicates the corresponding quantity is calculated taking $\gamma$ as the tuning parameter, and $\bfS_y^k := (\bfY^k - \bfX^k \bfB^k)^T (\bfY^k - \bfX^k \bfB^k)/n$. Every time $\widehat \Theta$ is updated in the JMMLE algorithm, we choose the optimal $\gamma$ as the one with the smallest BIC over a fixed set of values $\cC_n$. Thus for a fixed $\lambda$, our final choice of $\gamma$ will be 
+$
+\gamma^* (\lambda) = \argmin_{\gamma \in \cC_n} \text{BIC} (\gamma; \widehat \cB_\lambda)
+$.
+
+We use the High-dimensional BIC (HBIC) to select the other tuning parameter, $\lambda$:
+%
+\begin{align*}
+\text{HBIC} (\lambda; \Theta) &=
+\frac{1}{n} \sum_{j=1}^q \sum_{k=1}^K \| \bfY^k_j - (\bfY_{-j}^k - \bfX^k \widehat \bfB_{-j,\lambda}^k ) \bftheta_j^{k } - \bfX^k \widehat \bfB_{j,\lambda}^k \|^2 +\\
+& \log (\log n) \frac{\log (pq)}{n} \sum_{k=1}^K
+\left( \| \bfB^k \|_0 + | \widehat E_{y, \gamma^* (\lambda)}^k| \right)
+\end{align*}
+%
+We choose an optimal $\lambda$ as the minimizer of HBIC by training multiple JMMLE models using Algorithm \ref{algo:jmmle-algo} over a finite set of values $\lambda \in \cD_n$: 
+$
+\lambda^* = \argmin_{\lambda \in \cD_n} \text{HBIC} (\lambda, \widehat \Theta_{\gamma^*(\lambda)})
+$.
+
 %\begin{enumerate}
 %\item Run neighborhood selection on $y$-network incorporating effects of $x$-data and an additional blockwise group penalty:
 %%
@@ -92,28 +152,25 @@ We obtain initial estimates of $\{ \Theta \}$ by performing group-penalized node
 %\item Step I part 2 and step II of JSEM (see 15-656 pg 6) follows to estimate $\{ \Omega_y^k \}$.
 %\end{enumerate}
 
-The objective function is bi-convex, so we are going to do the following in step 1-
-
-\begin{itemize}
-\item Start with initial estimates of $\cB$ and $\Theta$, say $\cB^{(0)}, \Theta^{(0)}$.
-\item Iterate:
+%The objective function is bi-convex, so we are going to do the following in step 1-
 %
-\begin{align}
-\Theta^{(t+1)} &= \argmin \left\{ f ( \cY, \cX, \cB^{(t)}, \Theta^{(t)}) + P (\Theta^{(t)}) \right\}\\
-\cB^{(t+1)} &= \argmin \left\{ f ( \cY, \cX, \cB^{(t)}, \Theta^{(t+1)}) + Q (\cB^{(t)}) \right\}
-\end{align}
-\item Continue till convergence.
-\end{itemize}
-%
+%\begin{itemize}
+%\item Start with initial estimates of $\cB$ and $\Theta$, say $\cB^{(0)}, \Theta^{(0)}$.
+%\item Iterate:
+%%
+%\begin{align}
+%\Theta^{(t+1)} &= \argmin \left\{ f ( \cY, \cX, \cB^{(t)}, \Theta^{(t)}) + P (\Theta^{(t)}) \right\}\\
+%\cB^{(t+1)} &= \argmin \left\{ f ( \cY, \cX, \cB^{(t)}, \Theta^{(t+1)}) + Q (\cB^{(t)}) \right\}
+%\end{align}
+%\item Continue till convergence.
+%\end{itemize}
+%%
 
-\subsection{Theoretical properties}
+\subsection{Convergence of JMMLE estimators}
 
 %\paragraph{Notation:} Denote 3-dimensional array objects as elements of $\BT(a,b,c)$, the set of all $a \times b \times c$ tensors.
 %Define $\cS^x = (\Omega^k_x), \cS^y = (\Omega^k_y), \cB = (\bfB^k)$
 
-
-
-\subsubsection{Conditions}
 Conditions A1 from JSEM paper holds for $\cX$ and $\cE$. Also A2, A3 from JSEM paper.
 
 To prove the results in this section, we use a reparametrization of the neighborhood coefficients at the lower level. Specifically, notice that for $j \in \cI_q, k \in \cI_K$, the corresponding summand in $f(\cY, \cX, \cB, \Theta)$ can be rearranged as
