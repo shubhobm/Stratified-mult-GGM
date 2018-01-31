@@ -26,7 +26,7 @@ Consider a two-layer model, which is a special case of the above model with $M=2
 \bfB^k \in \BM(p,q), \quad \Omega^k_x = (\Sigma^k_x)^{-1}; \quad \Omega^k_y = (\Sigma^k_y)^{-1};
 \end{eqnarray}
 %
-where we want to estimate $\{ (\Omega^k_x, \Omega^k_y, \bfB^k); k \in \cI_K$ from data $\cZ^k = \{ (\bfY^k, \bfX^k); \bfY^k \in \BM(n,q), \bfX^k \in \BM(n,p), k \in \cI_K\}$ in presence of known grouping structures $\cG_x, \cG_y, \cH$ respectively and assuming $n_k = n$ for all $k \in \cI_K$ for simplicity. We focus most of the theoretical discussion in the rest of the paper on jointly estimating $\Omega_y:= \{ \Omega_y^k \}$ and $\cB := \{ \bfB^k \}$. This is because for $M>2$, within-layer undirected edges of any $m{\Th}$ layer $(m>1)$ and the between-layer directed edges from the $(m-1)^{\Th}$ layer to the $m^{\Th}$ layer can be estimated from the corresponding data matrices in a similar fashion. On the other hand, parameters in the first layer are analogous to $\Omega_x := \{ \Omega_x^k \}$ that are dependent only on $\{ \bfX^k\}$, so any method for joint estimation of multiple graphical models can be used to estimate them (e.g. \cite{GuoEtal11, MaMichailidis15}). This provides all building blocks for estimating the full hierarchical structure of our $M$-layered multiple GGMs.
+where we want to estimate $\{ (\Omega^k_x, \Omega^k_y, \bfB^k); k \in \cI_K$ from data $\cZ^k = \{ (\bfY^k, \bfX^k); \bfY^k \in \BM(n,q), \bfX^k \in \BM(n,p), k \in \cI_K\}$ in presence of known grouping structures $\cG_x, \cG_y, \cH$ respectively and assuming $n_k = n$ for all $k \in \cI_K$ for simplicity. We focus most of the theoretical discussion in the rest of the paper on jointly estimating $\Omega_y:= \{ \Omega_y^k \}$ and $\cB := \{ \bfB^k \}$. This is because for $M>2$, within-layer undirected edges of any $m{\Th}$ layer $(m>1)$ and between-layer directed edges from the $(m-1)^{\Th}$ layer to the $m^{\Th}$ layer can be estimated from the corresponding data matrices in a similar fashion. On the other hand, parameters in the first layer are analogous to $\Omega_x := \{ \Omega_x^k \}$ that are dependent only on $\{ \bfX^k\}$, so any method for joint estimation of multiple graphical models can be used to estimate them (e.g. \cite{GuoEtal11, MaMichailidis15}). This provides all building blocks for estimating the full hierarchical structure of our $M$-layered multiple GGMs.
 
 %Setting $M=1$ reduces the above model to joint estimation of GGMs with structured sparsity \citep{MaMichailidis15}, while setting $K=1$ reduces the model to a multi-layer GGM, which can be estimated by breaking it down to successive two-layer models and then minimizing a penalized conditional log-likelihood function \citep{LinEtal16}.
 
@@ -37,7 +37,7 @@ We assume an element-wise group sparsity pattern over $k$ for the precision matr
 \cG_x = \{ \cG_x^{ii'}: i \neq i'; i, i' \in \cI_p \},
 \]
 %
-where each $\cG_x{ii'}$ is a partition of $\cI_K$. Subsequently we use the Joint Structural Estimation Method (JSEM) \citep{MaMichailidis15} to estimate $\Omega_x$, which first uses the group structure give by $\cG_x$ in nodewise penalized regression \citep{MeinshausenBuhlmann10} to obtain neighborhood coefficients of each variable $X_i, i \in \cI_p$, then fits a graphical lasso model over the combined support sets to obtain sparse estimates of the precision matrices:
+where each $\cG_x^{ii'}$ is a partition of $\cI_K$. Subsequently we use the Joint Structural Estimation Method (JSEM) \citep{MaMichailidis15} to estimate $\Omega_x$, which first uses the group structure given by $\cG_x$ in penalized nodewise regressions \citep{MeisenBuhlmann06} to obtain neighborhood coefficients of each variable $X_i, i \in \cI_p$, then fits a graphical lasso model over the combined support sets to obtain sparse estimates of the precision matrices:
 %
 \begin{align}\label{eqn:jsem-model}
 \widehat \zeta_i &= \argmin_{\zeta_i} \left\{
@@ -65,9 +65,9 @@ We obtain sparse estimates of $\Omega_y$ and $\cB$ by solving the following grou
 The outcome of a node in the lower layer is thus modeled using all other nodes in that layer {\it and} nodes in the immediate upper layer, with their effects quantified using $\widehat \bftheta_j^k$ and $\widehat \bfB_j^k$, respectively.
 
 \subsubsection{Alternating algorithm}
-The objective function in \eqref{eqn:jmmle-objfun} is bi-convex, i.e. convex in $\cB$ for fixed $\Theta$, and vice-versa, but not jointly convex in $\{ \cB, \Theta \}$. Consequently, we use an alternating iterative algorithm to solve for $\{ \cB, \Theta \}$ that minimizes \eqref{eqn:jmmle-objfun} by iteratively cycling between $\cB$ and $\Theta$ holding one set of parameters fixed and solving for the other,  then alternating until convergence.
+The objective function in \eqref{eqn:jmmle-objfun} is bi-convex, i.e. convex in $\cB$ for fixed $\Theta$, and vice-versa, but not jointly convex in $\{ \cB, \Theta \}$. Consequently, we use an alternating iterative algorithm to solve for $\{ \cB, \Theta \}$ that minimizes \eqref{eqn:jmmle-objfun} by iteratively cycling between $\cB$ and $\Theta$, i.e. holding one set of parameters fixed and solving for the other, then alternating until convergence.
 
-Choice of initial values plays a crucial role in the performance of the alternating algorithm. Following the analysis of \cite{LinEtal16}, who proposed an estimation framework for the special case of our multi-level structure for $K=1$ based on a similar alternating algorithm, we choose the initial values $\{ \bfB^{k (0)} \}$ by first selecting a support set for the $j^{\Th}$ column, say $\tilde \cS_j^k$, as the support of the debiased lasso estimate of \cite{JavanmardMontanari14}, then fitting a Lasso regression model with small penalty value $\lambda_n^0$:
+Choice of initial values plays a crucial role in the performance of this alternating algorithm. Following the analysis of \cite{LinEtal16}, who proposed an estimation framework for the special case of our multi-level structure for $K=1$ based on a similar algorithm, we choose the initial values $\{ \bfB^{k (0)} \}$ by first selecting a support set for the $j^{\Th}$ column, say $\tilde \cS_j^k$, as the support of the debiased lasso estimate of \cite{JavanmardMontanari14}, then fitting a Lasso regression model with small penalty value $\lambda_n^0$:
 %
 \begin{align}\label{eqn:init-B}
 \widehat \bfB_j^{k (0)} = \argmin_{\supp(\bfB_j^k) \subseteq \tilde \cS_j^k} \|\bfY_j^k - \bfX^k \bfB_j^k \|^2 + \lambda_n^0 \| \bfB_j^k \|_1
@@ -166,10 +166,59 @@ $.
 %\end{itemize}
 %%
 
-\subsection{Convergence of JMMLE estimators}
+\subsection{Consistency of JMMLE estimators}
 
-%\paragraph{Notation:} Denote 3-dimensional array objects as elements of $\BT(a,b,c)$, the set of all $a \times b \times c$ tensors.
-%Define $\cS^x = (\Omega^k_x), \cS^y = (\Omega^k_y), \cB = (\bfB^k)$
+{\bf summary}
+\begin{itemize}
+\item Say what to do
+\item Define extra notations
+\item Define conditions
+\item State results
+\end{itemize}
+
+\begin{Theorem}\label{corollary:thm-Omega}
+Consider any deterministic $\widehat \cB$ that satisfy the following bound
+%
+$$
+\| \widehat \bfB^k - \bfB_0^k \|_1 \leq v_\beta = \eta_\beta \sqrt{ \frac{ \log(pq)}{n}}
+$$
+%
+Then, for sample size $n \succsim \log (pq)$ and choice of tuning parameter $\gamma_n = 4 \sqrt{| g_{\max}|} \BQ_0$, there exist constants $ c_1, c_3, c_4 > 0, c_2, c_5 > 1$ such that the following holds
+%
+\begin{align}\label{eqn:OmegaBounds}
+\frac{1}{K} \sum_{k=1}^K \| \widehat \Omega_y^k - \Omega_y^k \|_F \leq
+O \left( \BQ_0 \sqrt{\frac{| g_{\max}| S}{K}} \right)
+\end{align}
+%
+with probability $\geq 1 - 1/p^{\tau_1-2} - 6c_1 \exp [-(c_2^2-1) \log(pq)] - 2 \exp (- c_3 n) - 6c_4 \exp [-(c_5^2-1) \log(pq)]$.
+\end{Theorem}
+
+\begin{Theorem}\label{thm:thm-B}
+Assume deterministic $\widehat \Theta$, so that for $j \in \cI_q$,
+%
+\[
+\| \widehat \Theta_j - \Theta_{0,j} \|_F \leq v_\Theta  = \eta_\Theta \sqrt{\frac{\log q}{n}}
+\]
+%
+for some $\eta_\Theta > 0$ dependent on $\Theta$ only. {\colrbf more conditions?} Then, given the choice of tuning parameter
+%
+$$
+\lambda_n \geq 4 \sqrt{| h_{\max} |} \BR_0 \sqrt{ \frac{ \log(pq)}{n}}; \quad 
+\BR_0 := \max_{k \in \cI_K} \BR \left(v_\Theta, \Sigma_x^k, \Sigma_y^k \right)
+$$
+%
+the following holds
+%
+\begin{align}
+\| \widehat \bfbeta - \bfbeta_0 \|_1 & \leq 48 \sqrt{ | h_{\max} |} s_\beta \lambda/ \psi^* \label{eqn:BetaThmEqn1}\\
+\| \widehat \bfbeta - \bfbeta_0 \| & \leq 12 \sqrt s_\beta \lambda/ \psi^* \label{eqn:BetaThmEqn2}\\
+\sum_{h \in \cH} \| \bfbeta^{[h]} - \bfbeta_0^{[h]} \| & \leq 48 s_\beta \lambda/ \psi^* \label{eqn:BetaThmEqn3}\\
+(\widehat \bfbeta - \bfbeta_0 )^T \widehat \bfGamma (\widehat \bfbeta - \bfbeta_0 ) & \leq
+72 s_\beta \lambda^2 / \psi^* \label{eqn:BetaThmEqn4}
+\end{align}
+%
+with probability $\geq {\colrbf tbd}$.
+\end{Theorem}
 
 Conditions A1 from JSEM paper holds for $\cX$ and $\cE$. Also A2, A3 from JSEM paper.
 

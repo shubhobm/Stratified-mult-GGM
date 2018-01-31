@@ -5,8 +5,7 @@
 \BOOKMARK [2][-]{subsection.2.2}{Algorithm}{section.2}% 5
 \BOOKMARK [3][-]{subsubsection.2.2.1}{Alternating algorithm}{subsection.2.2}% 6
 \BOOKMARK [3][-]{subsubsection.2.2.2}{Tuning parameter selection}{subsection.2.2}% 7
-\BOOKMARK [2][-]{subsection.2.3}{Convergence of JMMLE estimators}{section.2}% 8
-\BOOKMARK [3][-]{subsubsection.2.3.1}{Conditions}{subsection.2.3}% 9
-\BOOKMARK [1][-]{section.3}{Two-sample testing}{}% 10
-\BOOKMARK [1][-]{appendix.A}{Proofs}{}% 11
-\BOOKMARK [1][-]{appendix.B}{Proof of auxiliary results}{}% 12
+\BOOKMARK [2][-]{subsection.2.3}{Consistency of JMMLE estimators}{section.2}% 8
+\BOOKMARK [1][-]{section.3}{Two-sample testing}{}% 9
+\BOOKMARK [1][-]{appendix.A}{Proofs}{}% 10
+\BOOKMARK [1][-]{appendix.B}{Proof of auxiliary results}{}% 11
