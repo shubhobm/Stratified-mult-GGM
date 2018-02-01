@@ -42,7 +42,7 @@ where each $\cG_x^{ii'}$ is a partition of $\cI_K$. Subsequently we use the Join
 \begin{align}\label{eqn:jsem-model}
 \widehat \zeta_i &= \argmin_{\zeta_i} \left\{
 \frac{1}{n} \sum_{k=1}^K \| \bfX_i^k - \bfX_{-i}^k \bfzeta_i^k \|^2 +
-2 \sum_{i' \leq i} \sum_{g \in \cG_x^{ii'}} \eta_n \| \bfzeta_{ii'}^{[g]} \| \right\} \notag\\
+\sum_{i' \leq i} \sum_{g \in \cG_x^{ii'}} \eta_n \| \bfzeta_{ii'}^{[g]} \| \right\} \notag\\
 \widehat E_x^k &= \{(i,i'): 1 \leq i < i' \leq p, \hat \zeta_{ii'}^k \neq 0 \text{ OR } \hat \zeta_{i'i}^k \neq 0 \}\notag\\
 \widehat \Omega_x^k &= \argmin_{\Omega_x^k \in \BS_+ (\hat E_x^k)}
 \left\{ \Tr (\widehat \bfS_x^k \Omega_x^k ) - \log \det (\Omega_x^k) \right\}
@@ -50,12 +50,19 @@ where each $\cG_x^{ii'}$ is a partition of $\cI_K$. Subsequently we use the Join
 %
 where $\widehat \bfS_x^k := (\bfX^k)^T \bfX^k/n_k$.
 
+For the precision matrices $\Omega_y^k$ we assume an element-wise sparsity pattern $\cG_y$ defined in a similar manner as $\cG_x$, while the sparsity pattern $\cH$ for $\cB$ is more general, each group $h \in \cH$ being defined as:
+%
+$$
+h = \{ (\cS_p, \cS_q, \cS_K): \cS_p \subseteq \cI_p, \cS_q \subseteq \cI_q, \cS_K \subseteq \cI_K \}
+; \quad \bigcup_{h \in \cH} h = \cI_p \times \cI_q \times \cI_K
+$$
+%
 We obtain sparse estimates of $\Omega_y$ and $\cB$ by solving the following group-penalized least square minimization problem:
 %
 \begin{align}
 \{ \widehat \cB, \widehat \Theta \} &= 
 \argmin_{\cB, \Theta} \left\{ \frac{1}{n} \sum_{j=1}^q \sum_{k=1}^K \| \bfY^k_j - (\bfY_{-j}^k - \bfX^k \bfB_{-j}^k) \bftheta_j^k - \bfX^k \bfB_j^k \|^2 \right. \notag\\
-& \left. + 2 \sum_{j \neq j'} \sum_{g \in \cG_y^{jj'}} \gamma_n \| \bftheta_{jj'}^{[g]} \| + \sum_{h \in \cH} \lambda_n \| \bfB^{[h]} \| \right\} \label{eqn:jmmle-objfun}\\
+& \left. + \sum_{j \neq j'} \sum_{g \in \cG_y^{jj'}} \gamma_n \| \bftheta_{jj'}^{[g]} \| + \sum_{h \in \cH} \lambda_n \| \bfB^{[h]} \| \right\} \label{eqn:jmmle-objfun}\\
 \widehat E_y^k &= \{(j,j'): 1 \leq j < j' \leq q, \hat \theta_{jj'}^k \neq 0 \text{ OR } \hat \theta_{j'j}^k \neq 0 \}\notag\\
 \widehat \Omega_y^k &= \argmin_{\Omega_y^k \in \BS_+ (\hat E_y^k)}
 \left\{ \Tr (\widehat \bfS_y^k \Omega_y^k ) - \log \det (\Omega_y^k) \right\} \label{eqn:omega-y-calc}
@@ -67,21 +74,29 @@ The outcome of a node in the lower layer is thus modeled using all other nodes i
 \subsubsection{Alternating algorithm}
 The objective function in \eqref{eqn:jmmle-objfun} is bi-convex, i.e. convex in $\cB$ for fixed $\Theta$, and vice-versa, but not jointly convex in $\{ \cB, \Theta \}$. Consequently, we use an alternating iterative algorithm to solve for $\{ \cB, \Theta \}$ that minimizes \eqref{eqn:jmmle-objfun} by iteratively cycling between $\cB$ and $\Theta$, i.e. holding one set of parameters fixed and solving for the other, then alternating until convergence.
 
-Choice of initial values plays a crucial role in the performance of this alternating algorithm. Following the analysis of \cite{LinEtal16}, who proposed an estimation framework for the special case of our multi-level structure for $K=1$ based on a similar algorithm, we choose the initial values $\{ \bfB^{k (0)} \}$ by first selecting a support set for the $j^{\Th}$ column, say $\tilde \cS_j^k$, as the support of the debiased lasso estimate of \cite{JavanmardMontanari14}, then fitting a Lasso regression model with small penalty value $\lambda_n^0$:
+Choice of initial values plays a crucial role in the performance of this alternating algorithm.% Following the analysis of \cite{LinEtal16}, who proposed an estimation framework for the special case of our multi-level structure for $K=1$ based on a similar algorithm, we choose the initial values $\{ \bfB^{k (0)} \}$ by first selecting a support set for the $j^{\Th}$ column, say $\tilde \cS_j^k$, as the support of the debiased lasso estimate of \cite{JavanmardMontanari14}, then fitting a Lasso regression model with small penalty value $\lambda_n^0$:
+%
+%\begin{align}\label{eqn:init-B}
+%\widehat \bfB_j^{k (0)} = \argmin_{\supp(\bfB_j^k) \subseteq \tilde \cS_j^k} \|\bfY_j^k - \bfX^k \bfB_j^k \|^2 + \lambda_n^0 \| \bfB_j^k \|_1
+%\end{align}
+%
+We choose the initial values $\{ \bfB^{k (0)} \}$ by fitting separate lasso regression models for each column of the coefficient matrices:
 %
 \begin{align}\label{eqn:init-B}
-\widehat \bfB_j^{k (0)} = \argmin_{\supp(\bfB_j^k) \subseteq \tilde \cS_j^k} \|\bfY_j^k - \bfX^k \bfB_j^k \|^2 + \lambda_n^0 \| \bfB_j^k \|_1
+\widehat \bfB_j^{k (0)} = \argmin_{\bfB_j^k \in \BR^p} \|\bfY_j^k - \bfX^k \bfB_j^k \|^2 + \lambda_n \| \bfB_j^k \|_1; \quad
+j \in \cI_q, k \in \cI_K.
 \end{align}
 %
+
 We obtain initial estimates of $ \Theta_j, j \in \cI_q$ by performing group-penalized nodewise regression on the residuals $\widehat \bfE^{k (0)} := \bfY^k - \bfX^k \bfB_j^{k (0)}$:
 %
 \begin{align}\label{eqn:init-Theta}
 \widehat \Theta_j^{(0)} = \argmin_{\Theta_j} \frac{1}{n} \sum_{k=1}^K \|
 \widehat \bfE_j^{k (0)} - \widehat \bfE_{-j}^{k (0)} \bftheta_j^k \|^2
-+ 2 \gamma_n \sum_{j \neq j'} \sum_{g \in \cG_y^{jj'}} \| \bftheta_{jj'}^{[g]} \|
++ \gamma_n \sum_{j \neq j'} \sum_{g \in \cG_y^{jj'}} \| \bftheta_{jj'}^{[g]} \|.
 \end{align}
 
-The steps of our full estimation procedure, which we call the Joint Multiple Multilevel Estimation (JMMLE) method, can thus be summarized in Algorithm \ref{algo:jmmle-algo}.
+The steps of our full estimation procedure, which we call the Joint Multiple Multilayer Estimation (JMMLE) method, can thus be summarized in Algorithm \ref{algo:jmmle-algo}.
 
 \begin{Algorithm}
 (The JMMLE Algorithm)
@@ -94,7 +109,7 @@ The steps of our full estimation procedure, which we call the Joint Multiple Mul
 \noindent 3. Update $\widehat \cB$ as:
 %
 \begin{align}\label{eqn:update-B}
-\widehat \cB^{(t+1)} &= \argmin_{\cB \in \BM(p,q)} \left\{ \frac{1}{n} \sum_{j=1}^q \sum_{k=1}^K \| \bfY^k_j - (\bfY_{-j}^k - \bfX^k \bfB_{-j}^k) \widehat \bftheta_j^{k (t)} - \bfX^k \bfB_j^{k } \|^2
+\widehat \cB^{(t+1)} &= \argmin_{\substack{\bfB^k \in \BM(p,q)\\k \in \cI_K}} \left\{ \frac{1}{n} \sum_{j=1}^q \sum_{k=1}^K \| \bfY^k_j - (\bfY_{-j}^k - \bfX^k \bfB_{-j}^k) \widehat \bftheta_j^{k (t)} - \bfX^k \bfB_j^{k } \|^2
 + \lambda_n \sum_{h \in \cH} \| \bfB^{[h]} \| \right\}
 \end{align}
 
@@ -104,7 +119,7 @@ The steps of our full estimation procedure, which we call the Joint Multiple Mul
 \widehat \Theta_j^{(t+1)} = \argmin_{\Theta_j \in \BM(q-1, K)}
 \left\{ \frac{1}{n} \sum_{k=1}^K
 \| \widehat \bfE_j^{k (t+1)} - \widehat \bfE_{-j}^{k (t+1)} \bftheta_j^k \|^2
-+ 2 \gamma_n \sum_{j \neq j'} \sum_{g \in \cG_y^{jj'}} \| \bftheta_{jj'}^{[g]} \| \right\}
++ \gamma_n \sum_{j \neq j'} \sum_{g \in \cG_y^{jj'}} \| \bftheta_{jj'}^{[g]} \| \right\}
 \end{align}
 
 \noindent 5. Continue till convergence.
@@ -166,93 +181,43 @@ $.
 %\end{itemize}
 %%
 
-\subsection{Consistency of JMMLE estimators}
+\subsection{Properties of JMMLE estimators}
 
-{\bf summary}
-\begin{itemize}
-\item Say what to do
-\item Define extra notations
-\item Define conditions
-\item State results
-\end{itemize}
+We now provide theoretical results ensuring the convergence of our alternating algorithm, as well as the consistency of estimators obtained from the algorithm. We present statements of theorems in the main paper, giving detailed proofs and auxiliary results in the Appendix.
 
-\begin{Theorem}\label{corollary:thm-Omega}
-Consider any deterministic $\widehat \cB$ that satisfy the following bound
-%
-$$
-\| \widehat \bfB^k - \bfB_0^k \|_1 \leq v_\beta = \eta_\beta \sqrt{ \frac{ \log(pq)}{n}}
-$$
-%
-Then, for sample size $n \succsim \log (pq)$ and choice of tuning parameter $\gamma_n = 4 \sqrt{| g_{\max}|} \BQ_0$, there exist constants $ c_1, c_3, c_4 > 0, c_2, c_5 > 1$ such that the following holds
-%
-\begin{align}\label{eqn:OmegaBounds}
-\frac{1}{K} \sum_{k=1}^K \| \widehat \Omega_y^k - \Omega_y^k \|_F \leq
-O \left( \BQ_0 \sqrt{\frac{| g_{\max}| S}{K}} \right)
-\end{align}
-%
-with probability $\geq 1 - 1/p^{\tau_1-2} - 6c_1 \exp [-(c_2^2-1) \log(pq)] - 2 \exp (- c_3 n) - 6c_4 \exp [-(c_5^2-1) \log(pq)]$.
-\end{Theorem}
+We introduce some notations that help establish the theorems that follow. Denote the true values of the parameters as $\Omega_{x 0} = \{ \Omega_{x 0}^k \}, \Omega_{y 0} = \{ \Omega_{y 0}^k \}, \Theta_0 = \{ \Theta_{0 j} \}, \cB_0 = \{ \cB_0^k \}$. The notation $\supp(\bfA)$ indicates the non-zero edge set in a matrix (or vector)valued parameter $\bfA \in \BM(A,B)$, i.e. $\supp(\bfA) = \{(a,b): (\bfA)_{ab} \neq 0\}$. Sparsity levels of individual true parameters are indicated by $s_j := | \supp (\Theta_j)|, b_k := | \supp(\bfB^k) |$. Also define $S := \sum_{j=1}^q s_j, B:= \sum_{k=1}^K b_k, s:= \max_{j \in \cI_q } s_j$. For positive real numbers $A, B$ we write $A \succsim B$ if there exists $c>0$ independent of $A,B$ such that $A \geq cB$. 
 
-\begin{Theorem}\label{thm:thm-B}
-Assume deterministic $\widehat \Theta$, so that for $j \in \cI_q$,
-%
-\[
-\| \widehat \Theta_j - \Theta_{0,j} \|_F \leq v_\Theta  = \eta_\Theta \sqrt{\frac{\log q}{n}}
-\]
-%
-for some $\eta_\Theta > 0$ dependent on $\Theta$ only. {\colrbf more conditions?} Then, given the choice of tuning parameter
-%
-$$
-\lambda_n \geq 4 \sqrt{| h_{\max} |} \BR_0 \sqrt{ \frac{ \log(pq)}{n}}; \quad 
-\BR_0 := \max_{k \in \cI_K} \BR \left(v_\Theta, \Sigma_x^k, \Sigma_y^k \right)
-$$
-%
-the following holds
+Our first result establishes the convergence of Algorithm~\ref{algo:jmmle-algo} for any fixed realization of $\cX$ and $\cE$.
+
+\begin{Theorem}
+Suppose for any fixed $(\cX, \cE)$, estimates in each iterate of Algorithm~\ref{algo:jmmle-algo} are uniformly bounded by some quantity dependent on only $p, q$ and $n$:
 %
 \begin{align}
-\| \widehat \bfbeta - \bfbeta_0 \|_1 & \leq 48 \sqrt{ | h_{\max} |} s_\beta \lambda/ \psi^* \label{eqn:BetaThmEqn1}\\
-\| \widehat \bfbeta - \bfbeta_0 \| & \leq 12 \sqrt s_\beta \lambda/ \psi^* \label{eqn:BetaThmEqn2}\\
-\sum_{h \in \cH} \| \bfbeta^{[h]} - \bfbeta_0^{[h]} \| & \leq 48 s_\beta \lambda/ \psi^* \label{eqn:BetaThmEqn3}\\
-(\widehat \bfbeta - \bfbeta_0 )^T \widehat \bfGamma (\widehat \bfbeta - \bfbeta_0 ) & \leq
-72 s_\beta \lambda^2 / \psi^* \label{eqn:BetaThmEqn4}
+\left\| (\widehat \cB^{(t)}, \widehat \Theta_y^{(t)}) - ( \cB_0, \Theta_{y 0}) \right\|_F
+\leq R(p,q,n);
+\quad t \geq 1
 \end{align}
 %
-with probability $\geq {\colrbf tbd}$.
+Then any limit point $(\cB^\infty, \Theta_y^\infty)$ of the algorithm is a stationary point of the objective function, i.e. a point where partial derivatives along all coordinates are non-negative.
 \end{Theorem}
 
-Conditions A1 from JSEM paper holds for $\cX$ and $\cE$. Also A2, A3 from JSEM paper.
+The next steps are to show that for random realizations of $\cX$ and $\cE$,
+%
+\begin{enumerate}
 
-To prove the results in this section, we use a reparametrization of the neighborhood coefficients at the lower level. Specifically, notice that for $j \in \cI_q, k \in \cI_K$, the corresponding summand in $f(\cY, \cX, \cB, \Theta)$ can be rearranged as
-%
-\begin{align*}
-\| \bfY^k_j - \bfX^k \bfB_j^k - (\bfY_{-j}^k - \bfX^k \bfB_{-j}^k) \bftheta_j^k \|^2 &=
-\| \bfY^k_j - \bfY_{-j}^k \bftheta_j^k - (\bfX^k \bfB_j^k -\bfX^k \bfB_{-j}^k \bftheta_j^k) \|^2 \\
-&= \| ( \bfY - \bfX \bfB ) \bfT_j^k \|^2
-\end{align*}
-%
-where
-%
-$$
-T_{jj'}^k = \begin{cases}
-1 \text{ if } j = j'\\
-- \theta_{jj'}^k \text{ if } j \neq j'
-\end{cases}
-$$
-%
-Thus, with $\bfT^k := (\bfT_j^k)_{j \in \cI_q}$, we have
-$$
-f( \cY, \cX, \cB, \Theta) = \frac{1}{n} \sum_{j=1}^p \sum_{k=1}^K \| ( \bfY^k - \bfX^k \bfB^k ) \bfT_j^k \|^2
-= \frac{1}{n} \sum_{k=1}^K \| \bfY^k - \bfX^k \bfB^k ) \bfT^k \|_F^2
-= \sum_{k=1}^K \Tr (\bfS^k (\bfT^k)^2 )
-$$
-%
-where $\bfS^k = (1/n) (\bfY^k - \bfX^k \bfB^k) (\bfY^k - \bfX^k \bfB^k)^T$ is the sample covariance matrix.
+\item[{\bf (a)}] Successive iterates lie in this non-expanding ball around the true parameters,
 
-Now suppose $\bfbeta = \ve (\bfB)$, and any subscript or superscript on $\bfB$ is passed on to $\bfbeta$. Denote by $\widehat \bfbeta$ and $\widehat \Theta$ the generic estimators given by
+\item[{\bf (b)}] The procedures in \eqref{eqn:init-B} and \eqref{eqn:init-Theta} ensure starting values that lie inside the same ball,
+\end{enumerate}
+%
+both with probability approaching 1 as $(p,q,n) \rightarrow \infty$.
+
+To do so we break down the main problem into two subproblems. Take as $\bfbeta = (\ve (\bfB^1)^T, \ldots, \ve(\bfB^K)^T)^T$: any subscript or superscript on $\bfB$ being passed on to $\bfbeta$. Denote by $\widehat \bfbeta$ and $\widehat \Theta$ the generic estimators given by
 %
 \begin{align}
-\widehat \bfbeta &= \argmin_{\bfbeta \in \BR^{pq}} \left\{-2 \bfbeta^T \widehat \bfgamma + \bfbeta^T \widehat \bfGamma \bfbeta + \lambda_n \sum_{h \in \cH} \| \bfbeta^{[h]}  \| \right\} \label{eqn:EstEqn1}\\
-\widehat \Theta_j &= \argmin_{\Theta_j \in \BM(q-1, K)} \left\{ \frac{1}{n} \sum_{k=1}^K \| \bfY^k_j - \bfX^k \widehat \bfB_j^k - (\bfY_{-j}^k - \bfX^k \widehat \bfB^k_{-j} ) \bftheta_j^k \|^2 + \gamma_n \sum_{j \neq j'} \sum_{g \in \cG_y^{jj'}} \| \bftheta_{jj'}^{[g]} \| \right\} \label{eqn:EstEqn2}
+\widehat \bfbeta &= \argmin_{\bfbeta \in \BR^{pqK}} \left\{-2 \bfbeta^T \widehat \bfgamma + \bfbeta^T \widehat \bfGamma \bfbeta + \lambda \sum_{h \in \cH} \| \bfbeta^{[h]}  \| \right\} \label{eqn:EstEqn1}\\
+\widehat \Theta_j &= \argmin_{\Theta_j \in \BM(q-1, K)} \left\{ \frac{1}{n} \sum_{k=1}^K \| \widehat \bfE^k_j - \widehat \bfE^k_{-j} \bftheta_j^k \|^2 + \gamma \sum_{j \neq j'} \sum_{g \in \cG_y^{jj'}} \| \bftheta_{jj'}^{[g]} \| \right\};
+\quad j \in \cI_q \label{eqn:EstEqn2}
 \end{align}
 %
 where
@@ -274,205 +239,157 @@ $$
 \ve (\bfY^K)
 \end{bmatrix}
 $$
-with $\widehat \bfT^k$ defined the same way using $\widehat \bftheta_j^k$ as we defined $\bfT^k$ using $\bftheta_j^k$.
-\begin{Theorem}\label{thm:ThetaThm}
-Assume fixed $\cX, \cE$ and deterministic $\widehat \cB = \{ \widehat \bfB^k \}$. Also for $k = 1, \ldots, K$,
-
-\noindent{\bf(T1)} $\| \widehat \bfB^k - \bfB^k_0 \|_1 \leq v_\beta$, where $v_\beta = \eta_\beta \sqrt{\frac{\log (pq)}{n}}$ with $\eta_\beta \geq 0$ depending on $\cB$ only;
-
-%\noindent{\bf(T2)} $\| \bfX^k (\widehat \bfB^k - \bfB^k_0 ) \|_\infty \leq c(v_\beta)$, where $c(v_\beta)$ is $O(1)$ and depends on $v_\beta$.
-
-\noindent{\bf(T2)} Denote \textbf{$\widehat \bfE^k = \bfY^k - \bfX^k \widehat \bfB^k, k \in \cI_K$}. Then for all $j \in \cI_q$,
+with 
 %
-$$
-\frac{1}{n} \left\| (\widehat \bfE_{-j}^k)^T \widehat \bfE^k \bfT_{0,j}^k \right\|_\infty \leq
-%\BQ_0 = \max_{k \in \cI_k} 
-\BQ \left(v_\beta, \Sigma_x^k, \Sigma_y^k \right)
-$$
-%
-where $\BQ \left(v_\beta, \Sigma_x^k, \Sigma_y^k \right)$ is a $O(\sqrt{ \log (pq)/ n)}$ deterministic function of $\cB, \Sigma_x^k$ and $\Sigma_y^k$.
-
-\noindent{\bf(T3)} Denote $\widehat \bfS^k = (\widehat \bfE^k)^T \widehat \bfE^k/n$. Then $\widehat \bfS^k \sim RE(\psi^k, \phi^k)$ with $Kq \phi \leq \psi/2$ where $ \psi = \min_k \psi^k, \phi = \max_k \phi^k $;
-
-\noindent{\bf(T4)} Assumption (A2) holds for $\Sigma_y^k$.
-
-Then, given the choice of tuning parameter
-%
-$$
-\gamma_n = 4 \sqrt{| g_{\max}|} \BQ_0; \quad \BQ_0 := \max_{k \in \cI_K} \BQ \left(v_\beta, \Sigma_x^k, \Sigma_y^k \right)
-$$
-%
-the following holds
-%
-\begin{align*}
-\frac{1}{K} \sum_{k=1}^K \| \widehat \Omega_y^k - \Omega_y^k \|_F \leq
-O \left( \BQ_0 \sqrt{\frac{| g_{\max}| S}{K}} \right)
-\end{align*}
-%
-where $|g_{\max}|$ is the maximum group size.
-
-%Further if A1 holds with $s = s_0$, and A3 is satisfied then
-%
-%(II) Direction consistency.
-\end{Theorem}
-
-When $\cX$ and $\cE$ are random, the following propositions ensures that conditions (T2) and (T3) hold with probabilities approaching to 1.
-
-\begin{Proposition}\label{prop:ErrorRE}
-Consider deterministic $\widehat \cB$ satisfying assumption (T1). Then for sample size $n \succsim \log (pq)$ and $k \in \cI_K$,
-
-\begin{enumerate}
-%\item We have $\| \bfX^k ( \hat \bfB^k - \bfB_0^k ) \|_\infty \leq c( v_\beta)$, where
-%%
-%$$
-%c(v_\beta) =\sqrt n v_\beta \left[ \sqrt{ \frac{ \log 4 + \tau_1 \log p}{c_x^k n}} + \max_j \sigma_{x,jj}^k \right]^{1/2}; \quad
-%c_x^k = \left[ 128 ( 1 + 4 \Lambda_{\max} (\Sigma_x^k)  )^2 \max_j (\sigma_{x,jj}^k)^2 \right]^{-1}
-%$$
-%%
-%with probability $ \geq 1 - 1/p^{\tau_1-2}, \tau_1 > 2$.
-%
-\item $\widehat \bfS^k$ satisfies the RE condition: $ \widehat \bfS^k \sim RE (\psi^k, \phi^k)$, where 
-%
-$$
-\psi^k = \frac{ \Lambda_{\min} (\Sigma_x^k)}{2}; \quad \phi^k = \frac{ \psi^k \log p}{n} + 2 v_\beta c_2 [ \Lambda_{\max} (\Sigma_x^k) \Lambda_{\max} (\Sigma_y^k) ]^{1/2} \sqrt{\frac{ \log(pq)}{n}}
-$$
-%
-with probability $\geq 1 - 6c_1 \exp [-(c_2^2-1) \log(pq)] - 2 \exp (- c_3 n), c_1, c_3 > 0, c_2 > 1$.
-%
-\item The following deviation bound is satisfied for any $j \in \cI_q$
-%
-%$$
-%\left\| \widehat \bfS^k \bfT_{0,j}^k \right\|_\infty \leq 4 v_\beta c_2 [ \Lambda_{\max} (\Sigma_x^k) \Lambda_{\max} (\Sigma_y^k) ]^{1/2} \sqrt{\frac{ \log(pq)}{n}} + 2 \sqrt{ \frac{ \log 4 + \tau_1 \log p}{c_x^k n}} + 2 \max_j \sigma_{x,jj}^k
-%$$
-%
-$$
-\left\|\frac{1}{n} (\widehat \bfE_{-j}^k)^T \widehat \bfE^k \bfT_{0,j}^k \right\|_\infty \leq \BQ \left(v_\beta, \Sigma_x^k, \Sigma_y^k \right)
-$$
-%
-
-with probability $\geq 1 - 1/p^{\tau_1-2} - 6c_1 \exp [-(c_2^2-1) \log(pq)] - 6c_4 \exp [-(c_5^2-1) \log(pq)], c_4 > 0, c_5 > 1$, where
-%
-\begin{align*}
-\BQ \left(v_\beta, \Sigma_x^k, \Sigma_y^k \right) &=
-2 v_\beta^2 V_x^k + 4 v_\beta c_2 [ \Lambda_{\max} (\Sigma_x^k) \Lambda_{\max} (\Sigma_y^k) ]^{1/2} \sqrt{\frac{ \log(pq)}{n}} +\\
-& c_5 \left[ \Lambda_{\max} ( \Sigma_{y,-j}^k) \sigma_{y,j,-j}^k \right]^{1/2} \sqrt{\frac{\log q}{n}}
-\end{align*}
-%
-with $\sigma_{y,j,-j}^k = \BV( E_j - \BE_{-j} \bftheta_{0,j})$, and 
-%
-$$
-V_x^k = \sqrt{ \frac{ \log 4 + \tau_1 \log p}{c_x^k n}} + \max_i \sigma_{x,ii}^k; \quad
-c_x^k = \left[ 128 ( 1 + 4 \Lambda_{\max} (\Sigma_x)  )^2 \max_i (\sigma_{x,ii})^2 \right]^{-1}
-$$
-\end{enumerate} 
-\end{Proposition}
-
-The error bounds for $\widehat \Omega_y^k, k \in \cI_K$ follow immediately from the above two results.
-
-\begin{Corollary}\label{corollary:OmegaCorollary}
-Consider any deterministic $\widehat \cB$ that satisfy the following bound
-%
-$$
-\| \widehat \bfB^k - \bfB_0^k \|_1 \leq v_\beta = \eta_\beta \sqrt{ \frac{ \log(pq)}{n}}
-$$
-%
-Then, for sample size $n \succsim \log (pq)$ and choice of tuning parameter $\gamma_n = 4 \sqrt{| g_{\max}|} \BQ_0$, there exist constants $ c_1, c_3, c_4 > 0, c_2, c_5 > 1$ such that the following holds
-%
-\begin{align}\label{eqn:OmegaBounds}
-\frac{1}{K} \sum_{k=1}^K \| \widehat \Omega_y^k - \Omega_y^k \|_F \leq
-O \left( \BQ_0 \sqrt{\frac{| g_{\max}| S}{K}} \right)
+\begin{align}\label{eqn:define-T}
+\hat T_{jj'}^k = \begin{cases}
+1 \text{ if } j = j'\\
+- \hat \theta_{jj'}^k \text{ if } j \neq j'
+\end{cases}
 \end{align}
 %
-with probability $\geq 1 - 1/p^{\tau_1-2} - 6c_1 \exp [-(c_2^2-1) \log(pq)] - 2 \exp (- c_3 n) - 6c_4 \exp [-(c_5^2-1) \log(pq)]$.
+It is easy to see that solving for $\cB$ in \eqref{eqn:jmmle-objfun} given a fixed $\widehat \Theta$ is equivalent to solving \eqref{eqn:EstEqn1}.
 
-\end{Corollary}
+We assume the following conditions on the true parameter versions $(\bfT_0^k)^2$, defined from $\Theta_0$ similarly as \eqref{eqn:define-T}:
 
-{\colrbf Discuss tighter bound compared to vanilla JSEM}
-
-After providing the error bounds for solutions to the subproblem \eqref{eqn:EstEqn2}, we concentrate on the subproblem \eqref{eqn:EstEqn1}. Following a similar strategy, we first get error bounds for $\widehat \bfbeta$ assuming everything else fixed.
-
-%with
-%$$
-%\bfbeta = \begin{bmatrix}
-%\ve (\bfB^1)\\
-%\vdots\\
-%\ve (\bfB^K)\\
-%\end{bmatrix}; \quad
-%\bfGamma = \begin{bmatrix}
-%I_q \otimes (\bfX^1) TX^1 / n) & &\\
-%& \ddots &\\
-%& & I_q \otimes (\bfX^K)^T X^K / n)
-%\end{bmatrix} 
-%$$
-\begin{Theorem}\label{thm:BetaThm}
-Assume fixed $\cX, \cE$, and deterministic $\widehat \Theta = \{ \widehat \Theta_j \}$, so that for $j \in \cI_q$,
-
-\noindent{\bf(B1)} $\| \widehat \Theta_j - \Theta_{0,j} \|_F \leq v_\Theta \sqrt{\frac{\log q}{n}}$ for some $v_\Theta$ dependent on $\Theta$.
-
-\noindent{\bf(B2)} Denote $\widehat \bfGamma^k = (\widehat \bfT^k)^2 \otimes (\bfX^k)^T \bfX^k/n, \widehat \bfgamma^k = (\widehat \bfT^k)^2 \otimes (\bfX^k)^T \bfY^k/n$. Then the deviation bound holds:
+\vspace{1em}
+\noindent{\bf (T1)} The matrices $(\bfT^k)^2, k \in \cI_K$ are diagonally dominant, i.e. %
 %
 $$
-\left\| \widehat \bfgamma^k - \widehat \bfGamma^k \bfbeta_0 \right\|_\infty \leq \BR( v_\Theta, \Sigma_x^k, \Sigma_y^k) \sqrt{ \frac{ \log(pq)}{n}}
+|t_{0,jj}^k | > \sum_{j' \neq j} |t_{0,jj'}^k |
 $$
 %
-where $\BR \left(v_\Theta, \Sigma_x^k, \Sigma_y^k \right)$ is a $O(1)$ deterministic function of $\Theta, \Sigma_x^k$ and $\Sigma_y^k$.
+for $j \in \cI_q, k \in \cI_K$.
+\vspace{1em}
+%
 
-\noindent{\bf(B3)} $\widehat \bfGamma \sim RE(\psi_*, \phi_*)$ with $Kpq \phi_* \leq \psi_*/2$.
+\noindent Now we are in a position to establish the estimation consistency for the solution of \eqref{eqn:EstEqn1}, given random $(\cX, \cE)$ and good enough estimators $\widehat \Theta$.
 
-Then, given the choice of tuning parameter
+\begin{Theorem}\label{thm:thm-B}
+Assume random $(\cX, \cE)$, and fixed $\widehat \Theta$ so that for $j \in \cI_q$,
+%
+\[
+\| \widehat \Theta_j - \Theta_{0,j} \|_F \leq v_\Theta  = \eta_\Theta \sqrt{\frac{\log q}{n}}
+\]
+%
+for some $\eta_\Theta > 0$ dependent on $\Theta$ only. Then, given the choice of tuning parameter
 %
 $$
 \lambda_n \geq 4 \sqrt{| h_{\max} |} \BR_0 \sqrt{ \frac{ \log(pq)}{n}}; \quad 
 \BR_0 := \max_{k \in \cI_K} \BR \left(v_\Theta, \Sigma_x^k, \Sigma_y^k \right)
 $$
 %
-the following holds
+the following hold
 %
 \begin{align}
-\| \widehat \bfbeta - \bfbeta_0 \|_1 & \leq 48 \sqrt{ | h_{\max} |} s_\beta \lambda_n / \psi^* \label{eqn:BetaThmEqn1}\\
-\| \widehat \bfbeta - \bfbeta_0 \| & \leq 12 \sqrt s_\beta \lambda_n / \psi^* \label{eqn:BetaThmEqn2}\\
-\sum_{h \in \cH} \| \bfbeta^{[h]} - \bfbeta_0^{[h]} \| & \leq 48 s_\beta \lambda_n / \psi^* \label{eqn:BetaThmEqn3}\\
+\| \widehat \bfbeta - \bfbeta_0 \|_1 & \leq 48 \sqrt{ | h_{\max} |} B \lambda/ \psi_* \label{eqn:BetaThmEqn1}\\
+\| \widehat \bfbeta - \bfbeta_0 \| & \leq 12 \sqrt B \lambda/ \psi_* \label{eqn:BetaThmEqn2}\\
+\sum_{h \in \cH} \| \bfbeta^{[h]} - \bfbeta_0^{[h]} \| & \leq 48 B \lambda/ \psi_* \label{eqn:BetaThmEqn3}\\
 (\widehat \bfbeta - \bfbeta_0 )^T \widehat \bfGamma (\widehat \bfbeta - \bfbeta_0 ) & \leq
-72 s_\beta \lambda_n^2 / \psi^* \label{eqn:BetaThmEqn4}
+72 B \lambda^2 / \psi_* \label{eqn:BetaThmEqn4}
 \end{align}
 %
-%Also denote the non-zero support of $\widehat \bfbeta$ by $\widehat \cS_\beta$, i.e. $\widehat \cS_\beta = \{ g: \hat \bfbeta^{[g]} \neq {\bf 0} \}$. Then
-%%
-%\begin{align}\label{eqn:BetaThmEqn4}
-%| \widehat \cS_\beta| \leq 128 s_\beta / \psi^*
-%\end{align}
+with probability $\geq 1 - 12 c_1 \exp(c_2 \log(pq) - 2 \exp( -c_3 n)$, where $|h_{\max}| = \max_{h \in \cH} |h|$ and
+%
+$$
+\psi_*= \frac{1}{2} \min_k \left[ \Lambda_{\min} (\Sigma_{x 0}^k) \left( \min_j \psi_j^k - d_k v_\Theta \right) \right],
+\text{ with }
+\psi_j^k := t_{0,jj}^k - \sum_{j' \neq j} t_{0,jj'}^k
+$$
+%
+and $d_k$ being the maximum degree of $(\bfT_0^k)^2$.
 \end{Theorem}
 
-Next we verify that conditions (B2) and (B3) hold with high probability given fixed $\widehat \Theta$.
-\begin{Proposition}\label{prop:ThmBetaRE}
-Consider deterministic $\widehat \Theta$ satisfying assumption (B1). Assume that the matrices $(\widehat \bfT^k)^2, k \in \cI_K$ are diagonally dominant. Then for sample size $n \succsim \log (pq)$,
+%{\bf summary}
+%\begin{itemize}
+%\item Say what to do
+%\item Define extra notations
+%\item Define conditions
+%\item State results
+%\end{itemize}
 
-\begin{enumerate}
-%\item We have $\| \bfX^k ( \hat \bfB^k - \bfB_0^k ) \|_\infty \leq c( v_\beta)$, where
-%%
-%$$
-%c(v_\beta) =\sqrt n v_\beta \left[ \sqrt{ \frac{ \log 4 + \tau_1 \log p}{c_x^k n}} + \max_j \sigma_{x,jj}^k \right]^{1/2}; \quad
-%c_x^k = \left[ 128 ( 1 + 4 \Lambda_{\max} (\Sigma_x^k)  )^2 \max_j (\sigma_{x,jj}^k)^2 \right]^{-1}
-%$$
-%%
-%with probability $ \geq 1 - 1/p^{\tau_1-2}, \tau_1 > 2$.
-%
-\item %For sample size $n \succsim \max (s_\beta \log p, d^2 \log q)$,
-$\widehat \bfGamma$ satisfies the RE condition: $ \widehat \bfGamma \sim RE (\psi_*, \phi_*)$, where 
-%
-$$
-\psi_* = \min_k \psi^k \left( \min_i \psi_t^i - d v_\Theta \right), 
-\phi_* = \max_k \phi^k \left( \min_i \phi_t^i + d v_\Theta \right)
-$$
-%
-with probability $\geq 1 - 2 \exp(c_3 n), c_3>0$.
-%
-\item The deviation bound in (B2) is satisfied with probability $ \geq 1 - 12 c_1 \exp[ (c_2^2-1) \log (pq)], c_1>0, c_2>1$, where
-$$
-\BR \left(v_\Theta, \Sigma_x^k, \Sigma_y^k \right) = c_2 \sqrt{\Lambda_{\max} (\Sigma_x^k)} \left( d v_\Theta \Lambda_{\min} (\Sigma_y^k) +
-\frac{1}{\Lambda_{\min} (\Sigma_y^k) } \right)
-$$
-\end{enumerate} 
-\end{Proposition}
+To prove an equivalent result for the solution of \eqref{eqn:EstEqn2}, as well as the consistency of the final estimates $\widehat \Omega_y^k$ using their support sets, we need the following conditions.
 
-We now put both the pieces together, and prove that our alternating algorithm results in a solution sequence $\{ \widehat \cB^{(r)}, \widehat \Theta^{(r)} \}, r = 1, 2, \ldots$ that lies uniformly within a non-expanding ball around the true parameter values.
+\vspace{1em}
+\noindent{\bf (T2)} For $k \in \cI_K$, $\Omega_{y0}^k$ is diagonally dominant, i.e.
+%
+$
+|\omega_{y0,jj} | > \sum_{j' \neq j} |\omega_{y0,jj'} |
+$
+for $j \in \cI_q$;
+
+\noindent{\bf (T3)} There exist constants $c_0, d_0$ such that for $k \in \cI_K$,
+%
+\[
+0 < 1/c_0 \leq \Lambda_{\min} (\Sigma_{y 0}^k) \leq \Lambda_{\max} (\Sigma_{y 0}^k) \leq 1/d_0 < \infty
+\]
+%
+%\vspace{1em}
+
+\noindent Given these, we establish the required consistency results.
+
+\begin{Theorem}\label{corollary:thm-Omega}
+Consider any deterministic $\widehat \cB$ that satisfy the following bound
+%
+$$
+\| \widehat \bfB^k - \bfB_0^k \|_1 \leq v_\beta = \eta_\beta \sqrt{ \frac{ \log(pq)}{n}}
+$$
+%
+Then, for sample size $n \succsim \log (pq)$ and choice of tuning parameter $\gamma_n = 4 \sqrt{| g_{\max}|} \BQ_0$, there exist constants $ c_1, c_2, c_3, c_4, c_5 > 0$ such that the following holds
+%
+\begin{align}\label{eqn:OmegaBounds}
+\frac{1}{K} \sum_{k=1}^K \| \widehat \Omega_y^k - \Omega_y^k \|_F \leq
+O \left( \BQ_0 \sqrt{\frac{| g_{\max}| S}{K}} \right)
+\end{align}
+%
+with probability $\geq 1 - 1/p^{\tau_1-2} - 6c_1 \exp [-c_2 \log(pq)] - 2 \exp (- c_3 n) - 6c_4 \exp [-c_5 \log(pq)]$.
+\end{Theorem}
+
+Finally we ensure that the starting values are good enough.
+
+\begin{Theorem}
+Consider the starting values as derived in \eqref{eqn:init-B} and \eqref{eqn:init-Theta}. For sample size $n \succsim \log(pq)$, there exist constants $d_1, d_2, d_3>0$ such that for
+%
+\[
+\lambda \geq 4 d_2 \max_{k \in \cI_K} \left\{ [\Lambda_{\max} (\Sigma_{x 0}^k) \Lambda_{\max} (\Sigma_{y 0}^k)]^{1/2} \right\}
+\sqrt{ \frac{\log (pq)}{n}}
+\]
+%
+we have $\| \widehat \bfbeta^{(0)} - \bfbeta_0 \|_1 \leq 64 B \lambda/\psi^*$ with probability $\geq 1 - 6d_1 \exp( -d_2 \log(pq)) - 2 \exp(d_3 n)$. Further, for $\gamma \geq 4\sqrt{| g_{\max}|} \BQ_0$ we have
+%
+\begin{align}
+\| \widehat \Theta_j - \Theta_{0,j} \|_F & \leq 12 \sqrt{s_j} \gamma / \psi \label{eqn:theta-norm-bound-1}\\
+\sum_{j \neq j', g \in \cG_y^{jj'}} \| \hat \bftheta_{jj'}^{[g]} - \bftheta_{0,jj'}^{[g]} \| & \leq 48 s_j \gamma / \psi \label{eqn:theta-norm-bound-2}
+\end{align}
+%
+with probability $\geq 1 - 1/p^{\tau_1-2} - 6c_1 \exp [-(c_2^2-1) \log(pq)] - 2 \exp (- c_3 n) - 6c_4 \exp [-(c_5^2-1) \log(pq)]$.
+\end{Theorem}
+%
+
+Putting everything together, estimation consistency for the limit points of Algorithm~\ref{algo:jmmle-algo} given our choice of starting values is immediate.
+
+\begin{Corollary}
+Assume the conditions (T1)-(T3), and starting values $\{ \cB^{(0)}, \Theta^{(0)} \}$ obtained using \eqref{eqn:init-B} and \eqref{eqn:init-Theta}, respectively. Then, for random realizations of $\cX, \cE$,
+%
+
+\vspace{1em}
+\noindent (I) For the choice of $\lambda$
+%
+$$
+\lambda \geq 4 \max \left[ d_2 \max_{k \in \cI_K} \left\{ [\Lambda_{\max} (\Sigma_{x 0}^k) \Lambda_{\max} (\Sigma_{y 0}^k)]^{1/2} \right\}, \sqrt{| h_{\max}|} \BR_0 \right] \sqrt{\frac{\log(pq)}{n}}
+$$
+%
+we have
+%
+$$
+\| \widehat \bfbeta - \bfbeta_0 \|_1 \leq \max \left\{ 48 \sqrt{ | h_{\max} |} + 64 \right\} \frac{B \lambda}{\psi_*}
+$$
+%
+with probability $\geq {\colrbf tbd}$.
+
+\vspace{1em}
+\noindent (II) For $\gamma \geq 4 \sqrt{ | g_{\max} |} \BQ_0 $, \eqref{eqn:theta-norm-bound-1} and \eqref{eqn:theta-norm-bound-2} hold with probability $\geq {\colrbf tbd}$.
+
+\vspace{1em}
+\noindent (III) For $\gamma = 4 \sqrt{ | g_{\max} |} \BQ_0 $, \eqref{eqn:OmegaBounds} holds with probability $\geq {\colrbf tbd}$.
+\end{Corollary}

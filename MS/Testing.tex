@@ -1,13 +1,19 @@
-\section{Two-sample testing}
-Suppose there are two disease subtypes: $k = 1,2$, and we are interested in testing whether the downstream effect of a predictor in X-data is same across both subtypes, i.e. if $\bfb_{0i}^1 = \bfb_{0i}^2$ for some fixed $i \in \cI_p$. For this we consider the modified optimization problem:
-%
-\begin{align}
-& \min_{\cB, \Theta} \frac{1}{n} \left\{ \sum_{j=1}^q \sum_{k=1}^2 \| \bfY_j^k - \bfY_{-j}^k \bftheta_j^k - \bfX^k \bfB_{j}^k \|^2 + \sum_{j \neq j'} \lambda_{jj'} \| \bftheta_{jj'}^* \| + \sum_{i=1}^p \eta_i \| \bfB_{i*}^* \| \right\} \notag\\
-&= \min \left\{ f ( \cY, \cX, \cB, \Theta) + P (\Theta) + Q (\cB) \right\} 
-\end{align}
-%
-with $n_1 = n_2 = n$ for simplicity; and $\bfB^k = (\bfb_1^k, \ldots, \bfb_q^k), (\bfB_{i*}^*) \in \BR^{ q \times K}$.
+\section{Hypothesis testing in multilayer models}
+In this section, we lay out a framework for hypothesis testing in our proposed joint multilayer structure. Present literature in high-dimensional hypothesis testing either focuses on testing for simularities in the within-layer connections of single-layer networks \citep{CaiLiu16,Liu17}, or coefficients of single response penalized regression \citep{vanDeGeerEtal14,ZhangZhang14,MitraZhang16}. However a method for testing {\it between-layer} connections in a multilayer setup is yet to be proposed.
 
+There are two main challenges in doing the above: firstly the need for debiased estimators and assumptions on the design matrix required for the same, and secondly the dependency among response nodes translating into the need for controlling False Discovery Rate (FDR) while simultaneously testing for such hypotheses. In Section~\ref{sec:testing-subsec-1} we propose a debiased estimator for rows of the coefficient matrix estimates $\bfB^k$ that makes use of already computed (using JSEM) nodewise regression coefficients in the upper layer, and establish asymptotic properties of scaled version of them. Section~\ref{sec:testing-subsec-2} is devoted to pairwise testing, where we asssume $K=2$, and propose asymptotic global tests for detecting differential effects of a variable in the upper layer, as well as pairwise simultaneous tests for detecting elementwise difference in the coefficient matrices across $k$.
+
+%Suppose there are two disease subtypes: $k = 1,2$, and we are interested in testing whether the downstream effect of a predictor in X-data is same across both subtypes, i.e. if $\bfb_{0i}^1 = \bfb_{0i}^2$ for some fixed $i \in \cI_p$. For this we consider the modified optimization problem:
+%%
+%\begin{align}
+%& \min_{\cB, \Theta} \frac{1}{n} \left\{ \sum_{j=1}^q \sum_{k=1}^2 \| \bfY_j^k - \bfY_{-j}^k \bftheta_j^k - \bfX^k \bfB_{j}^k \|^2 + \sum_{j \neq j'} \lambda_{jj'} \| \bftheta_{jj'}^* \| + \sum_{i=1}^p \eta_i \| \bfB_{i*}^* \| \right\} \notag\\
+%&= \min \left\{ f ( \cY, \cX, \cB, \Theta) + P (\Theta) + Q (\cB) \right\} 
+%\end{align}
+%%
+%with $n_1 = n_2 = n$ for simplicity; and $\bfB^k = (\bfb_1^k, \ldots, \bfb_q^k), (\bfB_{i*}^*) \in \BR^{ q \times K}$.
+
+\subsection{Debiased estimators and asymptotic normality}
+\label{sec:testing-subsec-1}
 In this setup, define the desparsified estimate of $\bfb_{0i}^k$ as
 %
 \begin{align}\label{eqn:DebiasedBeta}
@@ -49,6 +55,8 @@ m_i^1 (\widehat \bfc_i^1 - \bfb_{0i}^1) &\\
 \end{Theorem}
 %
 
+\subsection{Test formulation}
+\label{sec:testing-subsec-2}
 Based on the theorem, we have the global test for the effect of the $i^{\Th}$ X-covariate.
 
 \begin{Algorithm}\label{algo:AlgoGlobalTest}

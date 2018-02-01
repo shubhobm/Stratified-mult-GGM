@@ -5,7 +5,10 @@
 \BOOKMARK [2][-]{subsection.2.2}{Algorithm}{section.2}% 5
 \BOOKMARK [3][-]{subsubsection.2.2.1}{Alternating algorithm}{subsection.2.2}% 6
 \BOOKMARK [3][-]{subsubsection.2.2.2}{Tuning parameter selection}{subsection.2.2}% 7
-\BOOKMARK [2][-]{subsection.2.3}{Consistency of JMMLE estimators}{section.2}% 8
-\BOOKMARK [1][-]{section.3}{Two-sample testing}{}% 9
-\BOOKMARK [1][-]{appendix.A}{Proofs}{}% 10
-\BOOKMARK [1][-]{appendix.B}{Proof of auxiliary results}{}% 11
+\BOOKMARK [2][-]{subsection.2.3}{Properties of JMMLE estimators}{section.2}% 8
+\BOOKMARK [1][-]{section.3}{Hypothesis testing in multilayer models}{}% 9
+\BOOKMARK [2][-]{subsection.3.1}{Debiased estimators and asymptotic normality}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.2}{Test formulation}{section.3}% 11
+\BOOKMARK [1][-]{section.4}{Misc}{}% 12
+\BOOKMARK [1][-]{appendix.A}{Proofs}{}% 13
+\BOOKMARK [1][-]{appendix.B}{Proof of auxiliary results}{}% 14

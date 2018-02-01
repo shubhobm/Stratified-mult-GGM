@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2016.12.9)  30 JAN 2018 20:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2016.12.9)  31 JAN 2018 21:12
 entering extended mode
 **./jmmle-draft.tex
 (jmmle-draft.tex
@@ -324,6 +324,18 @@ Package: apptools 2012/11/28 v1.0 Tools for customizing appendices
 
 LaTeX Warning: Label `eqn:OmegaBounds' multiply defined.
 
+
+LaTeX Warning: Label `eqn:BetaThmEqn1' multiply defined.
+
+
+LaTeX Warning: Label `eqn:BetaThmEqn2' multiply defined.
+
+
+LaTeX Warning: Label `eqn:BetaThmEqn3' multiply defined.
+
+
+LaTeX Warning: Label `eqn:BetaThmEqn4' multiply defined.
+
 )
 \openout1 = `jmmle-draft.aux'.
 
@@ -398,17 +410,17 @@ Overfull \hbox (2.78476pt too wide) in paragraph at lines 83--84
 [1
 
 {C:/Users/Subho/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-(Introduction.tex) (JMMLE_Framework.tex [2] [3] [4]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 173.
+(Introduction.tex) (JMMLE_Framework.tex [2] [3] [4] [5] [6] [7]) (Testing.tex
+[8]
+Overfull \hbox (1.09523pt too wide) in paragraph at lines 40--42
+[]\OT1/cmr/m/it/10.95 Then for the de-bi-ased es-ti-ma-tors in [] and sam-ple s
+ize sat-is-fy-ing $\OML/cmm/m/it/10.95 n \U/msa/m/n/10.95 % []\OT1/cmr/m/n/10.9
+5 (\OML/cmm/m/it/10.95 pq\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 ; [] p \OT1/cm
+r/m/n/10.95 =
+ []
 
-
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\base\omscmr.fd"
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 173.
- [5]
-Overfull \hbox (12.1272pt too wide) detected at line 247
+[9] [10]) (misc.tex
+Overfull \hbox (12.1272pt too wide) detected at line 24
 \OML/cmm/m/it/10.95 f\OT1/cmr/m/n/10.95 (\OMS/cmsy/m/n/10.95 Y\OML/cmm/m/it/10.
 95 ; \OMS/cmsy/m/n/10.95 X\OML/cmm/m/it/10.95 ; \OMS/cmsy/m/n/10.95 B\OML/cmm/m
 /it/10.95 ; \OT1/cmr/m/n/10.95 ) = [] [] [] \OMS/cmsy/m/n/10.95 k\OT1/cmr/m/n/
@@ -420,8 +432,8 @@ sy/m/n/10.95 k[] \OT1/cmr/m/n/10.95 = [] [](\OT1/cmr/bx/n/10.95 S[]\OT1/cmr/m/n
 /10.95 (\OT1/cmr/bx/n/10.95 T[]\OT1/cmr/m/n/10.95 )[])
  []
 
-[6]
-Overfull \hbox (11.66574pt too wide) in paragraph at lines 353--355
+[11]
+Overfull \hbox (11.66574pt too wide) in paragraph at lines 103--105
 []\OT1/cmr/m/it/10.95 with prob-a-bil-ity $\OMS/cmsy/m/n/10.95  \OT1/cmr/m/n/1
 0.95 1 \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 1\OML/cmm/m/it/10.95 =p[] \OMS/
 cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 6\OML/cmm/m/it/10.95 c[] []\OT1/cmr/m/n/10.
@@ -433,8 +445,8 @@ S/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 1) [](\OML/cmm/m/it/10.95 pq\OT1/cmr/m/n/
 10.95 )]\OML/cmm/m/it/10.95 ; c[] >
  []
 
-[7] [8]
-Overfull \hbox (26.96025pt too wide) in paragraph at lines 470--471
+[12] [13]
+Overfull \hbox (26.96025pt too wide) in paragraph at lines 220--221
 []\OT1/cmr/m/it/10.95 The de-vi-a-tion bound in (B2) is sat-is-fied with prob-a
 -bil-ity $\OMS/cmsy/m/n/10.95  \OT1/cmr/m/n/10.95 1 \OMS/cmsy/m/n/10.95   \OT1
 /cmr/m/n/10.95 12\OML/cmm/m/it/10.95 c[] []\OT1/cmr/m/n/10.95 [(\OML/cmm/m/it/1
@@ -442,15 +454,7 @@ Overfull \hbox (26.96025pt too wide) in paragraph at lines 470--471
 OT1/cmr/m/n/10.95 )]\OML/cmm/m/it/10.95 ; c[] >
  []
 
-) (Testing.tex [9]
-Overfull \hbox (1.09523pt too wide) in paragraph at lines 34--36
-[]\OT1/cmr/m/it/10.95 Then for the de-bi-ased es-ti-ma-tors in [] and sam-ple s
-ize sat-is-fy-ing $\OML/cmm/m/it/10.95 n \U/msa/m/n/10.95 % []\OT1/cmr/m/n/10.9
-5 (\OML/cmm/m/it/10.95 pq\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 ; [] p \OT1/cm
-r/m/n/10.95 =
- []
-
-[10]) (Proofs.tex [11] [12]
+) (Proofs.tex [14] [15]
 Overfull \hbox (1.4644pt too wide) in paragraph at lines 215--217
 [][]\OT1/cmr/bx/n/10.95 Lemma A.3. []\OT1/cmr/m/it/10.95 For zero-mean in-de-pe
 n-dent sub-gaussian ma-tri-ces $\OT1/cmr/bx/n/10.95 X \OMS/cmsy/m/n/10.95 2 \U/
@@ -459,19 +463,19 @@ msb/m/n/10.95 M\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 n; p\OT1/cmr/m/n/10.95 )
 .95 M\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 n; q\OT1/cmr/m/n/10.95 )$
  []
 
-[13] [14]
+[16]
 Overfull \hbox (14.67491pt too wide) detected at line 292
 [][] \OMS/cmsy/m/n/10.95  [] \OT1/cmr/m/n/10.95 + [] \OML/cmm/m/it/10.95 [] \
 OT1/cmr/m/n/10.95 = \OML/cmm/m/it/10.95 V[]\OT1/cmr/m/n/10.95 ;  \OML/cmm/m/it/
 10.95 c[] \OT1/cmr/m/n/10.95 = [][]
  []
 
-[15]
+[17]
 Overfull \hbox (34.92566pt too wide) in paragraph at lines 460--460
 [] 
  []
 
-[16]
+[18]
 Overfull \hbox (25.55247pt too wide) detected at line 520
 [] [] \OMS/cmsy/m/n/10.95 k\OT1/cmr/m/n/10.95 (\OT1/cmr/bx/n/10.95 Y[] \OMS/cms
 y/m/n/10.95   \OT1/cmr/bx/n/10.95 X[][]\OT1/cmr/m/n/10.95 )[]\OMS/cmsy/m/n/10.9
@@ -482,7 +486,7 @@ y/m/n/10.95   \OT1/cmr/bx/n/10.95 X[][]\OT1/cmr/m/n/10.95 )[]\OMS/cmsy/m/n/10.9
 OT1/cmr/bx/n/10.95 T[]\OMS/cmsy/m/n/10.95 k
  []
 
-[17]
+[19]
 Overfull \hbox (1.97311pt too wide) in paragraph at lines 544--544
 [] 
  []
@@ -492,7 +496,7 @@ Overfull \hbox (40.3196pt too wide) in paragraph at lines 554--554
 [] 
  []
 
-
+[20]
 Overfull \hbox (7.3078pt too wide) detected at line 562
 [] \OMS/cmsy/m/n/10.95 k\OT1/cmr/bx/n/10.95 d[]\OMS/cmsy/m/n/10.95 k  \OT1/cmr
 /m/n/10.95 3 [] \OMS/cmsy/m/n/10.95 k\OT1/cmr/bx/n/10.95 d[]\OMS/cmsy/m/n/10.95
@@ -513,32 +517,32 @@ n/10.95 (\OML/cmm/m/it/10.95   \OMS/cmsy/m/n/10.95   \OML/cmm/m/it/10.95 Kq\OT
 5 k[]  []k\OT1/cmr/bx/n/10.95 D[]\OMS/cmsy/m/n/10.95 k[]
  []
 
-[18] [19] [20]) (jmmle-draft.bbl
+[21] [22]) (jmmle-draft.bbl [23]
 Missing character: There is no Â in font cmr10!
 Missing character: There is no ¨ in font cmr10!
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 102.
- [21]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 102.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 103.
+ [24]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 103.
  (jmmle-draft.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 102.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 102.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 103.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 103.
 Package rerunfilecheck Info: File `jmmle-draft.out' has not changed.
-(rerunfilecheck)             Checksum: DE895DA37139E100F45B0B37D42783AA;723.
+(rerunfilecheck)             Checksum: 80F5F6228E1CD04B2ECAFCF62CE3AB5F;946.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 102.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 103.
  ) 
 Here is how much of TeX's memory you used:
- 7984 strings out of 493333
- 116101 string characters out of 3137901
- 214200 words of memory out of 3000000
- 11286 multiletter control sequences out of 15000+200000
- 14519 words of font info for 53 fonts, out of 3000000 for 9000
+ 8006 strings out of 493333
+ 116332 string characters out of 3137901
+ 215557 words of memory out of 3000000
+ 11291 multiletter control sequences out of 15000+200000
+ 15220 words of font info for 55 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,17n,38p,1608b,494s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,17n,38p,1580b,484s stack positions out of 5000i,500n,10000p,200000b,50000s
 <D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmbx10.pfb><D:
 /Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Stud
 y/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmbx8.pfb><D:/Study/LaTe
@@ -559,9 +563,9 @@ tudy/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmsy8.pfb><D:/Study/L
 aTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmti10.pfb><D:/Study/LaTeX/
 MikTeX 2.9.6161/fonts/type1/public/amsfonts/symbols/msam10.pfb><D:/Study/LaTeX/
 MikTeX 2.9.6161/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on jmmle-draft.pdf (21 pages, 396281 bytes).
+Output written on jmmle-draft.pdf (24 pages, 414633 bytes).
 PDF statistics:
- 456 PDF objects out of 1000 (max. 8388607)
- 121 named destinations out of 1000 (max. 500000)
- 89 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 518 PDF objects out of 1000 (max. 8388607)
+ 136 named destinations out of 1000 (max. 500000)
+ 113 words of extra memory for PDF output out of 10000 (max. 10000000)
 
