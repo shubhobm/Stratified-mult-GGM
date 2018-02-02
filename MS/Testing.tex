@@ -73,8 +73,8 @@ Define $\widehat s_i^k = \sqrt{\| \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k \|
 \begin{align*}
 \widehat \Omega_y &= \diag(\widehat \Omega_y^1, \ldots, \widehat \Omega_y^K)\\
 \bfM_i &= \diag(m_i^1, \ldots, m_i^K)\\
-\bfC_i &= \diag(\widehat \bfc_i^1, \ldots, \widehat \bfc_i^K)\\
-\bfD_i &= \diag(\bfb_{0,i}^1, \ldots, \bfb_{0,i}^K)\\
+\bfC_i &= \ve(\widehat \bfc_i^1, \ldots, \widehat \bfc_i^K)^T\\
+\bfD_i &= \ve(\bfb_{0,i}^1, \ldots, \bfb_{0,i}^K)^T\\
 \end{align*}
 %
 Then for sample size satisfying $\log p = o(n^{1/2}), \log q = o(n^{1/2})$ we have
@@ -118,10 +118,11 @@ When $\bfb_{0 i}^1 = \bfb_{0 i}^2$, it is immediate from Corollary~\ref{corollar
 %
 $$
 D_i = (\widehat \bfc_i^1 - \widehat \bfc_i^2)^T
-\left( \frac{ (\widehat \Omega_y^1)^{-1}}{(m_i^1)^2} +
-\frac{(\widehat \Omega_y^2)^{-1}}{(m_i^2)^2} \right)^{-1} (\widehat \bfc_i^1 - \widehat \bfc_i^2)
+\left( \frac{ \widehat \Sigma_y^1}{(m_i^1)^2} +
+\frac{\widehat \Sigma_y^2}{(m_i^2)^2} \right)^{-1} (\widehat \bfc_i^1 - \widehat \bfc_i^2)
 $$
 %
+where $\widehat \Sigma_y^k = (\widehat \Omega_y^k)^{-1}, k = 1,2$.
 
 \noindent 3. Reject $H_0^i$ if $D_i \geq \chi^2_{q, 1-\alpha}$.
 \end{Algorithm}
@@ -133,7 +134,7 @@ Consider the global test given in Algorithm~\ref{algo:AlgoGlobalTest}, performed
 %
 $$
 K_q \left( \chi^2_{q,1-\alpha} + \bfdelta^T 
-\left( \frac{ (\Omega_{y 0}^1)^{-1}}{(m_{0 i}^1)^2} + \frac{(\Omega_{y 0}^2)^{-1}}{(m_{0 i}^2)^2}
+\left( \frac{ \Sigma_{y 0}^1}{(m_{0 i}^1)^2} + \frac{\Sigma_{y 0}^2}{(m_{0 i}^2)^2}
 + o(1) \right)^{-1} \bfdelta \right)
 $$
 %
@@ -141,21 +142,21 @@ where $K_q$ is the cumulative distribution function of the $\chi^2_q$ distributi
 \end{Theorem}
 %
 
-Given the null hypothesis is rejected, we now consider the multiple testing problem of simultaneously testing for all entrywise differences, i.e. testing
+Given the null hypothesis is rejected, we consider the multiple testing problem of simultaneously testing for all entrywise differences, i.e. testing
 %
 $$
 H_0^{ij}: b_{0 ij}^1 = b_{0ij}^2 \quad \text{vs.} \quad H_1^{ij}: b_{0 ij}^1 \neq b_{0 ij}^2 
 $$
 %
-for $j \in \cI_q$. Here we use the test statistic
+for all $j \in \cI_q$. Here we use the test statistic
 %
 \begin{align}\label{eqn:PairwiseStatistic}
-d_{ij} &= \frac{\widehat c_{ij}^1 - \widehat c_{ij}^2}{\sqrt{\tau_{ij}^1/ (m_i^1)^2 + \tau_{ij}^2/ (m_i^2)^2}}
+d_{ij} &= \frac{\widehat c_{ij}^1 - \widehat c_{ij}^2}{\sqrt{\hat \sigma_{jj}^1/ (m_i^1)^2 + \hat \sigma_{jj}^2/ (m_i^2)^2}}
 \end{align}
 %
-with $\tau_{ij}^k$ being the $(i,j)^{\Th}$ element of $( \widehat \Omega_y^k)^{-1}$, for $k = 1,2$.
+with $\hat \sigma_{jj}^k$ being the $j^{\Th}$ diagonal element of $\widehat \Sigma_y^k, k = 1,2$.
 
-Now consider tests where $H_0^{ij}$ is rejected if $| d_{ij} | > \tau$. We denote $\cH_0^i = \{ j: b_{ij}^1 = b_{ij}^2 \}$ and define the false discovery proportion (FDP) and false discovery rate (FDR) for these tests as follows:
+For the purpose of simultaneous testing, we consider tests with a common rejection threshold $\tau$, i.e. for $j \in \cI_q$, $H_0^{ij}$ is rejected if $| d_{ij} | > \tau$. We denote $\cH_0^i = \{ j: b_{0,ij}^1 = b_{0,ij}^2 \}$ and define the false discovery proportion (FDP) and false discovery rate (FDR) for these tests as follows:
 %
 $$
 FDP (\tau) = \frac{\sum_{j \in \cH_0^i} \BI( |d_{ij}| \geq \tau)}{\max\left\{
@@ -192,34 +193,35 @@ $$
 \end{Algorithm}
 
 %Denote $\hat \cH_0^i = \{ j\ in \cI_q: |d_{ij}| \geq \hat \tau \}$.
-This procedure maintains FDR and FDP asymptotically at a pre-specified level $\alpha \in (0,1)$  under weak dependence conditions.
+For this procedure to maintain FDR and FDP asymptotically at a pre-specified level $\alpha \in (0,1)$, we need some dependence conditions on the test statistics $d_{ij}$. Following \cite{LiuShao14}, we introduce these dependence conditions:
+
+\noindent {\bf (D1)} {\colrbf put the dependence assumptions on the y-layer covariance matrices}
+
+\noindent {\bf (D1*)} 
 
 \begin{Theorem}\label{thm:FDRthm}
-Suppose $\mu_j = b_{0,ij}^1 - b_{0,ij}^2, \sigma_j^2 = n \BE (\tau_{ij}^1/ (m_i^1)^2 + \tau_{ij}^2/ (m_i^2)^2)$. Assume the following holds as $(n,q) \rightarrow \infty$
+Suppose $\mu_j = b_{0,ij}^1 - b_{0,ij}^2, \sigma_j^2 = n \BE (\tau_{jj}^1/ (m_i^1)^2 + \tau_{jj}^2/ (m_i^2)^2)$. Assume the following holds as $(n,q) \rightarrow \infty$
 %
 \begin{align}\label{eqn:FDRthmEqn1}
 \left| \left\{ j \in \cI_q: |\mu_j / \sigma_j | \geq
 4 \sqrt{ \log q/n} \right\} \right| \rightarrow \infty
 \end{align}
 %
-Now Consider the conditions {\colrbf C1, C1*}
-
-
-If (C1) is satisfied, then the following holds when $\log q = O(n^{\xi}), 0 < \xi < 3/23$:
+Now Consider the conditions (D1) and (D1*). If (D1) is satisfied, then the following holds when $\log q = O(n^{\xi}), 0 < \xi < 3/23$:
 %
 \begin{align}\label{eqn:FDReqn}
 \frac{FDP( \hat \tau)}{(| \cH_0^i|/q) \alpha} \stackrel{P}{\rightarrow} 1; \quad
 \lim_{n, q \rightarrow \infty} \frac{FDR( \hat \tau)}{(| \cH_0^i|/q) \alpha} = 1
 \end{align}
 %
-Further, if (C1*) is satisfied, then \eqref{eqn:FDReqn} holds for $\log q = o(n^{1/3})$.
+Further, if (D1*) is satisfied, then \eqref{eqn:FDReqn} holds for $\log q = o(n^{1/3})$.
 \end{Theorem}
 %
 %Theorem~\ref{thm:FDRthm} is essentially a restatement of Theorem 4.1 in \cite{LiuShao14}.
-The condition \eqref{eqn:FDRthmEqn1} is essential for FDR control in a diverging parameter space \citep{LiuShao14, Liu17}, while the dependence conditions (C1) and (C1*) control the amount of correlation between variables in the Y-layer.
+The condition \eqref{eqn:FDRthmEqn1} is essential for FDR control in a diverging parameter space \citep{LiuShao14, Liu17}, while the dependence conditions (D1) and (D1*) control the amount of correlation between variables in the Y-layer.
 
 \begin{Remark}
-Following \cite{LiuShao14}, a version of Algorithm~\ref{algo:AlgoFDR}, where the null distribution is calibrated using bootstrap instead of normal approximation, gives asymptotic FDR control under (C1*) and $\log q = o(n^{1/2})$. We believe it is possible to obtain \eqref{eqn:FDReqn} under the weaker condition (C1) for $ \log q = o(n^{1/2})$ by extending the framework of \cite{Liu17} that performs multiple testing in multiple (single layer) GGMs, with the added advantage of being generalizable to the case of $K > 2$. However, this requires a significant amount of theoretical analysis, and we leave it for future research.
+Following \cite{LiuShao14}, a version of Algorithm~\ref{algo:AlgoFDR}, where the null distribution is calibrated using bootstrap instead of normal approximation, gives asymptotic FDR control under (D1*) and $\log q = o(n^{1/2})$. We believe it is possible to obtain \eqref{eqn:FDReqn} under the weaker condition (D1) for $ \log q = o(n^{1/2})$ by extending the framework of \cite{Liu17} that performs multiple testing in multiple (single layer) GGMs, with the added advantage of being generalizable to the case of $K > 2$. However, this requires a significant amount of theoretical analysis, and we leave it for future research.
 \end{Remark}
 
 \begin{Remark}
