@@ -140,8 +140,10 @@ $$
 %
 where $K_q$ is the cumulative distribution function of the $\chi^2_q$ distribution, and $m_{0 i}^k$ is the population version of $m_i^k, k=  1,2$. Consequently, for $\| \bfdelta \|_\infty \geq {\colrbf tbd}$, $P( H_0^i \text{ is rejected }) \rightarrow 1$ as $(n,p,q) \rightarrow \infty$.
 \end{Theorem}
+{\colrbf proof tbd}
 %
 
+\subsection{Control of False Discovery Rate}
 Given the null hypothesis is rejected, we consider the multiple testing problem of simultaneously testing for all entrywise differences, i.e. testing
 %
 $$
@@ -193,11 +195,25 @@ $$
 \end{Algorithm}
 
 %Denote $\hat \cH_0^i = \{ j\ in \cI_q: |d_{ij}| \geq \hat \tau \}$.
-For this procedure to maintain FDR and FDP asymptotically at a pre-specified level $\alpha \in (0,1)$, we need some dependence conditions on the test statistics $d_{ij}$. Following \cite{LiuShao14}, we introduce these dependence conditions:
+For this procedure to maintain FDR and FDP asymptotically at a pre-specified level $\alpha \in (0,1)$, we need some dependence conditions on true correlation matrices in the lower layer. Following \cite{LiuShao14}, we introduce there are two types of dependency we consider:
 
-\noindent {\bf (D1)} {\colrbf put the dependence assumptions on the y-layer covariance matrices}
+\noindent {\bf (D1)} Define $r_{0,jj'} = \sigma_{0,jj'}^k /\sqrt{\sigma_{0,jj}^k \sigma_{0,j'j'}^k}$ for $j,j' \in \cI_q, k = 1,2$. Suppose there exists $0 < r < 1$ such that $\max_{1 \leq j < j' \leq q} | r_{0,jj'}^k | \leq r$, and for every $j \in \cI_q$,
+%
+$$
+\sum_{j'=1}^q \BI \left\{ |r_{0,jj'}^k| \geq \frac{1}{(\log q)^{2 + \theta}} \right\} \leq O(q^\rho)
+$$
+%
+for some $\theta > 0$ and $0 < \rho < (1-r)/(1+r)$.
 
-\noindent {\bf (D1*)} 
+\noindent {\bf (D1*)} Suppose there exists $0 < r < 1$ such that $\max_{1 \leq j < j' \leq q} | r_{0,jj'}^k | \leq r$, and for every $j \in \cI_q$,
+%
+$$
+\sum_{j'=1}^q \BI \left\{ |r_{0,jj'}^k| > 0 \right\} \leq O(q^\rho)
+$$
+%
+for some $0 < \rho < (1-r)/(1+r)$.
+
+Originally proposed by \cite{LiuShao14}, the above dependency conditions are meant to control the amount of correlation among the test statistics. Condition (D1) allows each variable to be highly correlated with at most $O(q^\rho)$ other variables and weakly correlated with others, while (D1*) limits the number of variables to have {\it any} correlation with it to $O(q^\rho)$. Note that (D1*) is a stronger condition, and can be seen as the limiting condition of (D1) as $q \rightarrow \infty$.
 
 \begin{Theorem}\label{thm:FDRthm}
 Suppose $\mu_j = b_{0,ij}^1 - b_{0,ij}^2, \sigma_j^2 = n \BE (\tau_{jj}^1/ (m_i^1)^2 + \tau_{jj}^2/ (m_i^2)^2)$. Assume the following holds as $(n,q) \rightarrow \infty$
@@ -218,12 +234,20 @@ Further, if (D1*) is satisfied, then \eqref{eqn:FDReqn} holds for $\log q = o(n^
 \end{Theorem}
 %
 %Theorem~\ref{thm:FDRthm} is essentially a restatement of Theorem 4.1 in \cite{LiuShao14}.
-The condition \eqref{eqn:FDRthmEqn1} is essential for FDR control in a diverging parameter space \citep{LiuShao14, Liu17}, while the dependence conditions (D1) and (D1*) control the amount of correlation between variables in the Y-layer.
+The condition \eqref{eqn:FDRthmEqn1} is essential for FDR control in a diverging parameter space \citep{LiuShao14, Liu17}.
 
 \begin{Remark}
 Following \cite{LiuShao14}, a version of Algorithm~\ref{algo:AlgoFDR}, where the null distribution is calibrated using bootstrap instead of normal approximation, gives asymptotic FDR control under (D1*) and $\log q = o(n^{1/2})$. We believe it is possible to obtain \eqref{eqn:FDReqn} under the weaker condition (D1) for $ \log q = o(n^{1/2})$ by extending the framework of \cite{Liu17} that performs multiple testing in multiple (single layer) GGMs, with the added advantage of being generalizable to the case of $K > 2$. However, this requires a significant amount of theoretical analysis, and we leave it for future research.
 \end{Remark}
 
 \begin{Remark}
-{\colrbf does within-group thresholding with FDR control for $K=1$}
+Based on the FDR control procedure in Algorithm~\ref{algo:AlgoFDR}, we can perform {\it within-row thresholding} in the matrices $\widehat \bfB^k$ to tackle group misspecification.
+%
+\begin{align*}
+& \hat \tau_i^k := \inf \left\{\tau \in \BR: 1 - \Phi(\tau) \leq \frac{\alpha}{2 q}
+\max \left( \sum_{j \in \cI_q} \BI( |b_{ij}^k| \geq \tau), 1 \right) \right\} \\
+& \hat b_{ij}^{k, \text{thr}} =  \hat b_{ij}^k \BI ( |\hat b_{ij}^k| \geq \hat \tau_i^k)
+\end{align*}
+%
+Even without group misspecification, this helps identify directed edges between layers that have high nonzero values. Similar post-estimation thresholding results have been proposed in the context of multitask regression \citep{ObozinskiEtal11,MajumdarChatterjeeStat} and neighborhood selection \citep{MaMichailidis15}. However, our procedure is the first one to provide explicit guarantees on the amount of false discoveries while doing so.
 \end{Remark}

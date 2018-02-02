@@ -185,7 +185,7 @@ $.
 
 We now provide theoretical results ensuring the convergence of our alternating algorithm, as well as the consistency of estimators obtained from the algorithm. We present statements of theorems in the main paper, giving detailed proofs and auxiliary results in the Appendix.
 
-We introduce some notations that help establish the theorems that follow. Denote the true values of the parameters as $\Omega_{x 0} = \{ \Omega_{x 0}^k \}, \Omega_{y 0} = \{ \Omega_{y 0}^k \}, \Theta_0 = \{ \Theta_{0 j} \}, \cB_0 = \{ \cB_0^k \}$. The notation $\supp(\bfA)$ indicates the non-zero edge set in a matrix (or vector)valued parameter $\bfA \in \BM(A,B)$, i.e. $\supp(\bfA) = \{(a,b): (\bfA)_{ab} \neq 0\}$. Sparsity levels of individual true parameters are indicated by $s_j := | \supp (\Theta_j)|, b_k := | \supp(\bfB^k) |$. Also define $S := \sum_{j=1}^q s_j, B:= \sum_{k=1}^K b_k, s:= \max_{j \in \cI_q } s_j$. For positive real numbers $A, B$ we write $A \succsim B$ if there exists $c>0$ independent of $A,B$ such that $A \geq cB$. 
+We introduce some notations that help establish the theorems that follow. Denote the true values of the parameters as $\Omega_{x 0} = \{ \Omega_{x 0}^k \}, \Omega_{y 0} = \{ \Omega_{y 0}^k \}, \Theta_0 = \{ \Theta_{0 j} \}, \cB_0 = \{ \cB_0^k \}$. Sparsity levels of individual true parameters are indicated by $s_j := | \supp (\Theta_{0j})|, b_k := | \supp(\bfB^k_0) |$. Also define $S := \sum_{j=1}^q s_j, B:= \sum_{k=1}^K b_k, s:= \max_{j \in \cI_q } s_j$. 
 
 Our first result establishes the convergence of Algorithm~\ref{algo:jmmle-algo} for any fixed realization of $\cX$ and $\cE$.
 

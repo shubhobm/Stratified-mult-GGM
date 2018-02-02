@@ -39,6 +39,12 @@ Ma, J. and Michailidis, G. (2016).
 \newblock {Joint Structural Estimation of Multiple Graphical Models}.
 \newblock {\em J. Mach. Learn. Res.}, 17:5777--5824.
 
+\bibitem[Majumdar and Chatterjee, 2018]{MajumdarChatterjeeStat}
+Majumdar, S. and Chatterjee, S. (2018).
+\newblock {Non-convex penalized multitask regression using data depth-based
+  penalties}.
+\newblock {\em Stat}, To appear.
+
 \bibitem[Meinshausen and {B\"{u}hlmann}, 2006]{MeisenBuhlmann06}
 Meinshausen, N. and {B\"{u}hlmann}, P. (2006).
 \newblock High dimensional graphs and variable selection with the ¨ lasso.
@@ -49,6 +55,11 @@ Mitra, R. and Zhang, C.-H. (2016).
 \newblock The benefit of group sparsity in group inference with de-biased
   scaled group lasso.
 \newblock {\em Electron. J. Stat.}, 10:1829--1873.
+
+\bibitem[Obozinski et~al., 2011]{ObozinskiEtal11}
+Obozinski, G., Wainwright, M.~J., and Jordan, M.~I. (2011).
+\newblock {Support Union Recovery in High-dimensional Multivariate Regression}.
+\newblock {\em Ann. Statist.}, 39:1--47.
 
 \bibitem[Ravikumar et~al., 2011]{RavikumarEtal11}
 Ravikumar, P., Wainwright, M.~J., Raskutti, G., and Yu, B. (2011).
