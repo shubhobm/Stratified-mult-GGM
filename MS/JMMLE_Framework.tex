@@ -253,7 +253,7 @@ It is easy to see that solving for $\cB$ in \eqref{eqn:jmmle-objfun} given a fix
 We assume the following conditions on the true parameter versions $(\bfT_0^k)^2$, defined from $\Theta_0$ similarly as \eqref{eqn:define-T}:
 
 \vspace{1em}
-\noindent{\bf (T1)} The matrices $(\bfT^k)^2, k \in \cI_K$ are diagonally dominant, i.e. %
+\noindent{\bf (E1)} The matrices $(\bfT^k)^2, k \in \cI_K$ are diagonally dominant, i.e. %
 %
 $$
 |t_{0,jj}^k | > \sum_{j' \neq j} |t_{0,jj'}^k |
@@ -311,14 +311,14 @@ and $d_k$ being the maximum degree of $(\bfT_0^k)^2$.
 To prove an equivalent result for the solution of \eqref{eqn:EstEqn2}, as well as the consistency of the final estimates $\widehat \Omega_y^k$ using their support sets, we need the following conditions.
 
 \vspace{1em}
-\noindent{\bf (T2)} For $k \in \cI_K$, $\Omega_{y0}^k$ is diagonally dominant, i.e.
+\noindent{\bf (E2)} For $k \in \cI_K$, $\Omega_{y0}^k$ is diagonally dominant, i.e.
 %
 $
 |\omega_{y0,jj} | > \sum_{j' \neq j} |\omega_{y0,jj'} |
 $
 for $j \in \cI_q$;
 
-\noindent{\bf (T3)} There exist constants $c_0, d_0$ such that for $k \in \cI_K$,
+\noindent{\bf (E3)} There exist constants $c_0, d_0$ such that for $k \in \cI_K$,
 %
 \[
 0 < 1/c_0 \leq \Lambda_{\min} (\Sigma_{y 0}^k) \leq \Lambda_{\max} (\Sigma_{y 0}^k) \leq 1/d_0 < \infty
@@ -368,8 +368,8 @@ with probability $\geq 1 - 1/p^{\tau_1-2} - 6c_1 \exp [-(c_2^2-1) \log(pq)] - 2 
 
 Putting everything together, estimation consistency for the limit points of Algorithm~\ref{algo:jmmle-algo} given our choice of starting values is immediate.
 
-\begin{Corollary}
-Assume the conditions (T1)-(T3), and starting values $\{ \cB^{(0)}, \Theta^{(0)} \}$ obtained using \eqref{eqn:init-B} and \eqref{eqn:init-Theta}, respectively. Then, for random realizations of $\cX, \cE$,
+\begin{Corollary}\label{corollary:jmmle-final}
+Assume the conditions (E1)-(E3), and starting values $\{ \cB^{(0)}, \Theta^{(0)} \}$ obtained using \eqref{eqn:init-B} and \eqref{eqn:init-Theta}, respectively. Then, for random realizations of $\cX, \cE$,
 %
 
 \vspace{1em}
@@ -382,7 +382,7 @@ $$
 we have
 %
 $$
-\| \widehat \bfbeta - \bfbeta_0 \|_1 \leq \max \left\{ 48 \sqrt{ | h_{\max} |} + 64 \right\} \frac{B \lambda}{\psi_*}
+\| \widehat \bfbeta - \bfbeta_0 \|_1 \leq \max \left\{ 48 \sqrt{ | h_{\max} |}, 64 \right\} \frac{B \lambda}{\psi_*}
 $$
 %
 with probability $\geq {\colrbf tbd}$.

@@ -10,6 +10,12 @@ Guo, J., Levina, E., Michailidis, G., and Zhu, J. (2011).
 \newblock Joint estimation of multiple graphical models.
 \newblock {\em Biometrika}, 98(1):1--15.
 
+\bibitem[Javanmard and Montanari, 2014]{JavanmardMontanari14}
+Javanmard, A. and Montanari, A. (2014).
+\newblock Confidence intervals and hypothesis testing for high-dimensional
+  regression.
+\newblock {\em J. Mach. Learn. Res.}, 15(1):2869--2909.
+
 \bibitem[Lin et~al., 2016]{LinEtal16}
 Lin, J., Basu, S., Banerjee, M., and Michailidis, G. (2016).
 \newblock {Penalized Maximum Likelihood Estimation of Multi-layered Gaussian
@@ -49,6 +55,12 @@ Ravikumar, P., Wainwright, M.~J., Raskutti, G., and Yu, B. (2011).
 \newblock {High-dimensional covariance estimation by minimizing
   $\ell_1$-penalized log-determinant divergence}.
 \newblock {\em Electron. J. Stat.}, 5:935--980.
+
+\bibitem[Stucky and {van de Geer}, 2017]{StuckyVandeGeer17}
+Stucky, B. and {van de Geer}, S. (2017).
+\newblock {Asymptotic Confidence Regions for Highdimensional Structured
+  Sparsity}.
+\newblock \url{https://arxiv.org/abs/1706.09231}.
 
 \bibitem[{van de Geer} et~al., 2014]{vanDeGeerEtal14}
 {van de Geer}, S., {B\"{u}hlmann}, P., Ritov, Y., and Dezeure, R. (2014).
