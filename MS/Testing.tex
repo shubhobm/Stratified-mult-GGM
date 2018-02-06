@@ -90,7 +90,7 @@ where $\| \bfR_n \|_\infty = o_P(1)$.
 
 \subsection{Test formulation}
 \label{sec:testing-subsec-2}
-Now we simply plug-in estimators from the JMMLE algorithm in Theorem~\ref{Thm:ThmTesting}. This is fairly straightforward. Condition (T1) is ensured by the JSEM penalized neighborhood estimators (immediate from Proposition A.1 in \cite{MaMichailidis15}), and a bound on total sparsity of the true coefficient matrices: $B = o(n/ \log(pq))$, in conjunction with Corollary~\ref{corollary:jmmle-final}, ensures condition (T3), both with probability approaching 1 as $(n,p,q) \rightarrow \infty$. Finally, condition (T2) follows from Corollary~\ref{corollary:jmmle-final}, since {\colrbf tbd}.
+Now we simply plug-in estimators from the JMMLE algorithm in Theorem~\ref{Thm:ThmTesting}. This is fairly straightforward. Condition (T1) is ensured by the JSEM penalized neighborhood estimators (immediate from Proposition A.1 in \cite{MaMichailidis15}), and a bound on total sparsity of the true coefficient matrices: $B = o(n/ \log(pq))$, in conjunction with Corollary~\ref{corollary:jmmle-final}, ensures condition (T3), both with probability approaching 1 as $(n,p,q) \rightarrow \infty$. Finally, condition (T2) follows from Corollary~\ref{corollary:jmmle-final} and Lemma~\ref{lemma:Omega-lemma}.
 
 An asymptotic joint distribution of debiased versions of the JMMLE regression estimates is now immediate.
 %
@@ -197,7 +197,7 @@ $$
 %Denote $\hat \cH_0^i = \{ j\ in \cI_q: |d_{ij}| \geq \hat \tau \}$.
 For this procedure to maintain FDR and FDP asymptotically at a pre-specified level $\alpha \in (0,1)$, we need some dependence conditions on true correlation matrices in the lower layer. Following \cite{LiuShao14}, we introduce there are two types of dependency we consider:
 
-\noindent {\bf (D1)} Define $r_{0,jj'} = \sigma_{0,jj'}^k /\sqrt{\sigma_{0,jj}^k \sigma_{0,j'j'}^k}$ for $j,j' \in \cI_q, k = 1,2$. Suppose there exists $0 < r < 1$ such that $\max_{1 \leq j < j' \leq q} | r_{0,jj'}^k | \leq r$, and for every $j \in \cI_q$,
+\noindent {\bf (D1)} Define $r_{0,jj'}^k = \sigma_{0,jj'}^k /\sqrt{\sigma_{0,jj}^k \sigma_{0,j'j'}^k}$ for $j,j' \in \cI_q, k = 1,2$. Suppose there exists $0 < r < 1$ such that $\max_{1 \leq j < j' \leq q} | r_{0,jj'}^k | \leq r$, and for every $j \in \cI_q$,
 %
 $$
 \sum_{j'=1}^q \BI \left\{ |r_{0,jj'}^k| \geq \frac{1}{(\log q)^{2 + \theta}} \right\} \leq O(q^\rho)
@@ -216,7 +216,7 @@ for some $0 < \rho < (1-r)/(1+r)$.
 Originally proposed by \cite{LiuShao14}, the above dependency conditions are meant to control the amount of correlation among the test statistics. Condition (D1) allows each variable to be highly correlated with at most $O(q^\rho)$ other variables and weakly correlated with others, while (D1*) limits the number of variables to have {\it any} correlation with it to $O(q^\rho)$. Note that (D1*) is a stronger condition, and can be seen as the limiting condition of (D1) as $q \rightarrow \infty$.
 
 \begin{Theorem}\label{thm:FDRthm}
-Suppose $\mu_j = b_{0,ij}^1 - b_{0,ij}^2, \sigma_j^2 = n \BE (\tau_{jj}^1/ (m_i^1)^2 + \tau_{jj}^2/ (m_i^2)^2)$. Assume the following holds as $(n,q) \rightarrow \infty$
+Suppose $\mu_j = b_{0,ij}^1 - b_{0,ij}^2, \sigma_j^2 = n \BE (\hat \sigma_{jj}^1/ (m_i^1)^2 + \hat \sigma_{jj}^2/ (m_i^2)^2)$. Assume the following holds as $(n,q) \rightarrow \infty$
 %
 \begin{align}\label{eqn:FDRthmEqn1}
 \left| \left\{ j \in \cI_q: |\mu_j / \sigma_j | \geq

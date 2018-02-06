@@ -31,6 +31,7 @@ where we want to estimate $\{ (\Omega^k_x, \Omega^k_y, \bfB^k); k \in \cI_K$ fro
 %Setting $M=1$ reduces the above model to joint estimation of GGMs with structured sparsity \citep{MaMichailidis15}, while setting $K=1$ reduces the model to a multi-layer GGM, which can be estimated by breaking it down to successive two-layer models and then minimizing a penalized conditional log-likelihood function \citep{LinEtal16}.
 
 \subsection{Algorithm}
+\label{sec:algosection}
 We assume an element-wise group sparsity pattern over $k$ for the precision matrices $\Omega_x^k$:
 %
 \[
@@ -182,7 +183,7 @@ $.
 %%
 
 \subsection{Properties of JMMLE estimators}
-
+\label{sec:jmmle-theory}
 We now provide theoretical results ensuring the convergence of our alternating algorithm, as well as the consistency of estimators obtained from the algorithm. We present statements of theorems in the main paper, giving detailed proofs and auxiliary results in the Appendix.
 
 We introduce some notations that help establish the theorems that follow. Denote the true values of the parameters as $\Omega_{x 0} = \{ \Omega_{x 0}^k \}, \Omega_{y 0} = \{ \Omega_{y 0}^k \}, \Theta_0 = \{ \Theta_{0 j} \}, \cB_0 = \{ \cB_0^k \}$. Sparsity levels of individual true parameters are indicated by $s_j := | \supp (\Theta_{0j})|, b_k := | \supp(\bfB^k_0) |$. Also define $S := \sum_{j=1}^q s_j, B:= \sum_{k=1}^K b_k, s:= \max_{j \in \cI_q } s_j$. 

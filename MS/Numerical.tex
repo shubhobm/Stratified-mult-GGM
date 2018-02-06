@@ -44,7 +44,7 @@ $$
 \lambda \in \left\{ 0.4, 0.6, ..., 1.8 \right\} \sqrt{\frac{\log p}{n}}
 $$
 %
-We compare the performance of our joint estimation method with separate estimates of the parameters using the method of \cite{LinEtal16}, using the following performance metrics to evaluate estimates $\tilde \cB = \{ \tilde \bfB^k \}$:
+using the one-step version (Section~\ref{sec:tricks-jmmle}) instead of the full algorithm to save computation time. We compare the performance of our joint estimation method with separate estimates of the parameters using the method of \cite{LinEtal16}, using the following performance metrics to evaluate estimates $\tilde \cB = \{ \tilde \bfB^k \}$:
 
 \begin{itemize}
 \item True positives-
@@ -121,7 +121,7 @@ We repeat the above setups to check the performance of JMMLE in presence of with
 \subsection{Simulation 2: testing}
 We slightly change our data generating model to evaluate our proposed global testing and FDR control procedure. We set $K=2$, then generate the $\bfB_0^1$ by first randomly assigning each of its element to be non-zero with probability $\pi$, then drawing values of those elements from $\text{Unif}\{ [ -1, -0.5] \cup [0.5,1]\}$ independently. After this we generate a matrix of differences $\bfD$, with $(\bfD)_{ij}, i \in \cI_p, j \in \cI_q$ taking values -1, 1, 0 with probabilities 0.1, 0.1 and 0.8, respectively. Finally we set $\bfB_0^2 = \bfB_0^1 + \bfD$. We set the same sparsity structures for the pairs of precision matrices $\{ \Omega_{x0}^1, \Omega_{x0}^2 \}$ and $\{ \Omega_{y0}^1, \Omega_{y0}^2 \}$. We use 50 replications of the above setup to calculate empirical power of global tests, as well as empirical power and FDR of simultaneous tests, while to get size of global tests we use JMMLE estimators from a separate set of data generated setting all elements of $\bfD$ to 0. The type-I error of global tests is taken as 0.05, while FDR is set at 0.2 while calculating the respective thresholds.
 
-Table~\ref{table:simtable3} reports the empirical mean and standard deviations (in brackets) of all relevant quantities. We report outputs for all data settings used in Section~\ref{sec:eval-jmmle}, and also for increased sample sizes in each setting until a satisfactory FDR is reached. As expected, higher sample sizes result in increased power for both global and simultaneous tests, and decreased size and FDR for all but one ($p=30, q=60$) of the settings.
+Table~\ref{table:simtable3} reports the empirical mean and standard deviations (in brackets) of all relevant quantities. We report outputs for all combinations of data dimensions and sparsity used in Section~\ref{sec:eval-jmmle}, and also for increased sample sizes in each setting until a satisfactory FDR is reached. As expected, higher sample sizes result in increased power for both global and simultaneous tests, and decreased size and FDR for all but one ($p=30, q=60$) of the settings.
 
 \begin{scriptsize}
 \begin{table}
@@ -150,7 +150,7 @@ $(\pi_x, \pi_y)$ & $(p,q)$   & $n$ & \multicolumn{2}{c}{Global test} & \multicol
 
 \subsection{Computation}
 \label{sec:tricks-jmmle}
-We now discuss some observations and strategies that speed up the JMMLE algorithm significantly and reduces computations time by orders of magnitude, especially for higher number of features in either layer.
+We now discuss some observations and strategies that speed up the JMMLE algorithm and reduces computations time significantly, especially for higher number of features in either layer.
 
 \paragraph{Block update and refit $\bfB^k$ in each iteration.} Similar to the case of $K=1$ \citep{LinEtal16}, we use block coordinate descent {\it within} each $\bfB^k$. This means instead of the full update step \eqref{eqn:update-B} we perform the following steps in each iteration to speed up convergence:
 %
@@ -178,7 +178,7 @@ for $j \geq 2$. Further, when starting from the initializer of the coefficient m
 %
 where $\cS_{jk} = \supp(\widetilde \bfb^{k (t+1)}_j)$.
 
-\paragraph{One-step estimator.} The JMMLE algorithm, even after the above modifications, is conputation-intensive. The reason behind this is the full tuning and updating of the lower layer neighborhood estimates $\{ \widehat \Theta_j \}$ in each iteration. In practice, the algorithm speeds up significantly without compromising on estimation accuracy if we dispense of the $\Theta_j$ updation step in all but the last iteration. More precisely, we consider the following one-step version of the original algorithm.
+\paragraph{One-step estimator.} Algorithm~\ref{algo:jmmle-algo}, even after the above modifications, is conputation-intensive. The reason behind this is the full tuning and updating of the lower layer neighborhood estimates $\{ \widehat \Theta_j \}$ in each iteration. In practice, the algorithm speeds up significantly without compromising on estimation accuracy if we dispense of the $\Theta_j$ updation step in all but the last iteration. More precisely, we consider the following one-step version of the original algorithm.
 
 \begin{Algorithm}
 (The one-step JMMLE Algorithm)
@@ -209,21 +209,41 @@ where $\cS_{jk} = \supp(\widetilde \bfb^{k (t+1)}_j)$.
 \noindent 6. Calculate $\widehat \Omega_y^k, k \in \cI_K$ using \eqref{eqn:omega-y-calc}.
 \end{Algorithm}
 
-Table~\ref{table:simtable4} compares performances the full algorithm and the one-step version for the two data setting with smaller feature dimensions. The performances are indistinguishable across metrics, but the one-step algorithm saves computation time in orders of magnitude.
+Table~\ref{table:simtable41} compares performances the full algorithm and the one-step version for the two data settings with smaller feature dimensions. The performances are indistinguishable across metrics, but the one-step algorithm saves computation time in orders of magnitude (Table~\ref{table:simtable42}).
 
 % p3=, q=60: full- 118552, 1-step- 18772 secs for 100 replications
 \begin{table}
-    \begin{tabular}{ccccccc}
+\centering
+    \begin{tabular}{cccccc}
     \hline
-    $(p,q,n)$     & Method         & TP            & TN            & MCC & RF            & Comp. time \\
-    & & & & & & (min) \\\hline
-    (60,30,100) & Full         & 0.999 (0.002) & 0.992 (0.009) & ~   & 0.195 (0.021) & ~                \\
-    ~           & One step     & 0.999 (0.002) &  0.993 (0.01) & ~   & 0.190 (0.019) & ~                \\
-    (30,60,100) & Full          & 0.997 (0.004) & 0.986 (0.007) & ~   & 0.205 (0.014) & 19.8              \\
-    ~           & One step & 0.996 (0.004) & 0.988 (0.006) & ~   & 0.206 (0.014) & 3.1              \\ \hline
+    $(p,q,n)$     & Method         & TP$(\widehat \cB)$            & TN$(\widehat \cB)$            & MCC$(\widehat \cB)$ & RF$(\widehat \cB)$             \\\hline
+    (60,30,100) & Full         & 0.999 (0.002) & 0.992 (0.009) & ~   & 0.195 (0.021)                \\
+    ~           & One step     & 0.999 (0.002) &  0.993 (0.01) & ~   & 0.190 (0.019)                 \\
+    (30,60,100) & Full          & 0.997 (0.004) & 0.986 (0.007) & ~   & 0.205 (0.014)               \\
+    ~           & One step & 0.996 (0.004) & 0.988 (0.006) & ~   & 0.206 (0.014)             \\ \hline
+    \hline
+    $(p,q,n)$     & Method         & TP$(\widehat \Theta)$            & TN$(\widehat \Theta)$            & MCC$(\widehat \Theta)$ & RF$(\widehat \Theta)$            \\\hline
+    (60,30,100) & Full         & 0.671 (0.052) & 0.949 (0.01) & ~   & 0.327 (0.015)                \\
+    ~           & One step     & 0.663 (0.058) & 0.95 (0.01)   & ~   & 0.328 (0.018)               \\
+    (30,60,100) & Full          & 0.58 (0.039) & 0.982 (0.003) & ~   & 0.32 (0.009)             \\
+    ~           & One step & 0.577 (0.035) & 0.981 (0.003)  & ~   & 0.321 (0.008)            \\ \hline
     \end{tabular}
-    \caption{Comaprison of full and one-step versions of the JMMLE algorithm. Computation time is average over 50 replications.}
-    \label{table:simtable4}
+    \caption{Comaprison of evaluation metrics for full and one-step versions of the JMMLE algorithm.}
+    \label{table:simtable41}
+\end{table}
+
+\begin{table}
+\centering
+  \begin{tabular}{ccc}
+    \hline
+    $(p,q,n)$     & Method   & Comp. time (min) \\ \hline
+    (60,30,100) & Full     & ~                \\ 
+    ~           & One-step & ~                \\ \hline
+    (30,60,100) & Full     & 19.8             \\ 
+    ~           & One-step & 3.1              \\ \hline
+    \end{tabular}
+    \caption{Comaprison of computation times (averaged over 50 replications) for full and one-step versions of the JMMLE algorithm.}
+    \label{table:simtable42}
 \end{table}
 
 %\paragraph{Parallelization.} While training JMMLE models for multiple values for $\lambda$, it is possible to speed up 

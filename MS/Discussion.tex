@@ -1,1 +1,20 @@
 \section{Discussion}
+Our work introduces an integrative framework for knowledge discovery in multiple multilayer Gaussian Graphical Models. We exploit {\it a priori} known structural similarities across parameters of the multiple models to achieve estimation gains compared to separate estimation. More importantly, we derive results on the asymptotic distributions of generic estimates of the multiple regression coefficient matrices in this complex setup, and perform global and simultaneous testing for pairwise differences within the between-layer edges.
+
+Our hypothesis testing framework has two immediate extensions.
+
+\begin{itemize}
+\item[(I)] In a recent work, \cite{Liu17} proposed a framwork to test for structural similarities and differences across multiple {\it single layer} GGMs. For $K$ GGMs with precision matrices $\Omega^k = (\omega_{ii'})_{i,i' \in \cI_p}$, they test for the partial correlation coefficients $\rho_{ii'}^{(k)} = - \omega_{ii'}^{(k)} / \sqrt{\omega_{ii}^{(k)} \omega_{i'i'}^{(k)}}$ using residuals from $pK$ separate penalized neighborhood regressions, one for each variable of each GGM. To incorporate structured sparsity across $k$, our simultaneous regression techniques for all neighborhood coefficients (i.e. \eqref{eqn:jsem-model} and \eqref{eqn:EstEqn2}) can be used instead to perform testing on the between-layer edges. Theoretical properties of this procedure can be derived using results in \cite{Liu17}, possibly with adjustments for our neighborhood estimates to adhere to the rate conditions for the constants $a_{n1}, a_{n2}$ therein to account for a diverging $(p,q,n)$ setup.
+
+\item[(II)] For $K \geq 2$, detection of the following sets of inter-layer edges can be scientifically significant:
+%
+\begin{align*}
+\cB_1 &= \left\{ (i,j): \sum_{1 \leq k < k' \leq K} \left(b_{0,ij}^k - b_{0,ij}^{k'} \right)^2 > 0; i \in \cI_p, j \in \cI_q \right\}\\
+\cB_2 &= \left\{ (i,j): b_{0,ij}^1 = \cdots, b_{0,ij}^K \neq 0 \right\}\\
+\cB_3 &= \left\{ (i,j): b_{0,ij}^1 = \cdots, b_{0,ij}^K = 0 \right\}
+\end{align*}
+%
+e.g. detection of gene-protein connections that are present, but may have different or same weights across $k$ ($\cB_1$ and $\cB_2$, respectively), and that are absent for all $k$ ($\cB_3$). The asymptotic result in Theorem~\ref{Thm:ThmTesting} continues to hold in this situation, and an extension of the global test (Algorithm~\ref{algo:AlgoGlobalTest}) is immediate. However, extending the FDR control procedure requires a technically more detailed approach.
+\end{itemize}
+
+The strength of our proposed debiased estimators \eqref{eqn:DebiasedBeta} is that only generic estimators of relevant model parameters that satisfy general rate conditions are necessary for it to have a valid asymptotic distribution. This translates to a high degree of flexibility while choosing the method of estimation. Our formulation based on sparsity assumptions (Section~\ref{sec:algosection}) is only one such way to obtain the necessary estimates. Sparsity may not be an assumption that is required or even valid in complex hierarchical structures from different domains of application. For different two-layer pairs in such multilayer setups, low-rank, group-sparse or sparse methods (or a combination thereof) can be plugged into our alternating algorithm. Results parallel to those in Section~\ref{sec:jmmle-theory} need to be established for the corresponding estimators. However, as long as these estimators adhere to the convergence conditions (T1)-(T3), Theorem~\ref{Thm:ThmTesting} can be used to derive the asymptotic distributions of between-layer edges.
