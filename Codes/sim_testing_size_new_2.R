@@ -98,7 +98,7 @@ get.outputs = function(n=100, subnetSize.X=rep(10,2), subnetSize.E=rep(10,2),
           hbic.pen.vec[k] = log(log(nk))*log(q*(q-1)/2)/nk * sum(Theta.k != 0)/2 +
             log(log(nk))*log(p*q)/nk * sum(jmle.model$B.refit[,,k] != 0)
         }
-        hbic.vec[m] = sum(SSE.vec) + sum(hbic.pen.vec)
+        hbic.vec[m] = sum(SSE.vec) + sum(hbic.pen.vec) 
       }
     }
     
@@ -150,10 +150,11 @@ get.outputs = function(n=100, subnetSize.X=rep(10,2), subnetSize.E=rep(10,2),
       ## overall test statistic
       D[i] = t(Diff.i) %*% solve(Pooled.Cov.i) %*% Diff.i
     }
+    cat("=============\nReplication",seed,"done!\n=============\n")
     as.numeric(sum(D > qchisq(1-alpha, q))/p)
   }
   
-  # out.mat = mclapply(48+seed.vec, loopfun, mc.cores=8)
+  # out.mat = mclapply(1:nrep, loopfun, mc.cores=8)
   out.mat = lapply(10+seed.vec, loopfun)
   if(is.null(filename)){
     filename = paste0("testsizenew_n",n,"p",p,"q",q,"_2.Rda")
@@ -161,16 +162,28 @@ get.outputs = function(n=100, subnetSize.X=rep(10,2), subnetSize.E=rep(10,2),
   save(out.mat, file=filename)
 }
 
-##### Generate data
+##### Generate outputs
+# get.outputs(n = 100, subnetSize.X = c(30, 30), subnetSize.E = c(15, 15))
+get.outputs(n = 200, subnetSize.X = c(30, 30), subnetSize.E = c(15, 15))
+
+# get.outputs(n = 100, subnetSize.X = c(15, 15), subnetSize.E = c(30, 30))
+get.outputs(n = 200, subnetSize.X = c(15, 15), subnetSize.E = c(30, 30))
+
+get.outputs(n = 150, subnetSize.X = c(100, 100), subnetSize.E = c(100, 100))
+
+# get.outputs(n = 150, subnetSize.X = c(150, 150), subnetSize.E = c(150, 150))
+get.outputs(n = 300, subnetSize.X = c(150, 150), subnetSize.E = c(150, 150))
+
 get.outputs(n = 100, subnetSize.X = c(100, 100), subnetSize.E = c(100, 100),
             sparsity.B=30, sparsity.Theta=30, filename="testsizenew_n100p200q200modelB_2.Rda")
-get.outputs(n = 200, subnetSize.X = c(100, 100), subnetSize.E = c(100, 100),
-            sparsity.B=30, sparsity.Theta=30, filename="testsizenew_n200p200q200modelB_2.Rda")
-get.outputs(n = 100, subnetSize.X = c(30, 30), subnetSize.E = c(15, 15))
-get.outputs(n = 100, subnetSize.X = c(15, 15), subnetSize.E = c(30, 30))
-get.outputs(n = 150, subnetSize.X = c(100, 100), subnetSize.E = c(100, 100))
-get.outputs(n = 150, subnetSize.X = c(150, 150), subnetSize.E = c(150, 150))
+# get.outputs(n = 200, subnetSize.X = c(100, 100), subnetSize.E = c(100, 100),
+#             sparsity.B=30, sparsity.Theta=30, filename="testsizenew_n200p200q200modelB_2.Rda")
+get.outputs(n = 300, subnetSize.X = c(100, 100), subnetSize.E = c(100, 100),
+            sparsity.B=30, sparsity.Theta=30,
+            filename="testsizenew_n300p200q200modelB_2.Rda")
 
+# 
+# 
 # out.mat = matrix(unlist(out.mat), ncol=4, byrow=T)
 # rbind(round(apply(out.mat,2,mean),3),
 #       round(apply(out.mat,2,sd),3))

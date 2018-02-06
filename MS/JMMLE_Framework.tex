@@ -289,7 +289,7 @@ the following hold
 72 B \lambda^2 / \psi_* \label{eqn:BetaThmEqn4}
 \end{align}
 %
-with probability $\geq 1 - 12 c_1 \exp(c_2 \log(pq) - 2 \exp( -c_3 n)$, where $|h_{\max}| = \max_{h \in \cH} |h|$ and
+with probability $\geq 1 - 12 c_1 \exp[-(c_2^2-1) \log(pq)] - 2 \exp( -c_3 n)$, where $|h_{\max}| = \max_{h \in \cH} |h|$ and
 %
 $$
 \psi_*= \frac{1}{2} \min_k \left[ \Lambda_{\min} (\Sigma_{x 0}^k) \left( \min_j \psi_j^k - d_k v_\Theta \right) \right],
@@ -335,14 +335,24 @@ $$
 \| \widehat \bfB^k - \bfB_0^k \|_1 \leq v_\beta = \eta_\beta \sqrt{ \frac{ \log(pq)}{n}}
 $$
 %
-Then, for sample size $n \succsim \log (pq)$ and choice of tuning parameter $\gamma_n = 4 \sqrt{| g_{\max}|} \BQ_0$, there exist constants $ c_1, c_2, c_3, c_4, c_5 > 0$ such that the following holds
+Then, for sample size $n \succsim \log (pq)$ the following hold:
+
+\noindent (I) For the choice of tuning parameter $\gamma \geq 4 \sqrt{| g_{\max}|} \BQ_0$,
 %
-\begin{align}\label{eqn:OmegaBounds}
+\begin{align}
+\| \widehat \Theta_j - \Theta_{0,j} \|_F & \leq 12 \sqrt{s_j} \gamma / \psi \label{eqn:theta-norm-bound-1}\\
+\sum_{j \neq j', g \in \cG_y^{jj'}} \| \hat \bftheta_{jj'}^{[g]} - \bftheta_{0,jj'}^{[g]} \| & \leq 48 s_j \gamma / \psi \label{eqn:theta-norm-bound-2}
+\end{align}
+%
+
+\noindent (II) For the choice of tuning parameter $\gamma = 4 \sqrt{| g_{\max}|} \BQ_0$,
+%
+\begin{align}\label{eqn:OmegaBounds0}
 \frac{1}{K} \sum_{k=1}^K \| \widehat \Omega_y^k - \Omega_y^k \|_F \leq
 O \left( \BQ_0 \sqrt{\frac{| g_{\max}| S}{K}} \right)
 \end{align}
 %
-with probability $\geq 1 - 1/p^{\tau_1-2} - 6c_1 \exp [-c_2 \log(pq)] - 2 \exp (- c_3 n) - 6c_4 \exp [-c_5 \log(pq)]$.
+both with probability $\geq 1 - 1/p^{\tau_1-2} - 6c_1 \exp [-(c_2^2-1) \log(pq)] - 2 \exp (- c_3 n) - 6c_4 \exp [-(c_5^2-1) \log(pq)]$, for some constants $c_1, c_3, c_4 > 0, c_2, c_5 > 1$.
 \end{Theorem}
 
 Finally we ensure that the starting values are good enough.
@@ -355,12 +365,12 @@ Consider the starting values as derived in \eqref{eqn:init-B} and \eqref{eqn:ini
 \sqrt{ \frac{\log (pq)}{n}}
 \]
 %
-we have $\| \widehat \bfbeta^{(0)} - \bfbeta_0 \|_1 \leq 64 B \lambda/\psi^*$ with probability $\geq 1 - 6d_1 \exp( -d_2 \log(pq)) - 2 \exp(d_3 n)$. Further, for $\gamma \geq 4\sqrt{| g_{\max}|} \BQ_0$ we have
+we have $\| \widehat \bfbeta^{(0)} - \bfbeta_0 \|_1 \leq 64 B \lambda/\psi^*$ with probability $\geq 1 - 6d_1 \exp( -(d_2^2-1) \log(pq)) - 2 \exp(d_3 n)$. Further, for $\gamma \geq 4\sqrt{| g_{\max}|} \BQ_0$ we have
 %
-\begin{align}
-\| \widehat \Theta_j - \Theta_{0,j} \|_F & \leq 12 \sqrt{s_j} \gamma / \psi \label{eqn:theta-norm-bound-1}\\
-\sum_{j \neq j', g \in \cG_y^{jj'}} \| \hat \bftheta_{jj'}^{[g]} - \bftheta_{0,jj'}^{[g]} \| & \leq 48 s_j \gamma / \psi \label{eqn:theta-norm-bound-2}
-\end{align}
+\begin{align*}
+\| \widehat \Theta_j^{(0)} - \Theta_{0,j} \|_F & \leq 12 \sqrt{s_j} \gamma / \psi\\
+\sum_{j \neq j', g \in \cG_y^{jj'}} \| \hat \bftheta_{jj'}^{[g](0)} - \bftheta_{0,jj'}^{[g]} \| & \leq 48 s_j \gamma / \psi
+\end{align*}
 %
 with probability $\geq 1 - 1/p^{\tau_1-2} - 6c_1 \exp [-(c_2^2-1) \log(pq)] - 2 \exp (- c_3 n) - 6c_4 \exp [-(c_5^2-1) \log(pq)]$.
 \end{Theorem}
@@ -391,5 +401,5 @@ with probability $\geq {\colrbf tbd}$.
 \noindent (II) For $\gamma \geq 4 \sqrt{ | g_{\max} |} \BQ_0 $, \eqref{eqn:theta-norm-bound-1} and \eqref{eqn:theta-norm-bound-2} hold with probability $\geq {\colrbf tbd}$.
 
 \vspace{1em}
-\noindent (III) For $\gamma = 4 \sqrt{ | g_{\max} |} \BQ_0 $, \eqref{eqn:OmegaBounds} holds with probability $\geq {\colrbf tbd}$.
+\noindent (III) For $\gamma = 4 \sqrt{ | g_{\max} |} \BQ_0 $, \eqref{eqn:OmegaBounds0} holds with probability $\geq {\colrbf tbd}$.
 \end{Corollary}

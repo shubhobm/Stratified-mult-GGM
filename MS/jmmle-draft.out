@@ -12,7 +12,11 @@
 \BOOKMARK [2][-]{subsection.3.2}{Test formulation}{section.3}% 12
 \BOOKMARK [2][-]{subsection.3.3}{Control of False Discovery Rate}{section.3}% 13
 \BOOKMARK [1][-]{section.4}{Numerical performance}{}% 14
-\BOOKMARK [1][-]{section.5}{Discussion}{}% 15
-\BOOKMARK [1][-]{appendix.A}{Misc}{}% 16
-\BOOKMARK [1][-]{appendix.B}{Proofs}{}% 17
-\BOOKMARK [1][-]{appendix.C}{Proof of auxiliary results}{}% 18
+\BOOKMARK [2][-]{subsection.4.1}{Simulation 1: estimation}{section.4}% 15
+\BOOKMARK [3][-]{subsubsection.4.1.1}{Effect of heterogeneity}{subsection.4.1}% 16
+\BOOKMARK [2][-]{subsection.4.2}{Simulation 2: testing}{section.4}% 17
+\BOOKMARK [2][-]{subsection.4.3}{Computation}{section.4}% 18
+\BOOKMARK [1][-]{section.5}{Discussion}{}% 19
+\BOOKMARK [1][-]{appendix.A}{Misc}{}% 20
+\BOOKMARK [1][-]{appendix.B}{Proofs}{}% 21
+\BOOKMARK [1][-]{appendix.C}{Proof of auxiliary results}{}% 22

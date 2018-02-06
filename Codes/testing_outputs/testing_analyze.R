@@ -26,7 +26,7 @@ analyze.size = function(list, broken=FALSE){
   vec.list = list()
   
   if(broken){
-    for(i in 1:4){
+    for(i in 1:5){
       load(paste0(list,"_",i,".Rda"))
       vec.list[[i]] = as.numeric(unlist(out.mat))
       vector = as.numeric(unlist(vec.list))
@@ -50,7 +50,13 @@ analyze("testnew_n200p200q200modelB")
 analyze("testnew_n300p200q200modelB", broken=T, array=1:5)
 
 analyze.size("outtestsizenew_n100p60q30")
+analyze.size("testsizenew_n200p60q30", broken=T)
 analyze.size("outtestsizenew_n100p30q60")
+analyze.size("testsizenew_n200p30q60", broken=T)
 analyze.size("outtestsizenew_n150p200q200")
-analyze.size("outtestsizenew_n150p300q300", broken=T)
+analyze.size("testsizenew_n150p200q200", broken=T)
+# analyze.size("outtestsizenew_n150p300q300", broken=T)
+analyze.size("testsizenew_n300p300q300", broken=T)
+analyze.size("testsizenew_n100p200q200modelB", broken=T)
 analyze.size("outtestsizenew_n200p200q200modelB", broken=T)
+analyze.size("testsizenew_n300p200q200modelB", broken=T)

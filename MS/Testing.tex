@@ -1,5 +1,5 @@
 \section{Hypothesis testing in multilayer models}
-In this section, we lay out a framework for hypothesis testing in our proposed joint multilayer structure. Present literature in high-dimensional hypothesis testing either focuses on testing for simularities in the within-layer connections of single-layer networks \citep{CaiLiu16,Liu17}, or coefficients of single response penalized regression \citep{vanDeGeerEtal14,ZhangZhang14,MitraZhang16}. However a method for testing {\it between-layer} connections in a multilayer setup is yet to be proposed.
+In this section, we lay out a framework for hypothesis testing in our proposed joint multilayer structure. Present literature in high-dimensional hypothesis testing either focuses on testing for simularities in the within-layer connections of single-layer networks \citep{CaiLiu16,Liu17}, or coefficients of single response penalized regression \citep{vanDeGeerEtal14,ZhangZhang14,MitraZhang16}. However, to our knowledge no method is available in the literature to perform testing for {\it between-layer} connections in a two-layer (or multilayer) setup.
 
 There are two main challenges in doing the above: firstly the need to mitigate estimation the bias of estimators that are obtained from lasso and group lasso-based procedures and assumptions on the design matrix required for the same, and secondly the dependency among response nodes translating into the need for controlling False Discovery Rate (FDR) while simultaneously testing for such hypotheses. In Section~\ref{sec:testing-subsec-1} we propose a debiased estimator for rows of the coefficient matrix estimates $\bfB^k$ that makes use of already computed (using JSEM) nodewise regression coefficients in the upper layer, and establish asymptotic properties of scaled version of them. Section~\ref{sec:testing-subsec-2} is devoted to pairwise testing, where we asssume $K=2$, and propose asymptotic global tests for detecting differential effects of a variable in the upper layer, as well as pairwise simultaneous tests for detecting elementwise difference in the coefficient matrices across $k$.
 
@@ -51,7 +51,7 @@ where $C_\zeta = O(1)$ depends only on the true values, i.e. $\{ \zeta^k_0 \}$.
 \noindent{\bf (T2)} The lower layer precision matrix estimators satisfy for all $k \in \cI_K$
 %
 $$
-\left\| (\widehat \Omega_y^k)^{1/2} - (\Omega_y^k)^{1/2} \right\|_\infty \leq C_\Omega \sqrt { \frac{\log q}{n}}
+\left\| (\widehat \Omega_y^k)^{1/2} - (\Omega_{y0}^k)^{-1/2} \right\|_\infty \leq C_\Omega \sqrt { \frac{\log q}{n}}
 $$
 %
 where $C_\Omega = O(1)$ depends only on $\Omega_{y 0}$.
@@ -243,11 +243,12 @@ Following \cite{LiuShao14}, a version of Algorithm~\ref{algo:AlgoFDR}, where the
 \begin{Remark}
 Based on the FDR control procedure in Algorithm~\ref{algo:AlgoFDR}, we can perform {\it within-row thresholding} in the matrices $\widehat \bfB^k$ to tackle group misspecification.
 %
-\begin{align*}
+\begin{align}
 & \hat \tau_i^k := \inf \left\{\tau \in \BR: 1 - \Phi(\tau) \leq \frac{\alpha}{2 q}
-\max \left( \sum_{j \in \cI_q} \BI( |b_{ij}^k| \geq \tau), 1 \right) \right\} \\
+\max \left( \sum_{j \in \cI_q} \BI( |b_{ij}^k| \geq \tau), 1 \right) \right\} \notag\\
 & \hat b_{ij}^{k, \text{thr}} =  \hat b_{ij}^k \BI ( |\hat b_{ij}^k| \geq \hat \tau_i^k)
-\end{align*}
+\label{eqn:fdr-threshold}
+\end{align}
 %
 Even without group misspecification, this helps identify directed edges between layers that have high nonzero values. Similar post-estimation thresholding results have been proposed in the context of multitask regression \citep{ObozinskiEtal11,MajumdarChatterjeeStat} and neighborhood selection \citep{MaMichailidis15}. However, our procedure is the first one to provide explicit guarantees on the amount of false discoveries while doing so.
 \end{Remark}
