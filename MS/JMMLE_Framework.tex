@@ -1,4 +1,6 @@
 \section{The Joint Multiple Multilevel Estimation Framework}
+\label{sec:sec2}
+
 \subsection{Formulation}
 Suppose there are $K$ independent datasets, each pertaining to an $M$-layered Gaussian Graphical Model (GGM). The $k^{\Th}$ model has the following structure:
 
@@ -18,7 +20,7 @@ $ \BD_m^k = \BD_{m-1}^k \bfB_m^k + \BE_m^k$, with $\bfB_m^k \in \BM(p_{m-1}, p_m
 
 We assume known structured sparsity patterns, denoted by $\cG_m$ and $\cH_m$, for the parameters of interest in the above model, i.e. the precision matrices $\Omega_m^k := (\Sigma_m^k)^{-1}$ and the regression coefficient matrices $\bfB_m^k$, respectively. These patterns provide information on horizontal dependencies across $k$ for the corresponding parameters, and our goal here is to leverage them to estimate the full hierarchical structure of the network- specifically to obtain the undirected edges inside nodes of a single layer, and the directed edges between two successive layers through jointly estimating $\{ \Omega_m^k \}$ and $\{ \bfB_m^k \}$.
 
-Consider a two-layer model, which is a special case of the above model with $M=2$:
+Consider now a two-layer model, which is a special case of the above model with $M=2$:
 %
 \begin{eqnarray}
 \BX^k = (X^k_1, \ldots, X^k_p)^T \sim \cN (0, \Sigma^k_x);\\
@@ -81,7 +83,7 @@ Choice of initial values plays a crucial role in the performance of this alterna
 %\widehat \bfB_j^{k (0)} = \argmin_{\supp(\bfB_j^k) \subseteq \tilde \cS_j^k} \|\bfY_j^k - \bfX^k \bfB_j^k \|^2 + \lambda_n^0 \| \bfB_j^k \|_1
 %\end{align}
 %
-We choose the initial values $\{ \bfB^{k (0)} \}$ by fitting separate lasso regression models for each column of the coefficient matrices:
+We choose the initial values $\{ \widehat \bfB^{k (0)} \}$ by fitting separate lasso regression models for each column of the coefficient matrices:
 %
 \begin{align}\label{eqn:init-B}
 \widehat \bfB_j^{k (0)} = \argmin_{\bfB_j^k \in \BR^p} \|\bfY_j^k - \bfX^k \bfB_j^k \|^2 + \lambda_n \| \bfB_j^k \|_1; \quad
@@ -89,7 +91,7 @@ j \in \cI_q, k \in \cI_K.
 \end{align}
 %
 
-We obtain initial estimates of $ \Theta_j, j \in \cI_q$ by performing group-penalized nodewise regression on the residuals $\widehat \bfE^{k (0)} := \bfY^k - \bfX^k \bfB_j^{k (0)}$:
+We obtain initial estimates of $ \Theta_j, j \in \cI_q$ by performing group-penalized nodewise regression on the residuals $\widehat \bfE^{k (0)} := \bfY^k - \bfX^k \widehat \bfB_j^{k (0)}$:
 %
 \begin{align}\label{eqn:init-Theta}
 \widehat \Theta_j^{(0)} = \argmin_{\Theta_j} \frac{1}{n} \sum_{k=1}^K \|

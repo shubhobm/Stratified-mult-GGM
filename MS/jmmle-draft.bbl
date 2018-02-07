@@ -1,5 +1,11 @@
 \begin{thebibliography}{}
 
+\bibitem[Belilovsky et~al., 2016]{BelilovskyEtal16}
+Belilovsky, E., Varoquaux, G., and Blaschko, M. (2016).
+\newblock {Testing for differences in Gaussian graphical models: Applications
+  to brain connectivity}.
+\newblock In {\em NIPS Proceedings}, pages 595--603.
+
 \bibitem[{B\"{u}hlmann} and {van de Geer}, 2011]{BuhlmannvandeGeer11}
 {B\"{u}hlmann}, P. and {van de Geer}, S. (2011).
 \newblock {\em {Statistics for High-dimensional Data: Methods, Theory and
@@ -23,6 +29,17 @@ Danaher, P., Wang, P., and Witten, D.~M. (2014).
   multiple classes}.
 \newblock {\em J. R. Statist. Soc. B}, 76(2):373--397.
 
+\bibitem[{Gligorijevi\'{c}} and {Pr\v{z}ulj}, 2015]{GligPrzulj15}
+{Gligorijevi\'{c}}, V. and {Pr\v{z}ulj}, N. (2015).
+\newblock Methods for biological data integration: perspectives and challenges.
+\newblock {\em J. R. Soc. Interface}, 12(112):20150571.
+
+\bibitem[Gomez-Cabrero et~al., 2014]{GomezCabreroEtal14}
+Gomez-Cabrero, D., Abugessaisa, I., Maier, D., et~al. (2014).
+\newblock {Data integration in the era of omics: current and future
+  challenges}.
+\newblock {\em BMC Syst. Biol.}, 8(Suppl. 2):l1.
+
 \bibitem[Guo et~al., 2011]{GuoEtal11}
 Guo, J., Levina, E., Michailidis, G., and Zhu, J. (2011).
 \newblock Joint estimation of multiple graphical models.
@@ -39,6 +56,11 @@ Javanmard, A. and Montanari, A. (2018+).
 \newblock {De-biasing the Lasso: Optimal Sample Size for Gaussian Designs}.
 \newblock {\em Ann. Statist.}, To appear.
 \newblock \url{https://arxiv.org/abs/1508.02757}.
+
+\bibitem[Joyce and Palsson, 2006]{JoycePalsson06}
+Joyce, A.~R. and Palsson, B. (2006).
+\newblock { The model organism as a system: integrating {\it omics} data sets}.
+\newblock {\em Nat. Rev. Mol. Cell Biol.}, 7:198--210.
 
 \bibitem[Lee and Liu, 2012]{LeeLiu12}
 Lee, W. and Liu, Y. (2012).
@@ -119,6 +141,12 @@ Stucky, B. and {van de Geer}, S. (2017).
 \newblock {Asymptotic Confidence Regions for Highdimensional Structured
   Sparsity}.
 \newblock \url{https://arxiv.org/abs/1706.09231}.
+
+\bibitem[Tomczak et~al., 2015]{Tomczak15}
+Tomczak, K., {Czerwi\'{n}ska}, P., and Wiznerowicz, M. (2015).
+\newblock {The Cancer Genome Atlas (TCGA): An immeasurable source of
+  knowledge}.
+\newblock {\em Contemp. Oncol.}, 19:A68--A77.
 
 \bibitem[{van de Geer} et~al., 2014]{vanDeGeerEtal14}
 {van de Geer}, S., {B\"{u}hlmann}, P., Ritov, Y., and Dezeure, R. (2014).

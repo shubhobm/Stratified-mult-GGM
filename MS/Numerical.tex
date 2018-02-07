@@ -1,4 +1,5 @@
 \section{Numerical performance}
+\label{sec:sec4}
 In this section, we evaluate the performance of our proposed JMMLE algorithm and the hypothesis testing framework in a two-layer simulation setup (Sections \ref{sec:eval-jmmle} and \ref{sec:eval-testing}), and also introduce some computational techniques that significantly accelerates computation for high data dimensions (Section~\ref{sec:tricks-jmmle}).
 
 \subsection{Simulation 1: estimation}
@@ -118,11 +119,39 @@ Tables \ref{table:simtable11} and \ref{table:simtable12} summarize the results. 
 \subsubsection{Effect of heterogeneity}
 We repeat the above setups to check the performance of JMMLE in presence of within-group misspecification. For this we set individual elements in a non-zero group $\{ b_{ij}^k, k \in \cI_K \}$ to be non-zero with probability 0.2, then pass JMMLE estimates of $\bfB_0^k$ through the FDR controlling thresholds as given in \eqref{eqn:fdr-threshold}. The results are summarized in \ref{table:est-table2}.
 
+\begin{scriptsize}
+\begin{table}
+\centering
+    \begin{tabular}{cccccc}
+    \hline
+    $(\pi_x, \pi_y)$ & $(p,q,n)$   & TP$(\widehat \cB)$            & TN$(\widehat \cB)$             & MCC$(\widehat \cB)$ & RF$(\widehat \cB)$            \\ \hline
+    $(5/p, 5/q)$   & (60,30,100)   & ~             & ~              & ~   & ~             \\
+    ~              & (30,60,100)   & ~             & ~              & ~   & ~             \\
+    ~              & (200,200,150) & ~             & ~              & ~   & ~             \\
+    ~              & (300,300,150) & ~             & ~              & ~   & ~             \\
+    $(30/p, 30/q)$ & (200,200,100) & ~             & ~              & ~   & ~             \\
+    ~              & (200,200,200) & ~             & ~              & ~   & ~             \\ \hline
+    \hline
+    $(\pi_x, \pi_y)$ & $(p,q,n)$   & TP$(\widehat \Theta)$            & TN$(\widehat \Theta)$             & MCC$(\widehat \Theta)$ & RF$(\widehat \Theta)$            \\ \hline
+    $(5/p, 5/q)$   & (60,30,100)   & ~             & ~              & ~   & ~             \\
+    ~              & (30,60,100)   & ~             & ~              & ~   & ~             \\
+    ~              & (200,200,150) & ~             & ~              & ~   & ~             \\
+    ~              & (300,300,150) & ~             & ~              & ~   & ~             \\
+    $(30/p, 30/q)$ & (200,200,100) & ~             & ~              & ~   & ~             \\
+    ~              & (200,200,200) & ~             & ~              & ~   & ~             \\ \hline
+    \end{tabular}
+    \caption{Table of outputs for joint estimation in presence of group misspecification.}
+    \label{table:simtable2}
+\end{table}
+\end{scriptsize}
+
 \subsection{Simulation 2: testing}
+\label{sec:eval-testing}
 We slightly change our data generating model to evaluate our proposed global testing and FDR control procedure. We set $K=2$, then generate the $\bfB_0^1$ by first randomly assigning each of its element to be non-zero with probability $\pi$, then drawing values of those elements from $\text{Unif}\{ [ -1, -0.5] \cup [0.5,1]\}$ independently. After this we generate a matrix of differences $\bfD$, with $(\bfD)_{ij}, i \in \cI_p, j \in \cI_q$ taking values -1, 1, 0 with probabilities 0.1, 0.1 and 0.8, respectively. Finally we set $\bfB_0^2 = \bfB_0^1 + \bfD$. We set the same sparsity structures for the pairs of precision matrices $\{ \Omega_{x0}^1, \Omega_{x0}^2 \}$ and $\{ \Omega_{y0}^1, \Omega_{y0}^2 \}$. We use 50 replications of the above setup to calculate empirical power of global tests, as well as empirical power and FDR of simultaneous tests, while to get size of global tests we use JMMLE estimators from a separate set of data generated setting all elements of $\bfD$ to 0. The type-I error of global tests is taken as 0.05, while FDR is set at 0.2 while calculating the respective thresholds.
 
 Table~\ref{table:simtable3} reports the empirical mean and standard deviations (in brackets) of all relevant quantities. We report outputs for all combinations of data dimensions and sparsity used in Section~\ref{sec:eval-jmmle}, and also for increased sample sizes in each setting until a satisfactory FDR is reached. As expected, higher sample sizes result in increased power for both global and simultaneous tests, and decreased size and FDR for all but one ($p=30, q=60$) of the settings.
 
+%
 \begin{scriptsize}
 \begin{table}
     \begin{tabular}{ccccccc}
@@ -144,9 +173,6 @@ $(\pi_x, \pi_y)$ & $(p,q)$   & $n$ & \multicolumn{2}{c}{Global test} & \multicol
     \label{table:simtable3}
 \end{table}
 \end{scriptsize}
-
-
-\label{sec:eval-testing}
 
 \subsection{Computation}
 \label{sec:tricks-jmmle}
@@ -197,7 +223,7 @@ where $\cS_{jk} = \supp(\widetilde \bfb^{k (t+1)}_j)$.
 
 \noindent 4. Continue till convergence to obtain $\widehat \cB = \{ \widehat \bfB^k \}$.
 
-\noindent 5. Obtain $\widehat \bfE^k := \bfY^k - \bfX^k \widehat \bfB_j^k, k \in \cI_K$. Update $\widehat \Theta$ as:
+\noindent 5. Obtain $\widehat \bfE^k := \bfY^k - \bfX^k \widehat \bfB^k, k \in \cI_K$. Update $\widehat \Theta$ as:
 %
 \begin{align*}
 \widehat \Theta_j = \argmin_{\Theta_j \in \BM(q-1, K)}
