@@ -34,11 +34,23 @@ Javanmard, A. and Montanari, A. (2014).
   regression.
 \newblock {\em J. Mach. Learn. Res.}, 15(1):2869--2909.
 
+\bibitem[Javanmard and Montanari, 2018]{JavanmardMontanari18}
+Javanmard, A. and Montanari, A. (2018+).
+\newblock {De-biasing the Lasso: Optimal Sample Size for Gaussian Designs}.
+\newblock {\em Ann. Statist.}, To appear.
+\newblock \url{https://arxiv.org/abs/1508.02757}.
+
 \bibitem[Lee and Liu, 2012]{LeeLiu12}
 Lee, W. and Liu, Y. (2012).
 \newblock {Simultaneous multiple response regression and inverse covariance
   matrix estimation via penalized Gaussian maximum likelihood}.
 \newblock {\em J. Mult. Anal.}, 111:241--255.
+
+\bibitem[Li et~al., 2015]{LiEtal15}
+Li, H., Pouladi, N., Achour, I., et~al. (2015).
+\newblock {eQTL networks unveil enriched mRNA master integrators downstream of
+  complex disease-associated SNPs}.
+\newblock {\em J. Biomed. Inform.}, 58:226--234.
 
 \bibitem[Lin et~al., 2016]{LinEtal16}
 Lin, J., Basu, S., Banerjee, M., and Michailidis, G. (2016).
@@ -68,6 +80,12 @@ Majumdar, S. and Chatterjee, S. (2018).
 \newblock {Non-convex penalized multitask regression using data depth-based
   penalties}.
 \newblock {\em Stat}, To appear.
+
+\bibitem[Mao et~al., 2017]{MaoEtal17}
+Mao, Y., Kao, S., Chen, L., et~al. (2017).
+\newblock {The essential and downstream common proteins of amyotrophic lateral
+  sclerosis: A protein-protein interaction network analysis}.
+\newblock {\em PLoS One}, 12(3):e0172246.
 
 \bibitem[Meinshausen and {B\"{u}hlmann}, 2006]{MeisenBuhlmann06}
 Meinshausen, N. and {B\"{u}hlmann}, P. (2006).
