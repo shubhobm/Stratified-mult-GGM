@@ -1,6 +1,22 @@
 \section{Introduction}
+The human body is a complex system, comprising of several regulatory networks that are connected within and between themselves. These networks also contain a natural hierarchy within them: for exmaple genes produce RNAs through transcription, which etc etc
 
-\subsection{Organization of paper}
+$->$ recent advances made a lot of data available. mention tcga, ``It has largely been accepted that a comprehensive understanding of a biological system can come only from a joint analysis of all omics layers"
 
-\subsection{Notations}
+give structure in figure. lit. review.
+
+Gaussian Graphical Models (GGM) have been extensively used to model biological networks in the last few years. While the initial work on GGMs focused on estimating undirected edges within a single network through obtaining sparse estimates of the inverse covariance matrix, or the precision matrix from the data (e.g. see the references in \cite{BuhlmannvandeGeer11}), the attention has now shifted to estimating parameters from more complex structures: especially multiple related graphical models and hierarchical multilayer models with both directed and undirected edges. For the first problem, \cite{GuoEtal11} and \cite{XieLiuValdar16} assumed perturbations over a common underlying structure for modelling multiple precision matrices, while \cite{DanaherEtal14} proposed using fused lasso or group lasso penalties in a joint group lasso model for the same purpose. To incorporate prior information on the group structures across several graphs, \cite{MaMichailidis15} proposed the Joint Structural Estimation Method (JSEM), which uses group-penalized neighborhood regression and subsequent refitting for the estimation of precision matrices.
+
+For the second problem, a two-layered structure can be modeled by interpreting directed edges between the two layers as elements of a multitask regression coefficient matrix, while undirected edges inside either layer correspond to the precision matrix of predictors in that layer. While several methods exist in the literature for joint estimation of both parameters \citep{RothmanEtal10, LeeLiu12, CaiEtal12}, only recently \cite{LinEtal16} made the observation that a multilayer model can, in fact, be decomposed into a series of two-layer problems. Subsequently, they proposed an estimation algorithm and derived theoretical properties of the resulting estimators.
+
+\vspace{1em}
+All the above approaches model either the horizontal or the vertical complexity in the full hierarchical structure of Figure~\ref{fig:intro}. This means multiple related groups of of heterogeneous datasets has to be modeled by analyzing all data in individual layers, and then separately analyzing individual hierarchies of datasets. Although a recent paper \citep{ZhangOuyangZhao17} provides a model for the full structure in Figure~\ref{fig:intro} using penalized log-likelihoods, they do not provide theoretical guarantees for the estimates, and limit the numerical examples to small feature dimensions ($<70$) only. Thus, a truly rigorous and scalable formulation of a model for data integration is yet to be proposed.
+
+While some progress has been made for parameter estimation in multilayer models, little is known about the asymptotic properties of resulting estimates.
+
+
+
+\paragraph{Organization of paper.}
+
+\paragraph{Notations.}
 We denote scalars by small letters, vectors by bold small letters and matrices by bold capital letters. For any matrix $\bfA$, $(\bfA)_{ij}$ denote its element in the $(i,j)^\text{th}$ position. For $a,b \in \BN$, we denote the set of all $a \times b$ real matrices by $\BM(a,b)$. For any positive integer $c$, define $\cI_c = \{ 1, \ldots, c\}$. For vectors $\bfv$ and matrices $\bfM$, $\| \bfv \|$, $\|\bfv \|_1$ or $\|\bfM \|_1$ and $\|\bfv \|_\infty$ or $\|\bfM \|_\infty$ denote euclidean, $\ell_1$ and $\ell_\infty$ norms, respectively. The notation $\supp(\bfA)$ indicates the non-zero edge set in a matrix (or vector)valued parameter $\bfA$, i.e. $\supp(\bfA) = \{(i,j): (\bfA)_{ij} \neq 0\}$. For positive real numbers $A, B$ we write $A \succsim B$ if there exists $c>0$ independent of model parameters such that $A \geq cB$. 

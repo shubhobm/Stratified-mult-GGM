@@ -1,9 +1,27 @@
 \begin{thebibliography}{}
 
+\bibitem[{B\"{u}hlmann} and {van de Geer}, 2011]{BuhlmannvandeGeer11}
+{B\"{u}hlmann}, P. and {van de Geer}, S. (2011).
+\newblock {\em {Statistics for High-dimensional Data: Methods, Theory and
+  Applications}}.
+\newblock Springer.
+
+\bibitem[Cai et~al., 2012]{CaiEtal12}
+Cai, T.~T., Li, H., Liu, W., and Xie, J. (2012).
+\newblock {Covariate-adjusted precision matrix estimation with an application
+  in genetical genomics}.
+\newblock {\em Biometrika}, 100(1):139--156.
+
 \bibitem[Cai and Liu, 2016]{CaiLiu16}
 Cai, T.~T. and Liu, W. (2016).
 \newblock {Large-Scale Multiple Testing of Correlations}.
 \newblock {\em J. Amer. Stat. Assoc.}, 111(513):229--240.
+
+\bibitem[Danaher et~al., 2014]{DanaherEtal14}
+Danaher, P., Wang, P., and Witten, D.~M. (2014).
+\newblock {The joint graphical lasso for inverse covariance estimation across
+  multiple classes}.
+\newblock {\em J. R. Statist. Soc. B}, 76(2):373--397.
 
 \bibitem[Guo et~al., 2011]{GuoEtal11}
 Guo, J., Levina, E., Michailidis, G., and Zhu, J. (2011).
@@ -15,6 +33,12 @@ Javanmard, A. and Montanari, A. (2014).
 \newblock Confidence intervals and hypothesis testing for high-dimensional
   regression.
 \newblock {\em J. Mach. Learn. Res.}, 15(1):2869--2909.
+
+\bibitem[Lee and Liu, 2012]{LeeLiu12}
+Lee, W. and Liu, Y. (2012).
+\newblock {Simultaneous multiple response regression and inverse covariance
+  matrix estimation via penalized Gaussian maximum likelihood}.
+\newblock {\em J. Mult. Anal.}, 111:241--255.
 
 \bibitem[Lin et~al., 2016]{LinEtal16}
 Lin, J., Basu, S., Banerjee, M., and Michailidis, G. (2016).
@@ -67,6 +91,11 @@ Ravikumar, P., Wainwright, M.~J., Raskutti, G., and Yu, B. (2011).
   $\ell_1$-penalized log-determinant divergence}.
 \newblock {\em Electron. J. Stat.}, 5:935--980.
 
+\bibitem[Rothman et~al., 2010]{RothmanEtal10}
+Rothman, A.~J., Levina, E., and Zhu, J. (2010).
+\newblock {Sparse Multivariate Regression With Covariance Estimation}.
+\newblock {\em J. Comp. Graph. Stat.}, 19:947--962.
+
 \bibitem[Stucky and {van de Geer}, 2017]{StuckyVandeGeer17}
 Stucky, B. and {van de Geer}, S. (2017).
 \newblock {Asymptotic Confidence Regions for Highdimensional Structured
@@ -79,10 +108,22 @@ Stucky, B. and {van de Geer}, S. (2017).
   High-Dimensional Models}.
 \newblock {\em Ann. Statist.}, 42:1166--1202.
 
+\bibitem[Xie et~al., 2016]{XieLiuValdar16}
+Xie, Y., Liu, Y., and Valdar, W. (2016).
+\newblock {Joint estimation of multiple dependent Gaussian graphical models
+  with applications to mouse genomics}.
+\newblock {\em Biometrika}, 103(3):493--511.
+
 \bibitem[Zhang and Zhang, 2014]{ZhangZhang14}
 Zhang, C.-H. and Zhang, S.~S. (2014).
 \newblock {Confidence Intervals for Low Dimensional Parameters in High
   Dimensional Linear Models}.
 \newblock {\em J. R. Statist. Soc. B}, 76:217--242.
+
+\bibitem[Zhang et~al., 2017]{ZhangOuyangZhao17}
+Zhang, Y., Ouyang, Z., and Zhao, H. (2017).
+\newblock A statistical framework for data integration through graphical models
+  with application to cancer genomics.
+\newblock {\em Ann. Appl. Stat.}, 11(1):161--184.
 
 \end{thebibliography}
