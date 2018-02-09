@@ -275,7 +275,7 @@ We assume the following conditions on the true parameter versions $(\bfT_0^k)^2$
 \vspace{1em}
 \noindent{\bf (E1)} The matrices $\Omega_{y0}^k, k \in \cI_K$ are diagonally dominant,
 
-\noindent{\bf (E2)} The matrices $\Sigma_{y0}^k, k \in \cI_K$ have bounded eigenvalues with common constants $(c_x, d_x)$.
+\noindent{\bf (E2)} The matrices $\Sigma_{y0}^k, k \in \cI_K$ have bounded eigenvalues with common constants $(c_y, d_y)$.
 \vspace{1em}
 %
 
@@ -307,11 +307,11 @@ where $\BQ_0 = O(1)$ depends on the model parameters only, we have
 \noindent (II) For the choice of tuning parameter $\gamma = 4 \sqrt{| g_{\max}|} \BQ_0 \sqrt{\log (p q)/n}$,
 %
 \begin{align}\label{eqn:OmegaBounds0}
-\frac{1}{K} \sum_{k=1}^K \| \widehat \Omega_y^k - \Omega_y^k \|_F \leq
+\frac{1}{K} \sum_{k=1}^K \| \widehat \Omega_y^k - \Omega_{y0}^k \|_F \leq
 O \left( \BQ_0 \sqrt{\frac{| g_{\max}| S}{K}} \right)
 \end{align}
 %
-both with probability $\geq 1 - 1/p^{\tau_1-2} - 6c_1 \exp [-(c_2^2-1) \log(pq)] - 2 \exp (- c_3 n) - 6c_4 \exp [-(c_5^2-1) \log(pq)]$, for some constants $c_1, c_3, c_4 > 0, c_2, c_5 > 1, \tau_1 > 2$.
+both with probability $\geq 1 - 1/p^{\tau_1-2} - 12 c_1 \exp [-(c_2^2-1) \log(pq)] - 2 \exp (- c_3 n) - 6c_4 \exp [-(c_5^2-1) \log(pq)]$, for some constants $c_1, c_3, c_4 > 0, c_2, c_5 > 1, \tau_1 > 2$.
 \end{Theorem}
 
 %We now put both the pieces together, and prove that our alternating algorithm results in a solution sequence $\{ \widehat \cB^{(r)}, \widehat \Theta^{(r)} \}, r = 1, 2, \ldots$ that lies uniformly within a non-expanding ball around the true parameter values.
@@ -364,21 +364,21 @@ and $d_k$ being the maximum degree of $(\bfT_0^k)^2$.
 Finally we ensure that the starting values are good enough.
 
 \begin{Theorem}
-Consider the starting values as derived in \eqref{eqn:init-B} and \eqref{eqn:init-Theta}. For sample size $n \succsim \log(pq)$, there exist constants $d_1, d_2, d_3>0$ such that for
+Consider the starting values as derived in \eqref{eqn:init-B} and \eqref{eqn:init-Theta}. For sample size $n \succsim \log(pq)$, and the choice of tuning parameter
 %
 \[
-\lambda \geq 4 d_2 \max_{k \in \cI_K} \left\{ [\Lambda_{\max} (\Sigma_{x 0}^k) \Lambda_{\max} (\Sigma_{y 0}^k)]^{1/2} \right\}
+\lambda_n \geq 4 c_2 \max_{k \in \cI_K} \left\{ [\Lambda_{\max} (\Sigma_{x 0}^k) \Lambda_{\max} (\Sigma_{y 0}^k)]^{1/2} \right\}
 \sqrt{ \frac{\log (pq)}{n}}
 \]
 %
-we have $\| \widehat \bfbeta^{(0)} - \bfbeta_0 \|_1 \leq 64 B \lambda/\psi^*$ with probability $\geq 1 - 6d_1 \exp( -(d_2^2-1) \log(pq)) - 2 \exp(d_3 n)$. Further, for $\gamma \geq 4\sqrt{| g_{\max}|} \BQ_0$ we have
+we have $\| \widehat \bfbeta^{(0)} - \bfbeta_0 \|_1 \leq 64 B \lambda_n /\psi^*$ with probability $\geq 1 - 6c_1 \exp( -(c_2^2-1) \log(pq)) - 2 \exp(c_3 n)$. Further, for $\gamma_n \geq 4\sqrt{| g_{\max}|} \BQ_0 \sqrt{ \log (pq)/n}$ we have
 %
 \begin{align*}
-\| \widehat \Theta_j^{(0)} - \Theta_{0,j} \|_F & \leq 12 \sqrt{s_j} \gamma / \psi\\
-\sum_{j \neq j', g \in \cG_y^{jj'}} \| \hat \bftheta_{jj'}^{[g](0)} - \bftheta_{0,jj'}^{[g]} \| & \leq 48 s_j \gamma / \psi
+\| \widehat \Theta_j^{(0)} - \Theta_{0,j} \|_F & \leq 12 \sqrt{s_j} \gamma_n / \psi\\
+\sum_{j \neq j', g \in \cG_y^{jj'}} \| \hat \bftheta_{jj'}^{[g](0)} - \bftheta_{0,jj'}^{[g]} \| & \leq 48 s_j \gamma_n / \psi
 \end{align*}
 %
-with probability $\geq 1 - 1/p^{\tau_1-2} - 6c_1 \exp [-(c_2^2-1) \log(pq)] - 2 \exp (- c_3 n) - 6c_4 \exp [-(c_5^2-1) \log(pq)]$.
+with probability $\geq 1 - 1/p^{\tau_1-2} - 12 c_1 \exp [-(c_2^2-1) \log(pq)] - 2 \exp (- c_3 n) - 6c_4 \exp [-(c_5^2-1) \log(pq)]$.
 \end{Theorem}
 %
 
@@ -392,7 +392,7 @@ Assume the conditions (E1)-(E3), and starting values $\{ \cB^{(0)}, \Theta^{(0)}
 \noindent (I) For the choice of $\lambda$
 %
 $$
-\lambda \geq 4 \max \left[ d_2 \max_{k \in \cI_K} \left\{ [\Lambda_{\max} (\Sigma_{x 0}^k) \Lambda_{\max} (\Sigma_{y 0}^k)]^{1/2} \right\}, \sqrt{| h_{\max}|} \BR_0 \right] \sqrt{\frac{\log(pq)}{n}}
+\lambda \geq 4 \max \left[ c_2 \max_{k \in \cI_K} \left\{ [\Lambda_{\max} (\Sigma_{x 0}^k) \Lambda_{\max} (\Sigma_{y 0}^k)]^{1/2} \right\}, \sqrt{| h_{\max}|} \BR_0 \right] \sqrt{\frac{\log(pq)}{n}}
 $$
 %
 we have

@@ -1,6 +1,25 @@
 \section{Proofs of auxiliary results}
-{\colrbf need modification}
-\begin{proof}[Proof of Proposition~\ref{prop:Thm1ProofProp2}]
+
+\begin{proof}[Proof of Lemma~\ref{thm:ThetaThm}]
+The proof has the same structure as the proof of Theorem 1 in \cite{MaMichailidis15}, where they prove consistency of the (single layer) JSEM estimates. Part (I) is analogous to part A.1 therein, but the proof strategy is completely different, which we show in detail. Our part (II) follows similar lines as their parts A.2 and A.3, incorporating the updated quantities from the first part. For this we provide outlines and leave the details to the reader.
+
+\paragraph{Proof of part (I).}
+%The following proposition establishes error bounds for estimated neighborhood coefficients in the Y-network.
+%
+%\begin{Proposition}\label{prop:Thm1ProofProp2}
+%Consider the estimation problem in (\ref{eqn:EstEqn2}) and take $\gamma_n \geq 4 \sqrt{| g_{\max}|} \BQ_0$. Given the conditions (T2) and (T3) hold, for any solution of (\ref{eqn:EstEqn2}) we shall have
+%%
+%\begin{align}
+%\| \widehat \Theta_j - \Theta_{0,j} \|_F & \leq 12 \sqrt{s_j} \gamma_n / \psi \label{eqn:Thm1ProofProp2Bd1}\\
+%\sum_{j \neq j', g \in \cG_y^{jj'}} \| \hat \bftheta_{jj'}^{[g]} - \bftheta_{0,jj'}^{[g]} \| & \leq 48 s_j \gamma_n / \psi \label{eqn:Thm1ProofProp2Bd2}
+%\end{align}
+%%
+%Also denote the non-zero support of $\widehat \Theta_j$ by $\widehat \cS_j$, i.e. $\widehat \cS_j = \{ (j',g): \hat \bftheta_{jj'}^{[g]} \neq {\bf 0} \}$. Then
+%%
+%\begin{align}
+%| \widehat \cS_j| \leq 128 s_j / \psi \label{eqn:Thm1ProofProp2Bd3}
+%\end{align}
+%\end{Proposition}
 In its reparametrized version, (\ref{eqn:EstEqn2}) becomes
 %
 \begin{align}
@@ -26,10 +45,11 @@ with $\bfd_{j}^k := \widehat \bfT_j^k - \bfT_{0,j}^k$ etc. For the $k^\text{th}$
 \sum_{k=1}^K \left| (\bfd_j^k)^T \widehat \bfS^k \bfT_{0,j}^k \right| &=
 \sum_{k=1}^K \left| \bfd_j^k. \frac{1}{n} (\widehat \bfE^k)^T \widehat \bfE^k \bfT_{0,j}^k \right| \\
 & \leq \sum_{k=1}^K \left\| \frac{1}{n} (\widehat \bfE_{-j}^k)^T \widehat \bfE^k \bfT_{0,j}^k \right\|_\infty \| \bfd_{-j}^k \|_1 \\
-& \leq \BQ_0 \sqrt {| g_{\max}|} \sum_{j \neq j', g \in \cG_y^{jj'}} \| \bfd_{jj'}^{[g]} \|
+& \leq \left[ \sum_{j \neq j', g \in \cG_y^{jj'}} \| \bfd_{jj'}^{[g]} \| \right]
+\BQ_0 \sqrt {| g_{\max}|} \sqrt{ \frac{\log (pq)}{n}}
 \end{align*}
 %
-by assumption (T2). For the second term, suppose $\cS_{0,j}$ is the support of $\Theta_{0,j}$, i.e. $\cS_{0,j} = \{ (j',g): \bftheta_{jj'}^{[g]} \neq 0 \}$. Then
+by assumption (A2). For the second term, suppose $\cS_{0,j}$ is the support of $\Theta_{0,j}$, i.e. $\cS_{0,j} = \{ (j',g): \bftheta_{jj'}^{[g]} \neq 0 \}$. Then
 %
 \begin{align*}
 \sum_{j \neq j', g \in \cG_y^{jj'}} \left( \| \bfT_{jj'}^{[g]} \| -  \| \bfT_{jj'}^{[g]} + \bfd_{jj'}^{[g]}\| \right) & \leq
@@ -37,8 +57,8 @@ by assumption (T2). For the second term, suppose $\cS_{0,j}$ is the support of $
 \sum_{(j',g) \notin \cS_{0,j}} \| \bfd_{jj'}^{[g]} \|\\
 & \leq \sum_{(j',g) \in \cS_{0,j}} \| \bfd_{jj'}^{[g]} \| - \sum_{(j',g) \notin \cS_{0,j}} \| \bfd_{jj'}^{[g]} \|
 \end{align*}
-%$ \| \bfT_{jj'}^{[g]} \| -  \| \bfT_{jj'}^{[g]} + \bfd_{jj'}^{[g]}\| \leq \| \bfd_{jj'}^{[g]}\|$ by triangle inequality, and then $ \| \bfd_{jj'}^{[g]}\| \leq \sum_{k \in g} | d_{jj'}^k | $, 
-so that by choice of $\gamma_n$ (\ref{eqn::Thm1ProofProp2Eqn1}) reduces to
+%
+so that by choice of $\gamma_n$, (\ref{eqn::Thm1ProofProp2Eqn1}) reduces to
 %
 \begin{align}\label{eqn:Thm1ProofProp2Eqn3}
 \sum_{k=1}^K (\bfd_j^k)^T \widehat \bfS^k \bfd_j^k & \leq 
@@ -56,7 +76,7 @@ $$
 4 \sum_{(j',g) \in \cS_{0,j}} \| \bfd_{jj'}^{[g]} \| \leq 4 \sqrt{s_j} \| \bfD_j \|_F
 $$
 % 
-with $\bfD_j = (\bfd_j^k)_{k \in \cI_K}$. Now the RE condition on $\widehat \bfS^k$ means that
+with $\bfD_j = (\bfd_j^1, \ldots, \bfd_j^K)$. Now the RE condition on $\widehat \bfS^k$ means that
 %
 $$
 \sum_{k=1}^K (\bfd_j^k)^T \widehat \bfS^k \bfd_j^k \geq 
@@ -65,9 +85,9 @@ $$
 (\psi - Kq \phi ) \| \bfD_j \|_F^2 \geq \frac{\psi}{2}  \| \bfD_j \|_F^2
 $$
 %
-by assumption (T3).
+by assumption (A3).
 
-Thus we finally have
+Combining the above with \eqref{eqn:Thm1ProofProp2Eqn3}, we finally have
 %
 \begin{align}\label{eqn:Thm1ProofProp2Eqn2}
 \frac{\psi}{3} \| \bfD_j \|_F^2 & \leq
@@ -84,17 +104,17 @@ $$
 \end{cases}
 $$
 %
-The bounds in (\ref{eqn:Thm1ProofProp2Bd1}) and (\ref{eqn:Thm1ProofProp2Bd2}) are obtained by replacing the corresponding elements in (\ref{eqn:Thm1ProofProp2Eqn2}).
+The bounds in \eqref{eqn:theta-norm-bound-1a} and \eqref{eqn:theta-norm-bound-2a} are obtained by replacing the corresponding elements in (\ref{eqn:Thm1ProofProp2Eqn2}).
 
-For the bound on $| \widehat \cS_j|$, notice that if $\hat \bftheta_{jj'}^{[g]} \neq 0$ for some $(j',g)$,
+For the bound on $| \widehat \cS_j| := |\supp( \widehat \Theta_j)|$, notice that if $\hat \bftheta_{jj'}^{[g]} \neq 0$ for some $(j',g)$,
 %
 \begin{align*}
 \frac{1}{n} \sum_{k \in g} \left| ((\widehat \bfE_{-j}^k)^T \widehat \bfE^k ( \widehat \bfT_j^k - \bfT_{0,j}^k ))^{j'} \right| & \geq
 \frac{1}{n} \sum_{k \in g} \left| ((\widehat \bfE_{-j}^k)^T \widehat \bfE^k \widehat \bfT_j^k )^{j'} \right| - \frac{1}{n} \sum_{k \in g} \left| ((\widehat \bfE_{-j}^k)^T \widehat \bfE^k \bfT_{0,j}^k )^{j'} \right|\\
-& \geq |g| \gamma_n - \sum_{k \in g} \BQ ( v_\beta, \Sigma_x^k, \Sigma_y^k )
+& \geq |g| \gamma_n - \sum_{k \in g} \BQ ( C_\beta, \Sigma_x^k, \Sigma_y^k ) \sqrt{ \frac{ \log (pq)}{n}}
 \end{align*}
 %
-using the KKT condition for (\ref{eqn:EstEqn2}) and assumption (T2). The choice of $\gamma_n$ now ensures that the right hand side is $\geq 3|g| \gamma_n / 4$. Hence
+using the KKT condition for (\ref{eqn:EstEqn2}) and assumption (A2). The choice of $\gamma_n$ now ensures that the right hand side is $\geq 3|g| \gamma_n / 4$. Hence
 %
 \begin{align*}
 | \hat \cS_j| & \leq \sum_{(j',g) \in \widehat \cS_j} \frac{16}{9 n^2 |g|^2 \gamma_n^2 } \sum_{k \in g} \left| ((\widehat \bfE_{-j}^k)^T \widehat \bfE^k ( \widehat \bfT_j^k - \bfT_{0,j}^k ))^{j'} \right|^2\\
@@ -104,6 +124,232 @@ using the KKT condition for (\ref{eqn:EstEqn2}) and assumption (T2). The choice 
 \end{align*}
 %
 using (\ref{eqn:Thm1ProofProp2Eqn3}) and (\ref{eqn:Thm1ProofProp2Eqn2}).
+
+\paragraph{Proof of part (II).}
+We denote the selected edge set for the $k^\text{th}$ Y-network by $\hat E^k$. Denote its population version by $E_0^k$. Further, let
+%
+$$
+\tilde \Omega_y^k = \diag (\Omega_{y0}^k) + \Omega_{y, E_0^k \cap \hat E^k}^k
+$$
+%
+With similar derivations to the proof of Corollary A.1 in \cite{MaMichailidis15}, The following two upper bounds can be established:
+%
+\begin{align}
+| \hat E^k | \leq \frac{ 128 S }{\psi} \label{eqn:Thm1ProofProp2Bd4}\\
+\frac{1}{K} \sum_{k=1}^K \| \tilde \Omega_y^k - \Omega_{y0}^k \|_F \leq
+\frac{12 c_y \sqrt{S} \gamma_n} {\sqrt K \psi} \label{eqn:Thm1ProofProp2Bd5}
+\end{align}
+%
+following which, taking $\gamma_n = 4 \sqrt{| g_{\max}|} \BQ_0 \sqrt{ \log (pq)/ n}$,
+%
+\begin{align}
+\Lambda_{\min} ( \tilde \Omega_y^k) \geq d_y - \frac{48 c_y \BQ_0 \sqrt{| g_{\max}| S}}{ \psi} \geq (1 - t_1) d_y > 0 \label{eqn:Thm1ProofProp2Bd6}\\
+\Lambda_{\max} ( \tilde \Omega_y^k) \leq c_y + \frac{48 c_y \BQ_0 \sqrt{| g_{\max}| S}}{ \psi} \leq c_y + t_1 d_y < \infty \label{eqn:Thm1ProofProp2Bd7}
+\end{align}
+%
+with $0 < t_1 < 1$, and the sample size $n$ satisfying
+%
+$$
+n \geq | g_{\max}| S \BQ_0 \left[ \frac{48 c_y}{\psi t_1 d_y} \right]^2 \sqrt{ \log (pq)}.
+$$
+
+Following the same steps as part A.3 in the proof of Theorem 4.1 in \cite{MaMichailidis15}, it can be proven using \eqref{eqn:Thm1ProofProp2Bd4}--\eqref{eqn:Thm1ProofProp2Bd7} that
+%
+$$
+\sum_{k=1}^K \| \widehat \Omega_y^k - \tilde \Omega_y^k \|^2 \leq O \left( \BQ_0^2 | g_{\max}| S \right)
+$$
+%
+The proof is now complete by combining this with \eqref{eqn:Thm1ProofProp2Bd5} then applying Cauchy-Schwarz inequality and triangle inequality.
+\end{proof}
+
+\begin{proof}[Proof of Lemma~\ref{prop:ErrorRE}]
+
+%For any sub-gaussian zero-mean design matrix $\bfX \in \BM(n,p)$ with parameters $(\Sigma_x, \sigma_x^2)$, and any $\hat \bfB, \bfB_0 \in \BM(p,q)$ such that $\| \hat \bfB - \bfB_0 \|_F \leq v_\beta$, we follow the proof of Proposition 3 in \cite{LinEtal16} to obtain that for sample size
+%%
+%\begin{align}\label{eqn:ErrorREeqn1}
+%n & \geq 512 ( 1 + 4 \sigma_x^2)^4 \max_j (\Sigma_{x,jj})^4 \log (4p^{\tau_1})
+%\end{align}
+%the following holds
+%%
+%\begin{align}\label{eqn:ErrorREeqn2}
+%\left\| (\widehat \bfB - \bfB_0)^T \left( \frac{\bfX^T \bfX}{n} \right) (\widehat \bfB - \bfB_0) \right\|_\infty & \leq
+%v_\beta^2 \left[ \sqrt{ \frac{ \log 4 + \tau_1 \log p}{c_x n}} + \max_j \Sigma_{x,jj} \right]
+%\end{align}
+%%
+%with probability $\geq 1 - 1/p^{\tau_1-2}$ for some $\tau_1>2$, where
+%%
+%$$
+%c_x = \left[ 128 ( 1 + 4 \sigma_x^2)^2 \max_j (\Sigma_{x,jj})^2 \right]^{-1}
+%$$
+%%
+%Here we substitute $\bfX, \hat \bfB, \bfB_0$ with $\bfX^k, \hat \bfB^k, \hat \bfB_0^k$ respectively. Since rows of $\bfX^k$ come independently from $\cN( {\bf 0}, \Sigma_x^k)$, $\sigma_x^2$ in our case is the spectral norm of $\Sigma_x^k$ \citep{LohWainwright12}, which is $\Lambda_{\max} (\Sigma_x^k)$. Finally
+%%
+%$$
+%\| \bfX^k ( \hat \bfB^k - \bfB_0^k ) \|_\infty \leq 
+%\sqrt{\left\| (\widehat \bfB^k - \bfB_0^k)^T (\bfX^k)^T \bfX^k (\widehat \bfB^k - \bfB_0^k) \right\|_\infty}
+%$$
+%%
+%The expression of part 1 is immediate now, and (\ref{eqn:ErrorREeqn1}) ensures that part 1 holds when the leading term of the sample size requirement is $n \succsim \log (pq)$.
+
+We drop the subscript 0 for true values and the superscript $k$ since there is no scope of ambiguity. For part 1, we start with an auxiliary lemma:
+%
+\begin{Lemma}\label{lemma:ErrorRElemma1}
+For a sub-gaussian design matrix $\bfX \in \BM(n,p)$ with columns having mean ${\bf 0}_p$ and covariance matrix $\Sigma_x$, the sample covariance matrix $\widehat \Sigma_x = \bfX^T \bfX/n$ satisfies the RE condition
+%
+$$
+\widehat \Sigma_x \sim RE \left( \frac{\Lambda_{\min} ( \Sigma_x) }{2}, \frac{\Lambda_{\min} ( \Sigma_x) \log p }{2 n} \right)
+$$
+%
+with probability $\geq 1 - 2 \exp(-c_3 n)$ for some $c_3 > 0$.
+\end{Lemma}
+%
+Now denote $\widehat \bfE = \bfY - \bfX \widehat \bfB$. For $\bfv \in \BR^q$, we have
+%
+\begin{align}\label{eqn:ErrorREeqn3}
+\bfv^T \widehat \bfS \bfv &= \frac{1}{n} \| \widehat \bfE \bfv \|^2 \notag\\
+&= \frac{1}{n} \| (\bfE + \bfX ( \bfB_0 - \widehat \bfB ))\bfv \|^2 \notag\\
+&= \bfv^T \bfS \bfv + \frac{1}{n} \| \bfX (\bfB_0 - \widehat \bfB) \bfv \|^2 + 2 \bfv^T (\bfB_0 - \widehat \bfB)^T \left( \frac {(\bfX)^T \bfE}{n} \right) \bfv
+\end{align}
+%
+For the first summand, $ \bfv^T \bfS^k \bfv \geq \psi_y \| \bfv \|^2 - \phi_y \| \bfv \|_1^2$ with $\psi_y = \Lambda_{\min} (\Sigma_y)/2, \phi_y = \psi_y \log p/n$ by applying Lemma \ref{lemma:ErrorRElemma1} on $\bfS$. The second summand is greater than or equal to 0. For the third summand,
+%
+$$
+2 \bfv^T (\bfB_0 - \widehat \bfB)^T \left( \frac {(\bfX)^T \bfE}{n} \right) \bfv \geq
+-2 C_\beta \left\| \frac {(\bfX)^T \bfE}{n} \right\|_\infty \| \bfv \|_1^2
+\sqrt{ \frac{ \log (pq)}{n}}
+$$
+%
+by assumption (A1). Now we use another lemma:
+%
+\begin{Lemma}\label{lemma:ErrorRElemma2}
+For zero-mean independent sub-gaussian matrices $\bfX \in \BM(n,p), \bfE \in \BM(n,q)$ with parameters $(\Sigma_x, \sigma_x^2)$ and $(\Sigma_e, \sigma_e^2)$ respectively, given that $n \succsim \log(pq)$ the following holds with probability $\geq 1 - 6c_1 \exp [-(c_2^2-1) \log(pq)]$ for some $c_1 >0, c_2 > 1$:
+%
+$$
+\frac{1}{n} \| \bfX^T \bfE \|_\infty \leq c_2 [ \Lambda_{\max} (\Sigma_x) \Lambda_{\max} (\Sigma_e) ]^{1/2} \sqrt{\frac{ \log(pq)}{n}}
+$$
+%
+\end{Lemma}
+%
+Subsequently we collect all summands in (\ref{eqn:ErrorREeqn3}) and get
+%
+$$
+\bfv^T \widehat{ \bfS} \bfv \geq \psi_y \| \bfv \|^2 - \left( \phi_y + 2 C_\beta c_2 [ \Lambda_{\max} (\Sigma_x) \Lambda_{\max} (\Sigma_y) ]^{1/2} \frac{ \log(pq)}{n} \right) \| \bfv \|_1^2
+$$
+with probability $\geq 1 - 2\exp(- c_3 n) - 6c_1 \exp [-(c_2^2-1) \log(pq)]$. This concludes the proof of part 1.
+
+To prove part 2, we decompose the quantity in question:
+%
+\begin{align}\label{eqn:ErrorRElemma2maineqn}
+\left\| \frac{1}{n} \widehat \bfE_{-j}^T \widehat \bfE \bfT_{0,j} \right\|_\infty &=
+\left\| \frac{1}{n} \left[ \bfE_{-j} + \bfX (\bfB_{0,j} - \widehat \bfB_j) \right]^T \left[ \bfE + \bfX (\bfB_0 - \widehat \bfB) \right] \bfT_{0,j} \right\|_\infty \notag\\
+& \leq \left\| \frac{1}{n} \bfE_{-j}^T \bfE \bfT_{0,j} \right\|_\infty +
+\left\| \frac{1}{n} \bfE_{-j}^T \bfX (\bfB_0 - \widehat \bfB) \bfT_{0,j} \right\|_\infty \notag\\
+& + \left\| \frac{1}{n} (\bfB_{0,j} - \widehat \bfB_j)^T \bfX^T \bfX (\bfB_0 - \widehat \bfB) \bfT_{0,j} \right\|_\infty +
+\left\| \frac{1}{n} (\bfB_{0,j} - \widehat \bfB_j)^T \bfX^T \bfE \bfT_{0,j} \right\|_\infty \notag\\
+&= \| \bfW_1 \|_\infty + \| \bfW_2 \|_\infty + \| \bfW_3 \|_\infty + \| \bfW_4 \|_\infty
+\end{align}
+%
+Now
+%
+$$
+\bfW_1 = \frac{1}{n} \bfE_{-j}^T ( \bfE_j - \bfE_{-j} \bftheta_{0,j})
+$$
+%
+For node $j$ in the $y$-network, $\BE_{-j}$ and $E_j - \BE_{-j} \bftheta_{0,j}$ are the neighborhood regression coefficients and residuals, respectively. Thus they are orthogonal, so we can apply Lemma \ref{lemma:ErrorRElemma2} on $\bfE_{-j}$ and $\bfE_j - \bfE_{-j} \bftheta_{0,j}$ to obtain that for $n \succsim \log (q-1)$,
+%
+\begin{align}\label{eqn:ErrorRElemma2eqn5}
+\| \bfW_1 \|_\infty & \leq c_5 \left[ \Lambda_{\max} ( \Sigma_{y,-j}) \sigma_{y,j,-j} \right]^{1/2} \sqrt{\frac{\log(q-1)}{n}}
+\end{align}
+%
+holds with probability $\geq 1 - 6c_4 \exp [-(c_5^2-1) \log(pq)]$ for some $c_4 > 0, c_5 > 1$.
+%
+
+For $\bfW_2$ and $\bfW_4$, identical bounds hold:
+%
+\begin{align*}
+\| \bfW_2 \|_\infty & \leq \left\| \frac{1}{n} \bfE_{-j}^T \bfX (\bfB_0 - \widehat \bfB) \right\|_\infty \| \bfT_{0,j} \|_1 \leq
+\left\| \frac{1}{n} \bfE^T \bfX \right\|_\infty \| \bfB_0 - \widehat \bfB \|_1 \| \bfT_{0,j} \|_1\\
+\| \bfW_4 \|_\infty & \leq \left\| \frac{1}{n} (\bfB_{0,j} - \widehat \bfB_j)^T \bfX^T \bfE \right\|_\infty \| \bfT_{0,j} \|_1 \leq
+\left\| \frac{1}{n} \bfE^T \bfX \right\|_\infty \| \bfB_0 - \widehat \bfB \|_1 \| \bfT_{0,j} \|_1\\
+\end{align*}
+%
+Since $\Omega_y$ is diagonally dominant, $|\omega_{y,jj}| \geq \sum_{j \neq j'} |\omega_{y,jj'}|$ for any $j \in \cI_q$. Hence
+%
+$$
+\| \bfT_{0,j} \|_1 = \sum_{j'=1}^q | T_{jj'} | = 1 + \sum_{j \neq j'} | \theta_{jj'} | = 1 + \frac{1}{\omega_{y,jj}} \sum_{j \neq j'} | \omega_{y,jj'} | \leq 2
+$$
+%
+so that for $n \succsim \log (pq)$,
+%
+\begin{align}\label{eqn:ErrorRElemma2eqn6}
+\| \bfW_2 \|_\infty + \| \bfW_4 \|_\infty  & \leq
+4 C_\beta c_2 [ \Lambda_{\max} (\Sigma_x) \Lambda_{\max} (\Sigma_y) ]^{1/2} \frac{ \log(pq)}{n}
+\end{align}
+%
+with probability $\geq 1 - 12 c_1 \exp [-(c_2^2-1) \log(pq)]$ by applying Lemma~\ref{lemma:ErrorRElemma2} and assumption (A1).
+
+Finally for $\bfW_3$, we apply Lemma 8 of \cite{RavikumarEtal11} on the (sub-gaussian) design matrix $\bfX$ to obtain that for sample size
+%
+\begin{align}\label{eqn:ErrorRElemma2eqn7}
+n \geq 512 ( 1 + 4 \Lambda_{\max} (\Sigma_x^k))^4 \max_i (\sigma_{x,ii}^k )^4 \log (4p^{\tau_1})
+\end{align}
+%
+we get that with probability $ \geq 1 - 1/p^{\tau_1-2}, \tau_1 > 2$,
+%
+$$
+\left\| \frac{\bfX^T \bfX}{n} \right\|_\infty \leq \sqrt{ \frac{ \log 4 + \tau_1 \log p}{c_x n}} + \max_i \sigma_{x,ii} = V_x; \quad
+c_x = \left[ 128 ( 1 + 4 \Lambda_{\max} (\Sigma_x)  )^2 \max_i (\sigma_{x,ii})^2 \right]^{-1}
+$$
+%
+Thus with the same probability,
+%
+\begin{align}\label{eqn:ErrorRElemma2eqn4}
+\| \bfW_4 \|_\infty \leq \left\| \frac{\bfX^T \bfX}{n} \right\|_\infty \| \widehat \bfB - \bfB_0 \|_1^2 \| \bfT_{0,j} \|_1 
+\leq 2 C_\beta^2 V_x \frac{ \log(pq)}{n}
+\end{align}
+%
+We now bound the right hand side of (\ref{eqn:ErrorRElemma2maineqn}) using (\ref{eqn:ErrorRElemma2eqn5}), (\ref{eqn:ErrorRElemma2eqn6}) and (\ref{eqn:ErrorRElemma2eqn4}) to complete the proof, with the leading term of the sample size requirement being $n \succsim \log(pq)$.
+\end{proof}
+
+\begin{proof}[Proof of Lemma~\ref{thm:BetaThm}]
+The proof follows that of part (I) of Lemma~\ref{thm:ThetaThm}, with a different group norm structure. We only point out the differences.
+
+Putting $\bfbeta = \bfbeta_0$ in (\ref{eqn:EstEqn1}) we get
+%
+$$
+-2 \widehat \bfbeta^T \widehat \bfgamma + \bfbeta^T \widehat \bfGamma \widehat \bfbeta + \lambda_n \sum_{h \in \cH} \| \widehat \bfbeta^{[h]}  \| \leq
+-2 \bfbeta_0^T \widehat \bfgamma + \bfbeta_0^T \widehat \bfGamma \bfbeta_0 + \lambda_n \sum_{h \in \cH} \| \bfbeta_0^{[h]}  \|
+$$
+%
+Denote $\bfb = \widehat \bfbeta - \bfbeta_0$. Then we have
+%
+$$
+\bfb^T \widehat \bfGamma \bfb \leq 2 \bfb^T ( \widehat \bfgamma - \widehat \bfGamma \bfbeta_0 ) + \lambda_n
+\sum_{h \in \cH} ( \| \bfbeta_0^{[h]} \| - \| \bfbeta_0^{[h]} + \bfb^{[h]} \|)
+$$
+%
+Proceeding similarly as the proof of part (I) of Lemma~\ref{thm:ThetaThm}, with a different deviation bound and choice of $\lambda_n$, we get expressions equivalent to (\ref{eqn:Thm1ProofProp2Eqn3}) and (\ref{eqn:Thm1ProofProp2Eqn2}) respectively:
+%
+\begin{align}
+\bfb^T \widehat \bfGamma \bfb & \leq \frac{3}{2} \sum_{h \in \cH} \| \bfb^{[h]} \| \\
+\frac{\psi^*}{3} \| \bfb \|^2 & \leq \lambda_n \sum_{h \in \cH} \| \bfb^{[h]} \| \leq 4 \lambda_n \sqrt{s_\beta} \| \bfb \|
+\end{align}
+%
+Furthermore, $\| \bfb \|_1 \leq \sqrt{ | h_{\max} |} \sum_{h \in \cH} \| \bfb^{[h]} \| $. The bounds in (\ref{eqn:BetaThmEqn1}), (\ref{eqn:BetaThmEqn2}), (\ref{eqn:BetaThmEqn3}) and (\ref{eqn:BetaThmEqn4}) now
+follow.
+
+\end{proof}
+
+\begin{proof}[Proof of Lemma~\ref{prop:ThmBetaRE}]
+For part 1 it is enough to prove that with $ \widehat \Sigma_x^k := (\bfX^k)^T \bfX^k/n$,
+%
+\begin{align}\label{eqn:ThmBetaREProofEqn1}
+\widehat \bfT_k^2 \otimes \widehat \Sigma_x^k & \sim RE (\psi_*^k, \phi_*^k)
+\end{align}
+%
+with high enough probability. because then we can take $\psi_* = \min_k \psi_*^k, \phi_* = \max_k \phi_*^k$. The proof of (\ref{eqn:ThmBetaREProofEqn1}) follows similar lines of the proof of Proposition 1 in \cite{LinEtal16}, only replacing $\Theta_\epsilon, \widehat \Theta_\epsilon, \bfX$ therein with $(\bfT^k)^2, (\widehat \bfT^k)^2, \bfX^k$, respectively. We omit the details.
+
+Part 2 follows the proof of Proposition 2 in \cite{LinEtal16}.
 \end{proof}
 
 \begin{proof}[Proof of Lemma~\ref{lemma:ErrorRElemma1}]
