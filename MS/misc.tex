@@ -1,112 +1,107 @@
-\section{Proof of main results}
-{\colrbf need modification}
-To prove the results in this section, we use a reparametrization of the neighborhood coefficients at the lower level. Specifically, notice that for $j \in \cI_q, k \in \cI_K$, the corresponding summand in $f(\cY, \cX, \cB, \Theta)$ can be rearranged as
-%
-\begin{align*}
-\| \bfY^k_j - \bfX^k \bfB_j^k - (\bfY_{-j}^k - \bfX^k \bfB_{-j}^k) \bftheta_j^k \|^2 &=
-\| \bfY^k_j - \bfY_{-j}^k \bftheta_j^k - (\bfX^k \bfB_j^k -\bfX^k \bfB_{-j}^k \bftheta_j^k) \|^2 \\
-&= \| ( \bfY - \bfX \bfB ) \bfT_j^k \|^2
-\end{align*}
-%
-where
-%
-$$
-T_{jj'}^k = \begin{cases}
-1 \text{ if } j = j'\\
-- \theta_{jj'}^k \text{ if } j \neq j'
-\end{cases}
-$$
-%
-Thus, with $\bfT^k := (\bfT_j^k)_{j \in \cI_q}$, we have
-$$
-f( \cY, \cX, \cB, \Theta) = \frac{1}{n} \sum_{j=1}^p \sum_{k=1}^K \| ( \bfY^k - \bfX^k \bfB^k ) \bfT_j^k \|^2
-= \frac{1}{n} \sum_{k=1}^K \| \bfY^k - \bfX^k \bfB^k ) \bfT^k \|_F^2
-= \sum_{k=1}^K \Tr (\bfS^k (\bfT^k)^2 )
-$$
-%
-where $\bfS^k = (1/n) (\bfY^k - \bfX^k \bfB^k) (\bfY^k - \bfX^k \bfB^k)^T$ is the sample covariance matrix.
+\section{Proofs of main results}
+%{\colrbf need modification}
 
-\begin{Theorem}\label{thm:ThetaThm}
-Assume fixed $\cX, \cE$ and deterministic $\widehat \cB = \{ \widehat \bfB^k \}$. Also for $k = 1, \ldots, K$,
+\begin{proof}[Proof of Theorem~\ref{thm:algo-convergence}]
+The theorem is a generalization of Theorem 1 in \cite{LinEtal16}. The proof follows directly from the proof of that theorem, substituting $( \widehat B^{(k)}, \widehat \Theta_\epsilon^{(k)}), (B^*, \Theta_\epsilon^*)$ and $ (B^\infty, \Theta_\epsilon^\infty)$ therein with $(\widehat \cB^{(t)}, \widehat \Theta_y^{(t)}), ( \cB_0, \Theta_{y 0})$ and $ (\cB^\infty, \Theta_y^\infty)$, and corresponding variations as required.
 
-\noindent{\bf(T1)} $\| \widehat \bfB^k - \bfB^k_0 \|_1 \leq v_\beta$, where $v_\beta = \eta_\beta \sqrt{\frac{\log (pq)}{n}}$ with $\eta_\beta \geq 0$ depending on $\cB$ only;
+\end{proof}
+
+We use the following condition extensively in proving the results that follow.
+
+\vspace{1em}
+\noindent {\bf Condition 3} (Restricted eigenvalues). A symmetric matrix $\bfM \in \BM(b,b)$ is said to satisfy the restricted eigenvalue or RE condition with parameters $\psi, \phi >0$, denoted as curvature and tolerance, respectively, if
+%
+$$
+\bftheta^T \bfM \bftheta \geq \psi \| \bftheta \|^2 - \phi \| \bftheta \|_1^2
+$$
+%
+for all $\bftheta \in \BR^b$. In short, this is denoted by $\bfM \sim RE(\psi, \phi)$.
+
+Starting from \cite{BickelRitovTsybakov09}, different versions of the RE conditions have been proposed and used in high-dimensional analysis \citep{LohWainwright12,BasuMichailidis15,MaMichailidis15,vandeGeerBuhlmann09} to ensure that a covariance matrix satisfies a somewhat relaxed positive-definitess condition.
+
+\begin{proof}[Proof of Theorem~\ref{thm:thm-Theta}]
+The proof strategy is as follows. We first show that given fixed $(\cX,\cE)$, and some conditions on $\widehat \bfE^k := \bfY^k - \bfX^k \widehat \bfB^k, k \in \cI_K$, the bounds in in Theorem~\ref{thm:thm-Theta} hold. We then show that for random $(\cX,\cE)$, those conditions hold with probability approaching 1.
+
+\begin{Lemma}\label{thm:ThetaThm}
+Assume fixed $\cX, \cE$ and deterministic $\widehat \cB = \{ \widehat \bfB^k \}$, and the following conditions.
+
+\noindent{\bf(A1)} For $k \in \cI_K$,
+%
+$$
+\| \widehat \bfB^k - \bfB^k_0 \|_1 \leq C_\beta \sqrt{\frac{\log (pq)}{n}}
+$$
+%
+with $C_\beta = O(1)$ is non-negative and depends on $\cB$ only.
 
 %\noindent{\bf(T2)} $\| \bfX^k (\widehat \bfB^k - \bfB^k_0 ) \|_\infty \leq c(v_\beta)$, where $c(v_\beta)$ is $O(1)$ and depends on $v_\beta$.
 
-\noindent{\bf(T2)} Denote \textbf{$\widehat \bfE^k = \bfY^k - \bfX^k \widehat \bfB^k, k \in \cI_K$}. Then for all $j \in \cI_q$,
+\noindent{\bf(A2)} For all $j \in \cI_q$,
 %
 $$
 \frac{1}{n} \left\| (\widehat \bfE_{-j}^k)^T \widehat \bfE^k \bfT_{0,j}^k \right\|_\infty \leq
-%\BQ_0 = \max_{k \in \cI_k} 
-\BQ \left(v_\beta, \Sigma_x^k, \Sigma_y^k \right)
+\BQ \left(C_\beta, \Sigma_x^k, \Sigma_y^k \right) \sqrt {\frac{ \log (p q)}{n}},
 $$
 %
-where $\BQ \left(v_\beta, \Sigma_x^k, \Sigma_y^k \right)$ is a $O(\sqrt{ \log (pq)/ n)}$ deterministic function of $\cB, \Sigma_x^k$ and $\Sigma_y^k$.
+where $\BQ \left(C_\beta, \Sigma_x^k, \Sigma_y^k \right) = O(1)$ is non-negative and depends on $\cB, \Sigma_x^k$ and $\Sigma_y^k$ only.
 
-\noindent{\bf(T3)} Denote $\widehat \bfS^k = (\widehat \bfE^k)^T \widehat \bfE^k/n$. Then $\widehat \bfS^k \sim RE(\psi^k, \phi^k)$ with $Kq \phi \leq \psi/2$ where $ \psi = \min_k \psi^k, \phi = \max_k \phi^k $;
+\noindent{\bf(A3)} Denote $\widehat \bfS^k = (\widehat \bfE^k)^T \widehat \bfE^k/n$. Then $\widehat \bfS^k \sim RE(\psi^k, \phi^k)$ with $Kq \phi \leq \psi/2$ where $ \psi = \min_k \psi^k, \phi = \max_k \phi^k $.
 
-\noindent{\bf(T4)} Assumption (A2) holds for $\Sigma_y^k$.
+%\noindent{\bf(T4)} Assumption (A2) holds for $\Sigma_y^k$.
 
-Then, given the choice of tuning parameter
+Then the following hold
+
+\noindent (I) Given the choice of tuning parameter
 %
 $$
-\gamma_n = 4 \sqrt{| g_{\max}|} \BQ_0; \quad \BQ_0 := \max_{k \in \cI_K} \BQ \left(v_\beta, \Sigma_x^k, \Sigma_y^k \right)
+\gamma_n \geq 4 \sqrt{| g_{\max}|} \BQ_0 \sqrt {\frac{ \log (p q)}{n}}; \quad
+\BQ_0 := \max_{k \in \cI_K} \BQ \left(C_\beta, \Sigma_x^k, \Sigma_y^k \right)
 $$
 %
-the following holds
+\begin{align}
+\| \widehat \Theta_j - \Theta_{0,j} \|_F & \leq 12 \sqrt{s_j} \gamma / \psi, \label{eqn:theta-norm-bound-1a}\\
+\sum_{j \neq j', g \in \cG_y^{jj'}} \| \hat \bftheta_{jj'}^{[g]} - \bftheta_{0,jj'}^{[g]} \| & \leq 48 s_j \gamma / \psi. \label{eqn:theta-norm-bound-2a}
+\end{align}
 %
-\begin{align*}
+
+\noindent (II) For the choice of tuning parameter $\gamma = 4 \sqrt{| g_{\max}|} \BQ_0 \sqrt{\log (p q)/n}$,
+%
+\begin{align}\label{eqn:OmegaBounds0a}
 \frac{1}{K} \sum_{k=1}^K \| \widehat \Omega_y^k - \Omega_y^k \|_F \leq
 O \left( \BQ_0 \sqrt{\frac{| g_{\max}| S}{K}} \right)
-\end{align*}
+\end{align}
 %
-where $|g_{\max}|$ is the maximum group size.
-
 %Further if A1 holds with $s = s_0$, and A3 is satisfied then
 %
 %(II) Direction consistency.
-\end{Theorem}
+\end{Lemma}
 
-When $\cX$ and $\cE$ are random, the following propositions ensures that conditions (T2) and (T3) hold with probabilities approaching to 1.
+Condition (A1) holds by assumption. When $\cX$ and $\cE$ are random, the following proposition ensures that (A2) and (A3) hold with probabilities approaching to 1.
 
-\begin{Proposition}\label{prop:ErrorRE}
-Consider deterministic $\widehat \cB$ satisfying assumption (T1). Then for sample size $n \succsim \log (pq)$ and $k \in \cI_K$,
+\begin{Lemma}\label{prop:ErrorRE}
+Consider deterministic $\widehat \cB$ satisfying assumption (A1). Then for sample size $n \succsim \log (pq)$ and $k \in \cI_K$,
 
 \begin{enumerate}
-%\item We have $\| \bfX^k ( \hat \bfB^k - \bfB_0^k ) \|_\infty \leq c( v_\beta)$, where
-%%
-%$$
-%c(v_\beta) =\sqrt n v_\beta \left[ \sqrt{ \frac{ \log 4 + \tau_1 \log p}{c_x^k n}} + \max_j \sigma_{x,jj}^k \right]^{1/2}; \quad
-%c_x^k = \left[ 128 ( 1 + 4 \Lambda_{\max} (\Sigma_x^k)  )^2 \max_j (\sigma_{x,jj}^k)^2 \right]^{-1}
-%$$
-%%
-%with probability $ \geq 1 - 1/p^{\tau_1-2}, \tau_1 > 2$.
-%
 \item $\widehat \bfS^k$ satisfies the RE condition: $ \widehat \bfS^k \sim RE (\psi^k, \phi^k)$, where 
 %
 $$
-\psi^k = \frac{ \Lambda_{\min} (\Sigma_x^k)}{2}; \quad \phi^k = \frac{ \psi^k \log p}{n} + 2 v_\beta c_2 [ \Lambda_{\max} (\Sigma_x^k) \Lambda_{\max} (\Sigma_y^k) ]^{1/2} \sqrt{\frac{ \log(pq)}{n}}
+\psi^k = \frac{ \Lambda_{\min} (\Sigma_x^k)}{2}; \quad \phi^k = \frac{ \psi^k \log p}{n} + 2 C_\beta c_2 [ \Lambda_{\max} (\Sigma_x^k) \Lambda_{\max} (\Sigma_y^k) ]^{1/2} \frac{ \log(pq)}{n}
 $$
 %
 with probability $\geq 1 - 6c_1 \exp [-(c_2^2-1) \log(pq)] - 2 \exp (- c_3 n), c_1, c_3 > 0, c_2 > 1$.
 %
 \item The following deviation bound is satisfied for any $j \in \cI_q$
 %
-%$$
-%\left\| \widehat \bfS^k \bfT_{0,j}^k \right\|_\infty \leq 4 v_\beta c_2 [ \Lambda_{\max} (\Sigma_x^k) \Lambda_{\max} (\Sigma_y^k) ]^{1/2} \sqrt{\frac{ \log(pq)}{n}} + 2 \sqrt{ \frac{ \log 4 + \tau_1 \log p}{c_x^k n}} + 2 \max_j \sigma_{x,jj}^k
-%$$
-%
 $$
-\left\|\frac{1}{n} (\widehat \bfE_{-j}^k)^T \widehat \bfE^k \bfT_{0,j}^k \right\|_\infty \leq \BQ \left(v_\beta, \Sigma_x^k, \Sigma_y^k \right)
+\left\|\frac{1}{n} (\widehat \bfE_{-j}^k)^T \widehat \bfE^k \bfT_{0,j}^k \right\|_\infty \leq \BQ \left(C_\beta, \Sigma_x^k, \Sigma_y^k \right) \sqrt {\frac{ \log (p q)}{n}}
 $$
 %
 
-with probability $\geq 1 - 1/p^{\tau_1-2} - 6c_1 \exp [-(c_2^2-1) \log(pq)] - 6c_4 \exp [-(c_5^2-1) \log(pq)], c_4 > 0, c_5 > 1$, where
+with probability $\geq 1 - 1/p^{\tau_1-2} - 6c_1 \exp [-(c_2^2-1) \log(pq)] - 6c_4 \exp [-(c_5^2-1) \log(pq)], c_4 > 0, c_5 > 1, \tau_1 > 2$, where
 %
 \begin{align*}
-\BQ \left(v_\beta, \Sigma_x^k, \Sigma_y^k \right) &=
-2 v_\beta^2 V_x^k + 4 v_\beta c_2 [ \Lambda_{\max} (\Sigma_x^k) \Lambda_{\max} (\Sigma_y^k) ]^{1/2} \sqrt{\frac{ \log(pq)}{n}} +\\
-& c_5 \left[ \Lambda_{\max} ( \Sigma_{y,-j}^k) \sigma_{y,j,-j}^k \right]^{1/2} \sqrt{\frac{\log q}{n}}
+\BQ \left(C_\beta, \Sigma_x^k, \Sigma_y^k \right) &=
+\left[ 2 C_\beta^2 V_x^k + 4 C_\beta c_2 [ \Lambda_{\max} (\Sigma_x^k) \Lambda_{\max} (\Sigma_y^k) ]^{1/2} \right] \sqrt{\frac{ \log(pq)}{n}} +\\
+& c_5 \left[ \Lambda_{\max} ( \Sigma_{y,-j}^k) \sigma_{y,j,-j}^k \right]^{1/2} \sqrt{\frac{\log q}{\log (pq)}}
 \end{align*}
 %
 with $\sigma_{y,j,-j}^k = \BV( E_j - \BE_{-j} \bftheta_{0,j})$, and 
@@ -116,27 +111,78 @@ V_x^k = \sqrt{ \frac{ \log 4 + \tau_1 \log p}{c_x^k n}} + \max_i \sigma_{x,ii}^k
 c_x^k = \left[ 128 ( 1 + 4 \Lambda_{\max} (\Sigma_x)  )^2 \max_i (\sigma_{x,ii})^2 \right]^{-1}
 $$
 \end{enumerate} 
-\end{Proposition}
+\end{Lemma}
 
-The error bounds for $\widehat \Omega_y^k, k \in \cI_K$ follow immediately from the above two results.
+\noindent We prove the main theorem by putting together Lemma~\ref{thm:ThetaThm} and Lemma~\ref{prop:ErrorRE}.
+\end{proof}
 
-\begin{Corollary}\label{corollary:OmegaCorollary}
-Consider any deterministic $\widehat \cB$ that satisfy the following bound
+\begin{proof}[Proof of Theorem~\ref{thm:thm-B}]
+%The proof strategy is as follows. We first show that given fixed $(\cX,\cE)$, and some conditions on the quantities $\widehat \bfgamma, \widehat \bfGamma$, the bounds in in \ref{thm:thm-B} hold. We then show that for random $(\cX,\cE)$, these conditions hold with probability approaching 1.
+
+\begin{Lemma}\label{thm:BetaThm}
+Assume fixed $(\cX, \cE)$, and deterministic $\widehat \Theta = \{ \widehat \Theta_j \}$, so that
+
+\noindent{\bf(A1)} For $j \in \cI_q$,
 %
 $$
-\| \widehat \bfB^k - \bfB_0^k \|_1 \leq v_\beta = \eta_\beta \sqrt{ \frac{ \log(pq)}{n}}
+\| \widehat \Theta_j - \Theta_{0,j} \|_F \leq C_\Theta \sqrt{\frac{\log q}{n}},
 $$
 %
-Then, for sample size $n \succsim \log (pq)$ and choice of tuning parameter $\gamma_n = 4 \sqrt{| g_{\max}|} \BQ_0$, there exist constants $ c_1, c_3, c_4 > 0, c_2, c_5 > 1$ such that the following holds
+for some $C_\Theta = O(1)$ dependent on $\Theta$ only.
+
+\noindent{\bf(A2)} Denote $\widehat \bfGamma^k = (\widehat \bfT^k)^2 \otimes (\bfX^k)^T \bfX^k/n, \widehat \bfgamma^k = (\widehat \bfT^k)^2 \otimes (\bfX^k)^T \bfY^k/n$. Then the deviation bound holds:
 %
-\begin{align}\label{eqn:OmegaBounds}
-\frac{1}{K} \sum_{k=1}^K \| \widehat \Omega_y^k - \Omega_y^k \|_F \leq
-O \left( \BQ_0 \sqrt{\frac{| g_{\max}| S}{K}} \right)
+$$
+\left\| \widehat \bfgamma^k - \widehat \bfGamma^k \bfbeta_0 \right\|_\infty \leq \BR( C_\Theta, \Sigma_x^k, \Sigma_y^k) \sqrt{ \frac{ \log(pq)}{n}}.
+$$
+%
+where $\BR (C_\Theta, \Sigma_x^k, \Sigma_y^k ) = O(1)$ depends on $\Theta, \Sigma_x^k$ and $\Sigma_y^k$ only.
+
+\noindent{\bf(A3)} $\widehat \bfGamma \sim RE(\psi_*, \phi_*)$ with $Kpq \phi_* \leq \psi_*/2$.
+
+Then, given the choice of tuning parameter
+%
+$$
+\lambda_n \geq 4 \sqrt{| h_{\max} |} \BR_0 \sqrt{ \frac{ \log(pq)}{n}}; \quad 
+\BR_0 := \max_{k \in \cI_K} \BR \left(C_\Theta, \Sigma_x^k, \Sigma_y^k \right)
+$$
+%
+the following holds
+%
+\begin{align}
+\| \widehat \bfbeta - \bfbeta_0 \|_1 & \leq 48 \sqrt{ | h_{\max} |} s_\beta \lambda_n / \psi^* \label{eqn:BetaThmEqn1}\\
+\| \widehat \bfbeta - \bfbeta_0 \| & \leq 12 \sqrt s_\beta \lambda_n / \psi^* \label{eqn:BetaThmEqn2}\\
+\sum_{h \in \cH} \| \bfbeta^{[h]} - \bfbeta_0^{[h]} \| & \leq 48 s_\beta \lambda_n / \psi^* \label{eqn:BetaThmEqn3}\\
+(\widehat \bfbeta - \bfbeta_0 )^T \widehat \bfGamma (\widehat \bfbeta - \bfbeta_0 ) & \leq
+72 s_\beta \lambda_n^2 / \psi^* \label{eqn:BetaThmEqn4}
 \end{align}
-%
-with probability $\geq 1 - 1/p^{\tau_1-2} - 6c_1 \exp [-(c_2^2-1) \log(pq)] - 2 \exp (- c_3 n) - 6c_4 \exp [-(c_5^2-1) \log(pq)]$.
+\end{Lemma}
 
-\end{Corollary}
+Condition (A1) holds by assumption. Next we verify that conditions (A2) and (A3) hold with high probability given fixed $\widehat \Theta$.
+
+\begin{Lemma}\label{prop:ThmBetaRE}
+Consider deterministic $\widehat \Theta$ satisfying assumption (A1). Also assume conditions (E1), (E2) from the main paper. Then for sample size $n \succsim \log (pq)$,
+
+\begin{enumerate}
+\item $\widehat \bfGamma$ satisfies the RE condition: $ \widehat \bfGamma \sim RE (\psi_*, \phi_*)$, where 
+%
+$$
+\psi_* = \min_k \psi^k \left( \min_i \psi_k^j - d_k C_\Theta \right), 
+\phi_* = \max_k \phi^k \left( \min_i \phi_k^j + d_k C_\Theta \right)
+$$
+%
+with probability $\geq 1 - 2 \exp(c_3 n), c_3>0$.
+%
+\item The deviation bound in (A2) is satisfied with probability $ \geq 1 - 12 c_1 \exp[ (c_2^2-1) \log (pq)], c_1>0, c_2>1$, where
+$$
+\BR \left(C_\Theta, \Sigma_x^k, \Sigma_y^k \right) = c_2 \sqrt{\Lambda_{\max} (\Sigma_x^k)} \left( d_k C_\Theta \Lambda_{\min} (\Sigma_y^k) +
+\frac{1}{\Lambda_{\min} (\Sigma_y^k) } \right)
+$$
+\end{enumerate}
+\end{Lemma}
+
+The theorem is immediate by putting together Lemma~\ref{thm:BetaThm} and Lemma~\ref{prop:ThmBetaRE}.
+\end{proof}
 
 {\colrbf Discuss tighter bound compared to vanilla JSEM}
 
@@ -155,79 +201,6 @@ After providing the error bounds for solutions to the subproblem \eqref{eqn:EstE
 %& & I_q \otimes (\bfX^K)^T X^K / n)
 %\end{bmatrix} 
 %$$
-\begin{Theorem}\label{thm:BetaThm}
-Assume fixed $\cX, \cE$, and deterministic $\widehat \Theta = \{ \widehat \Theta_j \}$, so that for $j \in \cI_q$,
-
-\noindent{\bf(B1)} $\| \widehat \Theta_j - \Theta_{0,j} \|_F \leq v_\Theta \sqrt{\frac{\log q}{n}}$ for some $v_\Theta$ dependent on $\Theta$.
-
-\noindent{\bf(B2)} Denote $\widehat \bfGamma^k = (\widehat \bfT^k)^2 \otimes (\bfX^k)^T \bfX^k/n, \widehat \bfgamma^k = (\widehat \bfT^k)^2 \otimes (\bfX^k)^T \bfY^k/n$. Then the deviation bound holds:
-%
-$$
-\left\| \widehat \bfgamma^k - \widehat \bfGamma^k \bfbeta_0 \right\|_\infty \leq \BR( v_\Theta, \Sigma_x^k, \Sigma_y^k) \sqrt{ \frac{ \log(pq)}{n}}
-$$
-%
-where $\BR \left(v_\Theta, \Sigma_x^k, \Sigma_y^k \right)$ is a $O(1)$ deterministic function of $\Theta, \Sigma_x^k$ and $\Sigma_y^k$.
-
-\noindent{\bf(B3)} $\widehat \bfGamma \sim RE(\psi_*, \phi_*)$ with $Kpq \phi_* \leq \psi_*/2$.
-
-Then, given the choice of tuning parameter
-%
-$$
-\lambda_n \geq 4 \sqrt{| h_{\max} |} \BR_0 \sqrt{ \frac{ \log(pq)}{n}}; \quad 
-\BR_0 := \max_{k \in \cI_K} \BR \left(v_\Theta, \Sigma_x^k, \Sigma_y^k \right)
-$$
-%
-the following holds
-%
-\begin{align}
-\| \widehat \bfbeta - \bfbeta_0 \|_1 & \leq 48 \sqrt{ | h_{\max} |} s_\beta \lambda_n / \psi^* \label{eqn:BetaThmEqn1}\\
-\| \widehat \bfbeta - \bfbeta_0 \| & \leq 12 \sqrt s_\beta \lambda_n / \psi^* \label{eqn:BetaThmEqn2}\\
-\sum_{h \in \cH} \| \bfbeta^{[h]} - \bfbeta_0^{[h]} \| & \leq 48 s_\beta \lambda_n / \psi^* \label{eqn:BetaThmEqn3}\\
-(\widehat \bfbeta - \bfbeta_0 )^T \widehat \bfGamma (\widehat \bfbeta - \bfbeta_0 ) & \leq
-72 s_\beta \lambda_n^2 / \psi^* \label{eqn:BetaThmEqn4}
-\end{align}
-%
-%Also denote the non-zero support of $\widehat \bfbeta$ by $\widehat \cS_\beta$, i.e. $\widehat \cS_\beta = \{ g: \hat \bfbeta^{[g]} \neq {\bf 0} \}$. Then
-%%
-%\begin{align}\label{eqn:BetaThmEqn4}
-%| \widehat \cS_\beta| \leq 128 s_\beta / \psi^*
-%\end{align}
-\end{Theorem}
-
-Next we verify that conditions (B2) and (B3) hold with high probability given fixed $\widehat \Theta$.
-\begin{Proposition}\label{prop:ThmBetaRE}
-Consider deterministic $\widehat \Theta$ satisfying assumption (B1). Assume that the matrices $(\widehat \bfT^k)^2, k \in \cI_K$ are diagonally dominant. Then for sample size $n \succsim \log (pq)$,
-
-\begin{enumerate}
-%\item We have $\| \bfX^k ( \hat \bfB^k - \bfB_0^k ) \|_\infty \leq c( v_\beta)$, where
-%%
-%$$
-%c(v_\beta) =\sqrt n v_\beta \left[ \sqrt{ \frac{ \log 4 + \tau_1 \log p}{c_x^k n}} + \max_j \sigma_{x,jj}^k \right]^{1/2}; \quad
-%c_x^k = \left[ 128 ( 1 + 4 \Lambda_{\max} (\Sigma_x^k)  )^2 \max_j (\sigma_{x,jj}^k)^2 \right]^{-1}
-%$$
-%%
-%with probability $ \geq 1 - 1/p^{\tau_1-2}, \tau_1 > 2$.
-%
-\item %For sample size $n \succsim \max (s_\beta \log p, d^2 \log q)$,
-$\widehat \bfGamma$ satisfies the RE condition: $ \widehat \bfGamma \sim RE (\psi_*, \phi_*)$, where 
-%
-$$
-\psi_* = \min_k \psi^k \left( \min_i \psi_t^i - d v_\Theta \right), 
-\phi_* = \max_k \phi^k \left( \min_i \phi_t^i + d v_\Theta \right)
-$$
-%
-with probability $\geq 1 - 2 \exp(c_3 n), c_3>0$.
-%
-\item The deviation bound in (B2) is satisfied with probability $ \geq 1 - 12 c_1 \exp[ (c_2^2-1) \log (pq)], c_1>0, c_2>1$, where
-$$
-\BR \left(v_\Theta, \Sigma_x^k, \Sigma_y^k \right) = c_2 \sqrt{\Lambda_{\max} (\Sigma_x^k)} \left( d v_\Theta \Lambda_{\min} (\Sigma_y^k) +
-\frac{1}{\Lambda_{\min} (\Sigma_y^k) } \right)
-$$
-\end{enumerate} 
-\end{Proposition}
-
-We now put both the pieces together, and prove that our alternating algorithm results in a solution sequence $\{ \widehat \cB^{(r)}, \widehat \Theta^{(r)} \}, r = 1, 2, \ldots$ that lies uniformly within a non-expanding ball around the true parameter values.
-
 \begin{proof}[Proof of Theorem~\ref{thm:ThetaThm}]
 The proof has three parts, where we prove the consistency of the neighborhood regression coefficients, selection of edge sets, and finally the refitting step, respectively. This is the same structure as the proof of Theorem 1 in \cite{MaMichailidis15}, where they prove consistency of the (single layer) JSEM estimates. The derivation of the first part is different from that in the JSEM proof, which we shall show in detail (in the proof of Proposition~\ref{prop:Thm1ProofProp2}). The second and third parts follow similar lines, incorporating the updated quantities from the first part. For these we provide outlines and leave the details to the reader.
 
@@ -603,7 +576,7 @@ follow.
 
 \end{proof}
 
-\begin{proof}[Proof of Proposition~\ref{prop:ThmBetaRE}]
+\begin{proof}[Proof of Lemma~\ref{prop:ThmBetaRE}]
 For part 1 it is enough to prove that with $ \widehat \Sigma_x^k := (\bfX^k)^T \bfX^k/n$,
 %
 \begin{align}\label{eqn:ThmBetaREProofEqn1}

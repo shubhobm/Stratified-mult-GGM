@@ -1,10 +1,21 @@
 \begin{thebibliography}{}
 
+\bibitem[Basu and Michailidis, 2015]{BasuMichailidis15}
+Basu, S. and Michailidis, G. (2015).
+\newblock {Regularized estimation in sparse high-dimensional time series
+  models}.
+\newblock {\em Ann. Statist.}, 43(4):1535--1567.
+
 \bibitem[Belilovsky et~al., 2016]{BelilovskyEtal16}
 Belilovsky, E., Varoquaux, G., and Blaschko, M. (2016).
 \newblock {Testing for differences in Gaussian graphical models: Applications
   to brain connectivity}.
 \newblock In {\em NIPS Proceedings}, pages 595--603.
+
+\bibitem[Bickel et~al., 2009]{BickelRitovTsybakov09}
+Bickel, P.~J., Ritov, Y., and Tsybakov, A.~B. (2009).
+\newblock {Simultaneous analysis of Lasso and Dantzig selector}.
+\newblock {\em Ann. Statist.}, 37(4):1705--1732.
 
 \bibitem[{B\"{u}hlmann} and {van de Geer}, 2011]{BuhlmannvandeGeer11}
 {B\"{u}hlmann}, P. and {van de Geer}, S. (2011).
@@ -92,6 +103,12 @@ Liu, W. and Shao, Q.-M. (2014).
   with false discovery rate control}.
 \newblock {\em Ann. Statist.}, 42(5):2003--2025.
 
+\bibitem[Loh and Wainwright, 2012]{LohWainwright12}
+Loh, P.-L. and Wainwright, M.~J. (2012).
+\newblock {High-dimensional regression with noisy and missing data: Provable
+  guarantees with nonconvexity}.
+\newblock {\em Ann. Statist.}, 40(3):1637--1664.
+
 \bibitem[Ma and Michailidis, 2016]{MaMichailidis15}
 Ma, J. and Michailidis, G. (2016).
 \newblock {Joint Structural Estimation of Multiple Graphical Models}.
@@ -147,6 +164,11 @@ Tomczak, K., {Czerwi\'{n}ska}, P., and Wiznerowicz, M. (2015).
 \newblock {The Cancer Genome Atlas (TCGA): An immeasurable source of
   knowledge}.
 \newblock {\em Contemp. Oncol.}, 19:A68--A77.
+
+\bibitem[{van de Geer} and {B\"{u}hlmann}, 2009]{vandeGeerBuhlmann09}
+{van de Geer}, S. and {B\"{u}hlmann}, P. (2009).
+\newblock {On the conditions used to prove oracle results for the Lasso}.
+\newblock {\em Electron. J. Stat.}, 3:1360--1392.
 
 \bibitem[{van de Geer} et~al., 2014]{vanDeGeerEtal14}
 {van de Geer}, S., {B\"{u}hlmann}, P., Ritov, Y., and Dezeure, R. (2014).
