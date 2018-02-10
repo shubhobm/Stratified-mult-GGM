@@ -79,7 +79,7 @@ O \left( \BQ_0 \sqrt{\frac{| g_{\max}| S}{K}} \right)
 Condition (A1) holds by assumption. When $\cX$ and $\cE$ are random, the following proposition ensures that (A2) and (A3) hold with probabilities approaching to 1.
 
 \begin{Lemma}\label{prop:ErrorRE}
-Consider deterministic $\widehat \cB$ satisfying assumption (A1). Then for sample size $n \succsim \log (pq)$ and $k \in \cI_K$,
+Consider deterministic $\widehat \cB$ satisfying assumption (A1), and conditions (E1), (E2) from the main paper. Then for sample size $n \succsim \log (pq)$ and $k \in \cI_K$,
 
 \begin{enumerate}
 \item $\widehat \bfS^k$ satisfies the RE condition: $ \widehat \bfS^k \sim RE (\psi^k, \phi^k)$, where 
@@ -118,6 +118,8 @@ $$
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:thm-B}]
+The strategy is same as Theorem~\ref{thm:thm-Theta}. We first show the theorem statements hold for fixed $\cX, \cE$ in presence of some conditions, then show that those conditions are satisfied with probability approaching 1 when $\cX$ and $\cE$ are random.
+
 %The proof strategy is as follows. We first show that given fixed $(\cX,\cE)$, and some conditions on the quantities $\widehat \bfgamma, \widehat \bfGamma$, the bounds in in \ref{thm:thm-B} hold. We then show that for random $(\cX,\cE)$, these conditions hold with probability approaching 1.
 
 \begin{Lemma}\label{thm:BetaThm}
@@ -129,15 +131,15 @@ $$
 \| \widehat \Theta_j - \Theta_{0,j} \|_F \leq C_\Theta \sqrt{\frac{\log q}{n}},
 $$
 %
-for some $C_\Theta = O(1)$ dependent on $\Theta$ only.
+for some $C_\Theta = O(1)$ dependent on $\Theta_0$ only.
 
 \noindent{\bf(B2)} Denote $\widehat \bfGamma^k = (\widehat \bfT^k)^2 \otimes (\bfX^k)^T \bfX^k/n, \widehat \bfgamma^k = (\widehat \bfT^k)^2 \otimes (\bfX^k)^T \bfY^k/n$. Then the deviation bound holds:
 %
 $$
-\left\| \widehat \bfgamma^k - \widehat \bfGamma^k \bfbeta_0 \right\|_\infty \leq \BR( C_\Theta, \Sigma_x^k, \Sigma_y^k) \sqrt{ \frac{ \log(pq)}{n}}.
+\left\| \widehat \bfgamma^k - \widehat \bfGamma^k \bfbeta_0 \right\|_\infty \leq \BR( C_\Theta, \Sigma_{x0}^k, \Sigma_{y0}^k) \sqrt{ \frac{ \log(pq)}{n}}.
 $$
 %
-where $\BR (C_\Theta, \Sigma_x^k, \Sigma_y^k ) = O(1)$ depends on $\Theta, \Sigma_x^k$ and $\Sigma_y^k$ only.
+where $\BR (C_\Theta, \Sigma_{x0}^k, \Sigma_{y0}^k ) = O(1)$ depends on $\Theta_0, \Sigma_{x0}^k$ and $\Sigma_{y0}^k$ only.
 
 \noindent{\bf(B3)} $\widehat \bfGamma \sim RE(\psi_*, \phi_*)$ with $Kpq \phi_* \leq \psi_*/2$.
 
@@ -145,7 +147,7 @@ Then, given the choice of tuning parameter
 %
 $$
 \lambda_n \geq 4 \sqrt{| h_{\max} |} \BR_0 \sqrt{ \frac{ \log(pq)}{n}}; \quad 
-\BR_0 := \max_{k \in \cI_K} \BR \left(C_\Theta, \Sigma_x^k, \Sigma_y^k \right)
+\BR_0 := \max_{k \in \cI_K} \BR \left(C_\Theta, \Sigma_{x0}^k, \Sigma_{y0}^k \right)
 $$
 %
 the following holds
@@ -159,30 +161,44 @@ the following holds
 \end{align}
 \end{Lemma}
 
-Condition (A1) holds by assumption. Next we verify that conditions (A2) and (A3) hold with high probability given fixed $\widehat \Theta$.
+Condition (B1) holds by assumption. Next we verify that conditions (B2) and (B3) hold with high probability given fixed $\widehat \Theta$.
 
 \begin{Lemma}\label{prop:ThmBetaRE}
-Consider deterministic $\widehat \Theta$ satisfying assumption (A1). Also assume conditions (E1), (E2) from the main paper. Then for sample size $n \succsim \log (pq)$,
+Consider deterministic $\widehat \Theta$ satisfying assumption (B1). Also assume conditions (E3), (E4) from the main paper. Then for sample size $n \succsim \log (pq)$,
 
 \begin{enumerate}
 \item $\widehat \bfGamma$ satisfies the RE condition: $ \widehat \bfGamma \sim RE (\psi_*, \phi_*)$, where 
 %
 $$
-\psi_* = \min_k \psi^k \left( \min_i \psi_k^j - d_k C_\Theta \right), 
-\phi_* = \max_k \phi^k \left( \min_i \phi_k^j + d_k C_\Theta \right)
+\psi_* = \min_k \psi^k \left( \min_i \psi_k^j - d_k C_\Theta \sqrt{ \frac{ \log (pq)}{n}}\right), 
+\phi_* = \max_k \phi^k \left( \min_i \phi_k^j + d_k C_\Theta \sqrt{ \frac{ \log (pq)}{n}}\right)
 $$
 %
 with probability $\geq 1 - 2 \exp(c_3 n), c_3>0$.
 %
-\item The deviation bound in (A2) is satisfied with probability $ \geq 1 - 12 c_1 \exp[ (c_2^2-1) \log (pq)], c_1>0, c_2>1$, where
+\item The deviation bound in (A2) is satisfied with probability $ \geq 1 - 12 c_1 \exp[ (c_2^2-1) \log (pq)]$, where
+%
 $$
-\BR \left(C_\Theta, \Sigma_x^k, \Sigma_y^k \right) = c_2 \sqrt{\Lambda_{\max} (\Sigma_x^k)} \left( d_k C_\Theta \Lambda_{\min} (\Sigma_y^k) +
-\frac{1}{\Lambda_{\min} (\Sigma_y^k) } \right)
+\BR \left(C_\Theta, \Sigma_{x0}^k, \Sigma_{y0}^k \right) =
+c_2 \left\{ d_k C_\Theta \sqrt{ \frac{ \log (pq)}{n}}
+[ \Lambda_{\max} (\Sigma_x^k) \Lambda_{\max} (\Sigma_y^k)]^{1/2} +
+\left[ \frac{\Lambda_{\max} (\Sigma_x^k)}{\Lambda_{\min} (\Sigma_y^k) } \right]^{1/2} \right\}
 $$
+%
 \end{enumerate}
 \end{Lemma}
 
 The theorem is immediate by putting together Lemma~\ref{thm:BetaThm} and Lemma~\ref{prop:ThmBetaRE}.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:starting-values}]
+The first part is immediate from the proof of part I of Theorem 4 in \cite{LinEtal16}. By choice of $\lambda_n$, we now have
+%
+$$
+\widehat \bfB^{k (0)} - \bfB^k_0 \|_1 = O\left( \sqrt{ \frac{ \log (pq)}{n}} \right),
+$$
+%
+so we can apply Theorem~\ref{thm:thm-Theta} to prove the bounds on $\{\widehat \Theta_j^{(0)} \}$.
 \end{proof}
 
 {\colrbf Discuss tighter bound compared to vanilla JSEM}

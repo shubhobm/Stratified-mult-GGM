@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2016.12.9)  9 FEB 2018 10:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2016.12.9)  9 FEB 2018 21:11
 entering extended mode
 **./jmmle-draft.tex
 (jmmle-draft.tex
@@ -450,7 +450,7 @@ Package pdftex.def Info: multi2layer.pdf used on input line 13.
 (pdftex.def)             Requested size: 408.01332pt x 179.24922pt.
  [2] [3 <./multi2layer.pdf>]) (JMMLE_Framework.tex
 [4] [5] [6] [7] [8] [9]
-Overfull \hbox (3.54848pt too wide) in paragraph at lines 312--315
+Overfull \hbox (3.54848pt too wide) in paragraph at lines 313--316
 \OT1/cmr/m/it/10.95 both with prob-a-bil-ity $\OMS/cmsy/m/n/10.95  \OT1/cmr/m/
 n/10.95 1 \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 1\OML/cmm/m/it/10.95 =p[] \O
 MS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 12\OML/cmm/m/it/10.95 c[] []\OT1/cmr/m/n
@@ -518,16 +518,22 @@ MS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 1) [](\OML/cmm/m/it/10.95 pq\OT1/cmr/m/n
  []
 
 [26]
-Overfull \hbox (27.39217pt too wide) in paragraph at lines 177--178
+Overfull \hbox (2.31772pt too wide) detected at line 175
+\OML/cmm/m/it/10.95  [] \OT1/cmr/m/n/10.95 = [] \OML/cmm/m/it/10.95  [] [] ; [
+] \OT1/cmr/m/n/10.95 = [] \OML/cmm/m/it/10.95 [] []
+ []
+
+
+Overfull \hbox (4.83646pt too wide) in paragraph at lines 179--181
 []\OT1/cmr/m/it/10.95 The de-vi-a-tion bound in (A2) is sat-is-fied with prob-a
 -bil-ity $\OMS/cmsy/m/n/10.95  \OT1/cmr/m/n/10.95 1 \OMS/cmsy/m/n/10.95   \OT1
 /cmr/m/n/10.95 12\OML/cmm/m/it/10.95 c[] []\OT1/cmr/m/n/10.95 [(\OML/cmm/m/it/1
 0.95 c[] \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 1) [](\OML/cmm/m/it/10.95 pq\
-OT1/cmr/m/n/10.95 )]\OML/cmm/m/it/10.95 ; c[] >
+OT1/cmr/m/n/10.95 )]$\OT1/cmr/m/it/10.95 ,
  []
 
 [27]
-Overfull \hbox (34.92566pt too wide) in paragraph at lines 328--328
+Overfull \hbox (34.92566pt too wide) in paragraph at lines 344--344
 [] 
  []
 
@@ -552,7 +558,7 @@ Overfull \hbox (40.3196pt too wide) in paragraph at lines 69--69
 [] 
  []
 
-
+[30]
 Overfull \hbox (7.3078pt too wide) detected at line 77
 [] \OMS/cmsy/m/n/10.95 k\OT1/cmr/bx/n/10.95 d[]\OMS/cmsy/m/n/10.95 k  \OT1/cmr
 /m/n/10.95 3 [] \OMS/cmsy/m/n/10.95 k\OT1/cmr/bx/n/10.95 d[]\OMS/cmsy/m/n/10.95
@@ -573,7 +579,7 @@ n/10.95 (\OML/cmm/m/it/10.95   \OMS/cmsy/m/n/10.95   \OML/cmm/m/it/10.95 Kq\OT
 5 k[]  []k\OT1/cmr/bx/n/10.95 D[]\OMS/cmsy/m/n/10.95 k[]
  []
 
-[30] [31] [32]
+[31] [32]
 Overfull \hbox (0.9017pt too wide) in paragraph at lines 225--227
 [][]\OT1/cmr/bx/n/10.95 Lemma B.2. []\OT1/cmr/m/it/10.95 For zero-mean in-de-pe
 n-dent sub-gaussian ma-tri-ces $\OT1/cmr/bx/n/10.95 X \OMS/cmsy/m/n/10.95 2 \U/
@@ -611,10 +617,10 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 107.
  ) 
 Here is how much of TeX's memory you used:
- 8520 strings out of 493333
- 124663 string characters out of 3137901
- 230402 words of memory out of 3000000
- 11701 multiletter control sequences out of 15000+200000
+ 8521 strings out of 493333
+ 124684 string characters out of 3137901
+ 231430 words of memory out of 3000000
+ 11702 multiletter control sequences out of 15000+200000
  17655 words of font info for 66 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  36i,17n,39p,1350b,474s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -641,9 +647,9 @@ kTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmsy8.pfb><D:/Study/LaTeX/MikTeX 2
 61/fonts/type1/public/amsfonts/cm/cmtt10.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fo
 nts/type1/public/amsfonts/symbols/msam10.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fo
 nts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on jmmle-draft.pdf (39 pages, 566014 bytes).
+Output written on jmmle-draft.pdf (39 pages, 568270 bytes).
 PDF statistics:
- 868 PDF objects out of 1000 (max. 8388607)
+ 873 PDF objects out of 1000 (max. 8388607)
  202 named destinations out of 1000 (max. 500000)
  163 words of extra memory for PDF output out of 10000 (max. 10000000)
 
