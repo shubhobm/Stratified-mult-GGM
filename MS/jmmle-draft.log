@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2016.12.9)  12 FEB 2018 21:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2016.12.9)  12 FEB 2018 23:50
 entering extended mode
 **./jmmle-draft.tex
 (jmmle-draft.tex
@@ -449,7 +449,15 @@ File: multi2layer.pdf Graphic file (type pdf)
 Package pdftex.def Info: multi2layer.pdf used on input line 13.
 (pdftex.def)             Requested size: 408.01332pt x 179.24922pt.
 
-[3 <./multi2layer.pdf>]) (JMMLE_Framework.tex [4] [5] [6] [7] [8] [9]
+[3 <./multi2layer.pdf>]) (JMMLE_Framework.tex [4] [5] [6] [7]
+Overfull \hbox (0.8078pt too wide) in paragraph at lines 156--162
+\OT1/cmr/m/n/10.95 us-ing Al-go-rithm [][]1[][] over a fi-nite set of val-ues $
+\OML/cmm/m/it/10.95 [] \OMS/cmsy/m/n/10.95 2 D[]$\OT1/cmr/m/n/10.95 : $\OML/cm
+m/m/it/10.95 [] \OT1/cmr/m/n/10.95 = [][] [](\OML/cmm/m/it/10.95 ; []\OT1/cmr
+/m/n/10.95 )$. 
+ []
+
+[8] [9]
 Overfull \hbox (3.54848pt too wide) in paragraph at lines 314--317
 \OT1/cmr/m/it/10.95 both with prob-a-bil-ity $\OMS/cmsy/m/n/10.95  \OT1/cmr/m/
 n/10.95 1 \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 1\OML/cmm/m/it/10.95 =p[] \O
@@ -478,17 +486,17 @@ File: omega-structure.pdf Graphic file (type pdf)
 Package pdftex.def Info: omega-structure.pdf used on input line 36.
 (pdftex.def)             Requested size: 392.95712pt x 74.28734pt.
  [18]
-Overfull \hbox (47.55365pt too wide) in paragraph at lines 77--93
+Overfull \hbox (47.55365pt too wide) in paragraph at lines 86--102
 [][] 
  []
 
 
-Overfull \hbox (47.55365pt too wide) in paragraph at lines 98--114
+Overfull \hbox (47.55365pt too wide) in paragraph at lines 107--123
 [][] 
  []
 
 [19 <./omega-structure.pdf>] [20] [21]
-Overfull \hbox (25.01486pt too wide) in paragraph at lines 174--189
+Overfull \hbox (25.01486pt too wide) in paragraph at lines 183--198
 [][] 
  []
 
@@ -607,7 +615,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 108.
 Here is how much of TeX's memory you used:
  8544 strings out of 493333
  125222 string characters out of 3137901
- 232745 words of memory out of 3000000
+ 230745 words of memory out of 3000000
  11717 multiletter control sequences out of 15000+200000
  17655 words of font info for 66 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -636,7 +644,7 @@ kTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmsy8.pfb><D:/Study/LaTeX/MikTeX 2
 ts/type1/public/amsfonts/cm/cmtt10.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/ty
 pe1/public/amsfonts/symbols/msam10.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/ty
 pe1/public/amsfonts/symbols/msbm10.pfb>
-Output written on jmmle-draft.pdf (41 pages, 585378 bytes).
+Output written on jmmle-draft.pdf (41 pages, 585726 bytes).
 PDF statistics:
  907 PDF objects out of 1000 (max. 8388607)
  210 named destinations out of 1000 (max. 500000)

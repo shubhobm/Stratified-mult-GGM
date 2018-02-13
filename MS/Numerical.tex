@@ -48,15 +48,24 @@ $$
 using the one-step version (Section~\ref{sec:tricks-jmmle}) instead of the full algorithm to save computation time. We compare the performance of our joint estimation method with separate estimates of the parameters using the method of \cite{LinEtal16}, using the following performance metrics to evaluate estimates $\tilde \cB = \{ \tilde \bfB^k \}$:
 
 \begin{itemize}
-\item True positives-
+\item True positive Rate-
 %
 \[
-\text{TP} (\tilde \cB) = \frac{\sum_k | \supp(\hat \bfB^k) \cup \supp (\bfB_0^k)|}{\sum_k | \supp (\bfB_0^k)| }
+\text{TP}(\tilde \bfB_k) = | \supp(\hat \bfB^k) \cap \supp (\bfB_0^k)|; \quad
+\text{TPR} (\tilde \cB) = \frac{\sum_k \text{TP}(\tilde \bfB_k) }{\sum_k | \supp (\bfB_0^k)| }
 \]
-\item True negatives-
+\item True negative Rate-
 %
 \[
-\text{TN} (\tilde \cB) = \frac{\sum_k | \supp^c(\hat \bfB^k) \cup \supp^c (\bfB_0^k)|}{\sum_k | \supp^c (\bfB_0^k)| }
+\text{TN}(\tilde \bfB_k) = | {\supp}^c (\hat \bfB^k) \cap {\supp}^c (\bfB_0^k)|; \quad
+\text{TNR} (\tilde \cB) = \frac{\sum_k \text{TN}(\tilde \bfB_k) }{\sum_k | \supp^c (\bfB_0^k)| }
+\]
+%
+\item F1 measure-
+%
+\[
+\text{F1} (\tilde \cB) = \frac{ \sum_k \text{TP}(\tilde \bfB_k)}
+{2 \sum_k \text{TP}(\tilde \bfB_k) + \text{FP}(\tilde \bfB_k) + \text{FN}(\tilde \bfB_k)}
 \]
 %
 \item Relative error in Frobenius norm-
@@ -198,9 +207,9 @@ We now discuss some observations and strategies that speed up the JMMLE algorith
 \paragraph{Block update and refit $\bfB^k$ in each iteration.} Similar to the case of $K=1$ \citep{LinEtal16}, we use block coordinate descent {\it within} each $\bfB^k$. This means instead of the full update step \eqref{eqn:update-B} we perform the following steps in each iteration to speed up convergence:
 %
 $$
-\left\{\widehat \bfb^{k (t+1)}_j \right\}_{k=1}^K =
-\argmin_{\substack{\bfb_j^k \in \BR^p\\k \in \cI_K}} \left\{ \frac{1}{n} \sum_{j=1}^q \sum_{k=1}^K \| \bfY^k_j + \bfr_j^{k (t)} - \bfX^k \bfb_j^{k } \|^2
-+ \lambda \sum_{h \in \cH} \| \bfb_j^{[h]} \| \right\}
+\left\{\widehat \bfB^{k (t+1)}_j \right\}_{k=1}^K =
+\argmin_{\substack{\bfb_j^k \in \BR^p\\k \in \cI_K}} \left\{ \frac{1}{n} \sum_{j=1}^q \sum_{k=1}^K \| \bfY^k_j + \bfr_j^{k (t)} - \bfX^k \bfB_j^{k } \|^2
++ \lambda \sum_{h \in \cH} \| \bfB_j^{[h]} \| \right\}
 $$
 %
 where $\bfr_1^{k (t)} = \widehat \bfE_{-1}^{k (t)} \widehat \bftheta_1^{k (t)}$, and
@@ -213,13 +222,13 @@ $$
 for $j \geq 2$. Further, when starting from the initializer of the coefficient matrix given in \eqref{eqn:init-B}, the support set of coefficient estimates becomes constant after only a few ($\sim 10$) iterations of our algorithm, after which it refines the values inside the same support until overall convergence. This process speeds up significantly if a refitting step is added {\it in each iteration} after the matrices $\widehat \bfB^k$ are updated:
 %
 \begin{align*}
-\left\{\widetilde \bfb^{k (t+1)}_j \right\}_{k=1}^K &=
-\argmin_{\substack{\bfb^k \in \BR^p\\k \in \cI_K}} \left\{ \frac{1}{n} \sum_{j=1}^q \sum_{k=1}^K \| \bfY^k_j + \bfr_j^{k (t)} - \bfX^k \bfb_j^{k } \|^2
+\left\{\widetilde \bfB^{k (t+1)}_j \right\}_{k=1}^K &=
+\argmin_{\substack{\bfb^k \in \BR^p\\k \in \cI_K}} \left\{ \frac{1}{n} \sum_{j=1}^q \sum_{k=1}^K \| \bfY^k_j + \bfr_j^{k (t)} - \bfX^k \bfB_j^{k } \|^2
 + \lambda \sum_{h \in \cH} \| \bfB^{[h]}_{-j} \| \right\}; \\
-\widehat \bfb^{k (t+1)}_j &= \left[ (\bfX_{\cS_{jk}}^k)^T (\bfX_{\cS_{jk}}^k) \right]^- (\bfX_{\cS_{jk}}^k)^T \bfY_j^k
+\widehat \bfB^{k (t+1)}_j &= \left[ (\bfX_{\cS_{jk}}^k)^T (\bfX_{\cS_{jk}}^k) \right]^- (\bfX_{\cS_{jk}}^k)^T \bfY_j^k
 \end{align*}
 %
-where $\cS_{jk} = \supp(\widetilde \bfb^{k (t+1)}_j)$.
+where $\cS_{jk} = \supp(\widetilde \bfB^{k (t+1)}_j)$.
 
 \paragraph{One-step estimator.} Algorithm~\ref{algo:jmmle-algo}, even after the above modifications, is conputation-intensive. The reason behind this is the full tuning and updating of the lower layer neighborhood estimates $\{ \widehat \Theta_j \}$ in each iteration. In practice, the algorithm speeds up significantly without compromising on estimation accuracy if we dispense of the $\Theta_j$ updation step in all but the last iteration. More precisely, we consider the following one-step version of the original algorithm.
 

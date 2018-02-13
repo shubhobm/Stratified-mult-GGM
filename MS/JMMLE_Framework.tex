@@ -141,23 +141,23 @@ The nodewise regression step in the JSEM model \eqref{eqn:jsem-model} uses Bayes
 \frac{\log n}{n} \sum_{k=1}^K | \widehat E_{y,\gamma_n}^k |
 \end{align*}
 %
-where $\gamma_n$ in subscript indicates the corresponding quantity is calculated taking $\gamma_n$ as the tuning parameter, and $\bfS_y^k := (\bfY^k - \bfX^k \bfB^k)^T (\bfY^k - \bfX^k \bfB^k)/n$. Every time $\widehat \Theta$ is updated in the JMMLE algorithm, we choose the optimal $\gamma_n$ as the one with the smallest BIC over a fixed set of values $\cC_n$. Thus for a fixed $\lambda$, our final choice of $\gamma_n$ will be 
+where $\gamma_n$ in subscript indicates the corresponding quantity is calculated taking $\gamma_n$ as the tuning parameter, and $\bfS_y^k := (\bfY^k - \bfX^k \bfB^k)^T (\bfY^k - \bfX^k \bfB^k)/n$. Every time $\widehat \Theta$ is updated in the JMMLE algorithm, we choose the optimal $\gamma_n$ as the one with the smallest BIC over a fixed set of values $\cC_n$. Thus for a fixed $\lambda_n$, our final choice of $\gamma_n$ will be 
 $
-\gamma_n^* (\lambda) = \argmin_{\gamma_n \in \cC_n} \text{BIC} (\gamma_n; \widehat \cB_\lambda)
+\gamma_n^* (\lambda) = \argmin_{\gamma_n \in \cC_n} \text{BIC} (\gamma_n; \widehat \cB_{\lambda_n})
 $.
 
 We use the High-dimensional BIC (HBIC) to select the other tuning parameter, $\lambda$:
 %
 \begin{align*}
-\text{HBIC} (\lambda; \Theta) &=
-\frac{1}{n} \sum_{j=1}^q \sum_{k=1}^K \| \bfY^k_j - (\bfY_{-j}^k - \bfX^k \widehat \bfB_{-j,\lambda}^k ) \bftheta_j^{k } - \bfX^k \widehat \bfB_{j,\lambda}^k \|^2 +\\
+\text{HBIC} (\lambda_n; \Theta) &=
+\frac{1}{n} \sum_{j=1}^q \sum_{k=1}^K \| \bfY^k_j - (\bfY_{-j}^k - \bfX^k \widehat \bfB_{-j,\lambda_n}^k ) \bftheta_j^{k } - \bfX^k \widehat \bfB_{j,\lambda_n}^k \|^2 +\\
 & \log (\log n) \frac{\log (pq)}{n} \sum_{k=1}^K
-\left( \| \bfB^k \|_0 + | \widehat E_{y, \gamma_n^* (\lambda)}^k| \right)
+\left( \| \bfB^k \|_0 + | \widehat E_{y, \gamma_n^* (\lambda_n)}^k| \right)
 \end{align*}
 %
-We choose an optimal $\lambda$ as the minimizer of HBIC by training multiple JMMLE models using Algorithm \ref{algo:jmmle-algo} over a finite set of values $\lambda_n \in \cD_n$: 
+We choose an optimal $\lambda_n$ as the minimizer of HBIC by training multiple JMMLE models using Algorithm \ref{algo:jmmle-algo} over a finite set of values $\lambda_n \in \cD_n$: 
 $
-\lambda^* = \argmin_{\lambda_n \in \cD_n} \text{HBIC} (\lambda, \widehat \Theta_{\gamma_n^*(\lambda)})
+\lambda^* = \argmin_{\lambda_n \in \cD_n} \text{HBIC} (\lambda, \widehat \Theta_{\gamma_n^*(\lambda_n)})
 $.
 
 %\begin{enumerate}
