@@ -143,20 +143,23 @@ With similar derivations to the proof of Corollary A.1 in \cite{MaMichailidis15}
 following which, taking $\gamma_n = 4 \sqrt{| g_{\max}|} \BQ_0 \sqrt{ \log (pq)/ n}$,
 %
 \begin{align}
-\Lambda_{\min} ( \tilde \Omega_y^k) \geq d_y - \frac{48 c_y \BQ_0 \sqrt{| g_{\max}| S}}{ \psi} \geq (1 - t_1) d_y > 0 \label{eqn:Thm1ProofProp2Bd6}\\
-\Lambda_{\max} ( \tilde \Omega_y^k) \leq c_y + \frac{48 c_y \BQ_0 \sqrt{| g_{\max}| S}}{ \psi} \leq c_y + t_1 d_y < \infty \label{eqn:Thm1ProofProp2Bd7}
+\Lambda_{\min} ( \tilde \Omega_y^k) \geq d_y - \frac{48 c_y \BQ_0 \sqrt{| g_{\max}| S}}{ \psi}
+\sqrt{ \frac{ \log (pq)}{n}} \geq (1 - t_1) d_y > 0 \label{eqn:Thm1ProofProp2Bd6}\\
+\Lambda_{\max} ( \tilde \Omega_y^k) \leq c_y + \frac{48 c_y \BQ_0 \sqrt{| g_{\max}| S}}{ \psi}
+\sqrt{ \frac{ \log (pq)}{n}} \leq c_y + t_1 d_y < \infty \label{eqn:Thm1ProofProp2Bd7}
 \end{align}
 %
 with $0 < t_1 < 1$, and the sample size $n$ satisfying
 %
 $$
-n \geq | g_{\max}| S \BQ_0 \left[ \frac{48 c_y}{\psi t_1 d_y} \right]^2 \sqrt{ \log (pq)}.
+n \geq | g_{\max}| S \left[ \frac{48 c_y \BQ_0}{\psi t_1 d_y} \right]^2 \log (pq).
 $$
 
 Following the same steps as part A.3 in the proof of Theorem 4.1 in \cite{MaMichailidis15}, it can be proven using \eqref{eqn:Thm1ProofProp2Bd4}--\eqref{eqn:Thm1ProofProp2Bd7} that
 %
 $$
-\sum_{k=1}^K \| \widehat \Omega_y^k - \tilde \Omega_y^k \|^2 \leq O \left( \BQ_0^2 | g_{\max}| S \right)
+\sum_{k=1}^K \| \widehat \Omega_y^k - \tilde \Omega_y^k \|^2 \leq O \left( \BQ_0^2 | g_{\max}| S 
+\frac{ \log (pq)}{n} \right)
 $$
 %
 The proof is now complete by combining this with \eqref{eqn:Thm1ProofProp2Bd5} then applying Cauchy-Schwarz inequality and triangle inequality.
@@ -352,15 +355,24 @@ with high enough probability. because then we can take $\psi_* = \min_k \psi_*^k
 Part 2 follows the proof of Proposition 2 in \cite{LinEtal16}.
 \end{proof}
 
-\begin{proof}[Proof of Lemma~\ref{lemma:ErrorRElemma1}]
-This is same as Lemma 2 in Appendix B of \cite{LinEtal16} and its proof can be found there.
-\end{proof}
-
-\begin{proof}[Proof of Lemma~\ref{lemma:ErrorRElemma2}]
-This is a part of Lemma 3 of Appendix B in \cite{LinEtal16}, and is proved therein. 
-\end{proof}
-
 \begin{proof}[Proof of Lemma~\ref{Lemma:ThmTestingLemma}]
+We start with a lemma to help along the proof.
+
+\begin{Lemma}\label{lemma:omega-diff}
+Consider two positive definite matrices $\bfA, \bfA_1 \in \BM(a,a)$. Then for $\delta > 0$,
+%
+$$
+\| \bfA  -\bfA_1 \|_\infty \leq \delta \Rightarrow \| \bfA^{1/2} - \bfA_1^{1/2} \|_\infty \leq \sqrt{ \delta}
+$$
+\end{Lemma}
+%
+
+\noindent Applying Lemma~\ref{lemma:omega-diff} it is immediate that
+%
+\begin{align}\label{eqn:omega-sqrt-bound}
+\left\| \widehat \Omega_y^{1/2} - \Omega_y^{1/2} \right\|_\infty \leq \sqrt{ D_{\Omega}}
+\end{align}
+
 To show \eqref{eqn:ThmTestingProofeq3} we have
 %
 \begin{align*}
@@ -374,21 +386,21 @@ The second summand is distributed as $\cN_q ({\bf 0}, \bfI)$. For the first summ
 \begin{align*}
 \frac{1}{\sqrt n}  \left\| (\widehat \Omega_y^{1/2} - \Omega_y^{1/2}) \bfE^T \bfR_i \right\|_\infty & \leq
 \frac{1}{\sqrt n}  \left\| \widehat \Omega_y^{1/2} - \Omega_y^{1/2} \right\|_\infty  \left\| \bfE^T \bfR_i \right\|_1 \\
-& \leq \sqrt n v_\Omega \frac{1}{n} \left[ \| \bfE^T (\bfX_i -  \bfX_{-i} \bfzeta_i ) \|_1 + \| \bfE^T \bfX_{-i} (\widehat \bfzeta_i - \bfzeta_{0,i} ) \|_1 \right] \\
-& \leq \sqrt n v_\Omega \frac{1}{n} \left[ \| \bfE^T \bfX_i \|_\infty + \| \bfE^T \bfX_{-i} \|_\infty
+& \leq \sqrt{n D_\Omega} \frac{1}{n} \left[ \| \bfE^T (\bfX_i -  \bfX_{-i} \bfzeta_i ) \|_1 + \| \bfE^T \bfX_{-i} (\widehat \bfzeta_i - \bfzeta_{0,i} ) \|_1 \right] \\
+& \leq \sqrt{n D_\Omega} \frac{1}{n} \left[ \| \bfE^T \bfX_i \|_\infty + \| \bfE^T \bfX_{-i} \|_\infty
 \left\{ \| \bfzeta_i  \|_1 + \| \widehat \bfzeta_i - \bfzeta_i  \|_1 \right\} \right] \notag\\
-& \leq \sqrt n v_\Omega \left[ \frac{1}{n} \| \bfE^T \bfX_i \|_\infty + 
-\frac{1 + v_\zeta}{n} \| \bfE^T \bfX_{-i} \|_\infty \right] \\
-& \leq \sqrt n v_\Omega (2 + v_\zeta) .\frac{1}{n} \| \bfE^T \bfX \|_\infty
+& \leq \sqrt{n D_\Omega} \left[ \frac{1}{n} \| \bfE^T \bfX_i \|_\infty + 
+\frac{1 + D_\zeta}{n} \| \bfE^T \bfX_{-i} \|_\infty \right] \\
+& \leq \sqrt{n D_\Omega} (2 + D_\zeta) .\frac{1}{n} \| \bfE^T \bfX \|_\infty
 \end{align*}
 %
-because $\Omega_x$ is diagonally dominant implies $\| \bfzeta_i \|_1 = \sum_{i' \neq i} |\omega_{x,ii'}|/ \omega_{x,ii} \leq 1$, and using assumption (C1). Applying Lemma~\ref{lemma:ErrorRElemma2}, the following holds:
+because $\Omega_x$ is diagonally dominant implies $\| \bfzeta_i \|_1 = \sum_{i' \neq i} |\omega_{x,ii'}|/ \omega_{x,ii} \leq 1$, and using assumption (T1) and \eqref{eqn:omega-sqrt-bound}. Applying Lemma~\ref{lemma:ErrorRElemma2}, the following holds:
 %
 \begin{align}\label{eqn:ThmTestingProofeq31}
-\frac{1}{\sqrt n}  \left\| (\widehat \Omega_y^{1/2} - \Omega_y^{1/2}) \bfE^T \bfR_i \right\|_\infty & \leq v_\Omega (2 + v_\zeta) c_2 [ \Lambda_{\max} (\Sigma_x) \Lambda_{\max} (\Sigma_e) ]^{1/2} \sqrt{ \log(pq)}
+\frac{1}{\sqrt n}  \left\| (\widehat \Omega_y^{1/2} - \Omega_y^{1/2}) \bfE^T \bfR_i \right\|_\infty & \leq \sqrt{ D_\Omega} (2 + D_\zeta) c_2 [ \Lambda_{\max} (\Sigma_x) \Lambda_{\max} (\Sigma_e) ]^{1/2} \sqrt{ \log(pq)}
 \end{align}
 %
-with probability $ \geq 1 - 6c_1 \exp [-(c_2^2-1) \log(pq)]$ for some $c_1 >0, c_2 > 1$.
+with probability $ \geq 1 - 6c_1 \exp [-(c_2^2-1) \log(pq)]$.
 
 On the other hand
 %
@@ -398,7 +410,7 @@ s_i^2 := \frac{1}{n} \left\| \bfX_i - \bfX_{-i}  \bfzeta_i \right\|^2 & \leq
 \leq \widehat s_i^2 + \| \widehat \bfzeta_i - \bfzeta_{0,i} \|_1^2 \left\| \frac{1}{n} \bfX_{-i}^T \bfX_{-i} \right\|_\infty
 \end{align*}
 %
-which implies $s_i \leq \widehat s_i + v_\zeta \sqrt{ V_x}$. By applying Lemma 8 of \cite{RavikumarEtal11},
+which implies $s_i \leq \widehat s_i + D_\zeta \sqrt{ V_x}$. By applying Lemma 8 of \cite{RavikumarEtal11},
 %
 \begin{align}\label{eqn:ThmTestingProofeq32}
 \left\| \frac{1}{n} \bfX_{-i}^T \bfX_{-i} \right\|_\infty \leq
@@ -418,10 +430,10 @@ P\left( | s_i - \sigma_{x,i,-i}| \geq \epsilon \right) \leq \frac{\BV s_i}{\epsi
 \frac{\kappa_i}{n \epsilon^2}
 $$
 %
-Taking $\epsilon = n^{-1/4}$, we have $s_i \geq \sigma_{x,i,-i} - n^{-1/4}$ with probability $\geq 1 - \kappa_i n^{-1/2}$. Then, for $n$ satisfying \eqref{eqn:ThmTestingProofeq32} and $\sigma_{x,i,-i} - n^{-1/4} >  v_\zeta \sqrt{ V_x}$, we get the bound with the above probability:
+Taking $\epsilon = n^{-1/4}$, we have $s_i \geq \sigma_{x,i,-i} - n^{-1/4}$ with probability $\geq 1 - \kappa_i n^{-1/2}$. Then, for $n$ satisfying \eqref{eqn:ThmTestingProofeq32} and $\sigma_{x,i,-i} - n^{-1/4} >  D_\zeta \sqrt{ V_x}$, we get the bound with the above probability:
 %
 \begin{align}\label{eqn:ThmTestingProofeq34}
-\frac{1}{\widehat s_i} \leq \frac{1}{\sigma_{x,i,-i} - n^{-1/4} - v_\zeta \sqrt{ V_x}}
+\frac{1}{\widehat s_i} \leq \frac{1}{\sigma_{x,i,-i} - n^{-1/4} - D_\zeta \sqrt{ V_x}}
 \end{align}
 %
 Combining \eqref{eqn:ThmTestingProofeq31} and \eqref{eqn:ThmTestingProofeq34} gives the upper bound for the right hand side of \eqref{eqn:ThmTestingProofeq3} with the requisite probability and sample size conditions.
@@ -442,5 +454,24 @@ Applying Lemma~\ref{lemma:ErrorRElemma2}, for $n \succsim \log(p-1)$ we have
 c_{7} [ \sigma_{x,i,-i} \Lambda_{\max} (\Sigma_{x, -i}) ]^{1/2} \sqrt{\frac{ \log (p-1)}{n}}
 \end{align}
 %
-with probability $\geq 1 - 6c_{6} \exp [-(c_{7}^2-1) \log (p-1)]$ for some $c_{6} >0, c_{7} > 1$. By \eqref{eqn:ThmTestingProofeq32}, the second term on the right side of \eqref{eqn:ThmTestingProofeq41} is bounded above by $v_\zeta V_x$ with probability $ \geq 1 - 1/p^{\tau_1-2}$ and $n$ satisfying \eqref{eqn:ThmTestingProofeq33}. The bound of \eqref{eqn:ThmTestingProofeq4} now follows by conditions (C2), (C3) and \eqref{eqn:ThmTestingProofeq34}.
+with probability $\geq 1 - 6c_{6} \exp [-(c_{7}^2-1) \log (p-1)]$ for some $c_{6} >0, c_{7} > 1$. By \eqref{eqn:ThmTestingProofeq32}, the second term on the right side of \eqref{eqn:ThmTestingProofeq41} is bounded above by $D_\zeta V_x$ with probability $ \geq 1 - 1/p^{\tau_1-2}$ and $n$ satisfying \eqref{eqn:ThmTestingProofeq33}. The bound of \eqref{eqn:ThmTestingProofeq4} now follows by conditions (T2), (T3) and \eqref{eqn:ThmTestingProofeq34}.
+\end{proof}
+
+\begin{proof}[Proof of Lemma~\ref{lemma:ErrorRElemma1}]
+This is same as Lemma 2 in Appendix B of \cite{LinEtal16} and its proof can be found there.
+\end{proof}
+
+\begin{proof}[Proof of Lemma~\ref{lemma:ErrorRElemma2}]
+This is a part of Lemma 3 of Appendix B in \cite{LinEtal16}, and is proved therein.
+\end{proof}
+
+\begin{proof}[Proof of Lemma~\ref{lemma:omega-diff}]
+$\| \bfA - \bfA_1 \|_\infty \leq \delta$ implies that $\bfA_1 + \delta \bfJ_a \geq \bfA$ and $\bfA + \delta \bfJ_a \geq \bfA_1$, where $\bfJ_a \in \BM(a,a)$ has all entries 1, and for positive definite matrices $\bfP, \bfQ$, $\bfP \geq \bfQ$ means $\bfP - \bfQ$ is positive definite. Now applying Theorem 1 part (a) in \cite{Bellman68} we have
+%
+$$
+(\bfA + \delta \bfJ_a)^{1/2} \geq \bfA_1^{1/2}; \quad
+(\bfA_1 + \delta \bfJ_a)^{1/2} \geq \bfA^{1/2}.
+$$
+%
+It is easy to prove that $\bfA^{1/2} + \sqrt \delta \bfJ_a \geq (\bfA_1 + \delta \bfJ_a)^{1/2}$ and the same for $\bfA_1$. The lemma follows.
 \end{proof}

@@ -34,6 +34,37 @@ CoefArray = function(B.group.array, sparsity=NULL, SNR=NULL){
 
 #***********************************************************#
 # Generates the p times q times K array of regression coefficients
+# misspecification version
+#***********************************************************#
+CoefArray1 = function(B.group.array, sparsity=NULL, SNR=NULL, missing.prob=NULL){
+  
+  # default sparsity is 5/p (model 1 in Cai, model 2 in Cai has a sparsity of 30/p)
+  arraydims = dim(B.group.array)
+  if (is.null(sparsity))
+    sparsity = 5/arraydims[1]
+  
+  # default SNR is 1
+  if (is.null(SNR))
+    SNR = 1
+  
+  unique.elems = unique(as.numeric(B.group.array))
+  signal.groups = unique.elems[which(rbinom(length(unique.elems), 1, sparsity)==1)] # randomly assign non-zero groups
+  B.array = array(0, arraydims)
+  for(h in signal.groups){ # generate entries in non-zero groups
+    h.indices = which(B.group.array==h, arr.ind=T)
+    
+    if(!is.null(missing.prob)){ # is there is misspecification, randomly set coefs in group to 0
+      which.missing = rbinom(nrow(h.indices), 1, missing.prob)
+      h.indices = h.indices[-which.missing,]
+    }
+    B.array[h.indices] = sample(c(-1,1),nrow(h.indices), replace=T)*runif(nrow(h.indices),0.5,SNR)
+  }
+  
+  return(B.array)
+}
+
+#***********************************************************#
+# Generates the p times q times K array of regression coefficients
 # K=2 version for hypothesis testing
 #***********************************************************#
 CoefArray2 = function(B.group.matrix, sparsity=NULL, SNR=NULL,

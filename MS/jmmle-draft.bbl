@@ -1,5 +1,10 @@
 \begin{thebibliography}{}
 
+\bibitem[Atzler et~al., 2014]{atzler2014integrated}
+Atzler, D., Schwedhelm, E., and Zeller, T. (2014).
+\newblock Integrated genomics and metabolomics in nephrology.
+\newblock {\em Nephrol. Dial. Transplant.}, 29(8):1467--1474.
+
 \bibitem[Basu and Michailidis, 2015]{BasuMichailidis15}
 Basu, S. and Michailidis, G. (2015).
 \newblock {Regularized estimation in sparse high-dimensional time series
@@ -11,6 +16,12 @@ Belilovsky, E., Varoquaux, G., and Blaschko, M. (2016).
 \newblock {Testing for differences in Gaussian graphical models: Applications
   to brain connectivity}.
 \newblock In {\em NIPS Proceedings}, pages 595--603.
+
+\bibitem[Bellman, 1968]{Bellman68}
+Bellman, R. (1968).
+\newblock {Some inequalities for the square root of a positive definite
+  matrix}.
+\newblock {\em Linear Algebra Appl.}, 1(3):321--324.
 
 \bibitem[Bickel et~al., 2009]{BickelRitovTsybakov09}
 Bickel, P.~J., Ritov, Y., and Tsybakov, A.~B. (2009).
@@ -72,6 +83,18 @@ Javanmard, A. and Montanari, A. (2018+).
 Joyce, A.~R. and Palsson, B. (2006).
 \newblock { The model organism as a system: integrating {\it omics} data sets}.
 \newblock {\em Nat. Rev. Mol. Cell Biol.}, 7:198--210.
+
+\bibitem[Kaushik et~al., 2016]{kaushik2016inhibition}
+Kaushik, A.~K., Shojaie, A., Panzitt, K., et~al. (2016).
+\newblock Inhibition of the hexosamine biosynthetic pathway promotes
+  castration-resistant prostate cancer.
+\newblock {\em Nat. Commun.}, 7:11612.
+
+\bibitem[Lee et~al., 2016]{lee2016integrated}
+Lee, J., Kee, H.~J., Min, S., et~al. (2016).
+\newblock {Integrated omics-analysis reveals Wnt-mediated NAD+ metabolic
+  reprogramming in cancer stem-like cells}.
+\newblock {\em Oncotarget}, 26(7(30)):48562--48576.
 
 \bibitem[Lee and Liu, 2012]{LeeLiu12}
 Lee, W. and Liu, Y. (2012).
@@ -148,10 +171,11 @@ Ravikumar, P., Wainwright, M.~J., Raskutti, G., and Yu, B. (2011).
   $\ell_1$-penalized log-determinant divergence}.
 \newblock {\em Electron. J. Stat.}, 5:935--980.
 
-\bibitem[Rothman et~al., 2010]{RothmanEtal10}
-Rothman, A.~J., Levina, E., and Zhu, J. (2010).
-\newblock {Sparse Multivariate Regression With Covariance Estimation}.
-\newblock {\em J. Comp. Graph. Stat.}, 19:947--962.
+\bibitem[Sas et~al., 2018]{sas2018shared}
+Sas, K.~M., Lin, J., Rajendiran, T.~M., et~al. (2018).
+\newblock Shared and distinct lipid-lipid interactions in plasma and affected
+  tissues in a diabetic mouse model.
+\newblock {\em J. Lipid Res.}, 59(2):173--183.
 
 \bibitem[Stucky and {van de Geer}, 2017]{StuckyVandeGeer17}
 Stucky, B. and {van de Geer}, S. (2017).
@@ -181,6 +205,12 @@ Xie, Y., Liu, Y., and Valdar, W. (2016).
 \newblock {Joint estimation of multiple dependent Gaussian graphical models
   with applications to mouse genomics}.
 \newblock {\em Biometrika}, 103(3):493--511.
+
+\bibitem[Yuan et~al., 2014]{yuan2014integrated}
+Yuan, W., Xia, Y., Bell, C.~G., et~al. (2014).
+\newblock An integrated epigenomic analysis for type 2 diabetes susceptibility
+  loci in monozygotic twins.
+\newblock {\em Nat. Commun.}, 5(5):5719.
 
 \bibitem[Zhang and Zhang, 2014]{ZhangZhang14}
 Zhang, C.-H. and Zhang, S.~S. (2014).

@@ -44,26 +44,26 @@ Present methods of debiasing coefficients from regularized regression require sp
 \noindent{\bf (T1)} For the upper layer neighborhood coefficients, the following holds for all $k \in \cI_K$:
 %
 $$
-\| \widehat \bfzeta^k - \bfzeta_0^k \|_1 \leq C_\zeta \sqrt { \frac{\log p}{n}}
+\| \widehat \bfzeta^k - \bfzeta_0^k \|_1 \leq D_\zeta  = O \left( \sqrt { \frac{\log p}{n}} \right)
 $$
 %
-where $C_\zeta = O(1)$ depends only on the true values, i.e. $\{ \zeta^k_0 \}$.
+where $D_\zeta$ depends only on the true values, i.e. $\{ \zeta^k_0 \}$.
 
 \noindent{\bf (T2)} The lower layer precision matrix estimators satisfy for all $k \in \cI_K$
 %
 $$
-\left\| (\widehat \Omega_y^k)^{1/2} - (\Omega_{y0}^k)^{-1/2} \right\|_\infty \leq C_\Omega \sqrt { \frac{\log q}{n}}
-$$
+\| \widehat \Omega_y^k - \Omega_{y0}^k \|_\infty \leq D_\Omega
+= O \left( \sqrt { \frac{\log (pq)}{n}} \right)$$
 %
-where $C_\Omega = O(1)$ depends only on $\Omega_{y 0}$.
+where $D_\Omega$ depends only on $\Omega_{y 0}$.
 
 \noindent{\bf (T3)} For the regression coefficient matrices, the following holds for all $k \in \cI_K$:
 %
 $$
-\| \widehat \bfB^k - \bfB^k_0 \|_1 \leq C_\beta \sqrt { \frac{\log (p q)}{n}}
+\| \widehat \bfB^k - \bfB^k_0 \|_1 \leq D_\beta = O \left( \sqrt { \frac{\log (p q)}{n}} \right)
 $$
 %
-where $C_\beta = O(1)$ depends on $\cB$ only.
+where $D_\beta$ depends on $\cB_0$ only.
 \vspace{1em}
 
 Given these conditions, the following theorem provides the asymptotic joint distribution of a scaled version of the debiased coefficients. A similar result for fixed design in the context of single-response linear regression can be found in the preprint by \cite{StuckyVandeGeer17}. However they use nuclear norm as the loss function while obtaining the debiasing factors and use the resulting Karush-Kuhn-Tucker (KKT) conditions to derive their results, whereas we leverage bounds on generic parameter estimates combined with the sub-gaussianity of our design matrices.
@@ -74,14 +74,14 @@ Define $\widehat s_i^k = \sqrt{\| \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k \|
 \begin{align*}
 \widehat \Omega_y &= \diag(\widehat \Omega_y^1, \ldots, \widehat \Omega_y^K)\\
 \bfM_i &= \diag(m_i^1, \ldots, m_i^K)\\
-\bfC_i &= \ve(\widehat \bfc_i^1, \ldots, \widehat \bfc_i^K)^T\\
-\bfD_i &= \ve(\bfb_{0,i}^1, \ldots, \bfb_{0,i}^K)^T\\
+\widehat \bfC_i &= \ve(\widehat \bfc_i^1, \ldots, \widehat \bfc_i^K)^T\\
+\bfD_i &= \ve(\bfb_{0i}^1, \ldots, \bfb_{0i}^K)^T\\
 \end{align*}
 %
-Then for sample size satisfying $\log p = o(n^{1/2}), \log q = o(n^{1/2})$ we have
+Also assume that the precision matrices $\Omega_{x0}^k, k \in \cI_K$ are diagonally dominant. Then for sample size satisfying $\log p = o(n^{1/2}), \log q = o(n^{1/2})$ we have
 %
 \begin{align}\label{eqn:ThmTestingEqn}
-\widehat \Omega_y^{1/2} \bfM_i (\bfC_i - \bfD_i) \sim
+\widehat \Omega_y^{1/2} \bfM_i (\widehat \bfC_i - \bfD_i) \sim
 \cN_{Kq} ({\bf 0}, \bfI) + \bfR_n
 \end{align}
 %
@@ -91,15 +91,15 @@ where $\| \bfR_n \|_\infty = o_P(1)$.
 
 \subsection{Test formulation}
 \label{sec:testing-subsec-2}
-Now we simply plug-in estimators from the JMMLE algorithm in Theorem~\ref{Thm:ThmTesting}. This is fairly straightforward. Condition (T1) is ensured by the JSEM penalized neighborhood estimators (immediate from Proposition A.1 in \cite{MaMichailidis15}), and a bound on total sparsity of the true coefficient matrices: $B = o(n/ \log(pq))$, in conjunction with Corollary~\ref{corollary:jmmle-final}, ensures condition (T3), both with probability approaching 1 as $(n,p,q) \rightarrow \infty$. Finally, condition (T2) follows from Corollary~\ref{corollary:jmmle-final} and Lemma~\ref{lemma:Omega-lemma}.
+Now we simply plug in estimators from the JMMLE algorithm in Theorem~\ref{Thm:ThmTesting}. This is fairly straightforward. Condition (T1) is ensured by the JSEM penalized neighborhood estimators (immediate from Proposition A.1 in \cite{MaMichailidis15}), and a bound on total sparsity of the true coefficient matrices: $B = o(\sqrt{n} / \log(pq))$, in conjunction with Corollary~\ref{corollary:jmmle-final}, ensures conditions (T2) and (T3), all with probability approaching 1 as $(n,p,q) \rightarrow \infty$.
 
 An asymptotic joint distribution of debiased versions of the JMMLE regression estimates is now immediate.
 %
 \begin{Corollary}\label{corollary:CorTesting}
-Consider the estimates $\widehat \cB$ and $\widehat \Omega_y $ obtained from Algorithm~\ref{algo:jmmle-algo}, and upper layer neighborhood coefficients from solving the nodewise regression in \eqref{eqn:jsem-model}. Suppose that $\log (pq) /\sqrt n \rightarrow 0$, and the sparsity condition $B = o(n / \log(pq))$ is satisfied. Then, with the same notations in Theorem~\ref{Thm:ThmTesting} we have
+Consider the estimates $\widehat \cB$ and $\widehat \Omega_y $ obtained from Algorithm~\ref{algo:jmmle-algo}, and upper layer neighborhood coefficients from solving the nodewise regression in \eqref{eqn:jsem-model}. Suppose that $\log (pq) /\sqrt n \rightarrow 0$, and the sparsity condition $B = o(\sqrt{n} / \log(pq))$ is satisfied. Then, with the same notations in Theorem~\ref{Thm:ThmTesting} we have
 %
 \begin{align}\label{eqn:CorTestingEqn}
-\widehat \Omega_y^{1/2} \bfM_i (\bfC_i - \bfD_i) \sim
+\widehat \Omega_y^{1/2} \bfM_i (\widehat \bfC_i - \bfD_i) \sim
 \cN_{Kq} ({\bf 0}, \bfI) + \bfR_{1n}
 \end{align}
 %
@@ -246,8 +246,9 @@ Based on the FDR control procedure in Algorithm~\ref{algo:AlgoFDR}, we can perfo
 %
 \begin{align}
 & \hat \tau_i^k := \inf \left\{\tau \in \BR: 1 - \Phi(\tau) \leq \frac{\alpha}{2 q}
-\max \left( \sum_{j \in \cI_q} \BI( |b_{ij}^k| \geq \tau), 1 \right) \right\} \notag\\
-& \hat b_{ij}^{k, \text{thr}} =  \hat b_{ij}^k \BI ( |\hat b_{ij}^k| \geq \hat \tau_i^k)
+\max \left( \sum_{j \in \cI_q} \BI( | \sqrt{\hat \omega_{jj}^k} m_i^k \hat c_{ij}^k | \geq \tau), 1 \right) \right\} \notag\\
+& \hat b_{ij}^{k, \text{thr}} =  \hat b_{ij}^k \BI \left(
+|\sqrt{\hat \omega_{jj}^k} m_i^k \hat c_{ij}^k | \geq \hat \tau_i^k \right)
 \label{eqn:fdr-threshold}
 \end{align}
 %

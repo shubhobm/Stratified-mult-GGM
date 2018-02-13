@@ -195,15 +195,15 @@ The theorem is immediate by putting together Lemma~\ref{thm:BetaThm} and Lemma~\
 The first part is immediate from the proof of part I of Theorem 4 in \cite{LinEtal16}. By choice of $\lambda_n$, we now have
 %
 $$
-\widehat \bfB^{k (0)} - \bfB^k_0 \|_1 = O\left( \sqrt{ \frac{ \log (pq)}{n}} \right),
+\| \widehat \bfB^{k (0)} - \bfB^k_0 \|_1 = O\left( \sqrt{ \frac{ \log (pq)}{n}} \right),
 $$
 %
 so we can apply Theorem~\ref{thm:thm-Theta} to prove the bounds on $\{\widehat \Theta_j^{(0)} \}$.
 \end{proof}
 
-{\colrbf Discuss tighter bound compared to vanilla JSEM}
-
-After providing the error bounds for solutions to the subproblem \eqref{eqn:EstEqn2}, we concentrate on the subproblem \eqref{eqn:EstEqn1}. Following a similar strategy, we first get error bounds for $\widehat \bfbeta$ assuming everything else fixed.
+%{\colrbf Discuss tighter bound compared to vanilla JSEM}
+%
+%After providing the error bounds for solutions to the subproblem \eqref{eqn:EstEqn2}, we concentrate on the subproblem \eqref{eqn:EstEqn1}. Following a similar strategy, we first get error bounds for $\widehat \bfbeta$ assuming everything else fixed.
 
 %with
 %$$
@@ -279,23 +279,13 @@ After providing the error bounds for solutions to the subproblem \eqref{eqn:EstE
 %\end{align*}
 %
 
-We also have the following auxiliary result that helps establish results in the testing section.
-
-\begin{Lemma}\label{lemma:Omega-lemma}
-{\colrbf lemma and proof tbd}
-\end{Lemma}
-
 \begin{proof}[Proof of Theorem~\ref{Thm:ThmTesting}]
-Let us define the following:
+Define the following:
 %
-\begin{align*}
-\widehat \Omega_y &= \diag(\widehat \Omega_y^1, \widehat \Omega_y^2)\\
-\bfM_i &= \diag(m^1_i, m^2_i)\\
-\widehat \bfC_i &= \diag(\widehat \bfc^1_i, \widehat \bfc^2_i)\\
-\widehat \bfD_i &= \diag(\widehat \bfb^1_i, \widehat \bfb^2_i)\\
-\bfD_i &= \diag(\bfb^1_{0,i}, \bfb^2_{0,i})\\
-\bfR_i^k &= \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k; k = 1,2
-\end{align*}
+$$
+\widehat \bfD_i = \ve(\widehat \bfb^1_i, \ldots, \widehat \bfb^K_i); \quad
+\bfR_i^k = \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k; k \in \cI_K
+$$
 %
 Then from \eqref{eqn:DebiasedBeta} we have
 %
@@ -303,7 +293,8 @@ Then from \eqref{eqn:DebiasedBeta} we have
 \bfM_i ( \widehat \bfC_i - \widehat \bfD_i )^T &= \frac{1}{\sqrt n}
 \begin{bmatrix}
 \frac{1}{\widehat s^1_i} (\bfR^1_i)^T \widehat \bfE^1 \\
-\frac{1}{\widehat s^2_i} (\bfR^2_i)^T \widehat \bfE^2
+\vdots\\
+\frac{1}{\widehat s^K_i} (\bfR^K_i)^T \widehat \bfE^K
 \end{bmatrix}
 \end{align}
 %
@@ -312,7 +303,7 @@ We now decompose $\widehat \bfE^k:$
 \begin{align*}
 \widehat \bfE^k &= \bfY^k - \bfX^k \widehat \bfB^k \\
 &= \bfE^k + \bfX^k (\bfB_0^k - \widehat \bfB^k)\\
-&= \bfE^k + \bfX_i^k (\bfb_{0,i}^k - \widehat \bfb_i^k) + \bfX_{-i}^k (\bfB_{0,-i}^k - \widehat \bfB_{-i}^k)
+&= \bfE^k + \bfX_i^k (\bfb_{0i}^k - \widehat \bfb_i^k) + \bfX_{-i}^k (\bfB_{0,-i}^k - \widehat \bfB_{-i}^k)
 \end{align*}
 %
 Putting them back in \eqref{eqn:ThmTestingProofeq1} and using $t^k = (\bfR^k)^T \bfX^k/n$,
@@ -321,32 +312,36 @@ Putting them back in \eqref{eqn:ThmTestingProofeq1} and using $t^k = (\bfR^k)^T 
 \bfM_i ( \widehat \bfC_i - \widehat \bfD_i)^T &= \frac{1}{\sqrt n}
 \begin{bmatrix}
 \frac{1}{\widehat s^1_i} (\bfR^1_i)^T \bfE^1 \\
-\frac{1}{\widehat s^2_i} (\bfR^2_i)^T \bfE^2
+\vdots\\
+\frac{1}{\widehat s^K_i} (\bfR^K_i)^T \bfE^K
 \end{bmatrix} +
-\bfM_i (\bfD_i - \widehat \bfD_i )^T +
-\frac{1}{\sqrt n}
+\bfM_i (\bfD_i - \widehat \bfD_i )^T \notag\\
+& + \frac{1}{\sqrt n}
 \begin{bmatrix}
 \frac{1}{\widehat s^1_i} (\bfR^1_i)^T \bfX_{-i}^1 (\bfB_{0,-i}^1 - \widehat \bfB_{-i}^1) \\
-\frac{1}{\widehat s^2_i} (\bfR^2_i)^T \bfX_{-i}^2 (\bfB_{0,-i}^2 - \widehat \bfB_{-i}^2)
+\vdots\\
+\frac{1}{\widehat s^K_i} (\bfR^K_i)^T \bfX_{-i}^K (\bfB_{0,-i}^K - \widehat \bfB_{-i}^K)
 \end{bmatrix} \notag\\
 \Rightarrow
 \widehat \Omega_y^{1/2} \bfM_i ( \widehat \bfC_i - \bfD_i)^T &=
 \frac{\widehat \Omega_y^{1/2}}{\sqrt n}
 \begin{bmatrix}
 \frac{1}{\widehat s^1} (\bfR^1_i)^T \bfE^1 \\
-\frac{1}{\widehat s^2} (\bfR^2_i)^T \bfE^2
+\vdots\\
+\frac{1}{\widehat s^K} (\bfR^K_i)^T \bfE^K
 \end{bmatrix} +
 \frac{\widehat \Omega_y^{1/2}}{\sqrt n}
 \begin{bmatrix}
 \frac{1}{\widehat s^1_i} (\bfR^1_i)^T \bfX_{-i}^1 (\bfB_{0,-i}^1 - \widehat \bfB_{-i}^1) \\
-\frac{1}{\widehat s^2_i} (\bfR^2_i)^T \bfX_{-i}^2 (\bfB_{0,-i}^2 - \widehat \bfB_{-i}^2)
+\vdots\\
+\frac{1}{\widehat s^K_i} (\bfR^K_i)^T \bfX_{-i}^K (\bfB_{0,-i}^K - \widehat \bfB_{-i}^K)
 \end{bmatrix}\label{eqn:ThmTestingProofeq2}
 \end{align}
 
-At this point, we drop $k$ in the subscripts, and prove the following:
+At this point, we drop $k$ and 0 in the subscripts, and prove the following:
 
 \begin{Lemma}\label{Lemma:ThmTestingLemma}
-Given conditions (C1) and (C2), the following holds for sample size $n$ such that $n \succsim \log (pq)$ and $\sigma_{x,i,-i} - n^{-1/4} - v_\zeta \sqrt{V_x} > 0$:
+Given conditions (T1) and (T2), the following holds for sample size $n$ such that $n \succsim \log (pq)$ and $\sigma_{x,i,-i} - n^{-1/4} - v_\zeta \sqrt{V_x} > 0$:
 %
 $$
 \frac{1}{\sqrt n \widehat s_i}  \widehat \Omega_y^{1/2} \bfE^T \bfR_i \sim
@@ -355,33 +350,27 @@ $$
 %
 \begin{align}\label{eqn:ThmTestingProofeq3}
 \| \bfS_{1n} \|_\infty & \leq 
-\frac{v_\Omega (2 + v_\zeta) c_2 [ \Lambda_{\max} (\Sigma_x) \Lambda_{\max} (\Sigma_e) ]^{1/2} \sqrt{ \log(pq)}}{\sigma_{x,i,-i} - n^{-1/4} - v_\zeta \sqrt{V_x}} =
+\frac{D_\Omega^{1/2} (2 + D_\zeta) c_2 [ \Lambda_{\max} (\Sigma_x) \Lambda_{\max} (\Sigma_e) ]^{1/2} \sqrt{ \log(pq)}}{\sigma_{x,i,-i} - n^{-1/4} - D_\zeta \sqrt{V_x}} =
 O \left( \frac{ \log(pq)}{\sqrt n} \right)
 \end{align}
 %
-with probability larger than or equal to
-%
-\begin{align}\label{eqn:ThmTestingProofeq30}
-1 - 6c_1 e^{-(c_2^2-1) \log p q} - \frac{1}{p^{\tau_1-2}} - \frac{\kappa_i}{\sqrt n}
-\end{align}
-%
-for some $c_1, c_4 >0, c_2, c_5 > 1$, and $\kappa_i := \BV [(X_i - \BX_{-i} \bfzeta_{0,-i})^2]$.
-%
-Additionally, given condition (C3)
+with probability $\geq 1 - 6c_1 \exp[-(c_2^2-1) \log (p q)] - 1/p^{\tau_1-2} - \kappa_i/\sqrt n$, where $\kappa_i := \BV [(X_i - \BX_{-i} \bfzeta_{0,-i})^2]$.
+
+Additionally, given condition (T3)
 %
 \begin{align}\label{eqn:ThmTestingProofeq4}
-& \left\| \frac{1}{\sqrt n \widehat s_i} \bfR_i^T \bfX_{-i} (\bfB_{0,-i} - \widehat \bfB_{-i})
+& \left\| \frac{1}{\sqrt n \widehat s_i} \bfR_i^T \bfX_{-i} (\bfB_{-i} - \widehat \bfB_{-i})
 \widehat \Omega_y^{1/2} \right\|_\infty \notag\\
 & \leq
-\frac{v_\beta ( \Lambda_{\min} (\Sigma_y)^{1/2} + v_\Omega)}{\sigma_{x,i,-i} - n^{-1/2} - v_\zeta \sqrt{V_x}} 
-\left[ c_{7} \sqrt{ (\sigma_{x,i,-i} \Lambda_{\max} (\Sigma_{x, -i}) ) \log p} + \sqrt n v_\zeta V_x \right] =
+\frac{D_\beta ( \Lambda_{\min} (\Sigma_y)^{1/2} + D_\Omega^{1/2})}{\sigma_{x,i,-i} - n^{-1/2} - D_\zeta \sqrt{V_x}} 
+\left[ c_{7} \sqrt{ (\sigma_{x,i,-i} \Lambda_{\max} (\Sigma_{x, -i}) ) \log p} + \sqrt n D_\zeta V_x \right] =
 O \left( \frac{ \log(pq)}{\sqrt n} \right)
 \end{align}
 %
-with probability condition \eqref{eqn:ThmTestingProofeq30}.
+holds with probability $\geq 1 - 6c_6 \exp[-(c_7^2-1) \log (p q)] - 1/p^{\tau_1-2} - \kappa_i/\sqrt n$ for some $c_6 > 0, c_7 > 1$.
 \end{Lemma}
 
-Given Lemma~\ref{Lemma:ThmTestingLemma}, the first and second summands on the right hand side of \eqref{eqn:ThmTestingProofeq2} are bounded above by applying each of \eqref{eqn:ThmTestingProofeq3} and \eqref{eqn:ThmTestingProofeq4} twice, respectively. This completes our proof.
+Given Lemma~\ref{Lemma:ThmTestingLemma}, the first and second summands on the right hand side of \eqref{eqn:ThmTestingProofeq2} are bounded above by applying each of \eqref{eqn:ThmTestingProofeq3} and \eqref{eqn:ThmTestingProofeq4} $K$ times. This completes our proof.
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:FDRthm}]
