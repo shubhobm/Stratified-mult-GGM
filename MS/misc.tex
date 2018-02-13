@@ -306,7 +306,7 @@ We now decompose $\widehat \bfE^k:$
 &= \bfE^k + \bfX_i^k (\bfb_{0i}^k - \widehat \bfb_i^k) + \bfX_{-i}^k (\bfB_{0,-i}^k - \widehat \bfB_{-i}^k)
 \end{align*}
 %
-Putting them back in \eqref{eqn:ThmTestingProofeq1} and using $t^k = (\bfR^k)^T \bfX^k/n$,
+Putting them back in \eqref{eqn:ThmTestingProofeq1} and using $t_i^k = (\bfR_i^k)^T \bfX_i^k/n$,
 %
 \begin{align}
 \bfM_i ( \widehat \bfC_i - \widehat \bfD_i)^T &= \frac{1}{\sqrt n}
@@ -371,6 +371,26 @@ holds with probability $\geq 1 - 6c_6 \exp[-(c_7^2-1) \log (p q)] - 1/p^{\tau_1-
 \end{Lemma}
 
 Given Lemma~\ref{Lemma:ThmTestingLemma}, the first and second summands on the right hand side of \eqref{eqn:ThmTestingProofeq2} are bounded above by applying each of \eqref{eqn:ThmTestingProofeq3} and \eqref{eqn:ThmTestingProofeq4} $K$ times. This completes our proof.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:PowerThm}]
+From the test statistic formulation in Algorithm~\ref{algo:AlgoGlobalTest} and Lemma~\ref{Lemma:ThmTestingLemma} it is immediate that when the alternative is true,
+%
+\begin{align*}
+D_i \sim \chi^2_q + \bfdelta^T
+\left( \frac{ \widehat \Sigma_y^1}{(m_i^1)^2} + \frac{\widehat \Sigma_y^2}{(m_i^2)^2} \right)^{-1} \bfdelta +
+o_P(1)
+\end{align*}
+%
+Dropping $k$ in the superscripts and 0 in subscripts for the true values, we now provide bounds for the quantities $\widehat \Sigma_y$ and $(m_i)^2$. First we denote $\Delta_{1n} = \widehat \Sigma_y - \Sigma_y$. Also, from the definition of $m_i$,
+%
+$$
+\frac{1}{m_i} =
+\frac{\| \bfX_i - \bfX_{-i} \widehat \bfzeta_i \|}{(\bfX_i - \bfX_{-i} \widehat \bfzeta_i)^T \bfX_i} =
+\frac{\| \bfX_i - \bfX_{-i} \bfzeta_i + \bfX_{-i} (\widehat \bfzeta_i - \bfzeta_i)\|}
+{(\bfX_i - \bfX_{-i} \bfzeta_i)^T \bfX_i + \bfX_{-i} (\widehat \bfzeta_i -\bfzeta_i)^T \bfX_i}
+$$
+
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:FDRthm}]

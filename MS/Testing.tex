@@ -36,7 +36,7 @@ We start off by defining debiased estimates for individual rows of the coefficie
 ; \quad i \in \cI_p, k \in \cI_K
 \end{align}
 %
-where $t_i^k = ( \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k )^T \bfX_{-i}^k/n$, and $\widehat \bfzeta_i^k, \widehat \bfB^k$ are {\it generic estimators} of the neighborhood coefficient matrices in the upper layer and within-layer coefficient matrices, respectively. By structure this is similar to the proposal of \cite{ZhangZhang14}. However, as we see shortly, minimal conditions need to be imposed on the parameter estimates used in \eqref{eqn:DebiasedBeta} for the asymptotic results based on a scaled version of the debiased estimator to go thorugh, and they continue to hold for arbitrary sparsity patterns over $k$ in all the parameters.
+where $t_i^k = ( \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k )^T \bfX_{i}^k/n$, and $\widehat \bfzeta_i^k, \widehat \bfB^k$ are {\it generic estimators} of the neighborhood coefficient matrices in the upper layer and within-layer coefficient matrices, respectively. By structure this is similar to the proposal of \cite{ZhangZhang14}. However, as we see shortly, minimal conditions need to be imposed on the parameter estimates used in \eqref{eqn:DebiasedBeta} for the asymptotic results based on a scaled version of the debiased estimator to go thorugh, and they continue to hold for arbitrary sparsity patterns over $k$ in all the parameters.
 
 Present methods of debiasing coefficients from regularized regression require specific assumptions on the regularization structure of the main regression, as well as on how to calculate the debiasing factor. While \cite{ZhangZhang14}, \cite{JavanmardMontanari14} and \cite{vanDeGeerEtal14} work on coefficients from lasso regressions, \cite{MitraZhang16} debias the coefficients of pre-specified groups in the coefficient vector from a group lasso. The current proposals for the debiasing factor available in the literature include nodewise lasso \citep{ZhangZhang14} and a variance minimization scheme with $\ell_\infty$-constraints \citep{JavanmardMontanari14}. In comparison, we only assume the following generic constraints on the parameter estimates used in our procedure.
 
@@ -130,16 +130,16 @@ where $\widehat \Sigma_y^k = (\widehat \Omega_y^k)^{-1}, k = 1,2$.
 
 Besides controlling the type-I error at a specified level $\alpha$, the above testing procedure maintains rate optimal power.
 
-\begin{Theorem}
+\begin{Theorem}\label{thm:PowerThm}
 Consider the global test given in Algorithm~\ref{algo:AlgoGlobalTest}, performed using parameter estimates satisfying conditions (T1)-(T3). Say $\bfdelta := \bfb_{0 i}^1 - \bfb_{0 i}^2$. Then the power of the test is given by
 %
 $$
 K_q \left( \chi^2_{q,1-\alpha} + \bfdelta^T 
 \left( \frac{ \Sigma_{y 0}^1}{(m_{0 i}^1)^2} + \frac{\Sigma_{y 0}^2}{(m_{0 i}^2)^2}
-+ o(1) \right)^{-1} \bfdelta \right)
++ \Delta_n \right)^{-1} \bfdelta \right) + o(1)
 $$
 %
-where $K_q$ is the cumulative distribution function of the $\chi^2_q$ distribution, and $m_{0 i}^k$ is the population version of $m_i^k, k=  1,2$. Consequently, for $\| \bfdelta \|_\infty \geq {\colrbf tbd}$, $P( H_0^i \text{ is rejected }) \rightarrow 1$ as $(n,p,q) \rightarrow \infty$.
+where $\| \Delta_n \|_\infty = o(1)$, $K_q$ is the cumulative distribution function of the $\chi^2_q$ distribution, and $m_{0 i}^k$ is the population version of $m_i^k, k=  1,2$. Consequently, for $\| \bfdelta \|_\infty \geq {\colrbf tbd}$, $P( H_0^i \text{ is rejected }) \rightarrow 1$ as $(n,p,q) \rightarrow \infty$.
 \end{Theorem}
 {\colrbf proof tbd}
 %

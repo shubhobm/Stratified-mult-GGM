@@ -27,7 +27,7 @@ set.seed(11192017)
 
 ## looping function
 loopfun = function(rep){
-  set.seed(rep*11222017)
+  set.seed(rep*1e3)
   X.layer = GenerateLayer(n, subnetSize.X, group)
   E.layer = GenerateLayer(n, subnetSize.E, group)
   
@@ -65,7 +65,7 @@ loopfun = function(rep){
   }
   
   ## tune JMLE model
-  lambda.vec = sqrt(log(p)/n) * seq(0.8, 0.1, -0.1)
+  lambda.vec = sqrt(log(p)/n) * seq(1.8, 0.4, -0.2)
   nlambda = length(lambda.vec)
 
   ## get all models
@@ -130,8 +130,9 @@ loopfun = function(rep){
   }
   eval.mat = data.frame(eval.mat)
   names(eval.mat) = c("lambda","BIC","HBIC","B.TP","B.TN","B.rel.Fnorm","Theta.TP","Theta.TN","Theta.rel.Fnorm")
+  cat("=============\nReplication",rep,"done!\n=============\n")
   eval.mat
 }
 
-eval.list = lapply(1:1e2, loopfun)
+eval.list = lapply(1:50, loopfun)
 save(eval.list, file="out_n100p30q60k5_1step.Rda")

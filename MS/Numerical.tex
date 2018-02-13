@@ -63,10 +63,12 @@ using the one-step version (Section~\ref{sec:tricks-jmmle}) instead of the full 
 %
 \item F1 measure-
 %
-\[
-\text{F1} (\tilde \cB) = \frac{ \sum_k \text{TP}(\tilde \bfB_k)}
+$$
+\text{FP}(\tilde \bfB_k) = | {\supp}^c (\bfB^k_0) | - \text{TN}(\tilde \bfB_k); \quad
+\text{FN}(\tilde \bfB_k) = | {\supp} (\bfB^k_0) | - \text{TP}(\tilde \bfB_k) $$
+$$ \text{F1} (\tilde \cB) = \frac{ \sum_k \text{TP}(\tilde \bfB_k)}
 {2 \sum_k \text{TP}(\tilde \bfB_k) + \text{FP}(\tilde \bfB_k) + \text{FN}(\tilde \bfB_k)}
-\]
+$$
 %
 \item Relative error in Frobenius norm-
 %
@@ -138,7 +140,7 @@ We repeat the above setups to check the performance of JMMLE in presence of with
     ~              & (200,200,150) & 0.99 (0.004)  & 0.99 (0)       & 0.98 (0.008)  & 0.17 (0.015) \\
     ~              & (300,300,150) & 0.99 (0.002)  & 1 (0)          & 0.99 (0.004)  & 0.15 (0.013) \\
     $(30/p, 30/q)$ & (200,200,100) & ~             & ~              & ~   & ~             \\
-    ~              & (200,200,200) & ~             & ~              & ~   & ~             \\ \hline
+    ~              & (200,200,200) & 0.99 (0.02)   & 1 (0)          & 0.98 (0.011)  & 0.15 (0.037) \\\hline
     \hline
     $(\pi_x, \pi_y)$ & $(p,q,n)$   & TP$(\widehat \Omega)$            & TN$(\widehat \Omega)$             & F1$(\widehat \Omega)$ & RF$(\widehat \Omega)$            \\ \hline
     $(5/p, 5/q)$   & (60,30,100)   & 0.71 (0.054)  & 0.90 (0.012)   & 0.64 (0.044)  & 0.34 (0.018) \\
@@ -146,7 +148,7 @@ We repeat the above setups to check the performance of JMMLE in presence of with
     ~              & (200,200,150) & 0.62 (0.027)  & 0.98 (0.001)   & 0.43 (0.021)  & 0.27 (0.006) \\
     ~              & (300,300,150) & 0.69 (0.03)   & 0.98 (0)       & 0.39 (0.02)   & 0.26 (0.05) \\
     $(30/p, 30/q)$ & (200,200,100) & ~             & ~              & ~   & ~             \\
-    ~              & (200,200,200) & ~             & ~              & ~   & ~             \\ \hline
+    ~              & (200,200,200) & 0.69 (0.059)  & 0.98 (0.001)   & 0.5 (0.044)   & 0.29 (0.009) \\\hline
     \end{tabular}
     \caption{Table of outputs for joint estimation in presence of group misspecification}
     \label{table:simtable2}
@@ -158,13 +160,13 @@ We repeat the above setups to check the performance of JMMLE in presence of with
 \centering
     \begin{tabular}{ccc}
     \hline
-    $(\pi_x, \pi_y)$ & $(p,q,n)$   & FDR        \\ \hline
-    $(5/p, 5/q)$   & (60,30,100)   & 0.19 (0.077)\\
-    ~              & (30,60,100)   & 0.08 (0.064)\\
-    ~              & (200,200,150) & 0.04 (0.016)\\
-    ~              & (300,300,150) & 0.02 (0.007)\\\hline
-    $(30/p, 30/q)$ & (200,200,100) &              \\
-    ~              & (200,200,200) & ~             \\ \hline
+    $(\pi_x, \pi_y)$ & $(p,q,n)$   & FDR          \\\hline
+    $(5/p, 5/q)$   & (60,30,100)   & 0.19 (0.077) \\
+    ~              & (30,60,100)   & 0.08 (0.064) \\
+    ~              & (200,200,150) & 0.04 (0.016) \\
+    ~              & (300,300,150) & 0.02 (0.007) \\\hline
+    $(30/p, 30/q)$ & (200,200,100) & ~            \\
+    ~              & (200,200,200) & 0.03 (0.016) \\\hline
     \end{tabular}
     \caption{Table of outputs giving empirical FDR for estimating $\cB$ using JMMLE in presence of group misspecification}
     \label{table:simtable22}
