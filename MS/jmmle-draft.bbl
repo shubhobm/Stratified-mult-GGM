@@ -90,6 +90,12 @@ Kaushik, A.~K., Shojaie, A., Panzitt, K., et~al. (2016).
   castration-resistant prostate cancer.
 \newblock {\em Nat. Commun.}, 7:11612.
 
+\bibitem[Kling et~al., 2015]{KlingEtal15}
+Kling, T., Johansson, P., Sanchez, J., et~al. (2015).
+\newblock {Efficient exploration of pan-cancer networks by generalized
+  covariance selection and interactive web content}.
+\newblock {\em Nucl. Acid Res.}, 43(15):e98.
+
 \bibitem[Lee et~al., 2016]{lee2016integrated}
 Lee, J., Kee, H.~J., Min, S., et~al. (2016).
 \newblock {Integrated omics-analysis reveals Wnt-mediated NAD+ metabolic

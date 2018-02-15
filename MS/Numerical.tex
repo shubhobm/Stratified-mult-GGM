@@ -139,16 +139,16 @@ We repeat the above setups to check the performance of JMMLE in presence of with
     ~              & (30,60,100)   & 0.94 (0.048)  & 0.99 (0.008)   & 0.93 (0.033)  & 0.31 (0.062) \\
     ~              & (200,200,150) & 0.99 (0.004)  & 0.99 (0)       & 0.98 (0.008)  & 0.17 (0.015) \\
     ~              & (300,300,150) & 0.99 (0.002)  & 1 (0)          & 0.99 (0.004)  & 0.15 (0.013) \\
-    $(30/p, 30/q)$ & (200,200,100) & ~             & ~              & ~   & ~             \\
+    $(30/p, 30/q)$ & (200,200,100) & 0.99 (0.021)  & 1 (0)          & 0.98 (0.011)  & 0.2 (0.031)  \\
     ~              & (200,200,200) & 0.99 (0.02)   & 1 (0)          & 0.98 (0.011)  & 0.15 (0.037) \\\hline
     \hline
     $(\pi_x, \pi_y)$ & $(p,q,n)$   & TP$(\widehat \Omega)$            & TN$(\widehat \Omega)$             & F1$(\widehat \Omega)$ & RF$(\widehat \Omega)$            \\ \hline
-    $(5/p, 5/q)$   & (60,30,100)   & 0.71 (0.054)  & 0.90 (0.012)   & 0.64 (0.044)  & 0.34 (0.018) \\
-    ~              & (30,60,100)   & 0.7 (0.043)   & 0.94 (0.004)   & 0.59 (0.03)   & 0.3 (0.01)   \\
-    ~              & (200,200,150) & 0.62 (0.027)  & 0.98 (0.001)   & 0.43 (0.021)  & 0.27 (0.006) \\
+    $(5/p, 5/q)$   & (60,30,100)   & 0.71 (0.054)  & 0.90 (0.012)   & 0.64 (0.044)  & 0.34 (0.018)\\
+    ~              & (30,60,100)   & 0.7 (0.043)   & 0.94 (0.004)   & 0.59 (0.03)   & 0.3 (0.01)  \\
+    ~              & (200,200,150) & 0.62 (0.027)  & 0.98 (0.001)   & 0.43 (0.021)  & 0.27 (0.006)\\
     ~              & (300,300,150) & 0.69 (0.03)   & 0.98 (0)       & 0.39 (0.02)   & 0.26 (0.05) \\
-    $(30/p, 30/q)$ & (200,200,100) & ~             & ~              & ~   & ~             \\
-    ~              & (200,200,200) & 0.69 (0.059)  & 0.98 (0.001)   & 0.5 (0.044)   & 0.29 (0.009) \\\hline
+    $(30/p, 30/q)$ & (200,200,100) & 0.78 (0.054)  & 0.98 (0.001)   & 0.43 (0.037)  & 0.31 0.008) \\
+    ~              & (200,200,200) & 0.69 (0.059)  & 0.98 (0.001)   & 0.5 (0.044)   & 0.29 (0.009)\\\hline
     \end{tabular}
     \caption{Table of outputs for joint estimation in presence of group misspecification}
     \label{table:simtable2}
@@ -156,7 +156,7 @@ We repeat the above setups to check the performance of JMMLE in presence of with
 \end{scriptsize}
 
 \begin{scriptsize}
-\begin{table}[ht]
+\begin{table}[t]
 \centering
     \begin{tabular}{ccc}
     \hline
@@ -165,7 +165,7 @@ We repeat the above setups to check the performance of JMMLE in presence of with
     ~              & (30,60,100)   & 0.08 (0.064) \\
     ~              & (200,200,150) & 0.04 (0.016) \\
     ~              & (300,300,150) & 0.02 (0.007) \\\hline
-    $(30/p, 30/q)$ & (200,200,100) & ~            \\
+    $(30/p, 30/q)$ & (200,200,100) & 0.03 (0.019) \\
     ~              & (200,200,200) & 0.03 (0.016) \\\hline
     \end{tabular}
     \caption{Table of outputs giving empirical FDR for estimating $\cB$ using JMMLE in presence of group misspecification}
@@ -291,10 +291,10 @@ Table~\ref{table:simtable41} compares performances the full algorithm and the on
   \begin{tabular}{ccc}
     \hline
     $(p,q,n)$     & Method   & Comp. time (min) \\ \hline
-    (60,30,100) & Full     & ~                \\ 
-    ~           & One-step & ~                \\ \hline
-    (30,60,100) & Full     & 19.8             \\ 
-    ~           & One-step & 3.1              \\ \hline
+    (60,30,100) & Full     & 5.8              \\ 
+    ~           & One-step & 1.0              \\ \hline
+    (30,60,100) & Full     & ~             \\ 
+    ~           & One-step & 3.2              \\ \hline
     \end{tabular}
     \caption{Comaprison of computation times (averaged over 50 replications) for full and one-step versions of the JMMLE algorithm.}
     \label{table:simtable42}
