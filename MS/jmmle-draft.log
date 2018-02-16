@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2016.12.9)  15 FEB 2018 15:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2016.12.9)  16 FEB 2018 10:06
 entering extended mode
 **./jmmle-draft.tex
 (jmmle-draft.tex
@@ -470,7 +470,7 @@ mm/m/it/10.95 c[]n\OT1/cmr/m/n/10.95 ) \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95
 /n/10.95 (\OML/cmm/m/it/10.95 c[] \OMS/cmsy/m/n/10.95  
  []
 
-[10] [11]) (Testing.tex [12] [13] [14] [15] [16] [17]) (Numerical.tex [18]
+[10] [11]) (Testing.tex [12] [13] [14] [15] [16] [17]) (Numerical.tex
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 24.
 
 ("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\base\omscmr.fd"
@@ -478,14 +478,14 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 24.
-
-<omega-structure.pdf, id=477, 392.95808pt x 74.28754pt>
+ [18]
+<omega-structure.pdf, id=474, 392.95808pt x 74.28754pt>
 File: omega-structure.pdf Graphic file (type pdf)
 
 <use omega-structure.pdf>
 Package pdftex.def Info: omega-structure.pdf used on input line 36.
 (pdftex.def)             Requested size: 392.95712pt x 74.28734pt.
- [19 <./omega-structure.pdf>]
+
 Overfull \hbox (47.55365pt too wide) in paragraph at lines 88--104
 [][] 
  []
@@ -495,7 +495,7 @@ Overfull \hbox (47.55365pt too wide) in paragraph at lines 109--125
 [][] 
  []
 
-[20] [21]
+[19 <./omega-structure.pdf>] [20] [21]
 Overfull \hbox (25.01486pt too wide) in paragraph at lines 185--200
 [][] 
  []
@@ -509,7 +509,7 @@ t/10.95 ; \OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 B[]; \OT1/cmr/m/n/10.95 [])$
  []
 
 [26]
-Overfull \hbox (17.14075pt too wide) in paragraph at lines 100--102
+Overfull \hbox (17.14075pt too wide) in paragraph at lines 101--103
 []\OT1/cmr/m/it/10.95 with prob-a-bil-ity $\OMS/cmsy/m/n/10.95  \OT1/cmr/m/n/1
 0.95 1 \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 1\OML/cmm/m/it/10.95 =p[] \OMS/
 cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 12\OML/cmm/m/it/10.95 c[] []\OT1/cmr/m/n/10
@@ -522,13 +522,13 @@ MS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 1) [](\OML/cmm/m/it/10.95 pq\OT1/cmr/m/n
  []
 
 [27]
-Overfull \hbox (2.31772pt too wide) detected at line 175
+Overfull \hbox (2.31772pt too wide) detected at line 176
 \OML/cmm/m/it/10.95  [] \OT1/cmr/m/n/10.95 = [] \OML/cmm/m/it/10.95  [] [] ; [
 ] \OT1/cmr/m/n/10.95 = [] \OML/cmm/m/it/10.95 [] []
  []
 
 
-Overfull \hbox (4.83646pt too wide) in paragraph at lines 179--181
+Overfull \hbox (4.83646pt too wide) in paragraph at lines 180--182
 []\OT1/cmr/m/it/10.95 The de-vi-a-tion bound in (A2) is sat-is-fied with prob-a
 -bil-ity $\OMS/cmsy/m/n/10.95  \OT1/cmr/m/n/10.95 1 \OMS/cmsy/m/n/10.95   \OT1
 /cmr/m/n/10.95 12\OML/cmm/m/it/10.95 c[] []\OT1/cmr/m/n/10.95 [(\OML/cmm/m/it/1
@@ -536,7 +536,7 @@ Overfull \hbox (4.83646pt too wide) in paragraph at lines 179--181
 OT1/cmr/m/n/10.95 )]$\OT1/cmr/m/it/10.95 ,
  []
 
-[28] [29]) (Proofs.tex [30]
+[28] [29] [30]) (Proofs.tex
 Overfull \hbox (25.55247pt too wide) detected at line 34
 [] [] \OMS/cmsy/m/n/10.95 k\OT1/cmr/m/n/10.95 (\OT1/cmr/bx/n/10.95 Y[] \OMS/cms
 y/m/n/10.95   \OT1/cmr/bx/n/10.95 X[][]\OT1/cmr/m/n/10.95 )[]\OMS/cmsy/m/n/10.9
@@ -547,7 +547,7 @@ y/m/n/10.95   \OT1/cmr/bx/n/10.95 X[][]\OT1/cmr/m/n/10.95 )[]\OMS/cmsy/m/n/10.9
 OT1/cmr/bx/n/10.95 T[]\OMS/cmsy/m/n/10.95 k
  []
 
-
+[31]
 Overfull \hbox (1.97311pt too wide) in paragraph at lines 59--59
 [] 
  []
@@ -557,7 +557,7 @@ Overfull \hbox (40.3196pt too wide) in paragraph at lines 69--69
 [] 
  []
 
-[31]
+
 Overfull \hbox (7.3078pt too wide) detected at line 77
 [] \OMS/cmsy/m/n/10.95 k\OT1/cmr/bx/n/10.95 d[]\OMS/cmsy/m/n/10.95 k  \OT1/cmr
 /m/n/10.95 3 [] \OMS/cmsy/m/n/10.95 k\OT1/cmr/bx/n/10.95 d[]\OMS/cmsy/m/n/10.95
@@ -587,14 +587,14 @@ msb/m/n/10.95 M\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 n; p\OT1/cmr/m/n/10.95 )
 .95 M\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 n; q\OT1/cmr/m/n/10.95 )$
  []
 
-[34]
+[34] [35]
 Overfull \hbox (14.67491pt too wide) detected at line 305
 [][] \OMS/cmsy/m/n/10.95  [] \OT1/cmr/m/n/10.95 + [] \OML/cmm/m/it/10.95 [] \
 OT1/cmr/m/n/10.95 = \OML/cmm/m/it/10.95 V[]\OT1/cmr/m/n/10.95 ;  \OML/cmm/m/it/
 10.95 c[] \OT1/cmr/m/n/10.95 = [][]
  []
 
-[35] [36] [37]) (jmmle-draft.bbl [38] [39]
+[36] [37]) (jmmle-draft.bbl [38] [39]
 Missing character: There is no Â in font cmr10!
 Missing character: There is no ¨ in font cmr10!
  [40])
@@ -615,11 +615,11 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 108.
 Here is how much of TeX's memory you used:
  8549 strings out of 493333
  125309 string characters out of 3137901
- 230805 words of memory out of 3000000
+ 231805 words of memory out of 3000000
  11721 multiletter control sequences out of 15000+200000
  17655 words of font info for 66 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,17n,39p,1359b,492s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,17n,39p,1359b,482s stack positions out of 5000i,500n,10000p,200000b,50000s
 <D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmbx10.pfb><D:
 /Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Stud
 y/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmbx8.pfb><D:/Study/LaTe
@@ -644,9 +644,9 @@ kTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmsy8.pfb><D:/Study/LaTeX/MikTeX 2
 ts/type1/public/amsfonts/cm/cmtt10.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/ty
 pe1/public/amsfonts/symbols/msam10.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/ty
 pe1/public/amsfonts/symbols/msbm10.pfb>
-Output written on jmmle-draft.pdf (41 pages, 591565 bytes).
+Output written on jmmle-draft.pdf (41 pages, 593901 bytes).
 PDF statistics:
- 923 PDF objects out of 1000 (max. 8388607)
+ 926 PDF objects out of 1000 (max. 8388607)
  211 named destinations out of 1000 (max. 500000)
  163 words of extra memory for PDF output out of 10000 (max. 10000000)
 

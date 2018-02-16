@@ -198,7 +198,7 @@ $$
 %Denote $\hat \cH_0^i = \{ j\ in \cI_q: |d_{ij}| \geq \hat \tau \}$.
 For this procedure to maintain FDR and FDP asymptotically at a pre-specified level $\alpha \in (0,1)$, we need some dependence conditions on true correlation matrices in the lower layer. Following \cite{LiuShao14}, we introduce there are two types of dependency we consider:
 
-\noindent {\bf (D1)} Define $r_{0,jj'}^k = \sigma_{0,jj'}^k /\sqrt{\sigma_{0,jj}^k \sigma_{0,j'j'}^k}$ for $j,j' \in \cI_q, k = 1,2$. Suppose there exists $0 < r < 1$ such that $\max_{1 \leq j < j' \leq q} | r_{0,jj'}^k | \leq r$, and for every $j \in \cI_q$,
+\noindent {\bf (D1)} Define $r_{0,jj'}^k = \sigma_{y0,jj'}^k /\sqrt{\sigma_{y0,jj}^k \sigma_{y0,j'j'}^k}$ for $j,j' \in \cI_q, k = 1,2$. Suppose there exists $0 < r < 1$ such that $\max_{1 \leq j < j' \leq q} | r_{0,jj'}^k | \leq r$, and for every $j \in \cI_q$,
 %
 $$
 \sum_{j'=1}^q \BI \left\{ |r_{0,jj'}^k| \geq \frac{1}{(\log q)^{2 + \theta}} \right\} \leq O(q^\rho)
@@ -238,7 +238,7 @@ Further, if (D1*) is satisfied, then \eqref{eqn:FDReqn} holds for $\log q = o(n^
 The condition \eqref{eqn:FDRthmEqn1} is essential for FDR control in a diverging parameter space \citep{LiuShao14, Liu17}.
 
 \begin{Remark}
-Following \cite{LiuShao14}, a version of Algorithm~\ref{algo:AlgoFDR}, where the null distribution is calibrated using bootstrap instead of normal approximation, gives asymptotic FDR control under (D1*) and $\log q = o(n^{1/2})$. We believe it is possible to obtain \eqref{eqn:FDReqn} under the weaker condition (D1) for $ \log q = o(n^{1/2})$ by extending the framework of \cite{Liu17} that performs multiple testing in multiple (single layer) GGMs, with the added advantage of being generalizable to the case of $K > 2$. However, this requires a significant amount of theoretical analysis, and we leave it for future research.
+We believe it is possible to obtain \eqref{eqn:FDReqn} under the weaker condition (D1) for $ \log q = o(n^{1/2})$ by extending the framework of \cite{Liu17} that performs multiple testing in multiple (single layer) GGMs, with the added advantage of being generalizable to the case of $K > 2$. However, this requires a significant amount of theoretical analysis, and we leave it for future research.
 \end{Remark}
 
 \begin{Remark}
@@ -252,5 +252,5 @@ Based on the FDR control procedure in Algorithm~\ref{algo:AlgoFDR}, we can perfo
 \label{eqn:fdr-threshold}
 \end{align}
 %
-Even without group misspecification, this helps identify directed edges between layers that have high nonzero values. Similar post-estimation thresholding results have been proposed in the context of multitask regression \citep{ObozinskiEtal11,MajumdarChatterjeeStat} and neighborhood selection \citep{MaMichailidis15}. However, our procedure is the first one to provide explicit guarantees on the amount of false discoveries while doing so.
+Even without group misspecification, this helps identify directed edges between layers that have high nonzero values. Similar post-estimation thresholdings have been proposed in the context of multitask regression \citep{ObozinskiEtal11,MajumdarChatterjeeStat} and neighborhood selection \citep{MaMichailidis15}. However, our procedure is the first one to provide explicit guarantees on the amount of false discoveries while doing so.
 \end{Remark}

@@ -58,17 +58,18 @@ $$
 $$
 %
 \begin{align}
-\| \widehat \Theta_j - \Theta_{0,j} \|_F & \leq 12 \sqrt{s_j} \gamma / \psi, \label{eqn:theta-norm-bound-1a}\\
-\sum_{j \neq j', g \in \cG_y^{jj'}} \| \hat \bftheta_{jj'}^{[g]} - \bftheta_{0,jj'}^{[g]} \| & \leq 48 s_j \gamma / \psi. \label{eqn:theta-norm-bound-2a}\\
+\| \widehat \Theta_j - \Theta_{0,j} \|_F & \leq 12 \sqrt{s_j} \gamma_n / \psi, \label{eqn:theta-norm-bound-1a}\\
+\sum_{j \neq j', g \in \cG_y^{jj'}} \| \hat \bftheta_{jj'}^{[g]} - \bftheta_{0,jj'}^{[g]} \| & \leq 48 s_j \gamma_n / \psi. \label{eqn:theta-norm-bound-2a}\\
 | \supp (\widehat \Theta_j) | & \leq 128 s_j / \psi
 \end{align}
 %
 
-\noindent (II) For the choice of tuning parameter $\gamma = 4 \sqrt{| g_{\max}|} \BQ_0 \sqrt{\log (p q)/n}$,
+\noindent (II) For the choice of tuning parameter $\gamma_n = 4 \sqrt{| g_{\max}|} \BQ_0 \sqrt{\log (p q)/n}$,
 %
 \begin{align}\label{eqn:OmegaBounds0a}
 \frac{1}{K} \sum_{k=1}^K \| \widehat \Omega_y^k - \Omega_{y0}^k \|_F \leq
-O \left( \BQ_0 \sqrt{\frac{| g_{\max}| S}{K}} \right)
+O \left( \BQ_0 \sqrt{\frac{| g_{\max}| S}{K}}
+\sqrt {\frac{ \log (p q)}{n}} \right)
 \end{align}
 %
 %Further if A1 holds with $s = s_0$, and A3 is satisfied then
@@ -397,11 +398,24 @@ $$
 The proof follows the general structure of Theorem 4.1 in \cite{LiuShao14}, with two modifications. Firstly we replace the bound in equation (12) of \cite{LiuShao14} by a new deviation bound
 %
 $$
-P( | d_{ij} - \mu_j/\sigma_j| \geq t) = (1 - \Phi(t))(1 + o(1))
+P \left( \left| d_{ij} - \frac{\mu_j}{\sigma_j} \right| \geq t \right) = (1 - \Phi(t))(1 + o(1))
 $$
 %
-for any $t$, because $(d_{ij} - \mu_j)/\sigma_j \sim N(0,1) + o_P(1)$ following Corollary~\ref{corollary:CorTesting}. Secondly, we need to ensure that given both $\Sigma_{y0}^1$ and $\Sigma_{y0}^2$ satisfy the condition (C1) or (C1*), the pooled covariance matrix $\Sigma_{y0}^1/ (m_{0i}^1)^2 + \Sigma_{y0}^2/  (m_{0i}^2)^2$ also does so.
+for any $t$, since $(d_{ij} - \mu_j)/\sigma_j \sim N(0,1) + o_P(1)$ from Corollary~\ref{corollary:CorTesting}. We replace $G_\kappa(t)$ in all following calculations in \cite{LiuShao14} with $1 - \Phi(t)$. Secondly, we need to ensure that given both $\Sigma_{y0}^1$ and $\Sigma_{y0}^2$ satisfy the condition (D1) or (D1*), the pooled covariance matrix $\Sigma_{y0}^1/ \sigma_{x0,i,-i}^1 + \Sigma_{y0}^2/  \sigma_{x0,i,-i}^2$ also does so.
 
+For this, denote $c_k =  \sigma_{x0,i,-i}^k, k = 1,2$. Notice that for any $C_1, C_2 > 0$,
+%
+\begin{align*}
+r_{0,jj'}^k \geq C_k & \Rightarrow \sigma_{y0,jj'}^k \geq (\sigma_{y0,jj}^k \sigma_{y0,j'j'}^k)^{1/2} C_k\\
+& \Rightarrow \frac{\sigma_{y0,jj'}^1}{c_1} + \frac{\sigma_{y0,jj'}^2}{c_2} \geq
+\frac{ (\sigma_{y0,jj}^1 \sigma_{y0,j'j'}^1)^{1/2} C_1}{c_1} +
+\frac{ (\sigma_{y0,jj}^2 \sigma_{y0,j'j'}^2)^{1/2} C_2}{c_2}\\
+& \Rightarrow \frac{ \sigma_{y0,jj'}^1/c_1 + \sigma_{y0,jj'}^2/c_2}
+{ (\sigma_{y0,jj}^1 \sigma_{y0,j'j'}^1)^{1/2}/ c_1 + (\sigma_{y0,jj}^2 \sigma_{y0,j'j'}^2)^{1/2}/ c_2}
+\geq \min \{ C_1, C_2 \}
+\end{align*}
+%
+It is now immediate that (D1) or (D1*) holds for the pooled covariance matrices.
 \end{proof}
 
 
