@@ -394,6 +394,13 @@ $$
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:FDRthm}]
+The proof follows the general structure of Theorem 4.1 in \cite{LiuShao14}, with two modifications. Firstly we replace the bound in equation (12) of \cite{LiuShao14} by a new deviation bound
+%
+$$
+P( | d_{ij} - \mu_j/\sigma_j| \geq t) = (1 - \Phi(t))(1 + o(1))
+$$
+%
+for any $t$, because $(d_{ij} - \mu_j)/\sigma_j \sim N(0,1) + o_P(1)$ following Corollary~\ref{corollary:CorTesting}. Secondly, we need to ensure that given both $\Sigma_{y0}^1$ and $\Sigma_{y0}^2$ satisfy the condition (C1) or (C1*), the pooled covariance matrix $\Sigma_{y0}^1/ (m_{0i}^1)^2 + \Sigma_{y0}^2/  (m_{0i}^2)^2$ also does so.
 
 \end{proof}
 
