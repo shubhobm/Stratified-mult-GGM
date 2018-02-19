@@ -263,7 +263,7 @@ where $\cS_{jk} = \supp(\widetilde \bfB^{k (t+1)}_j)$.
 \noindent 6. Calculate $\widehat \Omega_y^k, k \in \cI_K$ using \eqref{eqn:omega-y-calc}.
 \end{Algorithm}
 
-Note that compared to early stopping rules of iterative algorithms \citep{}, we let $\cB$ converge completely, then use these solutions to recover the support set of the precision matrices. The estimation accuracy of $\Omega_y$ depends on the solution $\widehat \cB$ used to solve the sub-problem \eqref{eqn:EstEqn2} (Theorem~\ref{thm:thm-Theta} and Lemmas \ref{thm:ThetaThm} and \ref{prop:ErrorRE}). Letting $\cB$ converge first ensures that the solutions $\widehat \Theta$ and $\widehat \Omega_y$ obtained subsequently are of a better quality compared to a simple early stopping of the JMMLE algorithm.
+Note that compared to early stopping rules of iterative algorithms \citep{} {\colrbf refs?}, we let $\cB$ converge completely, then use these solutions to recover the support set of the precision matrices. The estimation accuracy of $\Omega_y$ depends on the solution $\widehat \cB$ used to solve the sub-problem \eqref{eqn:EstEqn2} (Theorem~\ref{thm:thm-Theta} and Lemmas \ref{thm:ThetaThm} and \ref{prop:ErrorRE}). Letting $\cB$ converge first ensures that the solutions $\widehat \Theta$ and $\widehat \Omega_y$ obtained subsequently are of a better quality compared to a simple early stopping of the JMMLE algorithm.
 
 Table~\ref{table:simtable41} compares performances the full algorithm and the one-step version for the two data settings with smaller feature dimensions. The performances are indistinguishable across metrics, but the one-step algorithm saves computation time in orders of magnitude (Table~\ref{table:simtable42}).
 
