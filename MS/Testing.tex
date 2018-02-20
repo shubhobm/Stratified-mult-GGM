@@ -135,11 +135,10 @@ Consider the global test given in Algorithm~\ref{algo:AlgoGlobalTest}, performed
 %
 $$
 K_q \left( \chi^2_{q,1-\alpha} + \bfdelta^T 
-\left( \frac{ \Sigma_{y 0}^1}{(m_{0 i}^1)^2} + \frac{\Sigma_{y 0}^2}{(m_{0 i}^2)^2}
-+ \Delta_n \right)^{-1} \bfdelta \right) + o(1)
+\left( \frac{ \Sigma_{y 0}^1}{\sigma_{x0, i,-i}^1} + \frac{\Sigma_{y 0}^2}{\sigma_{x0, i,-i}^2} \right)^{-1} \bfdelta \right) + o(1)
 $$
 %
-where $\| \Delta_n \|_\infty = o(1)$, $K_q$ is the cumulative distribution function of the $\chi^2_q$ distribution, and $m_{0 i}^k$ is the population version of $m_i^k, k=  1,2$. Consequently, for $\| \bfdelta \|_\infty \geq {\colrbf tbd}$, $P( H_0^i \text{ is rejected }) \rightarrow 1$ as $(n,p,q) \rightarrow \infty$.
+where $K_q$ is the cumulative distribution function of the $\chi^2_q$ distribution. Consequently, for $\| \bfdelta \|_\infty \geq O(\sqrt{ \log (pq)/n} )$, $P( H_0^i \text{ is rejected }) \rightarrow 1$ as $(n,p,q) \rightarrow \infty$.
 \end{Theorem}
 {\colrbf proof tbd}
 %
@@ -198,18 +197,18 @@ $$
 %Denote $\hat \cH_0^i = \{ j\ in \cI_q: |d_{ij}| \geq \hat \tau \}$.
 For this procedure to maintain FDR and FDP asymptotically at a pre-specified level $\alpha \in (0,1)$, we need some dependence conditions on true correlation matrices in the lower layer. Following \cite{LiuShao14}, we introduce there are two types of dependency we consider:
 
-\noindent {\bf (D1)} Define $r_{0,jj'}^k = \sigma_{y0,jj'}^k /\sqrt{\sigma_{y0,jj}^k \sigma_{y0,j'j'}^k}$ for $j,j' \in \cI_q, k = 1,2$. Suppose there exists $0 < r < 1$ such that $\max_{1 \leq j < j' \leq q} | r_{0,jj'}^k | \leq r$, and for every $j \in \cI_q$,
+\noindent {\bf (D1)} Define $r_{jj'}^k = \sigma_{y0,jj'}^k /\sqrt{\sigma_{y0,jj}^k \sigma_{y0,j'j'}^k}$ for $j,j' \in \cI_q, k = 1,2$. Suppose there exists $0 < r < 1$ such that $\max_{1 \leq j < j' \leq q} | r_{jj'}^k | \leq r$, and for every $j \in \cI_q$,
 %
 $$
-\sum_{j'=1}^q \BI \left\{ |r_{0,jj'}^k| \geq \frac{1}{(\log q)^{2 + \theta}} \right\} \leq O(q^\rho)
+\sum_{j'=1}^q \BI \left\{ |r_{jj'}^k| \geq \frac{1}{(\log q)^{2 + \theta}} \right\} \leq O(q^\rho)
 $$
 %
 for some $\theta > 0$ and $0 < \rho < (1-r)/(1+r)$.
 
-\noindent {\bf (D1*)} Suppose there exists $0 < r < 1$ such that $\max_{1 \leq j < j' \leq q} | r_{0,jj'}^k | \leq r$, and for every $j \in \cI_q$,
+\noindent {\bf (D1*)} Suppose there exists $0 < r < 1$ such that $\max_{1 \leq j < j' \leq q} | r_{jj'}^k | \leq r$, and for every $j \in \cI_q$,
 %
 $$
-\sum_{j'=1}^q \BI \left\{ |r_{0,jj'}^k| > 0 \right\} \leq O(q^\rho)
+\sum_{j'=1}^q \BI \left\{ |r_{jj'}^k| > 0 \right\} \leq O(q^\rho)
 $$
 %
 for some $0 < \rho < (1-r)/(1+r)$.
@@ -238,7 +237,7 @@ Further, if (D1*) is satisfied, then \eqref{eqn:FDReqn} holds for $\log q = o(n^
 The condition \eqref{eqn:FDRthmEqn1} is essential for FDR control in a diverging parameter space \citep{LiuShao14, Liu17}.
 
 \begin{Remark}
-Following condition \eqref{eqn:FDRthmEqn1}, a sufficient condition on the sparsity of $\cB_0$ for FDR to be asymptotically controlled at some specified level is $B = o(n^\zeta/ \log q)$ if (D1) is satisfied, and $B = o(n^{1/3}/ \log q)$ if (D1*) is satisfied. In comparison, our results for the global testing procedure require $B = o(\sqrt n/ \log (pq))$, and point estimation requires $B = o(n/ \log (pq))$. In finite samples settings, the stricter sparsity requirements translate to higher sample sizes being needed (given the same $(p,q)$) for our testing procedures to have satisfactory performances compared to estimation only (See Sections \ref{sec:eval-jmmle} and \ref{sec:eval-testing}).
+Following \eqref{eqn:FDRthmEqn1}, a sufficient condition on the sparsity of $\cB_0$ for FDR to be asymptotically controlled at some specified level is $B = o(n^\zeta/ \log q)$ if (D1) is satisfied, and $B = o(n^{1/3}/ \log q)$ if (D1*) is satisfied. In comparison, our results for the global testing procedure require $B = o(\sqrt n/ \log (pq))$, and point estimation requires $B = o(n/ \log (pq))$. In finite samples settings, the stricter sparsity requirements translate to higher sample sizes being needed (given the same $(p,q)$) for our testing procedures to have satisfactory performances compared to estimation only (See Sections \ref{sec:eval-jmmle} and \ref{sec:eval-testing}).
 
 In recent work, \cite{JavanmardMontanari18} showed that the $o(\sqrt n/ \log p)$ bound on the sparsity of the true coefficient vector required to construct confidence intervals from debiased lasso coefficient estimates \citep{vanDeGeerEtal14, ZhangZhang14,JavanmardMontanari14} can be weakened to $o(n/ (\log p)^2)$ when the random design precision matrix is known, or is unknown but satisfies certain sparsity assumptions. Similar relaxations may be possible in our case. For example, the machineries in \cite{Liu17}, which performs simultaneous testing in multiple (single layer) GGMs using slightly modified FDR thresholds, can be useful in obtaining \eqref{eqn:FDReqn} for $ \log q = o(n^{1/2})$ under (D1), (D1*) or other suitable dependency assumptions.% However, this requires a significant amount of theoretical analysis, and we leave it for future research.
 \end{Remark}

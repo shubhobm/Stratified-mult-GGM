@@ -109,7 +109,7 @@ with probability $\geq 1 - 1/p^{\tau_1-2} - 12 c_1 \exp [-(c_2^2-1) \log(pq)] - 
 with $\sigma_{y0,j,-j}^k = \BV( E_j - \BE_{-j} \bftheta_{0,j})$, and 
 %
 $$
-V_x^k = \sqrt{ \frac{ \log 4 + \tau_1 \log p}{c_x^k n}} + \max_i \sigma_{x,ii}^k; \quad
+V_x^k = \sqrt{ \frac{ \log 4 + \tau_1 \log p}{c_x^k n}}; \quad
 c_x^k = \left[ 128 ( 1 + 4 \Lambda_{\max} (\Sigma_{x0}^k)  )^2 \max_i (\sigma_{x0,ii}^k)^2 \right]^{-1}
 $$
 \end{enumerate} 
@@ -342,7 +342,7 @@ Putting them back in \eqref{eqn:ThmTestingProofeq1} and using $t_i^k = (\bfR_i^k
 At this point, we drop $k$ and 0 in the subscripts, and prove the following:
 
 \begin{Lemma}\label{Lemma:ThmTestingLemma}
-Given conditions (T1) and (T2), the following holds for sample size $n$ such that $n \succsim \log (pq)$ and $\sigma_{x,i,-i} - n^{-1/4} - v_\zeta \sqrt{V_x} > 0$:
+Given conditions (T1) and (T2), the following holds for sample size $n$ such that $n \succsim \log (pq)$ and $\sqrt{\sigma_{x,i,-i}} - n^{-1/4} - D_\zeta \sqrt{V_x} > 0$:
 %
 $$
 \frac{1}{\sqrt n \widehat s_i}  \widehat \Omega_y^{1/2} \bfE^T \bfR_i \sim
@@ -351,7 +351,7 @@ $$
 %
 \begin{align}\label{eqn:ThmTestingProofeq3}
 \| \bfS_{1n} \|_\infty & \leq 
-\frac{D_\Omega^{1/2} (2 + D_\zeta) c_2 [ \Lambda_{\max} (\Sigma_x) \Lambda_{\max} (\Sigma_e) ]^{1/2} \sqrt{ \log(pq)}}{\sigma_{x,i,-i} - n^{-1/4} - D_\zeta \sqrt{V_x}} =
+\frac{D_\Omega^{1/2} (2 + D_\zeta) c_2 [ \Lambda_{\max} (\Sigma_x) \Lambda_{\max} (\Sigma_e) ]^{1/2} \sqrt{ \log(pq)}}{\sqrt{ \sigma_{x,i,-i}} - n^{-1/4} - D_\zeta \sqrt{V_x}} =
 O \left( \frac{ \log(pq)}{\sqrt n} \right)
 \end{align}
 %
@@ -364,7 +364,7 @@ Additionally, given condition (T3)
 \widehat \Omega_y^{1/2} \right\|_\infty \notag\\
 & \leq
 \frac{D_\beta ( \Lambda_{\min} (\Sigma_y)^{1/2} + D_\Omega^{1/2})}{\sigma_{x,i,-i} - n^{-1/2} - D_\zeta \sqrt{V_x}} 
-\left[ c_{7} \sqrt{ (\sigma_{x,i,-i} \Lambda_{\max} (\Sigma_{x, -i}) ) \log p} + \sqrt n D_\zeta V_x \right] =
+\left[ c_{7} \sqrt{ (\sqrt{ \sigma_{x,i,-i}} \Lambda_{\max} (\Sigma_{x, -i}) ) \log p} + \sqrt n D_\zeta V_x \right] =
 O \left( \frac{ \log(pq)}{\sqrt n} \right)
 \end{align}
 %
@@ -375,6 +375,83 @@ Given Lemma~\ref{Lemma:ThmTestingLemma}, the first and second summands on the ri
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:PowerThm}]
+From \eqref{eqn:ThmTestingProofeq2} and Lemma~\ref{Lemma:ThmTestingLemma} we have that
+%
+\begin{align}
+(\widehat \Omega_y^k)^{1/2} m_i^k ( \widehat \bfc_i^k - \bfb_{0i}^k) \sim \cN_q ({\bf 0}, \bfI) + \bfS_{2n}^k,
+\end{align}
+%
+where $\| \bfS_{2n}^k \|_\infty = o_P(1)$. We now have the following lemma:
+%
+\begin{Lemma}\label{Lemma:PowerThmLemma}
+With the assumptions of Theorem~\ref{thm:PowerThm}, the following holds with probability $\geq 1 - 6c_{6} \exp [-(c_{7}^2-1) \log (p-1)] - 1/p^{\tau_2-2} - \kappa_i / \sqrt n, \tau_2 > 2$:
+%
+\begin{align}
+\left| \frac{m_i^k}{\sqrt n} - \sqrt{ \sigma_{x0,i,-i}^k} \right| & \leq
+D_i := \sqrt{ \frac{ \log 4 + \tau_2}{c_i^k n}} +
+\frac{D_\zeta + \| \bfzeta_{0i} \|_1 }{\sqrt{ \sigma_{x0,i,-i}^k} - n^{-1/2} - D_\zeta \sqrt{V_x}} \times \notag\\
+& \left[ c_{7} [(\sigma_{x0,i,-i}^k \Lambda_{\max} (\Sigma_{x0, -i}^k)]^{1/2} \sqrt{ \frac{\log p}{n}} + D_\zeta V_x^k \right], \label{eqn:PowerThmLemmaEqn}
+\end{align}
+%
+where $c_i^k = [ 128 (1 + 4 \sigma_{x0,i,-i}^k)^2 (\sigma_{x0,i,-i}^k)^2 ]^{-1}, \kappa_i^k = \BV [(X_i^k - \BX_{-i}^k \bfzeta_{0,-i}^k)^2]$ for $k = 1,2$, and the sample size satisfies $n \succsim \log p$,  $n \geq 512 (1 + 4 \sigma_{x0,i,-i}^k)^42 (\sigma_{x0,i,-i}^k)^4 \log(4) $ and $\sqrt{ \sigma_{x0,i,-i}^k} - n^{-1/4} - D_\zeta \sqrt{V_x^k} > 0$.
+\end{Lemma}
+%
+
+We also have a general result:
+
+\begin{Lemma}\label{lemma:omega-diff}
+Consider two positive definite matrices $\bfA, \bfA_1 \in \BM(a,a)$. Then for $\delta > 0$,
+%
+$$
+\| \bfA  -\bfA_1 \|_\infty \leq \delta \Rightarrow \| \bfA^{1/2} - \bfA_1^{1/2} \|_\infty \leq \sqrt{ \delta}.
+$$
+\end{Lemma}
+%
+
+\noindent Applying Lemma~\ref{lemma:omega-diff} it is immediate from assumption (T2) that
+%
+\begin{align}\label{eqn:omega-sqrt-bound}
+\left\| \widehat \Omega_y^{1/2} - \Omega_y^{1/2} \right\|_\infty \leq \sqrt{ D_{\Omega}}
+\end{align}
+
+Using Lemma~\ref{Lemma:PowerThmLemma} in conjunction with \eqref{eqn:omega-sqrt-bound} we now have
+%
+\begin{align*}
+\sqrt n (\Omega_{y0}^k)^{1/2} \sqrt{\sigma_{x0,i,-i}^k} (\widehat \bfc_i^k - \bfb_{0i}^k)  \sim
+\cN_q ( {\bf 0}, \bfI) + \bfS_{3n}^k\\
+\Rightarrow \sqrt n \Sigma_i^{-1/2} (\widehat \bfc_i^1 - \widehat \bfc_i^2 - \bfdelta) \sim
+\cN_q \left( {\bf 0}, \bfI \right) + \bfS_{3n},
+\end{align*}
+%
+where $\Sigma_i := \Sigma_{y0}^1/ \sigma_{x0,i,-i}^1 + \Sigma_{y0}^2/ \sigma_{x0,i,-i}^2$ and $\bfS_{3n} = \bfS_{3n}^1 + \bfS_{3n}^2, \|\bfS_{3n}^k\|_\infty = o_P(1)$. We now break down the left hand side above as
+%
+\begin{align}
+\sqrt n \Sigma_i^{-1/2} (\widehat \bfc_i^1 - \widehat \bfc_i^2 - \bfdelta) &=
+\sqrt n \Sigma_i^{-1/2} \widehat \Sigma_i^{1/2} \widehat \Sigma_i^{-1/2} (\widehat \bfc_i^1 - \widehat \bfc_i^2) - \sqrt n \Sigma_i^{-1/2} \bfdelta \notag\\
+&= (\Sigma_i^{-1/2} \widehat \Sigma_i^{1/2} - \bfI) . \sqrt n \widehat \Sigma_i^{-1/2} (\widehat \bfc_i^1 - \widehat \bfc_i^2) + \notag\\
+& \sqrt n \widehat \Sigma_i^{-1/2} (\widehat \bfc_i^1 - \widehat \bfc_i^2) - \sqrt n \Sigma_i^{-1/2} \bfdelta,
+\label{eqn:PowerThmProofEqn1}
+\end{align}
+%
+with
+%
+$$
+\widehat \Sigma_i :=
+\frac{ n \widehat \Sigma_y^1}{(m_i^1)^2} + \frac{n \widehat \Sigma_y^2}{(m_i^2)^2}.
+$$
+%
+Now we prove the following lemma:
+%
+\begin{Lemma}\label{Lemma:PowerThmLemma2}
+For the pooled covariance matrix estimate $\widehat \Sigma_i$, for sample size $n {\colrbf tbd}$ the following holds:
+%
+$$
+\left\| \widehat \Sigma_i - \Sigma_i \right\|_\infty \leq {\colrbf tbd}
+$$
+
+with probability $\geq 1 - 2 \kappa_i/\sqrt n$.
+\end{Lemma} 
+
 From the test statistic formulation in Algorithm~\ref{algo:AlgoGlobalTest} and Lemma~\ref{Lemma:ThmTestingLemma} it is immediate that when the alternative is true,
 %
 \begin{align*}

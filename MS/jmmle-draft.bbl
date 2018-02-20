@@ -189,6 +189,11 @@ Stucky, B. and {van de Geer}, S. (2017).
   Sparsity}.
 \newblock \url{https://arxiv.org/abs/1706.09231}.
 
+\bibitem[Taddy, 2017]{Taddy17}
+Taddy, M. (2017).
+\newblock {One-Step Estimator Paths for Concave Regularization}.
+\newblock {\em J. Comp. Graph. Stat.}, 26(3):525--536.
+
 \bibitem[Tomczak et~al., 2015]{Tomczak15}
 Tomczak, K., {Czerwi\'{n}ska}, P., and Wiznerowicz, M. (2015).
 \newblock {The Cancer Genome Atlas (TCGA): An immeasurable source of
@@ -229,5 +234,10 @@ Zhang, Y., Ouyang, Z., and Zhao, H. (2017).
 \newblock A statistical framework for data integration through graphical models
   with application to cancer genomics.
 \newblock {\em Ann. Appl. Stat.}, 11(1):161--184.
+
+\bibitem[Zou and Li, 2008]{ZouLi08}
+Zou, H. and Li, R. (2008).
+\newblock One-step sparse estimates in nonconcave penalized likelihood models.
+\newblock {\em Ann. Statist.}, 36:1509--1533.
 
 \end{thebibliography}

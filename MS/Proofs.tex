@@ -356,23 +356,6 @@ Part 2 follows the proof of Proposition 2 in \cite{LinEtal16}.
 \end{proof}
 
 \begin{proof}[Proof of Lemma~\ref{Lemma:ThmTestingLemma}]
-We start with a lemma to help along the proof.
-
-\begin{Lemma}\label{lemma:omega-diff}
-Consider two positive definite matrices $\bfA, \bfA_1 \in \BM(a,a)$. Then for $\delta > 0$,
-%
-$$
-\| \bfA  -\bfA_1 \|_\infty \leq \delta \Rightarrow \| \bfA^{1/2} - \bfA_1^{1/2} \|_\infty \leq \sqrt{ \delta}
-$$
-\end{Lemma}
-%
-
-\noindent Applying Lemma~\ref{lemma:omega-diff} it is immediate that
-%
-\begin{align}\label{eqn:omega-sqrt-bound}
-\left\| \widehat \Omega_y^{1/2} - \Omega_y^{1/2} \right\|_\infty \leq \sqrt{ D_{\Omega}}
-\end{align}
-
 To show \eqref{eqn:ThmTestingProofeq3} we have
 %
 \begin{align*}
@@ -405,9 +388,9 @@ with probability $ \geq 1 - 6c_1 \exp [-(c_2^2-1) \log(pq)]$.
 On the other hand
 %
 \begin{align*}
-s_i^2 := \frac{1}{n} \left\| \bfX_i - \bfX_{-i}  \bfzeta_i \right\|^2 & \leq 
+s_i^2 := \frac{1}{n} \left\| \bfX_i - \bfX_{-i}  \bfzeta_{0,i} \right\|^2 & \leq 
 \widehat s_i^2 + \frac{1}{n} \left\| \bfX_{-i} (\widehat \bfzeta_i - \bfzeta_{0,i} ) \right\|^2
-\leq \widehat s_i^2 + \| \widehat \bfzeta_i - \bfzeta_{0,i} \|_1^2 \left\| \frac{1}{n} \bfX_{-i}^T \bfX_{-i} \right\|_\infty
+\leq \widehat s_i^2 + \| \widehat \bfzeta_i - \bfzeta_{0i} \|_1^2 \left\| \frac{1}{n} \bfX_{-i}^T \bfX_{-i} \right\|_\infty
 \end{align*}
 %
 which implies $s_i \leq \widehat s_i + D_\zeta \sqrt{ V_x}$. By applying Lemma 8 of \cite{RavikumarEtal11},
@@ -426,14 +409,14 @@ n \geq 512 ( 1 + 4 \Lambda_{\max} (\Sigma_{x}))^4 \max_i (\sigma_{x,ii} )^4 \log
 On the other hand, by Chebyshev inequality, for any $\epsilon>0$
 %
 $$
-P\left( | s_i - \sigma_{x,i,-i}| \geq \epsilon \right) \leq \frac{\BV s_i}{\epsilon^2} =
+P\left( | s_i - \sqrt{ \sigma_{x,i,-i}} | \geq \epsilon \right) \leq \frac{\BV s_i}{\epsilon^2} =
 \frac{\kappa_i}{n \epsilon^2}
 $$
 %
-Taking $\epsilon = n^{-1/4}$, we have $s_i \geq \sigma_{x,i,-i} - n^{-1/4}$ with probability $\geq 1 - \kappa_i n^{-1/2}$. Then, for $n$ satisfying \eqref{eqn:ThmTestingProofeq32} and $\sigma_{x,i,-i} - n^{-1/4} >  D_\zeta \sqrt{ V_x}$, we get the bound with the above probability:
+Taking $\epsilon = n^{-1/4}$, we have $s_i \geq \sqrt{ \sigma_{x,i,-i}} - n^{-1/4}$ with probability $\geq 1 - \kappa_i n^{-1/2}$. Then, for $n$ satisfying \eqref{eqn:ThmTestingProofeq32} and $\sqrt{ \sigma_{x,i,-i}} - n^{-1/4} >  D_\zeta \sqrt{ V_x}$, we get the bound with the above probability:
 %
 \begin{align}\label{eqn:ThmTestingProofeq34}
-\frac{1}{\widehat s_i} \leq \frac{1}{\sigma_{x,i,-i} - n^{-1/4} - D_\zeta \sqrt{ V_x}}
+\frac{1}{\widehat s_i} \leq \frac{1}{\sqrt{ \sigma_{x,i,-i}} - n^{-1/4} - D_\zeta \sqrt{ V_x}}
 \end{align}
 %
 Combining \eqref{eqn:ThmTestingProofeq31} and \eqref{eqn:ThmTestingProofeq34} gives the upper bound for the right hand side of \eqref{eqn:ThmTestingProofeq3} with the requisite probability and sample size conditions.
@@ -457,12 +440,26 @@ c_{7} [ \sigma_{x,i,-i} \Lambda_{\max} (\Sigma_{x, -i}) ]^{1/2} \sqrt{\frac{ \lo
 with probability $\geq 1 - 6c_{6} \exp [-(c_{7}^2-1) \log (p-1)]$ for some $c_{6} >0, c_{7} > 1$. By \eqref{eqn:ThmTestingProofeq32}, the second term on the right side of \eqref{eqn:ThmTestingProofeq41} is bounded above by $D_\zeta V_x$ with probability $ \geq 1 - 1/p^{\tau_1-2}$ and $n$ satisfying \eqref{eqn:ThmTestingProofeq33}. The bound of \eqref{eqn:ThmTestingProofeq4} now follows by conditions (T2), (T3) and \eqref{eqn:ThmTestingProofeq34}.
 \end{proof}
 
-\begin{proof}[Proof of Lemma~\ref{lemma:ErrorRElemma1}]
-This is same as Lemma 2 in Appendix B of \cite{LinEtal16} and its proof can be found there.
-\end{proof}
-
-\begin{proof}[Proof of Lemma~\ref{lemma:ErrorRElemma2}]
-This is a part of Lemma 3 of Appendix B in \cite{LinEtal16}, and is proved therein.
+\begin{proof}[Proof of Lemma~\ref{Lemma:PowerThmLemma}] We dreop $k$ in the superscripts. By definition,
+\begin{align}
+\frac{m_i}{\sqrt n} &= \frac{1}{\widehat s_i} \frac{ ( \bfX_i - \bfX_{-i} \widehat \bfzeta_i)^T \bfX_i}{n} \notag\\
+&= \frac{1}{\widehat s_i} \left[ \frac{\| \bfX_i - \bfX_{-i} \widehat \bfzeta_i \|^2}{n} +
+ \frac{(\bfX_i - \bfX_{-i} \widehat \bfzeta_i)^T \bfX_{-i} \widehat \bfzeta_i}{n} \right] \notag\\
+& \leq \widehat s_i + \frac{1}{\widehat s_i} .\frac{1}{n} \| \bfR_i^T \bfX_{-i} \|_\infty
+\left (\| \widehat \bfzeta_i - \bfzeta_{0i} \|_1 + \| \bfzeta_{0i} \|_1 \right) \notag\\
+\Rightarrow \left| \frac{m_i}{\sqrt n} - \sqrt{\sigma_{x,i,-i}} \right| & \leq
+| \widehat s_i - \sqrt{\sigma_{x,i,-i}} | + \frac{1}{\widehat s_i} .\frac{1}{n} \| \bfR_i^T \bfX_{-i} \|_\infty
+\left (\| \widehat \bfzeta_i - \bfzeta_{0i} \|_1 + \| \bfzeta_{0i} \|_1 \right) \label{eqn:PowerThmLemmaProofEqn1}
+\end{align}
+%
+By applying Lemma 8 in \cite{RavikumarEtal11} we have
+%
+$$
+| \widehat s_i - \sqrt{\sigma_{x,i,-i}} | \leq \sqrt{ \frac{ \log 4 + \tau_2}{c_i n}}; \quad
+c_i = \left[ 128 (1 + 4 \sigma_{x,i,-i})^2 \sigma_{x,i,-i}^2 \right]^{-1}
+$$
+%
+with probability $1 - 1/p^{\tau_2 - 2}$ for some $\tau_2>2$, and $n \geq 512 (1 + 4 \sigma_{x,i,-i})^42 \sigma_{x,i,-i}^4 \log(4) $. For the second summand in the right-hand side of \eqref{eqn:PowerThmLemmaProofEqn1}, $1/\widehat s_i$ can be bounded using \eqref{eqn:ThmTestingProofeq34}, $(1/n) \| \bfR_i^T \bfX_{-i} \|_\infty$ can be bounded using derivations following \eqref{eqn:ThmTestingProofeq41}. The lemma now follows by putting everything back together in \eqref{eqn:PowerThmLemmaProofEqn1} and applying assumption (T1).
 \end{proof}
 
 \begin{proof}[Proof of Lemma~\ref{lemma:omega-diff}]
@@ -474,4 +471,35 @@ $$
 $$
 %
 It is easy to prove that $\bfA^{1/2} + \sqrt \delta \bfJ_a \geq (\bfA + \delta \bfJ_a)^{1/2}$ and the same for $\bfA_1$. The lemma follows.
+\end{proof}
+
+\begin{proof}[Proof of Lemma~\ref{Lemma:PowerThmLemma2}]
+We drop $k$ in the superscripts and 0 in subscripts. Note that
+%
+\begin{align*}
+\frac{n \widehat \Sigma_y}{(m_i)^2} &= \frac{\widehat \Sigma_y - \Sigma_y + \Sigma_y}{\sigma_{x,i,-i}}.
+\frac{\sigma_{x,i,-i}}{(m_i)^2/n}\\
+\Rightarrow \frac{n \widehat \Sigma_y}{(m_i)^2} - \frac{ \Sigma_y}{\sigma_{x,i,-i}} &=
+\frac{\widehat \Sigma_y - \Sigma_y}{(m_i)^2/n} +
+\frac{\Sigma_y}{\sigma_{x,i,-i}} \left[ 1 - \frac{\sigma_{x,i,-i}}{(m_i)^2/n} \right]\\
+& = \frac{n}{(m_i)^2} \left[ \widehat \Sigma_y - \Sigma_y +
+\frac{\Sigma_y}{\sigma_{x,i,-i}} \left( \frac{(m_i)^2}{n} - \sigma_{x,i,-i} \right) \right]
+\end{align*}
+%
+Thus
+%
+\begin{align*}
+\left\| \frac{n \widehat \Sigma_y}{(m_i)^2} - \frac{ \Sigma_y}{\sigma_{x,i,-i}} \right\|_\infty \leq
+\frac{ \| \widehat \Sigma_y - \Sigma_y \|_\infty + \sigma_{x,i,-i}^{-1} \max_j \sigma_{y,jj} D_i^2}{\sigma_{x,i,-i} - D_i}
+\end{align*}
+%
+with probability $\geq 1 - 6c_{6} \exp [-(c_{7}^2-1) \log (p-1)] - 1/p^{\tau_2-2} - \kappa_i / \sqrt n$ and for sample size satisfying $n \succsim \log p$,  $n \geq 512 (1 + 4 \sigma_{x,i,-i})^42 (\sigma_{x,i,-i})^4 \log(4) $ and $\sqrt{ \sigma_{x,i,-i}} > \max \{ D_i, n^{-1/4} - D_\zeta \sqrt{V_x} \}$.
+\end{proof}
+
+\begin{proof}[Proof of Lemma~\ref{lemma:ErrorRElemma1}]
+This is same as Lemma 2 in Appendix B of \cite{LinEtal16} and its proof can be found there.
+\end{proof}
+
+\begin{proof}[Proof of Lemma~\ref{lemma:ErrorRElemma2}]
+This is a part of Lemma 3 of Appendix B in \cite{LinEtal16}, and is proved therein.
 \end{proof}
