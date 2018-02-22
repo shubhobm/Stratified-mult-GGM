@@ -377,7 +377,7 @@ The second summand is distributed as $\cN_q ({\bf 0}, \bfI)$. For the first summ
 & \leq \sqrt{n D_\Omega} (2 + D_\zeta) .\frac{1}{n} \| \bfE^T \bfX \|_\infty
 \end{align*}
 %
-because $\Omega_x$ is diagonally dominant implies $\| \bfzeta_i \|_1 = \sum_{i' \neq i} |\omega_{x,ii'}|/ \omega_{x,ii} \leq 1$, and using assumption (T1) and \eqref{eqn:omega-sqrt-bound}. Applying Lemma~\ref{lemma:ErrorRElemma2}, the following holds:
+because $\Omega_x$ is diagonally dominant implies $\| \bfzeta_i \|_1 = \sum_{i' \neq i} |\omega_{x,ii'}|/ \omega_{x,ii} \leq 1$, and using assumption (T1) and \eqref{eqn:omega-sqrt-bound}. Applying Lemma~\ref{lemma:ErrorRElemma2}, the following holds for $n \succsim \log (pq)$:
 %
 \begin{align}\label{eqn:ThmTestingProofeq31}
 \frac{1}{\sqrt n}  \left\| (\widehat \Omega_y^{1/2} - \Omega_y^{1/2}) \bfE^T \bfR_i \right\|_\infty & \leq \sqrt{ D_\Omega} (2 + D_\zeta) c_2 [ \Lambda_{\max} (\Sigma_x) \Lambda_{\max} (\Sigma_e) ]^{1/2} \sqrt{ \log(pq)}
@@ -413,7 +413,7 @@ P\left( | s_i - \sqrt{ \sigma_{x,i,-i}} | \geq \epsilon \right) \leq \frac{\BV s
 \frac{\kappa_i}{n \epsilon^2}
 $$
 %
-Taking $\epsilon = n^{-1/4}$, we have $s_i \geq \sqrt{ \sigma_{x,i,-i}} - n^{-1/4}$ with probability $\geq 1 - \kappa_i n^{-1/2}$. Then, for $n$ satisfying \eqref{eqn:ThmTestingProofeq32} and $\sqrt{ \sigma_{x,i,-i}} - n^{-1/4} >  D_\zeta \sqrt{ V_x}$, we get the bound with the above probability:
+Taking $\epsilon = n^{-1/4}$, we have $s_i \geq \sqrt{ \sigma_{x,i,-i}} - n^{-1/4}$ with probability $\geq 1 - \kappa_i n^{-1/2}$. Then, for $n$ satisfying \eqref{eqn:ThmTestingProofeq33} and $\sqrt{ \sigma_{x,i,-i}} - n^{-1/4} >  D_\zeta \sqrt{ V_x} $, we get the bound with the above probability:
 %
 \begin{align}\label{eqn:ThmTestingProofeq34}
 \frac{1}{\widehat s_i} \leq \frac{1}{\sqrt{ \sigma_{x,i,-i}} - n^{-1/4} - D_\zeta \sqrt{ V_x}}
@@ -437,10 +437,10 @@ Applying Lemma~\ref{lemma:ErrorRElemma2}, for $n \succsim \log(p-1)$ we have
 c_{7} [ \sigma_{x,i,-i} \Lambda_{\max} (\Sigma_{x, -i}) ]^{1/2} \sqrt{\frac{ \log (p-1)}{n}}
 \end{align}
 %
-with probability $\geq 1 - 6c_{6} \exp [-(c_{7}^2-1) \log (p-1)]$ for some $c_{6} >0, c_{7} > 1$. By \eqref{eqn:ThmTestingProofeq32}, the second term on the right side of \eqref{eqn:ThmTestingProofeq41} is bounded above by $D_\zeta V_x$ with probability $ \geq 1 - 1/p^{\tau_1-2}$ and $n$ satisfying \eqref{eqn:ThmTestingProofeq33}. The bound of \eqref{eqn:ThmTestingProofeq4} now follows by conditions (T2), (T3) and \eqref{eqn:ThmTestingProofeq34}.
+with probability $\geq 1 - 6c_{6} \exp [-(c_{7}^2-1) \log (p-1)]$ for some $c_{6} >0, c_{7} > 1$. By \eqref{eqn:ThmTestingProofeq32}, the second term on the right side of \eqref{eqn:ThmTestingProofeq41} is bounded above by $D_\zeta V_x$ with probability $ \geq 1 - 1/p^{\tau_1-2}$ and $n$ satisfying \eqref{eqn:ThmTestingProofeq33}. The bound of \eqref{eqn:ThmTestingProofeq4} now follows by conditions (T2), (T3) and \eqref{eqn:ThmTestingProofeq34}. Since $\sqrt{ \sigma_{x,i,-i}} - n^{-1/4} >  D_\zeta \sqrt{ V_x} $ implies $\sqrt{ \sigma_{x,i,-i}} >  D_\zeta \sqrt{ V_x} $, and $D_\zeta = O(\sqrt{ \log p/n})$, the leading term of the overall sample size requirement is $n \succsim \log (pq)$.
 \end{proof}
 
-\begin{proof}[Proof of Lemma~\ref{Lemma:PowerThmLemma}] We dreop $k$ in the superscripts. By definition,
+\begin{proof}[Proof of Lemma~\ref{Lemma:PowerThmLemma}] We drop $k$ in the superscripts. By definition,
 \begin{align}
 \frac{m_i}{\sqrt n} &= \frac{1}{\widehat s_i} \frac{ ( \bfX_i - \bfX_{-i} \widehat \bfzeta_i)^T \bfX_i}{n} \notag\\
 &= \frac{1}{\widehat s_i} \left[ \frac{\| \bfX_i - \bfX_{-i} \widehat \bfzeta_i \|^2}{n} +
@@ -474,7 +474,13 @@ It is easy to prove that $\bfA^{1/2} + \sqrt \delta \bfJ_a \geq (\bfA + \delta \
 \end{proof}
 
 \begin{proof}[Proof of Lemma~\ref{Lemma:PowerThmLemma2}]
-We drop $k$ in the superscripts and 0 in subscripts. Note that
+We drop $k$ in the superscripts and 0 in subscripts. Note that it is enough to prove
+%
+$$
+\left\| \frac{n \widehat \Sigma_y}{(m_i)^2} - \frac{ \Sigma_y}{\sigma_{x,i,-i}} \right\|_\infty = o_P(1).
+$$
+%
+For this, consider the decomposition
 %
 \begin{align*}
 \frac{n \widehat \Sigma_y}{(m_i)^2} &= \frac{\widehat \Sigma_y - \Sigma_y + \Sigma_y}{\sigma_{x,i,-i}}.
@@ -483,17 +489,49 @@ We drop $k$ in the superscripts and 0 in subscripts. Note that
 \frac{\widehat \Sigma_y - \Sigma_y}{(m_i)^2/n} +
 \frac{\Sigma_y}{\sigma_{x,i,-i}} \left[ 1 - \frac{\sigma_{x,i,-i}}{(m_i)^2/n} \right]\\
 & = \frac{n}{(m_i)^2} \left[ \widehat \Sigma_y - \Sigma_y +
-\frac{\Sigma_y}{\sigma_{x,i,-i}} \left( \frac{(m_i)^2}{n} - \sigma_{x,i,-i} \right) \right]
+\frac{\Sigma_y}{\sigma_{x,i,-i}} \left( \frac{(m_i)^2}{n} - \sigma_{x,i,-i} \right) \right].
 \end{align*}
 %
-Thus
+From Lemma~\ref{Lemma:PowerThmLemma} we now have
 %
-\begin{align*}
+$$
+\frac{m_i}{\sqrt n} \geq \sqrt{\sigma_{x,i,-i}} - \delta_i \quad \Rightarrow \quad
+\frac{m_i^2}{n} \geq (\sqrt{\sigma_{x,i,-i}} - \delta)^2 \geq \sigma_{x,i,-i} - \delta_i^2,
+$$
+%
+so that
+%
+\begin{align}\label{eqn:PowerThmLemma2ProofEqn1}
 \left\| \frac{n \widehat \Sigma_y}{(m_i)^2} - \frac{ \Sigma_y}{\sigma_{x,i,-i}} \right\|_\infty \leq
-\frac{ \| \widehat \Sigma_y - \Sigma_y \|_\infty + \sigma_{x,i,-i}^{-1} \max_j \sigma_{y,jj} D_i^2}{\sigma_{x,i,-i} - D_i}
-\end{align*}
+\frac{ \| \widehat \Sigma_y - \Sigma_y \|_\infty + \sigma_{x,i,-i}^{-1} \delta_i^2 \| \Sigma_y \|_\infty }{\sigma_{x,i,-i} - \delta_i^2},
+\end{align}
 %
-with probability $\geq 1 - 6c_{6} \exp [-(c_{7}^2-1) \log (p-1)] - 1/p^{\tau_2-2} - \kappa_i / \sqrt n$ and for sample size satisfying $n \succsim \log p$,  $n \geq 512 (1 + 4 \sigma_{x,i,-i})^42 (\sigma_{x,i,-i})^4 \log(4) $ and $\sqrt{ \sigma_{x,i,-i}} > \max \{ D_i, n^{-1/4} - D_\zeta \sqrt{V_x} \}$.
+with probability $\geq 1 - 6c_{6} \exp [-(c_{7}^2-1) \log (p-1)] - 1/p^{\tau_2-2} - \kappa_i / \sqrt n$ and for sample size satisfying $n \succsim \log p$,  $n \geq 512 (1 + 4 \sigma_{x,i,-i})^42 (\sigma_{x,i,-i})^4 \log(4) $ and $\sqrt{ \sigma_{x,i,-i}} > \max \{ \delta_i, n^{-1/4} - D_\zeta \sqrt{V_x} \}$. For the $\ell_\infty$ norms on the right-hand side, we have
+%
+\begin{align}\label{eqn:PowerThmLemma2ProofEqn2}
+\| \Sigma_y \|_\infty = \| \Omega_y^{-1} \|_\infty \leq (\Delta_0 (\Omega_y))^{-1}
+\end{align}
+%
+following \cite{Varah75}. For a bound on $\| \widehat \Sigma_y - \Sigma_y \|_\infty$, if condition (II) of Theorem~\ref{thm:PowerThm} is satisfied then we have
+%
+\begin{align}\label{eqn:PowerThmLemma2ProofEqn31}
+\| \widehat \Sigma_y - \Sigma_y \|_\infty \leq \tilde D_\Omega
+\end{align}
+%
+where $\tilde D_\Omega = O(D_\Omega)$ and $D_\Omega = O(\tilde D_\Omega)$ \citep{BickelLevina08}. If condition (I) is satisfied, denote $\epsilon = D_\Omega / \Delta_0 (\Omega_y)$. Then
+%
+\begin{align}
+\| \widehat \Sigma_y - \Sigma_y \|_\infty &= \| \widehat \Sigma_y (\Omega_y - \widehat \Omega_y) \Sigma_y \|_\infty \notag\\
+& \leq \| \widehat \Sigma_y \|_\infty \| \Omega_y - \widehat \Omega_y \|_\infty
+\| \Sigma_y \|_\infty \notag\\
+& \leq \| (\bfI + (\Omega_y - \widehat \Omega_y) \Sigma_y)^{-1}\|_\infty \| \Sigma_y \|_\infty \epsilon \notag\\
+& \leq \frac{\epsilon}{\Delta_0( \Omega_y)}
+\left[ 1 + \sum_{t=1}^\infty (\| (\Omega_y - \widehat \Omega_y) \Sigma_y \|_\infty)^t \right] \notag\\
+& \leq \frac{\epsilon}{(1- \epsilon) \Delta_0( \Omega_y)} \notag\\
+& = \frac{D_\Omega}{(\Delta_0 (\Omega_y) - D_\Omega ) \Delta_0 (\Omega_y)}\label{eqn:PowerThmLemma2ProofEqn32}
+\end{align}
+%
+Combining \eqref{eqn:PowerThmLemma2ProofEqn2} with \eqref{eqn:PowerThmLemma2ProofEqn31} or \eqref{eqn:PowerThmLemma2ProofEqn32} as required and putting them back in the right-hand side of \eqref{eqn:PowerThmLemma2ProofEqn1}, we get the needed.
 \end{proof}
 
 \begin{proof}[Proof of Lemma~\ref{lemma:ErrorRElemma1}]

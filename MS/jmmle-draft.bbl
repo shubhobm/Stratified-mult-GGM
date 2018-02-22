@@ -23,6 +23,11 @@ Bellman, R. (1968).
   matrix}.
 \newblock {\em Linear Algebra Appl.}, 1(3):321--324.
 
+\bibitem[Bickel and Levina, 2008]{BickelLevina08}
+Bickel, P.~J. and Levina, E. (2008).
+\newblock Covariance regularization by thresholding.
+\newblock {\em Ann. Statist.}, 36(6):2577--2604.
+
 \bibitem[Bickel et~al., 2009]{BickelRitovTsybakov09}
 Bickel, P.~J., Ritov, Y., and Tsybakov, A.~B. (2009).
 \newblock {Simultaneous analysis of Lasso and Dantzig selector}.
@@ -34,8 +39,8 @@ Bickel, P.~J., Ritov, Y., and Tsybakov, A.~B. (2009).
   Applications}}.
 \newblock Springer.
 
-\bibitem[Cai et~al., 2012]{CaiEtal12}
-Cai, T.~T., Li, H., Liu, W., and Xie, J. (2012).
+\bibitem[Cai et~al., 2012a]{CaiEtal12}
+Cai, T.~T., Li, H., Liu, W., and Xie, J. (2012a).
 \newblock {Covariate-adjusted precision matrix estimation with an application
   in genetical genomics}.
 \newblock {\em Biometrika}, 100(1):139--156.
@@ -44,6 +49,12 @@ Cai, T.~T., Li, H., Liu, W., and Xie, J. (2012).
 Cai, T.~T. and Liu, W. (2016).
 \newblock {Large-Scale Multiple Testing of Correlations}.
 \newblock {\em J. Amer. Stat. Assoc.}, 111(513):229--240.
+
+\bibitem[Cai et~al., 2012b]{CaiLiuLuo12}
+Cai, T.~T., Liu, W., and Luo, X. (2012b).
+\newblock {A Constrained $\ell_1$ Minimization Approach to Sparse Precision
+  Matrix Estimation}.
+\newblock {\em J. Amer. Statist. Assoc.}, 106(494):594--607.
 
 \bibitem[Danaher et~al., 2014]{DanaherEtal14}
 Danaher, P., Wang, P., and Witten, D.~M. (2014).
@@ -210,6 +221,11 @@ Tomczak, K., {Czerwi\'{n}ska}, P., and Wiznerowicz, M. (2015).
 \newblock {On Asymptotically Optimal Confidence Regions and Tests for
   High-Dimensional Models}.
 \newblock {\em Ann. Statist.}, 42:1166--1202.
+
+\bibitem[Varah, 1975]{Varah75}
+Varah, J.~M. (1975).
+\newblock A lower bound for the smallest singular value of a matrix.
+\newblock {\em Linear Algebra Appl.}, 11:3--5.
 
 \bibitem[Xie et~al., 2016]{XieLiuValdar16}
 Xie, Y., Liu, Y., and Valdar, W. (2016).

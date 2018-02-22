@@ -342,7 +342,7 @@ Putting them back in \eqref{eqn:ThmTestingProofeq1} and using $t_i^k = (\bfR_i^k
 At this point, we drop $k$ and 0 in the subscripts, and prove the following:
 
 \begin{Lemma}\label{Lemma:ThmTestingLemma}
-Given conditions (T1) and (T2), the following holds for sample size $n$ such that $n \succsim \log (pq)$ and $\sqrt{\sigma_{x,i,-i}} - n^{-1/4} - D_\zeta \sqrt{V_x} > 0$:
+Given conditions (T1) and (T2), the following holds for sample size $n$ such that $n \succsim \log (pq)$:
 %
 $$
 \frac{1}{\sqrt n \widehat s_i}  \widehat \Omega_y^{1/2} \bfE^T \bfR_i \sim
@@ -384,16 +384,16 @@ From \eqref{eqn:ThmTestingProofeq2} and Lemma~\ref{Lemma:ThmTestingLemma} we hav
 where $\| \bfS_{2n}^k \|_\infty = o_P(1)$. We now have the following lemma:
 %
 \begin{Lemma}\label{Lemma:PowerThmLemma}
-With the assumptions of Theorem~\ref{thm:PowerThm}, the following holds with probability $\geq 1 - 6c_{6} \exp [-(c_{7}^2-1) \log (p-1)] - 1/p^{\tau_2-2} - \kappa_i / \sqrt n, \tau_2 > 2$:
+Drop $k$ in superscripts and 0 in subscripts. Given condition (T1), the following holds with probability $\geq 1 - 6c_{6} \exp [-(c_{7}^2-1) \log (p-1)] - 1/p^{\tau_2-2} - \kappa_i / \sqrt n, \tau_2 > 2$:
 %
 \begin{align}
-\left| \frac{m_i^k}{\sqrt n} - \sqrt{ \sigma_{x0,i,-i}^k} \right| & \leq
-D_i := \sqrt{ \frac{ \log 4 + \tau_2}{c_i^k n}} +
-\frac{D_\zeta + \| \bfzeta_{0i} \|_1 }{\sqrt{ \sigma_{x0,i,-i}^k} - n^{-1/2} - D_\zeta \sqrt{V_x}} \times \notag\\
-& \left[ c_{7} [(\sigma_{x0,i,-i}^k \Lambda_{\max} (\Sigma_{x0, -i}^k)]^{1/2} \sqrt{ \frac{\log p}{n}} + D_\zeta V_x^k \right], \label{eqn:PowerThmLemmaEqn}
+\left| \frac{m_i}{\sqrt n} - \sqrt{ \sigma_{x,i,-i}} \right| & \leq
+\delta_i := \sqrt{ \frac{ \log 4 + \tau_2}{c_i n}} +
+\frac{D_\zeta + \| \bfzeta_{0i} \|_1 }{\sqrt{ \sigma_{x,i,-i}} - n^{-1/2} - D_\zeta \sqrt{V_x}} \times \notag\\
+& \left[ c_{7} [(\sigma_{x,i,-i}^k \Lambda_{\max} (\Sigma_{x, -i}^k)]^{1/2} \sqrt{ \frac{\log p}{n}} + D_\zeta V_x \right], \label{eqn:PowerThmLemmaEqn}
 \end{align}
 %
-where $c_i^k = [ 128 (1 + 4 \sigma_{x0,i,-i}^k)^2 (\sigma_{x0,i,-i}^k)^2 ]^{-1}, \kappa_i^k = \BV [(X_i^k - \BX_{-i}^k \bfzeta_{0,-i}^k)^2]$ for $k = 1,2$, and the sample size satisfies $n \succsim \log p$,  $n \geq 512 (1 + 4 \sigma_{x0,i,-i}^k)^42 (\sigma_{x0,i,-i}^k)^4 \log(4) $ and $\sqrt{ \sigma_{x0,i,-i}^k} - n^{-1/4} - D_\zeta \sqrt{V_x^k} > 0$.
+where $c_i = [ 128 (1 + 4 \sigma_{x,i,-i})^2 (\sigma_{x,i,-i})^2 ]^{-1}$, and the sample size satisfies $n \succsim \log p$.
 \end{Lemma}
 %
 
@@ -416,12 +416,13 @@ $$
 
 Using Lemma~\ref{Lemma:PowerThmLemma} in conjunction with \eqref{eqn:omega-sqrt-bound} we now have
 %
-\begin{align*}
+\begin{align}
 \sqrt n (\Omega_{y0}^k)^{1/2} \sqrt{\sigma_{x0,i,-i}^k} (\widehat \bfc_i^k - \bfb_{0i}^k)  \sim
-\cN_q ( {\bf 0}, \bfI) + \bfS_{3n}^k\\
+\cN_q ( {\bf 0}, \bfI) + \bfS_{3n}^k \notag\\
 \Rightarrow \sqrt n \Sigma_i^{-1/2} (\widehat \bfc_i^1 - \widehat \bfc_i^2 - \bfdelta) \sim
 \cN_q \left( {\bf 0}, \bfI \right) + \bfS_{3n},
-\end{align*}
+\label{eqn:PowerThmProofEqn1}
+\end{align}
 %
 where $\Sigma_i := \Sigma_{y0}^1/ \sigma_{x0,i,-i}^1 + \Sigma_{y0}^2/ \sigma_{x0,i,-i}^2$ and $\bfS_{3n} = \bfS_{3n}^1 + \bfS_{3n}^2, \|\bfS_{3n}^k\|_\infty = o_P(1)$. We now break down the left hand side above as
 %
@@ -430,7 +431,7 @@ where $\Sigma_i := \Sigma_{y0}^1/ \sigma_{x0,i,-i}^1 + \Sigma_{y0}^2/ \sigma_{x0
 \sqrt n \Sigma_i^{-1/2} \widehat \Sigma_i^{1/2} \widehat \Sigma_i^{-1/2} (\widehat \bfc_i^1 - \widehat \bfc_i^2) - \sqrt n \Sigma_i^{-1/2} \bfdelta \notag\\
 &= (\Sigma_i^{-1/2} \widehat \Sigma_i^{1/2} - \bfI) . \sqrt n \widehat \Sigma_i^{-1/2} (\widehat \bfc_i^1 - \widehat \bfc_i^2) + \notag\\
 & \sqrt n \widehat \Sigma_i^{-1/2} (\widehat \bfc_i^1 - \widehat \bfc_i^2) - \sqrt n \Sigma_i^{-1/2} \bfdelta,
-\label{eqn:PowerThmProofEqn1}
+\label{eqn:PowerThmProofEqn2}
 \end{align}
 %
 with
@@ -440,35 +441,26 @@ $$
 \frac{ n \widehat \Sigma_y^1}{(m_i^1)^2} + \frac{n \widehat \Sigma_y^2}{(m_i^2)^2}.
 $$
 %
-Now we prove the following lemma:
+Now we have the following lemma:
 %
 \begin{Lemma}\label{Lemma:PowerThmLemma2}
-For the pooled covariance matrix estimate $\widehat \Sigma_i$, for sample size $n {\colrbf tbd}$ the following holds:
+Given conditions (T1) and (T2), for the pooled covariance matrix estimate $\widehat \Sigma_i$, we have
 %
 $$
-\left\| \widehat \Sigma_i - \Sigma_i \right\|_\infty \leq {\colrbf tbd}
+\left\| \widehat \Sigma_i - \Sigma_i \right\|_\infty = o(1).
 $$
-
-with probability $\geq 1 - 2 \kappa_i/\sqrt n$.
-\end{Lemma} 
-
-From the test statistic formulation in Algorithm~\ref{algo:AlgoGlobalTest} and Lemma~\ref{Lemma:ThmTestingLemma} it is immediate that when the alternative is true,
 %
-\begin{align*}
-D_i \sim \chi^2_q + \bfdelta^T
-\left( \frac{ \widehat \Sigma_y^1}{(m_i^1)^2} + \frac{\widehat \Sigma_y^2}{(m_i^2)^2} \right)^{-1} \bfdelta +
-o_P(1)
-\end{align*}
+for sample size $n \succsim \log p$.
+\end{Lemma}
 %
-Dropping $k$ in the superscripts and 0 in subscripts for the true values, we now provide bounds for the quantities $\widehat \Sigma_y$ and $(m_i)^2$. First we denote $\Delta_{1n} = \widehat \Sigma_y - \Sigma_y$. Also, from the definition of $m_i$,
+Lemma~\ref{lemma:omega-diff} now implies that $\| \widehat \Sigma_i^{1/2} - \Sigma_i^{1/2} \|_\infty = o(1)$. Putting this in the first summand of \eqref{eqn:PowerThmProofEqn2}, then using \eqref{eqn:PowerThmProofEqn1} we get
 %
 $$
-\frac{1}{m_i} =
-\frac{\| \bfX_i - \bfX_{-i} \widehat \bfzeta_i \|}{(\bfX_i - \bfX_{-i} \widehat \bfzeta_i)^T \bfX_i} =
-\frac{\| \bfX_i - \bfX_{-i} \bfzeta_i + \bfX_{-i} (\widehat \bfzeta_i - \bfzeta_i)\|}
-{(\bfX_i - \bfX_{-i} \bfzeta_i)^T \bfX_i + \bfX_{-i} (\widehat \bfzeta_i -\bfzeta_i)^T \bfX_i}
+\sqrt n \widehat \Sigma_i^{-1/2} (\widehat \bfc_i^1 - \widehat \bfc_i^2) - \sqrt n \Sigma_i^{-1/2} \bfdelta
+\sim \cN_q \left( {\bf 0}, \bfI \right) + \bfS_{4n}
 $$
-
+%
+with $\| \bfS_{4n} \|_\infty = o_P(1)$. The power of the global test follows as a consequence. Finally, the lower bound on the minimum difference $\delta_0$ holds as $n \bfdelta^T \Sigma_i^{-1} \bfdelta \geq n B^2 \delta_0^2$, and $B = o(\sqrt n/ \log (pq))$.
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:FDRthm}]

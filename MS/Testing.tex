@@ -131,16 +131,28 @@ where $\widehat \Sigma_y^k = (\widehat \Omega_y^k)^{-1}, k = 1,2$.
 Besides controlling the type-I error at a specified level $\alpha$, the above testing procedure maintains rate optimal power.
 
 \begin{Theorem}\label{thm:PowerThm}
-Consider the global test given in Algorithm~\ref{algo:AlgoGlobalTest}, performed using parameter estimates satisfying conditions (T1)-(T3). Say $\bfdelta := \bfb_{0 i}^1 - \bfb_{0 i}^2$. Then the power of the test is given by
+Consider the global test given in Algorithm~\ref{algo:AlgoGlobalTest}, performed using parameter estimates satisfying conditions (T1)-(T3). Say $\bfdelta := \bfb_{0 i}^1 - \bfb_{0 i}^2$. Assume that either of the following sufficient conditions are satisfied.
+
+\begin{itemize}
+\item[(I)] The following bound holds: $D_\Omega \leq \Delta_0 (\Omega_{y0}^k), k \in \cI_K$;
+
+\item[(II)] For every $j \in \cI_q, k \in \cI_K$, we have
+$
+\sum_{j' = 1}^q | \sigma_{y0,jj'}^k |^q \leq c_0 (p)
+$ for some $q \in [0,1)$ and positive-valued function $c_0(\cdot)$.
+\end{itemize}
+
+Then the power of the global test is given by
 %
 $$
-K_q \left( \chi^2_{q,1-\alpha} + \bfdelta^T 
+K_q \left( \chi^2_{q,1-\alpha} + n \bfdelta^T 
 \left( \frac{ \Sigma_{y 0}^1}{\sigma_{x0, i,-i}^1} + \frac{\Sigma_{y 0}^2}{\sigma_{x0, i,-i}^2} \right)^{-1} \bfdelta \right) + o(1)
 $$
 %
-where $K_q$ is the cumulative distribution function of the $\chi^2_q$ distribution. Consequently, for $\| \bfdelta \|_\infty \geq O(\sqrt{ \log (pq)/n} )$, $P( H_0^i \text{ is rejected }) \rightarrow 1$ as $(n,p,q) \rightarrow \infty$.
+where $K_q$ is the cumulative distribution function of the $\chi^2_q$ distribution. Consequently, for the minimum difference $ \delta_0 := \min_j | \delta_j| \geq O(\sqrt{ \log (pq)/n} )$, $P( H_0^i \text{ is rejected }) \rightarrow 1$ as $(n,p,q) \rightarrow \infty$.
 \end{Theorem}
-{\colrbf proof tbd}
+
+The conditions (I) or (II) above are needed to derive upper bounds for $\| \widehat \Sigma_y^k - \Sigma_{y0}^k \|_\infty$ using those for $\| \widehat \Omega_y^k - \Omega_{y0}^k \|_\infty$. While (I) imposes a potentially more stringent bound on the estimation error of $\Omega_y$, (II) restricts the power calculations to a uniformity class of covariance matrices \citep{BickelLevina08,CaiLiuLuo12}.
 %
 
 \subsection{Control of False Discovery Rate}

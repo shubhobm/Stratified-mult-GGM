@@ -5,7 +5,7 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=16
-#SBATCH --time=100:00:00
+#SBATCH --time=200:00:00
 #SBATCH --mem-per-cpu=2000mb
 #SBATCH --mail-user=smajumdar@ufl.edu
 

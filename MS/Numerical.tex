@@ -177,7 +177,7 @@ We repeat the above setups to check the performance of JMMLE in presence of with
 \label{sec:eval-testing}
 We slightly change our data generating model to evaluate our proposed global testing and FDR control procedure. We set $K=2$, then generate the $\bfB_0^1$ by first randomly assigning each of its element to be non-zero with probability $\pi$, then drawing values of those elements from $\text{Unif}\{ [ -1, -0.5] \cup [0.5,1]\}$ independently. After this we generate a matrix of differences $\bfD$, with $(\bfD)_{ij}, i \in \cI_p, j \in \cI_q$ taking values -1, 1, 0 with probabilities 0.1, 0.1 and 0.8, respectively. Finally we set $\bfB_0^2 = \bfB_0^1 + \bfD$. We set the same sparsity structures for the pairs of precision matrices $\{ \Omega_{x0}^1, \Omega_{x0}^2 \}$ and $\{ \Omega_{y0}^1, \Omega_{y0}^2 \}$. We use 50 replications of the above setup to calculate empirical power of global tests, as well as empirical power and FDR of simultaneous tests, while to get size of global tests we use JMMLE estimators from a separate set of data generated setting all elements of $\bfD$ to 0. The type-I error of global tests is taken as 0.05, while FDR is set at 0.2 while calculating the respective thresholds.
 
-Table~\ref{table:simtable3} reports the empirical mean and standard deviations (in brackets) of all relevant quantities. We report outputs for all combinations of data dimensions and sparsity used in Section~\ref{sec:eval-jmmle}, and also for increased sample sizes in each setting until a satisfactory FDR is reached. As expected, higher sample sizes result in increased power for both global and simultaneous tests, and decreased size and FDR for all but one ($p=30, q=60$) of the settings.
+Table~\ref{table:simtable3} reports the empirical mean and standard deviations (in brackets) of all relevant quantities. We report outputs for all combinations of data dimensions and sparsity used in Section~\ref{sec:eval-jmmle}, and also for increased sample sizes in each setting until a satisfactory FDR is reached. As expected from our theoretical analysis, higher sample sizes than those used in Section~\ref{sec:eval-jmmle} result in increased power for both global and simultaneous tests, and decreased size and FDR for all but one ($p=30, q=60$) of the settings.
 
 %
 \begin{scriptsize}
@@ -265,24 +265,43 @@ where $\cS_{jk} = \supp(\widetilde \bfB^{k (t+1)}_j)$.
 
 Compared to one-step algorithms based on first order approximations \citep{ZouLi08,Taddy17}, we let $\cB$ converge completely, then use these solutions to recover the support set of the precision matrices. The estimation accuracy of $\Omega_y$ depends on the solution $\widehat \cB$ used to solve the sub-problem \eqref{eqn:EstEqn2} (Theorem~\ref{thm:thm-Theta} and Lemmas \ref{thm:ThetaThm} and \ref{prop:ErrorRE}). Letting $\cB$ converge first ensures that the solutions $\widehat \Theta$ and $\widehat \Omega_y$ obtained subsequently are of a better quality compared to a simple early stopping of the JMMLE algorithm.
 
-Table~\ref{table:simtable41} compares performances the full algorithm and the one-step version for the two data settings with smaller feature dimensions. The performances are indistinguishable across metrics, but the one-step algorithm saves computation time in orders of magnitude (Table~\ref{table:simtable42}).
+Table~\ref{table:simtable41} compares performances the full algorithm and the one-step version for the two data settings with smaller feature dimensions. The performances are indistinguishable across metrics, but the one-step algorithm saves a significant amount of computation time compared to the full version (Table~\ref{table:simtable42}).
 
 % p30, q=60: full- 118552, 1-step- 18772 secs for 100 replications
+%\begin{table}
+%\centering
+%    \begin{tabular}{cccccc}
+%    \hline
+%    $(p,q,n)$     & Method         & TP$(\widehat \cB)$            & TN$(\widehat \cB)$            & F1$(\widehat \cB)$ & RF$(\widehat \cB)$             \\\hline
+%    (60,30,100) & Full         & 0.999 (0.002) & 0.992 (0.009) & ~   & 0.195 (0.021)                \\
+%    ~           & One step     & 0.999 (0.002) &  0.993 (0.01) & ~   & 0.190 (0.019)                 \\
+%    (30,60,100) & Full          & 0.997 (0.004) & 0.986 (0.007) & ~   & 0.205 (0.014)               \\
+%    ~           & One step & 0.996 (0.004) & 0.988 (0.006) & ~   & 0.206 (0.014)             \\ \hline
+%    \hline
+%    $(p,q,n)$     & Method         & TP$(\widehat \Omega)$            & TN$(\widehat \Omega)$            & F1$(\widehat \Omega)$ & RF$(\widehat \Omega)$            \\\hline
+%    (60,30,100) & Full         & 0.671 (0.052) & 0.949 (0.01) & ~   & 0.327 (0.015)                \\
+%    ~           & One step     & 0.663 (0.058) & 0.95 (0.01)   & ~   & 0.328 (0.018)               \\
+%    (30,60,100) & Full          & 0.58 (0.039) & 0.982 (0.003) & ~   & 0.32 (0.009)             \\
+%    ~           & One step & 0.577 (0.035) & 0.981 (0.003)  & ~   & 0.321 (0.008)            \\ \hline
+%    \end{tabular}
+%    \caption{Comaprison of evaluation metrics for full and one-step versions of the JMMLE algorithm.}
+%    \label{table:simtable41}
+%\end{table}
 \begin{table}
 \centering
     \begin{tabular}{cccccc}
     \hline
     $(p,q,n)$     & Method         & TP$(\widehat \cB)$            & TN$(\widehat \cB)$            & F1$(\widehat \cB)$ & RF$(\widehat \cB)$             \\\hline
-    (60,30,100) & Full         & 0.999 (0.002) & 0.992 (0.009) & ~   & 0.195 (0.021)                \\
-    ~           & One step     & 0.999 (0.002) &  0.993 (0.01) & ~   & 0.190 (0.019)                 \\
-    (30,60,100) & Full          & 0.997 (0.004) & 0.986 (0.007) & ~   & 0.205 (0.014)               \\
-    ~           & One step & 0.996 (0.004) & 0.988 (0.006) & ~   & 0.206 (0.014)             \\ \hline
+    (60,30,100) & Full         & ~ & ~ & ~   & ~                \\
+    ~           & One step     & 0.971 (0.045) &  0.996 (0.006) & 0.965 (0.03)    & 0.242 (0.073) \\
+    (30,60,100) & Full          & ~ & ~ & ~   & ~                \\
+    ~           & One step & 0.968 (0.029) & 0.992 (0.005)  & 0.964 (0.015)   & 0.265 (0.053) \\ \hline
     \hline
     $(p,q,n)$     & Method         & TP$(\widehat \Omega)$            & TN$(\widehat \Omega)$            & F1$(\widehat \Omega)$ & RF$(\widehat \Omega)$            \\\hline
-    (60,30,100) & Full         & 0.671 (0.052) & 0.949 (0.01) & ~   & 0.327 (0.015)                \\
-    ~           & One step     & 0.663 (0.058) & 0.95 (0.01)   & ~   & 0.328 (0.018)               \\
-    (30,60,100) & Full          & 0.58 (0.039) & 0.982 (0.003) & ~   & 0.32 (0.009)             \\
-    ~           & One step & 0.577 (0.035) & 0.981 (0.003)  & ~   & 0.321 (0.008)            \\ \hline
+    (60,30,100) & Full         & ~ & ~ & ~   & ~                \\
+    ~           & One step     & 0.764 (0.041) & 0.904 (0.014)   & 0.678 (0.048)   & 0.321 (0.018) \\
+    (30,60,100) & Full          & ~ & ~ & ~   & ~                \\
+    ~           & One step & 0.696 (0.035) & 0.943 (0.003)  & 0.584 (0.039)   & 0.304 (0.01) \\\hline
     \end{tabular}
     \caption{Comaprison of evaluation metrics for full and one-step versions of the JMMLE algorithm.}
     \label{table:simtable41}

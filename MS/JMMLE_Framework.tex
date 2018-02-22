@@ -199,11 +199,13 @@ We introduce some notations and conditions that help establish the theorems that
 0 < 1/c_0 \leq \Lambda_{\min} (\Sigma) \leq \Lambda_{\max} (\Sigma) \leq 1/d_0 < \infty
 \]
 
-\noindent{\bf Condition 2} (Diagonal dominance). A matrix $\bfM  \in \BM(b,b)$ is said to be diagonally dominant if for all $a \in \cI_b$,
+\noindent{\bf Condition 2} (Diagonal dominance). A matrix $\bfM  \in \BM(b,b)$ is said to be strictly diagonally dominant if for all $a \in \cI_b$,
 %
 $$
 | (\bfM)_{aa} | > \sum_{a' \neq a} |(\bfM)_{aa'} |
 $$
+%
+Also denote $\Delta_0 (\bfM) = \min_a \{ | (\bfM)_{aa} | - \sum_{a' \neq a} |(\bfM)_{aa'} | \}$.
 
 Our first result establishes the convergence of Algorithm~\ref{algo:jmmle-algo} for any fixed realization of $\cX$ and $\cE$.
 
@@ -355,13 +357,11 @@ where $\BR_0 = O(1)$ depends on the population parameters only, the following ho
 with probability $\geq 1 - 12 c_1 \exp[-(c_2^2-1) \log(pq)] - 2 \exp( -c_3 n)$, where $|h_{\max}| = \max_{h \in \cH} |h|$ and
 %
 $$
-\psi_*= \frac{1}{2} \min_k \left[ \Lambda_{\min} (\Sigma_{x 0}^k) \left( \min_j \psi_j^k - d_k C_\Theta
-\sqrt{ \frac{\log (pq)}{n}} \right) \right],
-\text{ with }
-\psi_j^k := t_{0,jj}^k - \sum_{j' \neq j} t_{0,jj'}^k,
+\psi_*= \frac{1}{2} \min_k \left[ \Lambda_{\min} (\Sigma_{x 0}^k) \left( \Delta_0 ( (\bfT_0^k)^2)
+- d_k C_\Theta \sqrt{ \frac{\log (pq)}{n}} \right) \right],
 $$
 %
-$d_k$ being the maximum degree, and $t_{0,jj'}^k$ being $(j,j'){\Th}$ element of $(\bfT_0^k)^2$.
+with $d_k$ being the maximum degree $(\bfT_0^k)^2$.
 \end{Theorem}
 
 Following the choice of tuning parameters in Theorems \ref{thm:thm-Theta} and \ref{thm:thm-B}, $S = o(n/\log (pq))$ and $B = o(n/\log (pq))$ are sufficient conditions on the sparsity of corresponding parameters for the JMMLE estimators to be consistent.
