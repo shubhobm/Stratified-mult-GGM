@@ -149,7 +149,7 @@ K_q \left( \chi^2_{q,1-\alpha} + n \bfdelta^T
 \left( \frac{ \Sigma_{y 0}^1}{\sigma_{x0, i,-i}^1} + \frac{\Sigma_{y 0}^2}{\sigma_{x0, i,-i}^2} \right)^{-1} \bfdelta \right) + o(1)
 $$
 %
-where $K_q$ is the cumulative distribution function of the $\chi^2_q$ distribution. Consequently, for the minimum difference $ \delta_0 := \min_j | \delta_j| \geq O(\sqrt{ \log (pq)/n} )$, $P( H_0^i \text{ is rejected }) \rightarrow 1$ as $(n,p,q) \rightarrow \infty$.
+where $K_q$ is the cumulative distribution function of the $\chi^2_q$ distribution. Consequently, for $\| \bfdelta \| \geq O(n^{-1/2})$, $P( H_0^i \text{ is rejected }) \rightarrow 1$ as $(n,p,q) \rightarrow \infty$.
 \end{Theorem}
 
 The conditions (I) or (II) above are needed to derive upper bounds for $\| \widehat \Sigma_y^k - \Sigma_{y0}^k \|_\infty$ using those for $\| \widehat \Omega_y^k - \Omega_{y0}^k \|_\infty$. While (I) imposes a potentially more stringent bound on the estimation error of $\Omega_y$, (II) restricts the power calculations to a uniformity class of covariance matrices \citep{BickelLevina08,CaiLiuLuo12}.
@@ -170,7 +170,7 @@ d_{ij} &= \frac{\widehat c_{ij}^1 - \widehat c_{ij}^2}{\sqrt{\hat \sigma_{jj}^1/
 %
 with $\hat \sigma_{jj}^k$ being the $j^{\Th}$ diagonal element of $\widehat \Sigma_y^k, k = 1,2$.
 
-For the purpose of simultaneous testing, we consider tests with a common rejection threshold $\tau$, i.e. for $j \in \cI_q$, $H_0^{ij}$ is rejected if $| d_{ij} | > \tau$. We denote $\cH_0^i = \{ j: b_{0,ij}^1 = b_{0,ij}^2 \}$ and define the false discovery proportion (FDP) and false discovery rate (FDR) for these tests as follows:
+For the purpose of simultaneous testing, we consider tests with a common rejection threshold $\tau$, i.e. for $j \in \cI_q$, $H_0^{ij}$ is rejected if $| d_{ij} | > \tau$. We denote $\cH_0^i = \{ j: b_{0,ij}^1 = b_{0,ij}^2 \}$ and define the False Discovery Proportion (FDP) and False Discovery Rate (FDR) for these tests as follows:
 %
 $$
 FDP (\tau) = \frac{\sum_{j \in \cH_0^i} \BI( |d_{ij}| \geq \tau)}{\max\left\{

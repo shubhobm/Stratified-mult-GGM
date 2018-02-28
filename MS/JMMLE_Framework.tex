@@ -417,3 +417,6 @@ $$
 %
 \eqref{eqn:theta-norm-bound-1} and \eqref{eqn:theta-norm-bound-2} hold, while for $\gamma_n = 4 \sqrt{ | g_{\max} |} \BQ_0 \sqrt{ \log (pq)/n}$, \eqref{eqn:OmegaBounds0} holds, both with probability $\geq 1 - 2/p^{\tau_1-2} - 24 c_1 \exp [-(c_2^2-1) \log(pq)] - 4 \exp (- c_3 n) - 12 c_4 \exp [-(c_5^2-1) \log(pq)]$.
 \end{Corollary}
+
+\paragraph{Remark.}
+For high data dimensions, to save up on computation time an initial screening step, e.g. using the debiased lasso procedure of \cite{JavanmardMontanari14}, can be used to restrict the support set of $\bfB_j^k$ while obtaining the initial estimates \eqref{eqn:init-B}. The consistency properties of resulting initializers and final estimators follow along the lines of the special case $K=1$ discussed in \cite{LinEtal16}, in conjunction with Theorem~\ref{thm:starting-values} and Corollary~\ref{corollary:jmmle-final}, respectively. We leave the details to the reader.

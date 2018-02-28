@@ -390,7 +390,7 @@ Drop $k$ in superscripts and 0 in subscripts. Given condition (T1), the followin
 \left| \frac{m_i}{\sqrt n} - \sqrt{ \sigma_{x,i,-i}} \right| & \leq
 \delta_i := \sqrt{ \frac{ \log 4 + \tau_2}{c_i n}} +
 \frac{D_\zeta + \| \bfzeta_{0i} \|_1 }{\sqrt{ \sigma_{x,i,-i}} - n^{-1/2} - D_\zeta \sqrt{V_x}} \times \notag\\
-& \left[ c_{7} [(\sigma_{x,i,-i}^k \Lambda_{\max} (\Sigma_{x, -i}^k)]^{1/2} \sqrt{ \frac{\log p}{n}} + D_\zeta V_x \right], \label{eqn:PowerThmLemmaEqn}
+& \left[ c_{7} [(\sigma_{x,i,-i} \Lambda_{\max} (\Sigma_{x, -i})]^{1/2} \sqrt{ \frac{\log p}{n}} + D_\zeta V_x \right], \label{eqn:PowerThmLemmaEqn}
 \end{align}
 %
 where $c_i = [ 128 (1 + 4 \sigma_{x,i,-i})^2 (\sigma_{x,i,-i})^2 ]^{-1}$, and the sample size satisfies $n \succsim \log p$.
@@ -457,10 +457,10 @@ Lemma~\ref{lemma:omega-diff} now implies that $\| \widehat \Sigma_i^{1/2} - \Sig
 %
 $$
 \sqrt n \widehat \Sigma_i^{-1/2} (\widehat \bfc_i^1 - \widehat \bfc_i^2) - \sqrt n \Sigma_i^{-1/2} \bfdelta
-\sim \cN_q \left( {\bf 0}, \bfI \right) + \bfS_{4n}
+\sim \cN_q \left( {\bf 0}, \bfI \right) + \bfS_{4n},
 $$
 %
-with $\| \bfS_{4n} \|_\infty = o_P(1)$. The power of the global test follows as a consequence. Finally, the lower bound on the minimum difference $\delta_0$ holds as $n \bfdelta^T \Sigma_i^{-1} \bfdelta \geq n B^2 \delta_0^2$, and $B = o(\sqrt n/ \log (pq))$.
+with $\| \bfS_{4n} \|_\infty = o_P(1)$. The power of the global test follows as a consequence. Finally, the lower bound on the minimum difference $\delta_0$ holds as $n \bfdelta^T \Sigma_i^{-1} \bfdelta \geq n \| \bfdelta \|^2 \Lambda_{\min} (\Sigma_i^{-1}) $.
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:FDRthm}]

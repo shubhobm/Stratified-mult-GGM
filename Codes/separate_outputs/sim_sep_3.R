@@ -92,13 +92,13 @@ get.outputs = function(n=100, subnetSize.X=rep(10,2), subnetSize.E=rep(10,2),
       for(k in 1:K){
         model.m3.list[[k]] = l1ML_Main(Y.list[[k]], X.list[[k]],
                             lambda=lambda.vec[m1], rho=rho.vec[m2],
-                            initializer="Lasso", StabilizeTheta=F, VERBOSE=F)
+                            initializer="Lasso", StabilizeTheta=F, VERBOSE=T)
       }
       cat("Done- lambda=",lambda.vec[m1],"rho=",rho.vec[m2],"\n")
       model.m3.list
     }
     
-    model.list0 = mclapply(1:(nlambda*nrho), loopfun1, mc.cores=8)
+    model.list0 = mclapply(1:(nlambda*nrho), loopfun1, mc.cores=16)
     # model.list0 = lapply(1:(nlambda*nrho), loopfun1)
     
     ## remove error entries
@@ -175,7 +175,7 @@ get.outputs = function(n=100, subnetSize.X=rep(10,2), subnetSize.E=rep(10,2),
 }
 
 ##### Generate data
-get.outputs(n = 100, subnetSize.X = c(30, 30), subnetSize.E = c(15, 15))
+get.outputs(n = 100, subnetSize.X = c(30, 30), subnetSize.E = c(15, 15), seed.vec=1:2)
 get.outputs(n = 100, subnetSize.X = c(15, 15), subnetSize.E = c(30, 30))
 # get.outputs(n = 150, subnetSize.X = c(100, 100), subnetSize.E = c(100, 100))
 # get.outputs(n = 150, subnetSize.X = c(150, 150), subnetSize.E = c(150, 150))

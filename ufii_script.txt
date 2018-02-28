@@ -1,0 +1,43 @@
+############################################
+# Do any coding work or install packages etc on Hipergator by opening a development core
+# DO NOT work in the login node or you'll run the risk of being suspended
+
+module load ufrc
+srundev -n 1 --mem 1gb -t 10:00 # 1 cpu with 1 gb memory for 10 mins. modify as needed
+
+############################################
+# Run a job on Hipergator:
+# save the following, with required modifications, to a .sh or .txt file and run sbatch <FILENAME> in terminal
+
+#SBATCH --account=informatics_inst
+#SBATCH --qos=informatics_inst
+#SBATCH --job-name=R_test   #Job name	
+#SBATCH --nodes=1 # only required if running multicore jobs
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=2 # only required if running multicore jobs
+#SBATCH --time=10:00:00 # Walltime
+#SBATCH --mem=1gb   # Per processor memory. Replace by next line if job is multicore
+#SBATCH --mem-per-cpu=2gb # only required if running multicore jobs
+#SBATCH --mail-user=<EMAIL> # emails you once job is done
+#SBATCH --mail-type=NONE,END,FAIL # emails on these events
+#SBATCH --output=<OUTPUT FILENAME>.out  # Name output file 
+
+# Add host, time, and directory name for later troubleshooting
+date; hostname; pwd
+
+# Load the software you need
+module load R
+
+# Run the program. Replace this as required
+Rscript sample.R
+
+############################################
+# General commands
+module load ufrc # module for following commands
+squeue -u <USERNAME> # lists all jobs for user
+scancel <JOBID> # cancels job
+scancel <USERNAME> # cancels all jobs for user
+
+sacct -A informatics_inst # lists all jobs in the group
+showQos informatics_inst # shows computing allocation of group
+slurmInfo informatics_inst # shows current computing load on group resources

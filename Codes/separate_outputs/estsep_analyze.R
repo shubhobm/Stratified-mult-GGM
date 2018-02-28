@@ -1,7 +1,7 @@
 rm(list=ls())
-setwd('d:/Study/My projects/Stratified-mult-GGM/Codes/estimation_outputs/')
+setwd('d:/Study/My projects/Stratified-mult-GGM/Codes/separate_outputs/')
 
-analyze = function(list, broken=FALSE, array=NULL, range=NULL){
+analyze = function(list, broken=FALSE, array=NULL){
   matrix.list = list()
 
   if(broken){
@@ -16,11 +16,9 @@ analyze = function(list, broken=FALSE, array=NULL, range=NULL){
     output = round(apply(simplify2array(output), 1:2, mean),3)
   } else{
     load(paste0(list,".Rda"))
-    if(is.null(range)){
-      range = 1:length(out.mat)
-    }
-    output =  rbind(round(apply(simplify2array(out.mat)[,,range], 1:2, mean),3),
-                     round(apply(simplify2array(out.mat)[,,range], 1:2, sd),3))
+    matrix = matrix(unlist(out.mat), ncol=4, byrow=T)
+    output =  rbind(round(apply(simplify2array(out.mat), 1:2, mean),3),
+                     round(apply(simplify2array(out.mat), 1:2, sd),3))
   }
   
   output
@@ -42,10 +40,9 @@ analyze.size = function(list, broken=FALSE){
   c(round(mean(vector),3), round(sd(vector),3))
 }
 
-analyze("est_n100p60q30", range=1:10)
-analyze("estfull_n100p60q30")
-analyze("est_n100p30q60")
-analyze("est_n150p200q200", broken=T, array=1:5)
+analyze("estsep_n100p30q60", broken=T, array=2:3)
+analyze("estsep_n100p60q30", broken=T, array=2:3)
+analyze("estsep_n150p200q200", broken=T, array=2)
 analyze("est_n150p300q300", broken=T, array=1:5)
 analyze("est_n100p200q200modelB", broken=T, array=1:5)
 analyze("est_n200p200q200modelB", broken=T, array=1:5)
