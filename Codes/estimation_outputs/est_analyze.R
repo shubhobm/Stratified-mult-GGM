@@ -30,7 +30,7 @@ analyze("est_n100p60q30")
 analyze("estfull_n100p60q30")
 analyze("est_n100p30q60")
 analyze("est_n150p200q200", broken=T, array=1:5)
-analyze("est_n150p300q300", broken=T, array=1:5)
+analyze("est_n150p300q300", broken=T, array=1)
 analyze("est_n100p200q200modelB", broken=T, array=1:5)
 analyze("est_n200p200q200modelB", broken=T, array=1:5)
 
