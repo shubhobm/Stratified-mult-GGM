@@ -460,7 +460,13 @@ $$
 \sim \cN_q \left( {\bf 0}, \bfI \right) + \bfS_{4n},
 $$
 %
-with $\| \bfS_{4n} \|_\infty = o_P(1)$. The power of the global test follows as a consequence. Finally, the lower bound on the minimum difference $\delta_0$ holds as $n \bfdelta^T \Sigma_i^{-1} \bfdelta \geq n \| \bfdelta \|^2 \Lambda_{\min} (\Sigma_i^{-1}) $.
+with $\| \bfS_{4n} \|_\infty = o_P(1)$. The power of the global test follows as a consequence. Finally, the lower bound on the order of $\| \bfdelta \|$ holds because $n \bfdelta^T \Sigma_i^{-1} \bfdelta \geq n \| \bfdelta \|^2 \Lambda_{\min} (\Sigma_i^{-1}) $, and
+%
+$$
+\Lambda_{\min} (\Sigma_i^{-1}) = \frac{ \Lambda_{\max} (\Sigma_{y0}^1)}{\sigma_{x,i,-i}^1} +
+\frac{ \Lambda_{\max} (\Sigma_{y0}^2)}{\sigma_{x,i,-i}^2}
+$$
+%
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:FDRthm}]
@@ -475,7 +481,7 @@ for any $t$, since $(d_{ij} - \mu_j)/\sigma_j \sim N(0,1) + o_P(1)$ from Corolla
 For this, denote $c_k =  \sigma_{x0,i,-i}^k, k = 1,2$. Notice that for any $C_1, C_2 > 0$,
 %
 \begin{align*}
-r_{0,jj'}^k \geq C_k & \Rightarrow \sigma_{y0,jj'}^k \geq (\sigma_{y0,jj}^k \sigma_{y0,j'j'}^k)^{1/2} C_k\\
+r_{jj'}^k \geq C_k & \Rightarrow \sigma_{y0,jj'}^k \geq (\sigma_{y0,jj}^k \sigma_{y0,j'j'}^k)^{1/2} C_k\\
 & \Rightarrow \frac{\sigma_{y0,jj'}^1}{c_1} + \frac{\sigma_{y0,jj'}^2}{c_2} \geq
 \frac{ (\sigma_{y0,jj}^1 \sigma_{y0,j'j'}^1)^{1/2} C_1}{c_1} +
 \frac{ (\sigma_{y0,jj}^2 \sigma_{y0,j'j'}^2)^{1/2} C_2}{c_2}\\

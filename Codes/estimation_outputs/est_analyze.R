@@ -10,7 +10,7 @@ analyze = function(list, broken=FALSE, array=NULL, range=NULL){
     for(i in array){
       load(paste0(list,"_",i,".Rda"))
       output[[index]] = rbind(apply(simplify2array(out.mat), 1:2, mean),
-                          apply(simplify2array(out.mat), 1:2, sd))
+                          apply(simplify2array(out.mat)/sqrt(5), 1:2, sd))
       index = index+1
     }
     output = round(apply(simplify2array(output), 1:2, mean),3)
@@ -20,29 +20,13 @@ analyze = function(list, broken=FALSE, array=NULL, range=NULL){
       range = 1:length(out.mat)
     }
     output =  rbind(round(apply(simplify2array(out.mat)[,,range], 1:2, mean),3),
-                     round(apply(simplify2array(out.mat)[,,range], 1:2, sd),3))
+                     round(apply(simplify2array(out.mat)[,,range], 1:2, sd)/sqrt(5),3))
   }
   
   output
 }
 
-analyze.size = function(list, broken=FALSE){
-  vec.list = list()
-  
-  if(broken){
-    for(i in 1:5){
-      load(paste0(list,"_",i,".Rda"))
-      vec.list[[i]] = as.numeric(unlist(out.mat))
-      vector = as.numeric(unlist(vec.list))
-    }
-  } else{
-    load(paste0(list,".Rda"))
-    vector = as.numeric(unlist(out.mat))
-  }
-  c(round(mean(vector),3), round(sd(vector),3))
-}
-
-analyze("est_n100p60q30", range=1:10)
+analyze("est_n100p60q30")
 analyze("estfull_n100p60q30")
 analyze("est_n100p30q60")
 analyze("est_n150p200q200", broken=T, array=1:5)

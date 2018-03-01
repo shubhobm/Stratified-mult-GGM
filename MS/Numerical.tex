@@ -46,87 +46,169 @@ $$
 \lambda \in \left\{ 0.4, 0.6, ..., 1.8 \right\} \sqrt{\frac{\log p}{n}}
 $$
 %
-using the one-step version (Section~\ref{sec:tricks-jmmle}) instead of the full algorithm to save computation time. We compare the performance of our joint estimation method with separate estimates of the parameters using the method of \cite{LinEtal16}, using the following performance metrics to evaluate estimates $\tilde \cB = \{ \tilde \bfB^k \}$:
+using the one-step version (Section~\ref{sec:tricks-jmmle}) instead of the full algorithm to save computation time.
+
+We use the following performance metrics to evaluate our estimates $\widehat \cB = \{ \widehat \bfB^k \}$:
 
 \begin{itemize}
 \item True positive Rate-
 %
 \[
-\text{TP}(\tilde \bfB_k) = | \supp(\hat \bfB^k) \cap \supp (\bfB_0^k)|; \quad
-\text{TPR} (\tilde \cB) = \frac{\sum_k \text{TP}(\tilde \bfB_k) }{\sum_k | \supp (\bfB_0^k)| }
+\text{TPR}(\widehat \bfB_k) = \frac{| \supp(\hat \bfB^k) \cap \supp (\bfB_0^k)|}{| \supp (\bfB_0^k)|}; \quad
+\text{TPR} (\widehat \cB) = \frac{1}{K} \sum_{k=1}^K \text{TP}(\widehat \bfB_k).
 \]
 \item True negative Rate-
 %
 \[
-\text{TN}(\tilde \bfB_k) = | {\supp}^c (\hat \bfB^k) \cap {\supp}^c (\bfB_0^k)|; \quad
-\text{TNR} (\tilde \cB) = \frac{\sum_k \text{TN}(\tilde \bfB_k) }{\sum_k | \supp^c (\bfB_0^k)| }
+\text{TNR}(\widehat \bfB_k) = \frac{| {\supp}^c (\hat \bfB^k) \cap {\supp}^c (\bfB_0^k)|}{| \supp^c (\bfB_0^k)|}; \quad
+\text{TNR} (\widehat \cB) = \frac{1}{K} \sum_{k=1}^K \text{TNR}(\widehat \bfB_k).
 \]
 %
-\item F1 measure-
+\item Matthews Correlation Coefficient-
 %
 $$
-\text{FP}(\tilde \bfB_k) = | {\supp}^c (\bfB^k_0) | - \text{TN}(\tilde \bfB_k); \quad
-\text{FN}(\tilde \bfB_k) = | {\supp} (\bfB^k_0) | - \text{TP}(\tilde \bfB_k) $$
-$$ \text{F1} (\tilde \cB) = \frac{ \sum_k \text{TP}(\tilde \bfB_k)}
-{2 \sum_k \text{TP}(\tilde \bfB_k) + \text{FP}(\tilde \bfB_k) + \text{FN}(\tilde \bfB_k)}
+\text{TP}(\widehat \bfB_k) = | \supp(\hat \bfB^k) \cap \supp (\bfB_0^k)|; \quad
+\text{TN}(\widehat \bfB_k) = | {\supp}^c (\hat \bfB^k) \cap {\supp}^c (\bfB_0^k)|,
 $$
+$$
+\text{FP}(\widehat \bfB_k) = | {\supp}^c (\bfB^k_0) | - \text{TN}(\widehat \bfB_k); \quad
+\text{FN}(\widehat \bfB_k) = | {\supp} (\bfB^k_0) | - \text{TP}(\widehat \bfB_k), $$
+\begin{align*}
+& \text{MCC} (\widehat \bfB_k) = \\
+& \frac{ \text{TP}(\widehat \bfB_k) \text{TN}(\widehat \bfB_k) -
+\text{FP}(\widehat \bfB_k) \text{FN}(\widehat \bfB_k)}
+{\sqrt{(\text{TP}(\widehat \bfB_k) + \text{FP}(\widehat \bfB_k))
+(\text{TP}(\widehat \bfB_k) + \text{FN}(\widehat \bfB_k))
+(\text{TN}(\widehat \bfB_k) + \text{FP}(\widehat \bfB_k))
+(\text{TN}(\widehat \bfB_k) + \text{FN}(\widehat \bfB_k)) }}, \\
+& \text{MCC} (\widehat \cB) = \frac{1}{K} \sum_{k=1}^K \text{MCC}(\widehat \bfB_k).
+\end{align*}
 %
 \item Relative error in Frobenius norm-
 %
 \[
-\text{RF} (\tilde \cB) = \sum_{k=1}^K \frac{\| \hat \bfB^k - \bfB_0^k \|_F}{\| \bfB_0^k \|_F}
+\text{RF} (\widehat \cB) = \frac{1}{K} \sum_{k=1}^K \frac{\| \hat \bfB^k - \bfB_0^k \|_F}{\| \bfB_0^k \|_F}.
 \]
 %
 \end{itemize}
 %
-We use the same metrics to evaluate the precision matrix estimates $\tilde \Omega_y^k$ as well.
+We use the same metrics to evaluate the precision matrix estimates $\widehat \Omega_y^k$ as well.
 
-Tables \ref{table:simtable11} and \ref{table:simtable12} summarize the results. Joint estimation vastly outperforms separate estimation for both $\cB$ and $\Omega_y$. The separate method gives overly sparse estimates of the precision matrices, which in turn affects the estimation accuracy of $\cB$, even though their support sets are detected with high accuracy in most of the settings. JMMLE tends to be very accurate in the estimation of $\cB$, and somewhat conservative for the estimation of $\Omega_{y0}^k$, although they are still far less sparse and more accurate than those obtained from separate estimation, as evident by the high average TP values and low average RF scores, respectively.
+\paragraph{}
+Tables \ref{table:simtable11} and \ref{table:simtable12} summarize the results. For estimation of $\cB$, we compare our results to the separate estimation method in \cite{LinEtal16}, while for estimation of $\Omega_y$, we compare them with the results in \cite{LinEtal16} and using the single-layer JSEM \cite{MaMichailidis15} that estimates $\Omega_y$ assuming structured sparsity patterns and centered matrices $\bfY^k$, but not the data in the upper layer, i.e. $\cX$.
+
+Our joint method has higher average MCC across all data settings than the separate method for the estimation of $\cB$, although TPR and TNR values are similar, except for $p=200, q=200, n=100$ where JMMLE has a much higher average TPR. For estimation of $\Omega_y$, incorporating information from the upper layer vastly improves performance, as demonstrated by the differences in performances between JMMLE and JSEM. For the 4 data settings with lower sparsity $(\pi_x = 5/p, \pi_y = 5/q)$, JMMLE is either slightly conservative or has similar TPR and TNR compared to the separate method while estimating $\Omega_y$. However, JMMLE does better in both the higher sparsity settings. Lastly, for the estimation of both $\cB$ and $\Omega_y$, JMMLE gives more accurate estimates across all methods, as evident from the lower average RF values across all data settings.
 %
 
+%\begin{scriptsize}
+%\begin{table}
+%    \begin{tabular}{ccccccc}
+%    \hline
+%    $(\pi_x, \pi_y)$ & $(p,q,n)$   & Method   & TP            & TN             & F1 & RF            \\ \hline
+%    $(5/p, 5/q)$   & (60,30,100)   & JMMLE    & 0.97 (0.045) & 0.99 (0.006)  & 0.97 (0.03)  & 0.24 (0.073) \\
+%    ~              & ~             & Separate & 0.66 (0.058) & 0.99 (0.003)  & 0.78 (0.039) & 1.22 (0.025) \\
+%    ~              & (30,60,100)   & JMMLE    & 0.97 (0.029) & 0.99 (0.005)  & 0.96 (0.015) & 0.27 (0.053) \\
+%    ~              & ~             & Separate & 0.92 (0.029) & 0.98 (0.005)  & 0.88 (0.04)  & 1.24 (0.034) \\
+%    ~              & (200,200,150) & JMMLE    & 0.98 (0.025) & 1.0 (0)       & 0.99 (0.012) & 0.16 (0.056) \\
+%    ~              & ~             & Separate & 0.99 (0.003) & 0.99 (0.001)  & 0.88 (0.01)  & 1.26 (0.008) \\
+%    ~              & (300,300,150) & JMMLE    & 0.99 (0.015) & 1.0 (0)      & 0.99 (0.008)   & 0.14 (0.033)\\
+%    ~              & ~             & Separate & ~             & ~              & ~   & ~             \\\hline
+%    $(30/p, 30/q)$ & (200,200,100) & JMMLE    & 0.97 (0.039) & 1.0 (0)      & 0.98 (0.017)   & 0.21 (0.07) \\
+%    ~              & ~             & Separate & ~             & ~              & ~   & ~             \\
+%    ~              & (200,200,200) & JMMLE    & 0.99 (0.01)  & 1.0 (0)      & 0.99 (0.017)   & 0.13 (0.036) \\
+%    ~              & ~             & Separate & ~             & ~              & ~   & ~             \\ \hline
+%    \end{tabular}
+%    \caption{Table of outputs for joint and separate estimation of regression matrices, giving empirical mean and standard deviation (in brackets) of each evaluation metric over 50 replications.}
+%    \label{table:simtable11}
+%\end{table}
 \begin{scriptsize}
 \begin{table}
     \begin{tabular}{ccccccc}
     \hline
-    $(\pi_x, \pi_y)$ & $(p,q,n)$   & Method   & TP            & TN             & F1 & RF            \\ \hline
-    $(5/p, 5/q)$   & (60,30,100)   & JMMLE    & 0.97 (0.045) & 0.99 (0.006)  & 0.97 (0.03)  & 0.24 (0.073) \\
-    ~              & ~             & Separate & 0.66 (0.058) & 0.99 (0.003)  & 0.78 (0.039) & 1.22 (0.025) \\
-    ~              & (30,60,100)   & JMMLE    & 0.97 (0.029) & 0.99 (0.005)  & 0.96 (0.015) & 0.27 (0.053) \\
-    ~              & ~             & Separate & 0.92 (0.029) & 0.98 (0.005)  & 0.88 (0.04)  & 1.24 (0.034) \\
-    ~              & (200,200,150) & JMMLE    & 0.98 (0.025) & 1.0 (0)       & 0.99 (0.012) & 0.16 (0.056) \\
-    ~              & ~             & Separate & 0.99 (0.003) & 0.99 (0.001)  & 0.88 (0.01)  & 1.26 (0.008) \\
-    ~              & (300,300,150) & JMMLE    & 0.99 (0.015) & 1.0 (0)      & 0.99 (0.008)   & 0.14 (0.033)\\
-    ~              & ~             & Separate & ~             & ~              & ~   & ~             \\\hline
-    $(30/p, 30/q)$ & (200,200,100) & JMMLE    & 0.97 (0.039) & 1.0 (0)      & 0.98 (0.017)   & 0.21 (0.07) \\
-    ~              & ~             & Separate & ~             & ~              & ~   & ~             \\
-    ~              & (200,200,200) & JMMLE    & 0.99 (0.01)  & 1.0 (0)      & 0.99 (0.017)   & 0.13 (0.036) \\
-    ~              & ~             & Separate & ~             & ~              & ~   & ~             \\ \hline
+    $(\pi_x, \pi_y)$ & $(p,q,n)$   & Method   & TPR            & TNR            & MCC & RF            \\ \hline
+    $(5/p, 5/q)$   & (60,30,100)   & JMMLE    & 0.97(0.02)  & 0.99(0.003)  & 0.96(0.014) & 0.24(0.033) \\
+    ~              & ~             & Separate & 0.96(0.018) & 0.99(0.004)  & 0.93(0.014) & 0.22(0.029) \\\cline{2-7}
+    %
+    ~              & (30,60,100)   & JMMLE    & 0.97(0.013) & 0.99(0.002)  & 0.96(0.008) & 0.27(0.024) \\
+    ~              & ~             & Separate & 0.99(0.009) & 0.99(0.003)  & 0.93(0.017) & 0.18(0.021) \\\cline{2-7}
+    %
+    ~              & (200,200,150) & JMMLE    & 0.98(0.011) & 1.0(0)       & 0.99(0.005) & 0.16(0.025) \\
+    ~              & ~             & Separate & 0.99(0.001) & 0.99 (0.001) & 0.88(0.009) & 0.18(0.007) \\\cline{2-7}
+    %
+    ~              & (300,300,150) & JMMLE    & 1.0(0.001)  & 1.0(0)       & ~   & 0.14 (0.015)\\
+    ~              & ~             & Separate & 1.0(0.001)  & 0.99(0.001)  & 0.84(0.01)  & 0.21(0.007)\\\hline
+    %
+    $(30/p, 30/q)$ & (200,200,100) & JMMLE    & 0.97(0.017) & 1.0(0)       & 0.98(0.008) & 0.21(0.032) \\
+    ~              & ~             & Separate & 0.32(0.01)  & 0.99(0.001)  & 0.49(0.009) & 0.85(0.06)  \\\cline{2-7}
+    %
+    ~              & (200,200,200) & JMMLE    & 0.99(0.006) & 1.0(0)       & 0.99(0.007) & 0.13(0.016) \\
+    ~              & ~             & Separate & 0.97(0.004) & 0.98(0.001)  & 0.93(0.002) & 0.19(0.07)  \\    \hline
     \end{tabular}
-    \caption{Table of outputs for joint and separate estimation of regression matrices, giving empirical mean and standard deviation (in brackets) of each evaluation metric over 50 replications.}
+    \caption{Table of outputs for estimation of regression matrices, giving empirical mean and standard deviation (in brackets) of each evaluation metric over 50 replications.}
     \label{table:simtable11}
 \end{table}
+
 %
+%\begin{table}
+%    \begin{tabular}{ccccccc}
+%    \hline
+%    $(\pi_x, \pi_y)$ & $(p,q,n)$   & Method   & TP            & TN             & F1 & RF            \\ \hline
+%    $(5/p, 5/q)$   & (60,30,100)   & JMMLE    & 0.76 (0.041) & 0.90 (0.014)  & 0.68 (0.048)   & 0.32 (0.018) \\
+%    ~              & ~             & Separate & 0.17 (0.009) & 0.93 (0.004)  & 0.26 (0.012)   & 0.66 (0.038) \\
+%    ~              & ~             & JSEM     & 0.24 (0.029) & 0.8 (0.008)   & 0.24 (0.028)   & 1.03 (0.003)\\
+%    ~              & (30,60,100)   & JMMLE    & 0.7 (0.035)  & 0.94 (0.003)  & 0.58 (0.039)   & 0.3 (0.01) \\
+%    ~              & ~             & Separate & 0.3 (0.018)  & 0.87 (0.013)  & 0.41 (0.022)   & 0.81 (0.092) \\
+%    ~              & ~             & JSEM     & 0.13 (0.011) & 0.9 (0.002)   & 0.16 (0.013)   & 1.04 (0.002)\\
+%    ~              & (200,200,150) & JMMLE    & 0.68 (0.037) & 0.98 (0.001)  & 0.47 (0.031)   & 0.26 (0.005) \\
+%    ~              & ~             & Separate & 0.06 (0.002) & 0.98 (0.001)  & 0.11 (0.004)   & 0.59 (0.012) \\
+%    ~              & ~             & JSEM & ~             & ~              & ~   & ~             \\
+%    ~              & (300,300,150) & JMMLE    & 0.71 (0.03)  & 0.98 (0)      & 0.41 (0.019)   & 0.25 (0.004) \\
+%    ~              & ~             & Separate & ~             & ~              & ~   & ~             \\\hline
+%    ~              & ~             & JSEM & ~             & ~              & ~   & ~             \\
+%    $(30/p, 30/q)$ & (200,200,100) & JMMLE    & 0.77 (0.037) & 0.98 (0.001)  & 0.42 (0.034)   & 0.31 (0.008) \\
+%    ~              & ~             & Separate & ~             & ~              & ~   & ~             \\
+%    ~              & ~             & JSEM & ~             & ~              & ~   & ~             \\
+%    ~              & (200,200,200) & JMMLE    & 0.76 (0.04)  & 0.98 (0.001)  & 0.54 (0.035)   & 0.27 (0.008) \\
+%    ~              & ~             & Separate & ~             & ~              & ~   & ~             \\
+%    ~              & ~             & JSEM & ~             & ~              & ~   & ~             \\\hline
+%    \end{tabular}
+%    \caption{Table of outputs for joint and separate estimation of lower layer precision matrices over 50 replications.}
+%    \label{table:simtable12}
+%\end{table}
+%\end{scriptsize}
 \begin{table}
     \begin{tabular}{ccccccc}
     \hline
-    $(\pi_x, \pi_y)$ & $(p,q,n)$   & Method   & TP            & TN             & F1 & RF            \\ \hline
-    $(5/p, 5/q)$   & (60,30,100)   & JMMLE    & 0.76 (0.041) & 0.90 (0.014)   & 0.68 (0.048)   & 0.32 (0.018) \\
-    ~              & ~             & Separate & 0.17 (0.009) & 0.93 (0.004)  & 0.26 (0.012)    & 0.66 (0.038) \\
-    ~              & (30,60,100)   & JMMLE    & 0.7 (0.035)  & 0.94 (0.003)  & 0.58 (0.039)   & 0.3 (0.01) \\
-    ~              & ~             & Separate & 0.3 (0.018)  & 0.87 (0.013)  & 0.41 (0.022)   & 0.81 (0.092) \\
-    ~              & (200,200,150) & JMMLE    & 0.68 (0.037) & 0.98 (0.001)  & 0.47 (0.031)   & 0.26 (0.005) \\
-    ~              & ~             & Separate & 0.06 (0.002) & 0.98 (0.001)  & 0.11 (0.004)   & 0.59 (0.012) \\
-    ~              & (300,300,150) & JMMLE    & 0.71 (0.03)  & 0.98 (0)      & 0.41 (0.019)   & 0.25 (0.004) \\
-    ~              & ~             & Separate & ~             & ~              & ~   & ~             \\\hline
-    $(30/p, 30/q)$ & (200,200,100) & JMMLE    & 0.77 (0.037) & 0.98 (0.001)  & 0.42 (0.034)   & 0.31 (0.008) \\
-    ~              & ~             & Separate & ~             & ~              & ~   & ~             \\
-    ~              & (200,200,200) & JMMLE    & 0.76 (0.04)  & 0.98 (0.001)  & 0.54 (0.035)   & 0.27 (0.008) \\
-    ~              & ~             & Separate & ~             & ~              & ~   & ~             \\ \hline
+    $(\pi_x, \pi_y)$ & $(p,q,n)$   & Method   & TPR            & TNR             & MCC & RF            \\ \hline
+    $(5/p, 5/q)$   & (60,30,100)   & JMMLE    & 0.76(0.018) & 0.90(0.006)  & 0.61(0.024)  & 0.32(0.008) \\
+    ~              & ~             & Separate & 0.77(0.031) & 0.92(0.007)  & 0.56(0.03)   & 0.51(0.017) \\
+    ~              & ~             & JSEM     & 0.24(0.013) & 0.8(0.003)   & 0.05(0.015)  & 1.03(0.002)\\\cline{2-7}
+    %
+    ~              & (30,60,100)   & JMMLE    & 0.7(0.018)  & 0.94(0.002)  & 0.55(0.018)  & 0.3(0.005) \\
+    ~              & ~             & Separate & 0.76(0.041) & 0.89(0.015)  & 0.59(0.039)  & 0.49(0.014) \\
+    ~              & ~             & JSEM     & 0.13(0.005) & 0.9(0.001)   & 0.03(0.007)  & 1.04(0.001) \\\cline{2-7}
+    %
+    ~              & (200,200,150) & JMMLE    & 0.68(0.017) & 0.98(0)      & 0.48(0.013)  & 0.26(0.002) \\
+    ~              & ~             & Separate & 0.78(0.019) & 0.97(0.001)  & 0.55(0.012)  & 0.6(0.007) \\
+    ~              & ~             & JSEM     & 0.05(0.002) & 0.97(0)      & 0.02(0.002)  & 1.01(0) \\\cline{2-7}
+    %
+    ~              & (300,300,150) & JMMLE    & 0.71(0.014) & 0.98(0)      & 0.44(0.008)  & 0.25(0.002) \\
+    ~              & ~             & Separate & 0.71(0.017) & 0.98(0.001)  & 0.51(0.011)  & 0.59(0.005) \\
+    ~              & ~             & JSEM     & 0.04(0.002) & 0.98(0)      & 0.02(0.002)  & 1.01(0)     \\\hline
+    %
+    $(30/p, 30/q)$ & (200,200,100) & JMMLE    & 0.77(0.016) & 0.98(0)      & 0.46(0.013)  & 0.31(0.003) \\
+    ~              & ~             & Separate & 0.57(0.027) & 0.44(0.007)  & 0.04(0.008)  & 0.84(0.002)\\
+    ~              & ~             & JSEM     & 0.05(0.002) & 0.97(0)      & 0.01(0.002)  & 1.01(0)     \\\hline
+    %
+    ~              & (200,200,200) & JMMLE    & 0.76(0.018)  & 0.98(0)     & 0.55(0.015)  & 0.27(0.004) \\
+    ~              & ~             & Separate & 0.73(0.023) & 0.94(0.003)  & 0.39(0.017)  & 0.62(0.011)\\
+    ~              & ~             & JSEM     & 0.05(0.002) & 0.97(0)      & 0.03(0.003)  & 1.01(0)     \\\hline
     \end{tabular}
-    \caption{Table of outputs for joint and separate estimation of lower layer precision matrices over 50 replications.}
+    \caption{Table of outputs for estimation of lower layer precision matrices over 50 replications.}
     \label{table:simtable12}
 \end{table}
 \end{scriptsize}
+
 
 \subsubsection{Effect of heterogeneity}
 We repeat the above setups to check the performance of JMMLE in presence of within-group misspecification. For this we set individual elements in a non-zero group $\{ b_{ij}^k, k \in \cI_K \}$ to be non-zero with probability 0.2, then pass JMMLE estimates of $\bfB_0^k$ through the FDR controlling thresholds as given in \eqref{eqn:fdr-threshold}. The results are summarized in Tables \ref{table:simtable2} and \ref{table:simtable22}. For each setting, TP and TN rates are almost identical to the fully specified rates in Table~\ref{table:simtable11}, thus the thresholding step is effective. In all cases the empirical FDR for estimating $\cB$ is below 0.2. The estimation quality of $\Theta$, however, suffers more. This is expected, as the estimates $\widehat \Omega_y^k$ are obtained from neighborhood coefficients that are calculated based on the pre-thresholding coefficient estimates.
@@ -135,21 +217,21 @@ We repeat the above setups to check the performance of JMMLE in presence of with
 \centering
     \begin{tabular}{cccccc}
     \hline
-    $(\pi_x, \pi_y)$ & $(p,q,n)$   & TP$(\widehat \cB)$            & TN$(\widehat \cB)$             & F1$(\widehat \cB)$ & RF$(\widehat \cB)$    \\ \hline
-    $(5/p, 5/q)$   & (60,30,100)   & 0.98 (0.022)  & 0.99 (0.005)   & 0.89 (0.04)   & 0.29 (0.031) \\
-    ~              & (30,60,100)   & 0.94 (0.048)  & 0.99 (0.008)   & 0.93 (0.033)  & 0.31 (0.062) \\
-    ~              & (200,200,150) & 0.99 (0.004)  & 0.99 (0)       & 0.98 (0.008)  & 0.17 (0.015) \\
-    ~              & (300,300,150) & 0.99 (0.002)  & 1 (0)          & 0.99 (0.004)  & 0.15 (0.013) \\
-    $(30/p, 30/q)$ & (200,200,100) & 0.99 (0.021)  & 1 (0)          & 0.98 (0.011)  & 0.2 (0.031)  \\
-    ~              & (200,200,200) & 0.99 (0.02)   & 1 (0)          & 0.98 (0.011)  & 0.15 (0.037) \\\hline
+    $(\pi_x, \pi_y)$ & $(p,q,n)$   & TPR$(\widehat \cB)$            & TNR$(\widehat \cB)$             & MCC$(\widehat \cB)$ & RF$(\widehat \cB)$    \\ \hline
+    $(5/p, 5/q)$   & (60,30,100)   & 0.98 (0.01)   & 0.99 (0.002)   & 0.89 (0.017)  & 0.29 (0.014) \\
+    ~              & (30,60,100)   & 0.94 (0.022)  & 0.99 (0.003)   & 0.93 (0.016)  & 0.31 (0.028) \\
+    ~              & (200,200,150) & 0.99 (0.002)  & 0.99 (0)       & 0.98 (0.004)  & 0.17 (0.007) \\
+    ~              & (300,300,150) & 0.99 (0.001)  & 1 (0)          & 0.99 (0.002)  & 0.15 (0.006) \\
+    $(30/p, 30/q)$ & (200,200,100) & 0.99 (0.006)  & 1 (0)          & 0.98 (0.005)  & 0.2 (0.014)  \\
+    ~              & (200,200,200) & 0.99 (0.009)  & 1 (0)          & 0.98 (0.005)  & 0.15 (0.017) \\\hline
     \hline
-    $(\pi_x, \pi_y)$ & $(p,q,n)$   & TP$(\widehat \Omega)$            & TN$(\widehat \Omega)$             & F1$(\widehat \Omega)$ & RF$(\widehat \Omega)$            \\ \hline
-    $(5/p, 5/q)$   & (60,30,100)   & 0.71 (0.054)  & 0.90 (0.012)   & 0.64 (0.044)  & 0.34 (0.018)\\
-    ~              & (30,60,100)   & 0.7 (0.043)   & 0.94 (0.004)   & 0.59 (0.03)   & 0.3 (0.01)  \\
-    ~              & (200,200,150) & 0.62 (0.027)  & 0.98 (0.001)   & 0.43 (0.021)  & 0.27 (0.006)\\
-    ~              & (300,300,150) & 0.69 (0.03)   & 0.98 (0)       & 0.39 (0.02)   & 0.26 (0.05) \\
-    $(30/p, 30/q)$ & (200,200,100) & 0.78 (0.054)  & 0.98 (0.001)   & 0.43 (0.037)  & 0.31 0.008) \\
-    ~              & (200,200,200) & 0.69 (0.059)  & 0.98 (0.001)   & 0.5 (0.044)   & 0.29 (0.009)\\\hline
+    $(\pi_x, \pi_y)$ & $(p,q,n)$   & TPR$(\widehat \Omega_y)$            & TNR$(\widehat \Omega_y)$             & MCC$(\widehat \Omega_y)$ & RF$(\widehat \Omega_y)$            \\ \hline
+    $(5/p, 5/q)$   & (60,30,100)   & 0.71 (0.024)  & 0.90 (0.005)   & 0.64 (0.024)  & 0.34 (0.008)\\
+    ~              & (30,60,100)   & 0.7 (0.019)   & 0.94 (0.002)   & 0.59 (0.014)  & 0.3 (0.004) \\
+    ~              & (200,200,150) & 0.62 (0.012)  & 0.98 (0)       & 0.43 (0.009)  & 0.27 (0.003)\\
+    ~              & (300,300,150) & 0.69 (0.013)  & 0.98 (0)       & 0.39 (0.008)  & 0.26 (0.02) \\
+    $(30/p, 30/q)$ & (200,200,100) & 0.78 (0.024)  & 0.98 (0)       & 0.43 (0.012)  & 0.31 0.003) \\
+    ~              & (200,200,200) & 0.69 (0.026)  & 0.98 (0.001)   & 0.5 (0.02)    & 0.29 (0.004)\\\hline
     \end{tabular}
     \caption{Table of outputs for joint estimation in presence of group misspecification}
     \label{table:simtable2}
