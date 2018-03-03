@@ -424,7 +424,7 @@ Using Lemma~\ref{Lemma:PowerThmLemma} in conjunction with \eqref{eqn:omega-sqrt-
 \label{eqn:PowerThmProofEqn1}
 \end{align}
 %
-where $\Sigma_i := \Sigma_{y0}^1/ \sigma_{x0,i,-i}^1 + \Sigma_{y0}^2/ \sigma_{x0,i,-i}^2$ and $\bfS_{3n} = \bfS_{3n}^1 + \bfS_{3n}^2, \|\bfS_{3n}^k\|_\infty = o_P(1)$. We now break down the left hand side above as
+where $\Sigma_i := \Sigma_{y0}^1/ \sigma_{x0,i,-i}^1 + \Sigma_{y0}^2/ \sigma_{x0,i,-i}^2$ and $\bfS_{3n} = \bfS_{3n}^1 - \bfS_{3n}^2, \|\bfS_{3n}^k\|_\infty = o_P(1)$. We now break down the left hand side above as
 %
 \begin{align}
 \sqrt n \Sigma_i^{-1/2} (\widehat \bfc_i^1 - \widehat \bfc_i^2 - \bfdelta) &=
@@ -464,7 +464,7 @@ with $\| \bfS_{4n} \|_\infty = o_P(1)$. The power of the global test follows as 
 %
 $$
 \Lambda_{\min} (\Sigma_i^{-1}) = \frac{ \Lambda_{\max} (\Sigma_{y0}^1)}{\sigma_{x,i,-i}^1} +
-\frac{ \Lambda_{\max} (\Sigma_{y0}^2)}{\sigma_{x,i,-i}^2}
+\frac{ \Lambda_{\max} (\Sigma_{y0}^2)}{\sigma_{x,i,-i}^2}.
 $$
 %
 \end{proof}
@@ -487,7 +487,7 @@ r_{jj'}^k \geq C_k & \Rightarrow \sigma_{y0,jj'}^k \geq (\sigma_{y0,jj}^k \sigma
 \frac{ (\sigma_{y0,jj}^2 \sigma_{y0,j'j'}^2)^{1/2} C_2}{c_2}\\
 & \Rightarrow \frac{ \sigma_{y0,jj'}^1/c_1 + \sigma_{y0,jj'}^2/c_2}
 { (\sigma_{y0,jj}^1 \sigma_{y0,j'j'}^1)^{1/2}/ c_1 + (\sigma_{y0,jj}^2 \sigma_{y0,j'j'}^2)^{1/2}/ c_2}
-\geq \min \{ C_1, C_2 \}
+\geq \min \{ C_1, C_2 \}.
 \end{align*}
 %
 It is now immediate that (D1) or (D1*) holds for the pooled covariance matrices.

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2016.12.9)  1 MAR 2018 09:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2016.12.9)  2 MAR 2018 20:42
 entering extended mode
 **./jmmle-draft.tex
 (jmmle-draft.tex
@@ -458,7 +458,7 @@ m/m/it/10.95 [] \OT1/cmr/m/n/10.95 = [][] [](\OML/cmm/m/it/10.95 ; []\OT1/cmr
  []
 
 [8] [9]
-Overfull \hbox (3.54848pt too wide) in paragraph at lines 316--319
+Overfull \hbox (3.54848pt too wide) in paragraph at lines 317--320
 \OT1/cmr/m/it/10.95 both with prob-a-bil-ity $\OMS/cmsy/m/n/10.95  \OT1/cmr/m/
 n/10.95 1 \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 1\OML/cmm/m/it/10.95 =p[] \O
 MS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 12\OML/cmm/m/it/10.95 c[] []\OT1/cmr/m/n
@@ -479,7 +479,7 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 25.
 
-<omega-structure.pdf, id=498, 392.95808pt x 74.28754pt>
+<omega-structure.pdf, id=501, 392.95808pt x 74.28754pt>
 File: omega-structure.pdf Graphic file (type pdf)
 
 <use omega-structure.pdf>
@@ -500,7 +500,7 @@ Overfull \hbox (25.01486pt too wide) in paragraph at lines 268--283
 [][] 
  []
 
-[23] [24]) (Discussion.tex [25]) [26] (misc.tex
+[23] [24]) (Discussion.tex [25] [26]) [27] (misc.tex
 Overfull \hbox (4.32553pt too wide) in paragraph at lines 5--6
 \OT1/cmr/m/n/10.95 The proof fol-lows di-rectly from the proof of that the-o-re
 m, sub-sti-tut-ing $([]\OML/cmm/m/it/10.95 ; []\OT1/cmr/m/n/10.95 )\OML/cmm/m/i
@@ -508,7 +508,7 @@ t/10.95 ; \OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 B[]; \OT1/cmr/m/n/10.95 [])$
 
  []
 
-[27]
+[28]
 Overfull \hbox (17.14075pt too wide) in paragraph at lines 101--103
 []\OT1/cmr/m/it/10.95 with prob-a-bil-ity $\OMS/cmsy/m/n/10.95  \OT1/cmr/m/n/1
 0.95 1 \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 1\OML/cmm/m/it/10.95 =p[] \OMS/
@@ -521,7 +521,7 @@ MS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 1) [](\OML/cmm/m/it/10.95 pq\OT1/cmr/m/n
 /10.95 )]\OML/cmm/m/it/10.95 ; c[] >
  []
 
-[28]
+[29]
 Overfull \hbox (2.31772pt too wide) detected at line 176
 \OML/cmm/m/it/10.95  [] \OT1/cmr/m/n/10.95 = [] \OML/cmm/m/it/10.95  [] [] ; [
 ] \OT1/cmr/m/n/10.95 = [] \OML/cmm/m/it/10.95 [] []
@@ -536,7 +536,7 @@ Overfull \hbox (4.83646pt too wide) in paragraph at lines 180--182
 OT1/cmr/m/n/10.95 )]$\OT1/cmr/m/it/10.95 ,
  []
 
-[29] [30] [31] [32]) (Proofs.tex
+[30] [31] [32] [33]) (Proofs.tex
 Overfull \hbox (25.55247pt too wide) detected at line 34
 [] [] \OMS/cmsy/m/n/10.95 k\OT1/cmr/m/n/10.95 (\OT1/cmr/bx/n/10.95 Y[] \OMS/cms
 y/m/n/10.95   \OT1/cmr/bx/n/10.95 X[][]\OT1/cmr/m/n/10.95 )[]\OMS/cmsy/m/n/10.9
@@ -547,7 +547,7 @@ y/m/n/10.95   \OT1/cmr/bx/n/10.95 X[][]\OT1/cmr/m/n/10.95 )[]\OMS/cmsy/m/n/10.9
 OT1/cmr/bx/n/10.95 T[]\OMS/cmsy/m/n/10.95 k
  []
 
-[33]
+[34]
 Overfull \hbox (1.97311pt too wide) in paragraph at lines 59--59
 [] 
  []
@@ -578,7 +578,7 @@ n/10.95 (\OML/cmm/m/it/10.95   \OMS/cmsy/m/n/10.95   \OML/cmm/m/it/10.95 Kq\OT
 5 k[]  []k\OT1/cmr/bx/n/10.95 D[]\OMS/cmsy/m/n/10.95 k[]
  []
 
-[34] [35]
+[35] [36]
 Overfull \hbox (0.9017pt too wide) in paragraph at lines 228--230
 [][]\OT1/cmr/bx/n/10.95 Lemma B.2. []\OT1/cmr/m/it/10.95 For zero-mean in-de-pe
 n-dent sub-gaussian ma-tri-ces $\OT1/cmr/bx/n/10.95 X \OMS/cmsy/m/n/10.95 2 \U/
@@ -587,19 +587,19 @@ msb/m/n/10.95 M\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 n; p\OT1/cmr/m/n/10.95 )
 .95 M\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 n; q\OT1/cmr/m/n/10.95 )$
  []
 
-[36] [37]
+[37] [38]
 Overfull \hbox (14.67491pt too wide) detected at line 305
 [][] \OMS/cmsy/m/n/10.95  [] \OT1/cmr/m/n/10.95 + [] \OML/cmm/m/it/10.95 [] \
 OT1/cmr/m/n/10.95 = \OML/cmm/m/it/10.95 V[]\OT1/cmr/m/n/10.95 ;  \OML/cmm/m/it/
 10.95 c[] \OT1/cmr/m/n/10.95 = [][]
  []
 
-[38] [39] [40] [41]) (jmmle-draft.bbl [42] [43]
+[39] [40] [41] [42]) (jmmle-draft.bbl [43] [44]
 Missing character: There is no Â in font cmr10!
 Missing character: There is no ¨ in font cmr10!
- [44])
+ [45])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 108.
- [45]
+ [46]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 108.
  (jmmle-draft.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 108.
@@ -613,9 +613,9 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 108.
  ) 
 Here is how much of TeX's memory you used:
- 8597 strings out of 493333
- 126095 string characters out of 3137901
- 236397 words of memory out of 3000000
+ 8599 strings out of 493333
+ 126113 string characters out of 3137901
+ 235305 words of memory out of 3000000
  11746 multiletter control sequences out of 15000+200000
  17655 words of font info for 66 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -643,9 +643,9 @@ kTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmsy8.pfb><D:/Study/LaTeX/MikTeX 2
 61/fonts/type1/public/amsfonts/cm/cmtt10.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fo
 nts/type1/public/amsfonts/symbols/msam10.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fo
 nts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on jmmle-draft.pdf (45 pages, 618135 bytes).
+Output written on jmmle-draft.pdf (46 pages, 623279 bytes).
 PDF statistics:
- 1019 PDF objects out of 1200 (max. 8388607)
- 234 named destinations out of 1000 (max. 500000)
+ 1034 PDF objects out of 1200 (max. 8388607)
+ 236 named destinations out of 1000 (max. 500000)
  163 words of extra memory for PDF output out of 10000 (max. 10000000)
 

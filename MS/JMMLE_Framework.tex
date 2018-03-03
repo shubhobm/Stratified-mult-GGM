@@ -28,7 +28,7 @@ Consider now a two-layer model, which is a special case of the above model with 
 \bfB^k \in \BM(p,q), \quad \Omega^k_{x} = (\Sigma^k_{x})^{-1}; \quad \Omega^k_y = (\Sigma^k_{y})^{-1};
 \end{eqnarray}
 %
-where we want to estimate $\{ (\Omega^k_{x}, \Omega^k_{y}, \bfB^k); k \in \cI_K$ from data $\cZ^k = \{ (\bfY^k, \bfX^k); \bfY^k \in \BM(n,q), \bfX^k \in \BM(n,p), k \in \cI_K\}$ in presence of known grouping structures $\cG_x, \cG_y, \cH$ respectively and assuming $n_k = n$ for all $k \in \cI_K$ for simplicity. We focus the theoretical discussion in the rest of the paper on jointly estimating $\Omega_{y}:= \{ \Omega_{y}^k \}$ and $\cB := \{ \bfB^k \}$. This is because for $M>2$, within-layer undirected edges of any $m{\Th}$ layer $(m>1)$ and between-layer directed edges from the $(m-1){\Th}$ layer to the $m{\Th}$ layer can be estimated from the corresponding data matrices in a similar fashion. On the other hand, parameters in the first layer are analogous to $\Omega_{x} := \{ \Omega_{x}^k \}$ that are dependent only on $\{ \bfX^k\}$, so any method for joint estimation of multiple graphical models can be used to estimate them (e.g. \cite{GuoEtal11, MaMichailidis15}). This provides all building blocks for estimating the full hierarchical structure of our $M$-layered multiple GGMs.
+where we want to estimate $\{ (\Omega^k_{x}, \Omega^k_{y}, \bfB^k); k \in \cI_K \}$ from data $\cZ^k = \{ (\bfY^k, \bfX^k); \bfY^k \in \BM(n,q), \bfX^k \in \BM(n,p), k \in \cI_K\}$ in presence of known grouping structures $\cG_x, \cG_y, \cH$ respectively and assuming $n_k = n$ for all $k \in \cI_K$ for simplicity. We focus the theoretical discussion in the rest of the paper on jointly estimating $\Omega_{y}:= \{ \Omega_{y}^k \}$ and $\cB := \{ \bfB^k \}$. This is because for $M>2$, within-layer undirected edges of any $m{\Th}$ layer $(m>1)$ and between-layer directed edges from the $(m-1){\Th}$ layer to the $m{\Th}$ layer can be estimated from the corresponding data matrices in a similar fashion. On the other hand, parameters in the very first layer are analogous to $\Omega_{x} := \{ \Omega_{x}^k \}$, and can be estimated from $\{ \bfX^k\}$ using any method for joint estimation of multiple graphical models (e.g. \cite{GuoEtal11, MaMichailidis15}). This provides all building blocks for recovering the full hierarchical structure of our $M$-layered multiple GGMs.
 
 %Setting $M=1$ reduces the above model to joint estimation of GGMs with structured sparsity \citep{MaMichailidis15}, while setting $K=1$ reduces the model to a multi-layer GGM, which can be estimated by breaking it down to successive two-layer models and then minimizing a penalized conditional log-likelihood function \citep{LinEtal16}.
 
@@ -40,7 +40,7 @@ We assume an element-wise group sparsity pattern over $k$ for the precision matr
 \cG_x = \{ \cG_x^{ii'}: i \neq i'; i, i' \in \cI_p \},
 \]
 %
-where each $\cG_x^{ii'}$ is a partition of $\cI_K$, and consists of index groups $g$ such that $g \subseteq \cI_K, \cup_{g \in \cG_x^{ii'}} g = \cI_K$. Subsequently we use the Joint Structural Estimation Method (JSEM) \citep{MaMichailidis15} to estimate $\Omega_x$, which first uses the group structure given by $\cG_x$ in penalized nodewise regressions \citep{MeisenBuhlmann06} to obtain neighborhood coefficients of each variable $X_i, i \in \cI_p$, then fits a graphical lasso model over the combined support sets to obtain sparse estimates of the precision matrices:
+where each $\cG_x^{ii'}$ is a partition of $\cI_K$, and consists of index groups $g$ such that $g \subseteq \cI_K, \cup_{g \in \cG_x^{ii'}} g = \cI_K$. Subsequently we use the Joint Structural Estimation Method (JSEM) \citep{MaMichailidis15} to estimate $\Omega_x$, which first uses the group structure given by $\cG_x$ in penalized nodewise regressions \citep{MeisenBuhlmann06} to obtain neighborhood coefficients $\zeta_i = (\bfzeta_i^1, \ldots, \bfzeta_i^K)$ of each variable $X_i, i \in \cI_p$, then fits a graphical lasso model over the combined support sets to obtain sparse estimates of the precision matrices:
 %
 \begin{align}\label{eqn:jsem-model}
 \widehat \zeta_i &= \argmin_{\zeta_i} \left\{
@@ -74,12 +74,12 @@ Denote the neighborhood coefficients of the $j^{\Th}$ variable in the lower laye
 %
 The outcome of a node in the lower layer is thus modeled using all other nodes in that layer using the neighborhood coefficients $\widehat \bfB_j^k$, {\it and} nodes in the immediate upper layer using the regression coefficients $\widehat \bftheta_j^k$.
 
-\paragraph{Remark.} Common sparsity structures across the same layer are incorporated into the regression by the group penalties over the element-wise groups $\bftheta_{jj'}^{[g]}$, while sparsity pattern overlaps across the different regression matrices $\bfB^k$ are handled by the group penalties over $\bfB^{[h]}$, which denote the collection of elements in $\cB$ that are in $h$. Other kinds of structural assumptions on $\cB$ or $\Theta$ can be handled with the same structure by swapping out the group $\ell_1/\ell_2$ norms in favor of appropriate norm-based penalties.
+\paragraph{Remark.} Common sparsity structures across the same layer are incorporated into the regression by the group penalties over the element-wise groups $\bftheta_{jj'}^{[g]}$, while sparsity pattern overlaps across the different regression matrices $\bfB^k$ are handled by the group penalties over $\bfB^{[h]}$, which denote the collection of elements in $\cB$ that are in $h$. Other kinds of structural assumptions on $\cB$ or $\Theta$ can be handled within the above structure by swapping out the group norms in favor of other appropriate norm-based penalties.
 
 \subsubsection{Alternating algorithm}
 The objective function in \eqref{eqn:jmmle-objfun} is bi-convex, i.e. convex in $\cB$ for fixed $\Theta$, and vice-versa, but not jointly convex in $\{ \cB, \Theta \}$. Consequently, we use an alternating iterative algorithm to solve for $\{ \cB, \Theta \}$ that minimizes \eqref{eqn:jmmle-objfun} by iteratively cycling between $\cB$ and $\Theta$, i.e. holding one set of parameters fixed and solving for the other, then alternating until convergence.
 
-Choice of initial values plays a crucial role in the performance of this alternating algorithm. % Following the analysis of \cite{LinEtal16}, who proposed an estimation framework for the special case of our multi-level structure for $K=1$ based on a similar algorithm, we choose the initial values $\{ \bfB^{k (0)} \}$ by first selecting a support set for the $j^{\Th}$ column, say $\tilde \cS_j^k$, as the support of the debiased lasso estimate of \cite{JavanmardMontanari14}, then fitting a Lasso regression model with small penalty value $\lambda_n^0$:
+Choice of initial values plays a crucial role in the performance of this algorithm. % Following the analysis of \cite{LinEtal16}, who proposed an estimation framework for the special case of our multi-level structure for $K=1$ based on a similar algorithm, we choose the initial values $\{ \bfB^{k (0)} \}$ by first selecting a support set for the $j^{\Th}$ column, say $\tilde \cS_j^k$, as the support of the debiased lasso estimate of \cite{JavanmardMontanari14}, then fitting a Lasso regression model with small penalty value $\lambda_n^0$:
 %
 %\begin{align}\label{eqn:init-B}
 %\widehat \bfB_j^{k (0)} = \argmin_{\supp(\bfB_j^k) \subseteq \tilde \cS_j^k} \|\bfY_j^k - \bfX^k \bfB_j^k \|^2 + \lambda_n^0 \| \bfB_j^k \|_1
@@ -101,7 +101,7 @@ We obtain initial estimates of $ \Theta_j, j \in \cI_q$ by performing group-pena
 + \gamma_n \sum_{j \neq j'} \sum_{g \in \cG_y^{jj'}} \| \bftheta_{jj'}^{[g]} \|.
 \end{align}
 
-The steps of our full estimation procedure, which we call the Joint Multiple Multilayer Estimation (JMMLE) method, can thus be summarized in Algorithm \ref{algo:jmmle-algo}.
+The steps of our full estimation procedure, which we call the {\it Joint Multiple Multi-Layer Estimation} (JMMLE) method, can thus be summarized in Algorithm \ref{algo:jmmle-algo}.
 
 \begin{Algorithm}
 (The JMMLE Algorithm)
@@ -133,7 +133,7 @@ The steps of our full estimation procedure, which we call the Joint Multiple Mul
 \end{Algorithm}
 
 \subsubsection{Tuning parameter selection}
-The nodewise regression step in the JSEM model \eqref{eqn:jsem-model} uses Bayesian Information Criterion (BIC) for tuning parameter selection. The step for updating $\{ \Theta \}$, i.e. \eqref{eqn:update-Theta}, in our JMMLE algorithm is analogous to this procedure, hence we use BIC to select the penalty parameter $\gamma_n$. In our setting the BIC for a given $\gamma_n$ and fixed $\cB$ is given by:
+The nodewise regression step in the JSEM model \eqref{eqn:jsem-model} uses Bayesian Information Criterion (BIC) for tuning parameter selection. The step for updating $\Theta$, i.e. \eqref{eqn:update-Theta}, in our JMMLE algorithm is analogous to this procedure, hence we use BIC to select the penalty parameter $\gamma_n$. In our setting the BIC for a given $\gamma_n$ and fixed $\cB$ is given by:
 %
 \begin{align*}
 \text{BIC} (\gamma_n; \cB) &=
@@ -207,6 +207,7 @@ $$
 %
 Also denote $\Delta_0 (\bfM) = \min_a \{ | (\bfM)_{aa} | - \sum_{a' \neq a} |(\bfM)_{aa'} | \}$.
 
+\paragraph{}
 Our first result establishes the convergence of Algorithm~\ref{algo:jmmle-algo} for any fixed realization of $\cX$ and $\cE$.
 
 \begin{Theorem}
@@ -226,9 +227,9 @@ The next steps are to show that for random realizations of $\cX$ and $\cE$,
 %
 
 \vspace{1em}
-\noindent {\bf (a)} Successive iterates lie in this non-expanding ball around the true parameters,
+\noindent {\bf (a)} successive iterates lie in this non-expanding ball around the true parameters, and
 
-\noindent {\bf (b)} The procedures in \eqref{eqn:init-B} and \eqref{eqn:init-Theta} ensure starting values that lie inside the same ball,
+\noindent {\bf (b)} the procedures in \eqref{eqn:init-B} and \eqref{eqn:init-Theta} ensure starting values that lie inside the same ball,
 %
 
 \vspace{1em}
@@ -270,7 +271,7 @@ with
 \end{cases}.
 \end{align}
 %
-It is easy to see that solving for $\cB$ in \eqref{eqn:jmmle-objfun} given a fixed $\widehat \Theta$ is equivalent to solving \eqref{eqn:EstEqn1}.
+Using matrix algebra it is easy to see that solving for $\cB$ in \eqref{eqn:jmmle-objfun} given a fixed $\widehat \Theta$ is equivalent to solving \eqref{eqn:EstEqn1}.
 
 We assume the following conditions on the true parameter versions $(\bfT_0^k)^2$, defined from $\Theta_0$ similarly as \eqref{eqn:define-T}:
 %
@@ -278,7 +279,7 @@ We assume the following conditions on the true parameter versions $(\bfT_0^k)^2$
 \vspace{1em}
 \noindent{\bf (E1)} The matrices $\Omega_{y0}^k, k \in \cI_K$ are diagonally dominant,
 
-\noindent{\bf (E2)} The matrices $\Sigma_{y0}^k, k \in \cI_K$ have bounded eigenvalues with common constants $(c_y, d_y)$.
+\noindent{\bf (E2)} The matrices $\Sigma_{y0}^k, k \in \cI_K$ have bounded eigenvalues with constants $(c_y, d_y)$ that are common across $k$.
 \vspace{1em}
 %
 
@@ -293,7 +294,7 @@ $$
 %
 where $C_\beta = O(1)$ depends only on $\cB_0$. Then, for sample size $n \succsim \log (pq)$ the following hold:
 
-\noindent (I) For the choice of tuning parameter
+\noindent (I) Denote $|g_{\max}| = \max_{g \in \cG_y} |g|$. Then for the choice of tuning parameter
 %
 $$
 \gamma_n \geq 4 \sqrt{| g_{\max}|} \BQ_0 \sqrt {\frac{ \log (p q)}{n}},
@@ -419,7 +420,4 @@ $$
 \end{Corollary}
 
 \paragraph{Remark.}
-For high data dimensions, to save up on computation time an initial screening step, e.g. using the debiased lasso procedure of \cite{JavanmardMontanari14}, can be used to restrict the support set of $\bfB_j^k$ while obtaining the initial estimates \eqref{eqn:init-B}. The consistency properties of resulting initializers and final estimators follow along the lines of the special case $K=1$ discussed in \cite{LinEtal16}, in conjunction with Theorem~\ref{thm:starting-values} and Corollary~\ref{corollary:jmmle-final}, respectively. We leave the details to the reader.
-
-\paragraph{Remark.}
-{\colrbf Mention tighter estimation bounds compared to separate estimation}
+To save computation time for high data dimensions, an initial screening step, e.g. the debiased lasso procedure of \cite{JavanmardMontanari14}, can be used to first restrict the support set of $\bfB_j^k$ before obtaining the initial estimates using \eqref{eqn:init-B}. The consistency properties of resulting initial and final estimates follow along the lines of the special case $K=1$ discussed in \cite{LinEtal16}, in conjunction with Theorem~\ref{thm:starting-values} and Corollary~\ref{corollary:jmmle-final}, respectively. We leave the details to the reader.

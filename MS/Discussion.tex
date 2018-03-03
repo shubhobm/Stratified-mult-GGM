@@ -1,13 +1,31 @@
 \section{Discussion}
 \label{sec:sec5}
-Our work introduces an integrative framework for knowledge discovery in multiple multilayer Gaussian Graphical Models. We exploit {\it a priori} known structural similarities across parameters of the multiple models to achieve estimation gains compared to separate estimation. More importantly, we derive results on the asymptotic distributions of generic estimates of the multiple regression coefficient matrices in this complex setup, and perform global and simultaneous testing for pairwise differences within the between-layer edges.
+Our work introduces an integrative framework for knowledge discovery in multiple multi-layer Gaussian Graphical Models. We exploit {\it a priori} known structural similarities across parameters of the multiple models to achieve estimation gains compared to separate estimation. More importantly, we derive results on the asymptotic distributions of generic estimates of the multiple regression coefficient matrices in this complex setup, and perform global and simultaneous testing for pairwise differences within the between-layer edges.
 
-Our hypothesis testing framework has two immediate extensions.
+\paragraph{}
+The JMMLE algorithm improves upon theoretical convergence rates of the estimation method for {\it single} multi-layer GGMs (i.e. $K=1$) proposed by \cite{LinEtal16}. With our initial estimates, the method of \cite{LinEtal16} achieves the following convergence rates for the estimation of $\cB$ and $\Omega_y$, respectively (using Corollary 4 therein):
+%
+\begin{align*}
+\| \widehat \bfbeta - \bfbeta_0 \|_F & \leq \sum_{k=1}^K O \left( \sqrt{ \frac{ b_k \log (p q)}{n}} \right), \\
+\sum_{k=1}^K \| \widehat \Omega_y^k - \Omega_{y0}^k \|_F & \leq O \left( K \sqrt{ \frac{ (S + q) \log (pq)}{n}} \right).
+\end{align*}
+%
+In comparison, JMMLE has the following rates:
+%
+\begin{align*}
+\| \widehat \bfbeta - \bfbeta_0 \|_F & \leq O \left( \sqrt{ \frac{ |h_{\max}| B \log (p q)}{n}} \right), \\
+\sum_{k=1}^K \| \widehat \Omega_y^k - \Omega_{y0}^k \|_F & \leq O \left( \sqrt{ \frac{ KS |g_{\max}| \log (p q)}{n}} \right).
+\end{align*}
+%
+For $\cB$, joint estimation outperforms separate estimation when group sizes are small, so that $(| h_{\max}| B)^{1/2} < \sum_k b_k^{1/2}$. The estimation gain for $\Omega_y$ is more substantial, especially for higher values of $q$. This is corroborated by our simulation outputs (Tables \ref{table:simtable11} and \ref{table:simtable12}), where the joint estimates perform better for both sets of parameters, but the differences between RF errors obtained from joint and separate estimates tend to be lower for $\widehat \Omega_y$ than $\widehat \cB$.
 
-\begin{itemize}
-\item[(I)] In a recent work, \cite{Liu17} proposed a framwork to test for structural similarities and differences across multiple {\it single layer} GGMs. For $K$ GGMs with precision matrices $\Omega^k = (\omega_{ii'})_{i,i' \in \cI_p}$, they test for the partial correlation coefficients $\rho_{ii'}^{(k)} = - \omega_{ii'}^{(k)} / \sqrt{\omega_{ii}^{(k)} \omega_{i'i'}^{(k)}}$ using residuals from $pK$ separate penalized neighborhood regressions, one for each variable of each GGM. To incorporate structured sparsity across $k$, our simultaneous regression techniques for all neighborhood coefficients (i.e. \eqref{eqn:jsem-model} and \eqref{eqn:EstEqn2}) can be used instead to perform testing on the between-layer edges. Theoretical properties of this procedure can be derived using results in \cite{Liu17}, possibly with adjustments for our neighborhood estimates to adhere to the rate conditions for the constants $a_{n1}, a_{n2}$ therein to account for a diverging $(p,q,n)$ setup.
+\paragraph{}
+We now discuss two immediate extensions of our hypothesis testing framework.
 
-\item[(II)] For $K \geq 2$, detection of the following sets of inter-layer edges can be scientifically significant:
+\vspace{1em}
+\noindent (I) In recent work, \cite{Liu17} proposed a framework to test for structural similarities and differences across multiple {\it single layer} GGMs. For $K$ GGMs with precision matrices $\Omega^k = (\omega_{ii'})_{i,i' \in \cI_p}$, they test for the partial correlation coefficients $\rho_{ii'}^{k} = - \omega_{ii'}^{k} / \sqrt{\omega_{ii}^{k} \omega_{i'i'}^{k}}$ using residuals from $pK$ separate penalized neighborhood regressions, one for each variable of each GGM. To incorporate structured sparsity across $k$, our simultaneous regression techniques for all neighborhood coefficients (i.e. \eqref{eqn:jsem-model} and \eqref{eqn:EstEqn2}) can be used instead to perform testing on the between-layer edges. Theoretical properties of this procedure can be derived using results in \cite{Liu17}, possibly with adjustments for our neighborhood estimates to adhere to the rate conditions for the constants $a_{n1}, a_{n2}$ therein to account for a diverging $(p,q,n)$ setup.
+
+\noindent (II) For $K > 2$, detection of the following sets of inter-layer edges can be scientifically significant:
 %
 \begin{align*}
 \cB_1 &= \left\{ (i,j): \sum_{1 \leq k < k' \leq K} \left(b_{0,ij}^k - b_{0,ij}^{k'} \right)^2 > 0; i \in \cI_p, j \in \cI_q \right\}\\
@@ -16,6 +34,5 @@ Our hypothesis testing framework has two immediate extensions.
 \end{align*}
 %
 e.g. detection of gene-protein interactions that are present, but may have different or same weights across $k$ ($\cB_1$ and $\cB_2$, respectively), and that are absent for all $k$ ($\cB_3$). The asymptotic result in Theorem~\ref{Thm:ThmTesting} continues to hold in this situation, and an extension of the global test (Algorithm~\ref{algo:AlgoGlobalTest}) is immediate. However, extending the FDR control procedure requires a technically more detailed approach.
-\end{itemize}
 
-The strength of our proposed debiased estimator \eqref{eqn:DebiasedBeta} is that only generic estimates of relevant model parameters that satisfy general rate conditions are necessary for it to have a valid asymptotic distribution. This translates to a high degree of flexibility in choosing the method of estimation. Our formulation based on sparsity assumptions (Section~\ref{sec:algosection}) is only one such way to obtain the necessary estimates. Sparsity may not be an assumption that is required or even valid in complex hierarchical structures from different domains of application. For different two-layer pairs in such multilayer setups, low-rank, group-sparse or sparse methods (or a combination thereof) can be plugged into our alternating algorithm. Results analogous to those in Section~\ref{sec:jmmle-theory} need to be established for the corresponding estimators. However, as long as these estimators adhere to the convergence conditions (T1)-(T3), Theorem~\ref{Thm:ThmTesting} can be used to derive the asymptotic distributions of between-layer edges.
+The strength of our proposed debiased estimator \eqref{eqn:DebiasedBeta} is that only generic estimates of relevant model parameters that satisfy general rate conditions are necessary for it to have a valid asymptotic distribution. This translates to a high degree of flexibility in choosing the method of estimation. Our formulation based on sparsity assumptions (Section~\ref{sec:algosection}) is only one such way to obtain the necessary estimates. Sparsity may not be an assumption that is required or even valid in complex hierarchical structures from different domains of application. For different two-layer components in such multi-layer setups, low-rank, group-sparse or sparse methods (or a combination thereof) can be plugged into our alternating algorithm. Results analogous to those in Section~\ref{sec:jmmle-theory} need to be established for the corresponding estimators. However, as long as these estimators adhere to the convergence conditions (T1)-(T3), Theorem~\ref{Thm:ThmTesting} can be used to derive the asymptotic distributions of between-layer edges.
