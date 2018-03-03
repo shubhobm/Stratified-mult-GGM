@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2016.12.9)  2 MAR 2018 20:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2016.12.9)  3 MAR 2018 09:59
 entering extended mode
 **./jmmle-draft.tex
 (jmmle-draft.tex
@@ -458,16 +458,16 @@ m/m/it/10.95 [] \OT1/cmr/m/n/10.95 = [][] [](\OML/cmm/m/it/10.95 ; []\OT1/cmr
  []
 
 [8] [9]
-Overfull \hbox (3.54848pt too wide) in paragraph at lines 317--320
+Overfull \hbox (17.88994pt too wide) in paragraph at lines 317--320
 \OT1/cmr/m/it/10.95 both with prob-a-bil-ity $\OMS/cmsy/m/n/10.95  \OT1/cmr/m/
-n/10.95 1 \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 1\OML/cmm/m/it/10.95 =p[] \O
-MS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 12\OML/cmm/m/it/10.95 c[] []\OT1/cmr/m/n
-/10.95 [\OMS/cmsy/m/n/10.95  \OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 c[] \OMS/c
-msy/m/n/10.95   \OT1/cmr/m/n/10.95 1) [](\OML/cmm/m/it/10.95 pq\OT1/cmr/m/n/10.
-95 )] \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 2 [](\OMS/cmsy/m/n/10.95  \OML/c
-mm/m/it/10.95 c[]n\OT1/cmr/m/n/10.95 ) \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95
- 6\OML/cmm/m/it/10.95 c[] []\OT1/cmr/m/n/10.95 [\OMS/cmsy/m/n/10.95  \OT1/cmr/m
-/n/10.95 (\OML/cmm/m/it/10.95 c[] \OMS/cmsy/m/n/10.95  
+n/10.95 1 \OMS/cmsy/m/n/10.95   \OML/cmm/m/it/10.95 K\OT1/cmr/m/n/10.95 (1\OML/
+cmm/m/it/10.95 =p[] \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 12\OML/cmm/m/it/10
+.95 c[] []\OT1/cmr/m/n/10.95 [\OMS/cmsy/m/n/10.95  \OT1/cmr/m/n/10.95 (\OML/cmm
+/m/it/10.95 c[] \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 1) [](\OML/cmm/m/it/10
+.95 pq\OT1/cmr/m/n/10.95 )] \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 2 [](\OMS/
+cmsy/m/n/10.95  \OML/cmm/m/it/10.95 c[]n\OT1/cmr/m/n/10.95 ) \OMS/cmsy/m/n/10.9
+5   \OT1/cmr/m/n/10.95 6\OML/cmm/m/it/10.95 c[] []\OT1/cmr/m/n/10.95 [\OMS/cmsy
+/m/n/10.95  \OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 c[] \OMS/cmsy/m/n/10.95  
  []
 
 [10] [11]) (Testing.tex [12] [13] [14] [15] [16] [17]) (Numerical.tex [18]
@@ -479,7 +479,7 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 25.
 
-<omega-structure.pdf, id=501, 392.95808pt x 74.28754pt>
+<omega-structure.pdf, id=499, 392.95808pt x 74.28754pt>
 File: omega-structure.pdf Graphic file (type pdf)
 
 <use omega-structure.pdf>
@@ -528,8 +528,8 @@ Overfull \hbox (2.31772pt too wide) detected at line 176
  []
 
 
-Overfull \hbox (4.83646pt too wide) in paragraph at lines 180--182
-[]\OT1/cmr/m/it/10.95 The de-vi-a-tion bound in (A2) is sat-is-fied with prob-a
+Overfull \hbox (4.40454pt too wide) in paragraph at lines 180--182
+[]\OT1/cmr/m/it/10.95 The de-vi-a-tion bound in (B2) is sat-is-fied with prob-a
 -bil-ity $\OMS/cmsy/m/n/10.95  \OT1/cmr/m/n/10.95 1 \OMS/cmsy/m/n/10.95   \OT1
 /cmr/m/n/10.95 12\OML/cmm/m/it/10.95 c[] []\OT1/cmr/m/n/10.95 [(\OML/cmm/m/it/1
 0.95 c[] \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 1) [](\OML/cmm/m/it/10.95 pq\
@@ -613,13 +613,13 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 108.
  ) 
 Here is how much of TeX's memory you used:
- 8599 strings out of 493333
- 126113 string characters out of 3137901
- 235305 words of memory out of 3000000
- 11746 multiletter control sequences out of 15000+200000
- 17655 words of font info for 66 fonts, out of 3000000 for 9000
+ 8614 strings out of 493333
+ 126258 string characters out of 3137901
+ 234305 words of memory out of 3000000
+ 11754 multiletter control sequences out of 15000+200000
+ 19675 words of font info for 74 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,17n,39p,1359b,498s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,17n,39p,1359b,496s stack positions out of 5000i,500n,10000p,200000b,50000s
 <D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmbx10.pfb><D:
 /Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Stud
 y/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmbx8.pfb><D:/Study/LaTe
@@ -641,11 +641,12 @@ TeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmsy6.pfb><D:/Study/LaTeX/Mi
 kTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmsy8.pfb><D:/Study/LaTeX/MikTeX 2
 .9.6161/fonts/type1/public/amsfonts/cm/cmti10.pfb><D:/Study/LaTeX/MikTeX 2.9.61
 61/fonts/type1/public/amsfonts/cm/cmtt10.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fo
-nts/type1/public/amsfonts/symbols/msam10.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fo
-nts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on jmmle-draft.pdf (46 pages, 623279 bytes).
+nts/type1/public/amsfonts/cm/cmtt9.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/ty
+pe1/public/amsfonts/symbols/msam10.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/ty
+pe1/public/amsfonts/symbols/msbm10.pfb>
+Output written on jmmle-draft.pdf (46 pages, 634821 bytes).
 PDF statistics:
- 1034 PDF objects out of 1200 (max. 8388607)
- 236 named destinations out of 1000 (max. 500000)
+ 1039 PDF objects out of 1200 (max. 8388607)
+ 237 named destinations out of 1000 (max. 500000)
  163 words of extra memory for PDF output out of 10000 (max. 10000000)
 

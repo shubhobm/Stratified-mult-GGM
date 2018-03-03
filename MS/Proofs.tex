@@ -158,8 +158,8 @@ $$
 Following the same steps as part A.3 in the proof of Theorem 4.1 in \cite{MaMichailidis15}, it can be proven using \eqref{eqn:Thm1ProofProp2Bd4}--\eqref{eqn:Thm1ProofProp2Bd7} that
 %
 $$
-\sum_{k=1}^K \| \widehat \Omega_y^k - \tilde \Omega_y^k \|^2 \leq O \left( \BQ_0^2 | g_{\max}| S 
-\frac{ \log (pq)}{n} \right)
+\sum_{k=1}^K \left\| \widehat \Omega_y^k - \tilde \Omega_y^k \right\|_F^2 \leq
+O \left( \BQ_0^2 | g_{\max}| S \frac{ \log (pq)}{n} \right)
 $$
 %
 The proof is now complete by combining this with \eqref{eqn:Thm1ProofProp2Bd5} then applying Cauchy-Schwarz inequality and triangle inequality.
@@ -335,7 +335,7 @@ Proceeding similarly as the proof of part (I) of Lemma~\ref{thm:ThetaThm}, with 
 %
 \begin{align}
 \bfb^T \widehat \bfGamma \bfb & \leq \frac{3}{2} \sum_{h \in \cH} \| \bfb^{[h]} \| \\
-\frac{\psi^*}{3} \| \bfb \|^2 & \leq \lambda_n \sum_{h \in \cH} \| \bfb^{[h]} \| \leq 4 \lambda_n \sqrt{s_\beta} \| \bfb \|
+\frac{\psi^*}{3} \| \bfb \|^2 & \leq \lambda_n \sum_{h \in \cH} \| \bfb^{[h]} \| \leq 4 \lambda_n \sqrt{B} \| \bfb \|
 \end{align}
 %
 Furthermore, $\| \bfb \|_1 \leq \sqrt{ | h_{\max} |} \sum_{h \in \cH} \| \bfb^{[h]} \| $. The bounds in (\ref{eqn:BetaThmEqn1}), (\ref{eqn:BetaThmEqn2}), (\ref{eqn:BetaThmEqn3}) and (\ref{eqn:BetaThmEqn4}) now
@@ -369,7 +369,7 @@ The second summand is distributed as $\cN_q ({\bf 0}, \bfI)$. For the first summ
 \begin{align*}
 \frac{1}{\sqrt n}  \left\| (\widehat \Omega_y^{1/2} - \Omega_y^{1/2}) \bfE^T \bfR_i \right\|_\infty & \leq
 \frac{1}{\sqrt n}  \left\| \widehat \Omega_y^{1/2} - \Omega_y^{1/2} \right\|_\infty  \left\| \bfE^T \bfR_i \right\|_1 \\
-& \leq \sqrt{n D_\Omega} \frac{1}{n} \left[ \| \bfE^T (\bfX_i -  \bfX_{-i} \bfzeta_i ) \|_1 + \| \bfE^T \bfX_{-i} (\widehat \bfzeta_i - \bfzeta_{0,i} ) \|_1 \right] \\
+& \leq \sqrt{n D_\Omega} \frac{1}{n} \left[ \| \bfE^T (\bfX_i -  \bfX_{-i} \bfzeta_i ) \|_1 + \| \bfE^T \bfX_{-i} (\widehat \bfzeta_i - \bfzeta_{i} ) \|_1 \right] \\
 & \leq \sqrt{n D_\Omega} \frac{1}{n} \left[ \| \bfE^T \bfX_i \|_\infty + \| \bfE^T \bfX_{-i} \|_\infty
 \left\{ \| \bfzeta_i  \|_1 + \| \widehat \bfzeta_i - \bfzeta_i  \|_1 \right\} \right] \notag\\
 & \leq \sqrt{n D_\Omega} \left[ \frac{1}{n} \| \bfE^T \bfX_i \|_\infty + 
@@ -449,17 +449,17 @@ with probability $\geq 1 - 6c_{6} \exp [-(c_{7}^2-1) \log (p-1)]$ for some $c_{6
 \left (\| \widehat \bfzeta_i - \bfzeta_{0i} \|_1 + \| \bfzeta_{0i} \|_1 \right) \notag\\
 \Rightarrow \left| \frac{m_i}{\sqrt n} - \sqrt{\sigma_{x,i,-i}} \right| & \leq
 | \widehat s_i - \sqrt{\sigma_{x,i,-i}} | + \frac{1}{\widehat s_i} .\frac{1}{n} \| \bfR_i^T \bfX_{-i} \|_\infty
-\left (\| \widehat \bfzeta_i - \bfzeta_{0i} \|_1 + \| \bfzeta_{0i} \|_1 \right) \label{eqn:PowerThmLemmaProofEqn1}
+\left (\| \widehat \bfzeta_i - \bfzeta_{i} \|_1 + \| \bfzeta_{i} \|_1 \right) \label{eqn:PowerThmLemmaProofEqn1}
 \end{align}
 %
-By applying Lemma 8 in \cite{RavikumarEtal11} we have
+By applying Lemma 8 in \cite{RavikumarEtal11} we have a bound for the first summand on the right hand side:
 %
 $$
 | \widehat s_i - \sqrt{\sigma_{x,i,-i}} | \leq \sqrt{ \frac{ \log 4 + \tau_2}{c_i n}}; \quad
-c_i = \left[ 128 (1 + 4 \sigma_{x,i,-i})^2 \sigma_{x,i,-i}^2 \right]^{-1}
+c_i = \left[ 128 (1 + 4 \sigma_{x,i,-i})^2 \sigma_{x,i,-i}^2 \right]^{-1},
 $$
 %
-with probability $1 - 1/p^{\tau_2 - 2}$ for some $\tau_2>2$, and $n \geq 512 (1 + 4 \sigma_{x,i,-i})^42 \sigma_{x,i,-i}^4 \log(4) $. For the second summand in the right-hand side of \eqref{eqn:PowerThmLemmaProofEqn1}, $1/\widehat s_i$ can be bounded using \eqref{eqn:ThmTestingProofeq34}, $(1/n) \| \bfR_i^T \bfX_{-i} \|_\infty$ can be bounded using derivations following \eqref{eqn:ThmTestingProofeq41}. The lemma now follows by putting everything back together in \eqref{eqn:PowerThmLemmaProofEqn1} and applying assumption (T1).
+with probability $1 - 1/p^{\tau_2 - 2}$ for some $\tau_2>2$, and $n \geq 512 (1 + 4 \sigma_{x,i,-i})^42 \sigma_{x,i,-i}^4 \log(4) $. For the second summand in the right-hand side of \eqref{eqn:PowerThmLemmaProofEqn1}, $1/\widehat s_i$ can be bounded using \eqref{eqn:ThmTestingProofeq34}, $(1/n) \| \bfR_i^T \bfX_{-i} \|_\infty$ can be bounded using derivations following \eqref{eqn:ThmTestingProofeq41}. Finally, $\| \widehat \bfzeta_i - \bfzeta_{i} \|_1 \leq D_\zeta$ from assumption (T1), and $\| \bfzeta_i \|_1 \leq 1$ because $\Omega_x$ is diagonally dominant and $|\zeta_{ii'}| = |\omega_{x,ii'}|/ \omega_{x,ii}$ for $i' \neq i$. The lemma now follows by putting everything back together in \eqref{eqn:PowerThmLemmaProofEqn1}.
 \end{proof}
 
 \begin{proof}[Proof of Lemma~\ref{lemma:omega-diff}]

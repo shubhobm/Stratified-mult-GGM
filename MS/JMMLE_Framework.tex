@@ -316,7 +316,7 @@ O \left( \BQ_0 \sqrt{\frac{| g_{\max}| S}{K}}
 \sqrt {\frac{ \log (p q)}{n}} \right),
 \end{align}
 %
-both with probability $\geq 1 - 1/p^{\tau_1-2} - 12 c_1 \exp [-(c_2^2-1) \log(pq)] - 2 \exp (- c_3 n) - 6c_4 \exp [-(c_5^2-1) \log(pq)]$, for some constants $c_1, c_3, c_4 > 0, c_2, c_5 > 1, \tau_1 > 2$.
+both with probability $\geq 1 - K( 1/p^{\tau_1-2} - 12 c_1 \exp [-(c_2^2-1) \log(pq)] - 2 \exp (- c_3 n) - 6c_4 \exp [-(c_5^2-1) \log(pq)])$, for some constants $c_1, c_3, c_4 > 0, c_2, c_5 > 1, \tau_1 > 2$.
 \end{Theorem}
 
 %We now put both the pieces together, and prove that our alternating algorithm results in a solution sequence $\{ \widehat \cB^{(r)}, \widehat \Theta^{(r)} \}, r = 1, 2, \ldots$ that lies uniformly within a non-expanding ball around the true parameter values.
@@ -355,7 +355,7 @@ where $\BR_0 = O(1)$ depends on the population parameters only, the following ho
 72 B \lambda_n^2 / \psi_* \label{eqn:BetaThmEqn4}
 \end{align}
 %
-with probability $\geq 1 - 12 c_1 \exp[-(c_2^2-1) \log(pq)] - 2 \exp( -c_3 n)$, where $|h_{\max}| = \max_{h \in \cH} |h|$ and
+with probability $\geq 1 - K(12 c_1 \exp[-(c_2^2-1) \log(pq)] - 2 \exp( -c_3 n))$, where $|h_{\max}| = \max_{h \in \cH} |h|$ and
 %
 $$
 \psi_*= \frac{1}{2} \min_k \left[ \Lambda_{\min} (\Sigma_{x 0}^k) \left( \Delta_0 ( (\bfT_0^k)^2)
@@ -384,7 +384,7 @@ we have $\| \widehat \bfbeta^{(0)} - \bfbeta_0 \|_1 \leq 64 B \lambda_n /\psi^*$
 \sum_{j \neq j', g \in \cG_y^{jj'}} \| \hat \bftheta_{jj'}^{[g](0)} - \bftheta_{0,jj'}^{[g]} \| & \leq 48 s_j \gamma_n / \psi,
 \end{align*}
 %
-with probability $\geq 1 - 1/p^{\tau_1-2} - 12 c_1 \exp [-(c_2^2-1) \log(pq)] - 2 \exp (- c_3 n) - 6c_4 \exp [-(c_5^2-1) \log(pq)]$.
+with probability $\geq 1 - K(1/p^{\tau_1-2} - 12 c_1 \exp [-(c_2^2-1) \log(pq)] - 2 \exp (- c_3 n) - 6c_4 \exp [-(c_5^2-1) \log(pq)])$.
 \end{Theorem}
 %
 
@@ -416,7 +416,7 @@ $$
 \gamma_n \geq 4 \sqrt{ | g_{\max} |} \BQ_0 \sqrt{\frac{\log(pq)}{n}},
 $$
 %
-\eqref{eqn:theta-norm-bound-1} and \eqref{eqn:theta-norm-bound-2} hold, while for $\gamma_n = 4 \sqrt{ | g_{\max} |} \BQ_0 \sqrt{ \log (pq)/n}$, \eqref{eqn:OmegaBounds0} holds, both with probability $\geq 1 - 2/p^{\tau_1-2} - 24 c_1 \exp [-(c_2^2-1) \log(pq)] - 4 \exp (- c_3 n) - 12 c_4 \exp [-(c_5^2-1) \log(pq)]$.
+\eqref{eqn:theta-norm-bound-1} and \eqref{eqn:theta-norm-bound-2} hold, while for $\gamma_n = 4 \sqrt{ | g_{\max} |} \BQ_0 \sqrt{ \log (pq)/n}$, \eqref{eqn:OmegaBounds0} holds, both with probability $\geq 1 - K(2/p^{\tau_1-2} - 24 c_1 \exp [-(c_2^2-1) \log(pq)] - 4 \exp (- c_3 n) - 12 c_4 \exp [-(c_5^2-1) \log(pq)])$.
 \end{Corollary}
 
 \paragraph{Remark.}

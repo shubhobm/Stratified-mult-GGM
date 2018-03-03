@@ -2,7 +2,7 @@
 %{\colrbf need modification}
 
 \begin{proof}[Proof of Theorem~\ref{thm:algo-convergence}]
-The theorem is a generalization of Theorem 1 in \cite{LinEtal16}. The proof follows directly from the proof of that theorem, substituting $( \widehat B^{(k)}, \widehat \Theta_\epsilon^{(k)}), (B^*, \Theta_\epsilon^*)$ and $ (B^\infty, \Theta_\epsilon^\infty)$ therein with $(\widehat \cB^{(t)}, \widehat \Theta_y^{(t)}), ( \cB_0, \Theta_{y 0})$ and $ (\cB^\infty, \Theta_y^\infty)$, and corresponding variations as required.
+The theorem is a generalization of Theorem 1 in \cite{LinEtal16}. The proof follows directly from the proof of that theorem, substituting $( \widehat B^{(k)}, \widehat \Theta_\epsilon^{(k)}), (B^*, \Theta_\epsilon^*)$ and $ (B^\infty, \Theta_\epsilon^\infty)$ therein with $(\widehat \cB^{(t)}, \widehat \Theta_y^{(t)}), ( \cB_0, \Theta_{y 0})$ and $ (\cB^\infty, \Theta_y^\infty)$, respectively, and their corresponding variations as required.
 
 \end{proof}
 
@@ -20,7 +20,7 @@ for all $\bftheta \in \BR^b$. In short, this is denoted by $\bfM \sim RE(\psi, \
 Starting from \cite{BickelRitovTsybakov09}, different versions of the RE conditions have been proposed and used in high-dimensional analysis \citep{LohWainwright12,BasuMichailidis15,MaMichailidis15,vandeGeerBuhlmann09} to ensure that a covariance matrix satisfies a somewhat relaxed positive-definitess condition.
 
 \begin{proof}[Proof of Theorem~\ref{thm:thm-Theta}]
-The proof strategy is as follows. We first show that given fixed $(\cX,\cE)$, and some conditions on $\widehat \bfE^k := \bfY^k - \bfX^k \widehat \bfB^k, k \in \cI_K$, the bounds in in Theorem~\ref{thm:thm-Theta} hold. We then show that for random $(\cX,\cE)$, those conditions hold with probability approaching 1.
+The proof strategy is as follows. We first show that given fixed $(\cX,\cE)$, and some conditions on $\widehat \bfE^k := \bfY^k - \bfX^k \widehat \bfB^k, k \in \cI_K$, the bounds in Theorem~\ref{thm:thm-Theta} hold. We then show that for random $(\cX,\cE)$, those conditions hold with probability approaching 1.
 
 \begin{Lemma}\label{thm:ThetaThm}
 Assume fixed $\cX, \cE$ and deterministic $\widehat \cB = \{ \widehat \bfB^k \}$, and the following conditions.
@@ -42,7 +42,7 @@ $$
 \BQ \left(C_\beta, \Sigma_{x0}^k, \Sigma_{y0}^k \right) \sqrt {\frac{ \log (p q)}{n}},
 $$
 %
-where $\BQ \left(C_\beta, \Sigma_x^k, \Sigma_y^k \right) = O(1)$ is non-negative and depends on $\cB_0, \Sigma_{x0}^k$ and $\Sigma_{y0}^k$ only.
+where $\BQ \left(C_\beta, \Sigma_{x0}^k, \Sigma_{y0}^k \right) = O(1)$ is non-negative and depends on $\cB_0, \Sigma_{x0}^k$ and $\Sigma_{y0}^k$ only.
 
 \noindent{\bf(A3)} Denote $\widehat \bfS^k = (\widehat \bfE^k)^T \widehat \bfE^k/n$. Then $\widehat \bfS^k \sim RE(\psi^k, \phi^k)$ with $Kq \phi \leq \psi/2$ where $ \psi = \min_k \psi^k, \phi = \max_k \phi^k $.
 
@@ -177,7 +177,7 @@ $$
 %
 with probability $\geq 1 - 2 \exp(c_3 n), c_3>0$.
 %
-\item The deviation bound in (A2) is satisfied with probability $ \geq 1 - 12 c_1 \exp[ (c_2^2-1) \log (pq)]$, where
+\item The deviation bound in (B2) is satisfied with probability $ \geq 1 - 12 c_1 \exp[ (c_2^2-1) \log (pq)]$, where
 %
 $$
 \BR \left(C_\Theta, \Sigma_{x0}^k, \Sigma_{y0}^k \right) =
@@ -403,7 +403,7 @@ We also have a general result:
 Consider two positive definite matrices $\bfA, \bfA_1 \in \BM(a,a)$. Then for $\delta > 0$,
 %
 $$
-\| \bfA  -\bfA_1 \|_\infty \leq \delta \Rightarrow \| \bfA^{1/2} - \bfA_1^{1/2} \|_\infty \leq \sqrt{ \delta}.
+\| \bfA  -\bfA_1 \|_\infty \leq \delta \Rightarrow \| \bfA^{1/2} - \bfA_1^{1/2} \|_\infty \leq \delta^{1/2}.
 $$
 \end{Lemma}
 %
@@ -411,7 +411,7 @@ $$
 \noindent Applying Lemma~\ref{lemma:omega-diff} it is immediate from assumption (T2) that
 %
 \begin{align}\label{eqn:omega-sqrt-bound}
-\left\| \widehat \Omega_y^{1/2} - \Omega_y^{1/2} \right\|_\infty \leq \sqrt{ D_{\Omega}}
+\left\| \widehat \Omega_y^{1/2} - \Omega_y^{1/2} \right\|_\infty \leq D_{\Omega}^{1/2}
 \end{align}
 
 Using Lemma~\ref{Lemma:PowerThmLemma} in conjunction with \eqref{eqn:omega-sqrt-bound} we now have
