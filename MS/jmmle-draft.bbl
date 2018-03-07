@@ -125,11 +125,23 @@ Li, H., Pouladi, N., Achour, I., et~al. (2015).
   complex disease-associated SNPs}.
 \newblock {\em J. Biomed. Inform.}, 58:226--234.
 
-\bibitem[Lin et~al., 2016]{LinEtal16}
-Lin, J., Basu, S., Banerjee, M., and Michailidis, G. (2016).
+\bibitem[Lin et~al., 2016a]{LinEtal16}
+Lin, J., Basu, S., Banerjee, M., and Michailidis, G. (2016a).
 \newblock {Penalized Maximum Likelihood Estimation of Multi-layered Gaussian
   Graphical Models}.
 \newblock {\em J. Mach. Learn. Res.}, 17:5097--5147.
+
+\bibitem[Lin et~al., 2016b]{LinDrtonShojaie16}
+Lin, L., Drton, M., and Shojaie, A. (2016b).
+\newblock {Estimation of high-dimensional graphical models using regularized
+  score matching}.
+\newblock {\em Electron. J. Stat.}, 10:806--854.
+
+\bibitem[Liu et~al., 2009]{LiuLaffertyWasserman09}
+Liu, H., Lafferty, J., and Wasserman, L. (2009).
+\newblock {The Nonparanormal: Semiparametric Estimation of High Dimensional
+  Undirected Graphs}.
+\newblock {\em J. Mach. Learn. Res.}, 10:2295--2328.
 
 \bibitem[Liu, 2017]{Liu17}
 Liu, W. (2017).

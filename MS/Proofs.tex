@@ -1,7 +1,7 @@
 \section{Proofs of auxiliary results}
 
 \begin{proof}[Proof of Lemma~\ref{thm:ThetaThm}]
-The proof has the same structure as the proof of Theorem 1 in \cite{MaMichailidis15}, where they prove consistency of the (single layer) JSEM estimates. Part (I) is analogous to part A.1 therein, but the proof strategy is completely different, which we show in detail. Our part (II) follows similar lines as their parts A.2 and A.3, incorporating the updated quantities from the first part. For this we provide outlines and leave the details to the reader.
+The proof has the same structure as the proof of Theorem 1 in \cite{MaMichailidis15}, where consistency of the (single layer) JSEM estimates are established. Part (I) is analogous to part A.1 therein, but the proof strategy is completely different, which we provide in detail next. Our part (II) follows along similar lines as parts A.2 and A.3, incorporating the updated quantities from the first part (A.1). For this part of the proof, we provide an outline and leave details to the reader.
 
 \paragraph{Proof of part (I).}
 %The following proposition establishes error bounds for estimated neighborhood coefficients in the Y-network.
@@ -114,7 +114,7 @@ For the bound on $| \widehat \cS_j| := |\supp( \widehat \Theta_j)|$, notice that
 & \geq |g| \gamma_n - \sum_{k \in g} \BQ ( C_\beta, \Sigma_x^k, \Sigma_y^k ) \sqrt{ \frac{ \log (pq)}{n}}
 \end{align*}
 %
-using the KKT condition for (\ref{eqn:EstEqn2}) and assumption (A2). The choice of $\gamma_n$ now ensures that the right hand side is $\geq 3|g| \gamma_n / 4$. Hence
+using the KKT condition for (\ref{eqn:EstEqn2}) and assumption (A2). The choice of $\gamma_n$ now ensures that the right hand side is $\geq 3|g| \gamma_n / 4$. Hence,
 %
 \begin{align*}
 | \hat \cS_j| & \leq \sum_{(j',g) \in \widehat \cS_j} \frac{16}{9 n^2 |g|^2 \gamma_n^2 } \sum_{k \in g} \left| ((\widehat \bfE_{-j}^k)^T \widehat \bfE^k ( \widehat \bfT_j^k - \bfT_{0,j}^k ))^{j'} \right|^2\\
@@ -132,7 +132,7 @@ $$
 \tilde \Omega_y^k = \diag (\Omega_{y0}^k) + \Omega_{y, E_0^k \cap \hat E^k}^k
 $$
 %
-With similar derivations to the proof of Corollary A.1 in \cite{MaMichailidis15}, The following two upper bounds can be established:
+Based on similar derivations as in the proof of Corollary A.1 in \cite{MaMichailidis15}, the following two upper bounds can be established:
 %
 \begin{align}
 | \hat E^k | \leq \frac{ 128 S }{\psi} \label{eqn:Thm1ProofProp2Bd4}\\
@@ -162,7 +162,7 @@ $$
 O \left( \BQ_0^2 | g_{\max}| S \frac{ \log (pq)}{n} \right)
 $$
 %
-The proof is now complete by combining this with \eqref{eqn:Thm1ProofProp2Bd5} then applying Cauchy-Schwarz inequality and triangle inequality.
+The proof is now complete by combining this with \eqref{eqn:Thm1ProofProp2Bd5}  and then applying the Cauchy-Schwarz inequality and the triangle inequality.
 \end{proof}
 
 \begin{proof}[Proof of Lemma~\ref{prop:ErrorRE}]
@@ -197,7 +197,7 @@ The proof is now complete by combining this with \eqref{eqn:Thm1ProofProp2Bd5} t
 We drop the subscript 0 for true values and the superscript $k$ since there is no scope of ambiguity. For part 1, we start with an auxiliary lemma:
 %
 \begin{Lemma}\label{lemma:ErrorRElemma1}
-For a sub-gaussian design matrix $\bfX \in \BM(n,p)$ with columns having mean ${\bf 0}_p$ and covariance matrix $\Sigma_x$, the sample covariance matrix $\widehat \Sigma_x = \bfX^T \bfX/n$ satisfies the RE condition
+For a sub-Gaussian design matrix $\bfX \in \BM(n,p)$ with columns having mean ${\bf 0}_p$ and covariance matrix $\Sigma_x$, the sample covariance matrix $\widehat \Sigma_x = \bfX^T \bfX/n$ satisfies the RE condition
 %
 $$
 \widehat \Sigma_x \sim RE \left( \frac{\Lambda_{\min} ( \Sigma_x) }{2}, \frac{\Lambda_{\min} ( \Sigma_x) \log p }{2 n} \right)
@@ -206,7 +206,7 @@ $$
 with probability $\geq 1 - 2 \exp(-c_3 n)$ for some $c_3 > 0$.
 \end{Lemma}
 %
-Now denote $\widehat \bfE = \bfY - \bfX \widehat \bfB$. For $\bfv \in \BR^q$, we have
+Denote $\widehat \bfE = \bfY - \bfX \widehat \bfB$. For $\bfv \in \BR^q$, we have
 %
 \begin{align}\label{eqn:ErrorREeqn3}
 \bfv^T \widehat \bfS \bfv &= \frac{1}{n} \| \widehat \bfE \bfv \|^2 \notag\\
@@ -222,7 +222,7 @@ $$
 \sqrt{ \frac{ \log (pq)}{n}}
 $$
 %
-by assumption (A1). Now we use another lemma:
+by assumption (A1). Now, we use another lemma:
 %
 \begin{Lemma}\label{lemma:ErrorRElemma2}
 For zero-mean independent sub-gaussian matrices $\bfX \in \BM(n,p), \bfE \in \BM(n,q)$ with parameters $(\Sigma_x, \sigma_x^2)$ and $(\Sigma_e, \sigma_e^2)$ respectively, given that $n \succsim \log(pq)$ the following holds with probability $\geq 1 - 6c_1 \exp [-(c_2^2-1) \log(pq)]$ for some $c_1 >0, c_2 > 1$:
@@ -291,7 +291,7 @@ so that for $n \succsim \log (pq)$,
 %
 with probability $\geq 1 - 12 c_1 \exp [-(c_2^2-1) \log(pq)]$ by applying Lemma~\ref{lemma:ErrorRElemma2} and assumption (A1).
 
-Finally for $\bfW_3$, we apply Lemma 8 of \cite{RavikumarEtal11} on the (sub-gaussian) design matrix $\bfX$ to obtain that for sample size
+Finally, for $\bfW_3$, we apply Lemma 8 of \cite{RavikumarEtal11} on the (sub-gaussian) design matrix $\bfX$ to obtain that for sample size
 %
 \begin{align}\label{eqn:ErrorRElemma2eqn7}
 n \geq 512 ( 1 + 4 \Lambda_{\max} (\Sigma_x^k))^4 \max_i (\sigma_{x,ii}^k )^4 \log (4p^{\tau_1})
@@ -304,7 +304,7 @@ $$
 c_x = \left[ 128 ( 1 + 4 \Lambda_{\max} (\Sigma_x)  )^2 \max_i (\sigma_{x,ii})^2 \right]^{-1}
 $$
 %
-Thus with the same probability,
+Thus, with the same probability,
 %
 \begin{align}\label{eqn:ErrorRElemma2eqn4}
 \| \bfW_4 \|_\infty \leq \left\| \frac{\bfX^T \bfX}{n} \right\|_\infty \| \widehat \bfB - \bfB_0 \|_1^2 \| \bfT_{0,j} \|_1 
@@ -385,7 +385,7 @@ because $\Omega_x$ is diagonally dominant implies $\| \bfzeta_i \|_1 = \sum_{i' 
 %
 with probability $ \geq 1 - 6c_1 \exp [-(c_2^2-1) \log(pq)]$.
 
-On the other hand
+On the other hand,
 %
 \begin{align*}
 s_i^2 := \frac{1}{n} \left\| \bfX_i - \bfX_{-i}  \bfzeta_{0,i} \right\|^2 & \leq 
@@ -406,7 +406,7 @@ with probability $ \geq 1 - 1/p^{\tau_1-2}, \tau_1>2$, and
 n \geq 512 ( 1 + 4 \Lambda_{\max} (\Sigma_{x}))^4 \max_i (\sigma_{x,ii} )^4 \log (4p^{\tau_1})
 \end{align}
 %
-On the other hand, by Chebyshev inequality, for any $\epsilon>0$
+On the other hand, by Chebyshev's inequality, for any $\epsilon>0$
 %
 $$
 P\left( | s_i - \sqrt{ \sigma_{x,i,-i}} | \geq \epsilon \right) \leq \frac{\BV s_i}{\epsilon^2} =
@@ -452,7 +452,7 @@ with probability $\geq 1 - 6c_{6} \exp [-(c_{7}^2-1) \log (p-1)]$ for some $c_{6
 \left (\| \widehat \bfzeta_i - \bfzeta_{i} \|_1 + \| \bfzeta_{i} \|_1 \right) \label{eqn:PowerThmLemmaProofEqn1}
 \end{align}
 %
-By applying Lemma 8 in \cite{RavikumarEtal11} we have a bound for the first summand on the right hand side:
+By applying Lemma 8 in \cite{RavikumarEtal11}, we have a bound for the first summand on the right hand side:
 %
 $$
 | \widehat s_i - \sqrt{\sigma_{x,i,-i}} | \leq \sqrt{ \frac{ \log 4 + \tau_2}{c_i n}}; \quad
@@ -539,7 +539,7 @@ Combining \eqref{eqn:PowerThmLemma2ProofEqn2} with \eqref{eqn:PowerThmLemma2Proo
 \end{proof}
 
 \begin{proof}[Proof of Lemma~\ref{lemma:ErrorRElemma1}]
-This is same as Lemma 2 in Appendix B of \cite{LinEtal16} and its proof can be found there.
+This is the same as in Lemma 2 in Appendix B of \cite{LinEtal16} and its proof can be found there.
 \end{proof}
 
 \begin{proof}[Proof of Lemma~\ref{lemma:ErrorRElemma2}]

@@ -119,7 +119,7 @@ $$
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:thm-B}]
-The strategy is same as Theorem~\ref{thm:thm-Theta}. We first show the theorem statements hold for fixed $\cX, \cE$ in presence of some conditions, then show that those conditions are satisfied with probability approaching 1 when $\cX$ and $\cE$ are random.
+The strategy is the same as in Theorem~\ref{thm:thm-Theta}. We first establish the theorem statements hold for fixed $\cX, \cE$ in the presence of certain regularity conditions, and then show that those conditions are satisfied with probability approaching 1 when $\cX$ and $\cE$ are random.
 
 %The proof strategy is as follows. We first show that given fixed $(\cX,\cE)$, and some conditions on the quantities $\widehat \bfgamma, \widehat \bfGamma$, the bounds in in \ref{thm:thm-B} hold. We then show that for random $(\cX,\cE)$, these conditions hold with probability approaching 1.
 
@@ -144,7 +144,7 @@ where $\BR (C_\Theta, \Sigma_{x0}^k, \Sigma_{y0}^k ) = O(1)$ depends on $\Theta_
 
 \noindent{\bf(B3)} $\widehat \bfGamma \sim RE(\psi_*, \phi_*)$ with $Kpq \phi_* \leq \psi_*/2$.
 
-Then, given the choice of tuning parameter
+Then, given the choice of the tuning parameter
 %
 $$
 \lambda_n \geq 4 \sqrt{| h_{\max} |} \BR_0 \sqrt{ \frac{ \log(pq)}{n}}; \quad 
@@ -154,18 +154,18 @@ $$
 the following holds
 %
 \begin{align}
-\| \widehat \bfbeta - \bfbeta_0 \|_1 & \leq 48 \sqrt{ | h_{\max} |} s_\beta \lambda_n / \psi^* \label{eqn:BetaThmEqn1}\\
-\| \widehat \bfbeta - \bfbeta_0 \| & \leq 12 \sqrt s_\beta \lambda_n / \psi^* \label{eqn:BetaThmEqn2}\\
-\sum_{h \in \cH} \| \bfbeta^{[h]} - \bfbeta_0^{[h]} \| & \leq 48 s_\beta \lambda_n / \psi^* \label{eqn:BetaThmEqn3}\\
+\| \widehat \bfbeta - \bfbeta_0 \|_1 & \leq 48 \sqrt{ | h_{\max} |} B \lambda_n / \psi^* \label{eqn:BetaThmEqn1}\\
+\| \widehat \bfbeta - \bfbeta_0 \| & \leq 12 \sqrt B \lambda_n / \psi^* \label{eqn:BetaThmEqn2}\\
+\sum_{h \in \cH} \| \bfbeta^{[h]} - \bfbeta_0^{[h]} \| & \leq 48 B \lambda_n / \psi^* \label{eqn:BetaThmEqn3}\\
 (\widehat \bfbeta - \bfbeta_0 )^T \widehat \bfGamma (\widehat \bfbeta - \bfbeta_0 ) & \leq
-72 s_\beta \lambda_n^2 / \psi^* \label{eqn:BetaThmEqn4}
+72 B \lambda_n^2 / \psi^* \label{eqn:BetaThmEqn4}
 \end{align}
 \end{Lemma}
 
-Condition (B1) holds by assumption. Next we verify that conditions (B2) and (B3) hold with high probability given fixed $\widehat \Theta$.
+Condition (B1) holds by assumption. Next, we verify that conditions (B2) and (B3) hold with high probability given fixed $\widehat \Theta$.
 
 \begin{Lemma}\label{prop:ThmBetaRE}
-Consider deterministic $\widehat \Theta$ satisfying assumption (B1). Also assume conditions (E3), (E4) from the main paper. Then for sample size $n \succsim \log (pq)$,
+Consider deterministic $\widehat \Theta$ satisfying assumption (B1). Also assume conditions (E3), (E4) from the main body of the paper. Then, for sample size $n \succsim \log (pq)$,
 
 \begin{enumerate}
 \item $\widehat \bfGamma$ satisfies the RE condition: $ \widehat \bfGamma \sim RE (\psi_*, \phi_*)$, where 
@@ -189,7 +189,7 @@ $$
 \end{enumerate}
 \end{Lemma}
 
-The theorem is immediate by putting together Lemma~\ref{thm:BetaThm} and Lemma~\ref{prop:ThmBetaRE}.
+The theorem follows straighforwardly by putting together the results from Lemmas~\ref{thm:BetaThm} and ~\ref{prop:ThmBetaRE}.
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:starting-values}]
@@ -288,7 +288,7 @@ $$
 \bfR_i^k = \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k; k \in \cI_K
 $$
 %
-Then from \eqref{eqn:DebiasedBeta} we have
+Then, from \eqref{eqn:DebiasedBeta} we have
 %
 \begin{align}\label{eqn:ThmTestingProofeq1}
 \bfM_i ( \widehat \bfC_i - \widehat \bfD_i )^T &= \frac{1}{\sqrt n}
@@ -307,7 +307,7 @@ We now decompose $\widehat \bfE^k:$
 &= \bfE^k + \bfX_i^k (\bfb_{0i}^k - \widehat \bfb_i^k) + \bfX_{-i}^k (\bfB_{0,-i}^k - \widehat \bfB_{-i}^k)
 \end{align*}
 %
-Putting them back in \eqref{eqn:ThmTestingProofeq1} and using $t_i^k = (\bfR_i^k)^T \bfX_i^k/n$,
+Putting them back in \eqref{eqn:ThmTestingProofeq1} and using $t_i^k = (\bfR_i^k)^T \bfX_i^k/n$, we get
 %
 \begin{align}
 \bfM_i ( \widehat \bfC_i - \widehat \bfD_i)^T &= \frac{1}{\sqrt n}
@@ -339,7 +339,7 @@ Putting them back in \eqref{eqn:ThmTestingProofeq1} and using $t_i^k = (\bfR_i^k
 \end{bmatrix}\label{eqn:ThmTestingProofeq2}
 \end{align}
 
-At this point, we drop $k$ and 0 in the subscripts, and prove the following:
+At this point, we drop $k$ and 0 in the subscripts since there is no ambiguity, and establish the following:
 
 \begin{Lemma}\label{Lemma:ThmTestingLemma}
 Given conditions (T1) and (T2), the following holds for sample size $n$ such that $n \succsim \log (pq)$:
@@ -357,7 +357,7 @@ O \left( \frac{ \log(pq)}{\sqrt n} \right)
 %
 with probability $\geq 1 - 6c_1 \exp[-(c_2^2-1) \log (p q)] - 1/p^{\tau_1-2} - \kappa_i/\sqrt n$, where $\kappa_i := \BV [(X_i - \BX_{-i} \bfzeta_{0,-i})^2]$.
 
-Additionally, given condition (T3)
+Additionally, given condition (T3) we have
 %
 \begin{align}\label{eqn:ThmTestingProofeq4}
 & \left\| \frac{1}{\sqrt n \widehat s_i} \bfR_i^T \bfX_{-i} (\bfB_{-i} - \widehat \bfB_{-i})
@@ -371,7 +371,7 @@ O \left( \frac{ \log(pq)}{\sqrt n} \right)
 holds with probability $\geq 1 - 6c_6 \exp[-(c_7^2-1) \log (p q)] - 1/p^{\tau_1-2} - \kappa_i/\sqrt n$ for some $c_6 > 0, c_7 > 1$.
 \end{Lemma}
 
-Given Lemma~\ref{Lemma:ThmTestingLemma}, the first and second summands on the right hand side of \eqref{eqn:ThmTestingProofeq2} are bounded above by applying each of \eqref{eqn:ThmTestingProofeq3} and \eqref{eqn:ThmTestingProofeq4} $K$ times. This completes our proof.
+Given Lemma~\ref{Lemma:ThmTestingLemma}, the first and second summands on the right hand side of \eqref{eqn:ThmTestingProofeq2} are bounded above by applying each of \eqref{eqn:ThmTestingProofeq3} and \eqref{eqn:ThmTestingProofeq4} $K$ times. This completes the proof.
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:PowerThm}]
@@ -381,7 +381,7 @@ From \eqref{eqn:ThmTestingProofeq2} and Lemma~\ref{Lemma:ThmTestingLemma} we hav
 (\widehat \Omega_y^k)^{1/2} m_i^k ( \widehat \bfc_i^k - \bfb_{0i}^k) \sim \cN_q ({\bf 0}, \bfI) + \bfS_{2n}^k,
 \end{align}
 %
-where $\| \bfS_{2n}^k \|_\infty = o_P(1)$. We now have the following lemma:
+where $\| \bfS_{2n}^k \|_\infty = o_P(1)$. We next obtain the following lemma:
 %
 \begin{Lemma}\label{Lemma:PowerThmLemma}
 Drop $k$ in superscripts and 0 in subscripts. Given condition (T1), the following holds with probability $\geq 1 - 6c_{6} \exp [-(c_{7}^2-1) \log (p-1)] - 1/p^{\tau_2-2} - \kappa_i / \sqrt n, \tau_2 > 2$:
@@ -389,7 +389,7 @@ Drop $k$ in superscripts and 0 in subscripts. Given condition (T1), the followin
 \begin{align}
 \left| \frac{m_i}{\sqrt n} - \sqrt{ \sigma_{x,i,-i}} \right| & \leq
 \delta_i := \sqrt{ \frac{ \log 4 + \tau_2}{c_i n}} +
-\frac{D_\zeta + \| \bfzeta_{0i} \|_1 }{\sqrt{ \sigma_{x,i,-i}} - n^{-1/2} - D_\zeta \sqrt{V_x}} \times \notag\\
+\frac{D_\zeta + 1 }{\sqrt{ \sigma_{x,i,-i}} - n^{-1/2} - D_\zeta \sqrt{V_x}} \times \notag\\
 & \left[ c_{7} [(\sigma_{x,i,-i} \Lambda_{\max} (\Sigma_{x, -i})]^{1/2} \sqrt{ \frac{\log p}{n}} + D_\zeta V_x \right], \label{eqn:PowerThmLemmaEqn}
 \end{align}
 %
@@ -397,10 +397,10 @@ where $c_i = [ 128 (1 + 4 \sigma_{x,i,-i})^2 (\sigma_{x,i,-i})^2 ]^{-1}$, and th
 \end{Lemma}
 %
 
-We also have a general result:
+We also provide the following general result:
 
 \begin{Lemma}\label{lemma:omega-diff}
-Consider two positive definite matrices $\bfA, \bfA_1 \in \BM(a,a)$. Then for $\delta > 0$,
+Consider two positive definite matrices $\bfA, \bfA_1 \in \BM(a,a)$. Then, for $\delta > 0$, we have
 %
 $$
 \| \bfA  -\bfA_1 \|_\infty \leq \delta \Rightarrow \| \bfA^{1/2} - \bfA_1^{1/2} \|_\infty \leq \delta^{1/2}.
@@ -408,7 +408,7 @@ $$
 \end{Lemma}
 %
 
-\noindent Applying Lemma~\ref{lemma:omega-diff} it is immediate from assumption (T2) that
+\noindent Applying Lemma~\ref{lemma:omega-diff} it follows immediately from assumption (T2) that
 %
 \begin{align}\label{eqn:omega-sqrt-bound}
 \left\| \widehat \Omega_y^{1/2} - \Omega_y^{1/2} \right\|_\infty \leq D_{\Omega}^{1/2}
@@ -441,13 +441,13 @@ $$
 \frac{ n \widehat \Sigma_y^1}{(m_i^1)^2} + \frac{n \widehat \Sigma_y^2}{(m_i^2)^2}.
 $$
 %
-Now we have the following lemma:
+Next, we obtain the following lemma:
 %
 \begin{Lemma}\label{Lemma:PowerThmLemma2}
 Given conditions (T1) and (T2), for the pooled covariance matrix estimate $\widehat \Sigma_i$, we have
 %
 $$
-\left\| \widehat \Sigma_i - \Sigma_i \right\|_\infty = o(1).
+\left\| \widehat \Sigma_i - \Sigma_i \right\|_\infty = o(1),
 $$
 %
 for sample size $n \succsim \log p$.
@@ -470,7 +470,7 @@ $$
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:FDRthm}]
-The proof follows the general structure of Theorem 4.1 in \cite{LiuShao14}, with two modifications. Firstly we replace the bound in equation (12) of \cite{LiuShao14} by a new deviation bound
+The proof follows the general structure of Theorem 4.1 in \cite{LiuShao14}, with two modifications. Firstly, we replace the bound in equation (12) of \cite{LiuShao14} by a new deviation bound
 %
 $$
 P \left( \left| d_{ij} - \frac{\mu_j}{\sigma_j} \right| \geq t \right) = (1 - \Phi(t))(1 + o(1))
@@ -490,7 +490,7 @@ r_{jj'}^k \geq C_k & \Rightarrow \sigma_{y0,jj'}^k \geq (\sigma_{y0,jj}^k \sigma
 \geq \min \{ C_1, C_2 \}.
 \end{align*}
 %
-It is now immediate that (D1) or (D1*) holds for the pooled covariance matrices.
+It now follows that (D1) or (D1*) holds for the pooled covariance matrices.
 \end{proof}
 
 
