@@ -1,4 +1,7 @@
-\documentclass[11pt,letterpaper]{article}
+%\documentclass[11pt,letterpaper]{article}
+\documentclass[twoside,11pt]{article}
+\usepackage{jmlr2e}
+
 \pdfoutput=1
 
 \usepackage{mycommands1,amssymb,amsmath,amsthm,color,pagesize,outlines,cite,subfigure,epsfig}
@@ -8,25 +11,18 @@
 
 \usepackage{stackrel}
 
-\usepackage[round]{natbib}
+%\usepackage[round]{natbib}
 
 % for algorithm
 %\usepackage[noend]{algpseudocode}
 %\usepackage{algorithm}
 
 % DON'T change margins - should be 1 inch all around.
-\addtolength{\evensidemargin}{-.5in}
-\addtolength{\oddsidemargin}{-.5in}
-\addtolength{\textwidth}{0.9in}
-\addtolength{\textheight}{0.9in}
-\addtolength{\topmargin}{-.4in}
-
-%% measurements for 1 inch margin
-%\addtolength{\oddsidemargin}{-.875in}
-%\addtolength{\evensidemargin}{-.875in}
-%\addtolength{\textwidth}{1.75in}
-%\addtolength{\topmargin}{-.875in}
-%\addtolength{\textheight}{1.75in}
+%\addtolength{\evensidemargin}{-.5in}
+%\addtolength{\oddsidemargin}{-.5in}
+%\addtolength{\textwidth}{0.9in}
+%\addtolength{\textheight}{0.9in}
+%\addtolength{\topmargin}{-.4in}
 
 %\pagestyle{myheadings}
 %\markboth{}{\underline{{\bf Notes: (do not circulate)} \hspace{4.5cm} {\sc  Ansu Chatterjee} \hspace{0.25cm}}}
@@ -59,9 +55,16 @@
 \AtAppendix{\counterwithin{Theorem}{section}}
 \numberwithin{equation}{section}
 
+% Heading arguments are {volume}{year}{pages}{submitted}{published}{author-full-names}
+% \jmlrheading{0}{2015}{0}{unknown}{unknown}{}
+
+% Short headings should be running head and authors last names
+\ShortHeadings{Joint Multiple Multi-layered Gaussian Graphical Models}{Majumdar and Michailidis}
+\firstpageno{1}
+
 \begin{document}
 
-\newtheorem{Theorem}{Theorem}[section]
+\newtheorem{Theorem}{theorem}[section]
 \newtheorem{Lemma}[Theorem]{Lemma}
 \newtheorem{Corollary}[Theorem]{Corollary}
 \newtheorem{Proposition}[Theorem]{Proposition}
@@ -73,21 +76,27 @@
 
 \title{Joint Estimation and Inference for Data Integration Problems based on Multiple Multi-layered Gaussian Graphical Models}
 \date{}
-%\author{Subhabrata Majumdar, George Michailidis}
-\author{
-	Subhabrata Majumdar\thanks{Email: {\tt smajumdar@ufl.edu}}\\
-	and\\
-	George Michailidis\thanks{Corresponding author. Email: {\tt gmichail@ufl.edu}}\\
-	University of Florida, Gainesville, FL, USA
-}
+\author{\name Subhabrata Majumdar \email smajumdar@ufl.edu \\
+       \addr University of Florida Informatics Institute\\
+       Gainesville, FL, 32611, USA
+      \AND
+      \name George Michailidis\thanks{Corresponding Author. Post Address: 205 Griffin Floyd Hall, 1 University Ave, Gainesville, FL, 32611.} \email gmichail@ufl.edu \\
+      \addr Department of Statistics and Computer \& Information Science \& Engineering \\
+      University of Florida \\
+      Gainesville, FL 32611, USA 
+       }
+
+\editor{}
 \maketitle
 
-\noindent\textbf{Abstract}: 
+\begin{abstract} %   <- trailing '%' for backward compatibility of .sty file
 The rapid development of high-throughput technologies has enabled the generation of data from biological or disease processes that span multiple layers, like genomic, proteomic or metabolomic data, and further pertain to multiple sources, like disease subtypes or experimental conditions. In this work, we propose a general statistical framework based on Gaussian graphical models for horizontal (i.e. across conditions or subtypes) and vertical (i.e. across different layers containing data on molecular compartments) integration of information in such datasets. We start with decomposing the multi-layer problem into a series of two-layer problems. For each two-layer problem, we model the outcomes at a node in the lower layer as dependent on those of other nodes in that layer, as well as all nodes in the upper layer. We use a combination of neighborhood selection and group-penalized regression to obtain sparse estimates of all model parameters. Following this, we develop a debiasing technique and asymptotic distributions of inter-layer directed edge weights that utilize already computed neighborhood selection coefficients for nodes in the upper layer. Subsequently, we establish global and simultaneous testing procedures for these edge weights. Performance of the proposed methodology is evaluated on synthetic data.
+\end{abstract}
 
-\vspace{.5cm}
-\noindent\textbf{Keywords}: Data integration; Gaussian Graphical Models; Neighborhood selection; Group lasso; high-dimensional asymptotics; multiple testing; false discovery rate
-
+\vspace{1em}
+\begin{keywords}
+Data integration; Gaussian Graphical Models; neighborhood selection; group lasso; high-dimensional asymptotics; multiple testing; false discovery rate
+\end{keywords}
 \newpage
 
 %\input{Introduction}
@@ -96,6 +105,10 @@ The rapid development of high-throughput technologies has enabled the generation
 \input{Testing}
 \input{Numerical}
 \input{Discussion}
+
+\newpage
+\vskip 0.1in
+\bibliography{GGMbib}
 
 \newpage
 \appendix
@@ -108,7 +121,4 @@ The rapid development of high-throughput technologies has enabled the generation
 %-----------------------------
 %\section{Numerical performance}
 
-\bibliographystyle{apalike}
-\bibliography{jmmle-draft} % for arxiv
-%\bibliography{GGMbib}
 \end{document}

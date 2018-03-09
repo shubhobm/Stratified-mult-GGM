@@ -15,7 +15,7 @@ Denote the $i\Th$ row of the coefficient matrix $\bfB^k$ by $\bfb_i^k$, for $i \
 
 \subsection{Debiased estimators and asymptotic normality}
 \label{sec:testing-subsec-1}
-\cite{ZhangZhang14} proposed a debiasing procedure for lasso estimates and subsequently calculate confidence intervals for individual coefficients $\beta_j$ in high-dimensional linear regression: $\bfy = \bfX \bfbeta + \bfepsilon, \bfy \in \BR^n, \bfX \in \BM(n,p)$ and $\epsilon_r \sim N(0,\sigma^2), r \in \cI_n$ for some $\sigma>0$. Given an initial lasso estimate $\widehat \bfbeta^{\text{(init)}} \in \BR^p$ their debiased estimator was defined as:
+\citet{ZhangZhang14} proposed a debiasing procedure for lasso estimates and subsequently calculate confidence intervals for individual coefficients $\beta_j$ in high-dimensional linear regression: $\bfy = \bfX \bfbeta + \bfepsilon, \bfy \in \BR^n, \bfX \in \BM(n,p)$ and $\epsilon_r \sim N(0,\sigma^2), r \in \cI_n$ for some $\sigma>0$. Given an initial lasso estimate $\widehat \bfbeta^{\text{(init)}} \in \BR^p$ their debiased estimator was defined as:
 %
 $$
 \hat \beta_j^{(\text{deb})} = \hat \beta_j^{(\text{init})} + \frac{\bfz_j^T ( \bfy - \bfX \bfbeta^{(\text{init})})}{\bfz^T \bfx_j},
@@ -27,7 +27,7 @@ $$
 \frac{\hat \beta_j^{(\text{deb})} - \beta_j^0}{\| \bfz_j \|/| \bfz_j^T \bfx_j |} \sim N(0, \sigma^2)
 $$
 %
-Essentially, they obtain the debiasing factor for the $j^{\Th}$ coefficient by taking residuals from the regularized regression and scale them using the projection of $\bfx_j$ onto a space approximately orthogonal to it. \cite{MitraZhang16} later generalized this idea to group lasso estimates. Further, \cite{vanDeGeerEtal14} and \cite{JavanmardMontanari14} performed debiasing on the entire coefficient vectors.
+Essentially, they obtain the debiasing factor for the $j^{\Th}$ coefficient by taking residuals from the regularized regression and scale them using the projection of $\bfx_j$ onto a space approximately orthogonal to it. \citet{MitraZhang16} later generalized this idea to group lasso estimates. Further, \citet{vanDeGeerEtal14} and \citet{JavanmardMontanari14} performed debiasing on the entire coefficient vectors.
 
 We start off by defining debiased estimates for individual rows of the coefficient matrices $\bfB^k$ in our two-layer model:
 %
@@ -36,9 +36,9 @@ We start off by defining debiased estimates for individual rows of the coefficie
 ; \quad i \in \cI_p, k \in \cI_K
 \end{align}
 %
-where $\widehat \bfb_i^k$ denotes the $i\Th$ row of $\widehat \bfB^k$, and $t_i^k = ( \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k )^T \bfX_{i}^k/n$, and $\widehat \bfzeta_i^k, \widehat \bfB^k$ are {\it generic estimators} of the neighborhood coefficient matrices in the upper layer and within-layer coefficient matrices, respectively. By structure this is similar to the proposal of \cite{ZhangZhang14}. However, as seen shortly, minimal conditions need to be imposed on the parameter estimates used in \eqref{eqn:DebiasedBeta} for the asymptotic results based on a scaled version of the debiased estimator to go thorugh, and they continue to hold for arbitrary sparsity patterns over $k$ in all of the parameters.
+where $\widehat \bfb_i^k$ denotes the $i\Th$ row of $\widehat \bfB^k$, and $t_i^k = ( \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k )^T \bfX_{i}^k/n$, and $\widehat \bfzeta_i^k, \widehat \bfB^k$ are {\it generic estimators} of the neighborhood coefficient matrices in the upper layer and within-layer coefficient matrices, respectively. By structure this is similar to the proposal of \citet{ZhangZhang14}. However, as seen shortly, minimal conditions need to be imposed on the parameter estimates used in \eqref{eqn:DebiasedBeta} for the asymptotic results based on a scaled version of the debiased estimator to go thorugh, and they continue to hold for arbitrary sparsity patterns over $k$ in all of the parameters.
 
-Present methods of debiasing coefficients from regularized regression require specific assumptions on the regularization structure of the main regression, as well as on how to calculate the debiasing factor. While \cite{ZhangZhang14}, \cite{JavanmardMontanari14} and \cite{vanDeGeerEtal14} work on coefficients from lasso regressions, \cite{MitraZhang16} debias the coefficients of pre-specified groups in the coefficient vector from a group lasso. Current proposals for obtaining the debiasing factor available in the literature include node-wise lasso \citep{ZhangZhang14} and a variance minimization scheme with $\ell_\infty$-constraints \citep{JavanmardMontanari14}. In comparison, we only assume the following generic constraints on the parameter estimates used in our procedure.
+Present methods of debiasing coefficients from regularized regression require specific assumptions on the regularization structure of the main regression, as well as on how to calculate the debiasing factor. While \citet{ZhangZhang14}, \citet{JavanmardMontanari14} and \citet{vanDeGeerEtal14} work on coefficients from lasso regressions, \citet{MitraZhang16} debias the coefficients of pre-specified groups in the coefficient vector from a group lasso. Current proposals for obtaining the debiasing factor available in the literature include node-wise lasso \citep{ZhangZhang14} and a variance minimization scheme with $\ell_\infty$-constraints \citep{JavanmardMontanari14}. In comparison, we only assume the following generic constraints on the parameter estimates used in our procedure.
 
 \vspace{1em}
 \noindent{\bf (T1)} For the upper layer neighborhood coefficients, the following holds for all $k \in \cI_K$:
@@ -66,9 +66,9 @@ $$
 where $D_\beta$ depends on $\cB_0$ only.
 \vspace{1em}
 
-Given these conditions, the following result provides the asymptotic joint distribution of a scaled version of the debiased coefficients. A similar result for fixed design in the context of single-response linear regression can be found in \cite{StuckyVandeGeer17}. However, the authors use the nuclear norm as the loss function while obtaining the debiasing factors and employ the resulting Karush-Kuhn-Tucker (KKT) conditions to derive their results, whereas we leverage bounds on generic parameter estimates combined with the sub-Gaussianity of our random design matrices.
+Given these conditions, the following result provides the asymptotic joint distribution of a scaled version of the debiased coefficients. A similar result for fixed design in the context of single-response linear regression can be found in \citet{StuckyVandeGeer17}. However, the authors use the nuclear norm as the loss function while obtaining the debiasing factors and employ the resulting Karush-Kuhn-Tucker (KKT) conditions to derive their results, whereas we leverage bounds on generic parameter estimates combined with the sub-Gaussianity of our random design matrices.
 
-\begin{Theorem}\label{Thm:ThmTesting}
+\begin{theorem}\label{Thm:ThmTesting}
 Define $\widehat s_i^k = \sqrt{\| \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k \|^2/n}$, and $m_i^k = \sqrt n t_i^k / \widehat s_i^k$. Consider parameter estimates that satisfy conditions (T1)-(T3). Define the following:
 %
 \begin{align*}
@@ -78,8 +78,7 @@ Define $\widehat s_i^k = \sqrt{\| \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k \|
 \bfD_i &= \ve(\bfb_{0i}^1, \ldots, \bfb_{0i}^K)^T\\
 \end{align*}
 %
-Also assume that conditions (E2), (E4) hold, and the matrices $\Omega_{x0}^k; k \in \cI_K$ are diagonally
-dominant. Then, for sample size satisfying 
+Also assume that conditions (E2), (E4) hold, and the matrices $\Omega_{x0}^k, k \in \cI_K$ are diagonally dominant. Then, for sample size satisfying 
 $\log p = o(n^{1/2}), \log q = o(n^{1/2})$ we have
 %
 \begin{align}\label{eqn:ThmTestingEqn}
@@ -88,16 +87,16 @@ $\log p = o(n^{1/2}), \log q = o(n^{1/2})$ we have
 \end{align}
 %
 where $\| \bfR_n \|_\infty = o_P(1)$.
-\end{Theorem}
+\end{theorem}
 %
 
 \subsection{Test formulation}
 \label{sec:testing-subsec-2}
-We now simply plug in estimators from the JMMLE algorithm in Theorem~\ref{Thm:ThmTesting}. Doing so is fairly straightforward. Condition (T1) is ensured by the JSEM penalized neighborhood estimators in \eqref{eqn:jsem-model} (immediate from Proposition A.1 in \cite{MaMichailidis15}). On the other hand, bounds on total sparsity of the true coefficient matrices: $B = o(\sqrt{n} / \log(pq))$, and lower layer precision matrices: $S = o( n/ \log (pq)$, in conjunction with Corollary~\ref{corollary:jmmle-final}, ensure conditions (T2) and (T3), respectively -all with probability approaching 1 as $(n,p,q) \rightarrow \infty$.
+We now simply plug in estimators from the JMMLE algorithm in Theorem~\ref{Thm:ThmTesting}. Doing so is fairly straightforward. Condition (T1) is ensured by the JSEM penalized neighborhood estimators in \eqref{eqn:jsem-model} (immediate from Proposition A.1 in \citet{MaMichailidis15}). On the other hand, bounds on total sparsity of the true coefficient matrices: $B = o(\sqrt{n} / \log(pq))$, and lower layer precision matrices: $S = o( n/ \log (pq)$, in conjunction with Corollary~\ref{corollary:jmmle-final}, ensure conditions (T2) and (T3), respectively -all with probability approaching 1 as $(n,p,q) \rightarrow \infty$.
 
 An asymptotic joint distribution of debiased versions of the JMMLE regression estimates can then be obtained immediately.
 %
-\begin{Corollary}\label{corollary:CorTesting}
+\begin{corollary}\label{corollary:CorTesting}
 Consider the estimates $\widehat \cB$ and $\widehat \Omega_y $ obtained from Algorithm~\ref{algo:jmmle-algo}, and upper layer neighborhood coefficients from solving the node-wise regression in \eqref{eqn:jsem-model}. Suppose that $\log (pq) /\sqrt n \rightarrow 0$, and the sparsity conditions $B = o(\sqrt{n} / \log(pq)), S = o( n / \log(pq))$ are satisfied. Then, with the same notations as in Theorem~\ref{Thm:ThmTesting} we have
 %
 \begin{align}\label{eqn:CorTestingEqn}
@@ -106,7 +105,7 @@ Consider the estimates $\widehat \cB$ and $\widehat \Omega_y $ obtained from Alg
 \end{align}
 %
 where $\| \bfR_{1n} \|_\infty = o_P(1)$.
-\end{Corollary}
+\end{corollary}
 
 We are now ready to formulate asymptotic global and simultaneous testing procedures based on Corollary~\ref{corollary:CorTesting}. In this paper, we restrict our attention to testing for pairwise differences only. Specifically, we set $K=2$, and are interested in testing whether there are overall and elementwise differences between individual rows of the true coefficient matrices, i.e. $\bfb_{0i}^1$ and $\bfb_{0i}^2$.
 
@@ -132,7 +131,7 @@ where $\widehat \Sigma_y^k = (\widehat \Omega_y^k)^{-1}, k = 1,2$.
 
 Besides controlling the type-I error at a specified level, the above testing procedure maintains rate optimal power.
 
-\begin{Theorem}\label{thm:PowerThm}
+\begin{theorem}\label{thm:PowerThm}
 Consider the global test given in Algorithm~\ref{algo:AlgoGlobalTest}, performed using parameter estimates satisfying conditions (T1)-(T3). Define $\bfdelta := \bfb_{0 i}^1 - \bfb_{0 i}^2$. Further, assume that either of the following sufficient conditions are satisfied.
 
 \begin{itemize}
@@ -144,7 +143,7 @@ $
 $ for some $q \in [0,1)$ and positive-valued function $c_0(\cdot)$.
 \end{itemize}
 
-Define $\sigma_{x0, i,-i}^k = Var (X_i^k - \BX_{-i}^k \bfzeta_{0i}^k)$. Then, the power of the global test is given by
+Denote $\sigma_{x0,i,-i}^k = Var( X_i^k - \BX_{-i}^k \bfzeta_{0,i}^k)$. Then, the power of the global test is given by
 %
 $$
 K_q \left( \chi^2_{q,1-\alpha} + n \bfdelta^T 
@@ -152,7 +151,7 @@ K_q \left( \chi^2_{q,1-\alpha} + n \bfdelta^T
 $$
 %
 where $K_q$ is the cumulative distribution function of the $\chi^2_q$ distribution. Consequently, for $\| \bfdelta \| > O(n^{-1/2})$, $P( H_0^i \text{ is rejected }) \rightarrow 1$ as $(n,p,q) \rightarrow \infty$.
-\end{Theorem}
+\end{theorem}
 
 The conditions (I) or (II) above are needed to derive upper bounds for $\| \widehat \Sigma_y^k - \Sigma_{y0}^k \|_\infty$ using those for $\| \widehat \Omega_y^k - \Omega_{y0}^k \|_\infty$. While (I) imposes a potentially more stringent bound on the estimation error of $\Omega_y$, (II) restricts the power calculations to a uniformity class of covariance matrices \citep{BickelLevina08,CaiLiuLuo12}.
 %
@@ -209,7 +208,7 @@ $$
 \end{Algorithm}
 
 %Denote $\hat \cH_0^i = \{ j\ in \cI_q: |d_{ij}| \geq \hat \tau \}$.
-To ensure that this procedure maintains FDR and FDP asymptotically at a pre-specified level $\alpha \in (0,1)$, we need some dependence conditions on true correlation matrices in the lower layer. Following \cite{LiuShao14}, we consider the following two types of dependencies:
+To ensure that this procedure maintains FDR and FDP asymptotically at a pre-specified level $\alpha \in (0,1)$, we need some dependence conditions on true correlation matrices in the lower layer. Following \citet{LiuShao14}, we consider the following two types of dependencies:
 
 \noindent {\bf (D1)} Define $r_{jj'}^k = \sigma_{y0,jj'}^k /\sqrt{\sigma_{y0,jj}^k \sigma_{y0,j'j'}^k}$ for $j,j' \in \cI_q, k = 1,2$. Suppose there exists $0 < r < 1$ such that $\max_{1 \leq j < j' \leq q} | r_{jj'}^k | \leq r$, and for every $j \in \cI_q$,
 %
@@ -227,9 +226,9 @@ $$
 %
 for some $0 < \rho < (1-r)/(1+r)$.
 
-Originally proposed by \cite{LiuShao14}, the above dependency conditions are meant to control the amount of correlation amongst the test statistics. Condition (D1) allows each variable to be highly correlated with at most $O(q^\rho)$ other variables and weakly correlated with others, while (D1*) limits the number of variables to have {\it any} correlation with it to $O(q^\rho)$. Note that (D1*) is a stronger condition, and can be seen as the limiting condition of (D1) as $q \rightarrow \infty$.
+Originally proposed by \citet{LiuShao14}, the above dependency conditions are meant to control the amount of correlation amongst the test statistics. Condition (D1) allows each variable to be highly correlated with at most $O(q^\rho)$ other variables and weakly correlated with others, while (D1*) limits the number of variables to have {\it any} correlation with it to $O(q^\rho)$. Note that (D1*) is a stronger condition, and can be seen as the limiting condition of (D1) as $q \rightarrow \infty$.
 
-\begin{Theorem}\label{thm:FDRthm}
+\begin{theorem}\label{thm:FDRthm}
 Suppose $\mu_j = b_{0,ij}^1 - b_{0,ij}^2, \sigma_j^2 = \sigma_{y0,jj}^1/ \sigma_{x0,i,-i}^1 + \sigma_{y0,jj}^2/ \sigma_{x0,i,-i}^2$. Assume the following holds as $(n,q) \rightarrow \infty$
 %
 \begin{align}\label{eqn:FDRthmEqn1}
@@ -245,9 +244,9 @@ Next, consider conditions (D1) and (D1*). If (D1) is satisfied, then the followi
 \end{align}
 %
 Further, if (D1*) is satisfied, then \eqref{eqn:FDReqn} holds for $\log q = o(n^{1/3})$.
-\end{Theorem}
+\end{theorem}
 %
-%Theorem~\ref{thm:FDRthm} is essentially a restatement of Theorem 4.1 in \cite{LiuShao14}.
+%Theorem~\ref{thm:FDRthm} is essentially a restatement of Theorem 4.1 in \citet{LiuShao14}.
 The condition \eqref{eqn:FDRthmEqn1} is essential for FDR control in a diverging parameter space \citep{LiuShao14, Liu17}.
 
 \begin{Remark}
@@ -267,7 +266,7 @@ Even without group misspecification, this helps identify directed edges between 
 \begin{Remark}
 Following \eqref{eqn:FDRthmEqn1}, a sufficient condition on the sparsity of $\cB_0$ for FDR to be asymptotically controlled at some specified level is $B = o(n^\zeta/ \log q)$ if (D1) is satisfied, and $B = o(n^{1/3}/ \log q)$ if (D1*) is satisfied. In comparison, our results for the global testing procedure require $B = o(\sqrt n/ \log (pq))$, and point estimation requires $B = o(n/ \log (pq))$. In finite samples settings, the stricter sparsity requirements translate to higher sample sizes being needed (given the same $(p,q)$) for our testing procedures to have satisfactory performances compared to estimation only (See Sections \ref{sec:eval-jmmle} and \ref{sec:eval-testing}).
 
-In recent work, \cite{JavanmardMontanari18} showed that the $o(\sqrt n/ \log p)$ bound on the sparsity of the true coefficient vector required to construct confidence intervals from debiased lasso coefficient estimates \citep{vanDeGeerEtal14, ZhangZhang14,JavanmardMontanari14} can be weakened to $o(n/ (\log p)^2)$ when the random design precision matrix is known, or is unknown but satisfies certain sparsity assumptions. Similar relaxations may be possible in our case. For example, the machinery in \cite{Liu17}, which performs simultaneous testing in multiple (single layer) GGMs using slightly modified FDR thresholds, can be useful in obtaining \eqref{eqn:FDReqn} for $ \log q = o(n^{1/2})$ under (D1), (D1*) or other suitable dependency assumptions.% However, this requires a significant amount of theoretical analysis, and we leave it for future research.
+In recent work, \citet{JavanmardMontanari18} showed that the $o(\sqrt n/ \log p)$ bound on the sparsity of the true coefficient vector required to construct confidence intervals from debiased lasso coefficient estimates \citep{vanDeGeerEtal14, ZhangZhang14,JavanmardMontanari14} can be weakened to $o(n/ (\log p)^2)$ when the random design precision matrix is known, or is unknown but satisfies certain sparsity assumptions. Similar relaxations may be possible in our case. For example, the machinery in \citet{Liu17}, which performs simultaneous testing in multiple (single layer) GGMs using slightly modified FDR thresholds, can be useful in obtaining \eqref{eqn:FDReqn} for $ \log q = o(n^{1/2})$ under (D1), (D1*) or other suitable dependency assumptions.% However, this requires a significant amount of theoretical analysis, and we leave it for future research.
 \end{Remark}
 
 %\begin{Remark}

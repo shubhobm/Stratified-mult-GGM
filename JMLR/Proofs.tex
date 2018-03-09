@@ -1,7 +1,7 @@
 \section{Proofs of auxiliary results}
 
 \begin{proof}[Proof of Lemma~\ref{thm:ThetaThm}]
-The proof has the same structure as the proof of Theorem 1 in \cite{MaMichailidis15}, where consistency of the (single layer) JSEM estimates are established. Part (I) is analogous to part A.1 therein, but the proof strategy is completely different, which we provide in detail next. Our part (II) follows along similar lines as parts A.2 and A.3, incorporating the updated quantities from the first part (A.1). For this part of the proof, we provide an outline and leave details to the reader.
+The proof has the same structure as the proof of Theorem 1 in \citet{MaMichailidis15}, where consistency of the (single layer) JSEM estimates are established. Part (I) is analogous to part A.1 therein, but the proof strategy is completely different, which we provide in detail next. Our part (II) follows along similar lines as parts A.2 and A.3, incorporating the updated quantities from the first part (A.1). For this part of the proof, we provide an outline and leave details to the reader.
 
 \paragraph{Proof of part (I).}
 %The following proposition establishes error bounds for estimated neighborhood coefficients in the Y-network.
@@ -132,7 +132,7 @@ $$
 \tilde \Omega_y^k = \diag (\Omega_{y0}^k) + \Omega_{y, E_0^k \cap \hat E^k}^k
 $$
 %
-Based on similar derivations as in the proof of Corollary A.1 in \cite{MaMichailidis15}, the following two upper bounds can be established:
+Based on similar derivations as in the proof of Corollary A.1 in \citet{MaMichailidis15}, the following two upper bounds can be established:
 %
 \begin{align}
 | \hat E^k | \leq \frac{ 128 S }{\psi} \label{eqn:Thm1ProofProp2Bd4}\\
@@ -155,7 +155,7 @@ $$
 n \geq | g_{\max}| S \left[ \frac{48 c_y \BQ_0}{\psi t_1 d_y} \right]^2 \log (pq).
 $$
 
-Following the same steps as part A.3 in the proof of Theorem 4.1 in \cite{MaMichailidis15}, it can be proven using \eqref{eqn:Thm1ProofProp2Bd4}--\eqref{eqn:Thm1ProofProp2Bd7} that
+Following the same steps as part A.3 in the proof of Theorem 4.1 in \citet{MaMichailidis15}, it can be proven using \eqref{eqn:Thm1ProofProp2Bd4}--\eqref{eqn:Thm1ProofProp2Bd7} that
 %
 $$
 \sum_{k=1}^K \left\| \widehat \Omega_y^k - \tilde \Omega_y^k \right\|_F^2 \leq
@@ -167,7 +167,7 @@ The proof is now complete by combining this with \eqref{eqn:Thm1ProofProp2Bd5}  
 
 \begin{proof}[Proof of Lemma~\ref{prop:ErrorRE}]
 
-%For any sub-gaussian zero-mean design matrix $\bfX \in \BM(n,p)$ with parameters $(\Sigma_x, \sigma_x^2)$, and any $\hat \bfB, \bfB_0 \in \BM(p,q)$ such that $\| \hat \bfB - \bfB_0 \|_F \leq v_\beta$, we follow the proof of Proposition 3 in \cite{LinEtal16} to obtain that for sample size
+%For any sub-gaussian zero-mean design matrix $\bfX \in \BM(n,p)$ with parameters $(\Sigma_x, \sigma_x^2)$, and any $\hat \bfB, \bfB_0 \in \BM(p,q)$ such that $\| \hat \bfB - \bfB_0 \|_F \leq v_\beta$, we follow the proof of Proposition 3 in \citet{LinEtal16} to obtain that for sample size
 %%
 %\begin{align}\label{eqn:ErrorREeqn1}
 %n & \geq 512 ( 1 + 4 \sigma_x^2)^4 \max_j (\Sigma_{x,jj})^4 \log (4p^{\tau_1})
@@ -185,7 +185,7 @@ The proof is now complete by combining this with \eqref{eqn:Thm1ProofProp2Bd5}  
 %c_x = \left[ 128 ( 1 + 4 \sigma_x^2)^2 \max_j (\Sigma_{x,jj})^2 \right]^{-1}
 %$$
 %%
-%Here we substitute $\bfX, \hat \bfB, \bfB_0$ with $\bfX^k, \hat \bfB^k, \hat \bfB_0^k$ respectively. Since rows of $\bfX^k$ come independently from $\cN( {\bf 0}, \Sigma_x^k)$, $\sigma_x^2$ in our case is the spectral norm of $\Sigma_x^k$ \citep{LohWainwright12}, which is $\Lambda_{\max} (\Sigma_x^k)$. Finally
+%Here we substitute $\bfX, \hat \bfB, \bfB_0$ with $\bfX^k, \hat \bfB^k, \hat \bfB_0^k$ respectively. Since rows of $\bfX^k$ come independently from $\cN( {\bf 0}, \Sigma_x^k)$, $\sigma_x^2$ in our case is the spectral norm of $\Sigma_x^k$ \citetp{LohWainwright12}, which is $\Lambda_{\max} (\Sigma_x^k)$. Finally
 %%
 %$$
 %\| \bfX^k ( \hat \bfB^k - \bfB_0^k ) \|_\infty \leq 
@@ -196,7 +196,7 @@ The proof is now complete by combining this with \eqref{eqn:Thm1ProofProp2Bd5}  
 
 We drop the subscript 0 for true values and the superscript $k$ since there is no scope of ambiguity. For part 1, we start with an auxiliary lemma:
 %
-\begin{Lemma}\label{lemma:ErrorRElemma1}
+\begin{lemma}\label{lemma:ErrorRElemma1}
 For a sub-Gaussian design matrix $\bfX \in \BM(n,p)$ with columns having mean ${\bf 0}_p$ and covariance matrix $\Sigma_x$, the sample covariance matrix $\widehat \Sigma_x = \bfX^T \bfX/n$ satisfies the RE condition
 %
 $$
@@ -204,7 +204,7 @@ $$
 $$
 %
 with probability $\geq 1 - 2 \exp(-c_3 n)$ for some $c_3 > 0$.
-\end{Lemma}
+\end{lemma}
 %
 Denote $\widehat \bfE = \bfY - \bfX \widehat \bfB$. For $\bfv \in \BR^q$, we have
 %
@@ -224,14 +224,14 @@ $$
 %
 by assumption (A1). Now, we use another lemma:
 %
-\begin{Lemma}\label{lemma:ErrorRElemma2}
+\begin{lemma}\label{lemma:ErrorRElemma2}
 For zero-mean independent sub-gaussian matrices $\bfX \in \BM(n,p), \bfE \in \BM(n,q)$ with parameters $(\Sigma_x, \sigma_x^2)$ and $(\Sigma_e, \sigma_e^2)$ respectively, given that $n \succsim \log(pq)$ the following holds with probability $\geq 1 - 6c_1 \exp [-(c_2^2-1) \log(pq)]$ for some $c_1 >0, c_2 > 1$:
 %
 $$
 \frac{1}{n} \| \bfX^T \bfE \|_\infty \leq c_2 [ \Lambda_{\max} (\Sigma_x) \Lambda_{\max} (\Sigma_e) ]^{1/2} \sqrt{\frac{ \log(pq)}{n}}
 $$
 %
-\end{Lemma}
+\end{lemma}
 %
 Subsequently we collect all summands in (\ref{eqn:ErrorREeqn3}) and get
 %
@@ -291,7 +291,7 @@ so that for $n \succsim \log (pq)$,
 %
 with probability $\geq 1 - 12 c_1 \exp [-(c_2^2-1) \log(pq)]$ by applying Lemma~\ref{lemma:ErrorRElemma2} and assumption (A1).
 
-Finally, for $\bfW_3$, we apply Lemma 8 of \cite{RavikumarEtal11} on the (sub-gaussian) design matrix $\bfX$ to obtain that for sample size
+Finally, for $\bfW_3$, we apply Lemma 8 of \citet{RavikumarEtal11} on the (sub-gaussian) design matrix $\bfX$ to obtain that for sample size
 %
 \begin{align}\label{eqn:ErrorRElemma2eqn7}
 n \geq 512 ( 1 + 4 \Lambda_{\max} (\Sigma_x^k))^4 \max_i (\sigma_{x,ii}^k )^4 \log (4p^{\tau_1})
@@ -350,9 +350,9 @@ For part 1 it is enough to prove that with $ \widehat \Sigma_x^k := (\bfX^k)^T \
 \widehat \bfT_k^2 \otimes \widehat \Sigma_x^k & \sim RE (\psi_*^k, \phi_*^k)
 \end{align}
 %
-with high enough probability. because then we can take $\psi_* = \min_k \psi_*^k, \phi_* = \max_k \phi_*^k$. The proof of (\ref{eqn:ThmBetaREProofEqn1}) follows similar lines of the proof of Proposition 1 in \cite{LinEtal16}, only replacing $\Theta_\epsilon, \widehat \Theta_\epsilon, \bfX$ therein with $(\bfT^k)^2, (\widehat \bfT^k)^2, \bfX^k$, respectively. We omit the details.
+with high enough probability. because then we can take $\psi_* = \min_k \psi_*^k, \phi_* = \max_k \phi_*^k$. The proof of (\ref{eqn:ThmBetaREProofEqn1}) follows similar lines of the proof of Proposition 1 in \citet{LinEtal16}, only replacing $\Theta_\epsilon, \widehat \Theta_\epsilon, \bfX$ therein with $(\bfT^k)^2, (\widehat \bfT^k)^2, \bfX^k$, respectively. We omit the details.
 
-Part 2 follows the proof of Proposition 2 in \cite{LinEtal16}.
+Part 2 follows the proof of Proposition 2 in \citet{LinEtal16}.
 \end{proof}
 
 \begin{proof}[Proof of Lemma~\ref{Lemma:ThmTestingLemma}]
@@ -393,7 +393,7 @@ s_i^2 := \frac{1}{n} \left\| \bfX_i - \bfX_{-i}  \bfzeta_{0,i} \right\|^2 & \leq
 \leq \widehat s_i^2 + \| \widehat \bfzeta_i - \bfzeta_{0i} \|_1^2 \left\| \frac{1}{n} \bfX_{-i}^T \bfX_{-i} \right\|_\infty
 \end{align*}
 %
-which implies $s_i \leq \widehat s_i + D_\zeta \sqrt{ V_x}$. By applying Lemma 8 of \cite{RavikumarEtal11},
+which implies $s_i \leq \widehat s_i + D_\zeta \sqrt{ V_x}$. By applying Lemma 8 of \citet{RavikumarEtal11},
 %
 \begin{align}\label{eqn:ThmTestingProofeq32}
 \left\| \frac{1}{n} \bfX_{-i}^T \bfX_{-i} \right\|_\infty \leq
@@ -452,7 +452,7 @@ with probability $\geq 1 - 6c_{6} \exp [-(c_{7}^2-1) \log (p-1)]$ for some $c_{6
 \left (\| \widehat \bfzeta_i - \bfzeta_{i} \|_1 + \| \bfzeta_{i} \|_1 \right) \label{eqn:PowerThmLemmaProofEqn1}
 \end{align}
 %
-By applying Lemma 8 in \cite{RavikumarEtal11}, we have a bound for the first summand on the right hand side:
+By applying Lemma 8 in \citet{RavikumarEtal11}, we have a bound for the first summand on the right hand side:
 %
 $$
 | \widehat s_i - \sqrt{\sigma_{x,i,-i}} | \leq \sqrt{ \frac{ \log 4 + \tau_2}{c_i n}}; \quad
@@ -463,7 +463,7 @@ with probability $1 - 1/p^{\tau_2 - 2}$ for some $\tau_2>2$, and $n \geq 512 (1 
 \end{proof}
 
 \begin{proof}[Proof of Lemma~\ref{lemma:omega-diff}]
-$\| \bfA - \bfA_1 \|_\infty \leq \delta$ implies that $\bfA_1 + \delta \bfJ_a \geq \bfA$ and $\bfA + \delta \bfJ_a \geq \bfA_1$, where $\bfJ_a \in \BM(a,a)$ has all entries 1, and for positive definite matrices $\bfP, \bfQ$, $\bfP \geq \bfQ$ means $\bfP - \bfQ$ is positive definite. Now applying Theorem 1 part (a) in \cite{Bellman68} we have
+$\| \bfA - \bfA_1 \|_\infty \leq \delta$ implies that $\bfA_1 + \delta \bfJ_a \geq \bfA$ and $\bfA + \delta \bfJ_a \geq \bfA_1$, where $\bfJ_a \in \BM(a,a)$ has all entries 1, and for positive definite matrices $\bfP, \bfQ$, $\bfP \geq \bfQ$ means $\bfP - \bfQ$ is positive definite. Now applying Theorem 1 part (a) in \citet{Bellman68} we have
 %
 $$
 (\bfA + \delta \bfJ_a)^{1/2} \geq \bfA_1^{1/2}; \quad
@@ -516,7 +516,7 @@ with probability $\geq 1 - 6c_{6} \exp [-(c_{7}^2-1) \log (p-1)] - 1/p^{\tau_2-2
 \| \Sigma_y \|_\infty = \| \Omega_y^{-1} \|_\infty \leq (\Delta_0 (\Omega_y))^{-1}
 \end{align}
 %
-following \cite{Varah75}. For a bound on $\| \widehat \Sigma_y - \Sigma_y \|_\infty$, if condition (II) of Theorem~\ref{thm:PowerThm} is satisfied then we have
+following \citet{Varah75}. For a bound on $\| \widehat \Sigma_y - \Sigma_y \|_\infty$, if condition (II) of Theorem~\ref{thm:PowerThm} is satisfied then we have
 %
 \begin{align}\label{eqn:PowerThmLemma2ProofEqn31}
 \| \widehat \Sigma_y - \Sigma_y \|_\infty \leq \tilde D_\Omega
@@ -539,9 +539,9 @@ Combining \eqref{eqn:PowerThmLemma2ProofEqn2} with \eqref{eqn:PowerThmLemma2Proo
 \end{proof}
 
 \begin{proof}[Proof of Lemma~\ref{lemma:ErrorRElemma1}]
-This is the same as in Lemma 2 in Appendix B of \cite{LinEtal16} and its proof can be found there.
+This is the same as in Lemma 2 in Appendix B of \citet{LinEtal16} and its proof can be found there.
 \end{proof}
 
 \begin{proof}[Proof of Lemma~\ref{lemma:ErrorRElemma2}]
-This is a part of Lemma 3 of Appendix B in \cite{LinEtal16}, and is proved therein.
+This is a part of Lemma 3 of Appendix B in \citet{LinEtal16}, and is proved therein.
 \end{proof}
