@@ -1,0 +1,19 @@
+\begin{thebibliography}{}
+
+\bibitem[Guo et~al., 2011]{GuoEtal11}
+Guo, J., Levina, E., Michailidis, G., and Zhu, J. (2011).
+\newblock Joint estimation of multiple graphical models.
+\newblock {\em Biometrika}, 98(1):1--15.
+
+\bibitem[Lin et~al., 2016]{LinEtal16}
+Lin, J., Basu, S., Banerjee, M., and Michailidis, G. (2016).
+\newblock {Penalized Maximum Likelihood Estimation of Multi-layered Gaussian
+  Graphical Models}.
+\newblock {\em J. Mach. Learn. Res.}, 17:5097--5147.
+
+\bibitem[Ma and Michailidis, 2016]{MaMichailidis15}
+Ma, J. and Michailidis, G. (2016).
+\newblock {Joint Structural Estimation of Multiple Graphical Models}.
+\newblock {\em J. Mach. Learn. Res.}, 17:5777--5824.
+
+\end{thebibliography}

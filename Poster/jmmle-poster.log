@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2017.1.18)  21 MAR 2018 16:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2017.1.18)  22 MAR 2018 11:39
 entering extended mode
 **./jmmle-poster.tex
 (jmmle-poster.tex
@@ -480,16 +480,9 @@ Package: pgfpages 2011/01/05 ver 0.02
 )
 \pgfpages@box@1=\box43
 )
-("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\natbib\natbib.sty"
-Package: natbib 2010/09/13 8.31b (PWD, AO)
-\bibhang=\skip69
-\bibsep=\skip70
-LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count121
-)
 ("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
 Package: amsmath 2016/06/28 v2.15d AMS math features
-\@mathmargin=\skip71
+\@mathmargin=\skip69
 
 For additional information on amsmath, use the `?' option.
 ("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
@@ -507,13 +500,13 @@ Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 ("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count122
+\inf@bad=\count121
 LaTeX Info: Redefining \frac on input line 199.
-\uproot@=\count123
-\leftroot@=\count124
+\uproot@=\count122
+\leftroot@=\count123
 LaTeX Info: Redefining \overline on input line 297.
-\classnum@=\count125
-\DOTSCASE@=\count126
+\classnum@=\count124
+\DOTSCASE@=\count125
 LaTeX Info: Redefining \ldots on input line 394.
 LaTeX Info: Redefining \dots on input line 397.
 LaTeX Info: Redefining \cdots on input line 518.
@@ -522,15 +515,15 @@ LaTeX Info: Redefining \cdots on input line 518.
 \big@size=\dimen172
 LaTeX Font Info:    Redeclaring font encoding OML on input line 634.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 635.
-\macc@depth=\count127
-\c@MaxMatrixCols=\count128
+\macc@depth=\count126
+\c@MaxMatrixCols=\count127
 \dotsspace@=\muskip10
-\c@parentequation=\count129
-\dspbrk@lvl=\count130
+\c@parentequation=\count128
+\dspbrk@lvl=\count129
 \tag@help=\toks30
-\row@=\count131
-\column@=\count132
-\maxfields@=\count133
+\row@=\count130
+\column@=\count131
+\maxfields@=\count132
 \andhelp@=\toks31
 \eqnshift@=\dimen173
 \alignsep@=\dimen174
@@ -539,8 +532,8 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 635.
 \totwidth@=\dimen177
 \lineht@=\dimen178
 \@envbody=\toks32
-\multlinegap=\skip72
-\multlinetaggap=\skip73
+\multlinegap=\skip70
+\multlinetaggap=\skip71
 \mathdisplay@stack=\toks33
 LaTeX Info: Redefining \[ on input line 2739.
 LaTeX Info: Redefining \] on input line 2740.
@@ -552,9 +545,9 @@ Package: amsthm 2015/03/04 v2.20.2
 \thm@headfont=\toks36
 \thm@notefont=\toks37
 \thm@headpunct=\toks38
-\thm@preskip=\skip74
-\thm@postskip=\skip75
-\thm@headsep=\skip76
+\thm@preskip=\skip72
+\thm@postskip=\skip73
+\thm@headsep=\skip74
 \dth@everypar=\toks39
 )
 ("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
@@ -579,22 +572,22 @@ Package: booktabs 2005/04/14 v1.61803 publication quality tables
 \cmidrulesep=\dimen186
 \cmidrulekern=\dimen187
 \defaultaddspace=\dimen188
-\@cmidla=\count134
-\@cmidlb=\count135
+\@cmidla=\count133
+\@cmidlb=\count134
 \@aboverulesep=\dimen189
 \@belowrulesep=\dimen190
-\@thisruleclass=\count136
-\@lastruleclass=\count137
+\@thisruleclass=\count135
+\@lastruleclass=\count136
 \@thisrulewidth=\dimen191
 )
 ("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\enumitem\enumitem.sty"
 Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \enitkv@toks@=\toks40
-\labelindent=\skip77
+\labelindent=\skip75
 \enit@outerparindent=\dimen192
 \enit@toks=\toks41
 \enit@inbox=\box46
-\enitdp@description=\count138
+\enitdp@description=\count137
 )
 ("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\psnfss\palatino.sty"
 Package: palatino 2005/04/12 PSNFSS-v9.2a (SPQR) 
@@ -613,7 +606,7 @@ Package caption3 Info: TeX engine: e-TeX on input line 67.
 \caption@parindent=\dimen198
 \caption@hangindent=\dimen199
 )
-\c@ContinuedFloat=\count139
+\c@ContinuedFloat=\count138
 )
 ("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\outlines\outlines.sty"
 Package: outlines 2012/1/23 1.1 Ch. Pecheur
@@ -623,20 +616,20 @@ Package: capt-of 2009/12/29 v0.2 standard captions outside of floats
 )
 ("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\tools\multicol.sty"
 Package: multicol 2016/04/07 v1.8p multicolumn formatting (FMi)
-\c@tracingmulticols=\count140
+\c@tracingmulticols=\count139
 \mult@box=\box47
 \multicol@leftmargin=\dimen256
-\c@unbalance=\count141
-\c@collectmore=\count142
-\doublecol@number=\count143
-\multicoltolerance=\count144
-\multicolpretolerance=\count145
+\c@unbalance=\count140
+\c@collectmore=\count141
+\doublecol@number=\count142
+\multicoltolerance=\count143
+\multicolpretolerance=\count144
 \full@width=\dimen257
 \page@free=\dimen258
 \premulticols=\dimen259
 \postmulticols=\dimen260
-\multicolsep=\skip78
-\multicolbaselineskip=\skip79
+\multicolsep=\skip76
+\multicolbaselineskip=\skip77
 \partial@page=\box48
 \last@line=\box49
 \maxbalancingoverflow=\dimen261
@@ -661,15 +654,134 @@ Package: multicol 2016/04/07 v1.8p multicolumn formatting (FMi)
 \@tempa=\box68
 \@tempa=\box69
 \@tempa=\box70
-\c@columnbadness=\count146
-\c@finalcolumnbadness=\count147
+\c@columnbadness=\count145
+\c@finalcolumnbadness=\count146
 \last@try=\dimen262
 \multicolovershoot=\dimen263
 \multicolundershoot=\dimen264
 \mult@nat@firstbox=\box71
 \colbreak@box=\box72
-\mc@col@check@num=\count148
+\mc@col@check@num=\count147
 )
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\natbib\natbib.sty"
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip78
+\bibsep=\skip79
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count148
+)
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty"
+Package: hyperref 2016/06/24 v6.83q Hypertext links for LaTeX
+
+("C:\Study\LaTeX\MiKTeX 2.9\tex\generic\oberdiek\hobsub-hyperref.sty"
+Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
+
+
+("C:\Study\LaTeX\MiKTeX 2.9\tex\generic\oberdiek\hobsub-generic.sty"
+Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+Package hobsub Info: Skipping package `ifvtex' (already loaded).
+Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
+Package hobsub Info: Skipping package `ifpdf' (already loaded).
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+Package: pdftexcmds 2016/05/21 v0.22 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO
+)
+Package: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
+Package: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
+Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
+Package: xcolor-patch 2016/05/16 xcolor patch
+Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
+Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
+Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
+)
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\oberdiek\auxhook.sty"
+Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
+)
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+)
+\@linkdim=\dimen265
+\Hy@linkcounter=\count149
+\Hy@pagecounter=\count150
+
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def"
+File: pd1enc.def 2016/06/24 v6.83q Hyperref: PDFDocEncoding definition (HO)
+)
+\Hy@SavedSpaceFactor=\count151
+
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg"
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Hyper figures OFF on input line 4486.
+Package hyperref Info: Link nesting OFF on input line 4491.
+Package hyperref Info: Hyper index ON on input line 4494.
+Package hyperref Info: Plain pages OFF on input line 4501.
+Package hyperref Info: Backreferencing OFF on input line 4506.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4735.
+\c@Hy@tempcnt=\count152
+
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\url\url.sty"
+\Urlmuskip=\muskip11
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5088.
+\XeTeXLinkMargin=\dimen266
+\Fld@menulength=\count153
+\Field@Width=\dimen267
+\Fld@charsize=\dimen268
+Package hyperref Info: Hyper figures OFF on input line 6342.
+Package hyperref Info: Link nesting OFF on input line 6347.
+Package hyperref Info: Hyper index ON on input line 6350.
+Package hyperref Info: backreferencing OFF on input line 6357.
+Package hyperref Info: Link coloring OFF on input line 6362.
+Package hyperref Info: Link coloring with OCG OFF on input line 6367.
+Package hyperref Info: PDF/A mode OFF on input line 6372.
+LaTeX Info: Redefining \ref on input line 6412.
+LaTeX Info: Redefining \pageref on input line 6416.
+\Hy@abspage=\count154
+\c@Item=\count155
+\c@Hfootnote=\count156
+)
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def"
+File: hpdftex.def 2016/06/24 v6.83q Hyperref driver for pdfTeX
+\Fld@listcount=\count157
+\c@bookmark@seq@number=\count158
+
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty"
+Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip80
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 39.
+
 ("C:\Study\LaTeX\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikzli
 braryshapes.code.tex"
 File: tikzlibraryshapes.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1)
@@ -749,75 +861,48 @@ File: tikzlibraryarrows.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1)
 ("C:\Study\LaTeX\MiKTeX 2.9\tex\generic\pgf\libraries\pgflibraryarrows.code.tex
 "
 File: pgflibraryarrows.code.tex 2013/09/23 v3.0.1a (rcs-revision 1.16)
-\arrowsize=\dimen265
+\arrowsize=\dimen269
 )) (mycommands1.sty) (jmmle-poster.aux)
 \openout1 = `jmmle-poster.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Try loading font information for T1+ppl on input line 73.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Try loading font information for T1+ppl on input line 75.
 
 ("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\psnfss\t1ppl.fd"
 File: t1ppl.fd 2001/06/04 font definitions for T1/ppl.
 )
 ("C:\Study\LaTeX\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count149
-\scratchdimen=\dimen266
+\scratchcounter=\count159
+\scratchdimen=\dimen270
 \scratchbox=\box93
-\nofMPsegments=\count150
-\nofMParguments=\count151
+\nofMPsegments=\count160
+\nofMParguments=\count161
 \everyMPshowfont=\toks42
-\MPscratchCnt=\count152
-\MPscratchDim=\dimen267
-\MPnumerator=\count153
-\makeMPintoPDFobject=\count154
+\MPscratchCnt=\count162
+\MPscratchDim=\dimen271
+\MPnumerator=\count163
+\makeMPintoPDFobject=\count164
 \everyMPtoPDFconversion=\toks43
-) ("C:\Study\LaTeX\MiKTeX 2.9\tex\generic\oberdiek\pdftexcmds.sty"
-Package: pdftexcmds 2016/05/21 v0.22 Utility functions of pdfTeX for LuaTeX (HO
-)
-
-("C:\Study\LaTeX\MiKTeX 2.9\tex\generic\oberdiek\ifluatex.sty"
-Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
-Package ifluatex Info: LuaTeX not detected.
-)
-Package pdftexcmds Info: LuaTeX not detected.
-Package pdftexcmds Info: \pdf@primitive is available.
-Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode found.
-)
-("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
+) ("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
 ("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\oberdiek\grfext.sty"
 Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
-
-("C:\Study\LaTeX\MiKTeX 2.9\tex\generic\oberdiek\kvdefinekeys.sty"
-Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
-))
-("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
-Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
-
-("C:\Study\LaTeX\MiKTeX 2.9\tex\generic\oberdiek\kvsetkeys.sty"
-Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
-
-("C:\Study\LaTeX\MiKTeX 2.9\tex\generic\oberdiek\etexcmds.sty"
-Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
-Package etexcmds Info: Could not find \expanded.
-(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
-(etexcmds)             that some package has redefined \expanded.
-(etexcmds)             In the latter case, load this package earlier.
-)))
+)
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 38.
 Package grfext Info: Graphics extension search list:
@@ -861,11 +946,30 @@ ABD: EveryShipout initializing macros
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\c@Theorem=\count155
-\c@Example=\count156
-\c@Algorithm=\count157
-\c@Remark=\count158
+\AtBeginShipoutBox=\box94
+Package hyperref Info: Link coloring ON on input line 75.
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
+Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
+
+("C:\Study\LaTeX\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
+Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
+)
+\c@section@level=\count165
+)
+LaTeX Info: Redefining \ref on input line 75.
+LaTeX Info: Redefining \pageref on input line 75.
+LaTeX Info: Redefining \nameref on input line 75.
+
+(jmmle-poster.out) (jmmle-poster.out)
+\@outlinefile=\write4
+\openout4 = `jmmle-poster.out'.
+
+\c@Theorem=\count166
+\c@Example=\count167
+\c@Algorithm=\count168
+\c@Remark=\count169
 Package epstopdf Info: Source file: <Vertical_Signature_Blue.eps>
 (epstopdf)                    date: 2006-07-21 13:40:52
 (epstopdf)                    size: 411641 bytes
@@ -875,15 +979,15 @@ df>
 (epstopdf)                    size: 34389 bytes
 (epstopdf)             Command: <epstopdf --outfile=Vertical_Signature_Blue-eps
 -converted-to.pdf Vertical_Signature_Blue.eps>
-(epstopdf)             \includegraphics on input line 110.
+(epstopdf)             \includegraphics on input line 112.
 Package epstopdf Info: Output file is already uptodate.
 
-<Vertical_Signature_Blue-eps-converted-to.pdf, id=30, 133.49875pt x 132.495pt>
+<Vertical_Signature_Blue-eps-converted-to.pdf, id=32, 133.49875pt x 132.495pt>
 File: Vertical_Signature_Blue-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Vertical_Signature_Blue-eps-converted-to.pdf>
 Package pdftex.def Info: Vertical_Signature_Blue-eps-converted-to.pdf used on i
-nput line 110.
+nput line 112.
 (pdftex.def)             Requested size: 50.37967pt x 50.0pt.
 Package epstopdf Info: Source file: <Vertical_Signature_Blue.eps>
 (epstopdf)                    date: 2006-07-21 13:40:52
@@ -894,74 +998,73 @@ df>
 (epstopdf)                    size: 34389 bytes
 (epstopdf)             Command: <epstopdf --outfile=Vertical_Signature_Blue-eps
 -converted-to.pdf Vertical_Signature_Blue.eps>
-(epstopdf)             \includegraphics on input line 110.
+(epstopdf)             \includegraphics on input line 112.
 Package epstopdf Info: Output file is already uptodate.
 File: Vertical_Signature_Blue-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Vertical_Signature_Blue-eps-converted-to.pdf>
 Package pdftex.def Info: Vertical_Signature_Blue-eps-converted-to.pdf used on i
-nput line 110.
+nput line 112.
 (pdftex.def)             Requested size: 50.37967pt x 50.0pt.
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <10> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 110.
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 112.
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <24.88> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 110.
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 112.
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <20.74> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 110.
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 112.
 LaTeX Font Info:    Font shape `T1/ppl/bx/sc' in size <20.74> not available
-(Font)              Font shape `T1/ppl/b/sc' tried instead on input line 110.
-LaTeX Font Info:    Try loading font information for U+msa on input line 110.
+(Font)              Font shape `T1/ppl/b/sc' tried instead on input line 112.
+LaTeX Font Info:    Try loading font information for U+msa on input line 112.
 
 ("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 110.
+LaTeX Font Info:    Try loading font information for U+msb on input line 112.
 
 ("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <12> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 146.
-LaTeX Font Info:    Try loading font information for OMS+ppl on input line 146.
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 148.
+LaTeX Font Info:    Try loading font information for OMS+ppl on input line 148.
 
 
 ("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\psnfss\omsppl.fd"
 File: omsppl.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 146.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 148.
 
-<multi2layer.pdf, id=31, 408.01433pt x 179.24968pt>
+Underfull \hbox (badness 1057) in paragraph at lines 148--148
+[]\T1/ppl/b/n/10 Joint Mul-ti-ple Multi-Layer Es-ti-ma-tion (JMMLE): \T1/ppl/m/
+n/10 In-cor-po-rate
+ []
+
+<multi2layer.pdf, id=33, 408.01433pt x 179.24968pt>
 File: multi2layer.pdf Graphic file (type pdf)
  <use multi2layer.pdf>
-Package pdftex.def Info: multi2layer.pdf used on input line 146.
+Package pdftex.def Info: multi2layer.pdf used on input line 148.
 (pdftex.def)             Requested size: 302.92744pt x 133.08575pt.
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 148.
+See the caption package documentation for explanation.
+
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <9> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 146.
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 148.
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 146.
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 148.
 LaTeX Font Info:    Font shape `T1/ppl/bx/sc' in size <14.4> not available
-(Font)              Font shape `T1/ppl/b/sc' tried instead on input line 146.
+(Font)              Font shape `T1/ppl/b/sc' tried instead on input line 148.
 Missing character: There is no ; in font nullfont!
 
-Overfull \hbox (4.15718pt too wide) in paragraph at lines 187--187
+Overfull \hbox (4.15718pt too wide) in paragraph at lines 189--189
 [][]
  []
 
-
-Package natbib Warning: Citation `LinEtal16' on page 1 undefined on input line 
-187.
-
-
-Package natbib Warning: Citation `GuoEtal11' on page 1 undefined on input line 
-187.
-
-
-Package natbib Warning: Citation `MaMichailidis15' on page 1 undefined on input
- line 187.
-
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -969,7 +1072,7 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
-Underfull \hbox (badness 2435) in paragraph at lines 289--289
+Underfull \hbox (badness 2435) in paragraph at lines 291--291
 []\T1/ppl/m/n/10 The above test-ing pro-ce-dure main-tains rate op-ti-mal power
 , i.e.
  []
@@ -977,14 +1080,10 @@ Underfull \hbox (badness 2435) in paragraph at lines 289--289
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 LaTeX Font Info:    Font shape `T1/ppl/bx/sc' in size <12> not available
-(Font)              Font shape `T1/ppl/b/sc' tried instead on input line 289.
+(Font)              Font shape `T1/ppl/b/sc' tried instead on input line 291.
 Missing character: There is no ; in font nullfont!
 
-Package natbib Warning: Citation `MaMichailidis15' on page 1 undefined on input
- line 434.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 434--434
+Underfull \hbox (badness 10000) in paragraph at lines 436--436
 []\T1/ppl/m/n/10 Non-zero en-tries in $\OMS/cmsy/m/n/10 B\OML/cmm/m/it/10 ; \OT
 1/cmr/m/n/10 
 []\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 
@@ -992,80 +1091,96 @@ Underfull \hbox (badness 10000) in paragraph at lines 434--434
  []
 
 
-Package natbib Warning: Citation `LinEtal16' on page 1 undefined on input line 
-434.
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 436.
+See the caption package documentation for explanation.
 
 
-Overfull \hbox (9.60149pt too wide) in paragraph at lines 434--434
+Overfull \hbox (9.60149pt too wide) in paragraph at lines 436--436
  [][] 
  []
 
 
-Overfull \hbox (14.46895pt too wide) in paragraph at lines 434--434
+Overfull \hbox (14.46895pt too wide) in paragraph at lines 436--436
 [] 
  []
 
 
-Overfull \hbox (13.47572pt too wide) in paragraph at lines 434--434
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 436.
+See the caption package documentation for explanation.
+
+
+Overfull \hbox (13.47572pt too wide) in paragraph at lines 436--436
 []$[]$ $[]$ 
  []
 
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
 
-Package natbib Warning: Citation `MaMichailidis15' on page 1 undefined on input
- line 449.
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 436.
+See the caption package documentation for explanation.
 
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <7> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 464.
-No file jmmle-poster.bbl.
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 482.
+(jmmle-poster.bbl)
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
-[2
+ [2
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <./Vertical_Signature_Blue
 -eps-converted-to.pdf> <./multi2layer.pdf>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 502.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 502.
 
-Package natbib Warning: There were undefined citations.
-
-(jmmle-poster.aux) ) 
+(jmmle-poster.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 502.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 502.
+Package rerunfilecheck Info: File `jmmle-poster.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 502.
+ ) 
 Here is how much of TeX's memory you used:
- 19782 strings out of 493333
- 412264 string characters out of 3140056
- 575251 words of memory out of 3000000
- 22865 multiletter control sequences out of 15000+200000
- 41894 words of font info for 81 fonts, out of 3000000 for 9000
+ 23289 strings out of 493333
+ 466237 string characters out of 3140056
+ 659047 words of memory out of 3000000
+ 26331 multiletter control sequences out of 15000+200000
+ 43447 words of font info for 83 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,20n,92p,634b,1022s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Study/LaTeX/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/
-Study/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Study/LaTe
-X/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Study/LaTeX/MiKTeX 2.
-9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/ty
-pe1/public/amsfonts/cmextra/cmex9.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/pu
-blic/amsfonts/cm/cmmi10.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfo
-nts/cm/cmmi5.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi
-6.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/S
-tudy/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Study/LaTeX/
-MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Study/LaTeX/MiKTeX 2.
-9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/typ
-e1/public/amsfonts/cm/cmr5.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/public/am
-sfonts/cm/cmr7.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
-r9.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:
-/Study/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Study/LaTe
-X/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Study/LaTeX/MiKTeX 2.
-9/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/typ
-e1/public/amsfonts/symbols/msbm10.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/pu
-blic/amsfonts/symbols/msbm7.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/urw/pala
-tino/uplb8a.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb>
-<C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on jmmle-poster.pdf (1 page, 316973 bytes).
+ 62i,20n,92p,644b,1030s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Study/LaTeX/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Study/LaTeX/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts
+/type1/public/amsfonts/cm/cmbx9.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/publ
+ic/amsfonts/cm/cmex10.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfont
+s/cmextra/cmex9.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
+mmi10.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi5.pfb><
+C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Study/La
+TeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Study/LaTeX/MiKTeX 
+2.9/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmmib10.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/publ
+ic/amsfonts/cm/cmr10.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts
+/cm/cmr5.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb
+><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Study/L
+aTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Study/LaTeX/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts
+/type1/public/amsfonts/cm/cmsy7.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/publ
+ic/amsfonts/cm/cmsy9.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts
+/symbols/msbm10.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/symb
+ols/msbm7.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/urw/palatino/uplb8a.pfb><C
+:/Study/LaTeX/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Study/LaTeX/Mi
+KTeX 2.9/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on jmmle-poster.pdf (1 page, 322959 bytes).
 PDF statistics:
- 155 PDF objects out of 1000 (max. 8388607)
- 0 named destinations out of 1000 (max. 500000)
+ 183 PDF objects out of 1000 (max. 8388607)
+ 15 named destinations out of 1000 (max. 500000)
  131 words of extra memory for PDF output out of 10000 (max. 10000000)
 

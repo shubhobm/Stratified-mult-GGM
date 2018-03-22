@@ -21,7 +21,6 @@
 \documentclass[landscape,a0paper,fontscale=0.4]{baposter} % Adjust the font scale/size here
 
 \usepackage{xcolor}
-\usepackage{natbib} % for bibliography
 \usepackage{graphicx} % Required for including images
 
 \usepackage{amsmath,amsthm} % For typesetting math
@@ -34,7 +33,10 @@
 \usepackage{outlines} % for nested lists
 \usepackage{capt-of} % side-by-side figure and table
 \usepackage{multicol} % Required for multiple columns
-\usepackage{natbib}
+
+\usepackage[numbers]{natbib}
+\usepackage{hyperref}
+\hypersetup{colorlinks = true, citecolor = blue, urlcolor = blue}
 
 \usepackage{tikz} % Required for flow chart
 \usetikzlibrary{shapes,arrows} % Tikz libraries required for the flow chart in the template
@@ -127,7 +129,7 @@ We borrow information across multiple similar multi-layer networks (see figure) 
 
 \vspace{-.5em}
 \begin{itemize}[leftmargin=*]\compresslist
-\item {\bf Estimation:} Incorporate structured sparsity to estimate undirected within-layer edges and directed between-layer edges simultaneously across all networks.
+\item {\bf Joint Multiple Multi-Layer Estimation (JMMLE):} Incorporate structured sparsity to estimate undirected within-layer edges and directed between-layer edges simultaneously across all networks.
 
 \item{\bf Testing:} Develop a debiasing technique and asymptotic distributions of inter-layer directed edge weights, and establish global and simultaneous testing procedures for them.
 \end{itemize}
@@ -452,8 +454,23 @@ $(\pi_x, \pi_y)$ & $(p,q)$   & $n$ & \multicolumn{2}{c}{Global test} & \multicol
 %	Discussion
 %----------------------------------------------------------------------------------------
 
-\headerbox{Discussion}{name=discussion,column=3,below=results,bottomaligned=jmmle}{
+\headerbox{Extensions}{name=discussion,column=3,below=results}{
 
+\begin{itemize}[leftmargin=*]\compresslist
+\item Beyond pairwise testing: global and simultaneous tests for $K>2$;
+
+\item Multi-level estimation and testing for model assumptions other than structured sparsity;
+
+\item Non-gaussian data and graphical models with non-linear interactions.
+\end{itemize}
+}
+
+%----------------------------------------------------------------------------------------
+%	References
+%----------------------------------------------------------------------------------------
+\headerbox{}
+{name=ref,below=discussion,column=3,bottomaligned=jmmle,textborder=none,headerborder=none,boxheaderheight=0pt}
+{
 {\scriptsize
 \textbf{References}:
 \vspace{-.7em}
@@ -461,8 +478,8 @@ $(\pi_x, \pi_y)$ & $(p,q)$   & $n$ & \multicolumn{2}{c}{Global test} & \multicol
 \setlength{\bibsep}{0pt plus 0.1ex}
 \bibliographystyle{apalike}
 \bibliography{GGMbib}
-}}
-
+}
+}
 %----------------------------------------------------------------------------------------
 %	ALGORITHM
 %----------------------------------------------------------------------------------------
