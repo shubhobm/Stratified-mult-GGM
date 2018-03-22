@@ -1,12 +1,12 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2016.12.9)  13 MAR 2018 00:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2017.1.18)  21 MAR 2018 13:33
 entering extended mode
 **./jmmle-draft.tex
 (jmmle-draft.tex
 LaTeX2e <2016/03/31> patch level 3
 Babel <3.9r> and hyphenation patterns for 75 language(s) loaded.
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\base\article.cls"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\base\article.cls"
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\base\size11.clo"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\base\size11.clo"
 File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -20,11 +20,11 @@ File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
-) (mycommands1.sty) ("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\amsfonts\amssymb
-.sty"
+) (mycommands1.sty)
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\amsfonts\amsfonts.sty"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \@emptytoks=\toks14
 \symAMSa=\mathgroup4
@@ -32,24 +32,24 @@ Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 ))
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\amsmath\amsmath.sty"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
 Package: amsmath 2016/06/28 v2.15d AMS math features
 \@mathmargin=\skip43
 
 For additional information on amsmath, use the `?' option.
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\amsmath\amstext.sty"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
 Package: amstext 2000/06/29 v2.01 AMS text
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\amsmath\amsgen.sty"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks15
 \ex@=\dimen103
 ))
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\amsmath\amsbsy.sty"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen104
 )
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\amsmath\amsopn.sty"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
 Package: amsopn 2016/03/08 v2.02 operator names
 )
 \inf@bad=\count87
@@ -90,7 +90,7 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 635.
 LaTeX Info: Redefining \[ on input line 2739.
 LaTeX Info: Redefining \] on input line 2740.
 )
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\amscls\amsthm.sty"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\amscls\amsthm.sty"
 Package: amsthm 2015/03/04 v2.20.2
 \thm@style=\toks20
 \thm@bodyfont=\toks21
@@ -102,26 +102,26 @@ Package: amsthm 2015/03/04 v2.20.2
 \thm@headsep=\skip48
 \dth@everypar=\toks25
 )
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\graphics\color.sty"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\graphics\color.sty"
 Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\graphics-cfg\color.cfg"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\graphics-cfg\color.cfg"
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package color Info: Driver file: pdftex.def on input line 147.
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\graphics-def\pdftex.def"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\graphics-def\pdftex.def"
 File: pdftex.def 2016/07/10 v0.06j Graphics/color for pdfTeX
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\generic\oberdiek\infwarerr.sty"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
 Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
 )
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\generic\oberdiek\ltxcmds.sty"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
 Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count99
 ))
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\ltxmisc\pagesize.sty"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\ltxmisc\pagesize.sty"
 Style-Option: `pagesize' v1.2  <94/06/09>.
 \pgsz@paper@width=\dimen112
 \pgsz@paper@height=\dimen113
@@ -130,18 +130,18 @@ Style-Option: `pagesize' v1.2  <94/06/09>.
 \pgsz@hmargin=\dimen116
 \pgsz@vmargin=\dimen117
 \pgsz@totheight=\dimen118
-) ("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\outlines\outlines.sty"
+) ("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\outlines\outlines.sty"
 Package: outlines 2012/1/23 1.1 Ch. Pecheur
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\base\ifthen.sty"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\base\ifthen.sty"
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 ))
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\cite\cite.sty"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\cite\cite.sty"
 LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 332.
 Package: cite 2015/02/27  v 5.5
 )
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\subfigure\subfigure.sty"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\subfigure\subfigure.sty"
 Package: subfigure 2002/07/30 v2.1.4 subfigure package
 \subfigtopskip=\skip49
 \subfigcapskip=\skip50
@@ -157,27 +157,27 @@ Package: subfigure 2002/07/30 v2.1.4 subfigure package
 ****************************************
 * Local config file subfigure.cfg used *
 ****************************************
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\subfigure\subfigure.cfg")
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\subfigure\subfigure.cfg")
 \subfig@top=\skip53
 \subfig@bottom=\skip54
 )
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\graphics\epsfig.sty"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\graphics\epsfig.sty"
 Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\graphics\graphicx.sty"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
 Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\graphics\keyval.sty"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks26
 )
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\graphics\graphics.sty"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
 Package: graphics 2016/07/10 v1.0t Standard LaTeX Graphics (DPC,SPQR)
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\graphics\trig.sty"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\graphics\trig.sty"
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\graphics-cfg\graphics.cfg"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\graphics-cfg\graphics.cfg"
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 99.
@@ -188,10 +188,10 @@ Package graphics Info: Driver file: pdftex.def on input line 99.
 \epsfxsize=\dimen123
 \epsfysize=\dimen124
 )
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\caption\caption.sty"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\caption\caption.sty"
 Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\caption\caption3.sty"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\caption\caption3.sty"
 Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 67.
 \captionmargin=\dimen125
@@ -205,14 +205,14 @@ Package caption3 Info: TeX engine: e-TeX on input line 67.
 \c@ContinuedFloat=\count104
 Package caption Info: subfigure package is loaded.
 )
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\hyperref\hyperref.sty"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty"
 Package: hyperref 2016/06/24 v6.83q Hypertext links for LaTeX
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\generic\oberdiek\hobsub-hyperref.sty"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\generic\oberdiek\hobsub-hyperref.sty"
 Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
 
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\generic\oberdiek\hobsub-generic.sty"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\generic\oberdiek\hobsub-generic.sty"
 Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
 Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
 Package hobsub Info: Skipping package `infwarerr' (already loaded).
@@ -252,25 +252,25 @@ Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
 Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
 Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
 )
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\generic\ifxetex\ifxetex.sty"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\oberdiek\auxhook.sty"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\oberdiek\auxhook.sty"
 Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
 )
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\oberdiek\kvoptions.sty"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 )
 \@linkdim=\dimen132
 \Hy@linkcounter=\count105
 \Hy@pagecounter=\count106
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\hyperref\pd1enc.def"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def"
 File: pd1enc.def 2016/06/24 v6.83q Hyperref: PDFDocEncoding definition (HO)
 )
 \Hy@SavedSpaceFactor=\count107
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\00miktex\hyperref.cfg"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg"
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
 Package hyperref Info: Hyper figures OFF on input line 4486.
@@ -282,7 +282,7 @@ Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4735.
 \c@Hy@tempcnt=\count108
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\url\url.sty"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\url\url.sty"
 \Urlmuskip=\muskip11
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
@@ -307,12 +307,12 @@ LaTeX Info: Redefining \pageref on input line 6416.
 
 Package hyperref Message: Driver (autodetected): hpdftex.
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\hyperref\hpdftex.def"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def"
 File: hpdftex.def 2016/06/24 v6.83q Hyperref driver for pdfTeX
 \Fld@listcount=\count113
 \c@bookmark@seq@number=\count114
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\oberdiek\rerunfilecheck.sty"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty"
 Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
@@ -321,10 +321,10 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 Package hyperref Info: Option `colorlinks' set `true' on input line 7.
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\oberdiek\stackrel.sty"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\oberdiek\stackrel.sty"
 Package: stackrel 2016/05/16 v1.3 Adding subscript option to stackrel (HO)
 )
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\natbib\natbib.sty"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\natbib\natbib.sty"
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 
 
@@ -336,13 +336,12 @@ Package natbib Warning: The `cite' package should not be used
 LaTeX Info: Redefining \cite on input line 694.
 LaTeX Info: Redefining \citenum on input line 708.
 \c@NAT@ctr=\count115
-) ("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\chngcntr\chngcntr.sty"
+) ("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\chngcntr\chngcntr.sty"
 Package: chngcntr 2009/09/02 v1.0a change counter resetting
 )
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\apptools\apptools.sty"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\apptools\apptools.sty"
 Package: apptools 2012/11/28 v1.0 Tools for customizing appendices
-)
-(jmmle-draft.aux
+) (jmmle-draft.aux
 
 LaTeX Warning: Label `eqn:BetaThmEqn1' multiply defined.
 
@@ -372,7 +371,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 62.
 LaTeX Font Info:    ... okay on input line 62.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 62.
 LaTeX Font Info:    ... okay on input line 62.
- ("D:\Study\LaTeX\MikTeX 2.9.6161\tex\context\base\supp-pdf.mkii"
+ ("C:\Study\LaTeX\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count116
 \scratchdimen=\dimen136
@@ -385,10 +384,10 @@ LaTeX Font Info:    ... okay on input line 62.
 \MPnumerator=\count120
 \makeMPintoPDFobject=\count121
 \everyMPtoPDFconversion=\toks28
-) ("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\oberdiek\epstopdf-base.sty"
+) ("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\oberdiek\grfext.sty"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\oberdiek\grfext.sty"
 Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
 )
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -404,10 +403,10 @@ Package caption Info: End \AtBeginDocument code.
 \AtBeginShipoutBox=\box29
 Package hyperref Info: Link coloring ON on input line 62.
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\hyperref\nameref.sty"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\generic\oberdiek\gettitlestring.sty"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count122
@@ -426,17 +425,17 @@ LaTeX Info: Redefining \nameref on input line 62.
 \c@Remark=\count126
 LaTeX Font Info:    Try loading font information for U+msa on input line 84.
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\amsfonts\umsa.fd"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 84.
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\amsfonts\umsb.fd"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 84.
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\base\omscmr.fd"
+("C:\Study\LaTeX\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
@@ -451,7 +450,7 @@ Overfull \hbox (2.78476pt too wide) in paragraph at lines 89--90
 
 [1
 
-{C:/Users/Subho/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
 (Introduction-paper-GM.tex [2]
 <multi2layer.pdf, id=159, 408.01433pt x 179.24968pt>
 File: multi2layer.pdf Graphic file (type pdf)
@@ -643,40 +642,38 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 114.
  ) 
 Here is how much of TeX's memory you used:
  8650 strings out of 493333
- 126825 string characters out of 3137901
+ 126205 string characters out of 3140056
  237705 words of memory out of 3000000
  11781 multiletter control sequences out of 15000+200000
  19675 words of font info for 74 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  36i,17n,39p,1437b,492s stack positions out of 5000i,500n,10000p,200000b,50000s
-<D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmbx10.pfb><D:
-/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Stud
-y/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmbx8.pfb><D:/Study/LaTe
-X/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/Study/LaTeX/Mik
-TeX 2.9.6161/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><D:/Study/LaTeX/MikT
-eX 2.9.6161/fonts/type1/public/amsfonts/cm/cmmi10.pfb><D:/Study/LaTeX/MikTeX 2.
-9.6161/fonts/type1/public/amsfonts/cm/cmmi6.pfb><D:/Study/LaTeX/MikTeX 2.9.6161
-/fonts/type1/public/amsfonts/cm/cmmi7.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts
-/type1/public/amsfonts/cm/cmmi8.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1
-/public/amsfonts/cm/cmmib10.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/pub
-lic/amsfonts/cmextra/cmmib8.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/pub
-lic/amsfonts/cm/cmr10.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/am
-sfonts/cm/cmr12.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts
-/cm/cmr17.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cm
-r6.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmr7.pfb>
-<D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmr8.pfb><D:/Stu
-dy/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmr9.pfb><D:/Study/LaTe
-X/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/Study/LaTeX/Mik
-TeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmsy5.pfb><D:/Study/LaTeX/MikTeX 2.
-9.6161/fonts/type1/public/amsfonts/cm/cmsy6.pfb><D:/Study/LaTeX/MikTeX 2.9.6161
-/fonts/type1/public/amsfonts/cm/cmsy7.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts
-/type1/public/amsfonts/cm/cmsy8.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1
-/public/amsfonts/cm/cmti10.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/publ
-ic/amsfonts/cm/cmtt10.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/am
-sfonts/cm/cmtt9.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts
-/symbols/msam10.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts
-/symbols/msbm10.pfb>
-Output written on jmmle-draft.pdf (47 pages, 689404 bytes).
+<C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Stud
+y/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Study/LaTeX/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Study/LaTeX/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmex10.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/
+public/amsfonts/cmextra/cmex8.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmmi10.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmmi6.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pf
+b><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Study
+/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Study/LaTeX/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb><C:/Study/LaTeX/MiKTeX 
+2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmr12.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmr17.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/c
+m/cmr6.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><
+C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Study/LaT
+eX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Study/LaTeX/MiKTeX 2.
+9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/ty
+pe1/public/amsfonts/cm/cmsy5.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/public/
+amsfonts/cm/cmsy6.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
+/cmsy7.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+<C:/Study/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Study/
+LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Study/LaTeX/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmtt9.pfb><C:/Study/LaTeX/MiKTeX 2.9/font
+s/type1/public/amsfonts/symbols/msam10.pfb><C:/Study/LaTeX/MiKTeX 2.9/fonts/typ
+e1/public/amsfonts/symbols/msbm10.pfb>
+Output written on jmmle-draft.pdf (47 pages, 689398 bytes).
 PDF statistics:
  1097 PDF objects out of 1200 (max. 8388607)
  242 named destinations out of 1000 (max. 500000)

@@ -1,0 +1,485 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% baposter Landscape Poster
+% LaTeX Template
+% Version 1.0 (11/06/13)
+%
+% baposter Class Created by:
+% Brian Amberg (baposter@brian-amberg.de)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[landscape,a0paper,fontscale=0.4]{baposter} % Adjust the font scale/size here
+
+\usepackage{xcolor}
+\usepackage{natbib} % for bibliography
+\usepackage{graphicx} % Required for including images
+
+\usepackage{amsmath,amsthm} % For typesetting math
+\usepackage{amssymb} % Adds new symbols to be used in math mode
+
+\usepackage{booktabs} % Top and bottom rules for tables
+\usepackage{enumitem} % Used to reduce itemize/enumerate spacing
+\usepackage{palatino} % Use the Palatino font
+\usepackage[font=small,labelfont=bf]{caption} % Required for specifying captions to tables and figures
+\usepackage{outlines} % for nested lists
+\usepackage{capt-of} % side-by-side figure and table
+\usepackage{multicol} % Required for multiple columns
+\usepackage{natbib}
+
+\usepackage{tikz} % Required for flow chart
+\usetikzlibrary{shapes,arrows} % Tikz libraries required for the flow chart in the template
+
+
+%%%%%%%% Custom commands
+\usepackage{mycommands1}
+\setlength{\columnsep}{1.5em} % Slightly increase the space between columns
+\setlength{\columnseprule}{0mm} % No horizontal rule between columns
+\newcommand{\compresslist}{ % Define a command to reduce spacing within itemize/enumerate environments, this is used right after \begin{itemize} or \begin{enumerate}
+\setlength{\itemsep}{1pt}
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt}
+}
+\DeclareMathOperator*{\ve}{vec}
+\DeclareMathOperator*{\diag}{diag }
+\DeclareMathOperator*{\supp}{supp }
+\DeclareMathOperator*{\Tr}{Tr}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\Th}{^{\text{th}}}
+
+\definecolor{lightblue}{rgb}{0.145,0.6666,1} % Defines the color used for content box headers
+%\definecolor{umnmaroon}{RGB}{122,0,25}
+%\definecolor{umngold}{RGB}{255,204,51}
+\definecolor{uforange}{RGB}{250,70,22}
+\definecolor{ufblue}{RGB}{0,33,165}
+\newcommand{\colmarit}{\color{umnmaroon} \it}
+\newcommand{\colmarbf}{\color{umnmaroon} \bf}
+
+% Row color change in table
+\makeatletter
+\def\zapcolorreset{\let\reset@color\relax\ignorespaces}
+\def\colorrows#1{\noalign{\aftergroup\zapcolorreset#1}\ignorespaces}
+\makeatother
+\begin{document}
+\newtheorem{Theorem}{Theorem}[section]
+\newtheorem{Lemma}[Theorem]{Lemma}
+\newtheorem{Corollary}[Theorem]{Corollary}
+\newtheorem{Proposition}[Theorem]{Proposition}
+\newtheorem{Conjecture}[Theorem]{Conjecture}
+\theoremstyle{definition} \newtheorem{Definition}[Theorem]{Definition}
+\newtheorem{Example}{Example}[section]
+\newtheorem{Algorithm}{Algorithm}
+\newtheorem{Remark}{Remark}
+
+\begin{poster}
+{
+headerborder=closed, % Adds a border around the header of content boxes
+colspacing=1em, % Column spacing
+bgColorTwo=white, % Background color for the gradient on the left side of the poster
+bgColorOne=white, % Background color for the gradient on the right side of the poster
+borderColor=ufblue, % Border color
+headerColorTwo=white, % Background color for the header in the content boxes (left side)
+headerColorOne=uforange, % Background color for the header in the content boxes (right side)
+headerFontColor=black, % Text color for the header text in the content boxes
+boxColorOne=white, % Background color of the content boxes
+textborder=roundedleft, % Format of the border around content boxes, can be: none, bars, coils, triangles, rectangle, rounded, roundedsmall, roundedright or faded
+eyecatcher=true, % Set to false for ignoring the left logo in the title and move the title left
+headerheight=0.1\textheight, % Height of the header
+headershape=roundedright, % Specify the rounded corner in the content box headers, can be: rectangle, small-rounded, roundedright, roundedleft or rounded
+headerfont=\Large\bf\textsc, % Large, bold and sans serif font in the headers of content boxes
+%textfont={\setlength{\parindent}{1.5em}}, % Uncomment for paragraph indentation
+linewidth=2pt % Width of the border lines around content boxes
+}
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION 
+%----------------------------------------------------------------------------------------
+%
+{\includegraphics[height=5em]{Vertical_Signature_Blue}} % First university/lab logo on the left
+{\huge{\bf\textsc{Joint Estimation and Inference for Data Integration Problems based on Multiple Multi-layered Gaussian Graphical Models}}\vspace{0.5em}} % Poster title
+{\textsc{ Subhabrata Majumdar and George Michailidis }}
+{\includegraphics[height=5em]{Vertical_Signature_Blue}} % Second university/lab logo on the right
+
+%----------------------------------------------------------------------------------------
+%	INTRODUCTION
+%----------------------------------------------------------------------------------------
+
+\headerbox{Introduction}{name=objectives,column=0,row=0,span=2}{
+
+\parbox{.47\textwidth}{
+{\large\colbbf Objective}
+
+We propose a general statistical framework based on Gaussian graphical models for horizontal (i.e. across conditions or subtypes) and vertical (i.e. across different layers containing data on molecular compartments) integration of information across heterogeneous biological Omics datasets, e.g. genomic, proteomic or metabolomic data.
+
+\vspace{.5em}
+{\large \colbbf Contributions}
+
+We borrow information across multiple similar multi-layer networks (see figure) to simultaneously perform inference on all model parameters.
+
+\vspace{-.5em}
+\begin{itemize}[leftmargin=*]\compresslist
+\item {\bf Estimation:} Incorporate structured sparsity to estimate undirected within-layer edges and directed between-layer edges simultaneously across all networks.
+
+\item{\bf Testing:} Develop a debiasing technique and asymptotic distributions of inter-layer directed edge weights, and establish global and simultaneous testing procedures for them.
+\end{itemize}
+% When there are two boxes, some whitespace may need to be added if the one on the right has more content
+}
+%
+\hspace{1em}
+\parbox{.47\textwidth}{
+\centering
+\vspace{-1em}
+\begin{center}
+\includegraphics[width=1\linewidth]{multi2layer}
+\captionof{figure}{Multiple multi-layer graphical models: $(\bfX^k, \bfY^k, \bfZ^k), k = 1,2,3$ indicate data for each layer and category $k$. Within-layer connections (black lines) are undirected, while between-layer connections (red lines) go from an upper layer to the successive lower layer. For each type of edges (i.e. within $\cX, \cY, \cZ$ and $\cX \rightarrow \cY, \cY \rightarrow \cZ$), there are common edges across some or all $k$.}
+\end{center}
+}
+}
+%----------------------------------------------------------------------------------------
+%	MODEL
+%----------------------------------------------------------------------------------------
+
+\headerbox{Statistical model}{name=data,column=0,below=objectives}{
+% This block's bottom aligns with the bottom of the conclusion block
+
+There are $K$ independent datasets, each pertaining to an $M$-layered Gaussian Graphical Model (GGM).
+
+\vspace{.5em}
+\begin{tabular}{ll}
+{\it Layer 1}- &
+%
+$\BD_1^k = (D_{1 1}^k, \ldots, D^k_{1 p_1}) \sim
+\cN (0, \Sigma_1^k); \quad k \in \cI_K,$\\
+{\it Layer $m$} $(1< m \leq M)$-  &
+%
+$ \BD_m^k = \BD_{m-1}^k \bfB_m^k + \BE_m^k,
+\bfB_m^k \in \BR^{p_{m-1} \times p_m} $\\
+& and $\BE_m^k = (E_{m 1}^k, \ldots, E^k_{m p_m}) \sim
+\cN (0, \Sigma_m^k)$.\\
+\end{tabular}
+\vspace{.5em}
+
+for $k = 1, \ldots, K$.
+The parameters of interest are the precision matrices $\Omega_m^k := (\Sigma_m^k)^{-1}$ and the regression coefficient matrices $\bfB_m^k$.
+
+\vspace{1em}
+We focus our  discussion on jointly estimating $\Omega_y = \{\Omega_{y}^k \} = \{ (\Sigma^k_{y})^{-1} \}$ and $\cB := \{\bfB^k\}$ from a two-layer model:
+%
+\begin{eqnarray}
+\BX^k = (X^k_1, \ldots, X^k_p)^T \sim \cN (0, \Sigma^k_{x});\\
+\BY^k = \BX^k \bfB^k + \BE^k; \quad \BE^k = (E^k_1, \ldots, E^k_p)^T \sim \cN (0, \Sigma^k_{y}),
+\end{eqnarray}
+%
+using data $\{ (\bfY^k, \bfX^k); \bfY^k \in \BR^{n \times q}, \bfX^k \in \BR^{n \times p}, k = 1, \ldots, K \}$ in presence of known grouping structures $\cG_x, \cG_y, \cH$ respectively. This is because
+
+\noindent {\bf (a)} For $M>2$, within-layer undirected edges of any $m{\Th}$ layer $(m>1)$ and between-layer directed edges from the $(m-1){\Th}$ layer to the $m{\Th}$ layer can be estimated using the same method (see details in \cite{LinEtal16}).
+
+\noindent {\bf (b)} Parameters in first layer are analogous to $\{ \Omega_{x}^k \} = \{ (\Sigma^k_{x})^{-1}\}$, and can be estimated from $\{ \bfX^k\}$ using any method for joint estimation of multiple graphical models (e.g. \cite{GuoEtal11, MaMichailidis15}).
+}
+
+%----------------------------------------------------------------------------------------
+%	ALGORITHM
+%----------------------------------------------------------------------------------------
+\headerbox{Estimation algorithm}{name=jmmle,column=0,below=data}{
+Denote the neighborhood coefficients of the $j^{\Th}$ variable in the lower layer by $\bftheta_j^k$, and $\Theta_j := (\bftheta_j^1, \ldots, \bftheta_j^K), \Theta = \{ \Theta_j \}$. We obtain sparse estimates of $\cB, \Theta$, and subsequently $\Omega_y$, by solving the following group-penalized least square minimization problem that has the tuning parameters $\gamma_n$ and $\lambda_n$ and then refitting:
+%
+\vspace{-1em}
+\begin{align}
+\{ \widehat \cB, \widehat \Theta \} &= 
+\argmin_{\cB, \Theta} \left\{ \frac{1}{n} \sum_{j=1}^q \sum_{k=1}^K \| \bfY^k_j - (\bfY_{-j}^k - \bfX^k \bfB_{-j}^k) \bftheta_j^k - \bfX^k \bfB_j^k \|^2 \right. \notag\\
+& \left. + \gamma_n P(\Theta) + \lambda_n Q(\cB) \right\},
+\label{eqn:jmmle-objfun}\\
+\widehat E_y^k &= \{(j,j'): 1 \leq j < j' \leq q, \hat \theta_{jj'}^k \neq 0 \text{ OR } \hat \theta_{j'j}^k \neq 0 \}, \notag\\
+\widehat \Omega_y^k &= \argmin_{\Omega_y^k \in \BS_+ (\hat E_y^k)}
+\left\{ \Tr (\widehat \bfS_y^k \Omega_y^k ) - \log \det (\Omega_y^k) \right\}. \label{eqn:omega-y-calc}
+\end{align}
+%&= \min \left\{ f ( \cY, \cX, \cB, \Theta) + P (\Theta) + Q (\cB) \right\} 
+%
+where $P(\cdot), Q(\cdot)$ are group lasso penalties encoding structured sparsity patterns for respective parameters.
+
+The objective function is bi-convex, and we apply an alternating block algorithm to compute solutions. A high-dimensional BIC is used to select tuning parameters $(\gamma_n, \lambda_n)$.
+}
+
+%----------------------------------------------------------------------------------------
+%	METHODS
+%----------------------------------------------------------------------------------------
+
+\headerbox{{\large Testing in multi-layer models}}{name=methods,column=1,row=1,below=objectives,bottomaligned=jmmle}{
+
+%\begin{center}
+%\includegraphics[width=0.8\linewidth]{depthplot_cropped}
+%\vspace{-2em}
+%\captionof{figure}{{\scriptsize Samples from bivariate normal and their depths: points away from center have less depth while those close to center have more depth}}
+%\end{center}
+
+{\large\colbbf Debiased estimator}
+
+We define debiased estimates for individual rows of $\bfB^k$ as
+%
+\begin{align}\label{eqn:DebiasedBeta}
+\widehat \bfc_i^k = \widehat \bfb_i^k + \frac{1}{n t_i^k} \left( \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k \right)^T (\bfY^k - \bfX^k \widehat \bfB^k )
+; \quad 1 \leq i \leq p
+\end{align}
+%
+where $\widehat \bfzeta_i^k, \widehat \bfB^k$ are {\it generic estimators} of the neighborhood coefficient matrices in the X-layer and $\bfB^k$, respectively, $\widehat \bfb_i^k$ is the $i\Th$ row of $\widehat \bfB^k$, and $t_i^k = ( \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k )^T \bfX_{i}^k/n$.
+
+Under mild conditions, a centered and scaled $\ve(\widehat \bfc_i^1, \ldots, \widehat \bfc_i^K)$ achieves asymptotic normality. Our estimators conform to these conditions when total sparsity in true values of $\cB$ and $\Omega_y$ are $o(\sqrt n/\log (p q)$ and $o(n/\log (p q)$, respectively.
+
+\vspace{.5em}
+{\large {\colbbf Pairwise testing}}
+
+We set K = 2, and are interested in testing whether there are overall and elementwise differences between individual rows of the true coefficient
+matrices, say $\bfb^1_{0i}$ and $\bfb^2_{0i}$.
+
+\vspace{.5em}
+\begin{Algorithm}\label{algo:AlgoGlobalTest}
+({\colbbf Global test} for $H_0^i: \bfb_{0 i}^1 = \bfb_{0 i}^2$ at level $\alpha \in (0,1)$)
+
+\noindent 1. Obtain the debiased estimators $\widehat \bfc_i^1, \widehat \bfc_i^2$ using \eqref{eqn:DebiasedBeta}.
+
+\noindent 2. Calculate the test statistic
+%
+\vspace{-.5em}
+$$
+D_i = (\widehat \bfc_i^1 - \widehat \bfc_i^2)^T
+\left( \frac{ \widehat \Sigma_y^1}{(m_i^1)^2} +
+\frac{\widehat \Sigma_y^2}{(m_i^2)^2} \right)^{-1} (\widehat \bfc_i^1 - \widehat \bfc_i^2)
+$$
+%
+where $\widehat \Sigma_y^k = (\widehat \Omega_y^k)^{-1}$, and $m_i^k = \sqrt n t_i^k / \widehat s_i^k$ with $\widehat s_i^k = \sqrt{\| \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k \|^2/n}$ for $k = 1,2$.
+
+\noindent 3. Reject $H_0^i$ if $D_i \geq \chi^2_{q, 1-\alpha}$.
+\end{Algorithm}
+
+The above testing procedure maintains rate optimal power, i.e. P(rejection)$\rightarrow 1$ when $\| \bfb^1_{0i} - \bfb^2_{0i} \| > O( n^{-1/2})$.
+
+\begin{Algorithm}\label{algo:AlgoFDR}
+({\colbbf Simultaneous tests} for $H_0^{ij}: b_{0 ij}^1 = b_{0 ij}^2$ at FDR level $\beta \in (0,1)$)
+
+\noindent 1. Calculate the pairwise test statistics
+%
+\vspace{-.5em}
+\begin{align*}
+d_{ij} &= \frac{\widehat c_{ij}^1 - \widehat c_{ij}^2}{\sqrt{\hat \sigma_{jj}^1/ (m_i^1)^2 + \hat \sigma_{jj}^2/ (m_i^2)^2}},
+\end{align*}
+%
+with $\hat \sigma_{jj}^k$ being the $j^{\Th}$ diagonal element of $\widehat \Sigma_y^k, k = 1,2$, for $j = 1, \ldots, q$.
+
+\noindent 2. Obtain the threshold
+%
+\vspace{-.5em}
+$$
+\hat \tau = \inf \left\{\tau \in \BR: 1 - \Phi(\tau) \leq
+\frac{\beta. 1 \vee \{ \#j: |d_{ij}| \geq \tau) \} }{2 q}
+\right\}.
+$$
+%
+\noindent 3. For $j = 1, \ldots, q$, reject $H_0^{ij}$ if $|d_{ij}| \geq \hat \tau$.
+\end{Algorithm}
+
+}
+
+%----------------------------------------------------------------------------------------
+%	RESULTS
+%----------------------------------------------------------------------------------------
+
+\headerbox{Performance evaluation}{name=results,column=2,span=2,row=0}
+{
+{\large\colbbf Simulation 1: Estimation}
+
+\parbox{.39\textwidth}{
+\begin{itemize}[leftmargin=*]\compresslist
+\item Fix $K=5$. Take shared groups across $k$ for X- and Y-precision matrices in the setup of \cite{MaMichailidis15} and set elements in a group non-zero w.p. $\pi_x$. For each element in $\cB^k$, entries across $k$ are set to all zero or all non-zero w.p. $\pi_y$;
+
+\item Non-zero entries in $\cB,\Omega_x,\Omega_y$ are drawn from $\text{Unif}\{ [ -1, -0.5] \cup [0.5,1]\}$ independently.
+
+\item 50 replications in each setup of $(\pi_x, \pi_y, p, q, n)$.
+
+\item Tuning parameters-
+%
+\vspace{-.5em}
+\begin{align*}
+\gamma_n \in \left\{ 0.3, 0.4, ..., 1 \right\} \sqrt{\frac{\log q}{n}};\\
+\lambda_n \in \left\{ 0.4, 0.6, ..., 1.8 \right\} \sqrt{\frac{\log p}{n}}
+\end{align*}
+
+\item Compare with separate estimation method of \cite{LinEtal16}.
+\end{itemize}
+}
+%
+\parbox{.59\textwidth}{
+\centering
+%\vspace{-1em}
+\fontsize{9}{10}
+\selectfont
+\begin{tabular}{ccccccc}
+\hline
+    $(\pi_x, \pi_y)$ & $(p,q,n)$   & Method   & TPR$(\widehat \cB)$            & TNR$(\widehat \cB)$             & MCC$(\widehat \cB)$ & RF$(\widehat \cB)$    \\ \hline
+$(5/p, 5/q)$       & (200,200,150) & JMMLE    & 0.98(0.011) & 1.0(0)       & 0.99(0.005) & 0.16(0.025) \\
+    ~              & ~             & Separate & 0.99(0.001) & 0.99 (0.001) & 0.88(0.009) & 0.18(0.007) \\\cline{2-7}
+    %
+    ~              & (300,300,150) & JMMLE    & 1.0(0.001)  & 1.0(0)       & 0.99(0.001) & 0.14 (0.015)\\
+    ~              & ~             & Separate & 1.0(0.001)  & 0.99(0.001)  & 0.84(0.01)  & 0.21(0.007)\\\hline
+    %
+    $(30/p, 30/q)$ & (200,200,100) & JMMLE    & 0.97(0.017) & 1.0(0)       & 0.98(0.008) & 0.21(0.032) \\
+    ~              & ~             & Separate & 0.32(0.01)  & 0.99(0.001)  & 0.49(0.009) & 0.85(0.06)  \\\cline{2-7}
+    %
+    ~              & (200,200,200) & JMMLE    & 0.99(0.006) & 1.0(0)       & 0.99(0.007) & 0.13(0.016) \\
+    ~              & ~             & Separate & 0.97(0.004) & 0.98(0.001)  & 0.93(0.002) & 0.19(0.07)  \\    \hline
+\hline
+$(\pi_x, \pi_y)$ & $(p,q,n)$   & Method   & TPR$(\widehat \Theta)$            & TNR$(\widehat \Theta)$             & MCC$(\widehat \Theta)$ & RF$(\widehat \Theta)$    \\ \hline
+
+    $(5/p, 5/q)$   & (200,200,150) & JMMLE    & 0.68(0.017) & 0.98(0)      & 0.48(0.013)  & 0.26(0.002) \\
+    ~              & ~             & Separate & 0.78(0.019) & 0.97(0.001)  & 0.55(0.012)  & 0.6(0.007) \\\cline{2-7}
+    %
+    ~              & (300,300,150) & JMMLE    & 0.71(0.014) & 0.98(0)      & 0.44(0.008)  & 0.25(0.002) \\
+    ~              & ~             & Separate & 0.71(0.017) & 0.98(0.001)  & 0.51(0.011)  & 0.59(0.005) \\\hline
+    %
+    $(30/p, 30/q)$ & (200,200,100) & JMMLE    & 0.77(0.016) & 0.98(0)      & 0.46(0.013)  & 0.31(0.003) \\
+    ~              & ~             & Separate & 0.57(0.027) & 0.44(0.007)  & 0.04(0.008)  & 0.84(0.002)\\\hline
+    %
+    ~              & (200,200,200) & JMMLE    & 0.76(0.018)  & 0.98(0)     & 0.55(0.015)  & 0.27(0.004) \\
+    ~              & ~             & Separate & 0.73(0.023) & 0.94(0.003)  & 0.39(0.017)  & 0.62(0.011)\\\hline
+\end{tabular}
+\captionof{table}{Table of estimation outputs, giving empirical mean and standard deviation (in brackets) of each evaluation metric over 50 replications. TPR = True Positive Rate, TNR = True Negative Rate, MCC = Matthews Correlation Coef., RF = Relative Frobenius Norm Error.}
+}
+
+{\large\colbbf Effect of heterogeneity}
+
+\parbox{.39\textwidth}{
+\begin{itemize}[leftmargin=*]\compresslist
+\item While generating data, individual elements inside a non-zero group are set as 0 with probability 0.2;
+
+\item Calculated estimates $\widehat \bfB^k$ are passed through the FDR controlling thresholds (at $\beta = 0.2$):
+%
+\begin{align*}
+& \hat \tau_i^k = \inf \left\{\tau : 1 - \Phi(\tau) \leq
+\frac{\beta. 1 \vee \{ \# j: |(\hat \omega_{jj}^k)^{1/2} m_i^k \hat c_{ij}^k| \geq \tau \} }{2 q}
+\right\},\\
+& \hat b_{ij}^{k, \text{thr}} =  \hat b_{ij}^k \BI \left(
+| (\hat \omega_{jj}^k)^{1/2} m_i^k \hat c_{ij}^k | \geq \hat \tau_i^k \right).
+\end{align*}
+%
+\item For $\widehat \cB$, performance is very close to the correctly specified counterparts, but for $\widehat \Omega_y$ it is slightly worse.
+\end{itemize}
+}
+%
+\parbox{.59\textwidth}{
+\centering
+%\vspace{-1em}
+\fontsize{9}{10}
+\selectfont
+\begin{tabular}{cccccc}
+\hline
+$(\pi_x, \pi_y)$ & $(p,q,n)$   & TPR$(\widehat \cB)$            & TNR$(\widehat \cB)$             & MCC$(\widehat \cB)$ & RF$(\widehat \cB)$    \\ \hline
+    $(5/p, 5/q)$   & (200,200,150) & 0.99 (0.002)  & 0.99 (0)       & 0.98 (0.004)  & 0.17 (0.007) \\
+    ~              & (300,300,150) & 0.99 (0.001)  & 1 (0)          & 0.99 (0.002)  & 0.15 (0.006) \\
+    $(30/p, 30/q)$ & (200,200,100) & 0.99 (0.006)  & 1 (0)          & 0.98 (0.005)  & 0.2 (0.014)  \\
+    ~              & (200,200,200) & 0.99 (0.009)  & 1 (0)          & 0.98 (0.005)  & 0.15 (0.017) \\\hline
+    \hline
+    $(\pi_x, \pi_y)$ & $(p,q,n)$   & TPR$(\widehat \Omega_y)$            & TNR$(\widehat \Omega_y)$             & MCC$(\widehat \Omega_y)$ & RF$(\widehat \Omega_y)$            \\ \hline
+    $(5/p, 5/q)$   & (200,200,150) & 0.62 (0.012)  & 0.98 (0)       & 0.43 (0.009)  & 0.27 (0.003)\\
+    ~              & (300,300,150) & 0.69 (0.013)  & 0.98 (0)       & 0.39 (0.008)  & 0.26 (0.02) \\
+    $(30/p, 30/q)$ & (200,200,100) & 0.78 (0.024)  & 0.98 (0)       & 0.43 (0.012)  & 0.31 0.003) \\
+    ~              & (200,200,200) & 0.69 (0.026)  & 0.98 (0.001)   & 0.5 (0.02)    & 0.29 (0.004)\\\hline
+\end{tabular}
+\captionof{table}{Table of outputs for joint estimation in presence of group misspecification}
+}
+
+{\large\colbbf Simulation 2: Testing}
+
+\parbox{.39\textwidth}{
+\begin{itemize}[leftmargin=*]\compresslist
+\item Set $K=2$, then randomly assign each element of $\bfB_0^1$ as non-zero w.p. $\pi$, then draw their values from $\text{Unif}\{ [ -1, -0.5] \cup [0.5,1]\}$ independently. Then generate a matrix of differences $\bfD$, where $(\bfD)_{ij}, i \in \cI_p, j \in \cI_q$ takes values --1, 1, 0 w.p. 0.1, 0.1 and 0.8, respectively. Finally set $\bfB_0^2 = \bfB_0^1 + \bfD$.
+
+\item Identical sparsity structures for the pairs of X- and Y-precision matrices.
+
+\item Type-I error set at $\alpha=0.05$, FDR controlled at $\beta = 0.2$.
+
+\item Empirical sizes of global tests are calculated from estimators obtained from a separate set of data generated by setting all elements of $\bfD$ to 0.
+\end{itemize}
+}
+%
+\parbox{.59\textwidth}{
+%\vspace{-1em}
+\centering
+\fontsize{9}{10}
+\selectfont
+\begin{tabular}{ccccccc}
+\hline
+$(\pi_x, \pi_y)$ & $(p,q)$   & $n$ & \multicolumn{2}{c}{Global test} & \multicolumn{2}{c}{Simultaneous tests}\\\cline{4-7}
+ & & & Power     & Size			   & Power         & FDR           \\ \hline
+    $(5/p, 5/q)$ & (60,30)   & 100 & 0.977 (0.018) & 0.058 (0.035) & 0.937 (0.021) & 0.237 (0.028) \\
+    ~            & ~         & 200 & 0.987 (0.016) & 0.046 (0.032) & 0.968 (0.013) & 0.218 (0.032) \\
+    ~            & (30,60)   & 100 & 0.985 (0.018) & 0.097 (0.069) & 0.925 (0.022) & 0.24 (0.034)  \\
+    ~            & ~         & 200 & 0.990 (0.02)  & 0.119 (0.059) & 0.958 (0.024) & 0.245 (0.041) \\
+    ~            & (200,200) & 150 & 0.987 (0.005) & 0.004 (0.004) & 0.841 (0.13)  & 0.213 (0.007) \\
+    ~            & (300,300) & 150 & 0.988 (0.002) & 0.002 (0.003) & 0.546 (0.035) & 0.347 (0.017) \\
+    ~            & ~         & 300 & 0.998 (0.003) & 0.000 (0.001) & 0.989 (0.003) & 0.117 (0.006) \\ \hline
+  $(30/p, 30/q)$ & (200,200) & 100 & 0.994 (0.005) & 0.262 (0.06)  & 0.479 (0.01)  & 0.557 (0.006) \\
+    ~            & ~         & 200 & 0.998 (0.004) & 0.020 (0.01)  & 0.962 (0.003) & 0.266 (0.007) \\
+    ~            & ~         & 300 & 0.999 (0.002) & 0.011 (0.008) & 0.990 (0.004) & 0.185 (0.009) \\ \hline
+\end{tabular}
+\captionof{table}{Table of outputs for hypothesis testing.}
+}
+}
+
+%----------------------------------------------------------------------------------------
+%	Computation
+%----------------------------------------------------------------------------------------
+
+\headerbox{Computation}{name=discussion,column=2,below=results,bottomaligned=jmmle}{
+
+\begin{itemize}[leftmargin=*]\compresslist
+\item {\bf Initial estimates}: Separate lasso regressions are performed to initialize columns of $\bfB^k$. Residuals from these initializers are then used in the method of \cite{MaMichailidis15} to get initial values of $\widehat \Theta$.
+ 
+\item {\bf One-step algorithm}: The original iterative algorithm alternately updates $\widehat \cB$ and $\widehat \Theta$ in each iteration. This becomes too costly for high data dimensions. When $p,q$ become high, we instead use the one-step algorithm: let $\widehat \cB$ converge completely after initialization, then update $\widehat \Theta$ only once. This saves computation time significantly without impacting performance.
+
+\item {\bf Update of $\widehat \cB$}: When updating $\widehat \cB$ in each iteration, updating columns of the solution matrices sequentially, as well as refitting an OLS estimate on the support set of the penalized solution speeds up convergence.
+\end{itemize}
+}
+
+%----------------------------------------------------------------------------------------
+%	Discussion
+%----------------------------------------------------------------------------------------
+
+\headerbox{Discussion}{name=discussion,column=3,below=results,bottomaligned=jmmle}{
+
+{\scriptsize
+\textbf{References}:
+\vspace{-.7em}
+\renewcommand{\section}[2]{\vskip 0.05em} % Get rid of the default "References" section title
+\setlength{\bibsep}{0pt plus 0.1ex}
+\bibliographystyle{apalike}
+\bibliography{GGMbib}
+}}
+
+%----------------------------------------------------------------------------------------
+%	ALGORITHM
+%----------------------------------------------------------------------------------------
+
+%\headerbox{The one-step algorithm}{name=algo,bottomaligned=info, column=1,below=methods, boxColorOne=orange!20}{
+%% This block's bottom aligns with the bottom of the conclusion block
+%
+%{\colbbf
+%\begin{enumerate}[leftmargin=*]\compresslist
+%\item For large enough $n$, Calculate $C_n$ for full model;
+%\item Drop a predictor, calculate $C_n$ for the reduced model;
+%\item Repeat for all $p$ predictors;
+%\item Collect predictors dropping which causes $C_n$ to decrease. These are the predictors in the smallest correct model.
+%\end{enumerate}
+%}
+%}
+
+\end{poster}
+
+\end{document}
