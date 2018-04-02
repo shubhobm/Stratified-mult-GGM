@@ -1,5 +1,6 @@
 \select@language {english}
 \beamer@sectionintoc {1}{Multiple multi-level graphical models}{5}{0}{1}
 \beamer@sectionintoc {2}{Model formulation}{11}{0}{2}
-\beamer@sectionintoc {3}{Hypothesis testing}{21}{0}{3}
-\beamer@sectionintoc {4}{Simulation studies}{26}{0}{4}
+\beamer@sectionintoc {3}{Joint Multiple Multi-Level Estimation}{18}{0}{3}
+\beamer@sectionintoc {4}{Hypothesis testing}{27}{0}{4}
+\beamer@sectionintoc {5}{Simulation studies}{32}{0}{5}

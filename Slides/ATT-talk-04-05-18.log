@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2016.12.9)  1 APR 2018 21:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2016.12.9)  2 APR 2018 12:28
 entering extended mode
 **./ATT-talk-04-05-18.tex
 (ATT-talk-04-05-18.tex
@@ -1386,7 +1386,7 @@ LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
  [1
 
 {C:/Users/Subho/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-<data_integration_schematic.jpg, id=71, 191.2746pt x 174.1707pt>
+<data_integration_schematic.jpg, id=75, 191.2746pt x 174.1707pt>
 File: data_integration_schematic.jpg Graphic file (type jpg)
 
 <use data_integration_schematic.jpg>
@@ -1430,7 +1430,7 @@ LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <7> not available
 ) [5
 
 ]
-<formulation_2.png, id=110, 574.39594pt x 610.53094pt>
+<formulation_2.png, id=116, 574.39594pt x 610.53094pt>
 File: formulation_2.png Graphic file (type png)
  <use formulation_2.png>
 Package pdftex.def Info: formulation_2.png used on input line 189.
@@ -1444,13 +1444,13 @@ File: formulation_2.png Graphic file (type png)
 Package pdftex.def Info: formulation_2.png used on input line 219.
 (pdftex.def)             Requested size: 86.04883pt x 91.45457pt.
 
-<formulation_3.png, id=128, 574.39594pt x 609.77812pt>
+<formulation_3.png, id=134, 574.39594pt x 609.77812pt>
 File: formulation_3.png Graphic file (type png)
  <use formulation_3.png>
 Package pdftex.def Info: formulation_3.png used on input line 219.
 (pdftex.def)             Requested size: 86.04883pt x 91.34181pt.
 
-<formulation_4.png, id=129, 574.39594pt x 610.53094pt>
+<formulation_4.png, id=135, 574.39594pt x 610.53094pt>
 File: formulation_4.png Graphic file (type png)
  <use formulation_4.png>
 Package pdftex.def Info: formulation_4.png used on input line 219.
@@ -1459,7 +1459,7 @@ Package pdftex.def Info: formulation_4.png used on input line 219.
 [7
 
  <./formulation_3.png> <./formulation_4.png>]
-<multilayer.pdf, id=146, 119.25554pt x 165.02654pt>
+<multilayer.pdf, id=152, 119.25554pt x 165.02654pt>
 File: multilayer.pdf Graphic file (type pdf)
  <use multilayer.pdf>
 Package pdftex.def Info: multilayer.pdf used on input line 253.
@@ -1467,7 +1467,7 @@ Package pdftex.def Info: multilayer.pdf used on input line 253.
 
 [8
 
- <./multilayer.pdf>] <multi2layer.pdf, id=160, 408.01433pt x 179.24968pt>
+ <./multilayer.pdf>] <multi2layer.pdf, id=166, 408.01433pt x 179.24968pt>
 File: multi2layer.pdf Graphic file (type pdf)
 
 <use multi2layer.pdf>
@@ -1477,121 +1477,141 @@ Package pdftex.def Info: multi2layer.pdf used on input line 274.
 
  <./multi2layer.pdf>]
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <9> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 297.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 300.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <6> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 297.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 300.
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 297.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 300.
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <6> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 297.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 300.
  [10
 
 ] (ATT-talk-04-05-18.toc)
 [11
 
-] <adj1.pdf, id=207, 289.08pt x 289.08pt>
+] <adj1.pdf, id=214, 289.08pt x 289.08pt>
 File: adj1.pdf Graphic file (type pdf)
  <use adj1.pdf>
-Package pdftex.def Info: adj1.pdf used on input line 324.
+Package pdftex.def Info: adj1.pdf used on input line 327.
 (pdftex.def)             Requested size: 79.16345pt x 79.15979pt.
 
-<adj2.pdf, id=208, 289.08pt x 289.08pt>
+<adj2.pdf, id=215, 289.08pt x 289.08pt>
 File: adj2.pdf Graphic file (type pdf)
  <use adj2.pdf>
-Package pdftex.def Info: adj2.pdf used on input line 324.
+Package pdftex.def Info: adj2.pdf used on input line 327.
 (pdftex.def)             Requested size: 79.16345pt x 79.15979pt.
 
-<adj3.pdf, id=209, 289.08pt x 289.08pt>
+<adj3.pdf, id=216, 289.08pt x 289.08pt>
 File: adj3.pdf Graphic file (type pdf)
  <use adj3.pdf>
-Package pdftex.def Info: adj3.pdf used on input line 324.
+Package pdftex.def Info: adj3.pdf used on input line 327.
 (pdftex.def)             Requested size: 79.16345pt x 79.15979pt.
 
-<adj4.pdf, id=210, 289.08pt x 289.08pt>
+<adj4.pdf, id=217, 289.08pt x 289.08pt>
 File: adj4.pdf Graphic file (type pdf)
  <use adj4.pdf>
-Package pdftex.def Info: adj4.pdf used on input line 324.
+Package pdftex.def Info: adj4.pdf used on input line 327.
 (pdftex.def)             Requested size: 79.16345pt x 79.15979pt.
  [12
 
  <./adj1.pdf> <./adj2.pdf> <./adj3.pdf> <./adj4.pdf>]
-<layersB.png, id=243, 424.58624pt x 207.77625pt>
+<layersB.png, id=250, 424.58624pt x 207.77625pt>
 File: layersB.png Graphic file (type png)
  <use layersB.png>
-Package pdftex.def Info: layersB.png used on input line 335.
-(pdftex.def)             Requested size: 206.51929pt x 101.06302pt.
+Package pdftex.def Info: layersB.png used on input line 338.
+(pdftex.def)             Requested size: 172.09766pt x 84.21866pt.
  [13
 
  <./layersB.png>]
 LaTeX Font Info:    Font shape `T1/phv/bx/it' in size <10> not available
-(Font)              Font shape `T1/phv/b/it' tried instead on input line 361.
+(Font)              Font shape `T1/phv/b/it' tried instead on input line 370.
 LaTeX Font Info:    Font shape `T1/phv/b/it' in size <10> not available
-(Font)              Font shape `T1/phv/b/sl' tried instead on input line 361.
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 370.
 LaTeX Font Info:    Font shape `T1/phv/bx/it' in size <7> not available
-(Font)              Font shape `T1/phv/b/it' tried instead on input line 361.
+(Font)              Font shape `T1/phv/b/it' tried instead on input line 370.
 LaTeX Font Info:    Font shape `T1/phv/b/it' in size <7> not available
-(Font)              Font shape `T1/phv/b/sl' tried instead on input line 361.
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 370.
 LaTeX Font Info:    Font shape `T1/phv/bx/it' in size <5> not available
-(Font)              Font shape `T1/phv/b/it' tried instead on input line 361.
+(Font)              Font shape `T1/phv/b/it' tried instead on input line 370.
 LaTeX Font Info:    Font shape `T1/phv/b/it' in size <5> not available
-(Font)              Font shape `T1/phv/b/sl' tried instead on input line 361.
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 370.
  [14
 
-] <multilayer.png, id=265, 1207.51125pt x 496.10344pt>
-File: multilayer.png Graphic file (type png)
+] [15
 
-<use multilayer.png>
-Package pdftex.def Info: multilayer.png used on input line 378.
-(pdftex.def)             Requested size: 309.77368pt x 127.26547pt.
- [15
-
- <./multilayer.png>] [16
+] [16
 
 ] [17
 
+] (ATT-talk-04-05-18.toc) [18
+
 ]
-Overfull \hbox (6.65742pt too wide) in paragraph at lines 451--451
-[]  
- []
+<multitwolayer_j.pdf, id=300, 408.01433pt x 108.12395pt>
+File: multitwolayer_j.pdf Graphic file (type pdf)
 
-[18
+<use multitwolayer_j.pdf>
+Package pdftex.def Info: multitwolayer_j.pdf used on input line 457.
+(pdftex.def)             Requested size: 309.77368pt x 82.09254pt.
+ [19
 
-] [19
+ <./multitwolayer_j.pdf>]
+<multitwolayer.pdf, id=318, 408.01433pt x 108.12395pt>
+File: multitwolayer.pdf Graphic file (type pdf)
+ <use multitwolayer.pdf>
+Package pdftex.def Info: multitwolayer.pdf used on input line 477.
+(pdftex.def)             Requested size: 309.77368pt x 82.09254pt.
 
-] [20
+[20
 
-] (ATT-talk-04-05-18.toc) [21
+ <./multitwolayer.pdf>] [21
 
 ] [22
 
 ] [23
 
-] [24
+]
+Overfull \hbox (6.65742pt too wide) in paragraph at lines 600--600
+[]  
+ []
+
+[24
 
 ] [25
 
-]
-(ATT-talk-04-05-18.toc) [26
+] [26
 
-] [27
+] (ATT-talk-04-05-18.toc) [27
 
 ] [28
 
-]
-Overfull \hbox (1.63864pt too wide) in paragraph at lines 663--663
- [] 
- []
-
-[29
+] [29
 
 ] [30
 
-] (ATT-talk-04-05-18.bbl) [31
+] [31
+
+]
+(ATT-talk-04-05-18.toc) [32
+
+] [33
+
+] [34
+
+]
+Overfull \hbox (1.63864pt too wide) in paragraph at lines 812--812
+ [] 
+ []
+
+[35
+
+] [36
+
+] (ATT-talk-04-05-18.bbl) [37
 
 ]
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <20.74> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 698.
- [32
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 847.
+ [38
 
 ]
 \tf@nav=\write7
@@ -1603,47 +1623,48 @@ LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <20.74> not available
 \tf@snm=\write9
 \openout9 = `ATT-talk-04-05-18.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 700.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 700.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 849.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 849.
  (ATT-talk-04-05-18.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 700.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 700.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 849.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 849.
 Package rerunfilecheck Info: File `ATT-talk-04-05-18.out' has not changed.
-(rerunfilecheck)             Checksum: DEB032F85BC9515422DAC92C09EAD9CA;234.
+(rerunfilecheck)             Checksum: 505146218A30E8800EB2C4C8AA6EE5A1;307.
  ) 
 Here is how much of TeX's memory you used:
- 32181 strings out of 493333
- 628706 string characters out of 3137901
+ 32218 strings out of 493333
+ 629143 string characters out of 3137901
  691845 words of memory out of 3000000
- 34979 multiletter control sequences out of 15000+200000
+ 34999 multiletter control sequences out of 15000+200000
  69241 words of font info for 86 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  58i,18n,82p,10475b,731s stack positions out of 5000i,500n,10000p,200000b,50000s
 {D:/Study/LaTeX/MikTeX 2.9.6161/fonts/enc/dvips/base/8r.enc}<D:/Study/LaTeX/M
 ikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmbx10.pfb><D:/Study/LaTeX/MikTeX
  2.9.6161/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/Study/LaTeX/MikTeX 2.9.
-6161/fonts/type1/public/amsfonts/cm/cmmi10.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/
-fonts/type1/public/amsfonts/cm/cmmi5.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/
-type1/public/amsfonts/cm/cmmi7.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/
-public/amsfonts/cm/cmmi9.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public
-/amsfonts/cm/cmmib10.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/ams
-fonts/cmextra/cmmib7.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/ams
-fonts/cm/cmr10.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/
-cm/cmr7.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmss
-10.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmss8.pfb
-><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmss9.pfb><D:/S
-tudy/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/Study/
-LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmsy5.pfb><D:/Study/LaTeX/
-MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmsy7.pfb><D:/Study/LaTeX/MikTeX
- 2.9.6161/fonts/type1/public/amsfonts/cm/cmsy9.pfb><D:/Study/LaTeX/MikTeX 2.9.6
-161/fonts/type1/public/amsfonts/symbols/msam10.pfb><D:/Study/LaTeX/MikTeX 2.9.6
-161/fonts/type1/public/amsfonts/symbols/msbm10.pfb><D:/Study/LaTeX/MikTeX 2.9.6
-161/fonts/type1/urw/helvetic/uhvb8a.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/t
-ype1/urw/helvetic/uhvr8a.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/urw/he
-lvetic/uhvro8a.pfb>
-Output written on ATT-talk-04-05-18.pdf (32 pages, 715153 bytes).
+6161/fonts/type1/public/amsfonts/cmextra/cmex7.pfb><D:/Study/LaTeX/MikTeX 2.9.6
+161/fonts/type1/public/amsfonts/cm/cmmi10.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/f
+onts/type1/public/amsfonts/cm/cmmi5.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/t
+ype1/public/amsfonts/cm/cmmi7.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/p
+ublic/amsfonts/cm/cmmi9.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/
+amsfonts/cm/cmmib10.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsf
+onts/cm/cmr10.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/c
+m/cmr7.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmss1
+0.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmss8.pfb>
+<D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmss9.pfb><D:/St
+udy/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/Study/L
+aTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmsy5.pfb><D:/Study/LaTeX/M
+ikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmsy7.pfb><D:/Study/LaTeX/MikTeX 
+2.9.6161/fonts/type1/public/amsfonts/cm/cmsy9.pfb><D:/Study/LaTeX/MikTeX 2.9.61
+61/fonts/type1/public/amsfonts/symbols/msam10.pfb><D:/Study/LaTeX/MikTeX 2.9.61
+61/fonts/type1/public/amsfonts/symbols/msbm10.pfb><D:/Study/LaTeX/MikTeX 2.9.61
+61/fonts/type1/public/amsfonts/symbols/msbm7.pfb><D:/Study/LaTeX/MikTeX 2.9.616
+1/fonts/type1/urw/helvetic/uhvb8a.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/typ
+e1/urw/helvetic/uhvr8a.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/urw/helv
+etic/uhvro8a.pfb>
+Output written on ATT-talk-04-05-18.pdf (38 pages, 611014 bytes).
 PDF statistics:
- 465 PDF objects out of 1000 (max. 8388607)
- 77 named destinations out of 1000 (max. 500000)
- 273 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 542 PDF objects out of 1000 (max. 8388607)
+ 90 named destinations out of 1000 (max. 500000)
+ 286 words of extra memory for PDF output out of 10000 (max. 10000000)
 

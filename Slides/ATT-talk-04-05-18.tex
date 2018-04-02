@@ -278,6 +278,9 @@ $k=1$ & $k=2$ & $k=3$
 \frametitle{What we do}
 
 \begin{outline}
+\1 We decompose the multi-layer problem into a series of two layer problems.
+
+\vspace{1em}
 \1 We estimate $\{ \Omega_x^k, \Omega_y^k, \bfB^k \}$ jointly for all $k$ from a single model;
 \2 Incorporate structural informartion using group sparsity,
 \2 Propose alternating block algorithm to compute solutions,
@@ -331,75 +334,221 @@ Group structures in $\cB$ is denoted by $\cH$, with each $h \in \cH$ being a col
 
 \vspace{2em}
 \centering
-\includegraphics[width=.6\textwidth]{layersB}
+\includegraphics[width=.5\textwidth]{layersB}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-\frametitle{Neighborhood selection}
+\frametitle{Estimation of $\Omega_x$}
 
-\begin{itemize}
-\item {\bf For single GGM}: Estimate neighboring edges for each node, then refit.
+\begin{enumerate} %% break
+\item Estimate neighborhood coefficients of each X-node, say $\zeta_i = (\bfzeta_i^1, \ldots, \bfzeta_i^K)$ using the group sparsity information $\cG_x$:
+%
+$$
+\widehat \zeta_i = \argmin_{\zeta_i} \left\{ \sum_{k=1}^K \frac{1}{n_k} \| \bfX_i^k - \bfX_{-i}^k \bfzeta_i^k \|^2 + \nu_n \sum_{i' \neq i, g \in \cG_{x,ii'}} \| \bfzeta_{ii'}^{[g]} \| \right\}
+$$
+
+\item Recover precision matrices as MLE over the restricted supports: %% break
 %
 \begin{align*}
-\hat \bfzeta_i &= \argmin_{\bfzeta_i} \left\{ \frac{1}{n} \| \bfX_i - \bfX_{-i} \bfzeta_i \|^2 + \nu_n \sum_{i' \neq i} |\zeta_{ii'}| \right\};\\
-\hat \Omega_x &= \argmin_{\Omega_x \in \cup_i \supp (\bfzeta_i)}
-\{ \Tr (\bfS_x \Omega_x ) + \log \det(\Omega_x) \}
+\widehat E_x^k &= \{(i,i'): 1 \leq i < i' \leq p, \widehat \zeta_{ii'}^k \neq 0 \text{ OR } \widehat \zeta_{i'i}^k \neq 0 \},\\
+\widehat \Omega_x^k &= \argmin_{\Omega_x^k \in \BS_+ (\widehat E_x^k)}
+\left\{ \Tr (\widehat \bfS_x^k \Omega_x^k ) - \log \det (\Omega_x^k) \right\}.
 \end{align*}
 %
-Can do this because $\zeta_{ii'} = -\omega_{ii'}/\omega_{ii}$, so zeros of the precision matrix and neighborhood matrix are same.
+\end{enumerate}
 
-\item {\bf For multiple GGM}: Incorporate penalty across different $k$ (JSEM: \cite{MaMichailidis15}).
-%
-\begin{align*}
-\hat \bfzeta_i &= \argmin_{\zeta_i} \left\{ \sum_{k=1}^K \frac{1}{n_k} \| \bfX_i^k - \bfX_{-i}^k \bfzeta_i^k \|^2 + \nu_n \sum_{i' \neq i, g \in \cG_{x,ii'}} \| \bfzeta_{ii'}^{[g]} \| \right\};\\
-\hat \Omega_x^k &= \argmin_{\Omega_x^k \in \cup_i \supp (\bfzeta_i^k)}
-\left\{ \Tr (\bfS_x^k \Omega_x^k ) + \log \det (\Omega_x^k ) \right\}; \end{align*}
-%
-\end{itemize}
+\vspace{1em}
+
+\begin{center} %% break
+{\colb Joint Structural Estimation Method (JSEM)}
+
+\cite{MaMichailidis15}
+\end{center}
+
+\end{frame}
+
+%\begin{itemize}
+%\item {\bf For single GGM}: Estimate neighboring edges for each node, then refit.
+%%
+%\begin{align*}
+%\widehat \bfzeta_i &= \argmin_{\bfzeta_i} \left\{ \frac{1}{n} \| \bfX_i - \bfX_{-i} \bfzeta_i \|^2 + \nu_n \sum_{i' \neq i} |\zeta_{ii'}| \right\};\\
+%\widehat \Omega_x &= \argmin_{\Omega_x \in \cup_i \supp (\bfzeta_i)}
+%\{ \Tr (\bfS_x \Omega_x ) + \log \det(\Omega_x) \}
+%\end{align*}
+%%
+%Can do this because $\zeta_{ii'} = -\omega_{ii'}/\omega_{ii}$, so zeros of the precision matrix and neighborhood matrix are same.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Estimation strategy of $\cB, \Omega_y$}
+
+\begin{enumerate}
+\item Estimate regression coefficient matrices using group information $\cH$ and neighborhood coefficients of each Y-node, say $\Theta_j = (\bftheta_j^1, \ldots, \bftheta_j^K)$,
+%% break
+\vspace{1em}
+\item Estimate neighborhood coefficients of each Y-node, i.e. $\widehat \Theta_j$ using the group sparsity information $\cG_y$ and regression matrices $\bfB^k$,
+%% break
+\vspace{1em}
+\item Estimate Y-layer precision matrices as MLE over the restricted supports.
+\end{enumerate}
+
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-\frametitle{Our method}
+\frametitle{Estimation strategy of $\cB, \Omega_y$}
+
+\begin{enumerate}
+\item Estimate {\colb regression coefficient matrices} using group information $\cH$ and { \colr neighborhood coefficients} of each Y-node, say $\Theta_j = (\bftheta_j^1, \ldots, \bftheta_j^K)$,
+%% break
+\vspace{1em}
+\item Estimate {\colb neighborhood coefficients} of each Y-node, i.e. $\widehat \Theta_j$ using the group sparsity information $\cG_y$ and {\colr regression coefficient matrices} $\bfB^k$,
+%% break
+\vspace{1em}
+\item Estimate Y-layer precision matrices as MLE over the restricted supports.
+\end{enumerate}
+
+%% break
+\vspace{1em}
+\begin{center}
+{\colubf Solution: Iterate!}
+\end{center}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{A note on testing}
+
+Our testing methodology only requires {\it generic} estimates that satisfy the following convergence rates:
+%
+\begin{align*}
+\| \widehat \bfzeta^k - \bfzeta_0^k \|_1 & \leq O \left( \sqrt { \frac{\log p}{n}} \right)\\
+\| \widehat \Omega_y^k - \Omega_{y0}^k \|_\infty & \leq O \left( \sqrt { \frac{\log (pq)}{n}} \right)\\
+\| \widehat \bfB^k - \bfB^k_0 \|_1 & \leq O \left( \sqrt { \frac{\log (p q)}{n}} \right)
+\end{align*}
+%
+
+The estimation procedure gives one suitable set of estimates.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Joint Multiple Multi-Level Estimation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{The objective function}
+
+\begin{center}
+\includegraphics[width=.9\textwidth]{multitwolayer_j}
+\end{center}
+
+\begin{center}
+\begin{tabular}{ccc}%% break
+$ \bfY_j^k$ & $- \quad \bfE_{-j}^k {\colb  \bftheta_j^k}$ & $- \quad \bfX^k {\colr \bfB_j^k }$
+\end{tabular}
+
+
+\end{center}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{The objective function}
+
+\begin{center}
+\includegraphics[width=.9\textwidth]{multitwolayer}
+\end{center}
+
+$$
+\sum_{k=1}^K \frac{1}{n_k} \sum_{j=1}^q
+\left\| \bfY_j^k - (\bfY_{-j}^k - \bfX^k \bfB_{-j}^k) {\colb  \bftheta_j^k}
+- \bfX^k {\colr \bfB_j^k } \right\|^2
+$$
+%% break
+$$
++ {\colr \lambda_n \sum_{h \in \cH} \| \bfB^{[h]} \|}
++ {\colb \gamma_n \sum_{j' \neq j, g \in \cG_{jj'}} \| \bftheta_{jj'}^{[g]} \|}
+$$
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Estimation of $\cB, \Omega_y$}
+
+\begin{enumerate} 
+\item Estimate regression coefficient matrices using group information $\cH$:
+\begin{align*}
+\widehat \cB &= \argmin_{\cB} \left\{ \sum_{k=1}^K \frac{1}{n_k}
+\| (\bfY^k - \bfX^k \bfB^k) \widehat \bfT^k \|_F^2 + 
+\lambda_n \sum_{h \in \cH} \| \bfB^{[h]} \| \right\}
+\end{align*}
+%
+where $\widehat t_{jj}^k = 1, \widehat t_{jj'}^k = - \widehat \theta_{jj'}^k$.
+
+\item Estimate neighborhood coefficients of each Y-node, say $\Theta_j = (\bftheta_j^1, \ldots, \bftheta_j^K)$ using the group sparsity information $\cG_y$:
+%
+$$
+\widehat \Theta_j = \argmin_{\Theta_j} \left\{ \sum_{k=1}^K \frac{1}{n_k} \| \widehat \bfE_j^k - \widehat \bfE_{-j}^k \bftheta_j^k \|^2 + \gamma_n \sum_{j' \neq j, g \in \cG_{y,jj'}} \| \bftheta_{jj'}^{[g]} \| \right\}
+$$
+%% break
+
+%% break
+\item Estimate precision matrices as MLE over the restricted supports: %% break
+%
+\begin{align*}
+\widehat E_y^k &= \{(j,j'): 1 \leq j < j' \leq q, \widehat \theta_{jj'}^k \neq 0 \text{ OR } \widehat \theta_{j'j}^k \neq 0 \},\\
+\widehat \Omega_y^k &= \argmin_{\Omega_y^k \in \BS_+ (\widehat E_y^k)}
+\left\{ \Tr (\widehat \bfS_y^k \Omega_y^k ) - \log \det (\Omega_y^k) \right\}.
+\end{align*}
+%
+\end{enumerate}
+
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{The estimator}
 
 \begin{center}
 {\colrbf Joint Multiple Multi-Level Estimation (JMMLE)}
 \end{center}
 
-\vspace{1em}
-We decompose the multi-layer problem into a series of two layer problems. For within-layer connections in the topmost layer, we use JSEM. For other connections we use JMMLE. 
+\begin{enumerate}
+\item Solve for $\{ \cB, \Theta\}$:
 %
-\begin{figure}
-\centering
-\includegraphics[width=.9\textwidth]{multilayer}
-\end{figure}
-\end{frame}
-
-\begin{frame}
-\frametitle{The JMMLE estimator}
-We combine sparse neighborhood selection in the Y-network with sparse estimation of $\{ \bfB^k \}$.
-
-Take $\Theta_j = (\bftheta_j^1, \ldots, \bftheta_j^K), \Theta = \{ \Theta_j \}_{j=1}^q$.
-
 \begin{align*}
-\{ \hat \cB, \hat \Theta \} &=
+\{ \widehat \cB, \widehat \Theta \} &=
 \argmin_{\cB, \Theta} \left\{ \sum_{k=1}^K \frac{1}{n_k} \sum_{j=1}^q
-\left\| \bfY_j^k - ( \bfY_{-j}^k - \bfX^k {\colr \bfB_{-j}^k}) {\colb \bftheta_j^k}
+\left\| \bfY_j^k - ( \bfY_{-j}^k - \bfX^k \bfB_{-j}^k) {\colb \bftheta_j^k}
 - \bfX^k {\colr \bfB_j^k} \right\|^2 \right.\\
 & + {\colr \lambda_n \sum_{h \in \cH} \| \bfB^{[h]}} \|
-\left. + {\colb \gamma_n  \sum_{j' \neq j, g \in \cG_{jj'}} \| \bftheta_{jj'}^{[g]} \|} \right\}\\
-\hat \Omega_y^k &= \argmin_{\Omega_y^k \in \cup_i \supp (\bftheta_i^k)}
-\left\{ \Tr (\bfS_y^k \Omega_y^k ) + \log \det (\Omega_y^k ) \right\}
-\quad k = 1, 2, \ldots, K
+\left. + {\colb \gamma_n  \sum_{j' \neq j, g \in \cG_{jj'}} \| \bftheta_{jj'}^{[g]} \|} \right\}
 \end{align*}
+
+%% break
+\item Recover Y-precision matrices as MLE over the restricted supports: %% break
+%
+\begin{align*}
+\widehat E_y^k &= \{(j,j'): 1 \leq j < j' \leq q, \widehat \theta_{jj'}^k \neq 0 \text{ OR } \widehat \theta_{j'j}^k \neq 0 \},\\
+\widehat \Omega_y^k &= \argmin_{\Omega_y^k \in \BS_+ (\widehat E_y^k)}
+\left\{ \Tr (\widehat \bfS_y^k \Omega_y^k ) - \log \det (\Omega_y^k) \right\}.
+\end{align*}
+%
+\end{enumerate}
+
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Computational algorithm}
 \begin{align*}
-\{ \hat \cB, \hat \Theta \} &= \argmin_{\cB, \Theta}
+\{ \widehat \cB, \widehat \Theta \} &= \argmin_{\cB, \Theta}
 \left\{ f(\cY, \cX, {\colr \cB}, {\colb \Theta}) + {\colr P(\cB)} + {\colb Q(\Theta)} \right\}
 \end{align*}
 
@@ -421,45 +570,45 @@ The objective function is biconvex, so we solve the above by the following alter
 \begin{frame}
 \frametitle{The two subproblems}
 \begin{align*}
-\hat \cB &=
+\widehat \cB &=
 \argmin_{\cB} \left\{
 \sum_{k=K}^q \frac{1}{n_k} \sum_{j=1}^q
-\left\| \bfY_j^k - ( \bfY_{-j}^k - \bfX^k {\colr \bfB_{-j}^k} ) \hat \bftheta_j^k
+\left\| \bfY_j^k - ( \bfY_{-j}^k - \bfX^k {\colr \bfB_{-j}^k} ) \widehat \bftheta_j^k
 - \bfX^k {\colr \bfB_j^k} \right\|^2
 + {\colr \lambda_n \sum_{h \in \cH} \| \bfB^{[h]} \|} \right\}\\
 &= \argmin_{\cB} \left\{ \sum_{k=1}^K \frac{1}{n_k}
-\| (\bfY^k - \bfX^k {\colr \bfB^k}) \hat \bfT^k \|_F^2 +
+\| (\bfY^k - \bfX^k {\colr \bfB^k}) \widehat \bfT^k \|_F^2 +
 + {\colr \lambda_n \sum_{h \in \cH} \| \bfB^{[h]} \|} \right\}
 \end{align*}
 %
-where $\hat t_{jj}^k = 1, \hat t_{jj'}^k = - \hat \theta_{jj'}^k$.
+where $\widehat t_{jj}^k = 1, \widehat t_{jj'}^k = - \widehat \theta_{jj'}^k$.
 
 \begin{align*}
-\hat \Theta &=
+\widehat \Theta &=
 \argmin_{\Theta} \left\{ \sum_{k=K}^q \frac{1}{n_k} \sum_{j=1}^q
-\left\| \bfY_j^k - ( \bfY_{-j}^k - \bfX^k \hat \bfB_{-j}^k) {\colb \bftheta_j^k}
-- \bfX^k \hat \bfB_j^k \right\|^2 
+\left\| \bfY_j^k - ( \bfY_{-j}^k - \bfX^k \widehat \bfB_{-j}^k) {\colb \bftheta_j^k}
+- \bfX^k \widehat \bfB_j^k \right\|^2 
 + {\colb \gamma_n \sum_{j' \neq j, g \in \cG_{jj'}} \| \bftheta_{jj'}^{[g]} \|} \right\}\\
 &= \argmin_{\Theta} \left\{ 
 \sum_{k=K}^q \frac{1}{n_k} \sum_{j=1}^q
-\| \hat \bfE_j^k - \hat \bfE_{-j}^k {\colb \bftheta_j^k} \|^2
+\| \widehat \bfE_j^k - \widehat \bfE_{-j}^k {\colb \bftheta_j^k} \|^2
 + {\colb \gamma_n \sum_{j' \neq j, g \in \cG_{jj'}} \| \bftheta_{jj'}^{[g]} \|} \right\}
 \end{align*}
 %
-where $\hat \bfE^k = \bfY^k - \bfX^k \hat \bfB^k$.
+where $\widehat \bfE^k = \bfY^k - \bfX^k \widehat \bfB^k$.
 
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-\frametitle{Non-asymptotic error bounds for $\hat \cB$}
+\frametitle{Non-asymptotic error bounds for $\widehat \cB$}
 
 For $\lambda_n \geq 4 \sqrt{| h_{\max} |} \BR_0 \sqrt{ \frac{ \log(pq)}{n}}$, the following hold with probability approaching 1 as $n \rightarrow \infty$,
 %
 \begin{align*}
-\| \hat \bfbeta - \bfbeta_0 \|_1 & \leq \frac{48 \sqrt{ | h_{\max} |} s_\beta \lambda_n}{ \psi^*} \\
-\| \hat \bfbeta - \bfbeta_0 \| & \leq \frac{12 \sqrt s_\beta \lambda_n}{ \psi^*} \\
+\| \widehat \bfbeta - \bfbeta_0 \|_1 & \leq \frac{48 \sqrt{ | h_{\max} |} s_\beta \lambda_n}{ \psi^*} \\
+\| \widehat \bfbeta - \bfbeta_0 \| & \leq \frac{12 \sqrt s_\beta \lambda_n}{ \psi^*} \\
 \sum_{h \in \cH} \| \bfbeta^{[h]} - \bfbeta_0^{[h]} \| & \leq \frac{48 s_\beta \lambda_n}{ \psi^*}
 \end{align*}
 %
@@ -468,16 +617,16 @@ with $\psi^*, \BR_0$ being constants, and $\bfbeta = (\ve(\bfB^1)^T, \ldots, \ve
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Error bounds for $\hat \Theta, \hat\Omega$}
+\frametitle{Error bounds for $\widehat \Theta, \widehat\Omega$}
 
 For $\gamma_n = 4 \sqrt{| g_{\max}|} \BQ_0 \sqrt{ \frac{ \log(pq)}{n}}$, the following hold with probability approaching 1 as $n \rightarrow \infty$,
 %
 \begin{align*}
-\| \hat \Theta_j - \Theta_{0,j} \|_F & \leq \frac{12 \sqrt{s_j} \gamma_n}{\psi} \\
-\sum_{j \neq j', g \in \cG_y^{jj'}} \| \hat \bftheta_{jj'}^{[g]} - \bftheta_{0,jj'}^{[g]} \| & \leq \frac{48 s_j \gamma_n}{\psi} \\
-\left| \supp (\hat \Theta_j) \right| & \leq
+\| \widehat \Theta_j - \Theta_{0,j} \|_F & \leq \frac{12 \sqrt{s_j} \gamma_n}{\psi} \\
+\sum_{j \neq j', g \in \cG_y^{jj'}} \| \widehat \bftheta_{jj'}^{[g]} - \bftheta_{0,jj'}^{[g]} \| & \leq \frac{48 s_j \gamma_n}{\psi} \\
+\left| \supp (\widehat \Theta_j) \right| & \leq
 \frac{128 s_j}{ \psi}\\
-\frac{1}{K} \sum_{k=1}^K \| \hat \Omega_y^k - \Omega_y^k \|_F & \leq
+\frac{1}{K} \sum_{k=1}^K \| \widehat \Omega_y^k - \Omega_y^k \|_F & \leq
 O \left( \frac{\sqrt S \gamma_n }{\sqrt K} \right)\\
 \end{align*}
 %
@@ -494,7 +643,7 @@ with $\psi, \BQ_0$ being constants, $| g_{\max} |$ the maximum group size in $\T
 \item Consider the case $K=2$, and suppose we are interested in testing if the effect of variable $i$ in the X-data is different across the two populations.
 \vspace{1em}
 
-\item For this we use the $i^{\text{th}}$ rows of the estimates $\hat \bfB^1$ and $\hat \bfB^2$.
+\item For this we use the $i^{\text{th}}$ rows of the estimates $\widehat \bfB^1$ and $\widehat \bfB^2$.
 \vspace{1em}
 
 \item We debias these row vectors using the neighborhood coefficients in the X-network computed previously using JSEM:
@@ -502,11 +651,11 @@ with $\psi, \BQ_0$ being constants, $| g_{\max} |$ the maximum group size in $\T
 In this setup, define the desparsified estimate of $\bfb_i^k$ as
 %
 \begin{align*}
-\hat \bfc_i^k = \hat \bfb_i^k + \frac{1}{n t_i^k} \left( \bfX_i^k - \bfX_{-i}^k \hat \bfzeta_i^k \right)^T
-(\bfY^k - \bfX^k \hat \bfB^k )
+\widehat \bfc_i^k = \widehat \bfb_i^k + \frac{1}{n t_i^k} \left( \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k \right)^T
+(\bfY^k - \bfX^k \widehat \bfB^k )
 \end{align*}
 %
-for $k = 1,2$, where $t_i^k := ( \bfX_i^k - \bfX_{-i}^k \hat \bfzeta_i^k )^T \bfX_{-i}^k/n$.
+for $k = 1,2$, where $t_i^k := ( \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k )^T \bfX_{-i}^k/n$.
 \end{itemize}
 
 \end{frame}
@@ -517,31 +666,31 @@ for $k = 1,2$, where $t_i^k := ( \bfX_i^k - \bfX_{-i}^k \hat \bfzeta_i^k )^T \bf
 Assume we have `good enough' estimators:
 %
 \[
-\| \hat \bfzeta^k - \bfzeta_0^k \|_1 = O \left( \sqrt { \frac{\log p}{n}} \right); \quad
-\| \hat \bfB^k - \bfB^k_0 \|_1 = O \left( \sqrt{\frac{\log (pq)}{n}} \right)
+\| \widehat \bfzeta^k - \bfzeta_0^k \|_1 = O \left( \sqrt { \frac{\log p}{n}} \right); \quad
+\| \widehat \bfB^k - \bfB^k_0 \|_1 = O \left( \sqrt{\frac{\log (pq)}{n}} \right)
 \]
 \[
-\left\| (\hat \Omega_y^k)^{1/2} - (\Omega_y^k)^{1/2} \right\|_\infty = O \left( \sqrt { \frac{\log q}{n}} \right)
+\left\| (\widehat \Omega_y^k)^{1/2} - (\Omega_y^k)^{1/2} \right\|_\infty = O \left( \sqrt { \frac{\log q}{n}} \right)
 \]
 %
 Also define
 %
 \[
-\hat s_i^k := \sqrt{\| \bfX_i^k - \bfX_{-i}^k \hat \bfzeta_i^k \|^2/n}; \quad
-m_i^k := \sqrt n t_i^k / \hat s_i^k
+\widehat s_i^k := \sqrt{\| \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k \|^2/n}; \quad
+m_i^k := \sqrt n t_i^k / \widehat s_i^k
 \]
 %
 Then for sample size satisfying $n \succsim \log (pq), \log p = o(n^{1/2}), \log q = o(n^{1/2})$ we have
 %
 \begin{align*}
 \begin{bmatrix}
-\hat \Omega_y^1 &\\
-& \hat \Omega_y^2
+\widehat \Omega_y^1 &\\
+& \widehat \Omega_y^2
 \end{bmatrix}^{1/2}
 %
 \begin{bmatrix}
-m_i^1 (\hat \bfc_i^1 - \bfb_i^1) &\\
-&  m_i^2 (\hat \bfc_i^2 - \bfb_i^2)
+m_i^1 (\widehat \bfc_i^1 - \bfb_i^1) &\\
+&  m_i^2 (\widehat \bfc_i^2 - \bfb_i^2)
 \end{bmatrix}
 \sim \cN_{2q} ({\bf 0}, \bfI) + o_P(1)
 \end{align*}
@@ -552,13 +701,13 @@ m_i^1 (\hat \bfc_i^1 - \bfb_i^1) &\\
 \begin{frame}
 \frametitle{Global test for $H_0: \bfb_{0 i}^1 = \bfb_{0 i}^2$ at level $\alpha, 0< \alpha< 1$}
 \begin{enumerate}
-\item Obtain the debiased estimators $\hat \bfc_i^1, \hat \bfc_i^2$;
+\item Obtain the debiased estimators $\widehat \bfc_i^1, \widehat \bfc_i^2$;
 
 \item Calculate the test statistic
 %
 $$
-D_i = \left\| m_i^1 (\hat \Omega_y^1)^{1/2} \hat \bfc_i^1 - 
- m_i^2 (\hat \Omega_y^2)^{1/2} \hat \bfc_i^2 \right\|^2
+D_i = \left\| m_i^1 (\widehat \Omega_y^1)^{1/2} \widehat \bfc_i^1 - 
+ m_i^2 (\widehat \Omega_y^2)^{1/2} \widehat \bfc_i^2 \right\|^2
 $$
 %
 
@@ -574,20 +723,20 @@ $$
 \item Calculate the pairwise test statistics $d_{ij}$ for $j = 1, \ldots, q$:
 %
 \[
-d_{ij} = \frac{\tau_{ij}^1 \hat \bfc_{ij}^1 - \tau_{ij}^2 \hat \bfc_{ij}^2}{1/m_i^1 + 1/m_i^2}
+d_{ij} = \frac{\tau_{ij}^1 \widehat \bfc_{ij}^1 - \tau_{ij}^2 \widehat \bfc_{ij}^2}{1/m_i^1 + 1/m_i^2}
 \]
 %
-where $\tau_{ij}^k$ is the $(i,j)^{\Th}$ element of $(\hat \Omega_y^k)^{1/2}, k=1,2$.
+where $\tau_{ij}^k$ is the $(i,j)^{\Th}$ element of $(\widehat \Omega_y^k)^{1/2}, k=1,2$.
 
 \item Obtain the threshold
 %
 $$
-\hat \tau = \inf \left\{\tau \in \BR: 1 - \Phi(\tau) \leq \frac{\alpha}{2 q}
+\widehat \tau = \inf \left\{\tau \in \BR: 1 - \Phi(\tau) \leq \frac{\alpha}{2 q}
 \max \left( \sum_{j \in \cI_q} \BI( |d_{ij}| \geq \tau), 1 \right) \right\}
 $$
 %
 
-\item For $j \in \cI_q$, reject $H_0^{j}$ if $|d_{ij}| \geq \hat \tau$.
+\item For $j \in \cI_q$, reject $H_0^{j}$ if $|d_{ij}| \geq \widehat \tau$.
 \end{enumerate} 
 
 \end{frame}
@@ -619,23 +768,23 @@ $$
 \item True positives-
 %
 \[
-\text{TP} (\hat \cB) = \frac{\sum_k | \supp(\hat \bfB^k) \cup \supp (\bfB_0^k)|}{\sum_k | \supp (\bfB_0^k)| }
+\text{TP} (\widehat \cB) = \frac{\sum_k | \supp(\widehat \bfB^k) \cup \supp (\bfB_0^k)|}{\sum_k | \supp (\bfB_0^k)| }
 \]
 \item True negatives-
 %
 \[
-\text{TN} (\hat \cB) = \frac{\sum_k | \supp^c(\hat \bfB^k) \cup \supp^c (\bfB_0^k)|}{\sum_k | \supp^c (\bfB_0^k)| }
+\text{TN} (\widehat \cB) = \frac{\sum_k | \supp^c(\widehat \bfB^k) \cup \supp^c (\bfB_0^k)|}{\sum_k | \supp^c (\bfB_0^k)| }
 \]
 %
 \item Relative error in Frobenius norm-
 %
 \[
-\text{rel.Frob} (\hat \cB) = \sum_{k=1}^K \frac{\| \hat \bfB^k - \bfB_0^k \|_F}{\| \bfB_0^k \|_F}
+\text{rel.Frob} (\widehat \cB) = \sum_{k=1}^K \frac{\| \widehat \bfB^k - \bfB_0^k \|_F}{\| \bfB_0^k \|_F}
 \]
 %
 \end{enumerate}
 
-Same metrics are used for $\hat \Theta$.
+Same metrics are used for $\widehat \Theta$.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
@@ -646,15 +795,15 @@ Same metrics are used for $\hat \Theta$.
     \begin{tabular}{c|ccc|ccc}
     \hline
     \multicolumn{7}{c}{{\bf Setting 1: $n=100, p=60, q=30, K=5$}}\\\hline
-    Method        & TP($\hat\cB$)         & TN($\hat\cB$)         & rel.Frob($\hat\cB$) & TP($\hat\Theta$)   & TN($\hat\Theta$)   & rel.Frob($\hat\Theta$) \\\hline
+    Method        & TP($\widehat\cB$)         & TN($\widehat\cB$)         & rel.Frob($\widehat\cB$) & TP($\widehat\Theta$)   & TN($\widehat\Theta$)   & rel.Frob($\widehat\Theta$) \\\hline
     Joint (JMMLE) & 0.999 (2e-3) & 0.99 (0.01)   & 0.19 (0.02)  & 0.66 (0.06) & 0.95 (0.01) & 0.33 (0.02)      \\
     Separate      & 0.95 (0.02)   & 0.99  (2e-3) & 0.27 (0.03)  & 0.89 (0.02) & 0.63 (0.01) & 0.77 (0.04)      \\\hline
     \multicolumn{7}{c}{{\bf Setting 2: $n=100, p=30, q=60, K=5$}}\\\hline
-    Method        & TP($\hat\cB$)         & TN($\hat\cB$)         & rel.Frob($\hat\cB$) & TP($\hat\Theta$)   & TN($\hat\Theta$)   & rel.Frob($\hat\Theta$) \\\hline
+    Method        & TP($\widehat\cB$)         & TN($\widehat\cB$)         & rel.Frob($\widehat\cB$) & TP($\widehat\Theta$)   & TN($\widehat\Theta$)   & rel.Frob($\widehat\Theta$) \\\hline
     Joint (JMMLE) & 0.996 (4e-3) & 0.99 (6e-3)   & 0.21 (0.01)  & 0.58 (0.04) & 0.98 (3e-3) & 0.32 (8e-3)      \\
     Separate      & 0.66 (0.04)  & 0.994  (1e-3) & 0.59 (0.03)  & 0.62 (0.03) & 0.81 (7e-3) & 0.43 (0.01)      \\\hline
     \multicolumn{7}{c}{{\bf Setting 3: $n=150, p=200, q=200, K=5$}}\\\hline
-    Method        & TP($\hat\cB$)         & TN($\hat\cB$)         & rel.Frob($\hat\cB$) & TP($\hat\Theta$)   & TN($\hat\Theta$)   & rel.Frob($\hat\Theta$) \\\hline
+    Method        & TP($\widehat\cB$)         & TN($\widehat\cB$)         & rel.Frob($\widehat\cB$) & TP($\widehat\Theta$)   & TN($\widehat\Theta$)   & rel.Frob($\widehat\Theta$) \\\hline
     Joint (JMMLE) & 1.00 (0) & 1.00 (0)   & 0.12 (5e-3)  & 0.39 (0.04) & 0.996 (2e-3) & 0.30 (7e-3)      \\
     Separate      & 0.42 (0.03)   & 0.99  (1e-3) & 0.48 (0.02)  & 0.41 (0.02) & 0.73 (0.01) & 0.44 (0.02)      \\\hline
     \end{tabular}
