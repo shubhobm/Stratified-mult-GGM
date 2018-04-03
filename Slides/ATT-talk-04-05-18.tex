@@ -80,19 +80,19 @@ logo=\bctrombone
 %% smart verbatim
 \fvset{framesep=1cm,fontfamily=courier,fontsize=\scriptsize,framerule=.3mm,numbersep=1mm,commandchars=\\\{\}}
 
-\title[Joint Multi${}^2$ GGM]
+\title[ Multi-layered Graphical Models]
 {\Large  
 Statistical Inference with Multi-layered Graphical Models}
 
-\author[Majumdar and Michailidis]{Subhabrata Majumdar}
-\institute[]{University of Florida Informatics Institute\\
-\vspace{1em}
-AT\&T Labs - Research, Bedminster, NJ\\
-}
+\author[Majumdar and Michailidis]{Subhabrata Majumdar\\
+{\footnotesize Joint work with George Michailidis\\
+University of Florida Informatics Institute}}
+\institute[]{AT\&T Labs - Research, Bedminster, NJ\\
+April 5, 2018}
+\date{}
 
 %\vspace{.5cm}
 %\includegraphics[height=.5cm]{UMNlogo}}
-
 %\date [December 28, 2017]
 
 %%%%%%%List Outline in the beginning of each section.
@@ -106,26 +106,31 @@ AT\&T Labs - Research, Bedminster, NJ\\
 %-------------------------------------------------------------------
 \begin{document}
 
-%\begin{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\frame{ \titlepage
-}
+\frame{ \titlepage}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
 \frametitle{Summary}
 \begin{itemize}
-\item Biological processes in the body have a natural hierarchical structure, e.g. {\colubf Gene > Protein > Metabolite};
-\vspace{1em}
+\item Estimation of graphs from high-dimensional data is of importance for biological processes, financial systems or social interactions;
 
-\item There are within layer and between-layer connections in this structure.
+\vspace{1em}
+\item Nodes in such data can have a natural hierarchical structure, e.g. Genes affecting proteins affecting metabolites, or macroeconomic indicators like interest rates or price indices affecting stock prices;
+
+\vspace{1em}
+\item There are within layer and between-layer connections in such structures.
 \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
 
 \begin{figure}
 \centering
-\includegraphics[height=.6\textheight]{data_integration_schematic}
+\includegraphics[height=.9\textheight]{data_integration_schematic}
 \end{figure}
 
 {\center
@@ -155,7 +160,7 @@ Liver & Kidney & Lungs\\
 \begin{frame}
 \frametitle{What we do}
 
-{\colrbf A general model for data integreation.}
+{\colrbf Statistical inference for hierarchical graphical models.}
 \vspace{1em}
 
 In this work we propose a general statistical framework based on graphical models for {\colbit horizontal} (i.e. across conditions or subtypes) {\colbit and vertical} (i.e. across different layers containing data on molecular compartments) {\colbit integration of information} in data from such complex biological structures.
@@ -164,6 +169,10 @@ In this work we propose a general statistical framework based on graphical model
 Specifically, we perform {\colbit joint estimation and hypothesis testing} for all the connections in these structures.
 
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Table of contents}\tableofcontents}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Multiple multi-level graphical models}
@@ -226,11 +235,11 @@ $k=1$ & $k=2$ & $k=3$
 %
 {\color{black}
 \begin{align*}
-& \BE = (E_1, \ldots, E_q)^T \sim \cN_p (0, \Sigma_y);\\
+& \BE = (E_1, \ldots, E_q)^T \sim \cN_q (0, \Sigma_y);\\
 & \BF = (F_1, \ldots, F_r)^T \sim \cN_r (0, \Sigma_z);\\
 & \Omega_y = (\Sigma_y)^{-1}, \Omega_z = (\Sigma_z)^{-1}\\
-& \BY = \BX \bfB + \BE,\\
-& \BZ = \BY \bfC + \BF.\\
+& \BY = \BX^T \bfB + \BE,\\
+& \BZ = \BY^T \bfC + \BF.\\
 \end{align*}}
 %
 
@@ -266,8 +275,8 @@ $k=1$ & $k=2$ & $k=3$
 \Omega_y^k = (\Sigma_y^k)^{-1}\\
 & \BF^k = (F_1^k, \ldots, F_r^k)^T \sim \cN_r (0, \Sigma_z^k); \quad
 \Omega_y^k = (\Sigma_y^k)^{-1}\\
-& \BY^k = \BX^k \bfB^k + \BE^k,\\
-& \BZ^k = \BY^k \bfC^k + \BF^k; \quad k = 1, 2, \ldots, K
+& \BY^k = (\BX^k)^T \bfB^k + \BE^k,\\
+& \BZ^k = (\BY^k)^T \bfC^k + \BF^k; \quad k = 1, 2, \ldots, K
 \end{align*}
 %
 
@@ -476,40 +485,40 @@ $$
 $$
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}
-\frametitle{Estimation of $\cB, \Omega_y$}
-
-\begin{enumerate} 
-\item Estimate regression coefficient matrices using group information $\cH$:
-\begin{align*}
-\widehat \cB &= \argmin_{\cB} \left\{ \sum_{k=1}^K \frac{1}{n_k}
-\| (\bfY^k - \bfX^k \bfB^k) \widehat \bfT^k \|_F^2 + 
-\lambda_n \sum_{h \in \cH} \| \bfB^{[h]} \| \right\}
-\end{align*}
 %
-where $\widehat t_{jj}^k = 1, \widehat t_{jj'}^k = - \widehat \theta_{jj'}^k$.
-
-\item Estimate neighborhood coefficients of each Y-node, say $\Theta_j = (\bftheta_j^1, \ldots, \bftheta_j^K)$ using the group sparsity information $\cG_y$:
+%\begin{frame}
+%\frametitle{Estimation of $\cB, \Omega_y$}
 %
-$$
-\widehat \Theta_j = \argmin_{\Theta_j} \left\{ \sum_{k=1}^K \frac{1}{n_k} \| \widehat \bfE_j^k - \widehat \bfE_{-j}^k \bftheta_j^k \|^2 + \gamma_n \sum_{j' \neq j, g \in \cG_{y,jj'}} \| \bftheta_{jj'}^{[g]} \| \right\}
-$$
-%% break
-
-%% break
-\item Estimate precision matrices as MLE over the restricted supports: %% break
+%\begin{enumerate} 
+%\item Estimate regression coefficient matrices using group information $\cH$:
+%\begin{align*}
+%\widehat \cB &= \argmin_{\cB} \left\{ \sum_{k=1}^K \frac{1}{n_k}
+%\| (\bfY^k - \bfX^k \bfB^k) \widehat \bfT^k \|_F^2 + 
+%\lambda_n \sum_{h \in \cH} \| \bfB^{[h]} \| \right\}
+%\end{align*}
+%%
+%where $\widehat t_{jj}^k = 1, \widehat t_{jj'}^k = - \widehat \theta_{jj'}^k$.
 %
-\begin{align*}
-\widehat E_y^k &= \{(j,j'): 1 \leq j < j' \leq q, \widehat \theta_{jj'}^k \neq 0 \text{ OR } \widehat \theta_{j'j}^k \neq 0 \},\\
-\widehat \Omega_y^k &= \argmin_{\Omega_y^k \in \BS_+ (\widehat E_y^k)}
-\left\{ \Tr (\widehat \bfS_y^k \Omega_y^k ) - \log \det (\Omega_y^k) \right\}.
-\end{align*}
+%\item Estimate neighborhood coefficients of each Y-node, say $\Theta_j = (\bftheta_j^1, \ldots, \bftheta_j^K)$ using the group sparsity information $\cG_y$:
+%%
+%$$
+%\widehat \Theta_j = \argmin_{\Theta_j} \left\{ \sum_{k=1}^K \frac{1}{n_k} \| \widehat \bfE_j^k - \widehat \bfE_{-j}^k \bftheta_j^k \|^2 + \gamma_n \sum_{j' \neq j, g \in \cG_{y,jj'}} \| \bftheta_{jj'}^{[g]} \| \right\}
+%$$
+%%% break
 %
-\end{enumerate}
-
-
-\end{frame}
+%%% break
+%\item Estimate precision matrices as MLE over the restricted supports: %% break
+%%
+%\begin{align*}
+%\widehat E_y^k &= \{(j,j'): 1 \leq j < j' \leq q, \widehat \theta_{jj'}^k \neq 0 \text{ OR } \widehat \theta_{j'j}^k \neq 0 \},\\
+%\widehat \Omega_y^k &= \argmin_{\Omega_y^k \in \BS_+ (\widehat E_y^k)}
+%\left\{ \Tr (\widehat \bfS_y^k \Omega_y^k ) - \log \det (\Omega_y^k) \right\}.
+%\end{align*}
+%%
+%\end{enumerate}
+%
+%
+%\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -616,6 +625,23 @@ with $\psi^*, \BR_0$ being constants, and $\bfbeta = (\ve(\bfB^1)^T, \ldots, \ve
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Non-asymptotic error bounds for $\widehat \cB$}
+
+For $\lambda_n \geq 4 \sqrt{| h_{\max} |} \BR_0 {\colr \sqrt{ \frac{ \log(pq)}{n}}}$, the following hold with probability approaching 1 as $n \rightarrow \infty$,
+%
+\begin{align*}
+\| \widehat \bfbeta - \bfbeta_0 \|_1 & \leq \frac{48 \sqrt{ | h_{\max} |} {\colr s_\beta \lambda_n}}{ \psi^*} \\
+\| \widehat \bfbeta - \bfbeta_0 \| & \leq \frac{12 {\colr \sqrt s_\beta \lambda_n}}{ \psi^*} \\
+\sum_{h \in \cH} \| \bfbeta^{[h]} - \bfbeta_0^{[h]} \| & \leq \frac{48 {\colr s_\beta \lambda_n}}{ \psi^*}
+\end{align*}
+%
+with $\psi^*, \BR_0$ being constants, and $\bfbeta = (\ve(\bfB^1)^T, \ldots, \ve(\bfB^K)^T)^T$, $| h_{\max} |$ the maximum group size in $\bfbeta_0$ (the true $\bfbeta$) and $s_\beta$ the sparsity of $\bfbeta_0$.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{frame}
 \frametitle{Error bounds for $\widehat \Theta, \widehat\Omega$}
 
@@ -624,8 +650,7 @@ For $\gamma_n = 4 \sqrt{| g_{\max}|} \BQ_0 \sqrt{ \frac{ \log(pq)}{n}}$, the fol
 \begin{align*}
 \| \widehat \Theta_j - \Theta_{0,j} \|_F & \leq \frac{12 \sqrt{s_j} \gamma_n}{\psi} \\
 \sum_{j \neq j', g \in \cG_y^{jj'}} \| \widehat \bftheta_{jj'}^{[g]} - \bftheta_{0,jj'}^{[g]} \| & \leq \frac{48 s_j \gamma_n}{\psi} \\
-\left| \supp (\widehat \Theta_j) \right| & \leq
-\frac{128 s_j}{ \psi}\\
+%\left| \supp (\widehat \Theta_j) \right| & \leq \frac{128 s_j}{ \psi}\\
 \frac{1}{K} \sum_{k=1}^K \| \widehat \Omega_y^k - \Omega_y^k \|_F & \leq
 O \left( \frac{\sqrt S \gamma_n }{\sqrt K} \right)\\
 \end{align*}
@@ -634,21 +659,58 @@ with $\psi, \BQ_0$ being constants, $| g_{\max} |$ the maximum group size in $\T
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Hypothesis testing}
+
+\begin{frame}
+\frametitle{Error bounds for $\widehat \Theta, \widehat\Omega$}
+
+For $\gamma_n = 4 \sqrt{| g_{\max}|} \BQ_0 {\colb \sqrt{ \frac{ \log(pq)}{n}}}$, the following hold with probability approaching 1 as $n \rightarrow \infty$,
+%
+\begin{align*}
+\| \widehat \Theta_j - \Theta_{0,j} \|_F & \leq \frac{12 {\colb \sqrt{s_j} \gamma_n}}{\psi} \\
+\sum_{j \neq j', g \in \cG_y^{jj'}} \| \widehat \bftheta_{jj'}^{[g]} - \bftheta_{0,jj'}^{[g]} \| & \leq \frac{48 {\colb s_j \gamma_n}}{\psi} \\
+%\left| \supp (\widehat \Theta_j) \right| & \leq \frac{128 s_j}{ \psi}\\
+\frac{1}{K} \sum_{k=1}^K \| \widehat \Omega_y^k - \Omega_y^k \|_F & \leq
+O \left( \frac{{\colb \sqrt S \gamma_n }}{\sqrt K} \right)\\
+\end{align*}
+%
+with $\psi, \BQ_0$ being constants, $| g_{\max} |$ the maximum group size in $\Theta_0$, $s_j$ the sparsity of $\Theta_j$ and $S = \sum_j s_j$.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Hypothesis testing in multi-layer models}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{High-dimensional hypothesis testing}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{What we do}
+\begin{itemize}
+%% break
+\item  We propose a {\colb debiased estimator} for $\bfb_i^k$ that makes use of already computed model quantities, and establish asymptotic properties of its scaled version,
+
+%% break
+\vspace{1em}
+\item We assume $K = 2$, and propose an {\colb asymptotic test} for detecting differential effects of a variable in the upper layer, i.e. testing for the null hypothesis $H0 : \bfb^1_{0i} = \bfb^2_{0i}$,
+
+%% break
+\vspace{1em}
+\item We also propose {\colb pairwise simultaneous tests} across $j = 1, \ldots, q$ for detecting the elementwise differences $b_{0ij}^1 = b_{0ij}^2$.
+\end{itemize}
+
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Debiasing JMMLE estimates}
+\frametitle{Debiasing estimates from a multi-layer model}
 
 \begin{itemize}
-\item Consider the case $K=2$, and suppose we are interested in testing if the effect of variable $i$ in the X-data is different across the two populations.
-\vspace{1em}
-
-\item For this we use the $i^{\text{th}}$ rows of the estimates $\widehat \bfB^1$ and $\widehat \bfB^2$.
+\item We are interested in testing if the effect of variable $i$ in the X-data has any downstream effect. For this we use the $i^{\text{th}}$ rows of the estimates $\widehat \bfB^k$.
 \vspace{1em}
 
 \item We debias these row vectors using the neighborhood coefficients in the X-network computed previously using JSEM:
-%
-In this setup, define the desparsified estimate of $\bfb_i^k$ as
 %
 \begin{align*}
 \widehat \bfc_i^k = \widehat \bfb_i^k + \frac{1}{n t_i^k} \left( \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k \right)^T
@@ -665,83 +727,115 @@ for $k = 1,2$, where $t_i^k := ( \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k )^T
 \frametitle{Result}
 Assume we have `good enough' estimators:
 %
-\[
-\| \widehat \bfzeta^k - \bfzeta_0^k \|_1 = O \left( \sqrt { \frac{\log p}{n}} \right); \quad
-\| \widehat \bfB^k - \bfB^k_0 \|_1 = O \left( \sqrt{\frac{\log (pq)}{n}} \right)
-\]
-\[
-\left\| (\widehat \Omega_y^k)^{1/2} - (\Omega_y^k)^{1/2} \right\|_\infty = O \left( \sqrt { \frac{\log q}{n}} \right)
-\]
+\begin{align*}
+\| \widehat \bfzeta^k - \bfzeta_0^k \|_1 &= O \left( \sqrt { \frac{\log p}{n}} \right)\\
+\| \widehat \bfB^k - \bfB^k_0 \|_1 &= O \left( \sqrt{\frac{\log (pq)}{n}} \right)\\
+\left\| \widehat \Omega_y^k - \Omega_y^k \right\|_\infty &= O \left( \sqrt { \frac{\log p q}{n}} \right)
+\end{align*}
 %
-Also define
-%
-\[
-\widehat s_i^k := \sqrt{\| \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k \|^2/n}; \quad
-m_i^k := \sqrt n t_i^k / \widehat s_i^k
-\]
-%
-Then for sample size satisfying $n \succsim \log (pq), \log p = o(n^{1/2}), \log q = o(n^{1/2})$ we have
+Define $\widehat s_i^k = \sqrt{\| \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k \|^2/n}$, and $m_i^k = \sqrt n t_i^k / \widehat s_i^k$. and:
 %
 \begin{align*}
-\begin{bmatrix}
-\widehat \Omega_y^1 &\\
-& \widehat \Omega_y^2
-\end{bmatrix}^{1/2}
-%
-\begin{bmatrix}
-m_i^1 (\widehat \bfc_i^1 - \bfb_i^1) &\\
-&  m_i^2 (\widehat \bfc_i^2 - \bfb_i^2)
-\end{bmatrix}
-\sim \cN_{2q} ({\bf 0}, \bfI) + o_P(1)
+\widehat \Omega_y &= \diag(\widehat \Omega_y^1, \ldots, \widehat \Omega_y^K), \quad
+\bfM_i = \diag(m_i^1, \ldots, m_i^K)\\
+\widehat \bfC_i &= \ve(\widehat \bfc_i^1, \ldots, \widehat \bfc_i^K)^T, \quad
+\bfD_i = \ve(\bfb_{0i}^1, \ldots, \bfb_{0i}^K)^T\\
 \end{align*}
+%
+Then under mild conditions, for sample size satisfying 
+$\log p = o(n^{1/2}), \log q = o(n^{1/2})$ we have $\widehat \Omega_y^{1/2} \bfM_i (\widehat \bfC_i - \bfD_i) \sim \cN_{Kq} ({\bf 0}, \bfI) + o_P(1).$
+%
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{frame}
+\frametitle{Result}
+Assume we have `good enough' estimators:
+%
+\begin{align*}
+\| \widehat \bfzeta^k - \bfzeta_0^k \|_1 &= O \left( \sqrt { \frac{\log p}{n}} \right)\\
+\| \widehat \bfB^k - \bfB^k_0 \|_1 &= O \left( \sqrt{\frac{\log (pq)}{n}} \right)\\
+\left\| \widehat \Omega_y^k - \Omega_y^k \right\|_\infty &= O \left( \sqrt { \frac{\log p q}{n}} \right)
+\end{align*}
+%
+Define $\widehat s_i^k = \sqrt{\| \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k \|^2/n}$, and $m_i^k = \sqrt n t_i^k / \widehat s_i^k$. and:
+%
+\begin{align*}
+\widehat \Omega_y &= \diag(\widehat \Omega_y^1, \ldots, \widehat \Omega_y^K), \quad
+\bfM_i = \diag(m_i^1, \ldots, m_i^K)\\
+\widehat \bfC_i &= \ve(\widehat \bfc_i^1, \ldots, \widehat \bfc_i^K)^T, \quad
+\bfD_i = \ve(\bfb_{0i}^1, \ldots, \bfb_{0i}^K)^T\\
+\end{align*}
+%
+Then under mild conditions, for sample size satisfying 
+${\colb \log p = o(n^{1/2}), \log q = o(n^{1/2})}$ we have $\widehat \Omega_y^{1/2} \bfM_i (\widehat \bfC_i - \bfD_i) \sim \cN_{Kq} ({\bf 0}, \bfI) + o_P(1).$
+%
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
 \frametitle{Global test for $H_0: \bfb_{0 i}^1 = \bfb_{0 i}^2$ at level $\alpha, 0< \alpha< 1$}
+
 \begin{enumerate}
 \item Obtain the debiased estimators $\widehat \bfc_i^1, \widehat \bfc_i^2$;
 
 \item Calculate the test statistic
 %
 $$
-D_i = \left\| m_i^1 (\widehat \Omega_y^1)^{1/2} \widehat \bfc_i^1 - 
- m_i^2 (\widehat \Omega_y^2)^{1/2} \widehat \bfc_i^2 \right\|^2
+D_i = (\widehat \bfc_i^1 - \widehat \bfc_i^2)^T
+\left( \frac{ \widehat \Sigma_y^1}{(m_i^1)^2} +
+\frac{\widehat \Sigma_y^2}{(m_i^2)^2} \right)^{-1} (\widehat \bfc_i^1 - \widehat \bfc_i^2)
 $$
 %
+where $\widehat \Sigma_y^k = (\widehat \Omega_y^k)^{-1}, k = 1,2$.
 
-\item Reject $H_0$ if $D_i \geq \chi^2_{2q, 1-\alpha}$.
+\item  Reject $H_0^i$ if $D_i \geq \chi^2_{q, 1-\alpha}$.
 \end{enumerate}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\vspace{1em}
+Besides controlling the type-I error at a specified level, the above testing procedure maintains rate optimal power, i.e. asymptotic power goes to 1 when $\| \bfb_{0i}^1 - \bfb_{0i}^2\| \geq O(n^{-1/2})$.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Simultaneous tests for $H_0^{j}: b_{0 ij}^1 = b_{0 ij}^2$ at level $\alpha, 0< \alpha< 1$}
+\frametitle{Simultaneous tests for $H_0^{j}: b_{0 ij}^1 = b_{0 ij}^2$ at level $\beta, 0< \beta < 1$}
 
 \begin{enumerate}
-\item Calculate the pairwise test statistics $d_{ij}$ for $j = 1, \ldots, q$:
-%
-\[
-d_{ij} = \frac{\tau_{ij}^1 \widehat \bfc_{ij}^1 - \tau_{ij}^2 \widehat \bfc_{ij}^2}{1/m_i^1 + 1/m_i^2}
-\]
-%
-where $\tau_{ij}^k$ is the $(i,j)^{\Th}$ element of $(\widehat \Omega_y^k)^{1/2}, k=1,2$.
+\item Calculate the pairwise test statistics for $j = 1, \ldots, q$:
+$$
+d_{ij} = \frac{\widehat c_{ij}^1 - \widehat c_{ij}^2}{\sqrt{\hat \sigma_{jj}^1/ (m_i^1)^2 + \hat \sigma_{jj}^2/ (m_i^2)^2}}
+$$
 
 \item Obtain the threshold
 %
 $$
-\widehat \tau = \inf \left\{\tau \in \BR: 1 - \Phi(\tau) \leq \frac{\alpha}{2 q}
+\hat \tau = \inf \left\{\tau \in \BR: 1 - \Phi(\tau) \leq \frac{\beta}{2 q}
 \max \left( \sum_{j \in \cI_q} \BI( |d_{ij}| \geq \tau), 1 \right) \right\}
 $$
 %
 
-\item For $j \in \cI_q$, reject $H_0^{j}$ if $|d_{ij}| \geq \widehat \tau$.
-\end{enumerate} 
+\item For $j = 1, \ldots, q$, reject $H_0^{ij}$ if $|d_{ij}| \geq \hat \tau$.
 
+\end{enumerate} 
 \end{frame}
+
+\begin{frame}
+\frametitle{Within-row thresholding in $\widehat \bfB^k$}
+
+Based on the FDR control procedure, we can perform {\it within-row thresholding} in the matrices $\widehat \bfB^k$ to tackle group misspecification.
+%
+\begin{align*}
+& \hat \tau_i^k := \inf \left\{\tau \in \BR: 1 - \Phi(\tau) \leq \frac{\beta}{2 q}
+\max \left( \sum_{j \in \cI_q} \BI( | \sqrt{\hat \omega_{jj}^k} m_i^k \hat c_{ij}^k | \geq \tau), 1 \right) \right\} \notag\\
+& \hat b_{ij}^{k, \text{thr}} =  \hat b_{ij}^k \BI \left(
+|\sqrt{\hat \omega_{jj}^k} m_i^k \hat c_{ij}^k | \geq \hat \tau_i^k \right)
+\end{align*}
+%
+Even without group misspecification, this helps identify directed edges between layers that have high nonzero values.
+\end{frame}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Simulation studies}
+\section{Numerical experiments}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
@@ -751,12 +845,19 @@ $$
 
 \item Structured $\{ \Omega_x\}, \{\Omega_y\}, \cB$;
 
-\item Groups in $\cB,\Omega_x$ are non-zero with probability $5/p$, and their elements come from Unif$(-1, -0.5) \cup (0.5,1)$;
+\item Groups in $\cB,\Omega_x$ are non-zero with probability $5/p$, and their elements come from Unif$[-1, -0.5] \cup [0.5,1]$;
 
-\item Groups in $\Omega_y$ are non-zero with probability $5/q$, and their elements come from Unif$(-1, -0.5) \cup (0.5,1)$;
+\item Groups in $\Omega_y$ are non-zero with probability $5/q$, and their elements come from Unif$[-1, -0.5] \cup [0.5,1]$;
 
 \item We generate size-$n$ i.i.d. samples $\bfX^k$ from $\cN_p(0, \Sigma_x^k)$, and $\bfE^k$ from $\cN_p(0, \Sigma_y^k)$, then obtain $\bfY^k = \bfX^k \bfB^k + \bfE^k$;
-\item 100 Replications.
+
+\item 50 Replications.
+
+\item Tuning parameters:
+$$
+\gamma_n \in \left\{ 0.3, 0.4, ..., 1 \right\} \sqrt{\frac{\log q}{n}}, 
+\lambda_n \in \left\{ 0.4, 0.6, ..., 1.8 \right\} \sqrt{\frac{\log p}{n}}
+$$
 
 \end{itemize}
 \end{frame}
@@ -765,23 +866,25 @@ $$
 \begin{frame}
 \frametitle{Evaluation metrics}
 \begin{enumerate}
-\item True positives-
+\item True positive Rate-
 %
 \[
-\text{TP} (\widehat \cB) = \frac{\sum_k | \supp(\widehat \bfB^k) \cup \supp (\bfB_0^k)|}{\sum_k | \supp (\bfB_0^k)| }
+\text{TPR} (\widehat \cB) = \frac{1}{K} \sum_{k=1}^K \frac{ | \supp(\widehat \bfB^k) \cup \supp (\bfB_0^k)|}{ | \supp (\bfB_0^k)| }
 \]
 \item True negatives-
 %
 \[
-\text{TN} (\widehat \cB) = \frac{\sum_k | \supp^c(\widehat \bfB^k) \cup \supp^c (\bfB_0^k)|}{\sum_k | \supp^c (\bfB_0^k)| }
+\text{TNR} (\widehat \cB) = \frac{1}{K} \sum_{k=1}^K \frac{ | \supp^c(\widehat \bfB^k) \cup \supp^c (\bfB_0^k)|}{ | \supp^c (\bfB_0^k)| }
 \]
 %
 \item Relative error in Frobenius norm-
 %
 \[
-\text{rel.Frob} (\widehat \cB) = \sum_{k=1}^K \frac{\| \widehat \bfB^k - \bfB_0^k \|_F}{\| \bfB_0^k \|_F}
+\text{RF} (\widehat \cB) = \frac{1}{K} \sum_{k=1}^K \frac{\| \widehat \bfB^k - \bfB_0^k \|_F}{\| \bfB_0^k \|_F}
 \]
 %
+
+\item Matthews correlation coefficient (MCC).
 \end{enumerate}
 
 Same metrics are used for $\widehat \Theta$.
@@ -791,23 +894,116 @@ Same metrics are used for $\widehat \Theta$.
 \frametitle{Results}
 
 \begin{scriptsize}
-\begin{table}
-    \begin{tabular}{c|ccc|ccc}
+\begin{tabular}{ccccccc}
+\hline
+    $(\pi_x, \pi_y)$ & $(p,q,n)$   & Method   & TPR            & TNR            & MCC & RF            \\ \hline
+    $(5/p, 5/q)$   & (60,30,100)   & JMMLE    & \textbf{0.97(0.02)}  & 0.99(0.003)  & \textbf{0.96(0.014)} & 0.24(0.033) \\
+    ~              & ~             & Separate & 0.96(0.018) & 0.99(0.004)  & 0.93(0.014) & 0.22(0.029) \\\cline{2-7}
+    %
+    ~              & (30,60,100)   & JMMLE    & 0.97(0.013) & 0.99(0.002)  & \textbf{0.96(0.008)} & 0.27(0.024) \\
+    ~              & ~             & Separate & 0.99(0.009) & 0.99(0.003)  & 0.93(0.017) & 0.18(0.021) \\\cline{2-7}
+    %
+    ~              & (200,200,150) & JMMLE    & 0.98(0.011) & \textbf{1.0(0) }      & \textbf{0.99(0.005)} & \textbf{0.16(0.025)} \\
+    ~              & ~             & Separate & 0.99(0.001) & 0.99 (0.001) & 0.88(0.009) & 0.18(0.007) \\\cline{2-7}
+    %
+    ~              & (300,300,150) & JMMLE    & \textbf{1.0(0.001)}  & \textbf{1.0(0)}       & \textbf{0.99(0.001)} & \textbf{0.14 (0.015)}\\
+    ~              & ~             & Separate & 1.0(0.001)  & 0.99(0.001)  & 0.84(0.01)  & 0.21(0.007)\\\hline
+    %
+    $(30/p, 30/q)$ & (200,200,100) & JMMLE    & \textbf{0.97(0.017)} & \textbf{1.0(0)}       & \textbf{0.98(0.008)} & \textbf{0.21(0.032)} \\
+    ~              & ~             & Separate & 0.32(0.01)  & 0.99(0.001)  & 0.49(0.009) & 0.85(0.06)  \\\cline{2-7}
+    %
+    ~              & (200,200,200) & JMMLE    & \textbf{0.99(0.006)} & \textbf{1.0(0)}       & \textbf{0.99(0.007)} & \textbf{0.13(0.016)} \\
+    ~              & ~             & Separate & 0.97(0.004) & 0.98(0.001)  & 0.93(0.002) & 0.19(0.07)  \\    \hline
+\end{tabular}
+
+\begin{center}
+Table of outputs for estimation of regression matrices, giving empirical mean and standard deviation (in brackets) of each evaluation metric over 50 replications.
+\end{center}
+\end{scriptsize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Results}
+
+\begin{scriptsize}
+\begin{tabular}{ccccccc}
     \hline
-    \multicolumn{7}{c}{{\bf Setting 1: $n=100, p=60, q=30, K=5$}}\\\hline
-    Method        & TP($\widehat\cB$)         & TN($\widehat\cB$)         & rel.Frob($\widehat\cB$) & TP($\widehat\Theta$)   & TN($\widehat\Theta$)   & rel.Frob($\widehat\Theta$) \\\hline
-    Joint (JMMLE) & 0.999 (2e-3) & 0.99 (0.01)   & 0.19 (0.02)  & 0.66 (0.06) & 0.95 (0.01) & 0.33 (0.02)      \\
-    Separate      & 0.95 (0.02)   & 0.99  (2e-3) & 0.27 (0.03)  & 0.89 (0.02) & 0.63 (0.01) & 0.77 (0.04)      \\\hline
-    \multicolumn{7}{c}{{\bf Setting 2: $n=100, p=30, q=60, K=5$}}\\\hline
-    Method        & TP($\widehat\cB$)         & TN($\widehat\cB$)         & rel.Frob($\widehat\cB$) & TP($\widehat\Theta$)   & TN($\widehat\Theta$)   & rel.Frob($\widehat\Theta$) \\\hline
-    Joint (JMMLE) & 0.996 (4e-3) & 0.99 (6e-3)   & 0.21 (0.01)  & 0.58 (0.04) & 0.98 (3e-3) & 0.32 (8e-3)      \\
-    Separate      & 0.66 (0.04)  & 0.994  (1e-3) & 0.59 (0.03)  & 0.62 (0.03) & 0.81 (7e-3) & 0.43 (0.01)      \\\hline
-    \multicolumn{7}{c}{{\bf Setting 3: $n=150, p=200, q=200, K=5$}}\\\hline
-    Method        & TP($\widehat\cB$)         & TN($\widehat\cB$)         & rel.Frob($\widehat\cB$) & TP($\widehat\Theta$)   & TN($\widehat\Theta$)   & rel.Frob($\widehat\Theta$) \\\hline
-    Joint (JMMLE) & 1.00 (0) & 1.00 (0)   & 0.12 (5e-3)  & 0.39 (0.04) & 0.996 (2e-3) & 0.30 (7e-3)      \\
-    Separate      & 0.42 (0.03)   & 0.99  (1e-3) & 0.48 (0.02)  & 0.41 (0.02) & 0.73 (0.01) & 0.44 (0.02)      \\\hline
-    \end{tabular}
-\end{table}
+    $(\pi_x, \pi_y)$ & $(p,q,n)$   & Method   & TPR            & TNR             & MCC & RF            \\ \hline
+    $(5/p, 5/q)$   & (60,30,100)   & JMMLE    & 0.76(0.018) & 0.90(0.006)  & \textbf{0.61(0.024)}  & \textbf{0.32(0.008)} \\
+    ~              & ~             & Separate & 0.77(0.031) & 0.92(0.007)  & 0.56(0.03)   & 0.51(0.017) \\
+    ~              & ~             & JSEM     & 0.24(0.013) & 0.8(0.003)   & 0.05(0.015)  & 1.03(0.002)\\\cline{2-7}
+    %
+    ~              & (30,60,100)   & JMMLE    & 0.7(0.018)  & \textbf{0.94(0.002)}  & 0.55(0.018)  & \textbf{0.3(0.005)} \\
+    ~              & ~             & Separate & 0.76(0.041) & 0.89(0.015)  & 0.59(0.039)  & 0.49(0.014) \\
+    ~              & ~             & JSEM     & 0.13(0.005) & 0.9(0.001)   & 0.03(0.007)  & 1.04(0.001) \\\cline{2-7}
+    %
+    ~              & (200,200,150) & JMMLE    & 0.68(0.017) & \textbf{0.98(0)}      & 0.48(0.013)  & \textbf{0.26(0.002)} \\
+    ~              & ~             & Separate & 0.78(0.019) & 0.97(0.001)  & 0.55(0.012)  & 0.6(0.007) \\
+    ~              & ~             & JSEM     & 0.05(0.002) & 0.97(0)      & 0.02(0.002)  & 1.01(0) \\\cline{2-7}
+    %
+    ~              & (300,300,150) & JMMLE    & 0.\textbf{71(0.014)} & \textbf{0.98(0)}      & 0.44(0.008)  & \textbf{0.25(0.002) }\\
+    ~              & ~             & Separate & 0.71(0.017) & 0.98(0.001)  & 0.51(0.011)  & 0.59(0.005) \\
+    ~              & ~             & JSEM     & 0.04(0.002) & 0.98(0)      & 0.02(0.002)  & 1.01(0)     \\\hline
+    %
+    $(30/p, 30/q)$ & (200,200,100) & JMMLE    & \textbf{0.77(0.016)} & \textbf{0.98(0)}      & \textbf{0.46(0.013)}  & \textbf{0.31(0.003)} \\
+    ~              & ~             & Separate & 0.57(0.027) & 0.44(0.007)  & 0.04(0.008)  & 0.84(0.002)\\
+    ~              & ~             & JSEM     & 0.05(0.002) & 0.97(0)      & 0.01(0.002)  & 1.01(0)     \\\hline
+    %
+    ~              & (200,200,200) & JMMLE    & \textbf{0.76(0.018)}  & \textbf{0.98(0)}     & \textbf{0.55(0.015)}  & \textbf{0.27(0.004)} \\
+    ~              & ~             & Separate & 0.73(0.023) & 0.94(0.003)  & 0.39(0.017)  & 0.62(0.011)\\
+    ~              & ~             & JSEM     & 0.05(0.002) & 0.97(0)      & 0.03(0.003)  & 1.01(0)     \\\hline
+\end{tabular}
+    
+\begin{center}
+Table of outputs for estimation of lower layer precision matrices over 50 replications.
+\end{center}
+\end{scriptsize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Simulation 2: testing}
+
+\begin{itemize}
+\item Set $K=2$, then randomly assign each element of $\bfB_0^1$ as non-zero w.p. $\pi$, then draw their values from $\text{Unif}\{ [ -1, -0.5] \cup [0.5,1]\}$ independently.
+
+\item Generate a matrix of differences $\bfD$, where $(\bfD)_{ij}$ takes values --1, 1, 0 w.p. 0.1, 0.1 and 0.8, respectively. Finally set $\bfB_0^2 = \bfB_0^1 + \bfD$.
+
+\item Identical sparsity structures for the pairs of X- and Y-precision matrices.
+
+\item Type-I error set at $0.05$, FDR controlled at $0.2$.
+
+\item Empirical sizes of global tests are calculated from estimators obtained from a separate set of data generated by setting all elements of $\bfD$ to 0.
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Results}
+
+\begin{scriptsize}
+\begin{tabular}{ccccccc}
+    \hline
+$(\pi_x, \pi_y)$ & $(p,q)$   & $n$ & \multicolumn{2}{c}{Global test} & \multicolumn{2}{c}{Simultaneous tests}\\\cline{4-7}
+ & & & Power     & Size			   & Power         & FDR           \\ \hline
+    $(5/p, 5/q)$ & (60,30)   & 100 & 0.977 (0.018) & 0.058 (0.035) & 0.937 (0.021) & 0.237 (0.028) \\
+    ~            & ~         & 200 & 0.987 (0.016) & 0.046 (0.032) & 0.968 (0.013) & 0.218 (0.032) \\
+    ~            & (30,60)   & 100 & 0.985 (0.018) & 0.097 (0.069) & 0.925 (0.022) & 0.24 (0.034)  \\
+    ~            & ~         & 200 & 0.990 (0.02)  & 0.119 (0.059) & 0.958 (0.024) & 0.245 (0.041) \\
+    ~            & (200,200) & 150 & 0.987 (0.005) & 0.004 (0.004) & 0.841 (0.13)  & 0.213 (0.007) \\
+    ~            & (300,300) & 150 & 0.988 (0.002) & 0.002 (0.003) & 0.546 (0.035) & 0.347 (0.017) \\
+    ~            & ~         & 300 & 0.998 (0.003) & 0.000 (0.001) & 0.989 (0.003) & 0.117 (0.006) \\ \hline
+  $(30/p, 30/q)$ & (200,200) & 100 & 0.994 (0.005) & 0.262 (0.06)  & 0.479 (0.01)  & 0.557 (0.006) \\
+    ~            & ~         & 200 & 0.998 (0.004) & 0.020 (0.01)  & 0.962 (0.003) & 0.266 (0.007) \\
+    ~            & ~         & 300 & 0.999 (0.002) & 0.011 (0.008) & 0.990 (0.004) & 0.185 (0.009) \\ \hline
+\end{tabular}
+
+\begin{center}
+Table of outputs for hypothesis testing.
+\end{center}
 \end{scriptsize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -816,15 +1012,84 @@ Same metrics are used for $\widehat \Theta$.
 \frametitle{Future work}
 
 \begin{itemize}
-\item Larger simulation: effect of signal strength and sparsity;
-\vspace{1em}
+\item Beyond pairwise testing: global and simultaneous tests for $K > 2$;
 
-\item Real data application, application to personalized medicine;
 \vspace{1em}
+\item Multi-level estimation and testing for model assumptions other than structured sparsity;
 
-\item Mediation analysis.
+\vspace{1em}
+\item Non-gaussian data;
+
+\vspace{1em}
+\item {\colbbf Graphical models with non-linear interactions}.
 \end{itemize}
 \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Graphical models with non-linear interactions}
+
+\begin{minipage}{.49\textwidth}
+%
+\begin{itemize}
+\item Take the multi-layer structure as a generative model.
+\vspace{1em}
+
+\item Only the top layer is observed, other layers are composed of latent data.
+
+\end{itemize}
+
+{\color{black}
+\begin{align*}
+& \BL_1 = (L_{11}, \ldots, L_{1r})^T \sim \cN_r (0, \Sigma_1);\\
+& \BL_2 = \phi( \BL_1^T \bfB) + \BE,\\
+& \BX = \phi( \BL_2^T \bfC) + \BF,\\
+& \BE = (E_1, \ldots, E_q)^T \sim \cN_q (0, \Sigma_2);\\
+& \BF = (F_1, \ldots, F_p)^T \sim \cN_p (0, \Sigma_x).\\
+\end{align*}}
+%
+where $\phi$ is a known activation function.
+
+\end{minipage}
+%
+\begin{minipage}{.49\textwidth}
+\centering
+\includegraphics[height=.7\textheight]{../MS/latentmultilayer}
+\end{minipage}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{References in literature}
+
+\begin{itemize}
+\item Non-linear generalization of a factor model.
+
+\vspace{1em}
+\item A general version: $\BL_2 = f_1(\BL_1) + \BE$ etc. for unknown function $f_1$, has been proposed as Deep Latent Gaussian Model \citep{RezendeEtal14}.
+
+\vspace{1em}
+\item The choice $\phi(\BL^T \bfB) \equiv \phi(\BL)^T \bfB$ corresponds to Non-linear Gaussian belief networks \citep{FreyHinton99}.
+
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Our plan}
+
+Incorporate sparse estimation of the model parameters to model non-linear interactions.
+
+\begin{center}
+\includegraphics[width=.7\textwidth]{../MS/latentinteractions}
+\end{center}
+
+\begin{itemize}
+\item Monte-Carlo Sequential EM, backpropagation
+\item Theoretical properties of estimates
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
 \frametitle{References}

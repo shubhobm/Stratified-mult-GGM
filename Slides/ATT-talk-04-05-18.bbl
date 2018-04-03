@@ -1,4 +1,4 @@
-\begin{thebibliography}{7}
+\begin{thebibliography}{9}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -10,6 +10,11 @@ M.~Drton and M.~D. Perlman.
 \newblock {Multiple Testing and Error Control in Gaussian Graphical Model
   Selection}.
 \newblock \emph{Statist. Sci.}, 22\penalty0 (3):\penalty0 430--449, 2007.
+
+\bibitem[Frey and Hinton(1999)]{FreyHinton99}
+B.~J. Frey and G.~E. Hinton.
+\newblock {Variational learning in nonlinear Gaussian belief networks}.
+\newblock \emph{Neural Comput.}, 11\penalty0 (1):\penalty0 193--213, 1999.
 
 \bibitem[{Gligorijevi\'{c}} and {Pr\v{z}ulj}(2015)]{GligPrzulj15}
 V.~{Gligorijevi\'{c}} and N.~{Pr\v{z}ulj}.
@@ -28,11 +33,11 @@ J.~Lin, S.~Basu, M.~Banerjee, and G.~Michailidis.
   Graphical Models}.
 \newblock \emph{J. Mach. Learn. Res.}, 17:\penalty0 5097--5147, 2016.
 
-\bibitem[Liu(2017+)]{Liu17}
+\bibitem[Liu(2017)]{Liu17}
 W.~Liu.
 \newblock {Structural similarity and difference testing on multiple sparse
   Gaussian graphical models}.
-\newblock \emph{Ann. Statist.}, To appear, 2017+.
+\newblock \emph{Ann. Statist.}, 45\penalty0 (6):\penalty0 2680--2707, 2017.
 
 \bibitem[Ma and Michailidis(2016)]{MaMichailidis15}
 J.~Ma and G.~Michailidis.
@@ -43,5 +48,11 @@ J.~Ma and G.~Michailidis.
 N.~Meinshausen and P.~{B\"{u}hlmann}.
 \newblock High dimensional graphs and variable selection with the ¨ lasso.
 \newblock \emph{Ann. Statist.}, 34\penalty0 (3):\penalty0 1436--1462, 2006.
+
+\bibitem[Rezende et~al.(2014)Rezende, Mohamed, and Wierstra]{RezendeEtal14}
+D.~J. Rezende, S.~Mohamed, and D.~Wierstra.
+\newblock {Stochastic Backpropagation and Approximate Inference in Deep
+  Generative Models}.
+\newblock In \emph{ICML Proceedings}, volume~32, pages 1278--1286, 2014.
 
 \end{thebibliography}
