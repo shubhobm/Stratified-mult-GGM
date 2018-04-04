@@ -22,8 +22,10 @@ logo=\bctrombone
 \definecolor{UniBlue}{RGB}{83,121,170}
 \setbeamercolor{title}{fg=UniBlue}
 \setbeamercolor{frametitle}{fg=UniBlue}
+\setbeamercolor{block title}{bg=UniBlue}
 \newcommand{\coluit}{\color{UniBlue}\it}
 \newcommand{\colubf}{\color{UniBlue}\bf}
+\newcommand{\colu}{\color{UniBlue}}
 \DeclareMathOperator*{\diag}{diag}
 \DeclareMathOperator*{\Tr}{Tr}
 \DeclareMathOperator*{\argmin}{argmin}
@@ -113,6 +115,23 @@ April 5, 2018}
 \begin{frame}
 \frametitle{My research}
 
+\begin{outline}
+\1 Obtained PhD from Univ. of Minnesota in May 2017. Currently doing postdoc in University of Florida Informatics Institute under Prof. George Michailidis.
+
+\vspace{1em}
+\1 Dissertation topic was on using data depth in feature selection and dimension reduction.
+\visible<2->{\2 {\it Worked on diverse data applications: climate data, fMRI, genomics etc.}}
+
+\vspace{1em}
+\1 Current research: Statistical machine learning- complex graphical models,
+\visible<3->{\2 {\it Motivation: modelling multiple Omics data.}}
+
+\vspace{1em}
+\1 Future plans
+\visible<4->{\2 {\colbit Extending methods to spatial models;}}
+\visible<5->{\2 {\it {\colb Uncertainty quantification in complex high-dimensional systems}: causal models, tensor models.}}
+\visible<6->{\2 {\colbit The statistics of artificial intelligence: theory and interpretability.}}
+\end{outline}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -672,10 +691,13 @@ with $\psi, \BQ_0$ being constants, $| g_{\max} |$ the maximum group size in $\T
 \begin{frame}
 \frametitle{High-dimensional hypothesis testing}
 
-\begin{block}{Debiased estimators }
+\begin{block}{Debiased estimators (Zhang and Zhang, 2014)}
 \begin{itemize}
+\visible<2->{
 \item Lasso: $\widehat \bfbeta = \argmin_\bfbeta \| \bfy - \bfX \bfbeta \|^2 + \| \bfbeta \|_1$;
+}
 
+\visible<3->{
 \item Debiased estimator:
 %
 $$
@@ -683,17 +705,22 @@ $$
 $$
 %
 where $\bfz_j$ is the vector of residuals from the $\ell_1$-penalized regression of $\bfx_j$ on $\bfX_{-j}$.
-
+}
+\visible<4->{
 \item Asymptotic normal distribution:
 %
 $$
 \frac{\hat \beta_j^{(\text{deb})} - \beta_j^0}{\| \bfz_j \|/| \bfz_j^T \bfx_j |} \sim N(0, \sigma^2)
 $$
 %
+}
 \end{itemize}
+
 \end{block}
 
-Essentially, they obtain the debiasing factor for the $j^{\Th}$ coefficient by taking residuals from the regularized regression and scale them using the projection of $\bfx_j$ onto a space approximately orthogonal to it. \cite{MitraZhang16} later generalized this idea to group lasso estimates. Further, \cite{vanDeGeerEtal14} and \cite{JavanmardMontanari14} performed debiasing on the entire coefficient vectors.
+\visible<5>{
+The debiasing factor for the $j^{\Th}$ coefficient is obtained by taking residuals from the regularized regression and scale them using the { \colbit projection of $\bfx_j$ onto a space approximately orthogonal to it}.
+}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

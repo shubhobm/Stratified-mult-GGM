@@ -1,0 +1,15 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: ATT2.aux
+The style file: apalike.bst
+Illegal, another \bibstyle command---line 164 of file ATT2.aux
+ : \bibstyle
+ :          {apalike}
+I'm skipping whatever remains of this command
+Illegal, another \bibdata command---line 165 of file ATT2.aux
+ : \bibdata
+ :         {IISAbib}
+I'm skipping whatever remains of this command
+Database file #1: IISAbib.bib
+Warning--I didn't find a database entry for "MitraZhang16"
+Warning--I didn't find a database entry for "vanDeGeerEtal14"
+Warning--I didn't find a database entry for "JavanmardMontanari14"
+(There were 2 error messages)
