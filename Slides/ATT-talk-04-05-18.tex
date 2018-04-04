@@ -5,7 +5,6 @@
 \hypersetup{colorlinks = true, citecolor = red, urlcolor = blue}
 \usepackage[font=footnotesize]{caption} % caption options
 \usepackage{fancyvrb}
-
 \theoremstyle{definition}
 \newtheorem{Algorithm}{Algorithm}
 
@@ -90,7 +89,7 @@ University of Florida Informatics Institute}}
 \institute[]{AT\&T Labs - Research, Bedminster, NJ\\
 April 5, 2018}
 \date{}
-
+\date[April 5, 2018]
 %\vspace{.5cm}
 %\includegraphics[height=.5cm]{UMNlogo}}
 %\date [December 28, 2017]
@@ -111,9 +110,15 @@ April 5, 2018}
 \frame{ \titlepage}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{My research}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-\frametitle{Summary}
+\frametitle{Summary of the talk}
 \begin{itemize}
 \item Estimation of graphs from high-dimensional data is of importance for biological processes, financial systems or social interactions;
 
@@ -287,24 +292,32 @@ $k=1$ & $k=2$ & $k=3$
 \frametitle{What we do}
 
 \begin{outline}
-\1 We decompose the multi-layer problem into a series of two layer problems.
+\onslide<2->{ \1 We decompose the multi-layer problem into a series of two layer problems.}
 
 \vspace{1em}
-\1 We estimate $\{ \Omega_x^k, \Omega_y^k, \bfB^k \}$ jointly for all $k$ from a single model;
-\2 Incorporate structural informartion using group sparsity,
-\2 Propose alternating block algorithm to compute solutions,
-\2 Derive convergence properties of solutions.
+\onslide<3->{
+\1 We estimate $\{ \Omega_x^k, \Omega_y^k, \bfB^k \}$ jointly for all $k$ from a single model;}
+\onslide<4->{
+\2 Incorporate structural informartion using group sparsity,}
+\onslide<5->{
+\2 Propose alternating block algorithm to compute solutions,}
+\onslide<6->{
+\2 Derive convergence properties of solutions.}
 
 \vspace{1em}
-\1 Devise a full pairwise testing procedure for rows of $\bfB^k$;
-\2 Propose a debiasing method for estimates of individual rows of $\bfB^k$, say $\bfb_i^k, i \in \{ 1, 2, \ldots, p \}$ and derive its asymptotic distribution;
+\onslide<7->{
+\1 Devise a full pairwise testing procedure for rows of $\bfB^k$;}
+\onslide<8->{\2 Propose a debiasing method for estimates of individual rows of $\bfB^k$, say $\bfb_i^k, i \in \{ 1, 2, \ldots, p \}$ and derive its asymptotic distribution;}
 
-\2 For $K=2$, propose a test for row-wise differences $\bfb_i^1 - \bfb_i^2$;
+\onslide<9->{
+\2 For $K=2$, propose a test for row-wise differences $\bfb_i^1 - \bfb_i^2$;}
 
-\2 Perform multiple testing for elementwise differences $b_{ij}^1 = b_{ij}^2, j = 1, 2, \ldots, q$ within a row.
+\onslide<10->{
+\2 Perform multiple testing for elementwise differences $b_{ij}^1 = b_{ij}^2, j = 1, 2, \ldots, q$ within a row.}
 
 \vspace{1em}
-\1 Use simulations for performance evaluation.
+\onslide<11>{
+\1 Use simulations for performance evaluation.}
 \end{outline}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -318,8 +331,8 @@ $k=1$ & $k=2$ & $k=3$
 \begin{itemize}
 \item $\cY = \{ \bfY^1, \ldots, \bfY^K\}, \cX = \{ \bfX^1, \ldots, \bfX^K\}$;
 
-\item $\Omega_x = \{ \Omega_x^1, \ldots, \Omega_x^K \}, \Omega_y = \{ \Omega_y^1, \ldots, \Omega_y^K \},
-\cB = \{ \bfB^1, \ldots, \bfB^K \}$;
+\item ${\colg \Omega_x = \{ \Omega_x^1, \ldots, \Omega_x^K \}}, {\colb \Omega_y = \{ \Omega_y^1, \ldots, \Omega_y^K \}},
+{\colr \cB = \{ \bfB^1, \ldots, \bfB^K \}}$;
 \end{itemize}
 
 \vspace{1em}
@@ -352,28 +365,34 @@ Group structures in $\cB$ is denoted by $\cH$, with each $h \in \cH$ being a col
 \frametitle{Estimation of $\Omega_x$}
 
 \begin{enumerate} %% break
-\item Estimate neighborhood coefficients of each X-node, say $\zeta_i = (\bfzeta_i^1, \ldots, \bfzeta_i^K)$ using the group sparsity information $\cG_x$:
+\onslide<2->{
+\item {\colbit Estimate neighborhood coefficients} of each X-node, say $\zeta_i = (\bfzeta_i^1, \ldots, \bfzeta_i^K)$ using the group sparsity information $\cG_x$:
 %
 $$
-\widehat \zeta_i = \argmin_{\zeta_i} \left\{ \sum_{k=1}^K \frac{1}{n_k} \| \bfX_i^k - \bfX_{-i}^k \bfzeta_i^k \|^2 + \nu_n \sum_{i' \neq i, g \in \cG_{x,ii'}} \| \bfzeta_{ii'}^{[g]} \| \right\}
+{\colg \widehat \zeta_i} = \argmin_{\zeta_i} \left\{ \sum_{k=1}^K \frac{1}{n_k} \| \bfX_i^k - \bfX_{-i}^k {\colg \bfzeta_i^k} \|^2 + {\colg \nu_n \sum_{i' \neq i, g \in \cG_{x,ii'}} \| \bfzeta_{ii'}^{[g]} \|} \right\}
 $$
+}
 
-\item Recover precision matrices as MLE over the restricted supports: %% break
+\onslide<3->{
+\item {\colbit Recover precision matrices} as MLE over the restricted supports: %% break
 %
 \begin{align*}
 \widehat E_x^k &= \{(i,i'): 1 \leq i < i' \leq p, \widehat \zeta_{ii'}^k \neq 0 \text{ OR } \widehat \zeta_{i'i}^k \neq 0 \},\\
 \widehat \Omega_x^k &= \argmin_{\Omega_x^k \in \BS_+ (\widehat E_x^k)}
 \left\{ \Tr (\widehat \bfS_x^k \Omega_x^k ) - \log \det (\Omega_x^k) \right\}.
 \end{align*}
+}
 %
 \end{enumerate}
 
 \vspace{1em}
 
+\onslide<4>{
 \begin{center} %% break
 {\colb Joint Structural Estimation Method (JSEM)}
 
 \cite{MaMichailidis15}
+}
 \end{center}
 
 \end{frame}
@@ -435,9 +454,9 @@ $$
 Our testing methodology only requires {\it generic} estimates that satisfy the following convergence rates:
 %
 \begin{align*}
-\| \widehat \bfzeta^k - \bfzeta_0^k \|_1 & \leq O \left( \sqrt { \frac{\log p}{n}} \right)\\
-\| \widehat \Omega_y^k - \Omega_{y0}^k \|_\infty & \leq O \left( \sqrt { \frac{\log (pq)}{n}} \right)\\
-\| \widehat \bfB^k - \bfB^k_0 \|_1 & \leq O \left( \sqrt { \frac{\log (p q)}{n}} \right)
+{\colg \| \widehat \bfzeta^k - \bfzeta_0^k \|_1} & \leq O \left( \sqrt { \frac{\log p}{n}} \right)\\
+{\colr \| \widehat \bfB^k - \bfB^k_0 \|_1} & \leq O \left( \sqrt { \frac{\log (p q)}{n}} \right)\\
+{\colb \| \widehat \Omega_y^k - \Omega_{y0}^k \|_\infty} & \leq O \left( \sqrt { \frac{\log (pq)}{n}} \right)\\
 \end{align*}
 %
 
@@ -457,10 +476,8 @@ The estimation procedure gives one suitable set of estimates.
 
 \begin{center}
 \begin{tabular}{ccc}%% break
-$ \bfY_j^k$ & $- \quad \bfE_{-j}^k {\colb  \bftheta_j^k}$ & $- \quad \bfX^k {\colr \bfB_j^k }$
+\onslide<2->{$ \bfY_j^k$} & \onslide<3->{$- \quad \bfE_{-j}^k {\colb  \bftheta_j^k}$} & \onslide<4>{$- \quad \bfX^k {\colr \bfB_j^k }$}
 \end{tabular}
-
-
 \end{center}
 
 \end{frame}
@@ -473,16 +490,19 @@ $ \bfY_j^k$ & $- \quad \bfE_{-j}^k {\colb  \bftheta_j^k}$ & $- \quad \bfX^k {\co
 \includegraphics[width=.9\textwidth]{multitwolayer}
 \end{center}
 
+\onslide<1->{
 $$
 \sum_{k=1}^K \frac{1}{n_k} \sum_{j=1}^q
 \left\| \bfY_j^k - (\bfY_{-j}^k - \bfX^k \bfB_{-j}^k) {\colb  \bftheta_j^k}
 - \bfX^k {\colr \bfB_j^k } \right\|^2
 $$
-%% break
+}
+
 $$
-+ {\colr \lambda_n \sum_{h \in \cH} \| \bfB^{[h]} \|}
-+ {\colb \gamma_n \sum_{j' \neq j, g \in \cG_{jj'}} \| \bftheta_{jj'}^{[g]} \|}
+\onslide<2->{ + {\colr \lambda_n \sum_{h \in \cH} \| \bfB^{[h]} \|}}
+\onslide<3>{ + {\colb \gamma_n \sum_{j' \neq j, g \in \cG_{jj'}} \| \bftheta_{jj'}^{[g]} \|}}
 $$
+
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -613,22 +633,6 @@ where $\widehat \bfE^k = \bfY^k - \bfX^k \widehat \bfB^k$.
 \begin{frame}
 \frametitle{Non-asymptotic error bounds for $\widehat \cB$}
 
-For $\lambda_n \geq 4 \sqrt{| h_{\max} |} \BR_0 \sqrt{ \frac{ \log(pq)}{n}}$, the following hold with probability approaching 1 as $n \rightarrow \infty$,
-%
-\begin{align*}
-\| \widehat \bfbeta - \bfbeta_0 \|_1 & \leq \frac{48 \sqrt{ | h_{\max} |} s_\beta \lambda_n}{ \psi^*} \\
-\| \widehat \bfbeta - \bfbeta_0 \| & \leq \frac{12 \sqrt s_\beta \lambda_n}{ \psi^*} \\
-\sum_{h \in \cH} \| \bfbeta^{[h]} - \bfbeta_0^{[h]} \| & \leq \frac{48 s_\beta \lambda_n}{ \psi^*}
-\end{align*}
-%
-with $\psi^*, \BR_0$ being constants, and $\bfbeta = (\ve(\bfB^1)^T, \ldots, \ve(\bfB^K)^T)^T$, $| h_{\max} |$ the maximum group size in $\bfbeta_0$ (the true $\bfbeta$) and $s_\beta$ the sparsity of $\bfbeta_0$.
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}
-\frametitle{Non-asymptotic error bounds for $\widehat \cB$}
-
 For $\lambda_n \geq 4 \sqrt{| h_{\max} |} \BR_0 {\colr \sqrt{ \frac{ \log(pq)}{n}}}$, the following hold with probability approaching 1 as $n \rightarrow \infty$,
 %
 \begin{align*}
@@ -638,24 +642,6 @@ For $\lambda_n \geq 4 \sqrt{| h_{\max} |} \BR_0 {\colr \sqrt{ \frac{ \log(pq)}{n
 \end{align*}
 %
 with $\psi^*, \BR_0$ being constants, and $\bfbeta = (\ve(\bfB^1)^T, \ldots, \ve(\bfB^K)^T)^T$, $| h_{\max} |$ the maximum group size in $\bfbeta_0$ (the true $\bfbeta$) and $s_\beta$ the sparsity of $\bfbeta_0$.
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}
-\frametitle{Error bounds for $\widehat \Theta, \widehat\Omega$}
-
-For $\gamma_n = 4 \sqrt{| g_{\max}|} \BQ_0 \sqrt{ \frac{ \log(pq)}{n}}$, the following hold with probability approaching 1 as $n \rightarrow \infty$,
-%
-\begin{align*}
-\| \widehat \Theta_j - \Theta_{0,j} \|_F & \leq \frac{12 \sqrt{s_j} \gamma_n}{\psi} \\
-\sum_{j \neq j', g \in \cG_y^{jj'}} \| \widehat \bftheta_{jj'}^{[g]} - \bftheta_{0,jj'}^{[g]} \| & \leq \frac{48 s_j \gamma_n}{\psi} \\
-%\left| \supp (\widehat \Theta_j) \right| & \leq \frac{128 s_j}{ \psi}\\
-\frac{1}{K} \sum_{k=1}^K \| \widehat \Omega_y^k - \Omega_y^k \|_F & \leq
-O \left( \frac{\sqrt S \gamma_n }{\sqrt K} \right)\\
-\end{align*}
-%
-with $\psi, \BQ_0$ being constants, $| g_{\max} |$ the maximum group size in $\Theta_0$, $s_j$ the sparsity of $\Theta_j$ and $S = \sum_j s_j$.
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -690,15 +676,19 @@ with $\psi, \BQ_0$ being constants, $| g_{\max} |$ the maximum group size in $\T
 \frametitle{What we do}
 \begin{itemize}
 %% break
+\onslide<2->{
 \item  We propose a {\colb debiased estimator} for $\bfb_i^k$ that makes use of already computed model quantities, and establish asymptotic properties of its scaled version,
-
+}
 %% break
+\onslide<3->{
 \vspace{1em}
 \item We assume $K = 2$, and propose an {\colb asymptotic test} for detecting differential effects of a variable in the upper layer, i.e. testing for the null hypothesis $H0 : \bfb^1_{0i} = \bfb^2_{0i}$,
-
+}
 %% break
+\onslide<4>{
 \vspace{1em}
 \item We also propose {\colb pairwise simultaneous tests} across $j = 1, \ldots, q$ for detecting the elementwise differences $b_{0ij}^1 = b_{0ij}^2$.
+}
 \end{itemize}
 
 \end{frame}
@@ -713,11 +703,11 @@ with $\psi, \BQ_0$ being constants, $| g_{\max} |$ the maximum group size in $\T
 \item We debias these row vectors using the neighborhood coefficients in the X-network computed previously using JSEM:
 %
 \begin{align*}
-\widehat \bfc_i^k = \widehat \bfb_i^k + \frac{1}{n t_i^k} \left( \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k \right)^T
+\widehat \bfc_i^k = \widehat \bfb_i^k + \frac{1}{n t_i^k} \left( {\colg \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k} \right)^T
 (\bfY^k - \bfX^k \widehat \bfB^k )
 \end{align*}
 %
-for $k = 1,2$, where $t_i^k := ( \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k )^T \bfX_{-i}^k/n$.
+for $k = 1,2$, where $t_i^k := ( {\colg \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k} )^T \bfX_{-i}^k/n$.
 \end{itemize}
 
 \end{frame}
@@ -725,50 +715,31 @@ for $k = 1,2$, where $t_i^k := ( \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k )^T
 
 \begin{frame}
 \frametitle{Result}
+\onslide<2->{
 Assume we have `good enough' estimators:
 %
 \begin{align*}
-\| \widehat \bfzeta^k - \bfzeta_0^k \|_1 &= O \left( \sqrt { \frac{\log p}{n}} \right)\\
-\| \widehat \bfB^k - \bfB^k_0 \|_1 &= O \left( \sqrt{\frac{\log (pq)}{n}} \right)\\
-\left\| \widehat \Omega_y^k - \Omega_y^k \right\|_\infty &= O \left( \sqrt { \frac{\log p q}{n}} \right)
+{\colg \| \widehat \bfzeta^k - \bfzeta_0^k \|_1} &= O \left( \sqrt { \frac{\log p}{n}} \right)\\
+{\colr \| \widehat \bfB^k - \bfB^k_0 \|_1} &= O \left( \sqrt{\frac{\log (pq)}{n}} \right)\\
+{\colb \left\| \widehat \Omega_y^k - \Omega_y^k \right\|_\infty} &= O \left( \sqrt { \frac{\log p q}{n}} \right)
 \end{align*}
+}
 %
-Define $\widehat s_i^k = \sqrt{\| \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k \|^2/n}$, and $m_i^k = \sqrt n t_i^k / \widehat s_i^k$. and:
+\onslide<3->{
+Define $\widehat s_i^k = \sqrt{\| {\colg \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k} \|^2/n}$, and $m_i^k = \sqrt n t_i^k / \widehat s_i^k$. and:
 %
 \begin{align*}
-\widehat \Omega_y &= \diag(\widehat \Omega_y^1, \ldots, \widehat \Omega_y^K), \quad
-\bfM_i = \diag(m_i^1, \ldots, m_i^K)\\
-\widehat \bfC_i &= \ve(\widehat \bfc_i^1, \ldots, \widehat \bfc_i^K)^T, \quad
-\bfD_i = \ve(\bfb_{0i}^1, \ldots, \bfb_{0i}^K)^T\\
+{\colb \widehat \Omega_y} &= \diag(\widehat \Omega_y^1, \ldots, \widehat \Omega_y^K), \quad
+{\colg \bfM_i} = \diag(m_i^1, \ldots, m_i^K)\\
+{\colr \widehat \bfC_i} &= \ve(\widehat \bfc_i^1, \ldots, \widehat \bfc_i^K)^T, \quad
+{\colr \bfD_i} = \ve(\bfb_{0i}^1, \ldots, \bfb_{0i}^K)^T\\
 \end{align*}
+}
 %
+\onslide<4>{
 Then under mild conditions, for sample size satisfying 
-$\log p = o(n^{1/2}), \log q = o(n^{1/2})$ we have $\widehat \Omega_y^{1/2} \bfM_i (\widehat \bfC_i - \bfD_i) \sim \cN_{Kq} ({\bf 0}, \bfI) + o_P(1).$
-%
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}
-\frametitle{Result}
-Assume we have `good enough' estimators:
-%
-\begin{align*}
-\| \widehat \bfzeta^k - \bfzeta_0^k \|_1 &= O \left( \sqrt { \frac{\log p}{n}} \right)\\
-\| \widehat \bfB^k - \bfB^k_0 \|_1 &= O \left( \sqrt{\frac{\log (pq)}{n}} \right)\\
-\left\| \widehat \Omega_y^k - \Omega_y^k \right\|_\infty &= O \left( \sqrt { \frac{\log p q}{n}} \right)
-\end{align*}
-%
-Define $\widehat s_i^k = \sqrt{\| \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k \|^2/n}$, and $m_i^k = \sqrt n t_i^k / \widehat s_i^k$. and:
-%
-\begin{align*}
-\widehat \Omega_y &= \diag(\widehat \Omega_y^1, \ldots, \widehat \Omega_y^K), \quad
-\bfM_i = \diag(m_i^1, \ldots, m_i^K)\\
-\widehat \bfC_i &= \ve(\widehat \bfc_i^1, \ldots, \widehat \bfc_i^K)^T, \quad
-\bfD_i = \ve(\bfb_{0i}^1, \ldots, \bfb_{0i}^K)^T\\
-\end{align*}
-%
-Then under mild conditions, for sample size satisfying 
-${\colb \log p = o(n^{1/2}), \log q = o(n^{1/2})}$ we have $\widehat \Omega_y^{1/2} \bfM_i (\widehat \bfC_i - \bfD_i) \sim \cN_{Kq} ({\bf 0}, \bfI) + o_P(1).$
+$\log p = o(n^{1/2}), \log q = o(n^{1/2})$ we have ${\colb \widehat \Omega_y^{1/2}} {\colg \bfM_i} {\colr (\widehat \bfC_i - \bfD_i)} \sim \cN_{Kq} ({\bf 0}, \bfI) + o_P(1).$
+}
 %
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -777,23 +748,29 @@ ${\colb \log p = o(n^{1/2}), \log q = o(n^{1/2})}$ we have $\widehat \Omega_y^{1
 \frametitle{Global test for $H_0: \bfb_{0 i}^1 = \bfb_{0 i}^2$ at level $\alpha, 0< \alpha< 1$}
 
 \begin{enumerate}
+\onslide<2->{
 \item Obtain the debiased estimators $\widehat \bfc_i^1, \widehat \bfc_i^2$;
-
+}
+\onslide<3->{
 \item Calculate the test statistic
 %
 $$
-D_i = (\widehat \bfc_i^1 - \widehat \bfc_i^2)^T
-\left( \frac{ \widehat \Sigma_y^1}{(m_i^1)^2} +
-\frac{\widehat \Sigma_y^2}{(m_i^2)^2} \right)^{-1} (\widehat \bfc_i^1 - \widehat \bfc_i^2)
+D_i = ({\colr \widehat \bfc_i^1 - \widehat \bfc_i^2})^T
+\left( \frac{ {\colb \widehat \Sigma_y^1}}{{\colg (m_i^1)^2}} +
+\frac{{\colb \widehat \Sigma_y^2}}{{\colg (m_i^2)^2}} \right)^{-1} ({\colr \widehat \bfc_i^1 - \widehat \bfc_i^2})
 $$
 %
 where $\widehat \Sigma_y^k = (\widehat \Omega_y^k)^{-1}, k = 1,2$.
-
+}
+\onslide<4->{
 \item  Reject $H_0^i$ if $D_i \geq \chi^2_{q, 1-\alpha}$.
+}
 \end{enumerate}
 
 \vspace{1em}
+\onslide<5>{
 Besides controlling the type-I error at a specified level, the above testing procedure maintains rate optimal power, i.e. asymptotic power goes to 1 when $\| \bfb_{0i}^1 - \bfb_{0i}^2\| \geq O(n^{-1/2})$.
+}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -801,11 +778,13 @@ Besides controlling the type-I error at a specified level, the above testing pro
 \frametitle{Simultaneous tests for $H_0^{j}: b_{0 ij}^1 = b_{0 ij}^2$ at level $\beta, 0< \beta < 1$}
 
 \begin{enumerate}
+\onslide<2->{
 \item Calculate the pairwise test statistics for $j = 1, \ldots, q$:
 $$
-d_{ij} = \frac{\widehat c_{ij}^1 - \widehat c_{ij}^2}{\sqrt{\hat \sigma_{jj}^1/ (m_i^1)^2 + \hat \sigma_{jj}^2/ (m_i^2)^2}}
+d_{ij} = \frac{{\colr \widehat c_{ij}^1 - \widehat c_{ij}^2}}{\sqrt{{\colb \hat \sigma_{jj}^1}/ {\colg (m_i^1)^2} + {\colb \hat \sigma_{jj}^2}/ {\colg (m_i^2)^2}}}
 $$
-
+}
+\onslide<3->{
 \item Obtain the threshold
 %
 $$
@@ -813,9 +792,10 @@ $$
 \max \left( \sum_{j \in \cI_q} \BI( |d_{ij}| \geq \tau), 1 \right) \right\}
 $$
 %
-
+}
+\onslide<4>{
 \item For $j = 1, \ldots, q$, reject $H_0^{ij}$ if $|d_{ij}| \geq \hat \tau$.
-
+}
 \end{enumerate} 
 \end{frame}
 
@@ -1093,6 +1073,10 @@ Incorporate sparse estimation of the model parameters to model non-linear intera
 
 \begin{frame}
 \frametitle{References}
+Preprint available at: \url{https://arxiv.org/abs/1803.03348}
+
+\vspace{1em}
+\onslide<2>
 {\scriptsize
 \bibliographystyle{plainnat}
 \bibliography{IISAbib}
@@ -1107,7 +1091,6 @@ Incorporate sparse estimation of the model parameters to model non-linear intera
 
 \vspace{2em}
 
-\vspace{1em}
 {\colubf Questions?}
 \end{frame}
 
