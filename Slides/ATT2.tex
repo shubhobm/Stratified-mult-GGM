@@ -347,14 +347,51 @@ $k=1$ & $k=2$ & $k=3$
 \begin{frame}
 \frametitle{Preliminaries}
 
+\visible<2->{
 \begin{itemize}
 \item $\cY = \{ \bfY^1, \ldots, \bfY^K\}, \cX = \{ \bfX^1, \ldots, \bfX^K\}$;
 
 \item ${\colg \Omega_x = \{ \Omega_x^1, \ldots, \Omega_x^K \}}, {\colb \Omega_y = \{ \Omega_y^1, \ldots, \Omega_y^K \}},
 {\colr \cB = \{ \bfB^1, \ldots, \bfB^K \}}$;
 \end{itemize}
+}
 
-\visible<2>{
+\visible<3->{
+\begin{block}{}
+{\bf Linear model}: $\bfy = \bfX \bfbeta + \bfepsilon$, with $\bfX \in \BR^{n \times p}, \bfbeta \in \BR^p, \bfepsilon \sim \cN({\bf 0}, \sigma^2 \bfI)$ with $\sigma >0$;
+
+\vspace{1em}
+{\bf Lasso:} $\widehat \bfbeta = \argmin_\bfbeta \| \bfy - \bfX \bfbeta \|^2/n + \lambda \| \bfbeta \|_1$;
+
+\visible<4>{
+\vspace{1em}
+{\bf Group lasso:}
+%
+$$
+\widehat \bfbeta = \argmin_\bfbeta \frac{1}{n} \| \bfy - \bfX \bfbeta \|^2 + \lambda \sum_{g \in \cG} \| \bfbeta_g \|
+$$
+%
+where $\cG$ is a {\it partition} of $\{1, 2, \ldots, p \}$.
+
+\vspace{1em}
+{\colb Example: $p=7, \cG = \{ [1,2], [3,4],[5,6,7] \}$. Then
+%
+$$
+\sum_{g \in \cG} \| \bfbeta_g \| = \sqrt{ \beta_1^2 + \beta_2^2} +
+\sqrt{ \beta_3^2 + \beta_4^2} +
+\sqrt{ \beta_5^2 + \beta_6^2 + \beta_7^2}
+$$
+}}
+
+\end{block}
+}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}
+\frametitle{Group structure within networks}
 \vspace{1em}
 Group structures in X-network is denoted by $\cG_x = \{\cG_{x,ii'}: i \neq i', 1 \leq i,i' \leq p \}$. Each $\cG_{x,ii'}$ is a partition of $\{ 1, \ldots, K\}$ denoting grouping over $k$ for the $(i,i')^{\Th}$ elements of the $X$-precision matrices.
 
@@ -366,12 +403,12 @@ Group structures in X-network is denoted by $\cG_x = \{\cG_{x,ii'}: i \neq i', 1
 }
 
 Define $\cG_y = \{\cG_{y,jj'}: j \neq j', 1 \leq j,j' \leq q \} $ similarly.
-}
+
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Preliminaries}
+\frametitle{Group structure between networks}
 
 Group structures in $\cB$ is denoted by $\cH$, with each $h \in \cH$ being a collection of 3-tuples $(h_i,h_j,h_k)$ so that $1 \leq h_i \leq p, 1 \leq h_j \leq q, 1 \leq h_k \leq K$.
 
@@ -497,6 +534,8 @@ The estimation procedure gives one suitable set of estimates.
 \begin{tabular}{ccc}%% break
 \visible<3->{$ \bfY_j^k$} & \visible<4->{$- \quad \bfE_{-j}^k {\colb  \bftheta_j^k}$} & \visible<5>{$- \quad \bfX^k {\colr \bfB_j^k }$}
 \end{tabular}
+
+\visible<4->{$$ \bfE^k = \bfY^k - \bfX^k \bfB^k $$}
 \end{center}
 
 \end{frame}
@@ -694,7 +733,7 @@ with $\psi, \BQ_0$ being constants, $| g_{\max} |$ the maximum group size in $\T
 \begin{block}{Debiased estimators (Zhang and Zhang, 2014)}
 \begin{itemize}
 \visible<2->{
-\item Lasso: $\widehat \bfbeta = \argmin_\bfbeta \| \bfy - \bfX \bfbeta \|^2 + \| \bfbeta \|_1$;
+\item Lasso: $\widehat \bfbeta = \argmin_\bfbeta \| \bfy - \bfX \bfbeta \|^2/n + \lambda \| \bfbeta \|_1$;
 }
 
 \visible<3->{
@@ -1060,20 +1099,25 @@ Table of outputs for hypothesis testing.
 \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Future work}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{frame}
 \frametitle{Graphical models with non-linear interactions}
 
 \begin{minipage}{.49\textwidth}
 %
+\visible<2->{
 \begin{itemize}
-\visible<2->{\item Take the multi-layer structure as a {\colbit generative model}.}
+\item Take the multi-layer structure as a {\colbit generative model}.
 \vspace{1em}
 
-\visible<3->{\item Only the top layer is observed, other layers are composed of latent variables.}
-
+\item Only the top layer is observed, other layers are composed of latent variables.
 \end{itemize}
+}
 
-\visible<4->{
+\visible<3->{
 \begin{align*}
 & \BL_1 = (L_{11}, \ldots, L_{1r})^T \sim \cN_r (0, \Sigma_1);\\
 & \BL_2 = \phi( \BL_1^T \bfB) + \BE,\\
@@ -1089,7 +1133,8 @@ where $\phi$ is a known activation function.
 %
 \begin{minipage}{.49\textwidth}
 \centering
-\includegraphics[height=.7\textheight]{latentmultilayer}
+\visible<2->{
+\includegraphics[height=.7\textheight]{latentmultilayer}}
 \end{minipage}
 \end{frame}
 
@@ -1119,11 +1164,12 @@ Incorporate {\colbit sparse} estimation of the model parameters to model non-lin
 \includegraphics[width=.7\textwidth]{latentinteractions}
 \end{center}
 
+\visible<2>{
 \begin{itemize}
 \item Monte-Carlo Sequential EM, backpropagation
 \item Theoretical properties of estimates
 \end{itemize}
-
+}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
