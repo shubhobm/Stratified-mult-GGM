@@ -206,11 +206,11 @@ Sas, K.~M., Lin, J., Rajendiran, T.~M., et~al. (2018).
   tissues in a diabetic mouse model.
 \newblock {\em J. Lipid Res.}, 59(2):173--183.
 
-\bibitem[Stucky and {van de Geer}, 2017]{StuckyVandeGeer17}
-Stucky, B. and {van de Geer}, S. (2017).
-\newblock {Asymptotic Confidence Regions for Highdimensional Structured
+\bibitem[Stucky and {van de Geer}, 2018]{StuckyVandeGeer17}
+Stucky, B. and {van de Geer}, S. (2018).
+\newblock {Asymptotic Confidence Regions for High-Dimensional Structured
   Sparsity}.
-\newblock \url{https://arxiv.org/abs/1706.09231}.
+\newblock {\em IEEE Trans. Signal Process.}, 66(8):2178--2190.
 
 \bibitem[Taddy, 2017]{Taddy17}
 Taddy, M. (2017).
