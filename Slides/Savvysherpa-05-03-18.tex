@@ -88,10 +88,10 @@ Statistical Inference with Multi-layered Graphical Models}
 \author[Majumdar and Michailidis]{Subhabrata Majumdar\\
 {\footnotesize Joint work with George Michailidis\\
 University of Florida Informatics Institute}}
-\institute[]{AT\&T Labs - Research, Bedminster, NJ\\
-April 5, 2018}
+\institute[]{Savvysherpa, Inc., Minneapolis, MN\\
+May 3, 2018}
 \date{}
-\date[April 5, 2018]
+\date[May 3, 2018]
 %\vspace{.5cm}
 %\includegraphics[height=.5cm]{UMNlogo}}
 %\date [December 28, 2017]
@@ -112,40 +112,17 @@ April 5, 2018}
 \frame{ \titlepage}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{My research}
-
-\begin{outline}
-\1 Obtained PhD from Univ. of Minnesota in May 2017. Currently doing postdoc in University of Florida Informatics Institute under Prof. George Michailidis.
-
-\vspace{1em}
-\1 Dissertation topic was on using data depth in feature selection and dimension reduction.
-\visible<2->{\2 {\it Worked on diverse data applications: climate data, fMRI, genomics etc.}}
-
-\vspace{1em}
-\1 Current research: Statistical machine learning- complex graphical models,
-\visible<3->{\2 {\it Motivation: modelling multiple Omics data.}}
-
-\vspace{1em}
-\1 Future plans
-\visible<4->{\2 {\colbit Extending methods to spatial models;}}
-\visible<5->{\2 {\it {\colb Uncertainty quantification in complex high-dimensional systems}: causal models, tensor models.}}
-\visible<6->{\2 {\colbit The statistics of artificial intelligence: theory and interpretability.}}
-\end{outline}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
 \frametitle{Summary of the talk}
 \begin{itemize}
-\item Estimation of graphs from high-dimensional data is of importance for biological processes, financial systems or social interactions;
+\item Estimation of graphs from high-dimensional data is of importance for {\colbit biological processes, financial systems or social interactions};
 
 \vspace{1em}
-\item Nodes in such data can have a natural hierarchical structure, e.g. Genes affecting proteins affecting metabolites, or macroeconomic indicators like interest rates or price indices affecting stock prices;
+\item Nodes in such data can have a {\colbit natural hierarchical structure}, e.g. Genes affecting proteins affecting metabolites, or macroeconomic indicators like interest rates or price indices affecting stock prices;
 
 \vspace{1em}
-\item There are within layer and between-layer connections in such structures.
+\item There are {\colbit within layer and between-layer connections} in such structures.
 \end{itemize}
 \end{frame}
 
@@ -154,12 +131,25 @@ April 5, 2018}
 
 \begin{figure}
 \centering
-\includegraphics[height=.9\textheight]{data_integration_schematic}
+\includegraphics[width=.9\textwidth]{multi-omics2}
 \end{figure}
 
-{\center
-{\scriptsize Source: {\colr \cite{GligPrzulj15}}}
-}
+%{\center
+%{\scriptsize Source: {\colr \cite{GligPrzulj15}}}
+%}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+\begin{figure}
+\centering
+\includegraphics[height=.9\textheight]{multi-omics}
+\end{figure}
+
+%{\center
+%{\scriptsize Source: {\colr \cite{GligPrzulj15}}}
+%}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -171,10 +161,55 @@ These connections can be different inside different organs, experimental conditi
 \begin{center}
 \begin{scriptsize}
 \begin{tabular}{ccc}
-\includegraphics[width=.3\textwidth,angle=-90]{data_integration_schematic}\vspace{.5em}
-& \includegraphics[width=.3\textwidth,angle=-90]{data_integration_schematic}\vspace{.5em}
-& \includegraphics[width=.3\textwidth,angle=-90]{data_integration_schematic}\vspace{.5em}\\
+\includegraphics[width=.2\textwidth]{multi-omics1}
+\vspace{.5em}
+& \includegraphics[width=.2\textwidth]{multi-omics1}
+\vspace{.5em}
+& \includegraphics[width=.2\textwidth]{multi-omics1}
+\vspace{.5em}\\
 Liver & Kidney & Lungs\\
+\includegraphics[width=.2\textwidth]{liver}
+\vspace{.5em}
+& \includegraphics[width=.2\textwidth]{kidney}
+\vspace{.5em}
+& \includegraphics[width=.2\textwidth]{lungs}
+\vspace{.5em}
+\end{tabular}
+\end{scriptsize}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Connection to precision medicine}
+
+\begin{figure}
+\includegraphics[width=.9\textwidth]{precision-medicine}
+\end{figure}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Connection to precision medicine}
+The connections between layers can be different for different patient profiles.
+
+\begin{center}
+\begin{scriptsize}
+\begin{tabular}{ccc}
+\includegraphics[width=.2\textwidth]{multi-omics1}
+\vspace{.5em}
+& \includegraphics[width=.2\textwidth]{multi-omics1}
+\vspace{.5em}
+& \includegraphics[width=.2\textwidth]{multi-omics1}
+\vspace{.5em}\\
+Treatment 1 & Treatment 2 & Treatment 3\\
+\includegraphics[width=.2\textwidth]{profile1}
+\vspace{.5em}
+& \includegraphics[width=.2\textwidth]{profile2}
+\vspace{.5em}
+& \includegraphics[width=.2\textwidth]{profile3}
+\vspace{.5em}
 \end{tabular}
 \end{scriptsize}
 \end{center}
@@ -325,19 +360,16 @@ $k=1$ & $k=2$ & $k=3$
 \onslide<4->{
 \2 Incorporate structural informartion using group sparsity,}
 \onslide<5->{
-\2 Propose alternating block algorithm to compute solutions,}
-\onslide<6->{
-\2 Derive convergence properties of solutions.}
+\2 Propose algorithm to compute solutions, derive their convergence properties.}
 
 \vspace{1em}
-\onslide<7->{
+\onslide<6->{
 \1 Devise a full pairwise testing procedure for rows of $\bfB^k$;}
-\onslide<8->{\2 Propose a debiasing method for estimates of individual rows of $\bfB^k$, say $\bfb_i^k, i \in \{ 1, 2, \ldots, p \}$ and derive its asymptotic distribution;}
 
-\onslide<9->{
+\onslide<7->{
 \2 For $K=2$, propose a test for row-wise differences $\bfb_i^1 - \bfb_i^2$;}
 
-\onslide<10->{
+\onslide<8->{
 \2 Perform multiple testing for elementwise differences $b_{ij}^1 = b_{ij}^2, j = 1, 2, \ldots, q$ within a row.}
 
 \vspace{1em}
@@ -347,7 +379,7 @@ $k=1$ & $k=2$ & $k=3$
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Model formulation}
+\section{Preliminaries}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
@@ -393,82 +425,6 @@ $$
 }
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-\begin{frame}
-\frametitle{Group structure within networks}
-\vspace{1em}
-Group structures in X-network is denoted by $\cG_x = \{\cG_{x,ii'}: i \neq i', 1 \leq i,i' \leq p \}$. Each $\cG_{x,ii'}$ is a partition of $\{ 1, \ldots, K\}$ denoting grouping over $k$ for the $(i,i')^{\Th}$ elements of the $X$-precision matrices.
-
-Define $\cG_y = \{\cG_{y,jj'}: j \neq j', 1 \leq j,j' \leq q \} $ similarly.
-
-\visible<2>{
-\begin{example}
-{\center
-\includegraphics[width=.23\textwidth]{adj1}
-\includegraphics[width=.23\textwidth]{adj2}
-\includegraphics[width=.23\textwidth]{adj3}
-\includegraphics[width=.23\textwidth]{adj4}
-}
-
-{\colb For $i,i'$ in the upper block, $\cG_{x,ii'} = \{[1,2],[3,4]\}$, otherwise it is $\{[1,3],[2,4]\}$.}
-\end{example}
-}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Group structure between networks}
-
-Group structures in $\cB$ is denoted by $\cH$, with each $h \in \cH$ being a collection of 3-tuples $(h_i,h_j,h_k)$ so that $1 \leq h_i \leq p, 1 \leq h_j \leq q, 1 \leq h_k \leq K$.
-
-\vspace{2em}
-\centering
-\begin{example}
-\centering
-\includegraphics[width=.5\textwidth]{layersB}
-\end{example}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}
-\frametitle{Estimation of $\Omega_x$}
-
-\begin{enumerate} %% break
-\onslide<2->{
-\item {\colbit Estimate neighborhood coefficients} of each X-node, say $\zeta_i = (\bfzeta_i^1, \ldots, \bfzeta_i^K)$ using the group sparsity information $\cG_x$:
-%
-$$
-{\colg \widehat \zeta_i} = \argmin_{\zeta_i} \left\{ \sum_{k=1}^K \frac{1}{n_k} \| \bfX_i^k - \bfX_{-i}^k {\colg \bfzeta_i^k} \|^2 + {\colg \nu_n \sum_{i' \neq i, g \in \cG_{x,ii'}} \| \bfzeta_{ii'}^{[g]} \|} \right\}
-$$
-}
-
-\onslide<3->{
-\item {\colbit Recover precision matrices} as MLE over the restricted supports: %% break
-%
-\begin{align*}
-\widehat E_x^k &= \{(i,i'): 1 \leq i < i' \leq p, \widehat \zeta_{ii'}^k \neq 0 \text{ OR } \widehat \zeta_{i'i}^k \neq 0 \},\\
-\widehat \Omega_x^k &= \argmin_{\Omega_x^k \in \BS_+ (\widehat E_x^k)}
-\left\{ \Tr (\widehat \bfS_x^k \Omega_x^k ) - \log \det (\Omega_x^k) \right\}.
-\end{align*}
-}
-%
-\end{enumerate}
-
-\vspace{1em}
-
-\onslide<4>{
-\begin{center} %% break
-{\colb Joint Structural Estimation Method (JSEM)}
-
-\cite{MaMichailidis15}
-}
-\end{center}
-
-\end{frame}
-
 %\begin{itemize}
 %\item {\bf For single GGM}: Estimate neighboring edges for each node, then refit.
 %%
@@ -482,63 +438,48 @@ $$
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}
-\frametitle{Estimation strategy of $\cB, \Omega_y$}
-
-Estimate Y-layer precision matrices by first estimating neighborhood coefficients of each Y-node, say ${\colb \Theta_j = (\bftheta_j^1, \ldots, \bftheta_j^K)}$ and then refitting.
-
-\only<1-2>{
-\visible<2>{
-\begin{center}
-\includegraphics[height=.5\textheight]{BetaTheta0}
-\end{center}
-}}
-\only<3>{
-\begin{center}
-\includegraphics[height=.5\textheight]{BetaTheta1}
-\end{center}
-}
-\only<4>{
-\begin{center}
-\includegraphics[height=.5\textheight]{BetaTheta2}
-\end{center}
-}
-\only<5>{
-\begin{center}
-\includegraphics[height=.5\textheight]{BetaTheta3}
-\end{center}
-}
-
-\visible<5>{
-\vspace{1em}
-\begin{center}
-{\colubf Solution: Iterate!}
-\end{center}
-}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}
-\frametitle{A note on testing}
-
-Our testing methodology only requires {\it generic} estimates that satisfy the following convergence rates:
-%
-\begin{align*}
-{\colg \| \widehat \bfzeta^k - \bfzeta_0^k \|_1} & \leq O \left( \sqrt { \frac{\log p}{n}} \right)\\
-{\colr \| \widehat \bfB^k - \bfB^k_0 \|_1} & \leq O \left( \sqrt { \frac{\log (p q)}{n}} \right)\\
-{\colb \| \widehat \Omega_y^k - \Omega_{y0}^k \|_\infty} & \leq O \left( \sqrt { \frac{\log (pq)}{n}} \right)\\
-\end{align*}
-%
-
-The estimation procedure gives one suitable set of estimates.
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \section{Joint Multiple Multi-Level Estimation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{frame}
-\frametitle{The objective function}
+\frametitle{Estimation of X-network}
+
+\begin{enumerate} %% break
+\onslide<2->{
+\item {\colrbf Trick:} Take a node- figure out who its neighbors are. Repeat this for all nodes. This infers the full graph structure.
+}
+
+\onslide<3->{
+\item {\colbit Estimate neighborhood coefficients} of each X-node, say $\zeta_i = (\bfzeta_i^1, \ldots, \bfzeta_i^K)$ using the group information on the X-network:
+%
+$$
+{\colg \widehat \zeta_i} = \argmin_{\zeta_i} \left\{ \sum_{k=1}^K \frac{1}{n_k} \| \bfX_i^k - \bfX_{-i}^k {\colg \bfzeta_i^k} \|^2 + {\colg \nu_n P(\zeta)} \right\}
+$$
+}
+
+\onslide<4->{
+\item Non-zero supports of $\zeta_i, i = 1,...,p$ give a skeleton set for the corresponding graphs. {\colbit Recover precision matrices} as maximum likelihood estimates over these restricted skeleton sets.} %% break
+%
+\end{enumerate}
+
+\vspace{1em}
+
+\onslide<5>{
+\begin{center} %% break
+{\colb Joint Structural Estimation Method (JSEM)}
+
+\cite{MaMichailidis15}
+}
+\end{center}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Estimating XY and Y-networks: the objective function}
 
 \begin{center}
 \visible<2->{\includegraphics[width=.9\textwidth]{multitwolayer_j}}
@@ -572,9 +513,13 @@ $$
 
 $$
 \visible<2->{ + {\colr \lambda_n \sum_{h \in \cH} \| \bfB^{[h]} \|}}
-\visible<3>{ + {\colb \gamma_n \sum_{j' \neq j, g \in \cG_{jj'}} \| \bftheta_{jj'}^{[g]} \|}}
+\visible<3->{ + {\colb \gamma_n \sum_{j' \neq j, g \in \cG_{jj'}} \| \bftheta_{jj'}^{[g]} \|}}
 $$
-
+\visible<4>{
+\begin{center}
+(Ask me what they are later)
+\end{center}
+}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -636,14 +581,7 @@ $$
 }
 %% break
 \visible<3>{
-\item Recover Y-precision matrices as MLE over the restricted supports: %% break
-%
-\begin{align*}
-\widehat E_y^k &= \{(j,j'): 1 \leq j < j' \leq q, \widehat \theta_{jj'}^k \neq 0 \text{ OR } \widehat \theta_{j'j}^k \neq 0 \},\\
-\widehat \Omega_y^k &= \argmin_{\Omega_y^k \in \BS_+ (\widehat E_y^k)}
-\left\{ \Tr (\widehat \bfS_y^k \Omega_y^k ) - \log \det (\Omega_y^k) \right\}.
-\end{align*}
-%
+\item Recover Y-precision matrices as MLE over the Y-network skeleton sets
 }
 \end{enumerate}
 
@@ -742,6 +680,28 @@ with $\psi, \BQ_0$ being constants, $| g_{\max} |$ the maximum group size in $\T
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
+\frametitle{Motivation}
+
+\begin{itemize}
+\onslide<2->{
+\item Find out if an upper layer variable has a significant downstream effects, {\colb e.g. if a gene influences the activity of {\it any} protein.}
+\vspace{1em}
+}
+
+\onslide<3->{
+\item How does this downstream effect vary across different horizontal category, {\colb e.g. gene has downstream effect on patient profile 1 but not on profile 2.}
+\vspace{1em}
+}
+
+\onslide<4>{
+\item Which of the downstream effects are significant? How do they differ across subtypes? {\colb e.g. which exact proteins does the gene affect for each patient profile}
+}
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
 \frametitle{High-dimensional hypothesis testing}
 
 \begin{block}{Debiased estimators (Zhang and Zhang, 2014)}
@@ -787,163 +747,17 @@ The debiasing factor for the $j^{\Th}$ coefficient is obtained by taking residua
 %% break
 \onslide<3->{
 \vspace{1em}
-\item We assume $K = 2$, and propose an {\colb asymptotic test} for detecting differential effects of a variable in the upper layer, i.e. testing for the null hypothesis $H0 : \bfb^1_{0i} = \bfb^2_{0i}$,
+\item We assume $K = 2$, and propose an {\colb asymptotic test} for detecting differential effects of a variable in the upper layer, i.e. testing for the null hypothesis $H_0 : \bfb^1_{0i} = \bfb^2_{0i}$,
 }
 %% break
 \onslide<4>{
 \vspace{1em}
-\item We also propose {\colb pairwise simultaneous tests} across $j = 1, \ldots, q$ for detecting the elementwise differences $b_{0ij}^1 = b_{0ij}^2$.
+\item We also propose {\colb pairwise simultaneous tests} with False Discovery Rate (FDR) control across $j = 1, \ldots, q$ for detecting the elementwise differences $b_{0ij}^1 = b_{0ij}^2$.
 }
 \end{itemize}
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Debiasing estimates from a multi-layer model}
-
-\begin{itemize}
-\item We are interested in testing if the effect of variable $i$ in the X-data has any downstream effect. For this we use the $i^{\text{th}}$ rows of the estimates $\widehat \bfB^k$.
-\vspace{1em}
-
-\item We debias these row vectors using the neighborhood coefficients in the X-network computed previously using JSEM:
-%
-\begin{align*}
-\widehat \bfc_i^k = \widehat \bfb_i^k + \frac{1}{n t_i^k} \left( {\colg \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k} \right)^T
-(\bfY^k - \bfX^k \widehat \bfB^k )
-\end{align*}
-%
-for $k = 1,2$, where $t_i^k := ( {\colg \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k} )^T \bfX_{-i}^k/n$.
-\end{itemize}
-
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}
-\frametitle{Result}
-\onslide<2->{
-Assume we have `good enough' estimators:
-%
-\begin{align*}
-{\colg \| \widehat \bfzeta^k - \bfzeta_0^k \|_1} &= O \left( \sqrt { \frac{\log p}{n}} \right)\\
-{\colr \| \widehat \bfB^k - \bfB^k_0 \|_1} &= O \left( \sqrt{\frac{\log (pq)}{n}} \right)\\
-{\colb \left\| \widehat \Omega_y^k - \Omega_y^k \right\|_\infty} &= O \left( \sqrt { \frac{\log p q}{n}} \right)
-\end{align*}
-}
-%
-\onslide<3->{
-Define $\widehat s_i^k = \sqrt{\| {\colg \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k} \|^2/n}$, and $m_i^k = \sqrt n t_i^k / \widehat s_i^k$. and:
-%
-\begin{align*}
-{\colb \widehat \Omega_y} &= \diag(\widehat \Omega_y^1, \ldots, \widehat \Omega_y^K), \quad
-{\colg \bfM_i} = \diag(m_i^1, \ldots, m_i^K)\\
-{\colr \widehat \bfC_i} &= \ve(\widehat \bfc_i^1, \ldots, \widehat \bfc_i^K)^T, \quad
-{\colr \bfD_i} = \ve(\bfb_{0i}^1, \ldots, \bfb_{0i}^K)^T\\
-\end{align*}
-}
-%
-\onslide<4>{
-Then under mild conditions, for sample size satisfying 
-$\log p = o(n^{1/2}), \log q = o(n^{1/2})$ we have ${\colb \widehat \Omega_y^{1/2}} {\colg \bfM_i} {\colr (\widehat \bfC_i - \bfD_i)} \sim \cN_{Kq} ({\bf 0}, \bfI) + o_P(1).$
-}
-%
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}
-\frametitle{Result}
-Assume we have `good enough' estimators:
-%
-\begin{align*}
-{\colg \| \widehat \bfzeta^k - \bfzeta_0^k \|_1} &= O \left( \sqrt { \frac{\log p}{n}} \right)\\
-{\colr \| \widehat \bfB^k - \bfB^k_0 \|_1} &= O \left( \sqrt{\frac{\log (pq)}{n}} \right)\\
-{\colb \left\| \widehat \Omega_y^k - \Omega_y^k \right\|_\infty} &= O \left( \sqrt { \frac{\log p q}{n}} \right)
-\end{align*}
-%
-Define $\widehat s_i^k = \sqrt{\| {\colg \bfX_i^k - \bfX_{-i}^k \widehat \bfzeta_i^k} \|^2/n}$, and $m_i^k = \sqrt n t_i^k / \widehat s_i^k$. and:
-%
-\begin{align*}
-{\colb \widehat \Omega_y} &= \diag(\widehat \Omega_y^1, \ldots, \widehat \Omega_y^K), \quad
-{\colg \bfM_i} = \diag(m_i^1, \ldots, m_i^K)\\
-{\colr \widehat \bfC_i} &= \ve(\widehat \bfc_i^1, \ldots, \widehat \bfc_i^K)^T, \quad
-{\colr \bfD_i} = \ve(\bfb_{0i}^1, \ldots, \bfb_{0i}^K)^T\\
-\end{align*}
-
-%
-Then under mild conditions, for sample size satisfying 
-$\log p = o(n^{1/2}), \log q = o(n^{1/2})$ we have ${\colb \widehat \Omega_y^{1/2}} {\colg \bfM_i} {\colr (\widehat \bfC_i - \bfD_i)} \sim \cN_{Kq} ({\bf 0}, \bfI) + o_P(1).$
-%
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}
-\frametitle{Global test for $H_0: \bfb_{0 i}^1 = \bfb_{0 i}^2$ at level $\alpha, 0< \alpha< 1$}
-
-\begin{enumerate}
-\onslide<2->{
-\item Obtain the debiased estimators $\widehat \bfc_i^1, \widehat \bfc_i^2$;
-}
-\onslide<3->{
-\item Calculate the test statistic
-%
-$$
-D_i = ({\colr \widehat \bfc_i^1 - \widehat \bfc_i^2})^T
-\left( \frac{ {\colb \widehat \Sigma_y^1}}{{\colg (m_i^1)^2}} +
-\frac{{\colb \widehat \Sigma_y^2}}{{\colg (m_i^2)^2}} \right)^{-1} ({\colr \widehat \bfc_i^1 - \widehat \bfc_i^2})
-$$
-%
-where $\widehat \Sigma_y^k = (\widehat \Omega_y^k)^{-1}, k = 1,2$.
-}
-\onslide<4->{
-\item  Reject $H_0^i$ if $D_i \geq \chi^2_{q, 1-\alpha}$.
-}
-\end{enumerate}
-
-\vspace{1em}
-\onslide<5>{
-Besides controlling the type-I error at a specified level, the above testing procedure maintains rate optimal power, i.e. asymptotic power goes to 1 when $\| \bfb_{0i}^1 - \bfb_{0i}^2\| \geq O(n^{-1/2})$.
-}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Simultaneous tests for $H_0^{j}: b_{0 ij}^1 = b_{0 ij}^2$ at level $\beta, 0< \beta < 1$}
-
-\begin{enumerate}
-\onslide<2->{
-\item Calculate the pairwise test statistics for $j = 1, \ldots, q$:
-$$
-d_{ij} = \frac{{\colr \widehat c_{ij}^1 - \widehat c_{ij}^2}}{\sqrt{{\colb \hat \sigma_{jj}^1}/ {\colg (m_i^1)^2} + {\colb \hat \sigma_{jj}^2}/ {\colg (m_i^2)^2}}}
-$$
-}
-\onslide<3->{
-\item Obtain the threshold
-%
-$$
-\hat \tau = \inf \left\{\tau \in \BR: 1 - \Phi(\tau) \leq \frac{\beta}{2 q}
-\max \left( \sum_{j \in \cI_q} \BI( |d_{ij}| \geq \tau), 1 \right) \right\}
-$$
-%
-}
-\onslide<4>{
-\item For $j = 1, \ldots, q$, reject $H_0^{ij}$ if $|d_{ij}| \geq \hat \tau$.
-}
-\end{enumerate} 
-\end{frame}
-
-\begin{frame}
-\frametitle{Within-row thresholding in $\widehat \bfB^k$}
-
-Based on the FDR control procedure, we can perform {\it within-row thresholding} in the matrices $\widehat \bfB^k$ to tackle group misspecification.
-%
-\begin{align*}
-& \hat \tau_i^k := \inf \left\{\tau \in \BR: 1 - \Phi(\tau) \leq \frac{\beta}{2 q}
-\max \left( \sum_{j \in \cI_q} \BI( | \sqrt{\hat \omega_{jj}^k} m_i^k \hat c_{ij}^k | \geq \tau), 1 \right) \right\} \notag\\
-& \hat b_{ij}^{k, \text{thr}} =  \hat b_{ij}^k \BI \left(
-|\sqrt{\hat \omega_{jj}^k} m_i^k \hat c_{ij}^k | \geq \hat \tau_i^k \right)
-\end{align*}
-%
-Even without group misspecification, this helps identify directed edges between layers that have high nonzero values.
-\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Numerical experiments}
@@ -1123,6 +937,9 @@ Table of outputs for hypothesis testing.
 \frametitle{Future work}
 
 \begin{itemize}
+\item {\colbbf Application to multi-omics data};
+\vspace{1em}
+
 \item Beyond pairwise testing: global and simultaneous tests for $K > 2$;
 
 \vspace{1em}
@@ -1206,7 +1023,8 @@ Incorporate {\colbit sparse} estimation of the model parameters to model non-lin
 
 \visible<2>{
 \begin{itemize}
-\item Monte-Carlo Sequential EM, backpropagation
+\item Monte-Carlo EM to maximize a variational lower bound of the likelihood,
+
 \item Theoretical properties of estimates
 \end{itemize}
 }

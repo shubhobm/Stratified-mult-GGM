@@ -1,0 +1,12 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: Savvysherpa-05-03-18.aux
+The style file: apalike.bst
+Illegal, another \bibstyle command---line 171 of file Savvysherpa-05-03-18.aux
+ : \bibstyle
+ :          {apalike}
+I'm skipping whatever remains of this command
+Illegal, another \bibdata command---line 172 of file Savvysherpa-05-03-18.aux
+ : \bibdata
+ :         {IISAbib}
+I'm skipping whatever remains of this command
+Database file #1: IISAbib.bib
+(There were 2 error messages)
