@@ -1,0 +1,295 @@
+\begin{thebibliography}{47}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Atzler et~al.(2014)Atzler, Schwedhelm, and
+  Zeller]{atzler2014integrated}
+D.~Atzler, E.~Schwedhelm, and T.~Zeller.
+\newblock Integrated genomics and metabolomics in nephrology.
+\newblock \emph{Nephrol. Dial. Transplant.}, 29\penalty0 (8):\penalty0
+  1467--1474, 2014.
+
+\bibitem[Basu and Michailidis(2015)]{BasuMichailidis15}
+S.~Basu and G.~Michailidis.
+\newblock {Regularized estimation in sparse high-dimensional time series
+  models}.
+\newblock \emph{Ann. Statist.}, 43\penalty0 (4):\penalty0 1535--1567, 2015.
+
+\bibitem[Belilovsky et~al.(2016)Belilovsky, Varoquaux, and
+  Blaschko]{BelilovskyEtal16}
+E.~Belilovsky, G.~Varoquaux, and M.~Blaschko.
+\newblock {Testing for differences in Gaussian graphical models: Applications
+  to brain connectivity}.
+\newblock In \emph{NIPS Proceedings}, pages 595--603, 2016.
+
+\bibitem[Bellman(1968)]{Bellman68}
+R.~Bellman.
+\newblock {Some inequalities for the square root of a positive definite
+  matrix}.
+\newblock \emph{Linear Algebra Appl.}, 1\penalty0 (3):\penalty0 321--324, 1968.
+
+\bibitem[Bickel and Levina(2008)]{BickelLevina08}
+P.~J. Bickel and E.~Levina.
+\newblock Covariance regularization by thresholding.
+\newblock \emph{Ann. Statist.}, 36\penalty0 (6):\penalty0 2577--2604, 2008.
+
+\bibitem[Bickel et~al.(2009)Bickel, Ritov, and Tsybakov]{BickelRitovTsybakov09}
+P.~J. Bickel, Y.~Ritov, and A.~B. Tsybakov.
+\newblock {Simultaneous analysis of Lasso and Dantzig selector}.
+\newblock \emph{Ann. Statist.}, 37\penalty0 (4):\penalty0 1705--1732, 2009.
+
+\bibitem[{B\"{u}hlmann} and {van de Geer}(2011)]{BuhlmannvandeGeer11}
+P.~{B\"{u}hlmann} and S.~{van de Geer}.
+\newblock \emph{{Statistics for High-dimensional Data: Methods, Theory and
+  Applications}}.
+\newblock Springer, 2011.
+
+\bibitem[Cai and Liu(2016)]{CaiLiu16}
+T.~T. Cai and W.~Liu.
+\newblock {Large-Scale Multiple Testing of Correlations}.
+\newblock \emph{J. Amer. Stat. Assoc.}, 111\penalty0 (513):\penalty0 229--240,
+  2016.
+
+\bibitem[Cai et~al.(2012{\natexlab{a}})Cai, Li, Liu, and Xie]{CaiEtal12}
+T.~T. Cai, H.~Li, W.~Liu, and J.~Xie.
+\newblock {Covariate-adjusted precision matrix estimation with an application
+  in genetical genomics}.
+\newblock \emph{Biometrika}, 100\penalty0 (1):\penalty0 139--156,
+  2012{\natexlab{a}}.
+
+\bibitem[Cai et~al.(2012{\natexlab{b}})Cai, Liu, and Luo]{CaiLiuLuo12}
+T.~T. Cai, W.~Liu, and X.~Luo.
+\newblock {A Constrained $\ell_1$ Minimization Approach to Sparse Precision
+  Matrix Estimation}.
+\newblock \emph{J. Amer. Statist. Assoc.}, 106\penalty0 (494):\penalty0
+  594--607, 2012{\natexlab{b}}.
+
+\bibitem[Danaher et~al.(2014)Danaher, Wang, and Witten]{DanaherEtal14}
+P.~Danaher, P.~Wang, and D.~M. Witten.
+\newblock {The joint graphical lasso for inverse covariance estimation across
+  multiple classes}.
+\newblock \emph{J. R. Statist. Soc. B}, 76\penalty0 (2):\penalty0 373--397,
+  2014.
+
+\bibitem[{Gligorijevi\'{c}} and {Pr\v{z}ulj}(2015)]{GligPrzulj15}
+V.~{Gligorijevi\'{c}} and N.~{Pr\v{z}ulj}.
+\newblock Methods for biological data integration: perspectives and challenges.
+\newblock \emph{J. R. Soc. Interface}, 12\penalty0 (112):\penalty0 20150571,
+  2015.
+
+\bibitem[Gomez-Cabrero et~al.(2014)Gomez-Cabrero, Abugessaisa, Maier,
+  et~al.]{GomezCabreroEtal14}
+D.~Gomez-Cabrero, I.~Abugessaisa, D.~Maier, et~al.
+\newblock {Data integration in the era of omics: current and future
+  challenges}.
+\newblock \emph{BMC Syst. Biol.}, 8\penalty0 (Suppl. 2):\penalty0 l1, 2014.
+
+\bibitem[Guo et~al.(2011)Guo, Levina, Michailidis, and Zhu]{GuoEtal11}
+J.~Guo, E.~Levina, G.~Michailidis, and J.~Zhu.
+\newblock Joint estimation of multiple graphical models.
+\newblock \emph{Biometrika}, 98\penalty0 (1):\penalty0 1--15, 2011.
+
+\bibitem[Javanmard and Montanari(2014)]{JavanmardMontanari14}
+A.~Javanmard and A.~Montanari.
+\newblock Confidence intervals and hypothesis testing for high-dimensional
+  regression.
+\newblock \emph{J. Mach. Learn. Res.}, 15\penalty0 (1):\penalty0 2869--2909,
+  2014.
+
+\bibitem[Javanmard and Montanari(2018+)]{JavanmardMontanari18}
+A.~Javanmard and A.~Montanari.
+\newblock {De-biasing the Lasso: Optimal Sample Size for Gaussian Designs}.
+\newblock \emph{Ann. Statist.}, To appear, 2018+.
+\newblock \url{https://arxiv.org/abs/1508.02757}.
+
+\bibitem[Joyce and Palsson(2006)]{JoycePalsson06}
+A.~R. Joyce and B.~Palsson.
+\newblock { The model organism as a system: integrating {\it omics} data sets}.
+\newblock \emph{Nat. Rev. Mol. Cell Biol.}, 7:\penalty0 198--210, 2006.
+
+\bibitem[Kaushik et~al.(2016)Kaushik, Shojaie, Panzitt,
+  et~al.]{kaushik2016inhibition}
+A.~K. Kaushik, A.~Shojaie, K.~Panzitt, et~al.
+\newblock Inhibition of the hexosamine biosynthetic pathway promotes
+  castration-resistant prostate cancer.
+\newblock \emph{Nat. Commun.}, 7:\penalty0 11612, 2016.
+
+\bibitem[Kling et~al.(2015)Kling, Johansson, Sanchez, et~al.]{KlingEtal15}
+T.~Kling, P.~Johansson, J.~Sanchez, et~al.
+\newblock {Efficient exploration of pan-cancer networks by generalized
+  covariance selection and interactive web content}.
+\newblock \emph{Nucl. Acid Res.}, 43\penalty0 (15):\penalty0 e98, 2015.
+
+\bibitem[Lee et~al.(2016)Lee, Kee, Min, et~al.]{lee2016integrated}
+J.~Lee, H.~J. Kee, S.~Min, et~al.
+\newblock {Integrated omics-analysis reveals Wnt-mediated NAD+ metabolic
+  reprogramming in cancer stem-like cells}.
+\newblock \emph{Oncotarget}, 26\penalty0 (7(30)):\penalty0 48562--48576, 2016.
+
+\bibitem[Lee and Liu(2012)]{LeeLiu12}
+W.~Lee and Y.~Liu.
+\newblock {Simultaneous multiple response regression and inverse covariance
+  matrix estimation via penalized Gaussian maximum likelihood}.
+\newblock \emph{J. Mult. Anal.}, 111:\penalty0 241--255, 2012.
+
+\bibitem[Li et~al.(2015)Li, Pouladi, Achour, et~al.]{LiEtal15}
+H.~Li, N.~Pouladi, I.~Achour, et~al.
+\newblock {eQTL networks unveil enriched mRNA master integrators downstream of
+  complex disease-associated SNPs}.
+\newblock \emph{J. Biomed. Inform.}, 58:\penalty0 226--234, 2015.
+
+\bibitem[Lin et~al.(2016{\natexlab{a}})Lin, Basu, Banerjee, and
+  Michailidis]{LinEtal16}
+J.~Lin, S.~Basu, M.~Banerjee, and G.~Michailidis.
+\newblock {Penalized Maximum Likelihood Estimation of Multi-layered Gaussian
+  Graphical Models}.
+\newblock \emph{J. Mach. Learn. Res.}, 17:\penalty0 5097--5147,
+  2016{\natexlab{a}}.
+
+\bibitem[Lin et~al.(2016{\natexlab{b}})Lin, Drton, and
+  Shojaie]{LinDrtonShojaie16}
+L.~Lin, M.~Drton, and A.~Shojaie.
+\newblock {Estimation of high-dimensional graphical models using regularized
+  score matching}.
+\newblock \emph{Electron. J. Stat.}, 10:\penalty0 806--854, 2016{\natexlab{b}}.
+
+\bibitem[Liu et~al.(2009)Liu, Lafferty, and Wasserman]{LiuLaffertyWasserman09}
+H.~Liu, J.~Lafferty, and L.~Wasserman.
+\newblock {The Nonparanormal: Semiparametric Estimation of High Dimensional
+  Undirected Graphs}.
+\newblock \emph{J. Mach. Learn. Res.}, 10:\penalty0 2295--2328, 2009.
+
+\bibitem[Liu(2017)]{Liu17}
+W.~Liu.
+\newblock {Structural similarity and difference testing on multiple sparse
+  Gaussian graphical models}.
+\newblock \emph{Ann. Statist.}, 45\penalty0 (6):\penalty0 2680--2707, 2017.
+
+\bibitem[Liu and Shao(2014)]{LiuShao14}
+W.~Liu and Q.-M. Shao.
+\newblock {Phase transition and regularized bootstrap in large-scale $t$-tests
+  with false discovery rate control}.
+\newblock \emph{Ann. Statist.}, 42\penalty0 (5):\penalty0 2003--2025, 2014.
+
+\bibitem[Loh and Wainwright(2012)]{LohWainwright12}
+P.-L. Loh and M.~J. Wainwright.
+\newblock {High-dimensional regression with noisy and missing data: Provable
+  guarantees with nonconvexity}.
+\newblock \emph{Ann. Statist.}, 40\penalty0 (3):\penalty0 1637--1664, 2012.
+
+\bibitem[Ma and Michailidis(2016)]{MaMichailidis15}
+J.~Ma and G.~Michailidis.
+\newblock {Joint Structural Estimation of Multiple Graphical Models}.
+\newblock \emph{J. Mach. Learn. Res.}, 17:\penalty0 5777--5824, 2016.
+
+\bibitem[Majumdar and Chatterjee(2018)]{MajumdarChatterjeeStat}
+S.~Majumdar and S.~Chatterjee.
+\newblock {Non-convex penalized multitask regression using data depth-based
+  penalties}.
+\newblock \emph{Stat}, 7:\penalty0 e174, 2018.
+
+\bibitem[Mao et~al.(2017)Mao, Kao, Chen, et~al.]{MaoEtal17}
+Y.~Mao, {S.-W.} Kao, L.~Chen, et~al.
+\newblock {The essential and downstream common proteins of amyotrophic lateral
+  sclerosis: A protein-protein interaction network analysis}.
+\newblock \emph{PLoS One}, 12\penalty0 (3):\penalty0 e0172246, 2017.
+
+\bibitem[Meinshausen and {B\"{u}hlmann}(2006)]{MeisenBuhlmann06}
+N.~Meinshausen and P.~{B\"{u}hlmann}.
+\newblock High dimensional graphs and variable selection with the ¨ lasso.
+\newblock \emph{Ann. Statist.}, 34\penalty0 (3):\penalty0 1436--1462, 2006.
+
+\bibitem[Mitra and Zhang(2016)]{MitraZhang16}
+R.~Mitra and C.-H. Zhang.
+\newblock The benefit of group sparsity in group inference with de-biased
+  scaled group lasso.
+\newblock \emph{Electron. J. Stat.}, 10:\penalty0 1829--1873, 2016.
+
+\bibitem[Obozinski et~al.(2011)Obozinski, Wainwright, and
+  Jordan]{ObozinskiEtal11}
+G.~Obozinski, M.~J. Wainwright, and M.~I. Jordan.
+\newblock {Support Union Recovery in High-dimensional Multivariate Regression}.
+\newblock \emph{Ann. Statist.}, 39:\penalty0 1--47, 2011.
+
+\bibitem[Ravikumar et~al.(2011)Ravikumar, Wainwright, Raskutti, and
+  Yu]{RavikumarEtal11}
+P.~Ravikumar, M.~J. Wainwright, G.~Raskutti, and B.~Yu.
+\newblock {High-dimensional covariance estimation by minimizing
+  $\ell_1$-penalized log-determinant divergence}.
+\newblock \emph{Electron. J. Stat.}, 5:\penalty0 935--980, 2011.
+
+\bibitem[Sas et~al.(2018)Sas, Lin, Rajendiran, et~al.]{sas2018shared}
+K.~M. Sas, J.~Lin, T.~M. Rajendiran, et~al.
+\newblock Shared and distinct lipid-lipid interactions in plasma and affected
+  tissues in a diabetic mouse model.
+\newblock \emph{J. Lipid Res.}, 59\penalty0 (2):\penalty0 173--183, 2018.
+
+\bibitem[Stucky and {van de Geer}(2017)]{StuckyVandeGeer17}
+B.~Stucky and S.~{van de Geer}.
+\newblock {Asymptotic Confidence Regions for Highdimensional Structured
+  Sparsity}.
+\newblock \url{https://arxiv.org/abs/1706.09231}, 2017.
+
+\bibitem[Taddy(2017)]{Taddy17}
+M.~Taddy.
+\newblock {One-Step Estimator Paths for Concave Regularization}.
+\newblock \emph{J. Comp. Graph. Stat.}, 26\penalty0 (3):\penalty0 525--536,
+  2017.
+
+\bibitem[Tomczak et~al.(2015)Tomczak, {Czerwi\'{n}ska}, and
+  Wiznerowicz]{Tomczak15}
+K.~Tomczak, P.~{Czerwi\'{n}ska}, and M.~Wiznerowicz.
+\newblock {The Cancer Genome Atlas (TCGA): An immeasurable source of
+  knowledge}.
+\newblock \emph{Contemp. Oncol.}, 19:\penalty0 A68--A77, 2015.
+
+\bibitem[{van de Geer} and {B\"{u}hlmann}(2009)]{vandeGeerBuhlmann09}
+S.~{van de Geer} and P.~{B\"{u}hlmann}.
+\newblock {On the conditions used to prove oracle results for the Lasso}.
+\newblock \emph{Electron. J. Stat.}, 3:\penalty0 1360--1392, 2009.
+
+\bibitem[{van de Geer} et~al.(2014){van de Geer}, {B\"{u}hlmann}, Ritov, and
+  Dezeure]{vanDeGeerEtal14}
+S.~{van de Geer}, P.~{B\"{u}hlmann}, Y.~Ritov, and R.~Dezeure.
+\newblock {On Asymptotically Optimal Confidence Regions and Tests for
+  High-Dimensional Models}.
+\newblock \emph{Ann. Statist.}, 42:\penalty0 1166--1202, 2014.
+
+\bibitem[Varah(1975)]{Varah75}
+J.~M. Varah.
+\newblock A lower bound for the smallest singular value of a matrix.
+\newblock \emph{Linear Algebra Appl.}, 11:\penalty0 3--5, 1975.
+
+\bibitem[Xie et~al.(2016)Xie, Liu, and Valdar]{XieLiuValdar16}
+Y.~Xie, Y.~Liu, and W.~Valdar.
+\newblock {Joint estimation of multiple dependent Gaussian graphical models
+  with applications to mouse genomics}.
+\newblock \emph{Biometrika}, 103\penalty0 (3):\penalty0 493--511, 2016.
+
+\bibitem[Yuan et~al.(2014)Yuan, Xia, Bell, et~al.]{yuan2014integrated}
+W.~Yuan, Y.~Xia, C.~G. Bell, et~al.
+\newblock An integrated epigenomic analysis for type 2 diabetes susceptibility
+  loci in monozygotic twins.
+\newblock \emph{Nat. Commun.}, 5\penalty0 (5):\penalty0 5719, 2014.
+
+\bibitem[Zhang and Zhang(2014)]{ZhangZhang14}
+C.-H. Zhang and S.~S. Zhang.
+\newblock {Confidence Intervals for Low Dimensional Parameters in High
+  Dimensional Linear Models}.
+\newblock \emph{J. R. Statist. Soc. B}, 76:\penalty0 217--242, 2014.
+
+\bibitem[Zhang et~al.(2017)Zhang, Ouyang, and Zhao]{ZhangOuyangZhao17}
+Y.~Zhang, Z.~Ouyang, and H.~Zhao.
+\newblock A statistical framework for data integration through graphical models
+  with application to cancer genomics.
+\newblock \emph{Ann. Appl. Stat.}, 11\penalty0 (1):\penalty0 161--184, 2017.
+
+\bibitem[Zou and Li(2008)]{ZouLi08}
+H.~Zou and R.~Li.
+\newblock One-step sparse estimates in nonconcave penalized likelihood models.
+\newblock \emph{Ann. Statist.}, 36:\penalty0 1509--1533, 2008.
+
+\end{thebibliography}

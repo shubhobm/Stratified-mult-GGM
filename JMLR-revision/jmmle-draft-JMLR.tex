@@ -1,0 +1,124 @@
+%\documentclass[11pt,letterpaper]{article}
+\documentclass[twoside,11pt]{article}
+\usepackage{jmlr2e}
+
+\pdfoutput=1
+
+\usepackage{mycommands1,amssymb,amsmath,amsthm,color,outlines,cite,subfigure,epsfig}
+\usepackage[small]{caption}
+\usepackage{hyperref} % for linking references
+\hypersetup{colorlinks = true, citecolor = blue, urlcolor = blue}
+
+\usepackage{stackrel}
+
+%\usepackage[round]{natbib}
+
+% for algorithm
+%\usepackage[noend]{algpseudocode}
+%\usepackage{algorithm}
+
+% DON'T change margins - should be 1 inch all around.
+%\addtolength{\evensidemargin}{-.5in}
+%\addtolength{\oddsidemargin}{-.5in}
+%\addtolength{\textwidth}{0.9in}
+%\addtolength{\textheight}{0.9in}
+%\addtolength{\topmargin}{-.4in}
+
+%\pagestyle{myheadings}
+%\markboth{}{\underline{{\bf Notes: (do not circulate)} \hspace{4.5cm} {\sc  Ansu Chatterjee} \hspace{0.25cm}}}
+
+\DeclareMathOperator*{\ve}{vec}
+\DeclareMathOperator*{\diag}{diag }
+\DeclareMathOperator*{\supp}{supp }
+\DeclareMathOperator*{\Tr}{Tr}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\Th}{^{\text{th}}}
+
+\makeatletter
+\newcommand{\opnorm}{\@ifstar\@opnorms\@opnorm}
+\newcommand{\@opnorms}[1]{%
+  \left|\mkern-1.5mu\left|\mkern-1.5mu\left|
+   #1
+  \right|\mkern-1.5mu\right|\mkern-1.5mu\right|
+}
+\newcommand{\@opnorm}[2][]{%
+  \mathopen{#1|\mkern-1.5mu#1|\mkern-1.5mu#1|}
+  #2
+  \mathclose{#1|\mkern-1.5mu#1|\mkern-1.5mu#1|}
+}
+\makeatother
+
+%% Appendix theorem counter
+\usepackage{chngcntr}
+\usepackage{apptools}
+\AtAppendix{\counterwithin{Theorem}{section}}
+\numberwithin{equation}{section}
+
+% Heading arguments are {volume}{year}{pages}{submitted}{published}{author-full-names}
+% \jmlrheading{0}{2015}{0}{unknown}{unknown}{}
+
+% Short headings should be running head and authors last names
+\ShortHeadings{Joint Multiple Multi-layered Gaussian Graphical Models}{Majumdar and Michailidis}
+\firstpageno{1}
+
+\begin{document}
+
+\newtheorem{Theorem}{theorem}[section]
+\newtheorem{Lemma}[Theorem]{Lemma}
+\newtheorem{Corollary}[Theorem]{Corollary}
+\newtheorem{Proposition}[Theorem]{Proposition}
+\newtheorem{Conjecture}[Theorem]{Conjecture}
+\theoremstyle{definition} \newtheorem{Definition}[Theorem]{Definition}
+\newtheorem{Example}{Example}[section]
+\newtheorem{Algorithm}{Algorithm}
+\newtheorem{Remark}{Remark}
+
+\title{Joint Estimation and Inference for Data Integration Problems based on Multiple Multi-layered Gaussian Graphical Models}
+\date{}
+\author{\name Subhabrata Majumdar \email smajumdar@ufl.edu \\
+       \addr University of Florida Informatics Institute\\
+       Gainesville, FL, 32611, USA
+      \AND
+      \name George Michailidis\thanks{Corresponding Author. Post Address: 205 Griffin Floyd Hall, 1 University Ave, Gainesville, FL, 32611.} \email gmichail@ufl.edu \\
+      \addr Department of Statistics and Computer \& Information Science \& Engineering \\
+      University of Florida \\
+      Gainesville, FL 32611, USA 
+       }
+
+\editor{}
+\maketitle
+
+\begin{abstract} %   <- trailing '%' for backward compatibility of .sty file
+The rapid development of high-throughput technologies has enabled the generation of data from biological or disease processes that span multiple layers, like genomic, proteomic or metabolomic data, and further pertain to multiple sources, like disease subtypes or experimental conditions. In this work, we propose a general statistical framework based on Gaussian graphical models for horizontal (i.e. across conditions or subtypes) and vertical (i.e. across different layers containing data on molecular compartments) integration of information in such datasets. We start with decomposing the multi-layer problem into a series of two-layer problems. For each two-layer problem, we model the outcomes at a node in the lower layer as dependent on those of other nodes in that layer, as well as all nodes in the upper layer. We use a combination of neighborhood selection and group-penalized regression to obtain sparse estimates of all model parameters. Following this, we develop a debiasing technique and asymptotic distributions of inter-layer directed edge weights that utilize already computed neighborhood selection coefficients for nodes in the upper layer. Subsequently, we establish global and simultaneous testing procedures for these edge weights. Performance of the proposed methodology is evaluated on synthetic data.
+\end{abstract}
+
+\vspace{1em}
+\begin{keywords}
+Data integration; Gaussian Graphical Models; neighborhood selection; group lasso; high-dimensional asymptotics; multiple testing; false discovery rate
+\end{keywords}
+\newpage
+
+%\input{Introduction}
+\input{Introduction-paper-GM}
+\input{JMMLE_Framework}
+\input{Testing}
+\input{Numerical}
+\input{Discussion}
+
+\newpage
+\vskip 0.1in
+\bibliography{GGMbib}
+
+\newpage
+\appendix
+\section*{Appendix}
+\input{misc}
+\input{Proofs}
+
+%-----------------------------
+%\hrulefill
+%-----------------------------
+%\section{Numerical performance}
+
+\end{document}

@@ -1,0 +1,75 @@
+Report on "Joint Estimation and Inference for Data Integration Problems based on Multiple Multi-layered Gaussian Graphical Models"
+==================================================================================================================================
+
+The paper combines ideas  from Ma and Michailidis (2016) and Lin et al. (2016a)
+to jointly estimate grouped hierarchical models. The work is a technical extension
+of existing results. Although the pieces are put together in a straightforward
+way, the work might be of interest to practitioners whose data falls into the
+framework. In the current form, the paper is not suitable for publication in
+JMLR. Below, I will provide more detailed comments that might improve the
+quality of the manuscript.
+
+There is no real world example in the paper that might benefit from the framework.
+Without this, I am not convinced that we need a complicated model as described
+in the paper. The authors should illustrate how the current methodology helps
+in solving a problem that could not have been solved with existing approaches.
+
+Writing is not clear. Especially the introduction. It is not clear what the problem
+is, nor what the major contribution of the paper is. In my opinion, too much is
+assumed of the reader --- what are hierarchical models, grouped graphical models,
+how are graphical models used for the problem at hand. I would suggest the authors
+to find a colleague that is not working in the area of graphical models to see
+if he/she would understand the paper. Even after the introduction, often notation
+is used before it is defined, which makes reading difficult. For example, page 5,
+second paragraph, "We assume known structured sparsity patterns..." What does the
+structured sparsity mean here?
+
+Condition 2 does not seem to be a condition. It is a definition of diagonal dominance.
+
+In Theorem 1, are there any requirements on the quantity R(p,q,n)? For example,
+can this diverge with p,q,n?
+
+Assumption E1 on diagonal dominance seems strong. In the literature on estimation of
+graphical models it is not commonly used. Why is it needed? Can it be relaxed?
+
+In Theorem 2, there is an assumption on l1 convergence of \hat B to B_0, which does
+not depend on sparsity of B_0. How can one estimate B_0 so quickly? Usual bounds
+require scale as s\sqrt(log p / n) where s is the number of non-zero elements and
+s &#8594; &#8734;.
+
+In Theorem 2, is Q_0 a constant or it depends on minimum eigenvalue of Sigma^k ?
+
+What is \Psi in equation 2.15 and 2.16?
+
+In equation 2.17, if Q_0 = O(1), why do you keep it inside O(...) ?
+
+In Theorem 3, C_&#952; is assumed O(1). This is again strange given known rates for
+sparse estimation. One would expect sqrt(s log p / n).
+
+Some comments would be useful on how does joint estimation of multiple layers help
+compared to separate estimation. More generally, it would be useful to provide
+comments on assumption and importance of results.
+
+Please comment on assumption T1 - T3 and explain what procedure would be able to
+achieve these rates of convergence and under what additional conditions.
+
+For Theorem 5 and Section 3.1, what are the gains from considering multiple output
+regression, rather than applying Zhang and Zhang (2014) node by node. Do we
+get efficiency or weaker side conditions? In a simulation, can one quantify
+gains empirically?
+
+In simulation section, tables include SD reported to three digits,
+but only 50 replications are done.
+
+Empirical size of the test is quite far from the nominal. This is a problem.
+
+BIC is suggested for selecting tuning parameters. It would be useful to discuss
+how does one obtain degrees of freedom for the complex model studied here. Can
+it be shown that the tuning parameters obtained in this way lead to correct
+tests?
+
+In practice correct selection of tuning parameters for testing in high-dimensional
+problems is crucial for obtaining honest tests and confidence intervals with
+correct coverage. For the inferential procedure to be valid one should prove how
+to select tuning parameters, since even changing constants in front of penalty
+parameters will change resulting confidence intervals.
