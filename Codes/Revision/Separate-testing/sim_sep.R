@@ -166,8 +166,8 @@ get.outputs = function(n=100, subnetSize.X=rep(10,2), subnetSize.E=rep(10,2),
             sqrt(sum((Theta0.array - Theta_sep.array)^2)/sum(Theta0.array^2))))
   }
   
-  #out.mat = mclapply(seed.vec, loopfun, mc.cores=min(length(seed.vec),10))
-  out.mat = lapply(seed.vec, loopfun)
+  out.mat = mclapply(seed.vec, loopfun, mc.cores=min(length(seed.vec),10))
+  #out.mat = lapply(seed.vec, loopfun)
   if(is.null(filename)){
     filename = paste0("estsep_n",n,"p",p,"q",q,".Rda")
   }

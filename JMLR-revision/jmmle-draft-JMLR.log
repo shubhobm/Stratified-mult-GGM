@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6745 64-bit) (preloaded format=pdflatex 2018.9.26)  2 OCT 2018 14:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6745 64-bit) (preloaded format=pdflatex 2018.9.26)  14 DEC 2018 16:00
 entering extended mode
 **./jmmle-draft-JMLR.tex
 (jmmle-draft-JMLR.tex
@@ -169,27 +169,523 @@ Package: outlines 2012/1/23 1.1 Ch. Pecheur
 ("C:\Program Files\LaTeX\MiKTeX 2.9\tex\latex\base\ifthen.sty"
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 ))
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex\latex\cite\cite.sty"
+LaTeX Info: Redefining \cite on input line 302.
+LaTeX Info: Redefining \nocite on input line 332.
+Package: cite 2015/02/27  v 5.5
+)
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex\latex\subfigure\subfigure.sty"
+Package: subfigure 2002/07/30 v2.1.4 subfigure package
+\subfigtopskip=\skip55
+\subfigcapskip=\skip56
+\subfigcaptopadj=\dimen116
+\subfigbottomskip=\skip57
+\subfigcapmargin=\dimen117
+\subfiglabelskip=\skip58
+\c@subfigure=\count111
+\c@lofdepth=\count112
+\c@subtable=\count113
+\c@lotdepth=\count114
 
-! LaTeX Error: File `cite.sty' not found.
+****************************************
+* Local config file subfigure.cfg used *
+****************************************
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex\latex\subfigure\subfigure.cfg")
+\subfig@top=\skip59
+\subfig@bottom=\skip60
+)
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex\latex\caption\caption.sty"
+Package: caption 2018/10/06 v3.3-154 Customizing captions (AR)
 
-Type X to quit or <RETURN> to proceed,
-or enter new name. (Default extension: sty)
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex\latex\caption\caption3.sty"
+Package: caption3 2018/09/12 v1.8c caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 64.
+\captionmargin=\dimen118
+\captionmargin@=\dimen119
+\captionwidth=\dimen120
+\caption@tempdima=\dimen121
+\caption@indent=\dimen122
+\caption@parindent=\dimen123
+\caption@hangindent=\dimen124
+Package caption Info: Unknown document class (or package),
+(caption)             standard defaults will be used.
+)
 
-Enter file name: 
-! Emergency stop.
-<read *> 
-         
-l.8 \usepackage
-               [small]{caption}
-*** (cannot \read from terminal in nonstop modes)
+Package caption Warning: Unsupported document class (or package) detected,
+(caption)                usage of the caption package is not recommended.
+See the caption package documentation for explanation.
 
- 
+Package caption Info: \@makecaption = \long macro:#1#2-> \vskip 10pt \setbox \@
+tempboxa \hbox {#1: #2} \ifdim \wd \@tempboxa >\hsize \begin {list}{#1:}{ \sett
+owidth {\labelwidth }{#1:} \setlength {\leftmargin }{\labelwidth } \addtolength
+ {\leftmargin }{\labelsep } }\item #2 \end {list}\par \else \hbox to\hsize {\hf
+il \box \@tempboxa \hfil } \fi .
+\c@caption@flags=\count115
+\c@ContinuedFloat=\count116
+Package caption Info: subfigure package is loaded.
+) ("C:\Program Files\LaTeX\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty"
+Package: hyperref 2018/02/06 v6.86b Hypertext links for LaTeX
+
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex\generic\oberdiek\hobsub-hyperref.sty"
+Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
+
+
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex\generic\oberdiek\hobsub-generic.sty"
+Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
+Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+Package: pdftexcmds 2018/01/30 v0.27 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO
+)
+Package: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
+Package: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
+Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
+Package: xcolor-patch 2016/05/16 xcolor patch
+Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
+Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
+Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
+)
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex\latex\oberdiek\auxhook.sty"
+Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
+)
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+)
+\@linkdim=\dimen125
+\Hy@linkcounter=\count117
+\Hy@pagecounter=\count118
+
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def"
+File: pd1enc.def 2018/02/06 v6.86b Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+\Hy@SavedSpaceFactor=\count119
+
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg"
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Hyper figures OFF on input line 4509.
+Package hyperref Info: Link nesting OFF on input line 4514.
+Package hyperref Info: Hyper index ON on input line 4517.
+Package hyperref Info: Plain pages OFF on input line 4524.
+Package hyperref Info: Backreferencing OFF on input line 4529.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4762.
+\c@Hy@tempcnt=\count120
+
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex\latex\url\url.sty"
+\Urlmuskip=\muskip11
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5115.
+\XeTeXLinkMargin=\dimen126
+\Fld@menulength=\count121
+\Field@Width=\dimen127
+\Fld@charsize=\dimen128
+Package hyperref Info: Hyper figures OFF on input line 6369.
+Package hyperref Info: Link nesting OFF on input line 6374.
+Package hyperref Info: Hyper index ON on input line 6377.
+Package hyperref Info: backreferencing OFF on input line 6384.
+Package hyperref Info: Link coloring OFF on input line 6389.
+Package hyperref Info: Link coloring with OCG OFF on input line 6394.
+Package hyperref Info: PDF/A mode OFF on input line 6399.
+LaTeX Info: Redefining \ref on input line 6439.
+LaTeX Info: Redefining \pageref on input line 6443.
+\Hy@abspage=\count122
+\c@Item=\count123
+\c@Hfootnote=\count124
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def"
+File: hpdftex.def 2018/02/06 v6.86b Hyperref driver for pdfTeX
+\Fld@listcount=\count125
+\c@bookmark@seq@number=\count126
+
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty"
+Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip61
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 10.
+
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex\latex\oberdiek\stackrel.sty"
+Package: stackrel 2016/05/16 v1.3 Adding subscript option to stackrel (HO)
+)
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex\latex\chngcntr\chngcntr.sty"
+Package: chngcntr 2018/04/09 v1.1a change counter resetting
+Package chngcntr Info: \counterwithout already defined.
+(chngcntr)             Quitting chngcntr on input line 21.
+)
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex\latex\apptools\apptools.sty"
+Package: apptools 2012/11/28 v1.0 Tools for customizing appendices
+)
+(jmmle-draft-JMLR.aux
+
+LaTeX Warning: Label `eqn:BetaThmEqn1' multiply defined.
+
+
+LaTeX Warning: Label `eqn:BetaThmEqn2' multiply defined.
+
+
+LaTeX Warning: Label `eqn:BetaThmEqn3' multiply defined.
+
+
+LaTeX Warning: Label `eqn:BetaThmEqn4' multiply defined.
+
+)
+\openout1 = `jmmle-draft-JMLR.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+ ("C:\Program Files\LaTeX\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count127
+\scratchdimen=\dimen129
+\scratchbox=\box28
+\nofMPsegments=\count128
+\nofMParguments=\count129
+\everyMPshowfont=\toks27
+\MPscratchCnt=\count130
+\MPscratchDim=\dimen130
+\MPnumerator=\count131
+\makeMPintoPDFobject=\count132
+\everyMPtoPDFconversion=\toks28
+) ("C:\Program Files\LaTeX\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex\latex\oberdiek\grfext.sty"
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+)
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: hyperref package is loaded.
+Package caption Info: End \AtBeginDocument code.
+\AtBeginShipoutBox=\box29
+Package hyperref Info: Link coloring ON on input line 65.
+
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
+Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
+
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
+Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
+)
+\c@section@level=\count133
+)
+LaTeX Info: Redefining \ref on input line 65.
+LaTeX Info: Redefining \pageref on input line 65.
+LaTeX Info: Redefining \nameref on input line 65.
+
+(jmmle-draft-JMLR.out) (jmmle-draft-JMLR.out)
+\@outlinefile=\write3
+\openout3 = `jmmle-draft-JMLR.out'.
+
+\c@Theorem=\count134
+\c@Example=\count135
+\c@Algorithm=\count136
+\c@Remark=\count137
+LaTeX Font Info:    Try loading font information for U+msa on input line 91.
+
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 91.
+
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 91.
+
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 91.
+ [1{C:/Users/subho/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
+
+]
+(Introduction-paper-GM.tex
+<multi2layer.pdf, id=131, 408.01433pt x 179.24968pt>
+File: multi2layer.pdf Graphic file (type pdf)
+<use multi2layer.pdf>
+Package pdftex.def Info: multi2layer.pdf  used on input line 13.
+(pdftex.def)             Requested size: 408.01332pt x 179.24922pt.
+ [2] [3 <./multi2layer.pdf>]) (JMMLE_Framework.tex
+Underfull \vbox (badness 6825) has occurred while \output is active []
+
+ [4]
+<adj1.pdf, id=240, 289.08pt x 289.08pt>
+File: adj1.pdf Graphic file (type pdf)
+<use adj1.pdf>
+Package pdftex.def Info: adj1.pdf  used on input line 40.
+(pdftex.def)             Requested size: 99.73074pt x 99.72829pt.
+<adj2.pdf, id=241, 289.08pt x 289.08pt>
+File: adj2.pdf Graphic file (type pdf)
+<use adj2.pdf>
+Package pdftex.def Info: adj2.pdf  used on input line 41.
+(pdftex.def)             Requested size: 99.73074pt x 99.72829pt.
+<adj3.pdf, id=242, 289.08pt x 289.08pt>
+File: adj3.pdf Graphic file (type pdf)
+<use adj3.pdf>
+Package pdftex.def Info: adj3.pdf  used on input line 42.
+(pdftex.def)             Requested size: 99.73074pt x 99.72829pt.
+<adj4.pdf, id=243, 289.08pt x 289.08pt>
+File: adj4.pdf Graphic file (type pdf)
+<use adj4.pdf>
+Package pdftex.def Info: adj4.pdf  used on input line 43.
+(pdftex.def)             Requested size: 99.73074pt x 99.72829pt.
+
+Overfull \hbox (7.36784pt too wide) in paragraph at lines 53--57
+\OT1/cmr/m/n/10.95 where each $\OMS/cmsy/m/n/10.95 G[]$ \OT1/cmr/m/n/10.95 is a
+ par-ti-tion of $\OMS/cmsy/m/n/10.95 I[]$\OT1/cmr/m/n/10.95 , and con-sists of 
+in-dex groups $\OML/cmm/m/it/10.95 g$ \OT1/cmr/m/n/10.95 such that $\OML/cmm/m/
+it/10.95 g \OMS/cmsy/m/n/10.95  I[]\OML/cmm/m/it/10.95 ; \OMS/cmsy/m/n/10.95 [
+[]\OML/cmm/m/it/10.95 g \OT1/cmr/m/n/10.95 =
+ []
+
+[5]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [6 <./adj1.pdf> <./adj2.pdf> <./adj3.pdf> <./adj4.pdf>] [7]
+! Undefined control sequence.
+l.154 ...IC) for tuning parameter selection {\colr
+                                                   \citep{MaMichailidis15}}....
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+[8] [9]
+Overfull \hbox (9.3125pt too wide) in paragraph at lines 335--338
+\OT1/cmr/m/it/10.95 both with prob-a-bil-ity $\OMS/cmsy/m/n/10.95  \OT1/cmr/m/
+n/10.95 1 \OMS/cmsy/m/n/10.95   \OML/cmm/m/it/10.95 K\OT1/cmr/m/n/10.95 (1\OML/
+cmm/m/it/10.95 =p[] \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 12\OML/cmm/m/it/10
+.95 c[] []\OT1/cmr/m/n/10.95 [\OMS/cmsy/m/n/10.95  \OT1/cmr/m/n/10.95 (\OML/cmm
+/m/it/10.95 c[] \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 1) [](\OML/cmm/m/it/10
+.95 pq\OT1/cmr/m/n/10.95 )] \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 2 [](\OMS/
+cmsy/m/n/10.95  \OML/cmm/m/it/10.95 c[]n\OT1/cmr/m/n/10.95 ) \OMS/cmsy/m/n/10.9
+5   \OT1/cmr/m/n/10.95 6\OML/cmm/m/it/10.95 c[] []\OT1/cmr/m/n/10.95 [\OMS/cmsy
+/m/n/10.95  \OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 c[] \OMS/cmsy/m/n/10.95  
+ []
+
+[10]
+Overfull \hbox (3.73026pt too wide) in paragraph at lines 374--378
+\OT1/cmr/m/it/10.95 with prob-a-bil-ity $\OMS/cmsy/m/n/10.95  \OT1/cmr/m/n/10.
+95 1 \OMS/cmsy/m/n/10.95   \OML/cmm/m/it/10.95 K\OT1/cmr/m/n/10.95 (12\OML/cmm/
+m/it/10.95 c[] []\OT1/cmr/m/n/10.95 [\OMS/cmsy/m/n/10.95  \OT1/cmr/m/n/10.95 (\
+OML/cmm/m/it/10.95 c[] \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 1) [](\OML/cmm/
+m/it/10.95 pq\OT1/cmr/m/n/10.95 )] \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 2 [
+](\OMS/cmsy/m/n/10.95  \OML/cmm/m/it/10.95 c[]n\OT1/cmr/m/n/10.95 ))$\OT1/cmr/m
+/it/10.95 , where $\OMS/cmsy/m/n/10.95 j\OML/cmm/m/it/10.95 h[]\OMS/cmsy/m/n/10
+.95 j \OT1/cmr/m/n/10.95 = [][] \OMS/cmsy/m/n/10.95 j\OML/cmm/m/it/10.95 h\OMS/
+cmsy/m/n/10.95 j$
+ []
+
+[11]) (Testing.tex [12] [13] [14] [15] [16] [17]) (Numerical.tex [18]
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 25.
+<omega-structure.pdf, id=529, 392.95808pt x 74.28754pt>
+File: omega-structure.pdf Graphic file (type pdf)
+<use omega-structure.pdf>
+Package pdftex.def Info: omega-structure.pdf  used on input line 37.
+(pdftex.def)             Requested size: 392.95712pt x 74.28734pt.
+ [19 <./omega-structure.pdf>]
+Overfull \hbox (1.53647pt too wide) detected at line 85
+[]
+ []
+
+
+Overfull \hbox (31.67622pt too wide) in paragraph at lines 126--147
+[][] 
+ []
+
+
+Overfull \hbox (24.37624pt too wide) in paragraph at lines 180--207
+[][] 
+ []
+
+[20] [21] [22]
+Overfull \hbox (16.43742pt too wide) in paragraph at lines 269--297
+[][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [23]
+[24]) (Discussion.tex [25] [26]) [27] (jmmle-draft-JMLR.bbl [28]
+
+! Package inputenc Error: Unicode character ¨ (U+A8)
+(inputenc)                not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.202 ...graphs and variable selection with the ¨
+                                                   lasso.
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+[29]) [30] (misc.tex [31]
+Overfull \hbox (8.56331pt too wide) in paragraph at lines 101--103
+[]\OT1/cmr/m/it/10.95 with prob-a-bil-ity $\OMS/cmsy/m/n/10.95  \OT1/cmr/m/n/1
+0.95 1 \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 1\OML/cmm/m/it/10.95 =p[] \OMS/
+cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 12\OML/cmm/m/it/10.95 c[] []\OT1/cmr/m/n/10
+.95 [\OMS/cmsy/m/n/10.95  \OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 c[] \OMS/cmsy
+/m/n/10.95   \OT1/cmr/m/n/10.95 1) [](\OML/cmm/m/it/10.95 pq\OT1/cmr/m/n/10.95 
+)] \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 6\OML/cmm/m/it/10.95 c[] []\OT1/cmr
+/m/n/10.95 [\OMS/cmsy/m/n/10.95  \OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 c[] \O
+MS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 1) [](\OML/cmm/m/it/10.95 pq\OT1/cmr/m/n
+/10.95 )]\OML/cmm/m/it/10.95 ; c[] >
+ []
+
+[32]
+Overfull \hbox (4.2819pt too wide) detected at line 187
+\U/msb/m/n/10.95 R [] \OT1/cmr/m/n/10.95 = \OML/cmm/m/it/10.95 c[] []
+ []
+
+[33] [34] [35] [36]) (Proofs.tex
+Overfull \hbox (16.97504pt too wide) detected at line 34
+[] [] \OMS/cmsy/m/n/10.95 k\OT1/cmr/m/n/10.95 (\OT1/cmr/bx/n/10.95 Y[] \OMS/cms
+y/m/n/10.95   \OT1/cmr/bx/n/10.95 X[][]\OT1/cmr/m/n/10.95 )[]\OMS/cmsy/m/n/10.9
+5 k[] \OT1/cmr/m/n/10.95 + \OML/cmm/m/it/10.95 [] [] \OMS/cmsy/m/n/10.95 k[]k 
+ [] [] k\OT1/cmr/m/n/10.95 (\OT1/cmr/bx/n/10.95 Y[] \OMS/cmsy/m/n/10.95   \OT1
+/cmr/bx/n/10.95 X[][]\OT1/cmr/m/n/10.95 )\OT1/cmr/bx/n/10.95 T[]\OMS/cmsy/m/n/1
+0.95 k[] \OT1/cmr/m/n/10.95 + \OML/cmm/m/it/10.95 [] [] \OMS/cmsy/m/n/10.95 k\
+OT1/cmr/bx/n/10.95 T[]\OMS/cmsy/m/n/10.95 k
+ []
+
+
+Underfull \vbox (badness 1546) has occurred while \output is active []
+
+ [37]
+Overfull \hbox (31.74216pt too wide) detected at line 69
+[]
+ []
+
+
+Overfull \hbox (20.74791pt too wide) detected at line 86
+[]\OT1/cmr/m/n/10.95 (\OT1/cmr/bx/n/10.95 d[]\OT1/cmr/m/n/10.95 )[][]\OT1/cmr/b
+x/n/10.95 d[] \OMS/cmsy/m/n/10.95  [] []  \OML/cmm/m/it/10.95  \OMS/cmsy/m/n/
+10.95 k\OT1/cmr/bx/n/10.95 D[]\OMS/cmsy/m/n/10.95 k[]   \OML/cmm/m/it/10.95 \O
+MS/cmsy/m/n/10.95 k\OT1/cmr/bx/n/10.95 D[]\OMS/cmsy/m/n/10.95 k[]  \OT1/cmr/m/
+n/10.95 (\OML/cmm/m/it/10.95   \OMS/cmsy/m/n/10.95   \OML/cmm/m/it/10.95 Kq\OT
+1/cmr/m/n/10.95 )\OMS/cmsy/m/n/10.95 k\OT1/cmr/bx/n/10.95 D[]\OMS/cmsy/m/n/10.9
+5 k[]  []k\OT1/cmr/bx/n/10.95 D[]\OMS/cmsy/m/n/10.95 k[]
+ []
+
+[38] [39] [40] [41]
+Overfull \hbox (6.09747pt too wide) detected at line 305
+[][] \OMS/cmsy/m/n/10.95  [] \OT1/cmr/m/n/10.95 + [] \OML/cmm/m/it/10.95 [] \
+OT1/cmr/m/n/10.95 = \OML/cmm/m/it/10.95 V[]\OT1/cmr/m/n/10.95 ;  \OML/cmm/m/it/
+10.95 c[] \OT1/cmr/m/n/10.95 = [][]
+ []
+
+[42] [43] [44] [45])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 124.
+ [46]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 124.
+ (jmmle-draft-JMLR.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 124.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 124.
+Package rerunfilecheck Info: File `jmmle-draft-JMLR.out' has not changed.
+(rerunfilecheck)             Checksum: 36F1E35B2EB4CE0BDC42E36928194000;1349.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 124.
+ ) 
 Here is how much of TeX's memory you used:
- 2224 strings out of 492973
- 25430 string characters out of 3133292
- 88663 words of memory out of 3000000
- 6115 multiletter control sequences out of 15000+200000
- 3940 words of font info for 15 fonts, out of 3000000 for 9000
+ 8597 strings out of 492973
+ 126636 string characters out of 3133292
+ 238268 words of memory out of 3000000
+ 12091 multiletter control sequences out of 15000+200000
+ 19077 words of font info for 71 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 39i,0n,29p,242b,36s stack positions out of 5000i,500n,10000p,200000b,50000s
-!  ==> Fatal error occurred, no output PDF file produced!
+ 39i,17n,39p,1442b,494s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
+<C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C
+:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/P
+rogram Files/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Pr
+ogram Files/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Prog
+ram Files/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><C:/Pr
+ogram Files/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Prog
+ram Files/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program
+ Files/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Fi
+les/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files
+/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Program Files/
+LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb><C:/Program Fil
+es/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/
+LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/LaTe
+X/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/LaTeX/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/LaTeX/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/LaTeX/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/LaTeX/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Program Files/LaTeX/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files/LaTeX/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/p
+ublic/amsfonts/cm/cmsy9.pfb><C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/publ
+ic/amsfonts/cm/cmti10.pfb><C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmtt10.pfb><C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmtt9.pfb><C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/public/amsf
+onts/symbols/msam10.pfb><C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/public/a
+msfonts/symbols/msbm10.pfb>
+Output written on jmmle-draft-JMLR.pdf (46 pages, 689060 bytes).
+PDF statistics:
+ 1079 PDF objects out of 1200 (max. 8388607)
+ 228 named destinations out of 1000 (max. 500000)
+ 183 words of extra memory for PDF output out of 10000 (max. 10000000)
+
