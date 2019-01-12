@@ -261,7 +261,7 @@ proves largely effective. Also, in all cases the empirical FDR for estimating en
 \label{sec:eval-testing}
 We slightly change the data generating model to evaluate our proposed global testing and FDR control procedure. We set $K=2$, then generate the $\bfB_0^1$ by first randomly assigning each of its element to be non-zero with probability $\pi$, then drawing values of those elements from $\text{Unif}\{ [ -1, -0.5] \cup [0.5,1]\}$ independently. After this we generate a matrix of differences $\bfD$, where $(\bfD)_{ij}, i \in \cI_p, j \in \cI_q$ takes values --1, 1, 0 with probabilities 0.1, 0.1 and 0.8, respectively. Finally we set $\bfB_0^2 = \bfB_0^1 + \bfD$. We set identical sparsity structures for the pairs of precision matrices $\{ \Omega_{x0}^1, \Omega_{x0}^2 \}$ and $\{ \Omega_{y0}^1, \Omega_{y0}^2 \}$. We use 50 replications of the above setup to calculate empirical power of global tests, as well as empirical power and FDR of simultaneous tests. To get the empirical sizes of global tests we use estimators obtained from applying JMMLE on a separate set of data generated setting all elements of $\bfD$ to 0. The type-I error of global tests is controlled at level 0.05, while FDR is set at 0.2 obtained by calculating the respective thresholds.
 
-Table~\ref{table:simtable3} reports the empirical mean and standard deviations (in brackets) of all relevant quantities. We report outputs for all combinations of data dimensions and sparsity used in Section~\ref{sec:eval-jmmle}, and also for increased sample sizes in each setting until a satisfactory FDR is reached. As expected from the theoretical analysis, higher sample sizes than those used in Section~\ref{sec:eval-jmmle} result in increased power for both global and simultaneous tests, and decreased size and FDR for all but one ($p=30, q=60$) of the settings.
+Tables~\ref{table:simtable31} and \ref{table:simtable32} report the empirical mean and standard deviations (in brackets) of all relevant quantities computed from debiased coefficients obtained from JMMLE and separate estimation. We report outputs for all combinations of data dimensions and sparsity used in Section~\ref{sec:eval-jmmle}, and also for increased sample sizes in each setting until a satisfactory FDR is reached. As expected from the theoretical analysis, higher sample sizes than those used in Section~\ref{sec:eval-jmmle} result in increased power for both global and simultaneous tests, and decreased size and FDR for all but one ($p=30, q=60$) of the settings. While separate estimation has slightly higher power in global testing, our joint method gives better results everywhere else.
 
 %
 \begin{scriptsize}
@@ -270,32 +270,43 @@ Table~\ref{table:simtable3} reports the empirical mean and standard deviations (
     \hline
 $(\pi_x, \pi_y)$ & $(p,q)$   & $n$ & \multicolumn{2}{c}{Power} & \multicolumn{2}{c}{Size}\\\cline{4-7}
  & & & JMMLE     & Separate			   & JMMLE         & Separate           \\ \hline
-    $(5/p, 5/q)$ & (60,30)   & 100 & 0.977 (0.018) & 0.909 (0.025) & 0.058 (0.035) & 0.116 (0.02) \\
-    ~            & ~         & 200 & 0.987 (0.016) & 0.943 (0.019) & 0.046 (0.032) & 0.084 (0.014) \\
-    ~            & (30,60)   & 100 & 0.985 (0.018) & 0.857 (0.036) & 0.097 (0.069) & 0.07  (0.015)  \\
-    ~            & ~         & 200 & 0.990 (0.02)  & 0.904 (0.038) & 0.119 (0.059) & 0.061 (0.013) \\
-    ~            & (200,200) & 150 & 0.987 (0.005) & 0.930 (0.006) & 0.004 (0.004) & 0.201 (0.008) \\
-    ~            & (300,300) & 150 & 0.988 (0.002) & 0.786 (0.007) & 0.002 (0.003) & 0.269 (0.01) \\
-    ~            & ~         & 300 & 0.998 (0.003) & 0.985 (0.004) & 0.000 (0.001) & 0.163 (0.005) \\ \hline
-  $(30/p, 30/q)$ & (200,200) & 100 & 0.994 (0.005) & 0.752 (0.007) & 0.262 (0.06)  & 0.468 (0.008) \\
-    ~            & ~         & 200 & 0.998 (0.004) & 0.975 (0.005) & 0.02 (0.01)   & 0.417 (0.011) \\
-    ~            & ~         & 300 & 0.999 (0.002) & 0.986 (0.004) & 0.011 (0.008) & 0.27 (0.01) \\ \hline\hline
+    $(5/p, 5/q)$ & (60,30)   & 100 & 0.978 (0.016) & 0.998 (0.007) & 0.074 (0.011) & 0.116 (0.02) \\
+    ~            & ~         & 200 & 0.988 (0.014) & 0.999 (0.004) & 0.067 (0.014) & 0.084 (0.014) \\
+    ~            & (30,60)   & 100 & 0.979 (0.024) & 1 (0)         & 0.071 (0.014) & 0.07  (0.015)  \\
+    ~            & ~         & 200 & 0.990 (0.019) & 1 (0)         & 0.077 (0.016) & 0.061 (0.013) \\
+    ~            & (200,200) & 150 & 0.986 (0.006) & 1 (0)         & 0.056 (0.003) & 0.201 (0.008) \\
+    ~            & (300,300) & 150 & 0.989 (0.004) & 1 (0)         & 0.071 (0.009) & 0.269 (0.01) \\
+    ~            & ~         & 300 & 0.998 (0.003) & 1 (0)         & 0.033 (0.002) & 0.163 (0.005) \\ \hline
+  $(30/p, 30/q)$ & (200,200) & 100 & 0.993 (0.005) & 1 (0)         & 0.112 (0.003) & 0.468 (0.008) \\
+    ~            & ~         & 200 & 0.997 (0.004) & 1 (0)         & 0.089 (0.004) & 0.417 (0.011) \\
+    ~            & ~         & 300 & 0.999 (0.002) & 1 (0)         & 0.057 (0.003) & 0.27 (0.01) \\ \hline
+    \end{tabular}
+    \caption{Table of outputs for global hypothesis testing.}
+    \label{table:simtable31}
+\end{table}
+\end{scriptsize}
+
+\begin{scriptsize}
+\begin{table}
+    \begin{tabular}{ccccccc}
+    \hline
+%
 $(\pi_x, \pi_y)$ & $(p,q)$   & $n$ & \multicolumn{2}{c}{Power} & \multicolumn{2}{c}{FDR}\\\cline{4-7}
  & & & JMMLE     & Separate			   & JMMLE         & Separate           \\ \hline
-    $(5/p, 5/q)$ & (60,30)   & 100 & 0.977 (0.018) & 0.998 (0.007) & 0.237 (0.028) & 0.337(0.038) \\
-    ~            & ~         & 200 & 0.987 (0.016) & 0.999 (0.004) & 0.218 (0.032) & 0.262(0.031) \\
-    ~            & (30,60)   & 100 & 0.985 (0.018) & 1 (0)         & 0.24 (0.034)  & 0.245(0.039) \\
-    ~            & ~         & 200 & 0.990 (0.02)  & 1 (0)         & 0.245 (0.041) & 0.211(0.035) \\
-    ~            & (200,200) & 150 & 0.987 (0.005) & 1 (0)         & 0.213 (0.007) & 0.463(0.009) \\
-    ~            & (300,300) & 150 & 0.988 (0.002) & 1 (0)         & 0.347 (0.017) & 0.577(0.008) \\
-    ~            & ~         & 300 & 0.998 (0.003) & 1 (0)         & 0.117 (0.006) & 0.398(0.007) \\ \hline
-  $(30/p, 30/q)$ & (200,200) & 100 & 0.994 (0.005) & 1 (0)         & 0.557 (0.006) & 0.714(0.004) \\
-    ~            & ~         & 200 & 0.998 (0.004) & 1 (0)         & 0.266 (0.007) & 0.631(0.006) \\
-    ~            & ~         & 300 & 0.999 (0.002) & 1 (0)         & 0.185 (0.009) & 0.523(0.009) \\ 
+    $(5/p, 5/q)$ & (60,30)   & 100 & 0.935 (0.023) & 0.909 (0.025) & 0.242 (0.027) & 0.337(0.038) \\
+    ~            & ~         & 200 & 0.97  (0.013) & 0.943 (0.019) & 0.216 (0.032) & 0.262(0.031) \\
+    ~            & (30,60)   & 100 & 0.92  (0.027) & 0.857 (0.036) & 0.236 (0.035) & 0.245(0.039) \\
+    ~            & ~         & 200 & 0.958 (0.023) & 0.904 (0.038) & 0.243 (0.038) & 0.211(0.035) \\
+    ~            & (200,200) & 150 & 0.836 (0.011) & 0.930 (0.006) & 0.212 (0.007) & 0.463(0.009) \\
+    ~            & (300,300) & 150 & 0.54  (0.031) & 0.786 (0.007) & 0.343 (0.016) & 0.577(0.008) \\
+    ~            & ~         & 300 & 0.989 (0.003) & 0.985 (0.004) & 0.116 (0.006) & 0.398(0.007) \\ \hline
+  $(30/p, 30/q)$ & (200,200) & 100 & 0.414 (0.008) & 0.752 (0.007) & 0.52  (0.007) & 0.714(0.004) \\
+    ~            & ~         & 200 & 0.961 (0.006) & 0.975 (0.005) & 0.27  (0.008) & 0.631(0.006) \\
+    ~            & ~         & 300 & 0.99  (0.004) & 0.986 (0.004) & 0.186 (0.008) & 0.523(0.009) \\ 
 \hline    
 \end{tabular}
-    \caption{Table of outputs for hypothesis testing.}
-    \label{table:simtable3}
+    \caption{Table of outputs for simultaneous hypothesis testing.}
+    \label{table:simtable32}
 \end{table}
 \end{scriptsize}
 

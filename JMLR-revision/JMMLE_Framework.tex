@@ -151,7 +151,7 @@ The steps of our full estimation procedure, coined as the {\it Joint Multiple Mu
 \end{Algorithm}
 
 \subsubsection{Tuning parameter selection}
-The node-wise regression step in the JSEM model \eqref{eqn:jsem-model} uses a Bayesian Information Criterion (BIC) for tuning parameter selection {\colr \citep{MaMichailidis15}}. The step for updating $\Theta$, i.e. \eqref{eqn:update-Theta}, in our JMMLE algorithm is analogous to this procedure, hence we use BIC to select the penalty parameter $\gamma_n$. In our setting the BIC for a given $\gamma_n$ and fixed $\cB$ is given by:
+The node-wise regression step in the JSEM model \eqref{eqn:jsem-model} uses a Bayesian Information Criterion (BIC) for tuning parameter selection  \citep{MaMichailidis15}. The step for updating $\Theta$, i.e. \eqref{eqn:update-Theta}, in our JMMLE algorithm is analogous to this procedure, hence we use BIC to select the penalty parameter $\gamma_n$. In our setting the BIC for a given $\gamma_n$ and fixed $\cB$ is given by:
 %
 \begin{align*}
 \text{BIC} (\gamma_n; \cB) &=
