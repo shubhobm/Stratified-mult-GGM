@@ -139,7 +139,7 @@ jmmle = function(Y.list, Y.indices=NULL, X.list,
       rm(Et.j.list)
       
       # build model
-      temp = grpreg(X, Y[,j] + Ehat.theta.j, unlist(as.numeric(B.group.array[,j,])),
+      temp = grpreg(X, Y[,j] + Ehat.theta.j, unlist(B.group.array[,j,]),
                     family="gaussian", penalty="grLasso", lambda=lambda)
       B_new.array[,j,] = matrix(temp$beta[-1], ncol=K, byrow=F)
       
@@ -418,7 +418,7 @@ jmmle.1step = function(Y.list, Y.indices=NULL, X.list,
       rm(Et.j.list)
       
       # build model
-      temp = grpreg(X, Y[,j] + Ehat.theta.j, unlist(as.numeric(B.group.array[,j,])),
+      temp = grpreg(X, Y[,j] + Ehat.theta.j, unlist(B.group.array[,j,]),
                     family="gaussian", penalty="grLasso", lambda=lambda)
       B_new.array[,j,] = matrix(temp$beta[-1], ncol=K, byrow=F)
       
@@ -472,7 +472,7 @@ jmmle.1step = function(Y.list, Y.indices=NULL, X.list,
         rm(Et.j.list)
         
         # build model
-        temp = grpreg(X, Y[,j] + Ehat.theta.j, unlist(as.numeric(B.group.array[,j,])),
+        temp = grpreg(X, Y[,j] + Ehat.theta.j, unlist(B.group.array[,j,]),
                       family="gaussian", penalty="grLasso", lambda=lambda)
         B_new.array[,j,] = matrix(temp$beta[-1], ncol=K, byrow=F)
         

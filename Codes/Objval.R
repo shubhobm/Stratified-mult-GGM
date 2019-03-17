@@ -21,17 +21,15 @@ Obj = function(Y.list, X.list, Theta.array, B.array,
   # calculate penalties
   # For each group index in the group array, collect corresponding elements in the main array ...
   # and sum their l2 norms
-  unique.Theta.groups = unique(as.numeric(Theta.group.array))
-  Theta.norm = 0
-  for(g in unique.Theta.groups){
-    Theta.norm = Theta.norm + sqrt(sum(Theta.array[which(Theta.group.array==g, arr.ind=T)]^2))
-  }
+  unique.Theta.groups = unique(paste(Theta.group.array))
+  Theta.norm = sapply(unique.Theta.groups, function(g)
+    sum(Theta.array[which(Theta.group.array==g, arr.ind=T)]^2))
+  Theta.norm = sum(sqrt(Theta.norm))
   
-  unique.B.groups = unique(as.numeric(B.group.array))
-  B.norm = 0
-  for(h in unique.B.groups){
-    B.norm = B.norm + sqrt(sum(B.array[which(B.group.array==h, arr.ind=T)]^2))
-  }
+  unique.B.groups = unique(paste(B.group.array))
+  B.norm = sapply(unique.B.groups, function(g)
+    sum(B.array[which(B.group.array==g, arr.ind=T)]^2))
+  B.norm = sum(sqrt(B.norm))
   
   squaredError(Y.list, X.list, Theta.array, B.array) + lambda*Theta.norm + gamma*B.norm
 }

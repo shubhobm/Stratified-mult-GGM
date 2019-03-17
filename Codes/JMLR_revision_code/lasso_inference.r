@@ -181,9 +181,9 @@ Lasso <- function( X, y, lambda = NULL, intercept = TRUE){
     outLas <- glmnet(X, y, family = c("gaussian"), alpha =1, intercept = intercept );
                                         # Objective :1/2 RSS/n +lambda *penalty
     if (intercept==TRUE){
-      return (as.vector(coef(Las,s=lambda)));
+      return (as.vector(coef(outLas,s=lambda)));
     } else {
-      return (as.vector(coef(Las,s=lambda))[2:(p+1)]);
+      return (as.vector(coef(outLas,s=lambda))[2:(p+1)]);
     }
   }
 }
