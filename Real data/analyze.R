@@ -49,8 +49,8 @@ for(m in 1:nlambda){
     {
       Theta.k[j,j] = 0
     }
-    SSE.vec[k] = sum(diag(crossprod((Y.list[[k]] - X.list[[k]] %*%
-                                       jmle.model$B.refit[,,k]) %*% (diag(1,q) - Theta.k))))/nk
+    SSE.vec[k] = with(data, sum(diag(crossprod((Y.list[[k]] - X.list[[k]] %*%
+                                       jmle.model$B.refit[,,k]) %*% (diag(1,q) - Theta.k))))/nk)
     hbic.pen.vec[k] = log(log(nk))*log(q*(q-1)/2)/nk * sum(Theta.k != 0)/2 +
       log(log(nk))*log(p*q)/nk * sum(jmle.model$B.refit[,,k] != 0)
   }
