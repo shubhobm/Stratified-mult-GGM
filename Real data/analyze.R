@@ -1,18 +1,18 @@
 # initial work
 rm(list=ls())
-setwd("D:/Study/My projects/Stratified-mult-GGM")
-Required.Packages <- c("data.table", "glmnet","glasso")
+setwd("/n/subho-data/JMMLE-outputs/real-data")
+Required.Packages <- c("data.table", "glmnet","glasso","parallel")
 sapply(Required.Packages, FUN = function(x) {suppressMessages(require(x, character.only = TRUE))})
 
-source('./Codes/jsem.R')
-source('./Codes/Generator.R')
-source('./Codes/l1LS_Main.R')
-source('./Codes/Objval.R')
-source('./Codes/JMLE.R')
+source('jsem.R')
+source('Generator.R')
+source('l1LS_Main.R')
+source('Objval.R')
+source('JMLE.R')
 # source('./Codes/lasso_inference.r')
 
 # load data
-data = readRDS("Data/processed_data.rds")
+data = readRDS("processed_data.rds")
 
 ## tune JMLE model
 n = max(sapply(data$X.list1,nrow))
@@ -34,25 +34,28 @@ loopfun1 = function(m){
 system.time(
   model.list <- mclapply(1:nlambda, loopfun1, mc.cores=min(detectCores(),nlambda))
 )
+saveRDS(model.list, "model_list.rds")
 
 ## calculate HBIC
 hbic.vec = rep(0, nlambda)
-for(m in 1:nlambda){
+for(m in which(sapply(model.list,length)==2)){
   jmle.model = model.list[[m]]
   SSE.vec = rep(0,K)
   hbic.pen.vec = rep(0,K)
   
   for(k in 1:K){
-    nk = nrow(Y.list[[k]])
+    nk = nrow(data$Y.list1[[k]])
     Theta.k = jmle.model$Theta_refit$Theta[[k]]
     for(j in 1:q)
     {
       Theta.k[j,j] = 0
     }
-    SSE.vec[k] = with(data, sum(diag(crossprod((Y.list[[k]] - X.list[[k]] %*%
-                                       jmle.model$B.refit[,,k]) %*% (diag(1,q) - Theta.k))))/nk)
+    SSE.vec[k] = with(data, sum(diag(crossprod((Y.list1[[k]] - X.list1[[k]] %*% jmle.model$B.refit[,,k]) %*% (diag(1,q) - Theta.k))))/nk)
     hbic.pen.vec[k] = log(log(nk))*log(q*(q-1)/2)/nk * sum(Theta.k != 0)/2 +
       log(log(nk))*log(p*q)/nk * sum(jmle.model$B.refit[,,k] != 0)
   }
   hbic.vec[m] = sum(SSE.vec) + sum(hbic.pen.vec)
 }
+
+final.model = model.list[[which.min(hbic.vec[hbic.vec>0])]]
+saveRDS(final.model, "final_model.rds")
