@@ -1,4 +1,4 @@
-\begin{thebibliography}{47}
+\begin{thebibliography}{50}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -74,6 +74,13 @@ P.~Danaher, P.~Wang, and D.~M. Witten.
 \newblock \emph{J. R. Statist. Soc. B}, 76\penalty0 (2):\penalty0 373--397,
   2014.
 
+\bibitem[Fan and Tang(2013)]{FanTang13}
+Y.~Fan and C.~Y. Tang.
+\newblock {Tuning parameter selection in high dimensional penalized
+  likelihood}.
+\newblock \emph{J. R. Statist. Soc. B}, 75\penalty0 (3):\penalty0 531--552,
+  2013.
+
 \bibitem[{Gligorijevi\'{c}} and {Pr\v{z}ulj}(2015)]{GligPrzulj15}
 V.~{Gligorijevi\'{c}} and N.~{Pr\v{z}ulj}.
 \newblock Methods for biological data integration: perspectives and challenges.
@@ -116,6 +123,11 @@ A.~K. Kaushik, A.~Shojaie, K.~Panzitt, et~al.
 \newblock Inhibition of the hexosamine biosynthetic pathway promotes
   castration-resistant prostate cancer.
 \newblock \emph{Nat. Commun.}, 7:\penalty0 11612, 2016.
+
+\bibitem[Kim et~al.(2012)Kim, Kwon, and Choi]{KimKwonChoi12}
+Y.~Kim, S.~Kwon, and H.~Choi.
+\newblock {Consistent Model Selection Criteria on High Dimensions}.
+\newblock \emph{J. Mach. Learn. Res.}, 13:\penalty0 1037--1057, 2012.
 
 \bibitem[Kling et~al.(2015)Kling, Johansson, Sanchez, et~al.]{KlingEtal15}
 T.~Kling, P.~Johansson, J.~Sanchez, et~al.
@@ -227,11 +239,12 @@ K.~M. Sas, J.~Lin, T.~M. Rajendiran, et~al.
   tissues in a diabetic mouse model.
 \newblock \emph{J. Lipid Res.}, 59\penalty0 (2):\penalty0 173--183, 2018.
 
-\bibitem[Stucky and {van de Geer}(2017)]{StuckyVandeGeer17}
+\bibitem[Stucky and {van de Geer}(2018)]{StuckyVandeGeer17}
 B.~Stucky and S.~{van de Geer}.
-\newblock {Asymptotic Confidence Regions for Highdimensional Structured
+\newblock {Asymptotic Confidence Regions for High-Dimensional Structured
   Sparsity}.
-\newblock \url{https://arxiv.org/abs/1706.09231}, 2017.
+\newblock \emph{IEEE Trans. Signal Process.}, 66\penalty0 (8):\penalty0
+  2178--2190, 2018.
 
 \bibitem[Taddy(2017)]{Taddy17}
 M.~Taddy.
@@ -262,6 +275,11 @@ S.~{van de Geer}, P.~{B\"{u}hlmann}, Y.~Ritov, and R.~Dezeure.
 J.~M. Varah.
 \newblock A lower bound for the smallest singular value of a matrix.
 \newblock \emph{Linear Algebra Appl.}, 11:\penalty0 3--5, 1975.
+
+\bibitem[Wang et~al.(2013)Wang, Kim, and Li]{WangKimLi13}
+L.~Wang, Y.~Kim, and R.~Li.
+\newblock {Calibrating Nonconvex Penalized Regression in Ultra-high Dimension}.
+\newblock \emph{Ann. Statist.}, 41:\penalty0 2505--2536, 2013.
 
 \bibitem[Xie et~al.(2016)Xie, Liu, and Valdar]{XieLiuValdar16}
 Y.~Xie, Y.~Liu, and W.~Valdar.

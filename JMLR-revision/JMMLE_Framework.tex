@@ -52,7 +52,7 @@ We assume an element-wise group sparsity pattern over $k$ for the precision matr
 \cG_x = \{ \cG_x^{ii'}: i \neq i'; i, i' \in \cI_p \},
 \]
 %
-where each $\cG_x^{ii'}$ is a partition of $\cI_K$, and consists of index groups $g$ such that $g \subseteq \cI_K, \cup_{g \in \cG_x^{ii'}} g = \cI_K$. First introduced in \citet{MaMichailidis15}, this formulation helps incorporate group structures that are common across some of the precision matrices being modeled. Figure~\ref{fig:jsem-exmaple} illustrates this through a small example. Subsequently, we use the Joint Structural Estimation Method (JSEM) \citep{MaMichailidis15} to estimate $\Omega_x$, which first uses the group structure given by $\cG_x$ in penalized nodewise regressions \citep{MeisenBuhlmann06} to obtain neighborhood coefficients $\zeta_i = (\bfzeta_i^1, \ldots, \bfzeta_i^K)$ of each variable $X_i, i \in \cI_p$, then fits a graphical lasso model over the combined support sets to obtain sparse estimates of the precision matrices:
+where each $\cG_x^{ii'}$ is a partition of $\cI_K$, and consists of index groups $g$ such that $g \subseteq \cI_K, \cup_{g \in \cG_x^{ii'}} g = \cI_K$. First introduced in \citet{MaMichailidis15}, this formulation helps incorporate group structures that are common across some of the precision matrices being modeled. Figure~\ref{fig:jsem-exmaple} illustrates this through a small example. Subsequently, we use the Joint Structural Estimation Method (JSEM) \citep{MaMichailidis15} to estimate $\Omega_x$, which first uses the group structure given by $\cG_x$ in penalized nodewise regressions \citep{MeisenBuhlmann06} to obtain neighborhood coefficients $\zeta_i = (\bfzeta_i^1, \ldots, \bfzeta_i^K)$ of each variable $X_i, i \in \cI_p$, then fits a maximum likelihood model over the combined support sets to obtain sparse estimates of the precision matrices:
 %
 \begin{align}\label{eqn:jsem-model}
 \widehat \zeta_i &= \argmin_{\zeta_i} \left\{
@@ -91,6 +91,8 @@ The outcome of a node in the lower layer is thus modeled using all other nodes i
 \begin{Remark}
 Common sparsity structures across the same layer are incorporated into the regression by the group penalties over the element-wise groups $\bftheta_{jj'}^{[g]}$, while sparsity pattern overlaps across the different regression matrices $\bfB^k$ are handled by the group penalties over $\bfB^{[h]}$, which denote the collection of elements in $\cB$ that are in $h$. Other kinds of structural assumptions on $\cB$ or $\Theta$ can be handled within the above structure by swapping out the group norms in favor of other appropriate norm-based penalties.
 \end{Remark}
+
+Note that the group sparsity assumptions are not necessary for the JMMLE framework: rather in a practical situation they help leverage additional information regarding interaction of features in and between the layers, {\it as and when that information is available}. In the vertical direction of the multiple multilayer model, i.e. given a fixed $k$, a framework agnostic of any structural dependency assumptions amounts to element-wise groups in $\bfB^k$ and $\Omega_y^k$. In JMMLE, this occurs by construction for $\Theta$, and since $\cH$ consists of all possible partitions of $\cI_p \times \cI_q \times \cI_K$, it covers the case of element-wise groups as well. On the other hand, the absence of any horizontal (i.e. across $k$) dependency simply decomposes the problems \eqref{eqn:jmmle-objfun} and \eqref{eqn:omega-y-calc} into $K$ independent sub-problems that can be solved separately either by setting $K=1$ in our framework or by using existing methods, such as \citet{LinEtal16}.
 
 \subsubsection{Alternating Block Algorithm}
 The objective function in \eqref{eqn:jmmle-objfun} is bi-convex, i.e. convex in $\cB$ for fixed $\Theta$, and vice-versa, but not jointly convex in $\{ \cB, \Theta \}$. Consequently, we use an alternating iterative algorithm to solve for $\{ \cB, \Theta \}$ that minimizes \eqref{eqn:jmmle-objfun} by iteratively cycling between $\cB$ and $\Theta$, i.e. holding one set of parameters fixed and solving for the other, then alternating until convergence.
@@ -164,7 +166,7 @@ $
 \gamma_n^* (\lambda) = \argmin_{\gamma_n \in \cC_n} \text{BIC} (\gamma_n; \widehat \cB_{\lambda_n})
 $.
 
-We use the High-dimensional BIC (HBIC) to select the other tuning parameter, $\lambda$:
+We use the High-dimensional BIC (HBIC, \citet{KimKwonChoi12, WangKimLi13}) to select the other tuning parameter, $\lambda$:
 %
 \begin{align*}
 \text{HBIC} (\lambda_n; \Theta) &=
@@ -173,7 +175,7 @@ We use the High-dimensional BIC (HBIC) to select the other tuning parameter, $\l
 \left( \| \bfB^k \|_0 + | \widehat E_{y, \gamma_n^* (\lambda_n)}^k| \right)
 \end{align*}
 %
-We choose an optimal $\lambda_n$ as the minimizer of HBIC by training multiple JMMLE models using Algorithm \ref{algo:jmmle-algo} over a finite set of values $\lambda_n \in \cD_n$: 
+Unlike BIC, the penalty term in HBIC scales with the parameter dimensions. As a result, the tuning poarameter selected as the minimizer of HBIC asymptotically identifies the oracle estimator in ultra-high dimensional penalized problems \citep{FanTang13, WangKimLi13}. In our case, we choose an optimal $\lambda_n$ as the empirical minimizer of HBIC by training multiple JMMLE models using Algorithm \ref{algo:jmmle-algo} over a finite set of values $\lambda_n \in \cD_n$: 
 $
 \lambda^* = \argmin_{\lambda_n \in \cD_n} \text{HBIC} (\lambda, \widehat \Theta_{\gamma_n^*(\lambda_n)})
 $.
