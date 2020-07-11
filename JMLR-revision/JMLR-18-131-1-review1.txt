@@ -1,19 +1,54 @@
-This paper studies the joint estimation and inference problem for data integration based on multiple and multi-layered Gaussian graphical models. Conceptually, the proposed method, coined as the Joint Multiple Multi-Layer Estimation (JMMLE), aims to estimate the vertical (multi-layer) and horizontal (multiple graphs) dependence structures by borrowing similarity information within each layer and the hierarchical links. Methodically, the JMMLE is implemented as a combination of the neighborhood selection and group lasso type regressions. A debiasing procedure is developed based on the \ell_{1}/\ell_{2} penalized regressions. Asymptotic distributions for the model parameters and validity of testing procedures are established. Below are some of my major concerns. 
+This paper studies the joint estimation and inference problem for data integration based on multiple and multi-layered Gaussian graphical models.
+Conceptually, the proposed method, coined as the Joint Multiple Multi-Layer Estimation (JMMLE), 
+aims to estimate the vertical (multi-layer) and horizontal (multiple graphs) dependence structures 
+by borrowing similarity information within each layer and the hierarchical links. Methodically, 
+the JMMLE is implemented as a combination of the neighborhood selection and group lasso type regressions. 
+\A debiasing procedure is developed based on the \ell_{1}/\ell_{2} penalized regressions. 
+Asymptotic distributions for the model parameters and validity of testing procedures are established. Below are some of my major concerns. 
 
-Model assumptions: The framework proposed by the authors requires the knowledge of the group sparsity patterns on the precision matrices of every layer, as well as the group sparsity patterns on the regression coefficient matrices. How practical that information can be obtained in real applications (such as in the Omics data integration problem)? In addition, since the proposed framework is has a hierarchical dependency (besides the similarity structure), if the group sparsity patterns of the coefficient matrices and the precision matrices from the lower layer are given, how is the group sparsity pattern of the upper layer affected given that information? In such a multi-task learning/estimation problem, it seems more natural to only assume similarity patterns on the lower layer such that the features in the upper layer (due to the regression model structure imposed by the authors in Section 2.1) is automatically influenced by the correlation/dependence structures in the multiple response variables.  Overall, I think the model framework in this paper is over-demanding.
+Model assumptions: The framework proposed by the authors requires the knowledge of the 
+group sparsity patterns on the precision matrices of every layer, as well as 
+the group sparsity patterns on the regression coefficient matrices. 
+How practical that information can be obtained in real applications (such as in the Omics data integration problem)? 
+In addition, since the proposed framework is has a hierarchical dependency (besides the similarity structure), 
+if the group sparsity patterns of the coefficient matrices and the precision matrices from the lower layer are given, 
+how is the group sparsity pattern of the upper layer affected given that information? 
+In such a multi-task learning/estimation problem, it seems more natural to only assume similarity patterns 
+on the lower layer such that the features in the upper layer (due to the regression model structure imposed by the authors in Section 2.1) 
+is automatically influenced by the correlation/dependence structures in the multiple response variables.  
+Overall, I think the model framework in this paper is over-demanding.
 
-Tuning parameters (section 2.2.2): There are three tuning parameters in JMMLE. The tuning parameter selection is done by the BIC and its high-dimensional version (HBIC), which in my opinion is not a convincing way to promote the sparsity in estimating the parameters in the high-dimensional setting. First, I don’t quite understand the definition of the HBIC given by the authors (e.g., why the sample size information is on the scale of \log\log{n} and why the model complexity is on the scale of \log(pq)?). The authors should either give a derivation of their criteria or give a reference for those formula. More seriously, it is unclear whether or not the BIC-tuned parameters obey the conditions in the theory developed in Section 2.3 for the JMMLE estimators.
+Tuning parameters (section 2.2.2): There are three tuning parameters in JMMLE. The tuning parameter selection 
+is done by the BIC and its high-dimensional version (HBIC), which in my opinion is not a convincing way to 
+promote the sparsity in estimating the parameters in the high-dimensional setting. First, 
+I don’t quite understand the definition of the HBIC given by the authors 
+(e.g., why the sample size information is on the scale of \log\log{n} and why the model complexity is on the scale of \log(pq)?). 
+The authors should either give a derivation of their criteria or give a reference for those formula. 
+More seriously, it is unclear whether or not the BIC-tuned parameters obey the conditions in the theory developed in Section 2.3 for the JMMLE estimators.
 
-Simulation: In Section 4.1, in terms of the overall performance of MCC, JMMLE is not as good as the separate estimation methods for each layers, at least in the higher sparsity settings. (Table 2, column MCC, settings (30,60,10), (200,200,150),…) In addition, the number of simulations(=50) is relatively small.
+Simulation: In Section 4.1, in terms of the overall performance of MCC, JMMLE is not as good as 
+the separate estimation methods for each layers, at least in the higher sparsity settings. 
+(Table 2, column MCC, settings (30,60,10), (200,200,150),…) In addition, the number of simulations(=50) is relatively small.
 
-Real data: Since the paper is motivated from the data integration problem of Omics data, a real application should be added to demonstrate the usefulness of the proposed method.
+Real data: Since the paper is motivated from the data integration problem of Omics data, 
+a real application should be added to demonstrate the usefulness of the proposed method.
 
-Notations: I am not sure if the notation system in the current version is optimal. In many places, the notation is not conventional and quite confusing (I have to guess the meanings!) For examples, the authors use \hat to denote both deterministic and random quantities in Section 2.3; the constants c_{1}, c_{4} in Theorem 2 (and subsequent theorems) are meaningless in that c_{1}=12*c_{1}  unless the explicit values of c_{1} is given. I can go this list on and on… So I strongly recommend the authors improve the notation and be concise in writings. 
+Notations: I am not sure if the notation system in the current version is optimal. 
+In many places, the notation is not conventional and quite confusing (I have to guess the meanings!) 
+For examples, the authors use \hat to denote both deterministic and random quantities in Section 2.3; 
+the constants c_{1}, c_{4} in Theorem 2 (and subsequent theorems) are meaningless in that c_{1}=12*c_{1}  
+unless the explicit values of c_{1} is given. I can go this list on and on… So I strongly recommend 
+the authors improve the notation and be concise in writings. 
 
-Technicality: Theoretical properties derived for JMMLE estimators seem to be consequences of standard concentration inequalities (in particular, given that the Gaussian distribution assumptions on the data) and the debiasing techniques. I don’t see the essential technical difficulty in this paper. If I were incorrect, then please highlight your difference/contributions from existing results.  
+Technicality: Theoretical properties derived for JMMLE estimators seem to be consequences of 
+standard concentration inequalities (in particular, given that the Gaussian distribution assumptions on the data) 
+and the debiasing techniques. I don’t see the essential technical difficulty in this paper. 
+If I were incorrect, then please highlight your difference/contributions from existing results.  
 
 Minor points:
 
-— page 6: the authors call the estimator \hat{\Omega}_{x}^{k} as the *graphical lasso* in estimating the precision matrices of the X-layer. I think this is not precise since there is no \ell_{1} penalty involved in the estimator. Rather, it is just an MLE of \Omega_{x}^{k} on a restricted support.
+— page 6: the authors call the estimator \hat{\Omega}_{x}^{k} as the *graphical lasso* in estimating the 
+precision matrices of the X-layer. I think this is not precise since there is no \ell_{1} penalty involved in the estimator. 
+Rather, it is just an MLE of \Omega_{x}^{k} on a restricted support.
 — page 12: in line -10, simularities -> similarities.
 — page 13: in the definition of the debiased estimator \hat{\beta}_{j}^{deb}, there is a missing hat in the residual of initial estimate \beta^{(\init)}.

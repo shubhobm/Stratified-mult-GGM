@@ -1,9 +1,31 @@
-In this paper, the authors have developed a hierarchical model based approach for data integration. Hierarchical approach for data integration is common in the recent advancement of multi-omics and multi-platform data sets. Here the authors have used multi-layered Gaussian graphical model structure to do combine modeling and inference from different conditions or subtypes and different types of molecular information. The formulation involves decomposing the multi-layer problem into a set of two layers. Then using GGM framework to model the outcomes from each pair of layers. The relationship between and within the layers are established using the nodes in the layers as the nodes of GGM. The sparsity is developed using elementwise penalization of the precision matrices. An efficient algorithm is developed to fix the complex multi-layer model across all data platforms. Overall, the paper is well written with underlying theoretical justification and elicitation through simulations. However, I have following comments regarding the article.
+In this paper, the authors have developed a hierarchical model based approach for data integration. 
+Hierarchical approach for data integration is common in the recent advancement of multi-omics and multi-platform data sets.
+ Here the authors have used multi-layered Gaussian graphical model structure to do combine modeling and 
+inference from different conditions or subtypes and different types of molecular information. 
+The formulation involves decomposing the multi-layer problem into a set of two layers. Then using GGM framework 
+to model the outcomes from each pair of layers. The relationship between and within the layers are 
+established using the nodes in the layers as the nodes of GGM. The sparsity is developed using elementwise 
+penalization of the precision matrices. An efficient algorithm is developed to fix the complex multi-layer 
+model across all data platforms. Overall, the paper is well written with underlying theoretical justification and 
+elicitation through simulations. However, I have following comments regarding the article.
 
-1.	Why there is no real life applications with the model? There are several multi-omics studies/data sets that are available for practical use and demonstration? Why no attempt is made on that. In a sterile simulation setting the model will most of the time work, where as in reality it will breakdown. That is not always bad, it often reveals any shortcoming/restriction of the model and thus makes the user aware of that. At least one real life application is sorely needed.
-2.	Regarding the group penalty, did the authors considered graph laplacian structure ? Diagonal dominance can be created several ways it’s not fully clear in this situation how Diagonal dominance enforce the group selection. Does it depends on the partial correlation among the nodes?
-3.	When working with multiple conditions, problem arises when same node is shared or found to be present in multiple cases. Across X1, X2, X3. I am curious if so how the model explore such behaviors?
-4.	The tuning parameter selection section need more detail description. For high dimension, can some consistency property of the BIC be established in that regard? Can you compute the full solution path of your tuning parameter? Based on your model is it possible to explore the choice of tuning parameter by calculating the profile marginal likelihood?
-5.	No clear description on the computation complexity, scalability, and convergence properties of the algorithm. No mention of the software availability. For practicality, reason a short section in the appendix need to be created with clear description on how to use the developed software. This makes me wonder about the reproducibility of the claims. 
-6.	Without real life justification, this paper is just a collection of some attractive results. I strongly urge the authors to focus more on the story telling and make the claim accessible/reproducible through sharing their codes. This paper need some serious content revision in narration. The paper overall is novel and has merit but lacks in real life based illustration and claim justification. 
+1.	Why there is no real life applications with the model? There are several multi-omics studies/data sets that are 
+available for practical use and demonstration? Why no attempt is made on that. In a sterile simulation setting the model 
+will most of the time work, where as in reality it will breakdown. That is not always bad, it often reveals any 
+shortcoming/restriction of the model and thus makes the user aware of that. At least one real life application is sorely needed.
+2.	Regarding the group penalty, did the authors considered graph laplacian structure ? 
+Diagonal dominance can be created several ways it’s not fully clear in this situation how Diagonal dominance 
+enforce the group selection. Does it depends on the partial correlation among the nodes?
+3.	When working with multiple conditions, problem arises when same node is shared or found 
+to be present in multiple cases. Across X1, X2, X3. I am curious if so how the model explore such behaviors?
+4.	The tuning parameter selection section need more detail description. For high dimension, 
+can some consistency property of the BIC be established in that regard? Can you compute the full solution 
+path of your tuning parameter? Based on your model is it possible to explore the choice of tuning parameter by calculating the profile marginal likelihood?
+5.	No clear description on the computation complexity, scalability, and convergence properties of the algorithm. 
+No mention of the software availability. For practicality, reason a short section in the appendix 
+need to be created with clear description on how to use the developed software. This makes me wonder about the reproducibility of the claims. 
+6.	Without real life justification, this paper is just a collection of some attractive results. 
+I strongly urge the authors to focus more on the story telling and make the claim accessible/reproducible 
+through sharing their codes. This paper need some serious content revision in narration. 
+The paper overall is novel and has merit but lacks in real life based illustration and claim justification. 
 

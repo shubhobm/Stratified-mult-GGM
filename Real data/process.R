@@ -1,5 +1,6 @@
 # initial work
-setwd("D:/Study/My projects/Stratified-mult-GGM")
+# setwd("D:/Study/My projects/Stratified-mult-GGM")
+setwd("C:/Study/Stratified-mult-GGM/")
 Required.Packages <- c("data.table", "glmnet")
 sapply(Required.Packages, FUN = function(x) {suppressMessages(require(x, character.only = TRUE))})
 
@@ -160,5 +161,6 @@ for (i in 1:q){
 }
 
 saveRDS(list(X.list1=X.list1, Y.list1=Y.list1,
+             Xg=Xg, Yg=Yg,
              B.group.array=B.group.array, Theta.groups=Theta.groups),
         file="./Data/processed_data.rds")
