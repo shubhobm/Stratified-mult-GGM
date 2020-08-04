@@ -15,6 +15,8 @@ source('JMLE.R')
 # **********************************************************************
 data = readRDS("processed_data.rds")
 final_model = readRDS("final_model.rds")
+final_model_sep = readRDS("final_model_sep.rds")
+model_list_sep = readRDS("model_list_sep.rds")
 n = sapply(data$X.list1, nrow)
 p = ncol(data$X.list1[[1]])
 q = ncol(data$Y.list1[[1]])
@@ -38,7 +40,7 @@ for (i in 1:p){
     }
     Zeta.groups[[i]] = Zeta.groups[[i]][,-i]
 }
-gamma = sqrt(log(p)/n) * seq(1, 0.4, -0.1)
+gamma = sqrt(log(p)/min(n)) * seq(1, 0.4, -0.1)
 X.list = data$X.list1
 bic.jsem <- sel.lambda.jsem(do.call(rbind, X.list), do.call(rbind, X.list),
                             unlist(X.indices), unlist(X.indices),
@@ -54,6 +56,7 @@ for(k in 1:K){
 ## Get debiased estimates **********************************************
 # **********************************************************************
 B.hat.array = final_model$B.refit
+B.hat.array = final_model_sep$B_sep_array
 C.hat.array = B.hat.array
 Y.list = data$Y.list1
 M = matrix(0,p,K)
@@ -84,7 +87,8 @@ for(i in 1:p){
     ## overall test statistic
     D[i] = t(Diff.i) %*% solve(Pooled.Cov.i) %*% Diff.i
 }
-as.numeric(sum(D > qchisq(1-alpha, q))/p)
+mean(D > qchisq(1-alpha, q) & (B.hat.array[,,1]!=0 | B.hat.array[,,2]!=0))
+mean((B.hat.array[,,1]!=0 | B.hat.array[,,2]!=0))
 
 ## determine threshold for i-th test
 alpha = .2
