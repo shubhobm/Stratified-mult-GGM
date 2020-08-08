@@ -1,4 +1,86 @@
 \section{Real data example}
-We now apply the proposed methodology to a gene expression dataset containing mRNA and RNAseq expression values for $~4000$ genes, divided into 88 pathways, for 262 ER-positive (ER+) and 76 ER-negative breast cancer patients. (more info on data)
+We now apply the proposed methodology to a gene expression dataset containing mRNA and RNAseq expression values for $~4000$ genes, divided into 88 pathways, for $n_1 = 262$ ER-positive (ER+) and $n_2 = 76$ ER-negative breast cancer patients. (more info on data)
 
-Our objective here is to (a) obtain mRNA-mRNA, mRNA-RNAseq and RNAseq-RNAseq networks for the ER+ and ER- groups while incorporating pathway information, (b) test for differential strengths of mRNA-RNAseq connections between the two sample groups. To this end, we take mRNA and RNAseq expression data as the top and bottm layers (X and Y), respectively, and consider pathway-wise groups. For comparison purposes, we apply JMMLE and the separate estimation method \citet{LinEtal16} for estimating $\cB$ and $\Omega_y$, and JSEM for estimating $\Omega_y$. We use root mean squared errors over 100 random 80:20 train-test splits of samples within each group, as well as percentage of non-zero coefficients in $\widehat \cB$ and $\widehat \Omega_y$ for comparing estimation performances of the methods. To summarize within-layer and between-layer interactions, we take element-wise averages for $\widehat \bfB_k, \widehat \Omega^y_k; k= 1,2$ across the random splits.
+Our objective here is to (a) obtain mRNA-mRNA, mRNA-RNAseq and RNAseq-RNAseq networks for the ER+ and ER- groups while incorporating pathway information, (b) test for differential strengths of mRNA-RNAseq connections between the two sample groups. To this end, we take mRNA and RNAseq expression data as the top and bottm layers (X and Y), respectively, and consider pathway-wise groups. For comparison purposes, we apply JMMLE and the separate estimation method \citet{LinEtal16} for estimating $\cB$ and $\Omega_y$, and JSEM for estimating $\Omega_y$. For comparing estimation performances of the methods, we use the following performance metrics calculated over 100 random 80:20 train-test splits of samples within each group:
+%
+\begin{itemize}
+\item Root Mean Squared Scaled Prediction Error-
+%
+$$ \text{RMSSPE}(\widehat \cB, \widehat \Omega_y) = \left[
+\sum_{k=1}^K \frac{1}{n_k} \Tr \left(\bfY_k - \bfX_k \widehat \bfB_k)^T (\bfY_k - \bfX_k \widehat \bfB_k)
+\widehat\Omega_y^k \right)
+\right]^{1/2} $$
+
+\item Proportion of non-zero coefficients in $\widehat \cB$-
+%
+$$ \text{NZ}(\widehat \bfB_k) = \frac{| \supp(\hat \bfB_k) |}{pq}; \quad
+\text{NZ}(\widehat \cB) = \frac{1}{K} \sum_{k=1}^K \text{NZ}(\widehat \bfB_k) $$
+
+\item Proportion of non-zero coefficients in off-diagonal entries of $\widehat \Omega_y$-
+%
+$$ \text{NZ}(\widehat \Omega_y^k) = \frac{| \supp(\hat \Omega_y^k) - q|}{q^2}; \quad
+\text{NZ}(\widehat \Omega_y) = \frac{1}{K} \sum_{k=1}^K \text{NZ}(\widehat \Omega_y^k) $$
+\end{itemize}
+
+\begin{table}[t]
+\centering
+%\begin{scriptsize}
+    \begin{tabular}{llll}
+    \hline
+~        & RMSSPE        & NZ$(\widehat \cB)$  & NZ$(\widehat \Omega_y)$  \\\hline
+JMMLE    & 14.38 (3.27) & 0.014 (0.004) & 0.077 (0.009) \\
+Separate & ~            & ~             & ~             \\
+JSEM     & -            & -             & ~             \\\hline
+    \end{tabular}
+    \caption{Performance metric comparison over 100 random splits of the real data}
+    \label{table:real-compare}
+%\end{scriptsize}
+\end{table}
+
+To summarize within-layer and between-layer interactions, we consider the 10 highest entries in $\widehat \bfB_k, \widehat \Omega_y^k; k = 1,2$ in terms of absolute value. Table \ref{table:connections} gives their magnitudes, as well as the corresponding mRNA-RNAseq and RNAseq-RNAseq pairs. For the sake of comparison, we also report the same numbers and mRNA-mRNA pairs from the analysis of only the top layer using JSEM~\citep{MaMichailidis15}.
+
+\begin{table}[t!]
+\centering
+%\begin{scriptsize}
+    \begin{tabular}{l|lll|lll}
+    \hline
+Sample group & \multicolumn{3}{c}{ER+ $(k=1)$} & \multicolumn{3}{c}{ER- $(k=2)$} \\\hline
+    ~ & Value & mRNA      &  RNAseq   & Value  & mRNA      &  RNAseq   \\ \hline
+    ~ & -5.87 & TAF9\_3   & TRA2B\_1  & -11.32 & TAF9\_3   & TRA2B\_1  \\
+    ~ & -5.7  & KCNN3\_3  & THOC7\_1  & -6.01  & TAF9\_3   & UQCRQ\_1  \\
+    ~ & 4.9   & SQRDL\_3  & COX6A1\_1 & -5.38  & TAF9\_3   & TAF9\_1   \\
+    ~ & 4.35  & SQRDL\_3  & ATP5G3\_1 & 5.17   & SQRDL\_3  & COX6A1\_1 \\
+Conections & -4.34 & KCNN3\_3  & PABPN1\_1 & 5.14   & SQRDL\_3  & ACTR3\_1  \\
+in $\widehat \cB$ & 4.31  & SQRDL\_3  & ACTR3\_1  & 4.55   & SQRDL\_3  & SSU72\_1  \\
+    ~ & -4.21 & KCNN3\_3  & SNRPD2\_1 & -4.52  & KCNN3\_3  & THOC7\_1  \\
+    ~ & 3.98  & CYP7B1\_3 & ECH1\_1   & 4.4    & UNG\_3    & COX6A1\_1 \\
+    ~ & 3.88  & SQRDL\_3  & SSU72\_1  & -4.18  & TAF9\_3   & ATP5J\_1  \\
+    ~ & 3.87  & CYP7B1\_3 & FTH1\_1   & 4.17   & CYP7B1\_3 & FTH1\_1   \\ \hline
+    \hline
+    ~ & Value &    RNASeq1 &  RNAseq2  & Value &  RNAseq1 &  RNAseq2     \\ \hline
+    ~ & -0.27 & ECH1\_1    & PIGY\_1   & -0.16 & THOC7\_1 & PABPN1\_1    \\
+    ~ & -0.25 & THOC7\_1   & PABPN1\_1 & -0.12 & RBBP4\_1 & PABPN1\_1    \\
+    ~ & -0.22 & COX6A1\_1  & SF3B5\_1  & -0.11 & NAPA\_1  & CD63\_1      \\
+    ~ & -0.21 & PCBP1\_1   & SH3GL1\_1 & -0.11 & SOD1\_1  & SNRPD3\_1    \\
+Conections & -0.21 & ECH1\_1    & DDX42\_1  & -0.1  & EIF3I\_1 & TXNL4A\_1    \\
+in $\widehat \Omega_y$ & -0.19 & EXOSC2\_1  & QARS\_1   & -0.1  & PCBP1\_1 & SH3GL1\_1    \\
+    ~ & -0.19 & QARS\_1    & PIGY\_1   & -0.1  & TAF9\_1  & COX7C\_1     \\
+    ~ & -0.18 & ECH1\_1    & SDHC\_1   & -0.1  & ECH1\_1  & HNRNPA1L2\_1 \\
+    ~ & -0.18 & PABPN1\_1  & VAMP8\_1  & -0.1  & KARS\_1  & FUNDC1\_1    \\
+    ~ & -0.18 & EIF3I\_1   & TXNL4A\_1 & -0.1  & ECH1\_1  & PIGY\_1      \\ \hline
+    \hline
+    ~ & Value &    mRNA1 & mRNA2     & Value & mRNA1    & mRNA2     \\ \hline
+    ~ & -0.32 & GP1BB\_3 & COX6A2\_3 & -0.19 & PTPRC\_3 & ITGAL\_3  \\
+    ~ & -0.32 & PTTG1\_3 & PTTG2\_3  & -0.17 & PTPRC\_3 & CD2\_3    \\
+    ~ & -0.3  & ABCA8\_3 & C7\_3     & -0.16 & PDCD1\_3 & ICOS\_3   \\
+    ~ & -0.3  & PTPRC\_3 & CD2\_3    & -0.16 & PDCD1\_3 & CD2\_3    \\
+Conections & -0.29 & ABCA8\_3 & FXYD1\_3  & -0.16 & PTPRC\_3 & CYBB\_3   \\
+in $\widehat \Omega_x$ & -0.28 & PDCD1\_3 & ICOS\_3   & -0.15 & GP1BB\_3 & COX6A2\_3 \\
+    ~ & -0.26 & PDCD1\_3 & CD2\_3    & -0.15 & PTPRC\_3 & IL2RG\_3  \\
+    ~ & -0.25 & CD6\_3   & PDCD1\_3  & -0.15 & PTPRC\_3 & CTSS\_3   \\
+    ~ & -0.25 & PTPRC\_3 & PTGER4\_3 & -0.14 & PTPRC\_3 & PTGER4\_3 \\
+    ~ & -0.25 & LAT\_3   & PDCD1\_3  & -0.14 & LCP2\_3  & CYBB\_3   \\ \hline
+    \end{tabular}
+%\end{scriptsize}
+\caption{Top 10 within-layer and between-layer connections obtained by JMMLE.}
+\end{table}

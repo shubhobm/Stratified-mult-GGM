@@ -4,4 +4,5 @@ If necessary we can filter further variables (genes) by their variability or som
 
 pathway.csv: Only 88 gene sets. The first row shows pathway id and the second row is the name of pathways.
 samplegroup.csv: Includes subjects in both two datasets only. Consider the column ER positive or negative.
-mRNA and RNAseq: Only genes in the 88 pathways are included here, so there are less than 4000 genes included. RNAseq is count dataset (take log2 scale in analysis). 
+mRNA and RNAseq: Only genes in the 88 pathways are included here, so there are less than 4000 genes included.
+RNAseq is count dataset (take log2 scale in analysis). 

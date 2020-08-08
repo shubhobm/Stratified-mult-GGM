@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.1.27)  4 AUG 2020 14:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.1.27)  8 AUG 2020 17:38
 entering extended mode
 **./jmmle-draft-JMLR.tex
 (jmmle-draft-JMLR.tex
@@ -570,51 +570,62 @@ Overfull \hbox (1.53647pt too wide) detected at line 85
 []
  []
 
-[20 <./omega-structure.pdf>]
-Overfull \hbox (31.67633pt too wide) in paragraph at lines 126--147
+
+Overfull \hbox (31.67633pt too wide) in paragraph at lines 98--119
 [][] 
  []
 
 
-Overfull \hbox (24.37634pt too wide) in paragraph at lines 180--207
+Overfull \hbox (24.37634pt too wide) in paragraph at lines 152--179
+[][] 
+ []
+
+[20 <./omega-structure.pdf>] [21] [22]
+Overfull \hbox (16.43753pt too wide) in paragraph at lines 265--280
 [][] 
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [21]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [22]
-Overfull \hbox (16.43753pt too wide) in paragraph at lines 269--284
+Overfull \hbox (12.78754pt too wide) in paragraph at lines 287--304
 [][] 
  []
 
 
-Overfull \hbox (12.78754pt too wide) in paragraph at lines 291--308
-[][] 
- []
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [23]
-[24] [25]) (Realdata.tex) (Discussion.tex
-Overfull \hbox (1.91377pt too wide) in paragraph at lines 4--1
+[24]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[25]) (Realdata.tex
+Overfull \hbox (1.91377pt too wide) in paragraph at lines 4--6
 []\OT1/cmr/m/n/10.95 Our ob-jec-tive here is to (a) ob-tain mRNA-mRNA, mRNA-RNA
 seq and RNAseq-RNAseq
  []
 
+[26]
 
-Underfull \vbox (badness 1242) has occurred while \output is active []
+LaTeX Warning: Reference `table:connections' on page 27 undefined on input line
+ 40.
 
- [26]
-[27]) [28] (jmmle-draft-JMLR.bbl [29] [30]
+
+Overfull \hbox (5.24866pt too wide) in paragraph at lines 45--85
+ [][] 
+ []
+
+) (Discussion.tex
+Underfull \vbox (badness 5681) has occurred while \output is active []
+
+ [27]
+[28] [29]) (jmmle-draft-JMLR.bbl [30] [31]
 ("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/ucs\uni-0.def"
 File: uni-0.def 2013/05/13 UCS: Unicode data U+0000..U+00FF
-) [31]) [32]
-(misc.tex [33]
+) [32]) [33]
+(misc.tex [34]
 Overfull \hbox (8.56331pt too wide) in paragraph at lines 101--103
 []\OT1/cmr/m/it/10.95 with prob-a-bil-ity $\OMS/cmsy/m/n/10.95  \OT1/cmr/m/n/1
 0.95 1 \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 1\OML/cmm/m/it/10.95 =p[] \OMS/
@@ -627,12 +638,12 @@ MS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 1) [](\OML/cmm/m/it/10.95 pq\OT1/cmr/m/n
 /10.95 )]\OML/cmm/m/it/10.95 ; c[] >
  []
 
-[34]
+[35]
 Overfull \hbox (4.2819pt too wide) detected at line 187
 \U/msb/m/n/10.95 R [] \OT1/cmr/m/n/10.95 = \OML/cmm/m/it/10.95 c[] []
  []
 
-[35] [36] [37] [38]) (Proofs.tex
+[36] [37] [38] [39]) (Proofs.tex
 Overfull \hbox (16.97504pt too wide) detected at line 34
 [] [] \OMS/cmsy/m/n/10.95 k\OT1/cmr/m/n/10.95 (\OT1/cmr/bx/n/10.95 Y[] \OMS/cms
 y/m/n/10.95   \OT1/cmr/bx/n/10.95 X[][]\OT1/cmr/m/n/10.95 )[]\OMS/cmsy/m/n/10.9
@@ -646,7 +657,7 @@ OT1/cmr/bx/n/10.95 T[]\OMS/cmsy/m/n/10.95 k
 
 Underfull \vbox (badness 1546) has occurred while \output is active []
 
- [39]
+ [40]
 Overfull \hbox (31.74216pt too wide) detected at line 69
 []
  []
@@ -662,16 +673,16 @@ n/10.95 (\OML/cmm/m/it/10.95   \OMS/cmsy/m/n/10.95   \OML/cmm/m/it/10.95 Kq\OT
 5 k[]  []k\OT1/cmr/bx/n/10.95 D[]\OMS/cmsy/m/n/10.95 k[]
  []
 
-[40] [41] [42] [43]
+[41] [42] [43] [44]
 Overfull \hbox (6.09747pt too wide) detected at line 305
 [][] \OMS/cmsy/m/n/10.95  [] \OT1/cmr/m/n/10.95 + [] \OML/cmm/m/it/10.95 [] \
 OT1/cmr/m/n/10.95 = \OML/cmm/m/it/10.95 V[]\OT1/cmr/m/n/10.95 ;  \OML/cmm/m/it/
 10.95 c[] \OT1/cmr/m/n/10.95 = [][]
  []
 
-[44] [45] [46] [47])
+[45] [46] [47] [48])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 125.
- [48]
+ [49]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 125.
  (jmmle-draft-JMLR.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 125.
@@ -680,15 +691,18 @@ Package rerunfilecheck Info: File `jmmle-draft-JMLR.out' has not changed.
 (rerunfilecheck)             Checksum: 19BFAB70C4D7741B4CF2754ACD3CB490;1516.
 
 
+LaTeX Warning: There were undefined references.
+
+
 LaTeX Warning: There were multiply-defined labels.
 
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 125.
  ) 
 Here is how much of TeX's memory you used:
- 9748 strings out of 492448
- 143527 string characters out of 3126939
- 247954 words of memory out of 3000000
- 13655 multiletter control sequences out of 15000+200000
+ 9755 strings out of 492448
+ 143634 string characters out of 3126939
+ 249055 words of memory out of 3000000
+ 13658 multiletter control sequences out of 15000+200000
  19077 words of font info for 71 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  46i,17n,42p,1442b,657s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -720,9 +734,9 @@ ic/amsfonts/cm/cmti10.pfb><C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/public
 msfonts/cm/cmtt9.pfb><C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/public/amsf
 onts/symbols/msam10.pfb><C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/public/a
 msfonts/symbols/msbm10.pfb>
-Output written on jmmle-draft-JMLR.pdf (48 pages, 696879 bytes).
+Output written on jmmle-draft-JMLR.pdf (49 pages, 705169 bytes).
 PDF statistics:
- 1118 PDF objects out of 1200 (max. 8388607)
- 237 named destinations out of 1000 (max. 500000)
+ 1129 PDF objects out of 1200 (max. 8388607)
+ 241 named destinations out of 1000 (max. 500000)
  207 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,5 +1,5 @@
 rm(list=ls())
-setwd('d:/Study/My projects/Stratified-mult-GGM/Codes/estimation_outputs/')
+setwd('c:/Study/Stratified-mult-GGM/Codes/estimation_outputs/')
 
 analyze = function(list, broken=FALSE, array=NULL, range=NULL){
   matrix.list = list()

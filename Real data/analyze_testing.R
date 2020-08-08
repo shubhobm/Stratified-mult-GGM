@@ -53,6 +53,43 @@ for(k in 1:K){
     Zeta_new.array[,,k] = jsem.model$Theta[[k]]
 }
 
+## Refit to get Omega
+if(is.null(jsem.model)){
+    Ahat = list()
+    for(k in 1:K){
+        Ahat[[k]] = matrix(0, q, q)
+        Ahat[[k]][which(abs(Theta_new.array[,,k])>eps, arr.ind=T)] = 1
+        diag(Ahat[[k]]) = 0
+    }
+} else{
+    Ahat = jsem.model$Ahat
+}
+Info = list()
+for (k in 1:K){
+    Info[[k]] = zeroInd(Ahat[[k]], 1)$zeroArr
+}
+Theta_refit = multi.glasso(do.call(rbind, X.list), unlist(X.indices), jsem.model$lambda, Info)
+
+# non-zero values in Omega-x
+Om.values = vector("list",K)
+groups = c("ER+","ER-")
+X.names = colnames(X.list[[1]])
+for(k in 1:K){
+    non.zero.Om = which(Theta_refit$Omega[[k]] != 0, arr.ind=T)
+    non.zero.Om = non.zero.Om[non.zero.Om[,1] < non.zero.Om[,2],] # just take lower triangle
+    Om.df = data.table(SampleGroup = groups[k],
+                       mRNA1 = X.names[non.zero.Om[,1]],
+                       mRNA2 = X.names[non.zero.Om[,2]])
+    invisible(Om.df[, Value := 0])
+    for(i in 1:nrow(Om.df)){
+        Om.df[i, Value := Theta_refit$Omega[[k]][non.zero.Om[i,1],non.zero.Om[i,2]]]
+    }
+    Om.values[[k]] = Om.df[order(abs(Value), decreasing=T)]
+}
+
+Om.values
+fwrite(rbindlist(Om.values), file="Omegax_values.csv", sep=",")
+
 ## Get debiased estimates **********************************************
 # **********************************************************************
 B.hat.array = final_model$B.refit

@@ -35,18 +35,35 @@ for(k in 1:K){
   non.zero.Th = which(final_model$Theta_refit$Theta[[k]] != 0, arr.ind=T)
   non.zero.Th = non.zero.Th[non.zero.Th[,1] < non.zero.Th[,2],] # just take lower triangle
   Th.df = data.table(SampleGroup = groups[k],
-                     RNASeq1 = X.names[non.zero.Th[,1]],
+                     RNASeq1 = Y.names[non.zero.Th[,1]],
                      RNAseq2 = Y.names[non.zero.Th[,2]])
   invisible(Th.df[, Value := 0])
   for(i in 1:nrow(Th.df)){
-    invisible(Th.df[i, Value := final_model$Theta_refit$Theta[[k]][non.zero.Th[i,1],non.zero.Th[i,2]]])
+    Th.df[i, Value := final_model$Theta_refit$Theta[[k]][non.zero.Th[i,1],non.zero.Th[i,2]]]
   }
-  # invisible(Th.df[, Value := round(Value, 5)])
   Th.values[[k]] = Th.df[order(abs(Value), decreasing=T)]
 }
 
 Th.values
-fwrite(rbindlist(Th.values), file="Theta_values.csv", sep=",")
+fwrite(rbindlist(Th.values), file="Theta_values_correct.csv", sep=",")
+
+# non-zero values in Omega
+Om.values = vector("list",K)
+for(k in 1:K){
+    non.zero.Om = which(final_model$Theta_refit$Omega[[k]] != 0, arr.ind=T)
+    non.zero.Om = non.zero.Om[non.zero.Om[,1] < non.zero.Om[,2],] # just take lower triangle
+    Om.df = data.table(SampleGroup = groups[k],
+                       RNASeq1 = Y.names[non.zero.Om[,1]],
+                       RNAseq2 = Y.names[non.zero.Om[,2]])
+    invisible(Om.df[, Value := 0])
+    for(i in 1:nrow(Om.df)){
+        Om.df[i, Value := final_model$Theta_refit$Omega[[k]][non.zero.Om[i,1],non.zero.Om[i,2]]]
+    }
+    Om.values[[k]] = Om.df[order(abs(Value), decreasing=T)]
+}
+
+Om.values
+fwrite(rbindlist(Om.values), file="Omega_values_correct.csv", sep=",")
 
 
 ## Tune JSEM model for X ***********************************************
