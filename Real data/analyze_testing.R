@@ -2,7 +2,7 @@
 rm(list=ls())
 # setwd("/n/subho-data/JMMLE-outputs/real-data")
 setwd("C:/Study/Stratified-mult-GGM/Real data/")
-Required.Packages <- c("data.table", "glmnet","glasso","parallel")
+Required.Packages <- c("data.table", "glmnet","glasso","parallel","xtable")
 sapply(Required.Packages, FUN = function(x) {suppressMessages(require(x, character.only = TRUE))})
 
 source('jsem.R')
@@ -93,7 +93,7 @@ fwrite(rbindlist(Om.values), file="Omegax_values.csv", sep=",")
 ## Get debiased estimates **********************************************
 # **********************************************************************
 B.hat.array = final_model$B.refit
-B.hat.array = final_model_sep$B_sep_array
+# B.hat.array = final_model_sep$B_sep_array
 C.hat.array = B.hat.array
 Y.list = data$Y.list1
 M = matrix(0,p,K)
@@ -116,7 +116,8 @@ alpha = .05
 ## Global test statistics for i-th X-variable
 D = rep(0,p)
 d = matrix(0,p,q)
-for(i in 1:p){
+which_deb = which(rowSums(abs(B.hat.array[,,1]))!=0 | rowSums(abs(B.hat.array[,,2]))!=0)
+for(i in which_deb){
     Pooled.Cov.i = Theta1/M[i,1]^2 + Theta2/M[i,2]^2
     Diff.i = C.hat.array[i,,1] - C.hat.array[i,,2]
     ## pairwise test statistics
@@ -124,14 +125,20 @@ for(i in 1:p){
     ## overall test statistic
     D[i] = t(Diff.i) %*% solve(Pooled.Cov.i) %*% Diff.i
 }
-mean(D > qchisq(1-alpha, q) & (B.hat.array[,,1]!=0 | B.hat.array[,,2]!=0))
-mean((B.hat.array[,,1]!=0 | B.hat.array[,,2]!=0))
+mean(D > qchisq(1-alpha, q))
 
 ## determine threshold for i-th test
+X.names = colnames(X.list[[1]])
 alpha = .2
 d.ind.mat = matrix(0,p,q)
 tau = rep(20,p)
 which.i.reject = which(D > qchisq(.95, q))
+z = data.table(
+    gene = X.names[which.i.reject], # significant mRNAs
+    stat = round(D[which.i.reject],1)
+)[order(stat, decreasing = T)]
+xtableFtable(ftable(as.matrix(z), row.vars = NULL), method="compact")
+
 for(i in which.i.reject){
     tau.vec = seq(0, 20, length.out=1e2)
     thres.vec = as.numeric(lapply(tau.vec, function(x) alpha/q * max(sum(d[i,]>x),1)))
@@ -139,7 +146,21 @@ for(i in which.i.reject){
     if(length(which.less)>0){
         tau[i] = tau.vec[which.less[1]] # set tau as minimizer only if there is at least one tau entry less
     }
-    # tau[i] = tau.vec[which.min(abs(1 - pchisq(tau.vec,1) - thres.vec))]
-    
     d.ind.mat[i,] = as.numeric(d[i,]>tau[i])
 }
+
+# highest simultaneous testing statistic values
+# non-zero values in Omega-x
+Y.names = colnames(Y.list[[1]])
+which_reject = which(d.ind.mat > 0, arr.ind=T)
+nrej = nrow(which_reject)
+d.values = data.table(mRNA=rep("",nrej), RNAseq=rep("",nrej), stat=rep(0,nrej))
+for(i in 1:nrej){
+    d.values[i,mRNA := X.names[which_reject[i,1]]]
+    d.values[i,RNAseq := Y.names[which_reject[i,2]]]
+    d.values[i,stat := round(d[which_reject[i,1],which_reject[i,2]],1)]
+}
+
+fwrite(d.values[order(stat, decreasing = T)], file="d_values.csv", sep=",")
+xtableFtable(ftable(as.matrix(d.values[order(stat, decreasing = T)][1:10]
+                              ), row.vars = NULL), method="compact")

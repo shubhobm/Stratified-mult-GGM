@@ -1,5 +1,5 @@
 \section{Real data example}
-We now apply the proposed methodology to a gene expression dataset containing mRNA and RNAseq expression values for $~4000$ genes, divided into 88 pathways, for $n_1 = 262$ ER-positive (ER+) and $n_2 = 76$ ER-negative breast cancer patients. (more info on data)
+We now apply the proposed methodology to a gene expression dataset containing mRNA and RNAseq expression values for $~4000$ genes, divided into 88 pathways, for $n_1 = 262$ ER-positive (ER+) and $n_2 = 76$ ER-negative breast cancer patients. {\colrbf more info needed on data}
 
 Our objective here is to (a) obtain mRNA-mRNA, mRNA-RNAseq and RNAseq-RNAseq networks for the ER+ and ER- groups while incorporating pathway information, (b) test for differential strengths of mRNA-RNAseq connections between the two sample groups. To this end, we take mRNA and RNAseq expression data as the top and bottm layers (X and Y), respectively, and consider pathway-wise groups. For comparison purposes, we apply JMMLE and the separate estimation method \citet{LinEtal16} for estimating $\cB$ and $\Omega_y$, and JSEM for estimating $\Omega_y$. For comparing estimation performances of the methods, we use the following performance metrics calculated over 100 random 80:20 train-test splits of samples within each group:
 %
@@ -37,7 +37,7 @@ JSEM     & -            & -             & ~             \\\hline
 %\end{scriptsize}
 \end{table}
 
-To summarize within-layer and between-layer interactions, we consider the 10 highest entries in $\widehat \bfB_k, \widehat \Omega_y^k; k = 1,2$ in terms of absolute value. Table \ref{table:connections} gives their magnitudes, as well as the corresponding mRNA-RNAseq and RNAseq-RNAseq pairs. For the sake of comparison, we also report the same numbers and mRNA-mRNA pairs from the analysis of only the top layer using JSEM~\citep{MaMichailidis15}.
+To summarize within-layer and between-layer interactions, we consider the 10 highest entries in $\widehat \bfB_k, \widehat \Omega_y^k; k = 1,2$ in terms of absolute value. Table \ref{table:top10} gives their magnitudes, as well as the corresponding mRNA-RNAseq and RNAseq-RNAseq pairs. For the sake of comparison, we also report the same numbers and mRNA-mRNA pairs from the analysis of only the top layer using JSEM~\citep{MaMichailidis15}. {\colrbf give citations for some connections}
 
 \begin{table}[t!]
 \centering
@@ -45,7 +45,7 @@ To summarize within-layer and between-layer interactions, we consider the 10 hig
     \begin{tabular}{l|lll|lll}
     \hline
 Sample group & \multicolumn{3}{c}{ER+ $(k=1)$} & \multicolumn{3}{c}{ER- $(k=2)$} \\\hline
-    ~ & Value & mRNA      &  RNAseq   & Value  & mRNA      &  RNAseq   \\ \hline
+    ~ & Value & mRNA      &  RNAseq   & Value  & mRNA      &  RNAseq   \\\cline{2-7}
     ~ & -5.87 & TAF9\_3   & TRA2B\_1  & -11.32 & TAF9\_3   & TRA2B\_1  \\
     ~ & -5.7  & KCNN3\_3  & THOC7\_1  & -6.01  & TAF9\_3   & UQCRQ\_1  \\
     ~ & 4.9   & SQRDL\_3  & COX6A1\_1 & -5.38  & TAF9\_3   & TAF9\_1   \\
@@ -57,7 +57,7 @@ in $\widehat \cB$ & 4.31  & SQRDL\_3  & ACTR3\_1  & 4.55   & SQRDL\_3  & SSU72\_
     ~ & 3.88  & SQRDL\_3  & SSU72\_1  & -4.18  & TAF9\_3   & ATP5J\_1  \\
     ~ & 3.87  & CYP7B1\_3 & FTH1\_1   & 4.17   & CYP7B1\_3 & FTH1\_1   \\ \hline
     \hline
-    ~ & Value &    RNASeq1 &  RNAseq2  & Value &  RNAseq1 &  RNAseq2     \\ \hline
+    ~ & Value &    RNASeq1 &  RNAseq2  & Value &  RNAseq1 &  RNAseq2     \\\cline{2-7}
     ~ & -0.27 & ECH1\_1    & PIGY\_1   & -0.16 & THOC7\_1 & PABPN1\_1    \\
     ~ & -0.25 & THOC7\_1   & PABPN1\_1 & -0.12 & RBBP4\_1 & PABPN1\_1    \\
     ~ & -0.22 & COX6A1\_1  & SF3B5\_1  & -0.11 & NAPA\_1  & CD63\_1      \\
@@ -69,7 +69,7 @@ in $\widehat \Omega_y$ & -0.19 & EXOSC2\_1  & QARS\_1   & -0.1  & PCBP1\_1 & SH3
     ~ & -0.18 & PABPN1\_1  & VAMP8\_1  & -0.1  & KARS\_1  & FUNDC1\_1    \\
     ~ & -0.18 & EIF3I\_1   & TXNL4A\_1 & -0.1  & ECH1\_1  & PIGY\_1      \\ \hline
     \hline
-    ~ & Value &    mRNA1 & mRNA2     & Value & mRNA1    & mRNA2     \\ \hline
+    ~ & Value &    mRNA1 & mRNA2     & Value & mRNA1    & mRNA2     \\\cline{2-7}
     ~ & -0.32 & GP1BB\_3 & COX6A2\_3 & -0.19 & PTPRC\_3 & ITGAL\_3  \\
     ~ & -0.32 & PTTG1\_3 & PTTG2\_3  & -0.17 & PTPRC\_3 & CD2\_3    \\
     ~ & -0.3  & ABCA8\_3 & C7\_3     & -0.16 & PDCD1\_3 & ICOS\_3   \\
@@ -83,4 +83,67 @@ in $\widehat \Omega_x$ & -0.28 & PDCD1\_3 & ICOS\_3   & -0.15 & GP1BB\_3 & COX6A
     \end{tabular}
 %\end{scriptsize}
 \caption{Top 10 within-layer and between-layer connections obtained by JMMLE.}
+\label{table:top10}
 \end{table}
+
+\begin{table}[t!]
+
+\begin{minipage}{.5\linewidth}
+\caption*{(a)}
+\centering
+\begin{tabular}{ll}
+\hline mRNA & Statistic \\\hline
+DCTN2\_3   & 17015.2   \\ 
+ST8SIA1\_3 & 13514.6   \\ 
+FUT5\_3    &  8315.7   \\ 
+XPA\_3     &  7194.2   \\ 
+RETSAT\_3  &  5676.0   \\ 
+TAF4B\_3   &  5385.8   \\ 
+CYP7B1\_3  &  4189.6   \\ 
+UNG\_3     &  3709.1   \\ 
+RAD23A\_3  &  2793.8   \\ 
+TAF9\_3    &  2427.1   \\ 
+%ARHGDIB\_3 &  1826.9   \\ 
+%SQRDL\_3   &  1498.0   \\ 
+%CH25H\_3   &  1045.4   \\ 
+%MMP2\_3    &  1001.2   \\ 
+%ST3GAL6\_3 &   957.6   \\ 
+%KCNN3\_3   &   809.9   \\ 
+%RDH16\_3   &   711.6   \\ 
+%PTPLAD2\_3 &   626.4   \\ 
+%PGM2\_3    &   605.3   \\ 
+%MCAT\_3    &   353.3   \\ 
+%HSD17B6\_3 &   230.1   \\ 
+%BDH2\_3    &   223.4   \\ 
+%NNMT\_3    &   217.2   \\
+\hline
+\end{tabular}
+\end{minipage}
+%\end{table}
+% latex table generated in R 3.5.1 by xtable 1.8-2 package
+% Sun Aug 09 13:54:31 2020
+%\begin{table}[t!]
+%\centering
+\begin{minipage}{.5\linewidth}
+\caption*{(b)}
+\centering
+\begin{tabular}{lll}
+\hline
+mRNA & RNAseq & Statistic \\\hline
+DCTN2\_3   & EIF4A1\_1  & 2560.6    \\ 
+DCTN2\_3   & ARPC4\_1   & 2021.8    \\ 
+ST8SIA1\_3 & EIF4A1\_1  & 1948.2    \\ 
+DCTN2\_3   & PAIP1\_1   & 1922.3    \\ 
+DCTN2\_3   & SNX5\_1    & 1825.1    \\ 
+DCTN2\_3   & SUMO3\_1   & 1817.6    \\ 
+DCTN2\_3   & CETN2\_1   & 1779.2    \\ 
+DCTN2\_3   & SF3B4\_1   & 1755.8    \\ 
+ST8SIA1\_3 & ARPC4\_1   & 1516.5    \\ 
+ST8SIA1\_3 & PAIP1\_1   & 1453.9    \\\hline
+\end{tabular}
+\end{minipage}
+\caption{Hypothesis testing outputs from real data analysis: (a) top-10 mRNAs and their global test statistic ($D_i$) values, (b) top-10 mRNA-RNAseq pairs and their simultaneous test statistic ($d_{ij}$) values}
+\label{table:realtesting}
+\end{table}
+
+After applying our debiasing procedure and performing the global test, 23 mRNA-s were determined to have significant differences in the corresponding rows across sample groups, i.e. between $\widehat \bfb_i^1$ and $\widehat \bfb_i^2$. Within connections of these mRNAs, 957 total mRNA-RNAseq connections were determined by the simultaneous testing procedure to have significant differences between their corresponding coefficients, i.e. between $\hat b_{ij}^1$ and $\hat b_{ij}^2$. {\colrbf some more references of these connections?}

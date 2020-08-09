@@ -92,7 +92,9 @@ The outcome of a node in the lower layer is thus modeled using all other nodes i
 Common sparsity structures across the same layer are incorporated into the regression by the group penalties over the element-wise groups $\bftheta_{jj'}^{[g]}$, while sparsity pattern overlaps across the different regression matrices $\bfB^k$ are handled by the group penalties over $\bfB^{[h]}$, which denote the collection of elements in $\cB$ that are in $h$. Other kinds of structural assumptions on $\cB$ or $\Theta$ can be handled within the above structure by swapping out the group norms in favor of other appropriate norm-based penalties.
 \end{Remark}
 
-Note that the group sparsity assumptions are not necessary for the JMMLE framework: rather in a practical situation they help leverage additional information regarding interaction of features in and between the layers, {\it as and when that information is available}. In the vertical direction of the multiple multilayer model, i.e. given a fixed $k$, a framework agnostic of any structural dependency assumptions amounts to element-wise groups in $\bfB^k$ and $\Omega_y^k$. In JMMLE, this occurs by construction for $\Theta$, and since $\cH$ consists of all possible partitions of $\cI_p \times \cI_q \times \cI_K$, it covers the case of element-wise groups as well. On the other hand, the absence of any horizontal (i.e. across $k$) dependency simply decomposes the problems \eqref{eqn:jmmle-objfun} and \eqref{eqn:omega-y-calc} into $K$ independent sub-problems that can be solved separately either by setting $K=1$ in our framework or by using existing methods, such as \citet{LinEtal16}.
+\begin{Remark}
+Group sparsity assumptions are not necessary for the JMMLE framework: rather in a practical situation they help leverage additional information regarding interaction of features in and between the layers, {\it as and when that information is available}. In the vertical direction of the model, i.e. given a fixed $k$, a framework agnostic of any structural dependency assumptions amounts to element-wise groups in $\bfB^k$ and $\Omega_y^k$. In JMMLE, this occurs by construction for $\Theta$, and since $\cH$ consists of all possible partitions of $\cI_p \times \cI_q \times \cI_K$, it covers the case of element-wise groups as well. On the other hand, the absence of any horizontal (i.e. across $k$) dependency simply decomposes the problems \eqref{eqn:jmmle-objfun} and \eqref{eqn:omega-y-calc} into $K$ independent sub-problems that can be solved separately either by setting $K=1$ in our framework or by using existing methods, such as \citet{LinEtal16}.
+\end{Remark}
 
 \subsubsection{Alternating Block Algorithm}
 The objective function in \eqref{eqn:jmmle-objfun} is bi-convex, i.e. convex in $\cB$ for fixed $\Theta$, and vice-versa, but not jointly convex in $\{ \cB, \Theta \}$. Consequently, we use an alternating iterative algorithm to solve for $\{ \cB, \Theta \}$ that minimizes \eqref{eqn:jmmle-objfun} by iteratively cycling between $\cB$ and $\Theta$, i.e. holding one set of parameters fixed and solving for the other, then alternating until convergence.
@@ -153,7 +155,9 @@ The steps of our full estimation procedure, coined as the {\it Joint Multiple Mu
 \end{Algorithm}
 
 \subsubsection{Tuning parameter selection}
-The node-wise regression step in the JSEM model \eqref{eqn:jsem-model} uses a Bayesian Information Criterion (BIC) for tuning parameter selection  \citep{MaMichailidis15}. The step for updating $\Theta$, i.e. \eqref{eqn:update-Theta}, in our JMMLE algorithm is analogous to this procedure, hence we use BIC to select the penalty parameter $\gamma_n$. In our setting the BIC for a given $\gamma_n$ and fixed $\cB$ is given by:
+A number of methods have been proposed in the literature to select regularization tuning parameters in $\ell_1$-penalized problems. While some approaches rely on traditional criteria like cross-validation, Akaike Information Criterion (AIC)~\citep{DanaherEtal14} or the Bayesian Information Criterion (BIC)~\citep{LinEtal16,MaMichailidis15}, a number of studies have proposed their modifications for the case when feature dimensions increase with sample size \citep{GaoEtal12,KimKwonChoi12}.
+
+As a demonstration, for the node-wise regression step in the JSEM model \eqref{eqn:jsem-model}, we stick to the use of BIC as done by \citet{MaMichailidis15}. The step for updating $\Theta$, i.e. \eqref{eqn:update-Theta}, in our JMMLE algorithm is analogous to this procedure, hence we use BIC to select the penalty parameter $\gamma_n$. In our setting the BIC for a given $\gamma_n$ and fixed $\cB$ is given by:
 %
 \begin{align*}
 \text{BIC} (\gamma_n; \cB) &=
@@ -166,7 +170,7 @@ $
 \gamma_n^* (\lambda) = \argmin_{\gamma_n \in \cC_n} \text{BIC} (\gamma_n; \widehat \cB_{\lambda_n})
 $.
 
-We use the High-dimensional BIC (HBIC, \citet{KimKwonChoi12, WangKimLi13}) to select the other tuning parameter, $\lambda$:
+To select the other tuning parameter $\lambda$, we use the High-dimensional BIC (HBIC, \citet{KimKwonChoi12, WangKimLi13}) :
 %
 \begin{align*}
 \text{HBIC} (\lambda_n; \Theta) &=
@@ -175,7 +179,7 @@ We use the High-dimensional BIC (HBIC, \citet{KimKwonChoi12, WangKimLi13}) to se
 \left( \| \bfB^k \|_0 + | \widehat E_{y, \gamma_n^* (\lambda_n)}^k| \right)
 \end{align*}
 %
-Unlike BIC, the penalty term in HBIC scales with the parameter dimensions. As a result, the tuning poarameter selected as the minimizer of HBIC asymptotically identifies the oracle estimator in ultra-high dimensional penalized problems \citep{FanTang13, WangKimLi13}. In our case, we choose an optimal $\lambda_n$ as the empirical minimizer of HBIC by training multiple JMMLE models using Algorithm \ref{algo:jmmle-algo} over a finite set of values $\lambda_n \in \cD_n$: 
+Unlike BIC, the penalty term in HBIC scales with the parameter dimensions. As a result, the tuning parameter selected as the minimizer of HBIC asymptotically identifies the oracle estimator in ultra-high dimensional penalized problems \citep{FanTang13, WangKimLi13}. In our case, we choose an optimal $\lambda_n$ as the empirical minimizer of HBIC by training multiple JMMLE models using Algorithm \ref{algo:jmmle-algo} over a finite set of values $\lambda_n \in \cD_n$: 
 $
 \lambda^* = \argmin_{\lambda_n \in \cD_n} \text{HBIC} (\lambda, \widehat \Theta_{\gamma_n^*(\lambda_n)})
 $.
@@ -286,8 +290,8 @@ with
 %
 \begin{align}\label{eqn:define-T}
 \hat T_{jj'}^k = \begin{cases}
-1 \text{ if } j = j'\\
-- \hat \theta_{jj'}^k \text{ if } j \neq j'
+1 &\text{ if } j = j'\\
+- \hat \theta_{jj'}^k &\text{ if } j \neq j'
 \end{cases}.
 \end{align}
 %
