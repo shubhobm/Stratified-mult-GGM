@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.1.27)  9 AUG 2020 19:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.1.27)  13 AUG 2020 19:28
 entering extended mode
 **./jmmle-draft-JMLR.tex
 (jmmle-draft-JMLR.tex
@@ -557,20 +557,24 @@ m/it/10.95 pq\OT1/cmr/m/n/10.95 )] \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 2 [
 cmsy/m/n/10.95 j$
  []
 
-[11] [12]) (Testing.tex [13] [14] [15] [16] [17] [18]) (Numerical.tex
+[11] [12]) (Testing.tex
+Underfull \vbox (badness 4036) has occurred while \output is active []
+
+ [13]
+[14] [15] [16] [17] [18]) (Numerical.tex [19]
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 25.
-<omega-structure.pdf, id=566, 392.95808pt x 74.28754pt>
+<omega-structure.pdf, id=593, 392.95808pt x 74.28754pt>
 File: omega-structure.pdf Graphic file (type pdf)
 <use omega-structure.pdf>
 Package pdftex.def Info: omega-structure.pdf  used on input line 37.
 (pdftex.def)             Requested size: 392.95712pt x 74.28734pt.
- [19]
+
 Overfull \hbox (1.53647pt too wide) detected at line 85
 []
  []
 
-
+[20 <./omega-structure.pdf>]
 Overfull \hbox (31.67633pt too wide) in paragraph at lines 98--119
 [][] 
  []
@@ -580,50 +584,47 @@ Overfull \hbox (24.37634pt too wide) in paragraph at lines 152--179
 [][] 
  []
 
-[20 <./omega-structure.pdf>] [21]
+[21]
 Overfull \hbox (46.51965pt too wide) in paragraph at lines 260--295
  [][] 
  []
 
-[22]
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [23]
-[24]
+ [22]
+[23]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-) (Realdata.tex [25]
+ [24]
+[25]) (Realdata.tex [26]
 Overfull \hbox (1.91377pt too wide) in paragraph at lines 4--6
 []\OT1/cmr/m/n/10.95 Our ob-jec-tive here is to (a) ob-tain mRNA-mRNA, mRNA-RNA
 seq and RNAseq-RNAseq
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [26]
 Overfull \hbox (5.24866pt too wide) in paragraph at lines 45--85
  [][] 
  []
 
-
+[27]
 Overfull \hbox (2.43333pt too wide) in paragraph at lines 91--145
 []$[]$ $[]$ 
  []
 
-) (Discussion.tex [27]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+) (Discussion.tex
+Underfull \vbox (badness 1769) has occurred while \output is active []
 
  [28]
-[29]) (jmmle-draft-JMLR.bbl
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [30]
-[31] [32] ("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/ucs\uni-0.def"
+ [29]
+[30]) (jmmle-draft-JMLR.bbl [31] [32]
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/ucs\uni-0.def"
 File: uni-0.def 2013/05/13 UCS: Unicode data U+0000..U+00FF
-)
-[33]) [34] (misc.tex [35]
+) [33]) [34]
+(misc.tex [35]
 Overfull \hbox (8.56331pt too wide) in paragraph at lines 101--103
 []\OT1/cmr/m/it/10.95 with prob-a-bil-ity $\OMS/cmsy/m/n/10.95  \OT1/cmr/m/n/1
 0.95 1 \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 1\OML/cmm/m/it/10.95 =p[] \OMS/
@@ -694,13 +695,13 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 125.
  ) 
 Here is how much of TeX's memory you used:
- 9761 strings out of 492448
- 143711 string characters out of 3126939
- 253371 words of memory out of 3000000
- 13661 multiletter control sequences out of 15000+200000
+ 9767 strings out of 492448
+ 143796 string characters out of 3126939
+ 258428 words of memory out of 3000000
+ 13664 multiletter control sequences out of 15000+200000
  19077 words of font info for 71 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 46i,17n,42p,1442b,659s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 46i,17n,42p,1442b,661s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
 <C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C
 :/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/P
@@ -729,9 +730,9 @@ ic/amsfonts/cm/cmti10.pfb><C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/public
 msfonts/cm/cmtt9.pfb><C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/public/amsf
 onts/symbols/msam10.pfb><C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/public/a
 msfonts/symbols/msbm10.pfb>
-Output written on jmmle-draft-JMLR.pdf (50 pages, 710034 bytes).
+Output written on jmmle-draft-JMLR.pdf (50 pages, 716248 bytes).
 PDF statistics:
- 1145 PDF objects out of 1200 (max. 8388607)
- 244 named destinations out of 1000 (max. 500000)
+ 1166 PDF objects out of 1200 (max. 8388607)
+ 247 named destinations out of 1000 (max. 500000)
  207 words of extra memory for PDF output out of 10000 (max. 10000000)
 

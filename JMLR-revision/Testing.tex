@@ -156,6 +156,10 @@ where $K_q$ is the cumulative distribution function of the $\chi^2_q$ distributi
 The conditions (I) or (II) above are needed to derive upper bounds for $\| \widehat \Sigma_y^k - \Sigma_{y0}^k \|_\infty$ using those for $\| \widehat \Omega_y^k - \Omega_{y0}^k \|_\infty$. While (I) imposes a potentially more stringent bound on the estimation error of $\Omega_y$, (II) restricts the power calculations to a uniformity class of covariance matrices \citep{BickelLevina08,CaiLiuLuo12}.
 %
 
+\begin{Remark}
+While the formulation of the testing procedure till now broadly gives parallel results as \citet{ZhangZhang14} and \citet{MitraZhang16}, it does so without assuming any specific penalty function or (group) sparsity conditions (such as strong group sparsity in \citet{MitraZhang16}). Instead we only require the standard finite-sample bounds (T1)-(T3) that are satisfied by both sparse and non-sparse estimators in a high-dimensional setting \citep{BasuEtal19}.
+\end{Remark}
+
 \subsection{Control of False Discovery Rate}
 Given that the null hypothesis is rejected, we consider the multiple testing problem of simultaneously testing for all entrywise differences, i.e. testing
 %
