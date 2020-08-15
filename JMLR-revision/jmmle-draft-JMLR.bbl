@@ -1,4 +1,4 @@
-\begin{thebibliography}{52}
+\begin{thebibliography}{54}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -87,6 +87,13 @@ Y.~Fan and C.~Y. Tang.
 \newblock \emph{J. R. Statist. Soc. B}, 75\penalty0 (3):\penalty0 531--552,
   2013.
 
+\bibitem[Foygel and Drton(2010)]{FoygelDrton10}
+R.~Foygel and M.~Drton.
+\newblock {Extended Bayesian Information Criteria for Gaussian Graphical
+  Models}.
+\newblock In \emph{Proc. Neur. Inf, Proc. Sys.}, volume~23, pages 2020--2028,
+  2010.
+
 \bibitem[Gao et~al.(2012)Gao, Pu, Wu, and Xu]{GaoEtal12}
 X.~Gao, D.~Q. Pu, Y.~Wu, and H.~Xu.
 \newblock {Tuning parameter selection for penalized likelihood estimation of
@@ -118,11 +125,10 @@ A.~Javanmard and A.~Montanari.
 \newblock \emph{J. Mach. Learn. Res.}, 15\penalty0 (1):\penalty0 2869--2909,
   2014.
 
-\bibitem[Javanmard and Montanari(2018+)]{JavanmardMontanari18}
+\bibitem[Javanmard and Montanari(2018)]{JavanmardMontanari18}
 A.~Javanmard and A.~Montanari.
 \newblock {De-biasing the Lasso: Optimal Sample Size for Gaussian Designs}.
-\newblock \emph{Ann. Statist.}, To appear, 2018+.
-\newblock \url{https://arxiv.org/abs/1508.02757}.
+\newblock \emph{Ann. Statist.}, 46:\penalty0 2593--2622, 2018.
 
 \bibitem[Joyce and Palsson(2006)]{JoycePalsson06}
 A.~R. Joyce and B.~Palsson.
@@ -244,6 +250,11 @@ P.~Ravikumar, M.~J. Wainwright, G.~Raskutti, and B.~Yu.
 \newblock {High-dimensional covariance estimation by minimizing
   $\ell_1$-penalized log-determinant divergence}.
 \newblock \emph{Electron. J. Stat.}, 5:\penalty0 935--980, 2011.
+
+\bibitem[Rohde and Tsybakov(2011)]{RohdeTsybakov11}
+A.~Rohde and A.~B. Tsybakov.
+\newblock Estimation of high-dimensional low-rank matrices.
+\newblock \emph{Ann. Statist.}, 39:\penalty0 887--930, 2011.
 
 \bibitem[Sas et~al.(2018)Sas, Lin, Rajendiran, et~al.]{sas2018shared}
 K.~M. Sas, J.~Lin, T.~M. Rajendiran, et~al.

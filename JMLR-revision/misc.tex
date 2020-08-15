@@ -20,31 +20,31 @@ for all $\bftheta \in \BR^b$. In short, this is denoted by $\bfM \sim RE(\psi, \
 Starting from \citet{BickelRitovTsybakov09}, different versions of the RE conditions have been proposed and used in high-dimensional analysis \citep{LohWainwright12,BasuMichailidis15,MaMichailidis15,vandeGeerBuhlmann09} to ensure that a covariance matrix satisfies a somewhat relaxed positive-definiteness condition.
 
 \begin{proof}[Proof of Theorem~\ref{thm:thm-Theta}]
-The proof strategy is as follows. We first show that given fixed $(\cX,\cE)$, and some conditions on $\widehat \bfE^k := \bfY^k - \bfX^k \widehat \bfB^k, k \in \cI_K$, the bounds in Theorem~\ref{thm:thm-Theta} hold. We then show that for random $(\cX,\cE)$, those conditions hold with probability approaching 1.
+The proof strategy is as follows. We first show that given fixed $(\cX,\cE)$, and some conditions on $\widetilde \bfE^k := \bfY^k - \bfX^k \widetilde \bfB^k, k \in \cI_K$, the bounds in Theorem~\ref{thm:thm-Theta} hold. We then show that for random $(\cX,\cE)$, those conditions hold with probability approaching 1.
 
 \begin{lemma}\label{thm:ThetaThm}
-Assume fixed $\cX, \cE$ and deterministic $\widehat \cB = \{ \widehat \bfB^k \}$, and the following conditions.
+Assume fixed $\cX, \cE$ and deterministic $\widetilde \cB = \{ \widetilde \bfB^k \}$, and the following conditions.
 
 \noindent{\bf(A1)} For $k \in \cI_K$,
 %
 $$
-\| \widehat \bfB^k - \bfB^k_0 \|_1 \leq C_\beta \sqrt{\frac{\log (pq)}{n}}
+\| \widetilde \bfB^k - \bfB^k_0 \|_1 \leq C_\beta \sqrt{\frac{\log (pq)}{n}}
 $$
 %
-with $C_\beta = O(1)$ is non-negative and depends on $\cB_0$ only.
+with $C_\beta$ is non-negative and depends on $\cB_0$ only.
 
 %\noindent{\bf(T2)} $\| \bfX^k (\widehat \bfB^k - \bfB^k_0 ) \|_\infty \leq c(v_\beta)$, where $c(v_\beta)$ is $O(1)$ and depends on $v_\beta$.
 
 \noindent{\bf(A2)} For all $j \in \cI_q$,
 %
 $$
-\frac{1}{n} \left\| (\widehat \bfE_{-j}^k)^T \widehat \bfE^k \bfT_{0,j}^k \right\|_\infty \leq
+\frac{1}{n} \left\| (\widetilde \bfE_{-j}^k)^T \widetilde \bfE^k \bfT_{0,j}^k \right\|_\infty \leq
 \BQ \left(C_\beta, \Sigma_{x0}^k, \Sigma_{y0}^k \right) \sqrt {\frac{ \log (p q)}{n}},
 $$
 %
-where $\BQ \left(C_\beta, \Sigma_{x0}^k, \Sigma_{y0}^k \right) = O(1)$ is non-negative and depends on $\cB_0, \Sigma_{x0}^k$ and $\Sigma_{y0}^k$ only.
+where $\BQ \left(C_\beta, \Sigma_{x0}^k, \Sigma_{y0}^k \right)$ is non-negative and depends on $\cB_0, \Sigma_{x0}^k$ and $\Sigma_{y0}^k$ only.
 
-\noindent{\bf(A3)} Denote $\widehat \bfS^k = (\widehat \bfE^k)^T \widehat \bfE^k/n$. Then $\widehat \bfS^k \sim RE(\psi^k, \phi^k)$ with $Kq \phi \leq \psi/2$ where $ \psi = \min_k \psi^k, \phi = \max_k \phi^k $.
+\noindent{\bf(A3)} Denote $\widetilde \bfS^k = (\widetilde \bfE^k)^T \widetilde \bfE^k/n$. Then $\widehat \bfS^k \sim RE(\psi^k, \phi^k)$ with $Kq \phi \leq \psi/2$ where $ \psi = \min_k \psi^k, \phi = \max_k \phi^k $.
 
 %\noindent{\bf(T4)} Assumption (A2) holds for $\Sigma_y^k$.
 
@@ -80,10 +80,10 @@ O \left( \BQ_0 \sqrt{\frac{| g_{\max}| S}{K}}
 Condition (A1) holds by assumption. When $\cX$ and $\cE$ are random, the following proposition ensures that (A2) and (A3) hold with probabilities approaching to 1.
 
 \begin{lemma}\label{prop:ErrorRE}
-Consider deterministic $\widehat \cB$ satisfying assumption (A1), and conditions (E1), (E2) from the main paper. Then for sample size $n \succsim \log (pq)$ and $k \in \cI_K$,
+Consider deterministic $\widetilde \cB$ satisfying assumption (A1), and conditions (E1), (E2) from the main paper. Then for sample size $n \succsim \log (pq)$ and $k \in \cI_K$,
 
 \begin{enumerate}
-\item $\widehat \bfS^k$ satisfies the RE condition: $ \widehat \bfS^k \sim RE (\psi^k, \phi^k)$, where 
+\item $\widetilde \bfS^k$ satisfies the RE condition: $ \widetilde \bfS^k \sim RE (\psi^k, \phi^k)$, where 
 %
 $$
 \psi^k = \frac{ \Lambda_{\min} (\Sigma_{x0}^k)}{2}; \quad \phi^k = \frac{ \psi^k \log p}{n} + 2 C_\beta c_2 [ \Lambda_{\max} (\Sigma_{x0}^k) \Lambda_{\max} (\Sigma_{y0}^k) ]^{1/2} \frac{ \log(pq)}{n}
@@ -94,7 +94,7 @@ with probability $\geq 1 - 6c_1 \exp [-(c_2^2-1) \log(pq)] - 2 \exp (- c_3 n), c
 \item The following deviation bound is satisfied for any $j \in \cI_q$
 %
 $$
-\left\|\frac{1}{n} (\widehat \bfE_{-j}^k)^T \widehat \bfE^k \bfT_{0,j}^k \right\|_\infty \leq \BQ \left(C_\beta, \Sigma_{x0}^k, \Sigma_{y0}^k \right) \sqrt {\frac{ \log (p q)}{n}}
+\left\|\frac{1}{n} (\widetilde \bfE_{-j}^k)^T \widetilde \bfE^k \bfT_{0,j}^k \right\|_\infty \leq \BQ \left(C_\beta, \Sigma_{x0}^k, \Sigma_{y0}^k \right) \sqrt {\frac{ \log (p q)}{n}}
 $$
 %
 
@@ -115,7 +115,7 @@ $$
 \end{enumerate} 
 \end{lemma}
 
-\noindent We prove the main theorem by putting together Lemma~\ref{thm:ThetaThm} and Lemma~\ref{prop:ErrorRE}.
+\noindent We prove the main theorem by putting together Lemma~\ref{thm:ThetaThm} and Lemma~\ref{prop:ErrorRE}, and simplifying the constants $c_1 := 12 c_1, c_4 := 6c_4$.
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:thm-B}]
@@ -124,25 +124,25 @@ The strategy is the same as in Theorem~\ref{thm:thm-Theta}. We first establish t
 %The proof strategy is as follows. We first show that given fixed $(\cX,\cE)$, and some conditions on the quantities $\widehat \bfgamma, \widehat \bfGamma$, the bounds in in \ref{thm:thm-B} hold. We then show that for random $(\cX,\cE)$, these conditions hold with probability approaching 1.
 
 \begin{lemma}\label{thm:BetaThm}
-Assume fixed $(\cX, \cE)$, and deterministic $\widehat \Theta = \{ \widehat \Theta_j \}$, so that
+Assume fixed $(\cX, \cE)$, and deterministic $\widetilde \Theta = \{ \widetilde \Theta_j \}$, so that
 
 \noindent{\bf(B1)} For $j \in \cI_q$,
 %
 $$
-\| \widehat \Theta_j - \Theta_{0,j} \|_F \leq C_\Theta \sqrt{\frac{\log q}{n}},
+\| \widetilde \Theta_j - \Theta_{0,j} \|_F \leq C_\Theta \sqrt{\frac{\log q}{n}},
 $$
 %
-for some $C_\Theta = O(1)$ dependent on $\Theta_0$ only.
+for some $C_\Theta$ dependent on $\Theta_0$ only.
 
-\noindent{\bf(B2)} Denote $\widehat \bfGamma^k = (\widehat \bfT^k)^2 \otimes (\bfX^k)^T \bfX^k/n, \widehat \bfgamma^k = (\widehat \bfT^k)^2 \otimes (\bfX^k)^T \bfY^k/n$. Then the deviation bound holds:
+\noindent{\bf(B2)} Denote $\widetilde \bfGamma^k = (\widetilde \bfT^k)^2 \otimes (\bfX^k)^T \bfX^k/n, \widetilde \bfgamma^k = (\widetilde \bfT^k)^2 \otimes (\bfX^k)^T \bfY^k/n$. Then the deviation bound holds:
 %
 $$
-\left\| \widehat \bfgamma^k - \widehat \bfGamma^k \bfbeta_0 \right\|_\infty \leq \BR( C_\Theta, \Sigma_{x0}^k, \Sigma_{y0}^k) \sqrt{ \frac{ \log(pq)}{n}}.
+\left\| \widetilde \bfgamma^k - \widetilde \bfGamma^k \bfbeta_0 \right\|_\infty \leq \BR( C_\Theta, \Sigma_{x0}^k, \Sigma_{y0}^k) \sqrt{ \frac{ \log(pq)}{n}}.
 $$
 %
-where $\BR (C_\Theta, \Sigma_{x0}^k, \Sigma_{y0}^k ) = O(1)$ depends on $\Theta_0, \Sigma_{x0}^k$ and $\Sigma_{y0}^k$ only.
+where $\BR (C_\Theta, \Sigma_{x0}^k, \Sigma_{y0}^k )$ depends on $\Theta_0, \Sigma_{x0}^k$ and $\Sigma_{y0}^k$ only, and $\{ \widetilde \bfT^k \}$ are defined using $\widetilde \Theta$ similar to \eqref{eqn:define-T}.
 
-\noindent{\bf(B3)} $\widehat \bfGamma \sim RE(\psi_*, \phi_*)$ with $Kpq \phi_* \leq \psi_*/2$.
+\noindent{\bf(B3)} $\widetilde \bfGamma \sim RE(\psi_*, \phi_*)$ with $Kpq \phi_* \leq \psi_*/2$.
 
 Then, given the choice of the tuning parameter
 %
@@ -168,7 +168,7 @@ Condition (B1) holds by assumption. Next, we verify that conditions (B2) and (B3
 Consider deterministic $\widehat \Theta$ satisfying assumption (B1). Also assume conditions (E3), (E4) from the main body of the paper. Then, for sample size $n \succsim \log (pq)$,
 
 \begin{enumerate}
-\item $\widehat \bfGamma$ satisfies the RE condition: $ \widehat \bfGamma \sim RE (\psi_*, \phi_*)$, where 
+\item $\widetilde \bfGamma$ satisfies the RE condition: $ \widetilde \bfGamma \sim RE (\psi_*, \phi_*)$, where 
 %
 $$
 \psi_* = \min_k \psi^k \left( \min_i \psi_k^j - d_k C_\Theta \sqrt{ \frac{ \log (pq)}{n}}\right), 
@@ -189,7 +189,7 @@ $$
 \end{enumerate}
 \end{lemma}
 
-The theorem follows straighforwardly by putting together the results from Lemmas~\ref{thm:BetaThm} and ~\ref{prop:ThmBetaRE}.
+The theorem follows straighforwardly by putting together the results from Lemmas~\ref{thm:BetaThm} and ~\ref{prop:ThmBetaRE}, and simplifying the constants $c_1 := 12 c_1, c_4 := 6c_4$.
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:starting-values}]

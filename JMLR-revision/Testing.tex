@@ -49,7 +49,7 @@ $$
 %
 where $D_\zeta$ depends only on the true values, i.e. $\{ \zeta^k_0 \}$.
 
-\noindent{\bf (T2)} The lower layer precision matrix estimators satisfy for all $k \in \cI_K$
+\noindent{\bf (T2)} The lower layer precision matrix estimates satisfy for all $k \in \cI_K$
 %
 $$
 \| \widehat \Omega_y^k - \Omega_{y0}^k \|_\infty \leq D_\Omega
@@ -65,6 +65,10 @@ $$
 %
 where $D_\beta$ depends on $\cB_0$ only.
 \vspace{1em}
+
+{\colb
+\noindent The above finite-sample error rates are common in high-dimensional problems, and can pertain to sparse \citep{MaMichailidis15,LinEtal16,LohWainwright12,BasuMichailidis15} or non-sparse estimators \citep{RohdeTsybakov11,BasuEtal19}. Based on the estimators plugged in, additional conditions may be involved in the estimation step. For example, JMMLE estimators satisfy these bounds under conditions (E1)-(E4) following the results in Section~\ref{sec:jmmle-theory}.
+}
 
 Given these conditions, the following result provides the asymptotic joint distribution of a scaled version of the debiased coefficients. A similar result for fixed design in the context of single-response linear regression can be found in \citet{StuckyVandeGeer17}. However, the authors use the nuclear norm as the loss function while obtaining the debiasing factors and employ the resulting Karush-Kuhn-Tucker (KKT) conditions to derive their results, whereas we leverage bounds on generic parameter estimates combined with the sub-Gaussianity of our random design matrices.
 
@@ -156,9 +160,11 @@ where $K_q$ is the cumulative distribution function of the $\chi^2_q$ distributi
 The conditions (I) or (II) above are needed to derive upper bounds for $\| \widehat \Sigma_y^k - \Sigma_{y0}^k \|_\infty$ using those for $\| \widehat \Omega_y^k - \Omega_{y0}^k \|_\infty$. While (I) imposes a potentially more stringent bound on the estimation error of $\Omega_y$, (II) restricts the power calculations to a uniformity class of covariance matrices \citep{BickelLevina08,CaiLiuLuo12}.
 %
 
+{\colb
 \begin{Remark}
 While the formulation of the testing procedure till now broadly gives parallel results as \citet{ZhangZhang14} and \citet{MitraZhang16}, it does so without assuming any specific penalty function or (group) sparsity conditions (such as strong group sparsity in \citet{MitraZhang16}). Instead we only require the standard finite-sample bounds (T1)-(T3) that are satisfied by both sparse and non-sparse estimators in a high-dimensional setting \citep{BasuEtal19}.
 \end{Remark}
+}
 
 \subsection{Control of False Discovery Rate}
 Given that the null hypothesis is rejected, we consider the multiple testing problem of simultaneously testing for all entrywise differences, i.e. testing
@@ -273,6 +279,12 @@ Following \eqref{eqn:FDRthmEqn1}, a sufficient condition on the sparsity of $\cB
 In recent work, \citet{JavanmardMontanari18} showed that the $o(\sqrt n/ \log p)$ bound on the sparsity of the true coefficient vector required to construct confidence intervals from debiased lasso coefficient estimates \citep{vanDeGeerEtal14, ZhangZhang14,JavanmardMontanari14} can be weakened to $o(n/ (\log p)^2)$ when the random design precision matrix is known, or is unknown but satisfies certain sparsity assumptions. Similar relaxations may be possible in our case. For example, the machinery in \citet{Liu17}, which performs simultaneous testing in multiple (single layer) GGMs using slightly modified FDR thresholds, can be useful in obtaining \eqref{eqn:FDReqn} for $ \log q = o(n^{1/2})$ under (D1), (D1*) or other suitable dependency assumptions.% However, this requires a significant amount of theoretical analysis, and we leave it for future research.
 \end{Remark}
 
+{\colb
+\subsection{Effect of tuning parameter selection}
+A topic under-addressed in the high-dimensional hypothesis testing literature till now is the effect of  regularization tuning parameter selection methods (HBIC for $\lambda_n$ and BIC for $\gamma_n$ in our case) on the size, power and confidence intervals obtained. Ideally tuning parameter selection method(s) in the estimation step should ensure that the estimated quantities from the model with optimal tuning parameter choices can be plugged into the debiasing procedure to obtain quantities that obey the correct asymptotic properties and are used in the tests that follow (e.g. Algorithms \ref{algo:AlgoGlobalTest} and \ref{algo:AlgoFDR}).
+
+In our case, the broad-based assumptions (T1)-(T3) allow plugging in estimators with finite-sample error rates that are satisfied by a host of high-dimensional methods, as discussed before. Given the tuning parameters $\lambda_n$ and $\gamma_n$ are chosen to be above thresholds that scale with feature and sample dimensions, JMMLE estimators adhere to these error rates with high probability (Corollary~\ref{corollary:jmmle-final}), ensuring the correctness of our testing procedures. To empirically make it likely that the correct tuning parameters get chosen, in our numerical examples (on synthetic and real data) that follow, we obtain JMMLE estimates over ranges of $\lambda_n$ and $\gamma_n$ that scale with the error rates of estimators. Additional technicalities will be involved for a more rigorous analysis, possibly using machineries from approaches such as \citet{FoygelDrton10,FanTang13, WangKimLi13}. We defer these to future work.
+}
 %\begin{Remark}
 %
 %\end{Remark}

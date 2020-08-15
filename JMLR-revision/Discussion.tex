@@ -19,8 +19,11 @@ In comparison, JMMLE has the following rates:
 %
 For $\cB$, joint estimation outperforms separate estimation when group sizes are small, so that $(| h_{\max}| B)^{1/2} < \sum_k b_k^{1/2}$. The estimation gain for $\Omega_y$ is more substantial, especially for higher values of $q$. This is corroborated by our simulation outputs (Tables \ref{table:simtable11} and \ref{table:simtable12}), where the joint estimates perform better for both sets of parameters, but the differences between RF errors obtained from joint and separate estimates tend to be lower for $\widehat \Omega_y$ than $\widehat \cB$.
 
+\subsection{Caveats}
+Our proposed integrative framework for estimation and testing in complex multilayer networks can benefit from theoretical work pursued in the following directions. Firstly, the Additional technicalities will be involved for a more rigorous analysis, possibly using machineries from approaches such as \citet{FoygelDrton10,FanTang13, WangKimLi13} and generalizing conditions therein (or similar conditions) to multilayer settings. To maintain focus on the current problem, we defer this to future work. Secondly, the case of overlapping groups. Thirdly?
+
 \subsection{Extensions}
-There are two immediate extensions of our hypothesis testing framework.
+Besides the directions outlined above, there are two immediate extensions of our hypothesis testing framework.
 
 \vspace{1em}
 \noindent (I) In recent work, \citet{Liu17} proposed a framework to test for structural similarities and differences across multiple {\it single layer} GGMs. For $K$ GGMs with precision matrices $\Omega^k = (\omega_{ii'}^k)_{i,i' \in \cI_p}$, a test for the partial correlation coefficients $\rho_{ii'}^{k} = - \omega_{ii'}^{k} / \sqrt{\omega_{ii}^{k} \omega_{i'i'}^{k}}$ using residuals from $pK$ separate penalized neighborhood regressions is developed, one for each variable of each GGM. To incorporate structured sparsity across $k$, our simultaneous regression techniques for all neighborhood coefficients (i.e. \eqref{eqn:jsem-model} and \eqref{eqn:EstEqn2}) can be used instead, to perform testing on the between-layer edges. Theoretical properties of this procedure can be derived using results in \citet{Liu17}, possibly with adjustments for our neighborhood estimates to adhere to the rate conditions for the constants $a_{n1}, a_{n2}$ therein to account for a diverging $(p,q,n)$ setup.

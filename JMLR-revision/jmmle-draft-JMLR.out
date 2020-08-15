@@ -1,22 +1,26 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
-\BOOKMARK [1][-]{section.2}{The Joint Multiple Multilevel Estimation Framework}{}% 2
-\BOOKMARK [2][-]{subsection.2.1}{Formulation}{section.2}% 3
-\BOOKMARK [2][-]{subsection.2.2}{Algorithm}{section.2}% 4
-\BOOKMARK [3][-]{subsubsection.2.2.1}{Alternating Block Algorithm}{subsection.2.2}% 5
-\BOOKMARK [3][-]{subsubsection.2.2.2}{Tuning parameter selection}{subsection.2.2}% 6
-\BOOKMARK [2][-]{subsection.2.3}{Properties of JMMLE estimators}{section.2}% 7
-\BOOKMARK [1][-]{section.3}{Hypothesis testing in multilayer models}{}% 8
-\BOOKMARK [2][-]{subsection.3.1}{Debiased estimators and asymptotic normality}{section.3}% 9
-\BOOKMARK [2][-]{subsection.3.2}{Test formulation}{section.3}% 10
-\BOOKMARK [2][-]{subsection.3.3}{Control of False Discovery Rate}{section.3}% 11
-\BOOKMARK [1][-]{section.4}{Performance evaluation}{}% 12
-\BOOKMARK [2][-]{subsection.4.1}{Simulation 1: estimation}{section.4}% 13
-\BOOKMARK [3][-]{subsubsection.4.1.1}{Effect of heterogeneity}{subsection.4.1}% 14
-\BOOKMARK [2][-]{subsection.4.2}{Simulation 2: testing}{section.4}% 15
-\BOOKMARK [2][-]{subsection.4.3}{Computation}{section.4}% 16
-\BOOKMARK [1][-]{section.5}{Real data example}{}% 17
-\BOOKMARK [1][-]{section.6}{Discussion}{}% 18
-\BOOKMARK [2][-]{subsection.6.1}{Performance improvement}{section.6}% 19
-\BOOKMARK [2][-]{subsection.6.2}{Extensions}{section.6}% 20
-\BOOKMARK [1][-]{appendix.A}{Proofs of main results}{}% 21
-\BOOKMARK [1][-]{appendix.B}{Proofs of auxiliary results}{}% 22
+\BOOKMARK [2][-]{subsection.1.1}{Our contributions}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Related work}{section.1}% 3
+\BOOKMARK [1][-]{section.2}{The Joint Multiple Multilevel Estimation Framework}{}% 4
+\BOOKMARK [2][-]{subsection.2.1}{Formulation}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.2}{Algorithm}{section.2}% 6
+\BOOKMARK [3][-]{subsubsection.2.2.1}{Alternating Block Algorithm}{subsection.2.2}% 7
+\BOOKMARK [3][-]{subsubsection.2.2.2}{Tuning parameter selection}{subsection.2.2}% 8
+\BOOKMARK [2][-]{subsection.2.3}{Properties of JMMLE estimators}{section.2}% 9
+\BOOKMARK [1][-]{section.3}{Hypothesis testing in multilayer models}{}% 10
+\BOOKMARK [2][-]{subsection.3.1}{Debiased estimators and asymptotic normality}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.2}{Test formulation}{section.3}% 12
+\BOOKMARK [2][-]{subsection.3.3}{Control of False Discovery Rate}{section.3}% 13
+\BOOKMARK [2][-]{subsection.3.4}{Effect of tuning parameter selection}{section.3}% 14
+\BOOKMARK [1][-]{section.4}{Numerical experiments}{}% 15
+\BOOKMARK [2][-]{subsection.4.1}{Simulation 1: estimation}{section.4}% 16
+\BOOKMARK [3][-]{subsubsection.4.1.1}{Effect of heterogeneity}{subsection.4.1}% 17
+\BOOKMARK [2][-]{subsection.4.2}{Simulation 2: testing}{section.4}% 18
+\BOOKMARK [2][-]{subsection.4.3}{Computation}{section.4}% 19
+\BOOKMARK [1][-]{section.5}{Real data example}{}% 20
+\BOOKMARK [1][-]{section.6}{Discussion}{}% 21
+\BOOKMARK [2][-]{subsection.6.1}{Performance improvement}{section.6}% 22
+\BOOKMARK [2][-]{subsection.6.2}{Caveats}{section.6}% 23
+\BOOKMARK [2][-]{subsection.6.3}{Extensions}{section.6}% 24
+\BOOKMARK [1][-]{appendix.A}{Proofs of main results}{}% 25
+\BOOKMARK [1][-]{appendix.B}{Proofs of auxiliary results}{}% 26

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.1.27)  13 AUG 2020 19:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.1.27)  15 AUG 2020 19:45
 entering extended mode
 **./jmmle-draft-JMLR.tex
 (jmmle-draft-JMLR.tex
@@ -386,20 +386,7 @@ Package chngcntr Info: \counterwithout already defined.
 ("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/apptools\apptools.sty"
 Package: apptools 2012/11/28 v1.0 Tools for customizing appendices
 )
-(jmmle-draft-JMLR.aux
-
-LaTeX Warning: Label `eqn:BetaThmEqn1' multiply defined.
-
-
-LaTeX Warning: Label `eqn:BetaThmEqn2' multiply defined.
-
-
-LaTeX Warning: Label `eqn:BetaThmEqn3' multiply defined.
-
-
-LaTeX Warning: Label `eqn:BetaThmEqn4' multiply defined.
-
-)
+(jmmle-draft-JMLR.aux)
 \openout1 = `jmmle-draft-JMLR.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 65.
@@ -416,7 +403,8 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 65.
 LaTeX Font Info:    ... okay on input line 65.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 65.
 LaTeX Font Info:    ... okay on input line 65.
- ("C:\Program Files\LaTeX\MiKTeX 2.9\tex/context/base/mkii\supp-pdf.mkii"
+
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/context/base/mkii\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count129
 \scratchdimen=\dimen129
@@ -489,32 +477,32 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
  [1{C:/Users/subho/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
 ]
-(Introduction-paper-GM.tex
-<multi2layer.pdf, id=143, 408.01433pt x 179.24968pt>
+(Introduction-paper-GM.tex [2]
+<multi2layer.pdf, id=173, 408.01433pt x 179.24968pt>
 File: multi2layer.pdf Graphic file (type pdf)
 <use multi2layer.pdf>
-Package pdftex.def Info: multi2layer.pdf  used on input line 13.
+Package pdftex.def Info: multi2layer.pdf  used on input line 17.
 (pdftex.def)             Requested size: 408.01332pt x 179.24922pt.
- [2] [3 <./multi2layer.pdf>]) (JMMLE_Framework.tex
-Underfull \vbox (badness 6825) has occurred while \output is active []
 
- [4]
-<adj1.pdf, id=252, 289.08pt x 289.08pt>
+Underfull \vbox (badness 3364) has occurred while \output is active []
+
+ [3 <./multi2layer.pdf>]) (JMMLE_Framework.tex [4] [5]
+<adj1.pdf, id=288, 289.08pt x 289.08pt>
 File: adj1.pdf Graphic file (type pdf)
 <use adj1.pdf>
 Package pdftex.def Info: adj1.pdf  used on input line 40.
 (pdftex.def)             Requested size: 99.73074pt x 99.72829pt.
-<adj2.pdf, id=253, 289.08pt x 289.08pt>
+<adj2.pdf, id=289, 289.08pt x 289.08pt>
 File: adj2.pdf Graphic file (type pdf)
 <use adj2.pdf>
 Package pdftex.def Info: adj2.pdf  used on input line 41.
 (pdftex.def)             Requested size: 99.73074pt x 99.72829pt.
-<adj3.pdf, id=254, 289.08pt x 289.08pt>
+<adj3.pdf, id=290, 289.08pt x 289.08pt>
 File: adj3.pdf Graphic file (type pdf)
 <use adj3.pdf>
 Package pdftex.def Info: adj3.pdf  used on input line 42.
 (pdftex.def)             Requested size: 99.73074pt x 99.72829pt.
-<adj4.pdf, id=255, 289.08pt x 289.08pt>
+<adj4.pdf, id=291, 289.08pt x 289.08pt>
 File: adj4.pdf Graphic file (type pdf)
 <use adj4.pdf>
 Package pdftex.def Info: adj4.pdf  used on input line 43.
@@ -528,53 +516,25 @@ it/10.95 g \OMS/cmsy/m/n/10.95  I[]\OML/cmm/m/it/10.95 ; \OMS/cmsy/m/n/10.95 [
 []\OML/cmm/m/it/10.95 g \OT1/cmr/m/n/10.95 =
  []
 
-[5]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+[6 <./adj1.pdf> <./adj2.pdf> <./adj3.pdf> <./adj4.pdf>] [7] [8] [9] [10]
+[11] [12] [13]) (Testing.tex [14] [15] [16] [17] [18] [19]) (Numerical.tex
+Underfull \vbox (badness 3118) has occurred while \output is active []
 
- [6 <./adj1.pdf> <./adj2.pdf> <./adj3.pdf> <./adj4.pdf>] [7] [8] [9] [10]
-Overfull \hbox (9.3125pt too wide) in paragraph at lines 341--344
-\OT1/cmr/m/it/10.95 both with prob-a-bil-ity $\OMS/cmsy/m/n/10.95  \OT1/cmr/m/
-n/10.95 1 \OMS/cmsy/m/n/10.95   \OML/cmm/m/it/10.95 K\OT1/cmr/m/n/10.95 (1\OML/
-cmm/m/it/10.95 =p[] \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 12\OML/cmm/m/it/10
-.95 c[] []\OT1/cmr/m/n/10.95 [\OMS/cmsy/m/n/10.95  \OT1/cmr/m/n/10.95 (\OML/cmm
-/m/it/10.95 c[] \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 1) [](\OML/cmm/m/it/10
-.95 pq\OT1/cmr/m/n/10.95 )] \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 2 [](\OMS/
-cmsy/m/n/10.95  \OML/cmm/m/it/10.95 c[]n\OT1/cmr/m/n/10.95 ) \OMS/cmsy/m/n/10.9
-5   \OT1/cmr/m/n/10.95 6\OML/cmm/m/it/10.95 c[] []\OT1/cmr/m/n/10.95 [\OMS/cmsy
-/m/n/10.95  \OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 c[] \OMS/cmsy/m/n/10.95  
- []
-
-
-Overfull \hbox (3.73026pt too wide) in paragraph at lines 380--384
-\OT1/cmr/m/it/10.95 with prob-a-bil-ity $\OMS/cmsy/m/n/10.95  \OT1/cmr/m/n/10.
-95 1 \OMS/cmsy/m/n/10.95   \OML/cmm/m/it/10.95 K\OT1/cmr/m/n/10.95 (12\OML/cmm/
-m/it/10.95 c[] []\OT1/cmr/m/n/10.95 [\OMS/cmsy/m/n/10.95  \OT1/cmr/m/n/10.95 (\
-OML/cmm/m/it/10.95 c[] \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 1) [](\OML/cmm/
-m/it/10.95 pq\OT1/cmr/m/n/10.95 )] \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 2 [
-](\OMS/cmsy/m/n/10.95  \OML/cmm/m/it/10.95 c[]n\OT1/cmr/m/n/10.95 ))$\OT1/cmr/m
-/it/10.95 , where $\OMS/cmsy/m/n/10.95 j\OML/cmm/m/it/10.95 h[]\OMS/cmsy/m/n/10
-.95 j \OT1/cmr/m/n/10.95 = [][] \OMS/cmsy/m/n/10.95 j\OML/cmm/m/it/10.95 h\OMS/
-cmsy/m/n/10.95 j$
- []
-
-[11] [12]) (Testing.tex
-Underfull \vbox (badness 4036) has occurred while \output is active []
-
- [13]
-[14] [15] [16] [17] [18]) (Numerical.tex [19]
+ [20]
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 25.
-<omega-structure.pdf, id=593, 392.95808pt x 74.28754pt>
+<omega-structure.pdf, id=676, 392.95808pt x 74.28754pt>
 File: omega-structure.pdf Graphic file (type pdf)
 <use omega-structure.pdf>
 Package pdftex.def Info: omega-structure.pdf  used on input line 37.
 (pdftex.def)             Requested size: 392.95712pt x 74.28734pt.
 
+[21]
 Overfull \hbox (1.53647pt too wide) detected at line 85
 []
  []
 
-[20 <./omega-structure.pdf>]
+
 Overfull \hbox (31.67633pt too wide) in paragraph at lines 98--119
 [][] 
  []
@@ -584,47 +544,52 @@ Overfull \hbox (24.37634pt too wide) in paragraph at lines 152--179
 [][] 
  []
 
-[21]
+[22 <./omega-structure.pdf>]
+Underfull \vbox (badness 1097) has occurred while \output is active []
+
+ [23]
 Overfull \hbox (46.51965pt too wide) in paragraph at lines 260--295
  [][] 
  []
 
+[24]
+Underfull \vbox (badness 1158) has occurred while \output is active []
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+ [25]
+Underfull \vbox (badness 1997) has occurred while \output is active []
 
- [22]
-[23]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+ [26]
 
- [24]
-[25]) (Realdata.tex [26]
-Overfull \hbox (1.91377pt too wide) in paragraph at lines 4--6
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+) (Realdata.tex [27]
+Overfull \hbox (1.91377pt too wide) in paragraph at lines 5--7
 []\OT1/cmr/m/n/10.95 Our ob-jec-tive here is to (a) ob-tain mRNA-mRNA, mRNA-RNA
 seq and RNAseq-RNAseq
  []
 
 
-Overfull \hbox (5.24866pt too wide) in paragraph at lines 45--85
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [28]
+Overfull \hbox (5.24866pt too wide) in paragraph at lines 46--86
  [][] 
  []
 
-[27]
-Overfull \hbox (2.43333pt too wide) in paragraph at lines 91--145
+
+Overfull \hbox (2.43333pt too wide) in paragraph at lines 92--146
 []$[]$ $[]$ 
  []
 
-) (Discussion.tex
-Underfull \vbox (badness 1769) has occurred while \output is active []
-
- [28]
+) (Discussion.tex [29]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [29]
-[30]) (jmmle-draft-JMLR.bbl [31] [32]
+ [30]
+[31]) [32] (jmmle-draft-JMLR.bbl [33] [34]
 ("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/ucs\uni-0.def"
 File: uni-0.def 2013/05/13 UCS: Unicode data U+0000..U+00FF
-) [33]) [34]
-(misc.tex [35]
+) [35]) [36]
+(misc.tex [37]
 Overfull \hbox (8.56331pt too wide) in paragraph at lines 101--103
 []\OT1/cmr/m/it/10.95 with prob-a-bil-ity $\OMS/cmsy/m/n/10.95  \OT1/cmr/m/n/1
 0.95 1 \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 1\OML/cmm/m/it/10.95 =p[] \OMS/
@@ -637,12 +602,12 @@ MS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 1) [](\OML/cmm/m/it/10.95 pq\OT1/cmr/m/n
 /10.95 )]\OML/cmm/m/it/10.95 ; c[] >
  []
 
-[36]
+[38]
 Overfull \hbox (4.2819pt too wide) detected at line 187
 \U/msb/m/n/10.95 R [] \OT1/cmr/m/n/10.95 = \OML/cmm/m/it/10.95 c[] []
  []
 
-[37] [38] [39] [40]) (Proofs.tex
+[39] [40] [41] [42]) (Proofs.tex
 Overfull \hbox (16.97504pt too wide) detected at line 34
 [] [] \OMS/cmsy/m/n/10.95 k\OT1/cmr/m/n/10.95 (\OT1/cmr/bx/n/10.95 Y[] \OMS/cms
 y/m/n/10.95   \OT1/cmr/bx/n/10.95 X[][]\OT1/cmr/m/n/10.95 )[]\OMS/cmsy/m/n/10.9
@@ -656,7 +621,7 @@ OT1/cmr/bx/n/10.95 T[]\OMS/cmsy/m/n/10.95 k
 
 Underfull \vbox (badness 1546) has occurred while \output is active []
 
- [41]
+ [43]
 Overfull \hbox (31.74216pt too wide) detected at line 69
 []
  []
@@ -672,36 +637,32 @@ n/10.95 (\OML/cmm/m/it/10.95   \OMS/cmsy/m/n/10.95   \OML/cmm/m/it/10.95 Kq\OT
 5 k[]  []k\OT1/cmr/bx/n/10.95 D[]\OMS/cmsy/m/n/10.95 k[]
  []
 
-[42] [43] [44] [45]
+[44] [45] [46] [47]
 Overfull \hbox (6.09747pt too wide) detected at line 305
 [][] \OMS/cmsy/m/n/10.95  [] \OT1/cmr/m/n/10.95 + [] \OML/cmm/m/it/10.95 [] \
 OT1/cmr/m/n/10.95 = \OML/cmm/m/it/10.95 V[]\OT1/cmr/m/n/10.95 ;  \OML/cmm/m/it/
 10.95 c[] \OT1/cmr/m/n/10.95 = [][]
  []
 
-[46] [47] [48] [49])
+[48] [49] [50] [51])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 125.
- [50]
+ [52]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 125.
  (jmmle-draft-JMLR.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 125.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 125.
 Package rerunfilecheck Info: File `jmmle-draft-JMLR.out' has not changed.
-(rerunfilecheck)             Checksum: 19BFAB70C4D7741B4CF2754ACD3CB490;1516.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
+(rerunfilecheck)             Checksum: 799FB097AC8D5E93E6BAB78C489D1DE4;1787.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 125.
  ) 
 Here is how much of TeX's memory you used:
- 9767 strings out of 492448
- 143796 string characters out of 3126939
- 258428 words of memory out of 3000000
- 13664 multiletter control sequences out of 15000+200000
- 19077 words of font info for 71 fonts, out of 3000000 for 9000
+ 9790 strings out of 492448
+ 144157 string characters out of 3126939
+ 254642 words of memory out of 3000000
+ 13679 multiletter control sequences out of 15000+200000
+ 18909 words of font info for 70 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 46i,17n,42p,1442b,661s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 46i,17n,42p,1588b,663s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
 <C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C
 :/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/P
@@ -726,13 +687,12 @@ ype1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type
 1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/p
 ublic/amsfonts/cm/cmsy9.pfb><C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/publ
 ic/amsfonts/cm/cmti10.pfb><C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/public
-/amsfonts/cm/cmtt10.pfb><C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/public/a
-msfonts/cm/cmtt9.pfb><C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/public/amsf
-onts/symbols/msam10.pfb><C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/public/a
-msfonts/symbols/msbm10.pfb>
-Output written on jmmle-draft-JMLR.pdf (50 pages, 716248 bytes).
+/amsfonts/cm/cmtt9.pfb><C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/public/am
+sfonts/symbols/msam10.pfb><C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/public
+/amsfonts/symbols/msbm10.pfb>
+Output written on jmmle-draft-JMLR.pdf (52 pages, 727322 bytes).
 PDF statistics:
- 1166 PDF objects out of 1200 (max. 8388607)
- 247 named destinations out of 1000 (max. 500000)
- 207 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1259 PDF objects out of 1440 (max. 8388607)
+ 256 named destinations out of 1000 (max. 500000)
+ 239 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,4 +1,5 @@
 \section{Real data example}
+\label{sec:secreal}
 We now apply the proposed methodology to a gene expression dataset containing mRNA and RNAseq expression values for $~4000$ genes, divided into 88 pathways, for $n_1 = 262$ ER-positive (ER+) and $n_2 = 76$ ER-negative breast cancer patients. {\colrbf more info needed on data}
 
 Our objective here is to (a) obtain mRNA-mRNA, mRNA-RNAseq and RNAseq-RNAseq networks for the ER+ and ER- groups while incorporating pathway information, (b) test for differential strengths of mRNA-RNAseq connections between the two sample groups. To this end, we take mRNA and RNAseq expression data as the top and bottm layers (X and Y), respectively, and consider pathway-wise groups. For comparison purposes, we apply JMMLE and the separate estimation method \citet{LinEtal16} for estimating $\cB$ and $\Omega_y$, and JSEM for estimating $\Omega_y$. For comparing estimation performances of the methods, we use the following performance metrics calculated over 100 random 80:20 train-test splits of samples within each group:
@@ -146,4 +147,4 @@ ST8SIA1\_3 & PAIP1\_1   & 1453.9    \\\hline
 \label{table:realtesting}
 \end{table}
 
-After applying our debiasing procedure and performing the global test, 23 mRNA-s were determined to have significant differences in the corresponding rows across sample groups, i.e. between $\widehat \bfb_i^1$ and $\widehat \bfb_i^2$. Within connections of these mRNAs, 957 total mRNA-RNAseq connections were determined by the simultaneous testing procedure to have significant differences between their corresponding coefficients, i.e. between $\hat b_{ij}^1$ and $\hat b_{ij}^2$. {\colrbf some more references of these connections?}
+After applying our debiasing procedure and performing the global test, 23 mRNA-s were determined to have significant differences in the corresponding rows across sample groups, i.e. between $\widehat \bfb_i^1$ and $\widehat \bfb_i^2$. Within connections of these mRNAs, 957 total mRNA-RNAseq connections were determined by the simultaneous testing procedure to have significant differences between their corresponding coefficients, i.e. between $\hat b_{ij}^1$ and $\hat b_{ij}^2$. Table~\ref{table:realtesting} summarizes the top-10 statistic values in each situation. {\colrbf some more references of these connections?}
