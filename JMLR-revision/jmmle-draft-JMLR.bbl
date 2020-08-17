@@ -22,7 +22,7 @@ S.~Basu and G.~Michailidis.
 S.~Basu, X.~Li, and G.~Michailidis.
 \newblock {Low Rank and Structured Modeling of High-Dimensional Vector
   Autoregressions}.
-\newblock \emph{IEEE Trans. Sig. Proc.}, 67:\penalty0 1207--1222, 2019.
+\newblock \emph{IEEE Trans. Signal Proc.}, 67:\penalty0 1207--1222, 2019.
 
 \bibitem[Belilovsky et~al.(2016)Belilovsky, Varoquaux, and
   Blaschko]{BelilovskyEtal16}
@@ -266,7 +266,7 @@ K.~M. Sas, J.~Lin, T.~M. Rajendiran, et~al.
 B.~Stucky and S.~{van de Geer}.
 \newblock {Asymptotic Confidence Regions for High-Dimensional Structured
   Sparsity}.
-\newblock \emph{IEEE Trans. Signal Process.}, 66\penalty0 (8):\penalty0
+\newblock \emph{IEEE Trans. Signal Proc.}, 66\penalty0 (8):\penalty0
   2178--2190, 2018.
 
 \bibitem[Taddy(2017)]{Taddy17}

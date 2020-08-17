@@ -52,7 +52,7 @@ We assume an element-wise group sparsity pattern over $k$ for the precision matr
 \cG_x = \{ \cG_x^{ii'}: i \neq i'; i, i' \in \cI_p \},
 \]
 %
-where each $\cG_x^{ii'}$ is a partition of $\cI_K$, and consists of index groups $g$ such that $g \subseteq \cI_K, \cup_{g \in \cG_x^{ii'}} g = \cI_K$. First introduced in \citet{MaMichailidis15}, this formulation helps incorporate group structures that are common across some of the precision matrices being modeled. Figure~\ref{fig:jsem-exmaple} illustrates this through a small example. Subsequently, we use the Joint Structural Estimation Method (JSEM) \citep{MaMichailidis15} to estimate $\Omega_x$, which first uses the group structure given by $\cG_x$ in penalized nodewise regressions \citep{MeisenBuhlmann06} to obtain neighborhood coefficients $\zeta_i = (\bfzeta_i^1, \ldots, \bfzeta_i^K)$ of each variable $X_i, i \in \cI_p$, {\colb then fits a maximum likelihood model over the combined support sets to obtain sparse estimates of the precision matrices}:
+where each $\cG_x^{ii'}$ is a partition of $\cI_K$, and consists of non-overlapping index groups $g$ such that $g \subseteq \cI_K, \cup_{g \in \cG_x^{ii'}} g = \cI_K$. First introduced in \citet{MaMichailidis15}, this formulation helps incorporate group structures that are common across some of the precision matrices being modeled. Figure~\ref{fig:jsem-exmaple} illustrates this through a small example. Subsequently, we use the Joint Structural Estimation Method (JSEM) \citep{MaMichailidis15} to estimate $\Omega_x$, which first uses the group structure given by $\cG_x$ in penalized nodewise regressions \citep{MeisenBuhlmann06} to obtain neighborhood coefficients $\zeta_i = (\bfzeta_i^1, \ldots, \bfzeta_i^K)$ of each variable $X_i, i \in \cI_p$, {\colb then fits a maximum likelihood model over the combined support sets to obtain sparse estimates of the precision matrices}:
 %
 \begin{align}\label{eqn:jsem-model}
 \widehat \zeta_i &= \argmin_{\zeta_i} \left\{
@@ -65,7 +65,7 @@ where each $\cG_x^{ii'}$ is a partition of $\cI_K$, and consists of index groups
 %
 where $\widehat \bfS_x^k := (\bfX^k)^T \bfX^k/n$, $\eta_n$ is a tuning parameter, and $\BS_+ (\hat E_x^k)$ is the set of positive-definite matrices that have non-zero supports restricted to $\hat E_x^k$.
 
-For the precision matrices $\Omega_y^k$, we assume an element-wise sparsity pattern $\cG_y$ defined in a similar manner as $\cG_x$. The sparsity structure $\cH$ for $\cB$ is more general, each group $h \in \cH$ being defined as:
+For the precision matrices $\Omega_y^k$, we assume an element-wise sparsity pattern $\cG_y$ defined in a similar manner as $\cG_x$. The sparsity structure $\cH$ for $\cB$ is more general, each non-overlapping group $h \in \cH$ being defined as:
 %
 $$
 h = \{ (\cS_p, \cS_q, \cS_K): \cS_p \subseteq \cI_p, \cS_q \subseteq \cI_q, \cS_K \subseteq \cI_K \}
@@ -251,7 +251,9 @@ Suppose for any fixed $(\cX, \cE)$, estimates in each iterate of Algorithm~\ref{
 Then any limit point $(\cB^\infty, \Theta_y^\infty)$ of the algorithm is a stationary point of the objective function, i.e. a point where partial derivatives along all coordinates are non-negative.
 \end{theorem}
 %
-%As we shall see soon after, at each sub-iteration of Algorithm~\ref{algo:jmmle-algo}, specifically steps 3 and 4, 
+{\colb
+As we shall see soon after (Theorems \ref{thm:thm-Theta} and \ref{thm:thm-B}), at sub-iterations of Algorithm~\ref{algo:jmmle-algo} (specifically steps 3 and 4) a $O(\sqrt{\log(pq)}/n)$ bound on $\widehat \cB^{(t)}$ leads to $\widehat \Theta^{(t+1)}$ being consistent for $\Theta_0$, and a $O(\sqrt{\log q}/n)$ bound on $\widehat \Theta^{(t)}$ leads to $\widehat \cB^{(t+1)}$ being consistent for $\cB_0$: both with probability approaching 1 as $p,q,n \rightarrow \infty$. Thus, while the constant $R(p,q,n)$ in Theorem~\ref{thm:algo-convergence} above does not need to obey any explicit bounds for Algorithm~\ref{algo:jmmle-algo} to have {\it a} limit point, having a tighter $O(\sqrt{\log(pq)}/n)$ bound ensures that the limit point lies close to the population parameters with high enough probability.
+}
 
 The next steps are to show that for random realizations of $\cX$ and $\cE$,
 %
@@ -477,6 +479,6 @@ To save computation time for high data dimensions, an initial screening step, e.
 
 {\colb
 \begin{Remark}
-While the proof of the above results roughly follow roughly similar roadmaps as the $K=1$ and $\ell_1$-penalized case of \citet{LinEtal16} and the joint structural estimation of \citet{MaMichailidis15} and utilize Gaussian concentration inequalities, generalization to an optional grouping structure in $\cB$ and $K>1$ add technical complexity to the proofs. More importantly, we work in presence of minimal assumptions, steering clear of conditions used in previous works, like Incoherence \citep{LinEtal16} and Uniform Irrepresentability \citep{MaMichailidis15} that are often difficult to verify in practice.
+While the proof of the above results roughly follow roughly similar roadmaps as the $K=1$ and $\ell_1$-penalized case of \citet{LinEtal16} and the joint structural estimation of \citet{MaMichailidis15} and utilize Gaussian concentration inequalities, generalization to $K>1$ and an optional grouping structure in $\cB$ add technical complexity to the proofs. More importantly, we work in presence of minimal assumptions, steering clear of conditions used in previous works, like Incoherence \citep{LinEtal16} and Uniform Irrepresentability \citep{MaMichailidis15} that are often difficult to verify in practice.
 \end{Remark}
 }
