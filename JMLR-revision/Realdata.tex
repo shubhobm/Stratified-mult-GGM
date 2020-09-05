@@ -30,13 +30,15 @@ $$ \text{NZ}(\widehat \Omega_y^k) = \frac{| \supp(\hat \Omega_y^k) - q|}{q^2}; \
     \hline
 ~        & RMSSPE        & NZ$(\widehat \cB)$  & NZ$(\widehat \Omega_y)$  \\\hline
 JMMLE    & 14.38 (3.27) & 0.014 (0.004) & 0.077 (0.009) \\
-Separate & ~            & ~             & ~             \\
+Separate & 17.1 (2.26)  & 8.8 $\times 10^{-5}$ (3.5 $\times 10^{-4}$) & 0.085 (0.077) \\
 JSEM     & -            & -             & ~             \\\hline
     \end{tabular}
     \caption{Performance metric comparison over 100 random splits of the real data}
     \label{table:real-compare}
 %\end{scriptsize}
 \end{table}
+%
+Table~\ref{table:real-compare} presents the comparison results. JMMLE and separate estimation estimate about the same amount of non-zero coefficients in $\Omega_y$ on averge. However, separate estimation hardly detects any non-zero elements in $\cB$, while JMMLE detects around 1.4\% of the inter-layer connection as non-zero. As a result, the prediction errors are much lower for JMMLE.
 
 To summarize within-layer and between-layer interactions, we consider the 10 highest entries in $\widehat \bfB_k, \widehat \Omega_y^k; k = 1,2$ in terms of absolute value. Table \ref{table:top10} gives their magnitudes, as well as the corresponding mRNA-RNAseq and RNAseq-RNAseq pairs. For the sake of comparison, we also report the same numbers and mRNA-mRNA pairs from the analysis of only the top layer using JSEM~\citep{MaMichailidis15}. {\colrbf give citations for some connections}
 
