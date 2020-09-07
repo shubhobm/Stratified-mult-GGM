@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.1.27)  5 SEP 2020 19:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.1.27)  7 SEP 2020 14:27
 entering extended mode
 **./jmmle-draft-JMLR.tex
 (jmmle-draft-JMLR.tex
@@ -558,25 +558,28 @@ Overfull \hbox (1.91377pt too wide) in paragraph at lines 5--7
 seq and RNAseq-RNAseq
  []
 
-
+[29]
 Overfull \hbox (5.24866pt too wide) in paragraph at lines 48--88
  [][] 
  []
 
-[29]
+
 Overfull \hbox (2.43333pt too wide) in paragraph at lines 94--148
 []$[]$ $[]$ 
  []
 
 ) (Discussion.tex
-Underfull \vbox (badness 1769) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [30]
-[31] [32]) (jmmle-draft-JMLR.bbl [33] [34]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [31]
+[32]) (jmmle-draft-JMLR.bbl [33] [34] [35]
 ("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/ucs\uni-0.def"
 File: uni-0.def 2013/05/13 UCS: Unicode data U+0000..U+00FF
-) [35] [36])
-[37] (misc.tex [38]
+) [36]) [37]
+(misc.tex [38]
 Overfull \hbox (8.56331pt too wide) in paragraph at lines 101--103
 []\OT1/cmr/m/it/10.95 with prob-a-bil-ity $\OMS/cmsy/m/n/10.95  \OT1/cmr/m/n/1
 0.95 1 \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 1\OML/cmm/m/it/10.95 =p[] \OMS/
@@ -643,13 +646,13 @@ Package rerunfilecheck Info: File `jmmle-draft-JMLR.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 125.
  ) 
 Here is how much of TeX's memory you used:
- 9789 strings out of 492448
- 144128 string characters out of 3126939
- 264635 words of memory out of 3000000
- 13678 multiletter control sequences out of 15000+200000
+ 9797 strings out of 492448
+ 144278 string characters out of 3126939
+ 264735 words of memory out of 3000000
+ 13684 multiletter control sequences out of 15000+200000
  19077 words of font info for 71 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 46i,17n,42p,1611b,663s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 46i,17n,42p,1611b,667s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
 <C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C
 :/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/P
@@ -678,9 +681,9 @@ ic/amsfonts/cm/cmti10.pfb><C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/public
 msfonts/cm/cmtt9.pfb><C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/public/amsf
 onts/symbols/msam10.pfb><C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/public/a
 msfonts/symbols/msbm10.pfb>
-Output written on jmmle-draft-JMLR.pdf (53 pages, 741503 bytes).
+Output written on jmmle-draft-JMLR.pdf (53 pages, 742612 bytes).
 PDF statistics:
- 1265 PDF objects out of 1440 (max. 8388607)
- 255 named destinations out of 1000 (max. 500000)
+ 1270 PDF objects out of 1440 (max. 8388607)
+ 257 named destinations out of 1000 (max. 500000)
  223 words of extra memory for PDF output out of 10000 (max. 10000000)
 

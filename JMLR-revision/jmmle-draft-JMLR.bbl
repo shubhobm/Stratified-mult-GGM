@@ -1,4 +1,4 @@
-\begin{thebibliography}{54}
+\begin{thebibliography}{56}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -23,6 +23,12 @@ S.~Basu, X.~Li, and G.~Michailidis.
 \newblock {Low Rank and Structured Modeling of High-Dimensional Vector
   Autoregressions}.
 \newblock \emph{IEEE Trans. Signal Proc.}, 67:\penalty0 1207--1222, 2019.
+
+\bibitem[Bayram et~al.(2020)Bayram, Thanou, Vural, and Frossard]{BayramEtal20}
+E.~Bayram, D.~Thanou, E.~Vural, and P.~Frossard.
+\newblock {Mask Combination of Multi-Layer Graphs for Global Structure
+  Inference}.
+\newblock \emph{IEEE Trans. sig. Proc. Net.}, 6:\penalty0 394--406, 2020.
 
 \bibitem[Belilovsky et~al.(2016)Belilovsky, Varoquaux, and
   Blaschko]{BelilovskyEtal16}
@@ -152,6 +158,12 @@ T.~Kling, P.~Johansson, J.~Sanchez, et~al.
 \newblock {Efficient exploration of pan-cancer networks by generalized
   covariance selection and interactive web content}.
 \newblock \emph{Nucl. Acid Res.}, 43\penalty0 (15):\penalty0 e98, 2015.
+
+\bibitem[Kumar et~al.(2020)]{KumarEtal20}
+S.~Kumar et~al.
+\newblock {A Unified Framework for Structured Graph Learning via Spectral
+  Constraints}.
+\newblock \emph{J. Mach. Learn. Res.}, 21\penalty0 (22):\penalty0 1--60, 2020.
 
 \bibitem[Lee et~al.(2016)Lee, Kee, Min, et~al.]{lee2016integrated}
 J.~Lee, H.~J. Kee, S.~Min, et~al.

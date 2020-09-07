@@ -147,11 +147,11 @@ get.outputs = function(n=100, subnetSize.X=rep(10,2), subnetSize.E=rep(10,2),
   out.mat = lapply(1:nrep, loopfun)
   # this mclapply sometimes gives errors for some lambdas
   # which stops corresponding cores.
-  # *USE lapply HERE*
+  # *USE lapply HERE or wrap loopfun inside try() before using mclapply*
   if(is.null(filename)){
-    filename = paste0("est_n",n,"p",p,"q",q,".Rda")
+    filename = paste0("est_n",n,"p",p,"q",q,".rds")
   }
-  save(out.mat, file=filename)
+  saveRDS(out.mat, file=filename) # saves outputs as .rds file. read using readRDS()
 }
 
 ##### a small simulation setup

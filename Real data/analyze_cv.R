@@ -1,69 +1,106 @@
 # initial work
 rm(list=ls())
-# setwd("/n/subho-data/JMMLE-outputs/real-data")
-setwd("C:/Study/Stratified-mult-GGM/Real data/")
-Required.Packages <- c("data.table", "parallel")
+setwd("/n/subho-data/JMMLE-outputs/real-data")
+Required.Packages <- c("data.table", "glmnet","glasso","parallel")
 sapply(Required.Packages, FUN = function(x) {suppressMessages(require(x, character.only = TRUE))})
 
-## load data ***********************************************************
-# **********************************************************************
+source('jsem.R')
+source('Generator.R')
+source('l1LS_Main.R')
+source('Objval.R')
+source('JMLE.R')
+# source('./Codes/lasso_inference.r')
+
+# load data
 data = readRDS("processed_data.rds")
-cv_results = readRDS("cv_results.rds")
-cv_splits = readRDS("cv_splits.rds")
-X = data$X.list1
-Y = data$Y.list1
-n = sapply(X, nrow)
-p = ncol(X[[1]])
-q = ncol(Y[[1]])
-K = 2
+
+## tune JMLE model
+p = ncol(data$X.list1[[1]])
+q = ncol(data$Y.list1[[1]])
+K = length(data$X.list1)
+
+## generate splits
+set.seed(08062020)
 nrep = 100
-
-## compute MSSPE = scaled prediction error
-spe.vec = rep(0, nrep)
-Bprop.vec = rep(0, nrep)
-Oprop.vec = rep(0, nrep)
-
-which_good = which(cv_results$hbic>0)
-for(i in which_good){
-    
-    iBhat = cv_results$best_model[[i]]$B.refit
-    iOmega = cv_results$best_model[[i]]$Theta_refit$Omega
-    
-    for(k in 1:K){
-        train.ik = cv_splits[[k]][[i]]
-        spe.vec[i] = spe.vec[i] + sum(diag(
-            crossprod(Y[[k]][-train.ik,] - X[[k]][-train.ik,] %*% iBhat[,,k]) %*% iOmega[[k]]
-        ))/n[k]
-    }
-    Bprop.vec[i] = mean(iBhat!=0)
-    
-    # non-zero coef proportion in Omega_y
-    iTheta = array(0, c(q,q,K))
-    for(k in 1:K){
-        iTheta[,,k] = iOmega[[k]]
-    }
-    for(j in 1:q){
-        iTheta[j,j,] = 0
-    }
-    Oprop.vec[i] = mean(iTheta!=0)
+train1 = vector("list", nrep)
+n1 = nrow(data$X.list1[[1]])
+train2 = train1
+n2 = nrow(data$X.list1[[2]])
+for(i in 1:nrep){
+	train1[[i]] = sample(1:n1, ceiling(.8*n1), replace=F) 
+	train2[[i]] = sample(1:n2, ceiling(.8*n2), replace=F) 
 }
-summarize = function(x) c(mean(x), sd(x))
-summarize(sqrt(spe.vec[which_good]))
-summarize(Bprop.vec[which_good])
-summarize(Oprop.vec[which_good])
+saveRDS(list(train1=train1, train2=train2), file="/n/subho-data/JMMLE-outputs/real-data/cv_splits.rds")
 
-## compute MSSPE = scaled prediction error
-spe0.vec = rep(0, nrep)
-for(i in which(cv_results$hbic>0)){
-    
-    iBhat = cv_results$best_model[[i]]$B.refit
-    iOmega = cv_results$best_model[[1]]$Theta_refit$Omega
-    
-    for(k in 1:K){
-        train.ik = cv_splits[[k]][[i]]
-        spe0.vec[i] = spe.vec[i] + sum(diag(
-            crossprod(Y[[k]][-train.ik,]) %*% iOmega[[k]]
-        ))/n[k]
-    }
+# initialize and run
+best_model = vector("list", nrep)
+hbic = rep(0, nrep)
+mse = hbic
+
+for(i in 1:nrep){
+
+X.list1.i = list(data$X.list1[[1]][train1[[i]],], data$X.list1[[2]][train2[[i]],])
+Y.list1.i = list(data$Y.list1[[1]][train1[[i]],], data$Y.list1[[2]][train2[[i]],])
+n = max(sapply(X.list1.i,nrow))
+lambda.vec = sqrt(log(p)/n) * seq(1.8, 0.4, -0.2)
+nlambda = length(lambda.vec)
+
+## get all models
+loopfun1 = function(m){
+	jmmle.1step(
+		Y.list=Y.list1.i, X.list=X.list1.i,
+		B.group.array=data$B.group.array, Theta.groups=data$Theta.groups,
+		lambda = lambda.vec[m],
+		gamma = sqrt(log(q)/n) * seq(0.8, 0.1, -0.1),
+		init.option=1, tol=1e-3
+	)
 }
-summarize(sqrt(spe0.vec))
+system.time(
+  model.list <- mclapply(1:nlambda, loopfun1, mc.cores=min(detectCores(),nlambda))
+)
+
+## calculate HBIC
+hbic.vec = rep(0, nlambda)
+for(m in which(sapply(model.list,length)==2)){
+  jmle.model = model.list[[m]]
+  SSE.vec = rep(0,K)
+  hbic.pen.vec = rep(0,K)
+  
+  for(k in 1:K){
+    nk = nrow(Y.list1.i[[k]])
+    Theta.k = jmle.model$Theta_refit$Theta[[k]]
+    for(j in 1:q)
+    {
+      Theta.k[j,j] = 0
+    }
+    SSE.vec[k] = sum(diag(crossprod((Y.list1.i[[k]] - X.list1.i[[k]] %*% jmle.model$B.refit[,,k]) %*% (diag(1,q) - Theta.k))))/nk
+    hbic.pen.vec[k] = log(log(nk))*log(q*(q-1)/2)/nk * sum(Theta.k != 0)/2 +
+      log(log(nk))*log(p*q)/nk * sum(jmle.model$B.refit[,,k] != 0)
+  }
+  hbic.vec[m] = sum(SSE.vec) + sum(hbic.pen.vec)
+}
+
+# find minimum, save model and hbic
+min_ind = which.min(hbic.vec[hbic.vec>0])
+if(length(min_ind)>0){
+	best_model[[i]] = model.list[[min_ind[1]]]
+	hbic[i] = hbic.vec[min_ind[1]]
+}
+
+## calculate RMSE
+#mse.part.vec = rep(0,K)
+#for(k in 1:K){
+#	nk = nrow(Y.list1.i[[k]])
+#	Theta.k = jmle.model$Theta_refit$Theta[[k]]
+#	for(j in 1:q)
+#	{
+#		Theta.k[j,j] = 0
+#    	}
+#	mse.part.vec[k] = sum(diag(crossprod(
+#		data$Y.list1[[k]][-train1[[i]],] - data$X.list1[[k]][-train1[[i]],] %*% jmle.model$B.refit[,,k])))/nk
+#}
+#mse[i] = sum(mse.part.vec)
+cat("====================\nSplit",i,"done!!\n====================\n")
+}
+
+saveRDS(list(best_model=best_model, hbic=hbic, mse=mse), file="/n/subho-data/JMMLE-outputs/real-data/cv_results.rds")

@@ -19,11 +19,14 @@ K = 2
 
 ## Separate estimation *************************************************
 # **********************************************************************
-lambda.vec = sqrt(log(p))*seq(1.8,0.4,-0.4)
-rho.vec = sqrt(log(q))*seq(1,0.4,-0.2)
+#lambda.vec = sqrt(log(p))*seq(1.8,0.4,-0.4)
+#rho.vec = sqrt(log(q))*seq(1,0.4,-0.2)
+lambda.vec = sqrt(log(p))*10^seq(-1,-3,by=-.5)
+rho.vec = sqrt(log(q))*10^seq(1,-2,by=-.5)
 nlambda = length(lambda.vec)
 nrho = length(rho.vec)
-eval.mat = matrix(0, ncol=9, nrow=nlambda*nrho)
+ntune = nlambda*nrho
+eval.mat = matrix(0, ncol=9, nrow=ntune)
 
 ## loop over tuning parameter grid
 X.list = data$X.list1
@@ -35,14 +38,14 @@ loopfun1 = function(m3){
     ## get estimates
     model.m3.list = list()
     for(k in 1:K){
-        model.m3.list[[k]] = l1ML_Main(Y.list[[k]][,1:20], X.list[[k]][,1:20],
+        model.m3.list[[k]] = l1ML_Main(Y.list[[k]], X.list[[k]],
                                        lambda=lambda.vec[m1]/sqrt(n[k]), rho=rho.vec[m2]/sqrt(n[k]),
                                        initializer="Lasso", StabilizeTheta=F, VERBOSE=F)
     }
     cat("Done- lambda=",lambda.vec[m1],"rho=",rho.vec[m2],"\n")
     model.m3.list
 }
-model.list0 = mclapply(1:(nlambda*nrho), loopfun1, mc.cores=16)
+model.list0 = mclapply(1:ntune, loopfun1, mc.cores=min(detectCores(), ntune))
 
 ## remove error entries
 model.list = list()
@@ -60,6 +63,8 @@ for(m3 in 1:(nlambda*nrho)){
     }
 }
 rm(model.list0)
+# save outputs
+saveRDS(model.list, file="model_list_sep.rds")
 
 ## choose best model by BIC ********************************************
 # **********************************************************************
@@ -82,9 +87,6 @@ for(m in 1:ntuning){
         bic.vec[m] = sum(bic.part.vec)
     }
 }
-
-# save outputs
-saveRDS(list(model_list=model.list, bic=bic.vec), file="model_list_sep.rds")
 
 ## get best model coefs and save
 best.model = model.list[[which.min(bic.vec)]]
