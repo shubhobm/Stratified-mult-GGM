@@ -9,11 +9,15 @@
 \BOOKMARK [2][-]{subsection.3.1}{Debiased estimators and asymptotic normality}{section.3}% 9
 \BOOKMARK [2][-]{subsection.3.2}{Test formulation}{section.3}% 10
 \BOOKMARK [2][-]{subsection.3.3}{Control of False Discovery Rate}{section.3}% 11
-\BOOKMARK [1][-]{section.4}{Performance evaluation}{}% 12
-\BOOKMARK [2][-]{subsection.4.1}{Simulation 1: estimation}{section.4}% 13
-\BOOKMARK [3][-]{subsubsection.4.1.1}{Effect of heterogeneity}{subsection.4.1}% 14
-\BOOKMARK [2][-]{subsection.4.2}{Simulation 2: testing}{section.4}% 15
-\BOOKMARK [2][-]{subsection.4.3}{Computation}{section.4}% 16
-\BOOKMARK [1][-]{section.5}{Discussion}{}% 17
-\BOOKMARK [1][-]{appendix.A}{Proofs of main results}{}% 18
-\BOOKMARK [1][-]{appendix.B}{Proofs of auxiliary results}{}% 19
+\BOOKMARK [2][-]{subsection.3.4}{Effect of tuning parameter selection}{section.3}% 12
+\BOOKMARK [1][-]{section.4}{Numerical experiments}{}% 13
+\BOOKMARK [2][-]{subsection.4.1}{Simulation 1: estimation}{section.4}% 14
+\BOOKMARK [3][-]{subsubsection.4.1.1}{Effect of heterogeneity}{subsection.4.1}% 15
+\BOOKMARK [2][-]{subsection.4.2}{Simulation 2: testing}{section.4}% 16
+\BOOKMARK [2][-]{subsection.4.3}{Computation}{section.4}% 17
+\BOOKMARK [1][-]{section.5}{Discussion}{}% 18
+\BOOKMARK [2][-]{subsection.5.1}{Performance improvement}{section.5}% 19
+\BOOKMARK [2][-]{subsection.5.2}{Remaining Challenges}{section.5}% 20
+\BOOKMARK [2][-]{subsection.5.3}{Extensions}{section.5}% 21
+\BOOKMARK [1][-]{appendix.A}{Proofs of main results}{}% 22
+\BOOKMARK [1][-]{appendix.B}{Proofs of auxiliary results}{}% 23

@@ -1,4 +1,4 @@
-\begin{thebibliography}{58}
+\begin{thebibliography}{64}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -92,6 +92,13 @@ Y.~Fan and C.~Y. Tang.
   likelihood}.
 \newblock \emph{J. R. Statist. Soc. B}, 75\penalty0 (3):\penalty0 531--552,
   2013.
+
+\bibitem[Folgueira et~al.(2005)]{dctn2}
+M.~Folgueira et~al.
+\newblock {Gene expression profile associated with response to
+  doxorubicin-based therapy in breast cancer}.
+\newblock \emph{Clin. Cancer Res.}, 11\penalty0 (20):\penalty0 7434--7443,
+  2005.
 
 \bibitem[Foygel and Drton(2010)]{FoygelDrton10}
 R.~Foygel and M.~Drton.
@@ -216,11 +223,30 @@ W.~Liu and Q.-M. Shao.
   with false discovery rate control}.
 \newblock \emph{Ann. Statist.}, 42\penalty0 (5):\penalty0 2003--2025, 2014.
 
+\bibitem[Liu et~al.(2007)]{LiuEtal07}
+X.~Liu et~al.
+\newblock {Somatic loss of BRCA1 and p53 in mice induces mammary tumors with
+  features of human BRCA1-mutated basal-like breast cancer}.
+\newblock \emph{Proc. Natl. Acad. Sci.}, 104\penalty0 (29):\penalty0
+  12111--12116, 2007.
+
+\bibitem[Liu et~al.(2018)]{kcnn3}
+X.~Liu et~al.
+\newblock {Low expression of KCNN3 may affect drug resistance in ovarian
+  cancer}.
+\newblock \emph{Mol. Med. Rep.}, 18\penalty0 (2):\penalty0 1377--1386, 2018.
+
 \bibitem[Loh and Wainwright(2012)]{LohWainwright12}
 P.-L. Loh and M.~J. Wainwright.
 \newblock {High-dimensional regression with noisy and missing data: Provable
   guarantees with nonconvexity}.
 \newblock \emph{Ann. Statist.}, 40\penalty0 (3):\penalty0 1637--1664, 2012.
+
+\bibitem[Lyons et~al.(2017)]{LyonsEtal17}
+Y.~A. Lyons et~al.
+\newblock {Immune cell profiling in cancer: molecular approaches to
+  cellspecific identification}.
+\newblock \emph{NPJ Precis. Oncol.}, 1\penalty0 (26):\penalty0 1--8, 2017.
 
 \bibitem[Ma and Michailidis(2016)]{MaMichailidis15}
 J.~Ma and G.~Michailidis.
@@ -255,6 +281,11 @@ R.~Mitra and C.-H. Zhang.
 G.~Obozinski, M.~J. Wainwright, and M.~I. Jordan.
 \newblock {Support Union Recovery in High-dimensional Multivariate Regression}.
 \newblock \emph{Ann. Statist.}, 39:\penalty0 1--47, 2011.
+
+\bibitem[Pires et~al.(2018)]{PiresEtal18}
+B.~R.~B.. Pires et~al.
+\newblock {NF-kappaB Regulates Redox Status in Breast Cancer Subtypes}.
+\newblock \emph{Genes}, 9:\penalty0 320, 2018.
 
 \bibitem[Ravikumar et~al.(2011)Ravikumar, Wainwright, Raskutti, and
   Yu]{RavikumarEtal11}
@@ -350,6 +381,12 @@ Y.~Zhang, Z.~Ouyang, and H.~Zhao.
 \newblock A statistical framework for data integration through graphical models
   with application to cancer genomics.
 \newblock \emph{Ann. Appl. Stat.}, 11\penalty0 (1):\penalty0 161--184, 2017.
+
+\bibitem[Zhang et~al.(2015)]{taf9}
+Z.~Zhang et~al.
+\newblock {A network-based approach to identify disease-associated gene modules
+  through integrating DNA methylation and gene expression}.
+\newblock \emph{Europe PMC}, 465\penalty0 (3):\penalty0 437--442, 2015.
 
 \bibitem[Zou and Li(2008)]{ZouLi08}
 H.~Zou and R.~Li.

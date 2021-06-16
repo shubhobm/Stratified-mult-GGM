@@ -1,81 +1,82 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2016.12.9)  9 APR 2018 08:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.9.25)  16 JUN 2021 18:43
 entering extended mode
 **./jmmle-draft.tex
 (jmmle-draft.tex
-LaTeX2e <2016/03/31> patch level 3
-Babel <3.9r> and hyphenation patterns for 75 language(s) loaded.
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\base\article.cls"
-Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\base\size11.clo"
-File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+LaTeX2e <2019-10-01> patch level 3
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/base\article.cls"
+Document Class: article 2019/10/25 v1.4k Standard LaTeX document class
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/base\size11.clo"
+File: size11.clo 2019/10/25 v1.4k Standard LaTeX file (size option)
 )
-\c@part=\count79
-\c@section=\count80
-\c@subsection=\count81
-\c@subsubsection=\count82
-\c@paragraph=\count83
-\c@subparagraph=\count84
-\c@figure=\count85
-\c@table=\count86
+\c@part=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
-) (mycommands1.sty) ("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\amsfonts\amssymb
-.sty"
+)
+(mycommands1.sty)
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/amsfonts\amssymb.sty"
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\amsfonts\amsfonts.sty"
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/amsfonts\amsfonts.sty"
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \@emptytoks=\toks14
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 ))
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\amsmath\amsmath.sty"
-Package: amsmath 2016/06/28 v2.15d AMS math features
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/amsmath\amsmath.sty"
+Package: amsmath 2019/11/16 v2.17d AMS math features
 \@mathmargin=\skip43
 
 For additional information on amsmath, use the `?' option.
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\amsmath\amstext.sty"
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/amsmath\amstext.sty"
 Package: amstext 2000/06/29 v2.01 AMS text
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\amsmath\amsgen.sty"
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/amsmath\amsgen.sty"
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks15
 \ex@=\dimen103
 ))
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\amsmath\amsbsy.sty"
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/amsmath\amsbsy.sty"
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen104
 )
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\amsmath\amsopn.sty"
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/amsmath\amsopn.sty"
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count87
-LaTeX Info: Redefining \frac on input line 199.
-\uproot@=\count88
-\leftroot@=\count89
-LaTeX Info: Redefining \overline on input line 297.
-\classnum@=\count90
-\DOTSCASE@=\count91
-LaTeX Info: Redefining \ldots on input line 394.
-LaTeX Info: Redefining \dots on input line 397.
-LaTeX Info: Redefining \cdots on input line 518.
-\Mathstrutbox@=\box26
-\strutbox@=\box27
+\inf@bad=\count88
+LaTeX Info: Redefining \frac on input line 227.
+\uproot@=\count89
+\leftroot@=\count90
+LaTeX Info: Redefining \overline on input line 389.
+\classnum@=\count91
+\DOTSCASE@=\count92
+LaTeX Info: Redefining \ldots on input line 486.
+LaTeX Info: Redefining \dots on input line 489.
+LaTeX Info: Redefining \cdots on input line 610.
+\Mathstrutbox@=\box27
+\strutbox@=\box28
 \big@size=\dimen105
-LaTeX Font Info:    Redeclaring font encoding OML on input line 634.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 635.
-\macc@depth=\count92
-\c@MaxMatrixCols=\count93
+LaTeX Font Info:    Redeclaring font encoding OML on input line 733.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 734.
+\macc@depth=\count93
+\c@MaxMatrixCols=\count94
 \dotsspace@=\muskip10
-\c@parentequation=\count94
-\dspbrk@lvl=\count95
+\c@parentequation=\count95
+\dspbrk@lvl=\count96
 \tag@help=\toks16
-\row@=\count96
-\column@=\count97
-\maxfields@=\count98
+\row@=\count97
+\column@=\count98
+\maxfields@=\count99
 \andhelp@=\toks17
 \eqnshift@=\dimen106
 \alignsep@=\dimen107
@@ -87,11 +88,11 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 635.
 \multlinegap=\skip44
 \multlinetaggap=\skip45
 \mathdisplay@stack=\toks19
-LaTeX Info: Redefining \[ on input line 2739.
-LaTeX Info: Redefining \] on input line 2740.
+LaTeX Info: Redefining \[ on input line 2858.
+LaTeX Info: Redefining \] on input line 2859.
 )
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\amscls\amsthm.sty"
-Package: amsthm 2015/03/04 v2.20.2
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/amscls\amsthm.sty"
+Package: amsthm 2017/10/31 v2.20.4
 \thm@style=\toks20
 \thm@bodyfont=\toks21
 \thm@headfont=\toks22
@@ -102,52 +103,35 @@ Package: amsthm 2015/03/04 v2.20.2
 \thm@headsep=\skip48
 \dth@everypar=\toks25
 )
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\graphics\color.sty"
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/graphics\color.sty"
 Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\graphics-cfg\color.cfg"
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/graphics-cfg\color.cfg"
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package color Info: Driver file: pdftex.def on input line 147.
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\graphics-def\pdftex.def"
-File: pdftex.def 2016/07/10 v0.06j Graphics/color for pdfTeX
-
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\generic\oberdiek\infwarerr.sty"
-Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
-)
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\generic\oberdiek\ltxcmds.sty"
-Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
-)
-\Gread@gobject=\count99
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/graphics-def\pdftex.def"
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\ltxmisc\pagesize.sty"
-Style-Option: `pagesize' v1.2  <94/06/09>.
-\pgsz@paper@width=\dimen112
-\pgsz@paper@height=\dimen113
-\pgsz@width=\dimen114
-\pgsz@height=\dimen115
-\pgsz@hmargin=\dimen116
-\pgsz@vmargin=\dimen117
-\pgsz@totheight=\dimen118
-) ("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\outlines\outlines.sty"
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/outlines\outlines.sty"
 Package: outlines 2012/1/23 1.1 Ch. Pecheur
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\base\ifthen.sty"
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/base\ifthen.sty"
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 ))
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\cite\cite.sty"
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/cite\cite.sty"
 LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 332.
 Package: cite 2015/02/27  v 5.5
 )
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\subfigure\subfigure.sty"
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/subfigure\subfigure.sty"
 Package: subfigure 2002/07/30 v2.1.4 subfigure package
 \subfigtopskip=\skip49
 \subfigcapskip=\skip50
-\subfigcaptopadj=\dimen119
+\subfigcaptopadj=\dimen112
 \subfigbottomskip=\skip51
-\subfigcapmargin=\dimen120
+\subfigcapmargin=\dimen113
 \subfiglabelskip=\skip52
 \c@subfigure=\count100
 \c@lofdepth=\count101
@@ -157,174 +141,192 @@ Package: subfigure 2002/07/30 v2.1.4 subfigure package
 ****************************************
 * Local config file subfigure.cfg used *
 ****************************************
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\subfigure\subfigure.cfg")
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/subfigure\subfigure.cfg")
 \subfig@top=\skip53
 \subfig@bottom=\skip54
 )
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\graphics\epsfig.sty"
-Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/graphics\epsfig.sty"
+Package: epsfig 2017/06/25 v1.7b (e)psfig emulation (SPQR)
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\graphics\graphicx.sty"
-Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/graphics\graphicx.sty"
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\graphics\keyval.sty"
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/graphics\keyval.sty"
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks26
 )
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\graphics\graphics.sty"
-Package: graphics 2016/07/10 v1.0t Standard LaTeX Graphics (DPC,SPQR)
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/graphics\graphics.sty"
+Package: graphics 2019/11/01 v1.3d Standard LaTeX Graphics (DPC,SPQR)
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\graphics\trig.sty"
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/graphics\trig.sty"
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\graphics-cfg\graphics.cfg"
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/graphics-cfg\graphics.cfg"
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: pdftex.def on input line 99.
+Package graphics Info: Driver file: pdftex.def on input line 105.
 )
-\Gin@req@height=\dimen121
-\Gin@req@width=\dimen122
+\Gin@req@height=\dimen114
+\Gin@req@width=\dimen115
 )
-\epsfxsize=\dimen123
-\epsfysize=\dimen124
+\epsfxsize=\dimen116
+\epsfysize=\dimen117
 )
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\caption\caption.sty"
-Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/caption\caption.sty"
+Package: caption 2020/01/03 v3.4h Customizing captions (AR)
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\caption\caption3.sty"
-Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
-Package caption3 Info: TeX engine: e-TeX on input line 67.
-\captionmargin=\dimen125
-\captionmargin@=\dimen126
-\captionwidth=\dimen127
-\caption@tempdima=\dimen128
-\caption@indent=\dimen129
-\caption@parindent=\dimen130
-\caption@hangindent=\dimen131
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/caption\caption3.sty"
+Package: caption3 2020/01/03 v1.8h caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 61.
+\captionmargin=\dimen118
+\captionmargin@=\dimen119
+\captionwidth=\dimen120
+\caption@tempdima=\dimen121
+\caption@indent=\dimen122
+\caption@parindent=\dimen123
+\caption@hangindent=\dimen124
+Package caption Info: Standard document class detected.
 )
-\c@ContinuedFloat=\count104
+\c@caption@flags=\count104
+\c@continuedfloat=\count105
 Package caption Info: subfigure package is loaded.
 )
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\hyperref\hyperref.sty"
-Package: hyperref 2016/06/24 v6.83q Hypertext links for LaTeX
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/hyperref\hyperref.sty"
+Package: hyperref 2020/01/14 v7.00d Hypertext links for LaTeX
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\generic\oberdiek\hobsub-hyperref.sty"
-Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
-
-
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\generic\oberdiek\hobsub-generic.sty"
-Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
-Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
-Package hobsub Info: Skipping package `infwarerr' (already loaded).
-Package hobsub Info: Skipping package `ltxcmds' (already loaded).
-Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
-Package ifluatex Info: LuaTeX not detected.
-Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
-Package ifvtex Info: VTeX not detected.
-Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
-Package: ifpdf 2016/05/14 v3.1 Provides the ifpdf switch
-Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
-Package etexcmds Info: Could not find \expanded.
-(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
-(etexcmds)             that some package has redefined \expanded.
-(etexcmds)             In the latter case, load this package earlier.
-Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
-Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
-Package: pdftexcmds 2016/05/21 v0.22 Utility functions of pdfTeX for LuaTeX (HO
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/generic/ltxcmds\ltxcmds.sty"
+Package: ltxcmds 2019/12/15 v1.24 LaTeX kernel commands for general use (HO)
 )
-Package pdftexcmds Info: LuaTeX not detected.
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/generic/iftex\iftex.sty"
+Package: iftex 2019/11/07 v1.0c TeX engine tests
+)
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/pdftexcmds\pdftexcmds.sty"
+Package: pdftexcmds 2019/11/24 v0.31 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/generic/infwarerr\infwarerr.sty"
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
-Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
-Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO
 )
-Package: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
-Package: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/generic/kvsetkeys\kvsetkeys.sty"
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
 )
-Package hobsub Info: Skipping package `hobsub' (already loaded).
-Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/generic/kvdefinekeys\kvdefinekeys.sty"
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+) ("C:\Program Files\LaTeX\MiKTeX 2.9\tex/generic/pdfescape\pdfescape.sty"
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+)
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/hycolor\hycolor.sty"
+Package: hycolor 2019/12/15 v1.9 Color options for hyperref/bookmark (HO)
+
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/hycolor\xcolor-patch.sty"
+Package: xcolor-patch 2019/12/15 xcolor patch
+
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/oberdiek\hopatch.sty"
 Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
-Package: xcolor-patch 2016/05/16 xcolor patch
-Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
-Package atveryend Info: \enddocument detected (standard20110627).
-Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
-Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
-Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
+)))
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/letltxmacro\letltxmacro.sty"
+Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
 )
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\generic\ifxetex\ifxetex.sty"
-Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/auxhook\auxhook.sty"
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
 )
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\oberdiek\auxhook.sty"
-Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/kvoptions\kvoptions.sty"
+Package: kvoptions 2019/11/29 v3.13 Key value format for package options (HO)
 )
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\oberdiek\kvoptions.sty"
-Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
-)
-\@linkdim=\dimen132
-\Hy@linkcounter=\count105
-\Hy@pagecounter=\count106
+\@linkdim=\dimen125
+\Hy@linkcounter=\count106
+\Hy@pagecounter=\count107
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\hyperref\pd1enc.def"
-File: pd1enc.def 2016/06/24 v6.83q Hyperref: PDFDocEncoding definition (HO)
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/hyperref\pd1enc.def"
+File: pd1enc.def 2020/01/14 v7.00d Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
 )
-\Hy@SavedSpaceFactor=\count107
-
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\00miktex\hyperref.cfg"
-File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/generic/intcalc\intcalc.sty"
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-Package hyperref Info: Hyper figures OFF on input line 4486.
-Package hyperref Info: Link nesting OFF on input line 4491.
-Package hyperref Info: Hyper index ON on input line 4494.
-Package hyperref Info: Plain pages OFF on input line 4501.
-Package hyperref Info: Backreferencing OFF on input line 4506.
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/generic/etexcmds\etexcmds.sty"
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+)
+\Hy@SavedSpaceFactor=\count108
+\pdfmajorversion=\count109
+Package hyperref Info: Hyper figures OFF on input line 4547.
+Package hyperref Info: Link nesting OFF on input line 4552.
+Package hyperref Info: Hyper index ON on input line 4555.
+Package hyperref Info: Plain pages OFF on input line 4562.
+Package hyperref Info: Backreferencing OFF on input line 4567.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-Package hyperref Info: Bookmarks ON on input line 4735.
-\c@Hy@tempcnt=\count108
+Package hyperref Info: Bookmarks ON on input line 4800.
+\c@Hy@tempcnt=\count110
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\url\url.sty"
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/url\url.sty"
 \Urlmuskip=\muskip11
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-LaTeX Info: Redefining \url on input line 5088.
-\XeTeXLinkMargin=\dimen133
-\Fld@menulength=\count109
-\Field@Width=\dimen134
-\Fld@charsize=\dimen135
-Package hyperref Info: Hyper figures OFF on input line 6342.
-Package hyperref Info: Link nesting OFF on input line 6347.
-Package hyperref Info: Hyper index ON on input line 6350.
-Package hyperref Info: backreferencing OFF on input line 6357.
-Package hyperref Info: Link coloring OFF on input line 6362.
-Package hyperref Info: Link coloring with OCG OFF on input line 6367.
-Package hyperref Info: PDF/A mode OFF on input line 6372.
-LaTeX Info: Redefining \ref on input line 6412.
-LaTeX Info: Redefining \pageref on input line 6416.
-\Hy@abspage=\count110
-\c@Item=\count111
-\c@Hfootnote=\count112
+LaTeX Info: Redefining \url on input line 5159.
+\XeTeXLinkMargin=\dimen126
+
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/generic/bitset\bitset.sty"
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/generic/bigintcalc\bigintcalc.sty"
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
+))
+\Fld@menulength=\count111
+\Field@Width=\dimen127
+\Fld@charsize=\dimen128
+Package hyperref Info: Hyper figures OFF on input line 6430.
+Package hyperref Info: Link nesting OFF on input line 6435.
+Package hyperref Info: Hyper index ON on input line 6438.
+Package hyperref Info: backreferencing OFF on input line 6445.
+Package hyperref Info: Link coloring OFF on input line 6450.
+Package hyperref Info: Link coloring with OCG OFF on input line 6455.
+Package hyperref Info: PDF/A mode OFF on input line 6460.
+LaTeX Info: Redefining \ref on input line 6500.
+LaTeX Info: Redefining \pageref on input line 6504.
 
-Package hyperref Message: Driver (autodetected): hpdftex.
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/generic/atbegshi\atbegshi.sty"
+Package: atbegshi 2019/12/05 v1.19 At begin shipout hook (HO)
+)
+\Hy@abspage=\count112
+\c@Item=\count113
+\c@Hfootnote=\count114
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\hyperref\hpdftex.def"
-File: hpdftex.def 2016/06/24 v6.83q Hyperref driver for pdfTeX
-\Fld@listcount=\count113
-\c@bookmark@seq@number=\count114
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/hyperref\hpdftex.def"
+File: hpdftex.def 2020/01/14 v7.00d Hyperref driver for pdfTeX
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\oberdiek\rerunfilecheck.sty"
-Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/atveryend\atveryend.sty"
+Package: atveryend 2019-12-11 v1.11 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+)
+\Fld@listcount=\count115
+\c@bookmark@seq@number=\count116
+
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/rerunfilecheck\rerunfilecheck.sty
+"
+Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
+
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/generic/uniquecounter\uniquecounter.sty
+"
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
-82.
+86.
 )
 \Hy@SectionHShift=\skip55
 )
 Package hyperref Info: Option `colorlinks' set `true' on input line 7.
-
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\oberdiek\stackrel.sty"
+ ("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/oberdiek\stackrel.sty"
 Package: stackrel 2016/05/16 v1.3 Adding subscript option to stackrel (HO)
 )
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\natbib\natbib.sty"
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/natbib\natbib.sty"
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 
 
@@ -335,27 +337,16 @@ Package natbib Warning: The `cite' package should not be used
 \bibsep=\skip57
 LaTeX Info: Redefining \cite on input line 694.
 LaTeX Info: Redefining \citenum on input line 708.
-\c@NAT@ctr=\count115
-) ("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\chngcntr\chngcntr.sty"
-Package: chngcntr 2009/09/02 v1.0a change counter resetting
+\c@NAT@ctr=\count117
+) ("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/chngcntr\chngcntr.sty"
+Package: chngcntr 2018/04/09 v1.1a change counter resetting
+Package chngcntr Info: \counterwithout already defined.
+(chngcntr)             Quitting chngcntr on input line 21.
 )
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\apptools\apptools.sty"
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/apptools\apptools.sty"
 Package: apptools 2012/11/28 v1.0 Tools for customizing appendices
 )
-(jmmle-draft.aux
-
-LaTeX Warning: Label `eqn:BetaThmEqn1' multiply defined.
-
-
-LaTeX Warning: Label `eqn:BetaThmEqn2' multiply defined.
-
-
-LaTeX Warning: Label `eqn:BetaThmEqn3' multiply defined.
-
-
-LaTeX Warning: Label `eqn:BetaThmEqn4' multiply defined.
-
-)
+(jmmle-draft.aux)
 \openout1 = `jmmle-draft.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 62.
@@ -372,71 +363,69 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 62.
 LaTeX Font Info:    ... okay on input line 62.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 62.
 LaTeX Font Info:    ... okay on input line 62.
- ("D:\Study\LaTeX\MikTeX 2.9.6161\tex\context\base\supp-pdf.mkii"
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count116
-\scratchdimen=\dimen136
-\scratchbox=\box28
-\nofMPsegments=\count117
-\nofMParguments=\count118
-\everyMPshowfont=\toks27
-\MPscratchCnt=\count119
-\MPscratchDim=\dimen137
-\MPnumerator=\count120
-\makeMPintoPDFobject=\count121
-\everyMPtoPDFconversion=\toks28
-) ("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\oberdiek\epstopdf-base.sty"
-Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\oberdiek\grfext.sty"
-Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
-)
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/context/base/mkii\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count118
+\scratchdimen=\dimen129
+\scratchbox=\box29
+\nofMPsegments=\count119
+\nofMParguments=\count120
+\everyMPshowfont=\toks27
+\MPscratchCnt=\count121
+\MPscratchDim=\dimen130
+\MPnumerator=\count122
+\makeMPintoPDFobject=\count123
+\everyMPtoPDFconversion=\toks28
+) ("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/epstopdf-pkg\epstopdf-base.sty"
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-38.
-Package grfext Info: Graphics extension search list:
-(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
-G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 456.
+85.
 )
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\AtBeginShipoutBox=\box29
+\AtBeginShipoutBox=\box30
 Package hyperref Info: Link coloring ON on input line 62.
+ ("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/hyperref\nameref.sty"
+Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\hyperref\nameref.sty"
-Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
-
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\generic\oberdiek\gettitlestring.sty"
-Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/refcount\refcount.sty"
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 )
-\c@section@level=\count122
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/generic/gettitlestring\gettitlestring.s
+ty"
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+)
+\c@section@level=\count124
 )
 LaTeX Info: Redefining \ref on input line 62.
 LaTeX Info: Redefining \pageref on input line 62.
 LaTeX Info: Redefining \nameref on input line 62.
-
-(jmmle-draft.out) (jmmle-draft.out)
+ (jmmle-draft.out) (jmmle-draft.out)
 \@outlinefile=\write3
 \openout3 = `jmmle-draft.out'.
 
-\c@Theorem=\count123
-\c@Example=\count124
-\c@Algorithm=\count125
-\c@Remark=\count126
-LaTeX Font Info:    Try loading font information for U+msa on input line 84.
+\c@Theorem=\count125
+\c@Example=\count126
+\c@Algorithm=\count127
+\c@Remark=\count128
+LaTeX Font Info:    Trying to load font information for U+msa on input line 84.
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\amsfonts\umsa.fd"
+
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 84.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 84.
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\amsfonts\umsb.fd"
+
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 84.
+LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 8
+4.
 
-("D:\Study\LaTeX\MikTeX 2.9.6161\tex\latex\base\omscmr.fd"
+("C:\Program Files\LaTeX\MiKTeX 2.9\tex/latex/base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
@@ -451,121 +440,1143 @@ Overfull \hbox (2.78476pt too wide) in paragraph at lines 89--90
 
 [1
 
-{C:/Users/Subho/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-(Introduction-paper-GM.tex [2]
-<multi2layer.pdf, id=159, 408.01433pt x 179.24968pt>
+{C:/Users/subho/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+(Introduction-paper-GM.tex
+
+Package natbib Warning: Citation `lee2016integrated' on page 2 undefined on inp
+ut line 3.
+
+
+Package natbib Warning: Citation `kaushik2016inhibition' on page 2 undefined on
+ input line 3.
+
+
+Package natbib Warning: Citation `yuan2014integrated' on page 2 undefined on in
+put line 3.
+
+
+Package natbib Warning: Citation `sas2018shared' on page 2 undefined on input l
+ine 3.
+
+
+Package natbib Warning: Citation `atzler2014integrated' on page 2 undefined on 
+input line 3.
+
+
+Package natbib Warning: Citation `Tomczak15' on page 2 undefined on input line 
+3.
+
+
+Package natbib Warning: Citation `JoycePalsson06' on page 2 undefined on input 
+line 5.
+
+
+Package natbib Warning: Citation `GomezCabreroEtal14' on page 2 undefined on in
+put line 5.
+
+
+Package natbib Warning: Citation `GligPrzulj15' on page 2 undefined on input li
+ne 5.
+
+
+Package natbib Warning: Citation `GligPrzulj15' on page 2 undefined on input li
+ne 5.
+
+
+Package natbib Warning: Citation `ZhangOuyangZhao17' on page 2 undefined on inp
+ut line 5.
+
+
+Package natbib Warning: Citation `LohWainwright12' on page 2 undefined on input
+ line 11.
+
+
+Package natbib Warning: Citation `BasuMichailidis15' on page 2 undefined on inp
+ut line 11.
+
+
+Package natbib Warning: Citation `BasuEtal19' on page 2 undefined on input line
+ 11.
+
+<multi2layer.pdf, id=110, 408.01433pt x 179.24968pt>
 File: multi2layer.pdf Graphic file (type pdf)
- <use multi2layer.pdf>
-Package pdftex.def Info: multi2layer.pdf used on input line 13.
+<use multi2layer.pdf>
+Package pdftex.def Info: multi2layer.pdf  used on input line 16.
 (pdftex.def)             Requested size: 408.01332pt x 179.24922pt.
+[2]
 
-[3 <./multi2layer.pdf>]) (JMMLE_Framework.tex [4]
-<adj1.pdf, id=247, 289.08pt x 289.08pt>
+Package natbib Warning: Citation `BuhlmannvandeGeer11' on page 3 undefined on i
+nput line 23.
+
+
+Package natbib Warning: Citation `GuoEtal11' on page 3 undefined on input line 
+23.
+
+
+Package natbib Warning: Citation `XieLiuValdar16' on page 3 undefined on input 
+line 23.
+
+
+Package natbib Warning: Citation `DanaherEtal14' on page 3 undefined on input l
+ine 23.
+
+
+Package natbib Warning: Citation `MaMichailidis15' on page 3 undefined on input
+ line 23.
+
+
+Package natbib Warning: Citation `LeeLiu12' on page 3 undefined on input line 2
+4.
+
+
+Package natbib Warning: Citation `CaiEtal12' on page 3 undefined on input line 
+24.
+
+
+Package natbib Warning: Citation `LinEtal16' on page 3 undefined on input line 
+24.
+
+
+Package natbib Warning: Citation `KlingEtal15' on page 3 undefined on input lin
+e 27.
+
+
+Package natbib Warning: Citation `ZhangOuyangZhao17' on page 3 undefined on inp
+ut line 27.
+
+[3 <./multi2layer.pdf>]
+
+Package natbib Warning: Citation `ZhangZhang14' on page 4 undefined on input li
+ne 30.
+
+
+Package natbib Warning: Citation `JavanmardMontanari14' on page 4 undefined on 
+input line 30.
+
+
+Package natbib Warning: Citation `JavanmardMontanari18' on page 4 undefined on 
+input line 30.
+
+
+Package natbib Warning: Citation `vanDeGeerEtal14' on page 4 undefined on input
+ line 30.
+
+
+Package natbib Warning: Citation `MitraZhang16' on page 4 undefined on input li
+ne 30.
+
+
+Package natbib Warning: Citation `CaiLiu16' on page 4 undefined on input line 3
+0.
+
+
+Package natbib Warning: Citation `BelilovskyEtal16' on page 4 undefined on inpu
+t line 30.
+
+
+Package natbib Warning: Citation `Liu17' on page 4 undefined on input line 30.
+
+
+Package natbib Warning: Citation `MaoEtal17' on page 4 undefined on input line 
+30.
+
+
+Package natbib Warning: Citation `LiEtal15' on page 4 undefined on input line 3
+0.
+
+
+LaTeX Warning: Reference `sec:secreal' on page 4 undefined on input line 39.
+
+
+LaTeX Warning: Reference `sec:secreal' on page 4 undefined on input line 39.
+
+) (JMMLE_Framework.tex [4]
+
+Package natbib Warning: Citation `LinEtal16' on page 5 undefined on input line 
+31.
+
+
+Package natbib Warning: Citation `GuoEtal11' on page 5 undefined on input line 
+31.
+
+
+Package natbib Warning: Citation `MaMichailidis15' on page 5 undefined on input
+ line 31.
+
+<adj1.pdf, id=161, 289.08pt x 289.08pt>
 File: adj1.pdf Graphic file (type pdf)
- <use adj1.pdf>
-Package pdftex.def Info: adj1.pdf used on input line 40.
+<use adj1.pdf>
+Package pdftex.def Info: adj1.pdf  used on input line 40.
 (pdftex.def)             Requested size: 97.75797pt x 97.75658pt.
-
-<adj2.pdf, id=248, 289.08pt x 289.08pt>
+<adj2.pdf, id=162, 289.08pt x 289.08pt>
 File: adj2.pdf Graphic file (type pdf)
- <use adj2.pdf>
-Package pdftex.def Info: adj2.pdf used on input line 41.
+<use adj2.pdf>
+Package pdftex.def Info: adj2.pdf  used on input line 41.
 (pdftex.def)             Requested size: 97.75797pt x 97.75658pt.
-
-<adj3.pdf, id=249, 289.08pt x 289.08pt>
+<adj3.pdf, id=163, 289.08pt x 289.08pt>
 File: adj3.pdf Graphic file (type pdf)
- <use adj3.pdf>
-Package pdftex.def Info: adj3.pdf used on input line 42.
+<use adj3.pdf>
+Package pdftex.def Info: adj3.pdf  used on input line 42.
 (pdftex.def)             Requested size: 97.75797pt x 97.75658pt.
-
-<adj4.pdf, id=250, 289.08pt x 289.08pt>
+<adj4.pdf, id=164, 289.08pt x 289.08pt>
 File: adj4.pdf Graphic file (type pdf)
- <use adj4.pdf>
-Package pdftex.def Info: adj4.pdf used on input line 43.
+<use adj4.pdf>
+Package pdftex.def Info: adj4.pdf  used on input line 43.
 (pdftex.def)             Requested size: 97.75797pt x 97.75658pt.
- [5] [6 <./adj1.pdf> <./adj2.pdf> <./adj3.pdf> <./adj4.pdf>] [7]
-Overfull \hbox (0.8078pt too wide) in paragraph at lines 172--178
-\OT1/cmr/m/n/10.95 us-ing Al-go-rithm [][]1[][] over a fi-nite set of val-ues $
-\OML/cmm/m/it/10.95 [] \OMS/cmsy/m/n/10.95 2 D[]$\OT1/cmr/m/n/10.95 : $\OML/cm
-m/m/it/10.95 [] \OT1/cmr/m/n/10.95 = [][] [](\OML/cmm/m/it/10.95 ; []\OT1/cmr
-/m/n/10.95 )$. 
- []
+[5]
 
-[8] [9] [10]
-Overfull \hbox (17.88994pt too wide) in paragraph at lines 333--336
-\OT1/cmr/m/it/10.95 both with prob-a-bil-ity $\OMS/cmsy/m/n/10.95  \OT1/cmr/m/
-n/10.95 1 \OMS/cmsy/m/n/10.95   \OML/cmm/m/it/10.95 K\OT1/cmr/m/n/10.95 (1\OML/
-cmm/m/it/10.95 =p[] \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 12\OML/cmm/m/it/10
-.95 c[] []\OT1/cmr/m/n/10.95 [\OMS/cmsy/m/n/10.95  \OT1/cmr/m/n/10.95 (\OML/cmm
-/m/it/10.95 c[] \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 1) [](\OML/cmm/m/it/10
-.95 pq\OT1/cmr/m/n/10.95 )] \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 2 [](\OMS/
-cmsy/m/n/10.95  \OML/cmm/m/it/10.95 c[]n\OT1/cmr/m/n/10.95 ) \OMS/cmsy/m/n/10.9
-5   \OT1/cmr/m/n/10.95 6\OML/cmm/m/it/10.95 c[] []\OT1/cmr/m/n/10.95 [\OMS/cmsy
-/m/n/10.95  \OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 c[] \OMS/cmsy/m/n/10.95  
- []
+Package natbib Warning: Citation `MaMichailidis15' on page 6 undefined on input
+ line 55.
 
-[11]) (Testing.tex [12] [13] [14] [15] [16] [17] [18]) (Numerical.tex [19]
+
+Package natbib Warning: Citation `MaMichailidis15' on page 6 undefined on input
+ line 55.
+
+
+Package natbib Warning: Citation `MeisenBuhlmann06' on page 6 undefined on inpu
+t line 55.
+
+[6 <./adj1.pdf> <./adj2.pdf> <./adj3.pdf> <./adj4.pdf>]
+
+Package natbib Warning: Citation `LinEtal16' on page 7 undefined on input line 
+97.
+
+
+Package natbib Warning: Citation `LinEtal16' on page 7 undefined on input line 
+106.
+
+[7]
+
+Package natbib Warning: Citation `DanaherEtal14' on page 8 undefined on input l
+ine 162.
+
+
+Package natbib Warning: Citation `LinEtal16' on page 8 undefined on input line 
+162.
+
+
+Package natbib Warning: Citation `MaMichailidis15' on page 8 undefined on input
+ line 162.
+
+
+Package natbib Warning: Citation `FoygelDrton10' on page 8 undefined on input l
+ine 162.
+
+
+Package natbib Warning: Citation `GaoEtal12' on page 8 undefined on input line 
+162.
+
+
+Package natbib Warning: Citation `KimKwonChoi12' on page 8 undefined on input l
+ine 162.
+
+
+Package natbib Warning: Citation `KimKwonChoi12' on page 8 undefined on input l
+ine 164.
+
+
+Package natbib Warning: Citation `WangKimLi13' on page 8 undefined on input lin
+e 164.
+
+
+Package natbib Warning: Citation `MaMichailidis15' on page 8 undefined on input
+ line 164.
+
+
+Package natbib Warning: Citation `FanTang13' on page 8 undefined on input line 
+164.
+
+
+Package natbib Warning: Citation `WangKimLi13' on page 8 undefined on input lin
+e 164.
+
+[8]
+
+Package natbib Warning: Citation `MaMichailidis15' on page 9 undefined on input
+ line 177.
+
+
+! LaTeX Error: Environment theorem undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.241 \begin{theorem}
+                     
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+[9]
+
+! LaTeX Error: \begin{document} ended by \end{theorem}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.252 \end{theorem}
+                   
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+[10]
+
+! LaTeX Error: Environment theorem undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.319 \begin{theorem}
+                     \label{thm:thm-Theta}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: \begin{document} ended by \end{theorem}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.356 \end{theorem}
+                   
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Package natbib Warning: Citation `BickelRitovTsybakov09' on page 11 undefined o
+n input line 360.
+
+
+Package natbib Warning: Citation `LohWainwright12' on page 11 undefined on inpu
+t line 360.
+
+
+Package natbib Warning: Citation `LinEtal16' on page 11 undefined on input line
+ 360.
+
+
+Package natbib Warning: Citation `BasuMichailidis15' on page 11 undefined on in
+put line 360.
+
+
+Package natbib Warning: Citation `LinEtal16' on page 11 undefined on input line
+ 360.
+
+[11]
+
+! LaTeX Error: Environment theorem undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.374 \begin{theorem}
+                     \label{thm:thm-B}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: \begin{document} ended by \end{theorem}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.408 \end{theorem}
+                   
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Package natbib Warning: Citation `BasuMichailidis15' on page 12 undefined on in
+put line 411.
+
+
+Package natbib Warning: Citation `LohWainwright12' on page 12 undefined on inpu
+t line 411.
+
+
+Package natbib Warning: Citation `RavikumarEtal11' on page 12 undefined on inpu
+t line 411.
+
+
+! LaTeX Error: Environment theorem undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.416 \begin{theorem}
+                     \label{thm:starting-values}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+[12]
+
+! LaTeX Error: \begin{document} ended by \end{theorem}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.435 \end{theorem}
+                   
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Environment corollary undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.440 \begin{corollary}
+                       \label{corollary:jmmle-final}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: \begin{document} ended by \end{corollary}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.471 \end{corollary}
+                     
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Package natbib Warning: Citation `JavanmardMontanari14' on page 13 undefined on
+ input line 474.
+
+
+Package natbib Warning: Citation `LinEtal16' on page 13 undefined on input line
+ 474.
+
+[13]
+
+Package natbib Warning: Citation `LinEtal16' on page 14 undefined on input line
+ 479.
+
+
+Package natbib Warning: Citation `MaMichailidis15' on page 14 undefined on inpu
+t line 479.
+
+
+Package natbib Warning: Citation `LinEtal16' on page 14 undefined on input line
+ 479.
+
+
+Package natbib Warning: Citation `MaMichailidis15' on page 14 undefined on inpu
+t line 479.
+
+) (Testing.tex
+
+Package natbib Warning: Citation `CaiLiu16' on page 14 undefined on input line 
+3.
+
+
+Package natbib Warning: Citation `Liu17' on page 14 undefined on input line 3.
+
+
+Package natbib Warning: Citation `vanDeGeerEtal14' on page 14 undefined on inpu
+t line 3.
+
+
+Package natbib Warning: Citation `ZhangZhang14' on page 14 undefined on input l
+ine 3.
+
+
+Package natbib Warning: Citation `MitraZhang16' on page 14 undefined on input l
+ine 3.
+
+
+Package natbib Warning: Citation `ZhangZhang14' on page 14 undefined on input l
+ine 18.
+
+[14]
+
+Package natbib Warning: Citation `MitraZhang16' on page 15 undefined on input l
+ine 30.
+
+
+Package natbib Warning: Citation `vanDeGeerEtal14' on page 15 undefined on inpu
+t line 30.
+
+
+Package natbib Warning: Citation `JavanmardMontanari14' on page 15 undefined on
+ input line 30.
+
+
+Package natbib Warning: Citation `ZhangZhang14' on page 15 undefined on input l
+ine 39.
+
+
+Package natbib Warning: Citation `ZhangZhang14' on page 15 undefined on input l
+ine 41.
+
+
+Package natbib Warning: Citation `JavanmardMontanari14' on page 15 undefined on
+ input line 41.
+
+
+Package natbib Warning: Citation `vanDeGeerEtal14' on page 15 undefined on inpu
+t line 41.
+
+
+Package natbib Warning: Citation `MitraZhang16' on page 15 undefined on input l
+ine 41.
+
+
+Package natbib Warning: Citation `ZhangZhang14' on page 15 undefined on input l
+ine 41.
+
+
+Package natbib Warning: Citation `JavanmardMontanari14' on page 15 undefined on
+ input line 41.
+
+[15]
+
+Package natbib Warning: Citation `MaMichailidis15' on page 16 undefined on inpu
+t line 70.
+
+
+Package natbib Warning: Citation `LinEtal16' on page 16 undefined on input line
+ 70.
+
+
+Package natbib Warning: Citation `LohWainwright12' on page 16 undefined on inpu
+t line 70.
+
+
+Package natbib Warning: Citation `BasuMichailidis15' on page 16 undefined on in
+put line 70.
+
+
+Package natbib Warning: Citation `RohdeTsybakov11' on page 16 undefined on inpu
+t line 70.
+
+
+Package natbib Warning: Citation `BasuEtal19' on page 16 undefined on input lin
+e 70.
+
+
+Package natbib Warning: Citation `StuckyVandeGeer17' on page 16 undefined on in
+put line 72.
+
+
+! LaTeX Error: Environment theorem undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.74 \begin{theorem}
+                    \label{Thm:ThmTesting}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: \begin{document} ended by \end{theorem}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.93 \end{theorem}
+                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Package natbib Warning: Citation `MaMichailidis15' on page 16 undefined on inpu
+t line 98.
+
+
+! LaTeX Error: Environment corollary undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.102 \begin{corollary}
+                       \label{corollary:CorTesting}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+[16]
+
+! LaTeX Error: \begin{document} ended by \end{corollary}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.111 \end{corollary}
+                     
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Environment theorem undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.137 \begin{theorem}
+                     \label{thm:PowerThm}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: \begin{document} ended by \end{theorem}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.157 \end{theorem}
+                   
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Package natbib Warning: Citation `BickelLevina08' on page 17 undefined on input
+ line 159.
+
+
+Package natbib Warning: Citation `CaiLiuLuo12' on page 17 undefined on input li
+ne 159.
+
+[17]
+
+Package natbib Warning: Citation `ZhangZhang14' on page 18 undefined on input l
+ine 164.
+
+
+Package natbib Warning: Citation `MitraZhang16' on page 18 undefined on input l
+ine 164.
+
+
+Package natbib Warning: Citation `MitraZhang16' on page 18 undefined on input l
+ine 164.
+
+
+Package natbib Warning: Citation `LiuShao14' on page 18 undefined on input line
+ 220.
+
+[18]
+
+Package natbib Warning: Citation `LiuShao14' on page 19 undefined on input line
+ 238.
+
+
+! LaTeX Error: Environment theorem undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.240 \begin{theorem}
+                     \label{thm:FDRthm}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: \begin{document} ended by \end{theorem}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.256 \end{theorem}
+                   
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Package natbib Warning: Citation `LiuShao14' on page 19 undefined on input line
+ 259.
+
+
+Package natbib Warning: Citation `Liu17' on page 19 undefined on input line 259
+.
+
+
+Package natbib Warning: Citation `ObozinskiEtal11' on page 19 undefined on inpu
+t line 272.
+
+
+Package natbib Warning: Citation `MajumdarChatterjeeStat' on page 19 undefined 
+on input line 272.
+
+
+Package natbib Warning: Citation `MaMichailidis15' on page 19 undefined on inpu
+t line 272.
+
+[19]
+
+Package natbib Warning: Citation `JavanmardMontanari18' on page 20 undefined on
+ input line 278.
+
+
+Package natbib Warning: Citation `vanDeGeerEtal14' on page 20 undefined on inpu
+t line 278.
+
+
+Package natbib Warning: Citation `ZhangZhang14' on page 20 undefined on input l
+ine 278.
+
+
+Package natbib Warning: Citation `JavanmardMontanari14' on page 20 undefined on
+ input line 278.
+
+
+Package natbib Warning: Citation `Liu17' on page 20 undefined on input line 278
+.
+
+
+Package natbib Warning: Citation `FoygelDrton10' on page 20 undefined on input 
+line 284.
+
+
+Package natbib Warning: Citation `WangKimLi13' on page 20 undefined on input li
+ne 284.
+
+) (Numerical.tex [20]
+
+Package natbib Warning: Citation `MaMichailidis15' on page 21 undefined on inpu
+t line 7.
+
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 25.
-
-<omega-structure.pdf, id=541, 392.95808pt x 74.28754pt>
+<omega-structure.pdf, id=380, 392.95808pt x 74.28754pt>
 File: omega-structure.pdf Graphic file (type pdf)
-
 <use omega-structure.pdf>
-Package pdftex.def Info: omega-structure.pdf used on input line 37.
+Package pdftex.def Info: omega-structure.pdf  used on input line 37.
 (pdftex.def)             Requested size: 392.95712pt x 74.28734pt.
- [20 <./omega-structure.pdf>]
-Overfull \hbox (40.25366pt too wide) in paragraph at lines 126--147
+[21]
+Overfull \hbox (10.1139pt too wide) detected at line 85
+[]
+ []
+
+
+Overfull \hbox (40.25377pt too wide) in paragraph at lines 98--119
 [][] 
  []
 
 
-Overfull \hbox (32.95367pt too wide) in paragraph at lines 180--207
+Overfull \hbox (32.95378pt too wide) in paragraph at lines 152--179
 [][] 
  []
 
-[21] [22] [23]
-Overfull \hbox (25.01486pt too wide) in paragraph at lines 269--284
-[][] 
+
+Package natbib Warning: Citation `LinEtal16' on page 22 undefined on input line
+ 184.
+
+
+Package natbib Warning: Citation `LinEtal16' on page 22 undefined on input line
+ 184.
+
+
+Package natbib Warning: Citation `MaMichailidis15' on page 22 undefined on inpu
+t line 184.
+
+[22 <./omega-structure.pdf>] [23]
+Overfull \hbox (55.09709pt too wide) in paragraph at lines 260--295
+ [][] 
  []
 
-[24] [25]) (Discussion.tex [26] [27]) [28] (misc.tex
-Overfull \hbox (4.32553pt too wide) in paragraph at lines 5--6
-\OT1/cmr/m/n/10.95 The proof fol-lows di-rectly from the proof of that the-o-re
-m, sub-sti-tut-ing $([]\OML/cmm/m/it/10.95 ; []\OT1/cmr/m/n/10.95 )\OML/cmm/m/i
-t/10.95 ; \OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 B[]; \OT1/cmr/m/n/10.95 [])$
+[24] [25]
 
- []
+Package natbib Warning: Citation `ZhangZhang14' on page 26 undefined on input l
+ine 393.
+
+
+Package natbib Warning: Citation `ref:JASA151658_WangPengLi' on page 26 undefin
+ed on input line 393.
+
+
+Package natbib Warning: Citation `aispu' on page 26 undefined on input line 393
+.
+
+
+Package natbib Warning: Citation `LinEtal16' on page 26 undefined on input line
+ 399.
+
+[26]
+
+Package natbib Warning: Citation `ZouLi08' on page 27 undefined on input line 4
+56.
+
+
+Package natbib Warning: Citation `Taddy17' on page 27 undefined on input line 4
+56.
+
+[27]) (Discussion.tex [28]
+
+Package natbib Warning: Citation `LinEtal16' on page 29 undefined on input line
+ 6.
+
+
+Package natbib Warning: Citation `LinEtal16' on page 29 undefined on input line
+ 6.
+
+
+Package natbib Warning: Citation `FanTang13' on page 29 undefined on input line
+ 23.
+
+
+Package natbib Warning: Citation `WangKimLi13' on page 29 undefined on input li
+ne 23.
+
+
+Package natbib Warning: Citation `FoygelDrton10' on page 29 undefined on input 
+line 23.
+
+
+Package natbib Warning: Citation `GaoEtal12' on page 29 undefined on input line
+ 23.
 
 [29]
-Overfull \hbox (17.14075pt too wide) in paragraph at lines 101--103
-[]\OT1/cmr/m/it/10.95 with prob-a-bil-ity $\OMS/cmsy/m/n/10.95  \OT1/cmr/m/n/1
-0.95 1 \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 1\OML/cmm/m/it/10.95 =p[] \OMS/
-cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 12\OML/cmm/m/it/10.95 c[] []\OT1/cmr/m/n/10
-.95 [\OMS/cmsy/m/n/10.95  \OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 c[] \OMS/cmsy
-/m/n/10.95   \OT1/cmr/m/n/10.95 1) [](\OML/cmm/m/it/10.95 pq\OT1/cmr/m/n/10.95 
-)] \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 6\OML/cmm/m/it/10.95 c[] []\OT1/cmr
-/m/n/10.95 [\OMS/cmsy/m/n/10.95  \OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 c[] \O
-MS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 1) [](\OML/cmm/m/it/10.95 pq\OT1/cmr/m/n
-/10.95 )]\OML/cmm/m/it/10.95 ; c[] >
- []
+
+Package natbib Warning: Citation `Liu17' on page 30 undefined on input line 31.
+
+
+
+Package natbib Warning: Citation `Liu17' on page 30 undefined on input line 31.
+
 
 [30]
+
+Package natbib Warning: Citation `LinEtal16' on page 31 undefined on input line
+ 46.
+
+
+Package natbib Warning: Citation `LiuLaffertyWasserman09' on page 31 undefined 
+on input line 46.
+
+
+Package natbib Warning: Citation `LinDrtonShojaie16' on page 31 undefined on in
+put line 46.
+
+
+Package natbib Warning: Citation `BayramEtal20' on page 31 undefined on input l
+ine 46.
+
+
+Package natbib Warning: Citation `KumarEtal20' on page 31 undefined on input li
+ne 46.
+
+) [31] (misc.tex
+
+Package natbib Warning: Citation `LinEtal16' on page 32 undefined on input line
+ 5.
+
+
+Package natbib Warning: Citation `BickelRitovTsybakov09' on page 32 undefined o
+n input line 20.
+
+
+Package natbib Warning: Citation `LohWainwright12' on page 32 undefined on inpu
+t line 20.
+
+
+Package natbib Warning: Citation `BasuMichailidis15' on page 32 undefined on in
+put line 20.
+
+
+Package natbib Warning: Citation `MaMichailidis15' on page 32 undefined on inpu
+t line 20.
+
+
+Package natbib Warning: Citation `vandeGeerBuhlmann09' on page 32 undefined on 
+input line 20.
+
+
+! LaTeX Error: Environment lemma undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.25 \begin{lemma}
+                  \label{thm:ThetaThm}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+[32]
+
+! LaTeX Error: \begin{proof} on input line 22 ended by \end{lemma}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.78 \end{lemma}
+                
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Environment lemma undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.82 \begin{lemma}
+                  \label{prop:ErrorRE}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Overfull \hbox (21.35112pt too wide) in paragraph at lines 101--103
+[]\OT1/cmr/m/n/10.95 with prob-a-bil-ity $\OMS/cmsy/m/n/10.95  \OT1/cmr/m/n/10
+.95 1 \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 1\OML/cmm/m/it/10.95 =p[] \OMS/c
+msy/m/n/10.95   \OT1/cmr/m/n/10.95 12\OML/cmm/m/it/10.95 c[] []\OT1/cmr/m/n/10.
+95 [\OMS/cmsy/m/n/10.95  \OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 c[] \OMS/cmsy/
+m/n/10.95   \OT1/cmr/m/n/10.95 1) [](\OML/cmm/m/it/10.95 pq\OT1/cmr/m/n/10.95 )
+] \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 6\OML/cmm/m/it/10.95 c[] []\OT1/cmr/
+m/n/10.95 [\OMS/cmsy/m/n/10.95  \OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 c[] \OM
+S/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 1) [](\OML/cmm/m/it/10.95 pq\OT1/cmr/m/n/
+10.95 )]\OML/cmm/m/it/10.95 ; c[] >
+ []
+
+
+! LaTeX Error: \begin{proof} on input line 22 ended by \end{lemma}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.116 \end{lemma}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Environment lemma undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.126 \begin{lemma}
+                   \label{thm:BetaThm}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+[33]
+
+! LaTeX Error: \begin{proof} on input line 121 ended by \end{lemma}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.163 \end{lemma}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Environment lemma undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.167 \begin{lemma}
+                   \label{prop:ThmBetaRE}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
 Overfull \hbox (2.31772pt too wide) detected at line 176
 \OML/cmm/m/it/10.95  [] \OT1/cmr/m/n/10.95 = [] \OML/cmm/m/it/10.95  [] [] ; [
 ] \OT1/cmr/m/n/10.95 = [] \OML/cmm/m/it/10.95 [] []
  []
 
 
-Overfull \hbox (4.40454pt too wide) in paragraph at lines 180--182
-[]\OT1/cmr/m/it/10.95 The de-vi-a-tion bound in (B2) is sat-is-fied with prob-a
--bil-ity $\OMS/cmsy/m/n/10.95  \OT1/cmr/m/n/10.95 1 \OMS/cmsy/m/n/10.95   \OT1
-/cmr/m/n/10.95 12\OML/cmm/m/it/10.95 c[] []\OT1/cmr/m/n/10.95 [(\OML/cmm/m/it/1
-0.95 c[] \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 1) [](\OML/cmm/m/it/10.95 pq\
-OT1/cmr/m/n/10.95 )]$\OT1/cmr/m/it/10.95 ,
+Overfull \hbox (12.85934pt too wide) detected at line 187
+\U/msb/m/n/10.95 R [] \OT1/cmr/m/n/10.95 = \OML/cmm/m/it/10.95 c[] []
  []
 
-[31] [32] [33] [34]) (Proofs.tex
+
+! LaTeX Error: \begin{proof} on input line 121 ended by \end{lemma}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.190 \end{lemma}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+[34]
+
+Package natbib Warning: Citation `LinEtal16' on page 35 undefined on input line
+ 196.
+
+
+! LaTeX Error: Environment lemma undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.344 \begin{lemma}
+                   \label{Lemma:ThmTestingLemma}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+[35]
+
+! LaTeX Error: \begin{proof} on input line 283 ended by \end{lemma}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.372 \end{lemma}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Environment lemma undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.386 \begin{lemma}
+                   \label{Lemma:PowerThmLemma}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: \begin{proof} on input line 377 ended by \end{lemma}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.397 \end{lemma}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Environment lemma undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.402 \begin{lemma}
+                   \label{lemma:omega-diff}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: \begin{proof} on input line 377 ended by \end{lemma}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.408 \end{lemma}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+[36]
+
+! LaTeX Error: Environment lemma undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.446 \begin{lemma}
+                   \label{Lemma:PowerThmLemma2}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: \begin{proof} on input line 377 ended by \end{lemma}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.454 \end{lemma}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Package natbib Warning: Citation `LiuShao14' on page 37 undefined on input line
+ 473.
+
+
+Package natbib Warning: Citation `LiuShao14' on page 37 undefined on input line
+ 473.
+
+
+Package natbib Warning: Citation `LiuShao14' on page 37 undefined on input line
+ 479.
+
+[37]) (Proofs.tex
+
+Package natbib Warning: Citation `MaMichailidis15' on page 38 undefined on inpu
+t line 4.
+
+
 Overfull \hbox (25.55247pt too wide) detected at line 34
 [] [] \OMS/cmsy/m/n/10.95 k\OT1/cmr/m/n/10.95 (\OT1/cmr/bx/n/10.95 Y[] \OMS/cms
 y/m/n/10.95   \OT1/cmr/bx/n/10.95 X[][]\OT1/cmr/m/n/10.95 )[]\OMS/cmsy/m/n/10.9
@@ -576,14 +1587,14 @@ y/m/n/10.95   \OT1/cmr/bx/n/10.95 X[][]\OT1/cmr/m/n/10.95 )[]\OMS/cmsy/m/n/10.9
 OT1/cmr/bx/n/10.95 T[]\OMS/cmsy/m/n/10.95 k
  []
 
-[35]
-Overfull \hbox (1.97311pt too wide) in paragraph at lines 59--59
-[] 
+[38]
+Overfull \hbox (1.97311pt too wide) detected at line 59
+[]
  []
 
 
-Overfull \hbox (40.3196pt too wide) in paragraph at lines 69--69
-[] 
+Overfull \hbox (40.3196pt too wide) detected at line 69
+[]
  []
 
 
@@ -607,78 +1618,179 @@ n/10.95 (\OML/cmm/m/it/10.95   \OMS/cmsy/m/n/10.95   \OML/cmm/m/it/10.95 Kq\OT
 5 k[]  []k\OT1/cmr/bx/n/10.95 D[]\OMS/cmsy/m/n/10.95 k[]
  []
 
-[36] [37]
-Overfull \hbox (0.9017pt too wide) in paragraph at lines 228--230
-[][]\OT1/cmr/bx/n/10.95 Lemma B.2. []\OT1/cmr/m/it/10.95 For zero-mean in-de-pe
-n-dent sub-gaussian ma-tri-ces $\OT1/cmr/bx/n/10.95 X \OMS/cmsy/m/n/10.95 2 \U/
-msb/m/n/10.95 M\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 n; p\OT1/cmr/m/n/10.95 )
-\OML/cmm/m/it/10.95 ; \OT1/cmr/bx/n/10.95 E \OMS/cmsy/m/n/10.95 2 \U/msb/m/n/10
-.95 M\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 n; q\OT1/cmr/m/n/10.95 )$
- []
+[39]
 
-[38] [39]
+Package natbib Warning: Citation `MaMichailidis15' on page 40 undefined on inpu
+t line 135.
+
+[40]
+
+Package natbib Warning: Citation `MaMichailidis15' on page 41 undefined on inpu
+t line 158.
+
+
+! LaTeX Error: Environment lemma undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.199 \begin{lemma}
+                   \label{lemma:ErrorRElemma1}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: \begin{proof} on input line 168 ended by \end{lemma}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.207 \end{lemma}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Environment lemma undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.227 \begin{lemma}
+                   \label{lemma:ErrorRElemma2}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+[41]
+
+! LaTeX Error: \begin{proof} on input line 168 ended by \end{lemma}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.234 \end{lemma}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+[42]
+
+Package natbib Warning: Citation `RavikumarEtal11' on page 43 undefined on inpu
+t line 294.
+
+
 Overfull \hbox (14.67491pt too wide) detected at line 305
 [][] \OMS/cmsy/m/n/10.95  [] \OT1/cmr/m/n/10.95 + [] \OML/cmm/m/it/10.95 [] \
 OT1/cmr/m/n/10.95 = \OML/cmm/m/it/10.95 V[]\OT1/cmr/m/n/10.95 ;  \OML/cmm/m/it/
 10.95 c[] \OT1/cmr/m/n/10.95 = [][]
  []
 
-[40] [41] [42] [43]) (jmmle-draft.bbl [44] [45]
-Missing character: There is no Â in font cmr10!
-Missing character: There is no ¨ in font cmr10!
- [46])
+
+Package natbib Warning: Citation `LinEtal16' on page 43 undefined on input line
+ 353.
+
+[43]
+
+Package natbib Warning: Citation `LinEtal16' on page 44 undefined on input line
+ 355.
+
+
+Package natbib Warning: Citation `RavikumarEtal11' on page 44 undefined on inpu
+t line 396.
+
+[44]
+
+Package natbib Warning: Citation `RavikumarEtal11' on page 45 undefined on inpu
+t line 455.
+
+[45]
+
+Package natbib Warning: Citation `Bellman68' on page 46 undefined on input line
+ 466.
+
+
+Package natbib Warning: Citation `Varah75' on page 46 undefined on input line 5
+19.
+
+
+Package natbib Warning: Citation `BickelLevina08' on page 46 undefined on input
+ line 525.
+
+[46]
+
+Package natbib Warning: Citation `LinEtal16' on page 47 undefined on input line
+ 542.
+
+
+Package natbib Warning: Citation `LinEtal16' on page 47 undefined on input line
+ 546.
+
+)
+No file jmmle-draft.bbl.
+
+Package natbib Warning: There were undefined citations.
+
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 114.
- [47]
+[47]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 114.
  (jmmle-draft.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 114.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 114.
 Package rerunfilecheck Info: File `jmmle-draft.out' has not changed.
-(rerunfilecheck)             Checksum: 36F1E35B2EB4CE0BDC42E36928194000;1349.
+(rerunfilecheck)             Checksum: 24798927D75A8C18B110E826BAEBA2A0;1618.
 
 
-LaTeX Warning: There were multiply-defined labels.
+LaTeX Warning: There were undefined references.
 
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 114.
  ) 
 Here is how much of TeX's memory you used:
- 8650 strings out of 493333
- 126825 string characters out of 3137901
- 237705 words of memory out of 3000000
- 11781 multiletter control sequences out of 15000+200000
- 19675 words of font info for 74 fonts, out of 3000000 for 9000
+ 8704 strings out of 492448
+ 128012 string characters out of 3126939
+ 232739 words of memory out of 3000000
+ 12699 multiletter control sequences out of 15000+200000
+ 18974 words of font info for 72 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,17n,39p,1437b,492s stack positions out of 5000i,500n,10000p,200000b,50000s
-<D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmbx10.pfb><D:
-/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Stud
-y/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmbx8.pfb><D:/Study/LaTe
-X/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/Study/LaTeX/Mik
-TeX 2.9.6161/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><D:/Study/LaTeX/MikT
-eX 2.9.6161/fonts/type1/public/amsfonts/cm/cmmi10.pfb><D:/Study/LaTeX/MikTeX 2.
-9.6161/fonts/type1/public/amsfonts/cm/cmmi6.pfb><D:/Study/LaTeX/MikTeX 2.9.6161
-/fonts/type1/public/amsfonts/cm/cmmi7.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts
-/type1/public/amsfonts/cm/cmmi8.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1
-/public/amsfonts/cm/cmmib10.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/pub
-lic/amsfonts/cmextra/cmmib8.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/pub
-lic/amsfonts/cm/cmr10.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/am
-sfonts/cm/cmr12.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts
-/cm/cmr17.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cm
-r6.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmr7.pfb>
-<D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmr8.pfb><D:/Stu
-dy/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmr9.pfb><D:/Study/LaTe
-X/MikTeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/Study/LaTeX/Mik
-TeX 2.9.6161/fonts/type1/public/amsfonts/cm/cmsy5.pfb><D:/Study/LaTeX/MikTeX 2.
-9.6161/fonts/type1/public/amsfonts/cm/cmsy6.pfb><D:/Study/LaTeX/MikTeX 2.9.6161
-/fonts/type1/public/amsfonts/cm/cmsy7.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts
-/type1/public/amsfonts/cm/cmsy8.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1
-/public/amsfonts/cm/cmti10.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/publ
-ic/amsfonts/cm/cmtt10.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/am
-sfonts/cm/cmtt9.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts
-/symbols/msam10.pfb><D:/Study/LaTeX/MikTeX 2.9.6161/fonts/type1/public/amsfonts
-/symbols/msbm10.pfb>
-Output written on jmmle-draft.pdf (47 pages, 688470 bytes).
+ 41i,17n,42p,1902b,410s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
+<C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C
+:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/P
+rogram Files/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Pro
+gram Files/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><C:/P
+rogram Files/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Pro
+gram Files/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Progra
+m Files/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program F
+iles/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program File
+s/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Program Files
+/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb><C:/Program Fi
+les/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files
+/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/La
+TeX/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/LaTeX
+/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/LaTeX/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/LaTeX/MiKTeX 
+2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/LaTeX/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/LaTeX/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/LaTeX/MiKTeX 2.9/fonts/
+type1/public/amsfonts/cm/cmsy5.pfb><C:/Program Files/LaTeX/MiKTeX 2.9/fonts/typ
+e1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/
+public/amsfonts/cm/cmsy7.pfb><C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/pub
+lic/amsfonts/cm/cmsy8.pfb><C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmti10.pfb><C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmtt10.pfb><C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/public/ams
+fonts/cm/cmtt9.pfb><C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/public/amsfon
+ts/symbols/msam10.pfb><C:/Program Files/LaTeX/MiKTeX 2.9/fonts/type1/public/ams
+fonts/symbols/msbm10.pfb>
+Output written on jmmle-draft.pdf (47 pages, 633460 bytes).
 PDF statistics:
- 1096 PDF objects out of 1200 (max. 8388607)
- 242 named destinations out of 1000 (max. 500000)
- 183 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 816 PDF objects out of 1000 (max. 8388607)
+ 176 named destinations out of 1000 (max. 500000)
+ 215 words of extra memory for PDF output out of 10000 (max. 10000000)
 
